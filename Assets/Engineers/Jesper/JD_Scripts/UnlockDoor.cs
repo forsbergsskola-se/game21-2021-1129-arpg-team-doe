@@ -9,6 +9,9 @@ public class UnlockDoor : MonoBehaviour
 {
     private bool locked = true;
     private bool conditionCompleted;
+    [SerializeField] float actionRange;
+    
+    
     
     void Update()
     {
@@ -46,4 +49,5 @@ public class UnlockDoor : MonoBehaviour
         }
     }
    
+    
 }
