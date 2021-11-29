@@ -8,7 +8,7 @@
 
 Team members and roles:
 * Oliver Källerfors, engineer
-* Jesper Danielsson, engineer
+* Jesper Danielsson, engineer [Linked in](https://www.linkedin.com/in/jesper-danielsson-9b7048159/)
 
 
 Feel free to link any existing Linked.in Profiles or Portfolio Websites.
