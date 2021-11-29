@@ -6,8 +6,9 @@
 
 ## Team Name
 
-{team members and roles}:
-Oliver Källerfors,
+Team members and roles:
+* Oliver Källerfors, engineer
+* Jesper Danielsson, engineer
 
 
 Feel free to link any existing Linked.in Profiles or Portfolio Websites.
