@@ -8,6 +8,7 @@
 
 Team members and roles:
 * Oliver Källerfors, engineer
+* Qi Li, engineer
 * Jesper Danielsson, engineer [Linked In](https://www.linkedin.com/in/jesper-danielsson-9b7048159/)
 * Pavel Sarmiento, engineer [Linked In](https://www.linkedin.com/in/pavel-sarmiento-5483661a3/)
 * Efraim Kent, engineer [Linked In](https://www.linkedin.com/in/efraim-kent-01b8a33b/)
