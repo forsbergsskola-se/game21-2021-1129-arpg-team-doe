@@ -13,8 +13,10 @@ public class FD_CameraFollow : MonoBehaviour
     Vector3 offset;
     Vector3 rotationAxis = new Vector3(0, 1, 0);
     Vector3 snapRotationAxis = new Vector3(0, 1, 0);
-    const float rightScreenEdge = 0.95f;
-    const float leftScreenEdge = 0.05f;
+    const float closeToRightScreenEdge = 0.95f;
+    const float closeToLeftScreenEdge = 0.05f;
+    const float rightScreenEdge = 1f;
+    const float leftScreenEdge = 0f;
     float speed;
     int zoomLevel = 0;
     
@@ -26,7 +28,7 @@ public class FD_CameraFollow : MonoBehaviour
         startZoom = offset.y;
     }
 
-    void LateUpdate(){
+    void FixedUpdate(){
         Vector3 targetPosition = target.position + offset;
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _velocity, smoothTime);
         CameraZoom();
@@ -37,13 +39,15 @@ public class FD_CameraFollow : MonoBehaviour
     void CameraZoom(){
         
         if (Input.GetKeyDown(KeyCode.R)){
-            
+            //Change to minZoom
             if (zoomLevel % 3 == 0){
                 offset.y = minZoom;
-            }//1
+            }
+            //Change to maxZoom
             if (zoomLevel % 3 == 1){
                 offset.y = maxZoom;
             }
+            //Change to startZoom
             if (zoomLevel % 3 == 2){
                 offset.y = startZoom;
             }
@@ -66,12 +70,12 @@ public class FD_CameraFollow : MonoBehaviour
     void MouseCameraRotation(){
         var mouseRotation = rotationAxis * rotationSpeedMultiplier;
         var currentMousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-        if (currentMousePosition.x > rightScreenEdge){
-            rotationAxis.y =   currentMousePosition.x - rightScreenEdge;
+        if (currentMousePosition.x > closeToRightScreenEdge && currentMousePosition.x < rightScreenEdge){
+            rotationAxis.y =   currentMousePosition.x - closeToRightScreenEdge;
             transform.Rotate(mouseRotation);
         }
-        if (currentMousePosition.x < leftScreenEdge){
-            rotationAxis.y =   currentMousePosition.x - leftScreenEdge;
+        if (currentMousePosition.x < closeToLeftScreenEdge && currentMousePosition.x > leftScreenEdge){
+            rotationAxis.y =   currentMousePosition.x - closeToLeftScreenEdge;
             transform.Rotate(mouseRotation);
         }
     }
