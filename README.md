@@ -7,7 +7,7 @@
 ## Team Name
 
 Team members and roles:
-* Oliver Källerfors, engineer
+* Oliver Källerfors, engineer [LinkedIn](https://www.linkedin.com/in/oliver-källerfors-358bb21b3/)
 * Qi Li, engineer
 * Jesper Danielsson, engineer [LinkedIn](https://www.linkedin.com/in/jesper-danielsson-9b7048159/)
 * Pavel Sarmiento, engineer [LinkedIn](https://www.linkedin.com/in/pavel-sarmiento-5483661a3/)
