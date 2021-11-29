@@ -6,7 +6,9 @@
 
 ## Team Name
 
-{team members and roles}
+{team members and roles}:
+Oliver Källerfors,
+
 
 Feel free to link any existing Linked.in Profiles or Portfolio Websites.
 
