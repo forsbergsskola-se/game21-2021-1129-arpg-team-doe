@@ -32,11 +32,11 @@ public class FD_CameraFollow : MonoBehaviour
         snapRotationAxis.y = 1;
         var snapRotation = snapRotationAxis * snapRotationSpeedMultiplier;
         
-        if (Input.GetKeyDown(KeyCode.E)){
-            transform.Rotate(-snapRotation);
-        }
-        if (Input.GetKeyDown(KeyCode.Q)){
+        if (Input.GetKeyDown(KeyCode.D)){
             transform.Rotate(snapRotation);
+        }
+        if (Input.GetKeyDown(KeyCode.A)){
+            transform.Rotate(-snapRotation);
         }
     }
 
@@ -44,11 +44,11 @@ public class FD_CameraFollow : MonoBehaviour
         var mouseRotation = rotationAxis * rotationSpeedMultiplier;
         var currentMousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         if (currentMousePosition.x > rightScreenEdge){
-            rotationAxis.y = rightScreenEdge - currentMousePosition.x;
+            rotationAxis.y =   currentMousePosition.x - rightScreenEdge;
             transform.Rotate(mouseRotation);
         }
         if (currentMousePosition.x < leftScreenEdge){
-            rotationAxis.y = leftScreenEdge - currentMousePosition.x;
+            rotationAxis.y =   currentMousePosition.x - leftScreenEdge;
             transform.Rotate(mouseRotation);
         }
     }
