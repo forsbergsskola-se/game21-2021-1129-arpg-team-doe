@@ -21,6 +21,6 @@ Team members and roles:
 
 [TDD](https://docs.google.com/document/d/1kh5b8bSrGSGtGyzON_KlcZHEp64tDw4bJCZlrvl4Ckc/edit#heading=h.alh9xc4npudt)
 
-[Art-bible]()
+[Art-bible](https://docs.google.com/document/d/1uNTK3RGM5Yjnt5mj2CyfvfJGn8XkY-aDi1NpDS6rm0k/edit)
 
 ## Media
