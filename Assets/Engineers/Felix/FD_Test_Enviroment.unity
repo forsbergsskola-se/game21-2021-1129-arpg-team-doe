@@ -350,6 +350,8 @@ MonoBehaviour:
   smoothTime: 0.3
   rotationSpeedMultiplier: 5
   snapRotationSpeedMultiplier: 30
+  minZoom: 3
+  maxZoom: 10
 --- !u!4 &720148764
 Transform:
   m_ObjectHideFlags: 0

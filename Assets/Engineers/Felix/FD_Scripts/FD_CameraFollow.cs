@@ -8,19 +8,22 @@ public class FD_CameraFollow : MonoBehaviour
     [SerializeField] float snapRotationSpeedMultiplier = 30f;
     [SerializeField] float minZoom = 3f;
     [SerializeField] float maxZoom = 15f;
-    
+
+    float startZoom;
     Vector3 offset;
     Vector3 rotationAxis = new Vector3(0, 1, 0);
     Vector3 snapRotationAxis = new Vector3(0, 1, 0);
     const float rightScreenEdge = 0.95f;
     const float leftScreenEdge = 0.05f;
     float speed;
+    int zoomLevel = 0;
     
     Vector3 _velocity = Vector3.zero;
 
     void Start(){
         target = FindObjectOfType<FD_PlayerMovement>().transform;
         offset = transform.position - target.position;
+        startZoom = offset.y;
     }
 
     void LateUpdate(){
@@ -32,11 +35,19 @@ public class FD_CameraFollow : MonoBehaviour
     }
 
     void CameraZoom(){
-        if (Input.GetKeyDown(KeyCode.W)){
-            offset.y = minZoom;
-        }
-        if (Input.GetKeyDown(KeyCode.S)){
-            offset.y = maxZoom;
+        
+        if (Input.GetKeyDown(KeyCode.R)){
+            
+            if (zoomLevel % 3 == 0){
+                offset.y = minZoom;
+            }//1
+            if (zoomLevel % 3 == 1){
+                offset.y = maxZoom;
+            }
+            if (zoomLevel % 3 == 2){
+                offset.y = startZoom;
+            }
+            zoomLevel++;
         }
     }
 
