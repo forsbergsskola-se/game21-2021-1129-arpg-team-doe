@@ -1,4 +1,4 @@
-# {game-title}
+# Den of Evil
 
 {video}
 
@@ -13,7 +13,6 @@ Team members and roles:
 * Efraim Kent, engineer [Linked In](https://www.linkedin.com/in/efraim-kent-01b8a33b/)
 
 
-Feel free to link any existing Linked.in Profiles or Portfolio Websites.
 
 ## Design Documents
 
