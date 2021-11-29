@@ -43,8 +43,9 @@ public class UnlockDoor : MonoBehaviour{
 
     private void OnMouseDown(){
 
-        if (!locked && distance <= actionRange){
+        if (!locked && distance > actionRange){
             GetComponent<BoxCollider>().enabled = false;
+            GetComponent<NavMeshObstacle>().enabled = false;
         }
     }
 }
