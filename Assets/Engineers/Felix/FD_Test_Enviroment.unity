@@ -348,7 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   smoothTime: 0.3
-  rotationSpeedMultiplier: 20
+  rotationSpeedMultiplier: 60
   snapRotationSpeedMultiplier: 30
   minZoom: 3
   maxZoom: 10

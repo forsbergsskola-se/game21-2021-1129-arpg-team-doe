@@ -26,9 +26,10 @@ public class FD_CameraFollow : MonoBehaviour
         target = FindObjectOfType<FD_PlayerMovement>().transform;
         offset = transform.position - target.position;
         startZoom = offset.y;
+        rotationSpeedMultiplier = rotationSpeedMultiplier * 100;
     }
 
-    void FixedUpdate(){
+    void LateUpdate(){
         Vector3 targetPosition = target.position + offset;
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _velocity, smoothTime);
         CameraZoom();
@@ -68,7 +69,7 @@ public class FD_CameraFollow : MonoBehaviour
     }
 
     void MouseCameraRotation(){
-        var mouseRotation = rotationAxis * rotationSpeedMultiplier;
+        var mouseRotation = rotationAxis * rotationSpeedMultiplier * Time.deltaTime;
         var currentMousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         if (currentMousePosition.x > closeToRightScreenEdge && currentMousePosition.x < rightScreenEdge){
             rotationAxis.y =   currentMousePosition.x - closeToRightScreenEdge;
