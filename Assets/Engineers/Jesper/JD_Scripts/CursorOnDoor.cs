@@ -22,6 +22,7 @@ public class CursorOnDoor : MonoBehaviour
         if (!unOpenable)
         {
             Cursor.SetCursor(unLockedTexture, new Vector2(), CursorMode.Auto);
+            
         }
         if (unOpenable)
         {

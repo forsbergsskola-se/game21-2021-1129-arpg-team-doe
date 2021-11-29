@@ -22,7 +22,8 @@ public class UnlockDoor : MonoBehaviour
         {
             FindObjectOfType<CursorOnDoor>().unOpenable = locked;
         }
-       // OnMouseDown();
+        
+
     }
 
     void LockingMechanism()
@@ -37,9 +38,12 @@ public class UnlockDoor : MonoBehaviour
         }
     }
 
-  //  private void OnMouseDown()
-  //  {
-    //    GetComponent<BoxCollider>().enabled = false;
-    //}
+    private void OnMouseDown()
+    {
+
+        if (!locked){
+            GetComponent<BoxCollider>().enabled = false;
+        }
+    }
    
 }
