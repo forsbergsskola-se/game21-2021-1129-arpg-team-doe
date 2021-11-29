@@ -6,6 +6,8 @@ public class FD_CameraFollow : MonoBehaviour
     [SerializeField] float smoothTime = 0.3f;
     [SerializeField] float rotationSpeedMultiplier = 5f;
     [SerializeField] float snapRotationSpeedMultiplier = 30f;
+    [SerializeField] float minZoom = 3f;
+    [SerializeField] float maxZoom = 15f;
     
     Vector3 offset;
     Vector3 rotationAxis = new Vector3(0, 1, 0);
@@ -24,8 +26,18 @@ public class FD_CameraFollow : MonoBehaviour
     void LateUpdate(){
         Vector3 targetPosition = target.position + offset;
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _velocity, smoothTime);
+        CameraZoom();
         SnapCameraRotation();
         MouseCameraRotation();
+    }
+
+    void CameraZoom(){
+        if (Input.GetKeyDown(KeyCode.W)){
+            offset.y = minZoom;
+        }
+        if (Input.GetKeyDown(KeyCode.S)){
+            offset.y = maxZoom;
+        }
     }
 
     void SnapCameraRotation(){
