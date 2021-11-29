@@ -10,7 +10,13 @@ public class FD_CameraFollow : MonoBehaviour
     [SerializeField] Transform target;
     [SerializeField] Vector3 offset;
     [SerializeField] float smoothTime = 0.3f;
-    [SerializeField] Vector3 rotationSpeed = new Vector3(0, 15, 0);
+    [SerializeField] float rotationSpeedMultiplier = 5f;
+    [SerializeField] float snapRotationSpeedMultiplier = 15f;
+    
+    Vector3 rotationAxis = new Vector3(0, 1, 0);
+    const float rightScreenEdge = 0.9f;
+    const float leftScreenEdge = 0.1f;
+    float speed;
     
     Vector3 _velocity = Vector3.zero;
 
@@ -30,26 +36,27 @@ public class FD_CameraFollow : MonoBehaviour
     }
 
     void RotateCamera(){
+        
+        var snapRotation = rotationAxis * snapRotationSpeedMultiplier;
+        rotationAxis.y = 1;
         if (Input.GetKeyDown(KeyCode.E)){
-            transform.Rotate(rotationSpeed);
+            transform.Rotate(snapRotation);
         }
         if (Input.GetKeyDown(KeyCode.Q)){
-            transform.Rotate(-rotationSpeed);
+            transform.Rotate(-snapRotation);
         }
-
+        
+        var mouseRotation = rotationAxis * rotationSpeedMultiplier;
         var currentMousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-        if (currentMousePosition.x > 0.9f){
-            transform.Rotate(rotationSpeed);
-            //Not Done
+        if (currentMousePosition.x > rightScreenEdge){
+            rotationAxis.y = currentMousePosition.x - rightScreenEdge;
+            transform.Rotate(mouseRotation);
         }
-        if (currentMousePosition.x < 0.1f){
-            transform.Rotate(-rotationSpeed);
-            //Not Done
+        if (currentMousePosition.x < leftScreenEdge){
+            rotationAxis.y = currentMousePosition.x - leftScreenEdge;
+            transform.Rotate(mouseRotation);
         }
-        
-        
         Debug.Log(currentMousePosition);
-
     }
     
     

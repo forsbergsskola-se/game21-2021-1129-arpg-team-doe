@@ -252,7 +252,8 @@ MonoBehaviour:
   target: {fileID: 0}
   offset: {x: 0, y: 0, z: 0}
   smoothTime: 0.3
-  rotationSpeed: {x: 0, y: 15, z: 0}
+  rotationSpeedMultiplier: 2
+  snapRotationSpeedMultiplier: 60
 --- !u!4 &720148764
 Transform:
   m_ObjectHideFlags: 0
