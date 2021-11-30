@@ -27,6 +27,6 @@ public class JD_EnemyStats : MonoBehaviour{
         if (Input.GetKeyDown(KeyCode.E)){
             currentHP -= 10f;
         }
-        Debug.Log(currentHP);
+        //Debug.Log(currentHP);
     }
 }

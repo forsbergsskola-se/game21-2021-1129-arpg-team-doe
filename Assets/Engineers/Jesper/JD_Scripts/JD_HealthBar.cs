@@ -15,6 +15,10 @@ public class JD_HealthBar : MonoBehaviour{
         SetMaxHealth(maxHP);
     }
 
+    // void OnMouseOver(){
+    //     this.gameObject.SetActive(true);
+    // }
+
     void Update(){
         SetHealth();
     }
