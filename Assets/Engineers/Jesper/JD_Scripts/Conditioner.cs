@@ -6,8 +6,7 @@ using UnityEngine;
 public class Conditioner : MonoBehaviour
 {
     internal bool completed = false;
-    private void OnMouseDown()
-    {
+    void OnMouseDown(){
         completed = true;
     }
 }
