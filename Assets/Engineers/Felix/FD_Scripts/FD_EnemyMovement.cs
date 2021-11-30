@@ -2,23 +2,23 @@ using System;
 using UnityEngine;
 
 public class FD_EnemyMovement : MonoBehaviour{
-
-   [SerializeField] float areaDetectionRange = 5.0f;
-   [SerializeField] float visionRange = 20.0f;
+   
    [SerializeField] float pursuitRange = 30f;
-   [SerializeField] [Range(0,360)] float viewAngle;
-
+   
+   
    bool _pursuit;
+   FD_TargetDetection _targetDetection;
    FD_Player _player;
    float distanceToPlayer;
 
    void Start(){
-      _player = FindObjectOfType<FD_Player>();
-      viewAngle = Mathf.Cos(viewAngle * MathF.PI / 180 / 2);
+      _player = FindObjectOfType<FD_Player>(); //maybe use player tag instead? Will save performance
+      _targetDetection = GetComponent<FD_TargetDetection>();
+      
    }
 
    void FixedUpdate(){
-      if (PlayerIsDetected()){
+      if (_targetDetection.TargetIsDetected(_player.transform)){
          _pursuit = distanceToPlayer < pursuitRange;
          if (_pursuit) PursuitPlayer();
          else GoBackToOriginalPosition();
@@ -26,28 +26,12 @@ public class FD_EnemyMovement : MonoBehaviour{
    }
 
    void PursuitPlayer(){
-      
+      Debug.Log("Pursuiting player");
    }
 
    void GoBackToOriginalPosition(){
-      
+      Debug.Log("Go Back!!!!!");
    }
 
-   bool PlayerIsDetected(){
-       //Distance check
-      distanceToPlayer = Vector3.Distance(transform.position, _player.transform.position);
-
-      if (distanceToPlayer < areaDetectionRange){
-         return true;
-      }
-      
-      //Calculates the view angle and checks if enemy is looking at player
-      Vector3 playerDirection = _player.transform.position - transform.position;
-      var dot = Vector3.Dot(playerDirection.normalized, transform.forward);
-      if (distanceToPlayer < visionRange && dot > viewAngle){
-         return true;
-      }
-      
-      return false;
-   }
+   
 }
