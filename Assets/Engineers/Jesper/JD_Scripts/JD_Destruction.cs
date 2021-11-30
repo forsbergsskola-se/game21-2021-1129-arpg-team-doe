@@ -7,8 +7,10 @@ using UnityEngine.AI;
 public class JD_Destruction : MonoBehaviour{
     [SerializeField] float actionRange;
 
+    float distance;
+
     void Update(){
-        var distance = 2f;
+        distance = Vector3.Distance(this.transform.position, FindObjectOfType<JD_PlayerMovement>().transform.position);
     }
 
     void OnMouseUpAsButton(){
