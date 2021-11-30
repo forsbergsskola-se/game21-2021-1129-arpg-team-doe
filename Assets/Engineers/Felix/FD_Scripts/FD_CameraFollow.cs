@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class FD_CameraFollow : MonoBehaviour
 {
-    [SerializeField] Transform target;
     [SerializeField] float smoothTime = 0.3f;
     [SerializeField] float rotationSpeedMultiplier = 5f;
     [SerializeField] float snapRotationSpeedMultiplier = 30f;
@@ -10,6 +9,7 @@ public class FD_CameraFollow : MonoBehaviour
     [SerializeField] float maxZoom = 15f;
 
     float startZoom;
+    Transform target;
     Vector3 offset;
     Vector3 rotationAxis = new Vector3(0, 1, 0);
     Vector3 snapRotationAxis = new Vector3(0, 1, 0);
@@ -26,7 +26,7 @@ public class FD_CameraFollow : MonoBehaviour
         target = FindObjectOfType<FD_PlayerMovement>().transform;
         offset = transform.position - target.position;
         startZoom = offset.y;
-        rotationSpeedMultiplier = rotationSpeedMultiplier * 100;
+        rotationSpeedMultiplier = rotationSpeedMultiplier * 100; //TODO:Magic numbers?
     }
 
     void LateUpdate(){
@@ -40,6 +40,7 @@ public class FD_CameraFollow : MonoBehaviour
     void CameraZoom(){
         
         if (Input.GetKeyDown(KeyCode.R)){
+            //TODO:Magic numbers and less modular
             //Change to minZoom
             if (zoomLevel % 3 == 0){
                 offset.y = minZoom;

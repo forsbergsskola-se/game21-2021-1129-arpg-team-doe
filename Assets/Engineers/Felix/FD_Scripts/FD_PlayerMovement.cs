@@ -11,15 +11,15 @@ public class FD_PlayerMovement : MonoBehaviour
     }
 
     void Update(){
-        Mover();
+        if (Input.GetMouseButton(0)){
+            Mover();
+        }
     }
 
     void Mover(){
-        if (Input.GetMouseButton(0)){
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            Physics.Raycast(ray, out hit);
-            _navMeshAgent.destination = hit.point;
-        }
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        Physics.Raycast(ray, out hit);
+        _navMeshAgent.destination = hit.point;
     }
 }
