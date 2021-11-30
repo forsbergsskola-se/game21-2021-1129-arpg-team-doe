@@ -8,19 +8,18 @@ using UnityEngine.Rendering.VirtualTexturing;
 
 public class UnlockDoor : MonoBehaviour{
 
-    private NavMeshAgent player;
-    private bool locked = true;
-    private bool conditionCompleted;
-    [SerializeField] private float actionRange;
+    NavMeshAgent player;
+    bool locked = true;
+    bool conditionCompleted;
+    [SerializeField] float actionRange;
 
-    private float distance;
+    float distance;
 
-    private void Start(){
+    void Start(){
         player = FindObjectOfType<NavMeshAgent>();
     }
 
     void Update(){
-
         conditionCompleted = FindObjectOfType<Conditioner>().completed;
         LockingMechanism();
         if (locked){
@@ -28,12 +27,10 @@ public class UnlockDoor : MonoBehaviour{
         } if (!locked){
             FindObjectOfType<CursorOnDoor>().unOpenable = locked;
         }
-
         distance = Vector3.Magnitude(player.destination);
     }
 
     void LockingMechanism(){
-
         if (conditionCompleted){
             locked = false;
         }else{
@@ -41,8 +38,7 @@ public class UnlockDoor : MonoBehaviour{
         }
     }
 
-    private void OnMouseDown(){
-
+    void OnMouseDown(){
         if (!locked && distance > actionRange){
             GetComponent<BoxCollider>().enabled = false;
             GetComponent<NavMeshObstacle>().enabled = false;

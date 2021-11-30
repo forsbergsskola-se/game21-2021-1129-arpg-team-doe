@@ -17,7 +17,7 @@ public class JD_CameraFollow : MonoBehaviour
     Vector3 _velocity = Vector3.zero;
 
     void Start(){
-        target = FindObjectOfType<FD_PlayerMovement>().transform;
+        target = FindObjectOfType<JD_PlayerMovement>().transform;
         offset = transform.position - target.position;
     }
 

@@ -12,26 +12,20 @@ public class CursorOnDoor : MonoBehaviour
     public Texture2D unLockedTexture;
     public Texture2D cursor;
 
-    private void Start()
-    {
+    void Start(){
         Cursor.SetCursor(cursor, Vector2.zero, CursorMode.ForceSoftware);
     }
 
-    void OnMouseEnter()
-    {
-        if (!unOpenable)
-        {
+    void OnMouseEnter(){
+        if (!unOpenable){
             Cursor.SetCursor(unLockedTexture, new Vector2(), CursorMode.Auto);
-            
         }
-        if (unOpenable)
-        {
+        if (unOpenable){
             Cursor.SetCursor(lockedTexture, new Vector2(), CursorMode.Auto);
         }
     }
 
-    private void OnMouseExit()
-    {
+    void OnMouseExit(){
         Cursor.SetCursor(cursor, Vector2.zero, CursorMode.ForceSoftware);
     }
 }
