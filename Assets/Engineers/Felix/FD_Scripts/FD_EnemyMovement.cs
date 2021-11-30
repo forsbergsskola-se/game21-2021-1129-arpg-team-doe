@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class FD_EnemyMovement : MonoBehaviour{
@@ -13,20 +12,20 @@ public class FD_EnemyMovement : MonoBehaviour{
    
    FD_TargetDetection _targetDetection;
    FD_Player _player;
+   FD_NavmeshMover _navmeshMover;
+   
    float distanceToPlayer;
    Vector3 savedPosition;
 
    void Start(){
       _player = FindObjectOfType<FD_Player>(); //maybe use player tag instead? Will save performance
       _targetDetection = GetComponent<FD_TargetDetection>();
-      
+      _navmeshMover = GetComponent<FD_NavmeshMover>();
    }
 
    void FixedUpdate(){
-
       if (!playerIsDetected && !isPursuing && !isWalkingback){
           savedPosition = transform.position;
-          Debug.Log(savedPosition + "No player");
       }
       
       DetectPlayer();
@@ -35,8 +34,8 @@ public class FD_EnemyMovement : MonoBehaviour{
          GoBackToOriginalPosition();
          return;
       }
-      //Checks if player is outside of the pursuit range (Returns true or false)
-      isOutOfPursuitRange = _targetDetection.DistanceToTarget(savedPosition, _player.transform) > pursuitRange;
+      //Checks if the enemy is outside of the pursuit range (Returns true or false)
+      isOutOfPursuitRange = _targetDetection.DistanceToTarget(savedPosition, transform) > pursuitRange;
       
       //If player is not outside of range, pursuit player.
       if (!isOutOfPursuitRange && playerIsDetected){
@@ -45,13 +44,12 @@ public class FD_EnemyMovement : MonoBehaviour{
    }
 
    void DetectPlayer(){
+      // Enemy stands for a while with tranform.postion and then go back, can be changed to savedPosition to go back immediately
       if (_targetDetection.TargetIsDetected(transform.position, _player.transform)){
          playerIsDetected = true;
          if (!isPursuing && !isWalkingback){
             savedPosition = transform.position;
-            Debug.Log(savedPosition + "Player found");
          }
-         
          isOutOfPursuitRange = false;
       }
    }
@@ -59,14 +57,13 @@ public class FD_EnemyMovement : MonoBehaviour{
    void PursuitPlayer(){
       isPursuing = true;
       isWalkingback = false;
-      Debug.Log("Pursuiting player");
+      _navmeshMover.Mover(_player.transform.position);
    }
 
    void GoBackToOriginalPosition(){
-      isWalkingback = true;
       playerIsDetected = false;
-      Debug.Log("Go Back!!!!!");
+      _navmeshMover.Mover(savedPosition);
+      isWalkingback = true;
+      isPursuing = false;
    }
-
-   
 }

@@ -1,35 +1,25 @@
-using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class FD_PlayerMovement : MonoBehaviour
 {
-    NavMeshAgent _navMeshAgent;
-    NavMeshPath _path;
-
+    FD_NavmeshMover _navmeshMover;
     void Start(){
-        _navMeshAgent = GetComponent<NavMeshAgent>();
-        _path = new NavMeshPath();
+        _navmeshMover = GetComponent<FD_NavmeshMover>();
     }
 
     void Update(){
         if (Input.GetMouseButtonDown(0)){
-            Mover();
+            MoveToCursor();
         }
     }
 
-    void Mover(){
+    void MoveToCursor(){
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         Physics.Raycast(ray, out hit);
-        bool pathFound = NavMesh.CalculatePath(transform.position, hit.point, NavMesh.AllAreas, _path);
-        if (pathFound){
-            _navMeshAgent.isStopped = false;
-            _navMeshAgent.destination = hit.point;
-        }
-        else{
-            _navMeshAgent.isStopped = true;
+        if (hit.point != null){
+            _navmeshMover.Mover(hit.point);
         }
     }
 }
