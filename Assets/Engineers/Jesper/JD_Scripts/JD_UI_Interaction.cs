@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class JD_UI_Interaction : MonoBehaviour{
+
     void Start(){
         GetComponentInChildren<JD_HealthBar>().gameObject.SetActive(false);
     }
@@ -12,6 +13,7 @@ public class JD_UI_Interaction : MonoBehaviour{
     void OnMouseEnter(){
         GetComponentInChildren<JD_HealthBar>().gameObject.SetActive(true);
     }
+
     void OnMouseExit(){
         GetComponentInChildren<JD_HealthBar>().gameObject.SetActive(false);
     }
