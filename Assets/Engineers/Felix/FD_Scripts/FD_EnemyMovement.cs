@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class FD_EnemyMovement : MonoBehaviour{
@@ -22,19 +19,24 @@ public class FD_EnemyMovement : MonoBehaviour{
 
    void FixedUpdate(){
       if (PlayerIsDetected()){
-         //Move towards
-         _pursuit = true;
-         if (distanceToPlayer < pursuitRange){
-            
-         }
+         _pursuit = distanceToPlayer < pursuitRange;
+         if (_pursuit) PursuitPlayer();
+         else GoBackToOriginalPosition();
       }
+   }
+
+   void PursuitPlayer(){
+      
+   }
+
+   void GoBackToOriginalPosition(){
+      
    }
 
    bool PlayerIsDetected(){
        //Distance check
       distanceToPlayer = Vector3.Distance(transform.position, _player.transform.position);
-      
-      
+
       if (distanceToPlayer < areaDetectionRange){
          return true;
       }
