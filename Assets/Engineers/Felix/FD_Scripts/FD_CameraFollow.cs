@@ -26,8 +26,9 @@ public class FD_CameraFollow : MonoBehaviour
 
     void Start(){
         target = FindObjectOfType<FD_PlayerMovement>().transform;
+        transform.position = new Vector3(target.position.x, transform.position.y, target.position.z);
+        startZoom = transform.position.y;
         offset = transform.position - target.position;
-        startZoom = offset.y;
     }
 
     void LateUpdate(){
