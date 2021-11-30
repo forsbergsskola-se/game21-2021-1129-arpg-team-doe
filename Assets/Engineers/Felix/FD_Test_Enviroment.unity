@@ -346,9 +346,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9fd35e22e2d9f943b1575d14f7d18d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   smoothTime: 0.3
-  rotationSpeedMultiplier: 60
+  rotationSpeedMultiplier: 700
   snapRotationSpeedMultiplier: 30
   minZoom: 3
   maxZoom: 10

@@ -3,7 +3,7 @@ using UnityEngine;
 public class FD_CameraFollow : MonoBehaviour
 {
     [SerializeField] float smoothTime = 0.3f;
-    [SerializeField] float rotationSpeedMultiplier = 5f;
+    [SerializeField] float rotationSpeedMultiplier = 500f;
     [SerializeField] float snapRotationSpeedMultiplier = 30f;
     [SerializeField] float minZoom = 3f;
     [SerializeField] float maxZoom = 15f;
@@ -19,6 +19,8 @@ public class FD_CameraFollow : MonoBehaviour
     const float leftScreenEdge = 0f;
     float speed;
     int zoomLevel = 0;
+    int zoomLevels = 3;
+    
     
     Vector3 _velocity = Vector3.zero;
 
@@ -26,7 +28,6 @@ public class FD_CameraFollow : MonoBehaviour
         target = FindObjectOfType<FD_PlayerMovement>().transform;
         offset = transform.position - target.position;
         startZoom = offset.y;
-        rotationSpeedMultiplier = rotationSpeedMultiplier * 100; //TODO:Magic numbers?
     }
 
     void LateUpdate(){
@@ -40,17 +41,17 @@ public class FD_CameraFollow : MonoBehaviour
     void CameraZoom(){
         
         if (Input.GetKeyDown(KeyCode.R)){
-            //TODO:Magic numbers and less modular
+            var currentZoomLevel = zoomLevel % zoomLevels;
             //Change to minZoom
-            if (zoomLevel % 3 == 0){
+            if (currentZoomLevel == 0){
                 offset.y = minZoom;
             }
             //Change to maxZoom
-            if (zoomLevel % 3 == 1){
+            if (currentZoomLevel == 1){
                 offset.y = maxZoom;
             }
             //Change to startZoom
-            if (zoomLevel % 3 == 2){
+            if (currentZoomLevel == 2){
                 offset.y = startZoom;
             }
             zoomLevel++;
