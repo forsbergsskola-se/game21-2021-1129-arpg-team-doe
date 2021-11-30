@@ -8,10 +8,13 @@ public class FD_EnemyMovement : MonoBehaviour{
    
    bool isOutOfPursuitRange;
    bool isWalkingback;
+   bool isPursuing;
    bool playerIsDetected;
+   
    FD_TargetDetection _targetDetection;
    FD_Player _player;
    float distanceToPlayer;
+   Vector3 savedPosition;
 
    void Start(){
       _player = FindObjectOfType<FD_Player>(); //maybe use player tag instead? Will save performance
@@ -20,18 +23,20 @@ public class FD_EnemyMovement : MonoBehaviour{
    }
 
    void FixedUpdate(){
-      //Detects player
-      if (_targetDetection.TargetIsDetected(_player.transform)){
-         playerIsDetected = true;
-         isOutOfPursuitRange = false;
+
+      if (!playerIsDetected && !isPursuing && !isWalkingback){
+          savedPosition = transform.position;
+          Debug.Log(savedPosition + "No player");
       }
+      
+      DetectPlayer();
       //If player is out of pursuit range and is not already walking back, walk back.
       if (isOutOfPursuitRange && !isWalkingback){
          GoBackToOriginalPosition();
          return;
       }
       //Checks if player is outside of the pursuit range (Returns true or false)
-      isOutOfPursuitRange = _targetDetection.DistanceToTarget(_player.transform) > pursuitRange;
+      isOutOfPursuitRange = _targetDetection.DistanceToTarget(savedPosition, _player.transform) > pursuitRange;
       
       //If player is not outside of range, pursuit player.
       if (!isOutOfPursuitRange && playerIsDetected){
@@ -39,7 +44,20 @@ public class FD_EnemyMovement : MonoBehaviour{
       }
    }
 
+   void DetectPlayer(){
+      if (_targetDetection.TargetIsDetected(transform.position, _player.transform)){
+         playerIsDetected = true;
+         if (!isPursuing && !isWalkingback){
+            savedPosition = transform.position;
+            Debug.Log(savedPosition + "Player found");
+         }
+         
+         isOutOfPursuitRange = false;
+      }
+   }
+
    void PursuitPlayer(){
+      isPursuing = true;
       isWalkingback = false;
       Debug.Log("Pursuiting player");
    }

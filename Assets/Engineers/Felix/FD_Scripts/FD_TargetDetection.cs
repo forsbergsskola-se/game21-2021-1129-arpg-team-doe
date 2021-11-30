@@ -15,14 +15,14 @@ public class FD_TargetDetection : MonoBehaviour{
     void Start(){
         viewAngle = Mathf.Cos(viewAngle * MathF.PI / 180 / 2);
     }
-
-    public float DistanceToTarget(Transform target){
-        return Vector3.Distance(transform.position, target.position);
+    
+    public float DistanceToTarget(Vector3 position, Transform target){
+        return Vector3.Distance(position, target.position);
     }
-
-    public bool TargetIsDetected(Transform target){
+    
+    public bool TargetIsDetected(Vector3 position, Transform target){
         //Distance check
-        distanceToTarget = DistanceToTarget(target);
+        distanceToTarget = DistanceToTarget(position, target);
 
         if (distanceToTarget < areaDetectionRange){
             return true;
