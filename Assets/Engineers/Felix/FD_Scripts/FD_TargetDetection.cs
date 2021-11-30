@@ -16,17 +16,21 @@ public class FD_TargetDetection : MonoBehaviour{
         viewAngle = Mathf.Cos(viewAngle * MathF.PI / 180 / 2);
     }
 
+    public float DistanceToTarget(Transform target){
+        return Vector3.Distance(transform.position, target.position);
+    }
+
     public bool TargetIsDetected(Transform target){
         //Distance check
-        distanceToTarget = Vector3.Distance(transform.position, target.position);
+        distanceToTarget = DistanceToTarget(target);
 
         if (distanceToTarget < areaDetectionRange){
             return true;
         }
       
-        //Calculates the view angle and checks if enemy is looking at player
-        Vector3 playerDirection = target.position - transform.position;
-        var dot = Vector3.Dot(playerDirection.normalized, transform.forward);
+        //Calculates the view angle and checks if unit is looking at target
+        Vector3 targetDirection = target.position - transform.position;
+        var dot = Vector3.Dot(targetDirection.normalized, transform.forward);
         if (distanceToTarget < visionRange && dot > viewAngle){
             return true;
         }

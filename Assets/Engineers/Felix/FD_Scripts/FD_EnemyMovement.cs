@@ -6,7 +6,8 @@ public class FD_EnemyMovement : MonoBehaviour{
    [SerializeField] float pursuitRange = 30f;
    
    
-   bool _pursuit;
+   bool isOutOfPursuitRange;
+   bool isWalkingback;
    FD_TargetDetection _targetDetection;
    FD_Player _player;
    float distanceToPlayer;
@@ -19,17 +20,26 @@ public class FD_EnemyMovement : MonoBehaviour{
 
    void FixedUpdate(){
       if (_targetDetection.TargetIsDetected(_player.transform)){
-         _pursuit = distanceToPlayer < pursuitRange;
-         if (_pursuit) PursuitPlayer();
-         else GoBackToOriginalPosition();
+         isOutOfPursuitRange = false;
+      }
+      if (isOutOfPursuitRange && !isWalkingback){
+         GoBackToOriginalPosition();
+         return;
+      }
+      isOutOfPursuitRange = _targetDetection.DistanceToTarget(_player.transform) > pursuitRange;
+      
+      if (!isOutOfPursuitRange){
+         PursuitPlayer();
       }
    }
 
    void PursuitPlayer(){
+      isWalkingback = false;
       Debug.Log("Pursuiting player");
    }
 
    void GoBackToOriginalPosition(){
+      isWalkingback = true;
       Debug.Log("Go Back!!!!!");
    }
 
