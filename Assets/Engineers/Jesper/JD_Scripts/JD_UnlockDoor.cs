@@ -20,13 +20,13 @@ public class JD_UnlockDoor : MonoBehaviour{
     }
 
     void Update(){
-        conditionCompleted = FindObjectOfType<Conditioner>().completed;
+        conditionCompleted = FindObjectOfType<JD_Conditioner>().completed;
         LockingMechanism();
         // Does the same thing.
         if (locked){
-            FindObjectOfType<CursorOnDoor>().unOpenable = locked;
+            FindObjectOfType<JD_CursorOnDoor>().unOpenable = locked;
         } if (!locked){
-            FindObjectOfType<CursorOnDoor>().unOpenable = locked;
+            FindObjectOfType<JD_CursorOnDoor>().unOpenable = locked;
         }
         distance = Vector3.Magnitude(player.destination);
     }

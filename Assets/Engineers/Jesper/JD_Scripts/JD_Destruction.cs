@@ -9,6 +9,7 @@ public class JD_Destruction : MonoBehaviour{
     [SerializeField] float health;
 
     float distance;
+    
 
     void Update(){
         distance = Vector3.Distance(this.transform.position, FindObjectOfType<JD_PlayerMovement>().transform.position);
