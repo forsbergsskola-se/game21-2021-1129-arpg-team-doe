@@ -45,7 +45,7 @@ public class FD_EnemyMovement : MonoBehaviour{
 
    void DetectPlayer(){
       // Enemy stands for a while with tranform.postion and then go back, can be changed to savedPosition to go back immediately
-      if (_targetDetection.TargetIsDetected(transform.position, _player.transform)){
+      if (_targetDetection.TargetIsDetected(savedPosition, _player.transform)){
          playerIsDetected = true;
          if (!isPursuing && !isWalkingback){
             savedPosition = transform.position;
