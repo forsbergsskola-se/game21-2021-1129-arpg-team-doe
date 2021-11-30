@@ -22,6 +22,7 @@ public class UnlockDoor : MonoBehaviour{
     void Update(){
         conditionCompleted = FindObjectOfType<Conditioner>().completed;
         LockingMechanism();
+        // Does the same thing.
         if (locked){
             FindObjectOfType<CursorOnDoor>().unOpenable = locked;
         } if (!locked){
