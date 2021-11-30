@@ -1,18 +1,16 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class FD_EnemyMovement : MonoBehaviour{
 
    [SerializeField] float areaDetectionRange = 5.0f;
    [SerializeField] float visionRange = 20.0f;
-   [SerializeField] [Tooltip("1 is no angle between. 0 is looking 100% away")] float viewAngle;
+   [SerializeField] float pursuitRange = 30f;
+   [SerializeField] [Tooltip("0 to 360 degrees")] float viewAngle;
 
-
-
+   bool _pursuit;
    FD_Player _player;
+   float distanceToPlayer;
 
    void Start(){
       _player = FindObjectOfType<FD_Player>();
@@ -21,15 +19,24 @@ public class FD_EnemyMovement : MonoBehaviour{
 
    void FixedUpdate(){
       if (PlayerIsDetected()){
-         //Move towards
+         _pursuit = distanceToPlayer < pursuitRange;
+         if (_pursuit) PursuitPlayer();
+         else GoBackToOriginalPosition();
       }
+   }
+
+   void PursuitPlayer(){
+      
+   }
+
+   void GoBackToOriginalPosition(){
+      
    }
 
    bool PlayerIsDetected(){
        //Distance check
-      var distanceToPlayer = Vector3.Distance(transform.position, _player.transform.position);
-      
-      
+      distanceToPlayer = Vector3.Distance(transform.position, _player.transform.position);
+
       if (distanceToPlayer < areaDetectionRange){
          return true;
       }
