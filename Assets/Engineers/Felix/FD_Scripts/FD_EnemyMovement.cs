@@ -6,7 +6,7 @@ public class FD_EnemyMovement : MonoBehaviour{
    [SerializeField] float areaDetectionRange = 5.0f;
    [SerializeField] float visionRange = 20.0f;
    [SerializeField] float pursuitRange = 30f;
-   [SerializeField] [Tooltip("0 to 360 degrees")] float viewAngle;
+   [SerializeField] [Range(0,360)] float viewAngle;
 
    bool _pursuit;
    FD_Player _player;
@@ -41,6 +41,7 @@ public class FD_EnemyMovement : MonoBehaviour{
          return true;
       }
       
+      //Calculates the view angle and checks if enemy is looking at player
       Vector3 playerDirection = _player.transform.position - transform.position;
       var dot = Vector3.Dot(playerDirection.normalized, transform.forward);
       if (distanceToPlayer < visionRange && dot > viewAngle){
