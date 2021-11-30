@@ -52,6 +52,7 @@ public class FD_EnemyMovement : MonoBehaviour{
          }
          isOutOfPursuitRange = false;
       }
+      
    }
 
    void PursuitPlayer(){

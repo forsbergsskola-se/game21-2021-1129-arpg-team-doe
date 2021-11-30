@@ -23,18 +23,36 @@ public class FD_TargetDetection : MonoBehaviour{
     public bool TargetIsDetected(Vector3 position, Transform target){
         //Distance check
         distanceToTarget = DistanceToTarget(position, target);
-
-        if (distanceToTarget < areaDetectionRange){
-            return true;
-        }
-      
-        //Calculates the view angle and checks if unit is looking at target
         Vector3 targetDirection = target.position - transform.position;
-        var dot = Vector3.Dot(targetDirection.normalized, transform.forward);
-        if (distanceToTarget < visionRange && dot > viewAngle){
-            return true;
+        if (distanceToTarget < areaDetectionRange){
+            //If target is within detection area, shoot out a ray to see if target is visable
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, targetDirection, out hit)){
+                Debug.DrawRay(transform.position,targetDirection.normalized*hit.distance,Color.red);
+                Debug.Log(hit.transform);
+                if (hit.transform == target.transform){
+                    return true; 
+                }
+            }
         }
-      
+        
+        //Calculates the view angle and checks if unit is looking at target
+        var dot = Vector3.Dot(targetDirection.normalized, transform.forward);
+        if (distanceToTarget < visionRange && dot > viewAngle){ 
+            //ray to check if something target is visable, if so, return true.
+            RaycastHit hit;
+            if(Physics.Raycast(transform.position,targetDirection, out hit)){ 
+                Debug.DrawRay(transform.position,targetDirection.normalized*hit.distance,Color.red);
+                Debug.Log(hit.transform);
+                if (hit.transform == target.transform){ 
+                    return true; 
+                }
+                else{ return false;
+                }
+            }
+        }
+        
         return false;
     }
+   
 }
