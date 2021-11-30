@@ -474,6 +474,7 @@ GameObject:
   - component: {fileID: 1119411699}
   - component: {fileID: 1119411698}
   - component: {fileID: 1119411697}
+  - component: {fileID: 1119411703}
   - component: {fileID: 1119411702}
   m_Layer: 0
   m_Name: Player
@@ -592,7 +593,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1119411696}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1fae8082748bcf44b61caf3339d32e8, type: 3}
+  m_Script: {fileID: 11500000, guid: 594f61ebad6a5cc4a8e64a148a5b205e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1119411703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119411696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a33d3bb8df0a544cb16011d711567b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1231551757
@@ -982,6 +995,8 @@ GameObject:
   - component: {fileID: 2107092135}
   - component: {fileID: 2107092134}
   - component: {fileID: 2107092133}
+  - component: {fileID: 2107092138}
+  - component: {fileID: 2107092137}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -1068,3 +1083,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2107092137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107092132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebb1c3ed9f3d7ba4b8a7b6301c1dabd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  areaDetectionRange: 5
+  visionRange: 20
+  viewAngle: 0
+--- !u!114 &2107092138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107092132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a3191012a4f2084ea48400c8176500d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

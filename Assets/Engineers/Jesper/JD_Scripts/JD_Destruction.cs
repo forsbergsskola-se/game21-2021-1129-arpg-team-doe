@@ -28,7 +28,8 @@ public class JD_Destruction : MonoBehaviour{
     void Death(){
         if (health <= 0){
             // GetComponent<Animator>().enabled = true; <- mockup
-            GetComponent<NavMeshObstacle>().enabled = false;   
+            GetComponent<NavMeshObstacle>().enabled = false;
+            GetComponent<SphereCollider>().enabled = false;
         }
     }
 }
