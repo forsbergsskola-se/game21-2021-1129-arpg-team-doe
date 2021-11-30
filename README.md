@@ -1,4 +1,4 @@
-# {game-title}
+# Den of Evil
 
 {video}
 
@@ -7,11 +7,13 @@
 ## Team Name
 
 Team members and roles:
-* Oliver Källerfors, engineer
-* Jesper Danielsson, engineer [Linked in](https://www.linkedin.com/in/jesper-danielsson-9b7048159/)
+* Oliver Källerfors, engineer [LinkedIn](https://www.linkedin.com/in/oliver-källerfors-358bb21b3/)
+* Qi Li, engineer
+* Jesper Danielsson, engineer [LinkedIn](https://www.linkedin.com/in/jesper-danielsson-9b7048159/)
+* Pavel Sarmiento, engineer [LinkedIn](https://www.linkedin.com/in/pavel-sarmiento-5483661a3/)
+* Efraim Kent, engineer [LinkedIn](https://www.linkedin.com/in/efraim-kent-01b8a33b/)
 
 
-Feel free to link any existing Linked.in Profiles or Portfolio Websites.
 
 ## Design Documents
 
@@ -19,6 +21,6 @@ Feel free to link any existing Linked.in Profiles or Portfolio Websites.
 
 [TDD](https://docs.google.com/document/d/1kh5b8bSrGSGtGyzON_KlcZHEp64tDw4bJCZlrvl4Ckc/edit#heading=h.alh9xc4npudt)
 
-[Art-bible]()
+[Art-bible](https://docs.google.com/document/d/1uNTK3RGM5Yjnt5mj2CyfvfJGn8XkY-aDi1NpDS6rm0k/edit)
 
 ## Media

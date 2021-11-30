@@ -1,64 +1,84 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class FD_CameraFollow : MonoBehaviour
 {
-
     [SerializeField] Transform target;
-    [SerializeField] Vector3 offset;
     [SerializeField] float smoothTime = 0.3f;
     [SerializeField] float rotationSpeedMultiplier = 5f;
-    [SerializeField] float snapRotationSpeedMultiplier = 15f;
-    
+    [SerializeField] float snapRotationSpeedMultiplier = 30f;
+    [SerializeField] float minZoom = 3f;
+    [SerializeField] float maxZoom = 15f;
+
+    float startZoom;
+    Vector3 offset;
     Vector3 rotationAxis = new Vector3(0, 1, 0);
-    const float rightScreenEdge = 0.9f;
-    const float leftScreenEdge = 0.1f;
+    Vector3 snapRotationAxis = new Vector3(0, 1, 0);
+    const float closeToRightScreenEdge = 0.95f;
+    const float closeToLeftScreenEdge = 0.05f;
+    const float rightScreenEdge = 1f;
+    const float leftScreenEdge = 0f;
     float speed;
+    int zoomLevel = 0;
     
     Vector3 _velocity = Vector3.zero;
 
-
-
-    // Start is called before the first frame update
     void Start(){
         target = FindObjectOfType<FD_PlayerMovement>().transform;
         offset = transform.position - target.position;
+        startZoom = offset.y;
+        rotationSpeedMultiplier = rotationSpeedMultiplier * 100;
     }
 
-    // Update is called once per frame
     void LateUpdate(){
-        RotateCamera();
         Vector3 targetPosition = target.position + offset;
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _velocity, smoothTime);
+        CameraZoom();
+        SnapCameraRotation();
+        MouseCameraRotation();
     }
 
-    void RotateCamera(){
+    void CameraZoom(){
         
-        var snapRotation = rotationAxis * snapRotationSpeedMultiplier;
-        rotationAxis.y = 1;
-        if (Input.GetKeyDown(KeyCode.E)){
+        if (Input.GetKeyDown(KeyCode.R)){
+            //Change to minZoom
+            if (zoomLevel % 3 == 0){
+                offset.y = minZoom;
+            }
+            //Change to maxZoom
+            if (zoomLevel % 3 == 1){
+                offset.y = maxZoom;
+            }
+            //Change to startZoom
+            if (zoomLevel % 3 == 2){
+                offset.y = startZoom;
+            }
+            zoomLevel++;
+        }
+    }
+
+    void SnapCameraRotation(){
+        snapRotationAxis.y = 1;
+        var snapRotation = snapRotationAxis * snapRotationSpeedMultiplier;
+        
+        if (Input.GetKeyDown(KeyCode.D)){
             transform.Rotate(snapRotation);
         }
-        if (Input.GetKeyDown(KeyCode.Q)){
+        if (Input.GetKeyDown(KeyCode.A)){
             transform.Rotate(-snapRotation);
         }
-        
-        var mouseRotation = rotationAxis * rotationSpeedMultiplier;
-        var currentMousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-        if (currentMousePosition.x > rightScreenEdge){
-            rotationAxis.y = currentMousePosition.x - rightScreenEdge;
-            transform.Rotate(mouseRotation);
-        }
-        if (currentMousePosition.x < leftScreenEdge){
-            rotationAxis.y = currentMousePosition.x - leftScreenEdge;
-            transform.Rotate(mouseRotation);
-        }
-        Debug.Log(currentMousePosition);
     }
-    
-    
-    
+
+    void MouseCameraRotation(){
+        var mouseRotation = rotationAxis * rotationSpeedMultiplier * Time.deltaTime;
+        var currentMousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        if (currentMousePosition.x > closeToRightScreenEdge && currentMousePosition.x < rightScreenEdge){
+            rotationAxis.y =   currentMousePosition.x - closeToRightScreenEdge;
+            transform.Rotate(mouseRotation);
+        }
+        if (currentMousePosition.x < closeToLeftScreenEdge && currentMousePosition.x > leftScreenEdge){
+            rotationAxis.y =   currentMousePosition.x - closeToLeftScreenEdge;
+            transform.Rotate(mouseRotation);
+        }
+    }
+
 }
