@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class JD_Destruction : MonoBehaviour{
     [SerializeField] float actionRange;
+    [SerializeField] float health;
 
     float distance;
 
@@ -14,13 +15,20 @@ public class JD_Destruction : MonoBehaviour{
     }
 
     void OnMouseUpAsButton(){
-        if (actionRange < distance){
-            Death();  
+        DealDamage();
+    }
+
+    void DealDamage(){
+        if (actionRange > distance){
+            health = 0; //put real logic here
         }
+        Death();
     }
 
     void Death(){
-        GetComponent<Animator>().enabled = true; //mockup
-        GetComponent<NavMeshObstacle>().enabled = false;
+        if (health <= 0){
+            // GetComponent<Animator>().enabled = true; <- mockup
+            GetComponent<NavMeshObstacle>().enabled = false;   
+        }
     }
 }
