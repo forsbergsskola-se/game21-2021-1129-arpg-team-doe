@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Update(){
-        if (Input.GetMouseButton(0)){
+        if (Input.GetMouseButtonDown(0)){
             Mover();
         }
     }
