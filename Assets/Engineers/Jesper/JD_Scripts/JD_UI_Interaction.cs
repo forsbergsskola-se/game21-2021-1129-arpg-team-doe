@@ -28,7 +28,7 @@ public class JD_UI_Interaction : MonoBehaviour{
         }
     }
 
-    void OnMouseEnter(){
+    void OnMouseOver(){
         if (pursuing){
             return;
         }
