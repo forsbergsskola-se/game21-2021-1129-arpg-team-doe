@@ -1,20 +1,41 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class JD_UI_Interaction : MonoBehaviour{
 
+    [SerializeField] GameObject hpbar;
+    bool pursuing = false;
+
     void Start(){
-        GetComponentInChildren<JD_HealthBar>().gameObject.SetActive(false);
+        hpbar.SetActive(false);
+    }
+
+    void Update(){
+        if (Input.GetKeyDown(KeyCode.P)){ // put real pursuit logic here.
+            pursuing = !pursuing;
+            if (!pursuing){
+                hpbar.SetActive(false);
+            }
+        }
+        while (pursuing){
+            hpbar.SetActive(true);
+            break;
+        }
     }
 
     void OnMouseEnter(){
-        GetComponentInChildren<JD_HealthBar>().gameObject.SetActive(true);
+        if (pursuing){
+            return;
+        }
+        hpbar.SetActive(true);
     }
 
     void OnMouseExit(){
-        GetComponentInChildren<JD_HealthBar>().gameObject.SetActive(false);
+        Thread.Sleep(2000);
+        hpbar.SetActive(false);
     }
 }
