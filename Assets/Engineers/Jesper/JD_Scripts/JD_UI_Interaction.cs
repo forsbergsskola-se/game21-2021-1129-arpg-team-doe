@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class JD_UI_Interaction : MonoBehaviour{
 
-    [SerializeField] GameObject hpbar;
+    [SerializeField] GameObject hpbar; //the active enemies HPbar only. needs combat implemented first.
     bool pursuing = false;
 
     void Start(){
