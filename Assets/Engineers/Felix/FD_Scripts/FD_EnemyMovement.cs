@@ -23,14 +23,15 @@ public class FD_EnemyMovement : MonoBehaviour{
    }
 
    void Update(){
-
+       ResetBools();
       //TODO: Saved position does not work the way we want it to.
       if (UpdateSavePosition()){
          savedPosition = transform.position;
          Debug.Log(savedPosition);
+         Debug.Log(UpdateSavePosition());
       }
 
-      ResetBools();
+     
       
       DetectTarget();
       
@@ -63,7 +64,7 @@ public class FD_EnemyMovement : MonoBehaviour{
       if (targetIsDetected){
          PursuitTarget();
       }
-      else{
+      if (!targetIsDetected && !isWalkingback && _targetDetection.DistanceToTarget(savedPosition, transform) > 6 ){
          GoBackToOriginalPosition();
       }
       // if (distanceToPlayer > attackRange){
@@ -79,7 +80,7 @@ public class FD_EnemyMovement : MonoBehaviour{
 
 
    void ResetBools(){
-      if (isWalkingback && _targetDetection.DistanceToTarget(savedPosition, transform) < 1){
+      if (isWalkingback && _targetDetection.DistanceToTarget(savedPosition, transform) < 6){
          isWalkingback = false;
          targetIsDetected = false;
          isPursuing = false;
@@ -137,4 +138,8 @@ public class FD_EnemyMovement : MonoBehaviour{
       isPursuing = false;
       
    }
+
+   // bool CanGoBackToOriginalPosition(){
+   //    
+   // }
 }
