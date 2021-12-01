@@ -12,6 +12,7 @@ public class JD_UI_Interaction : MonoBehaviour{
 
     void Start(){
         hpbar.SetActive(false);
+        //pursuing = FindObjectOfType<FD_EnemyMovement>().isPursuing; <-- this is the correct logic?
     }
 
     void Update(){
