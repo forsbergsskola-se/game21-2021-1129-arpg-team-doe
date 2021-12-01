@@ -35,7 +35,6 @@ public class JD_UI_Interaction : MonoBehaviour{
     }
 
     void OnMouseExit(){
-        Thread.Sleep(2000);
         hpbar.SetActive(false);
     }
 }
