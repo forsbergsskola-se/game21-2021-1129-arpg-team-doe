@@ -2848,6 +2848,7 @@ GameObject:
   - component: {fileID: 2107092140}
   - component: {fileID: 2107092141}
   - component: {fileID: 2107092142}
+  - component: {fileID: 2107092143}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -2948,7 +2949,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aggroRange: 30
-  attackRange: 2
+  attackRange: 5
+  maxFollowRange: 30
+  closeEnoughToSavedPosition: 3
 --- !u!114 &2107092138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3026,3 +3029,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ded2201b4d3d2c44becc32b0aec3874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2107092143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107092132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72ff993d0ad9c1459cd1d85b3ff9ab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 2
