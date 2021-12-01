@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -35,7 +35,8 @@ public class JD_UI_Interaction : MonoBehaviour{
         hpbar.SetActive(true);
     }
 
-    void OnMouseExit(){
+    async void OnMouseExit() {
+        await Task.Delay(2000);
         hpbar.SetActive(false);
     }
 }
