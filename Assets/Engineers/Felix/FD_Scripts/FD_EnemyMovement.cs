@@ -66,7 +66,7 @@ public class FD_EnemyMovement : MonoBehaviour{
       _navmeshMover.Mover(_player.transform.position);
    }
 
-   void GoBackToOriginalPosition(){
+   public void GoBackToOriginalPosition(){
       playerIsDetected = false;
       _navmeshMover.Mover(savedPosition);
       isWalkingback = true;
