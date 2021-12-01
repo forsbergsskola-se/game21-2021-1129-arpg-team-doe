@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class FD_Fighter : MonoBehaviour
 {
-    [SerializeField] float attackRange = 2f;
+    [SerializeField] internal float attackRange = 2f;
     GameObject target;
 
     void Update(){
-        throw new NotImplementedException();
+       
     }
 
 
