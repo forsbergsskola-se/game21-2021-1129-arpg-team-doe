@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class FD_NavmeshMover : MonoBehaviour
+public class FD_Movement : MonoBehaviour
 {
     NavMeshAgent _navMeshAgent;
     NavMeshPath _path;
@@ -19,7 +19,11 @@ public class FD_NavmeshMover : MonoBehaviour
             _navMeshAgent.destination = target;
         }
         else{
-            _navMeshAgent.isStopped = true;
+            StopMoving();
         }
+    }
+
+    public void StopMoving(){
+        _navMeshAgent.isStopped = true;
     }
 }

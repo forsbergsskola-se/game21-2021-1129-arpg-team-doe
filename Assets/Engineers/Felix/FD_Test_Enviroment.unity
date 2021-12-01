@@ -2947,7 +2947,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebb1c3ed9f3d7ba4b8a7b6301c1dabd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pursuitRange: 20
+  aggroRange: 30
+  attackRange: 2
 --- !u!114 &2107092138
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,9 +3,9 @@ using UnityEngine.AI;
 
 public class FD_PlayerMovement : MonoBehaviour
 {
-    FD_NavmeshMover _navmeshMover;
+    FD_Movement _navmeshMover;
     void Start(){
-        _navmeshMover = GetComponent<FD_NavmeshMover>();
+        _navmeshMover = GetComponent<FD_Movement>();
     }
 
     void Update(){

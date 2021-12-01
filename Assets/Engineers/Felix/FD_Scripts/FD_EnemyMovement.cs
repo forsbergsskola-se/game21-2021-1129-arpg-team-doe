@@ -2,17 +2,16 @@ using UnityEngine;
 
 public class FD_EnemyMovement : MonoBehaviour{
    
-   [SerializeField] float pursuitRange = 30f;
-   
-   
-   bool isOutOfPursuitRange;
+   [SerializeField] float aggroRange = 30f;
+   [SerializeField] float attackRange = 5f;
+   bool isOutOfCombatRange;
    bool isWalkingback;
    bool isPursuing;
    bool playerIsDetected;
    
    FD_TargetDetection _targetDetection;
    FD_Player _player;
-   FD_NavmeshMover _navmeshMover;
+   FD_Movement _navmeshMover;
    
    float distanceToPlayer;
    Vector3 savedPosition;
@@ -20,7 +19,7 @@ public class FD_EnemyMovement : MonoBehaviour{
    void Start(){
       _player = FindObjectOfType<FD_Player>(); //maybe use player tag instead? Will save performance
       _targetDetection = GetComponent<FD_TargetDetection>();
-      _navmeshMover = GetComponent<FD_NavmeshMover>();
+      _navmeshMover = GetComponent<FD_Movement>();
    }
 
    void FixedUpdate(){
@@ -30,17 +29,23 @@ public class FD_EnemyMovement : MonoBehaviour{
       
       DetectPlayer();
       //If player is out of pursuit range and is not already walking back, walk back.
-      if (isOutOfPursuitRange && !isWalkingback){
+      if (isOutOfCombatRange && !isWalkingback){
          GoBackToOriginalPosition();
          return;
       }
       //Checks if the enemy is outside of the pursuit range (Returns true or false)
-      isOutOfPursuitRange = _targetDetection.DistanceToTarget(savedPosition, transform) > pursuitRange;
-      
-      //If player is not outside of range, pursuit player.
-      if (!isOutOfPursuitRange && playerIsDetected){
-         PursuitPlayer();
+      isOutOfCombatRange = _targetDetection.DistanceToTarget(savedPosition, transform) > aggroRange;
+      distanceToPlayer = _targetDetection.DistanceToTarget(transform.position, _player.transform);
+      if (distanceToPlayer > attackRange){
+         //If player is not outside of range, pursuit player.
+         if (!isOutOfCombatRange && playerIsDetected){
+            PursuitPlayer();
+         }
       }
+      else{
+         _navmeshMover.StopMoving();
+      }
+
    }
 
    void DetectPlayer(){
@@ -50,7 +55,7 @@ public class FD_EnemyMovement : MonoBehaviour{
          if (!isPursuing && !isWalkingback){
             savedPosition = transform.position;
          }
-         isOutOfPursuitRange = false;
+         isOutOfCombatRange = false;
       }
       
    }
