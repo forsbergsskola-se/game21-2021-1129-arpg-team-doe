@@ -27,20 +27,19 @@ public class FD_EnemyMovement : MonoBehaviour{
    }
 
    void Update(){
-      
+      //Sets target if detected and is not walkingback
       if (_targetDetection.TargetIsDetected(this.transform.position, _desiredTarget) && !needsToWalkBack){
          _target = _desiredTarget;
       }
       
       if (_target != null && !needsToWalkBack){
          
+         //Calculates distance to target
          distanceToTarget = _targetDetection.DistanceToTarget(this.transform.position, _target.transform);
          
          if (_target != _patrolTarget){ //This if check is meant for possibly future implementation of AI Patrolling
             if (!activeSavedPosition){
-               savedPosition = this.transform.position;
-               activeSavedPosition = true;    
-               Debug.Log(savedPosition);
+               SavePosition();
             }
                      
             if (distanceToTarget > attackRange && !needsToWalkBack)
@@ -48,12 +47,10 @@ public class FD_EnemyMovement : MonoBehaviour{
                // stop attacking ??(Bool/State ATTACKING = False)??
                _movement.Mover(_target.transform.position);
             }
-                                 
-            if(_targetDetection.DistanceToTarget(savedPosition,transform) >= maxFollowRange)
-            {
-               _target = null;
-               needsToWalkBack = true;
-               //break;
+            
+            //Checks if we're outside of the maxFollowRange
+            if(_targetDetection.DistanceToTarget(savedPosition,transform) >= maxFollowRange){
+               ForgetTarget();
             }
             
             if (distanceToTarget < attackRange){
@@ -68,13 +65,11 @@ public class FD_EnemyMovement : MonoBehaviour{
          //Walk Back
          if (needsToWalkBack){
             _movement.Mover(savedPosition);
-            
          }
 
-         //Remove Saved Position
+         //Checks if this unit is close enough to saved position and already has an active saved position 
          if (_targetDetection.DistanceToTarget(savedPosition, transform ) < closeEnoughToSavedPosition && activeSavedPosition){
-            activeSavedPosition = false;
-            needsToWalkBack = false;
+            SetIdle();
          }
          
       }
@@ -85,4 +80,20 @@ public class FD_EnemyMovement : MonoBehaviour{
 
    }
 
+   void SetIdle(){
+      activeSavedPosition = false;
+      needsToWalkBack = false;
+   }
+
+   void ForgetTarget(){
+      _target = null;
+      needsToWalkBack = true;
+      //break;
+   }
+
+   void SavePosition(){
+      savedPosition = this.transform.position;
+      activeSavedPosition = true;
+      Debug.Log(savedPosition);
+   }
 }
