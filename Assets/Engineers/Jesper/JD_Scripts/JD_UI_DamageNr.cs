@@ -5,6 +5,7 @@ using System.Net;
 using System.Timers;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class JD_UI_DamageNr : MonoBehaviour{
 
@@ -12,22 +13,24 @@ public class JD_UI_DamageNr : MonoBehaviour{
     int dmg;
     [SerializeField] float duration;
     bool active;
+    Animator anim;
+
+    void Start(){
+        anim = gameObject.GetComponent<Animator>();
+    }
 
     void Update(){
         CollectDmg(dmg);
         
         dmgText = Convert.ToString(dmg);
         if (FindObjectOfType<JD_EnemyStats>().dealingDmg){
-            
             Timer();
-            FloatAway();
             if (duration > 0){
                 GetComponent<TextMeshProUGUI>().text = dmgText;
-                Debug.Log("Damage");
+                anim.Play("FloatingPoint");
             }
             else if (!FindObjectOfType<JD_EnemyStats>().dealingDmg){
                 GetComponent<TextMeshProUGUI>().text = "";
-                Debug.Log("No Damage");
             }
         }
         
@@ -50,6 +53,7 @@ public class JD_UI_DamageNr : MonoBehaviour{
     void End(){
         active = false;
         FindObjectOfType<JD_EnemyStats>().dealingDmg = false;
+        
     }
 
     int CollectDmg(int damage){
@@ -57,11 +61,5 @@ public class JD_UI_DamageNr : MonoBehaviour{
 
         damage = 10;
         return  dmg = damage;
-    }
-
-    void FloatAway(){
-        
-        this.transform.position = Vector3.Lerp(this.transform.position, (transform.position + Vector3.forward), duration);
-        
     }
 }
