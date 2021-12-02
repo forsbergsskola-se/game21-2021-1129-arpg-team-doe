@@ -20,7 +20,7 @@ public class JD_UnlockDoor : MonoBehaviour{
     }
 
     void Update(){
-        conditionCompleted = FindObjectOfType<JD_Conditioner>().completed;
+        conditionCompleted = FindObjectOfType<JD_Conditioner>().completed; //Nice cache and no cache ?
         LockingMechanism();
         // Does the same thing.
         if (locked){

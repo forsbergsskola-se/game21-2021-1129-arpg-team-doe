@@ -26,7 +26,7 @@ public class JD_UI_DamageNr : MonoBehaviour{
         if (FindObjectOfType<JD_EnemyStats>().dealingDmg){
             Timer();
             if (duration > 0){
-                GetComponent<TextMeshProUGUI>().text = dmgText;
+                GetComponent<TextMeshProUGUI>().text = dmgText; //Maybe cache the TextMesh in a var, since its used twice
                 anim.Play("FloatingPoint");
             }
             else if (!FindObjectOfType<JD_EnemyStats>().dealingDmg){
@@ -52,14 +52,13 @@ public class JD_UI_DamageNr : MonoBehaviour{
 
     void End(){
         active = false;
-        FindObjectOfType<JD_EnemyStats>().dealingDmg = false;
-        
+        FindObjectOfType<JD_EnemyStats>().dealingDmg = false; //Not cached
     }
 
     int CollectDmg(int damage){ 
         // Put real logic here
 
-        damage = 10; 
+        damage = 10; //used for Debug
         return  dmg = damage;
     }
 }

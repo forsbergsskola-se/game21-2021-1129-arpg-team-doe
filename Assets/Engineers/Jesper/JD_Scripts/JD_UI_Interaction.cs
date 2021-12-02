@@ -7,8 +7,8 @@ using UnityEngine;
 
 public class JD_UI_Interaction : MonoBehaviour{
 
-    [SerializeField] GameObject hpbar; //the active enemies HPbar only. needs combat implemented first.
-    bool pursuing = false;
+    [SerializeField] GameObject hpbar; //the active enemies HPbar only. needs combat implemented first. //wrong capitalization and maybe call it healthBar
+    bool pursuing = false; //Redundent new bools are always false
 
     void Start(){
         hpbar.SetActive(false);
