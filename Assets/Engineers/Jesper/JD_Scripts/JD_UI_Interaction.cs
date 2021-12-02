@@ -7,23 +7,23 @@ using UnityEngine;
 
 public class JD_UI_Interaction : MonoBehaviour{
 
-    [SerializeField] GameObject hpbar; //the active enemies HPbar only. needs combat implemented first. //wrong capitalization and maybe call it healthBar
-    bool pursuing = false; //Redundent new bools are always false
+    [SerializeField] GameObject healthBar; //the active enemies HPbar only. needs combat implemented first. //wrong capitalization and maybe call it healthBar
+    bool pursuing;
 
     void Start(){
-        hpbar.SetActive(false);
+        healthBar.SetActive(false);
         //pursuing = FindObjectOfType<FD_EnemyMovement>().isPursuing; <-- this is the correct logic?
     }
 
     void Update(){
-        if (Input.GetKeyDown(KeyCode.P)){ // put real pursuit logic here.
+        if (Input.GetKeyDown(KeyCode.P)){ //used for Debug
             pursuing = !pursuing;
             if (!pursuing){
-                hpbar.SetActive(false);
+                healthBar.SetActive(false);
             }
         }
         while (pursuing){
-            hpbar.SetActive(true);
+            healthBar.SetActive(true);
             break;
         }
     }
@@ -32,11 +32,11 @@ public class JD_UI_Interaction : MonoBehaviour{
         if (pursuing){
             return;
         }
-        hpbar.SetActive(true);
+        healthBar.SetActive(true);
     }
 
-    async void OnMouseExit() {
+    async void OnMouseExit(){
         await Task.Delay(2000);
-        hpbar.SetActive(false);
+        healthBar.SetActive(false);
     }
 }

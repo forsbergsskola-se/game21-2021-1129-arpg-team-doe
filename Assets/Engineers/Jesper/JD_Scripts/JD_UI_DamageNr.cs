@@ -5,35 +5,41 @@ using System.Net;
 using System.Timers;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class JD_UI_DamageNr : MonoBehaviour{
 
+    [SerializeField] float duration;
+    
     string dmgText;
     int dmg;
-    [SerializeField] float duration;
     bool active;
-    Animator anim;
+    bool takingDamage;
+    
+    Animator _animator;
+    string _text;
 
     void Start(){
-        anim = gameObject.GetComponent<Animator>();
+        _animator = gameObject.GetComponent<Animator>();
+        _text = GetComponent<TextMeshProUGUI>().text;
+        takingDamage = FindObjectOfType<JD_EnemyStats>().dealingDmg;
     }
 
     void Update(){
         CollectDmg(dmg);
         
         dmgText = Convert.ToString(dmg);
-        if (FindObjectOfType<JD_EnemyStats>().dealingDmg){
+        if (takingDamage){
             Timer();
             if (duration > 0){
-                GetComponent<TextMeshProUGUI>().text = dmgText; //Maybe cache the TextMesh in a var, since its used twice
-                anim.Play("FloatingPoint");
+                _text = dmgText; //Maybe cache the TextMesh in a var, since its used twice
+                _animator.Play("FloatingPoint");
             }
-            else if (!FindObjectOfType<JD_EnemyStats>().dealingDmg){
-                GetComponent<TextMeshProUGUI>().text = "";
+            else if (!takingDamage){
+                _text = "";
             }
         }
-        
     }
 
 
@@ -52,13 +58,13 @@ public class JD_UI_DamageNr : MonoBehaviour{
 
     void End(){
         active = false;
-        FindObjectOfType<JD_EnemyStats>().dealingDmg = false; //Not cached
+        takingDamage = false;
     }
 
-    int CollectDmg(int damage){ 
+    int CollectDmg(int damage){ //used for Debug
         // Put real logic here
 
-        damage = 10; //used for Debug
+        damage = 10; 
         return  dmg = damage;
     }
 }

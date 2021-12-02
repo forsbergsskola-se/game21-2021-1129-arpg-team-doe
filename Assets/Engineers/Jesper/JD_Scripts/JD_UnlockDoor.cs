@@ -8,27 +8,27 @@ using UnityEngine.Rendering.VirtualTexturing;
 
 public class JD_UnlockDoor : MonoBehaviour{
 
+    [SerializeField] float actionRange;
+    
     NavMeshAgent player;
+    JD_Conditioner _jdConditioner; //Change name: Conditions
+    JD_CursorOnDoor _jdCursorOnDoor;
+    
     bool locked = true;
     bool conditionCompleted;
-    [SerializeField] float actionRange;
-
     float distance;
 
     void Start(){
         player = FindObjectOfType<NavMeshAgent>();
+        _jdConditioner = FindObjectOfType<JD_Conditioner>();
+        _jdCursorOnDoor = FindObjectOfType<JD_CursorOnDoor>();
     }
 
     void Update(){
-        conditionCompleted = FindObjectOfType<JD_Conditioner>().completed; //Nice cache and no cache ?
+        conditionCompleted = _jdConditioner.completed;
         LockingMechanism();
-        // Does the same thing.
-        if (locked){
-            FindObjectOfType<JD_CursorOnDoor>().unOpenable = locked;
-        } if (!locked){
-            FindObjectOfType<JD_CursorOnDoor>().unOpenable = locked;
-        }
-        distance = Vector3.Magnitude(player.destination);
+        _jdCursorOnDoor.openable = locked;
+        distance = Vector3.Magnitude(player.destination); //TODO:Replace with Detection from Detection script
     }
 
     void LockingMechanism(){
