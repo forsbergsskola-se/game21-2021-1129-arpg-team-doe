@@ -9,7 +9,7 @@ public class FD_PlayerMovement : MonoBehaviour
     }
 
     void Update(){
-        if (Input.GetMouseButton(0)){
+        if (Input.GetMouseButton(0)){ //if doesnt have to be in update, could be in the MoveToCursor method?
             MoveToCursor();
         }
     }
