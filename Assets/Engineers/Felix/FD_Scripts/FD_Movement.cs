@@ -13,13 +13,15 @@ public class FD_Movement : MonoBehaviour
     }
 
     public void Mover(Vector3 target){
-        bool pathFound = NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, _path);
+        NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, _path);
+        bool pathFound = _path.status == NavMeshPathStatus.PathComplete;
         if (pathFound){
             _navMeshAgent.isStopped = false;
             _navMeshAgent.destination = target;
         }
         else{
             StopMoving();
+            Debug.Log("no path");
         }
     }
 
