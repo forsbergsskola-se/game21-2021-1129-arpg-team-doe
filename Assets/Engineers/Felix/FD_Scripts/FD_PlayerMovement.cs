@@ -9,17 +9,16 @@ public class FD_PlayerMovement : MonoBehaviour
     }
 
     void Update(){
-        if (Input.GetMouseButton(0)){ //if doesnt have to be in update, could be in the MoveToCursor method?
-            MoveToCursor();
-        }
+        MoveToCursor();
     }
 
     void MoveToCursor(){
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        Physics.Raycast(ray, out hit);
-        if (hit.point != null){
-            _navmeshMover.Mover(hit.point);
+        if (Input.GetMouseButton(0)){ //if doesnt have to be in update, could be in the MoveToCursor method?
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            Physics.Raycast(ray, out hit);
+            if (hit.point != null){ _navmeshMover.Mover(hit.point);
+            }
         }
     }
 }

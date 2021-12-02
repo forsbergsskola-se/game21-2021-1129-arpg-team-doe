@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FD_Player : MonoBehaviour
 {
+    
+    //Used for Debug
     // Start is called before the first frame update
     void Start()
     {
