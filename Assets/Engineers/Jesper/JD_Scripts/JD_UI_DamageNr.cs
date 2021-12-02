@@ -15,10 +15,10 @@ public class JD_UI_DamageNr : MonoBehaviour{
 
     void Update(){
         CollectDmg(dmg);
-        
+
         dmgText = Convert.ToString(dmg);
         if (FindObjectOfType<JD_EnemyStats>().dealingDmg){
-            
+
             Timer();
             FloatAway();
             if (duration > 0){
@@ -30,7 +30,7 @@ public class JD_UI_DamageNr : MonoBehaviour{
                 Debug.Log("No Damage");
             }
         }
-        
+
     }
 
 
@@ -60,8 +60,7 @@ public class JD_UI_DamageNr : MonoBehaviour{
     }
 
     void FloatAway(){
-        
-        this.transform.position = Vector3.Lerp(this.transform.position, (transform.position + Vector3.forward), duration);
-        
+        this.transform.position = Vector3.Lerp(this.transform.position, (transform.position + Vector3.forward), 0.1f);
+
     }
 }
