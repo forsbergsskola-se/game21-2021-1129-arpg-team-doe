@@ -4,31 +4,23 @@ using UnityEngine.AI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    NavMeshAgent _navMeshAgent;
-    NavMeshPath _path;
-
+    FD_Movement _navmeshMover;
     void Start(){
-        _navMeshAgent = GetComponent<NavMeshAgent>();
-        _path = new NavMeshPath();
+        _navmeshMover = GetComponent<FD_Movement>();
     }
 
     void Update(){
-        if (Input.GetMouseButtonDown(0)){
-            Mover();
+        if (Input.GetMouseButton(0)){
+            MoveToCursor();
         }
     }
 
-    void Mover(){
+    void MoveToCursor(){
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         Physics.Raycast(ray, out hit);
-        bool pathFound = NavMesh.CalculatePath(transform.position, hit.point, NavMesh.AllAreas, _path);
-        if (pathFound){
-            _navMeshAgent.isStopped = false;
-            _navMeshAgent.destination = hit.point;
-        }
-        else{
-            _navMeshAgent.isStopped = true;
+        if (hit.point != null){
+            _navmeshMover.Mover(hit.point);
         }
     }
 }
