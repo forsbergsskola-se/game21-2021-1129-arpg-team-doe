@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class FD_EnemyMovement : MonoBehaviour{
-   
+   //overall alot of large code.
    [SerializeField] float attackRange = 5f;
    [SerializeField] float maxFollowRange = 30f;
    [SerializeField] float closeEnoughToSavedPosition = 3f;
@@ -28,7 +28,7 @@ public class FD_EnemyMovement : MonoBehaviour{
       _desiredTarget = _player.transform;
    }
 
-   void Update(){
+   void Update(){ // very long update, might want to refactor
       //Sets target if detected and is not walkingback
       if (_targetDetection.TargetIsDetected(this.transform.position, _desiredTarget) && !needsToWalkBack){
          _target = _desiredTarget;
@@ -44,7 +44,7 @@ public class FD_EnemyMovement : MonoBehaviour{
                SavePosition();
             }
                      
-            if (distanceToTarget > attackRange && !needsToWalkBack)
+            if (distanceToTarget > attackRange && !needsToWalkBack) // a lot of ifs, might be able to break it up?
             { 
                // stop attacking ??(Bool/State ATTACKING = False)??
                //_fighter.StopAttack(_target);

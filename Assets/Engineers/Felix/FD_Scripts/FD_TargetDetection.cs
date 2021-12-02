@@ -8,7 +8,7 @@ public class FD_TargetDetection : MonoBehaviour{
     
     [SerializeField] float areaDetectionRange = 5.0f;
     [SerializeField] float visionRange = 20.0f;
-    [SerializeField] [Range(0,360)] float viewAngle;
+    [SerializeField] [Range(0,360)] float viewAngle; //very cool
     
     float distanceToTarget;
 
@@ -42,7 +42,7 @@ public class FD_TargetDetection : MonoBehaviour{
             //ray to check if something target is visable, if so, return true.
             RaycastHit hit;
             if(Physics.Raycast(transform.position,targetDirection, out hit)){ 
-                Debug.DrawRay(transform.position,targetDirection.normalized*hit.distance,Color.red);
+                Debug.DrawRay(transform.position,targetDirection.normalized*hit.distance,Color.red); //testing might want diffrent colors?
                 Debug.Log(hit.transform);
                 if (hit.transform == target.transform){ 
                     return true; 
@@ -55,13 +55,13 @@ public class FD_TargetDetection : MonoBehaviour{
         return false;
     }
 
-   public bool TargetIsVisible(Vector3 position, Transform target, float attackRange){
+   public bool TargetIsVisible(Vector3 position, Transform target, float attackRange){ //abandoned code
         distanceToTarget = DistanceToTarget(position, target);
         Vector3 targetDirection = target.position - transform.position;
         if (distanceToTarget <= attackRange){
             //If target is within detection area, shoot out a ray to see if target is visable
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, targetDirection, out hit)){
+            RaycastHit hit; //maybe make a method for raycast tests, since its used 3 times?
+            if (Physics.Raycast(transform.position, targetDirection, out hit)){ //color again?
                 Debug.DrawRay(transform.position,targetDirection.normalized*hit.distance,Color.red);
                 Debug.Log(hit.transform);
                 if (hit.transform == target.transform){

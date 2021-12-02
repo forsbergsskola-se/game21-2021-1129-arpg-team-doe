@@ -26,13 +26,13 @@ public class FD_CameraFollow : MonoBehaviour
 
     void Start(){
         target = FindObjectOfType<FD_PlayerMovement>().transform;
-        transform.position = new Vector3(target.position.x, transform.position.y, target.position.z);
+        transform.position = new Vector3(target.position.x, transform.position.y, target.position.z); //inefficient
         startZoom = transform.position.y;
         offset = transform.position - target.position;
     }
 
     void LateUpdate(){
-        Vector3 targetPosition = target.position + offset;
+        Vector3 targetPosition = target.position + offset; 
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _velocity, smoothTime);
         CameraZoom();
         SnapCameraRotation();
@@ -48,11 +48,11 @@ public class FD_CameraFollow : MonoBehaviour
                 offset.y = minZoom;
             }
             //Change to maxZoom
-            if (currentZoomLevel == 1){
+            if (currentZoomLevel == 1){ //else if?
                 offset.y = maxZoom;
             }
             //Change to startZoom
-            if (currentZoomLevel == 2){
+            if (currentZoomLevel == 2){ //last could be else for efficiency?
                 offset.y = startZoom;
             }
             zoomLevel++;
@@ -64,14 +64,14 @@ public class FD_CameraFollow : MonoBehaviour
         var snapRotation = snapRotationAxis * snapRotationSpeedMultiplier;
         
         if (Input.GetKeyDown(KeyCode.D)){
-            transform.Rotate(snapRotation);
+            transform.Rotate(snapRotation); 
         }
         if (Input.GetKeyDown(KeyCode.A)){
             transform.Rotate(-snapRotation);
         }
     }
 
-    void MouseCameraRotation(){
+    void MouseCameraRotation(){ 
         var mouseRotation = rotationAxis * rotationSpeedMultiplier * Time.deltaTime;
         var currentMousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         if (currentMousePosition.x > closeToRightScreenEdge && currentMousePosition.x < rightScreenEdge){
