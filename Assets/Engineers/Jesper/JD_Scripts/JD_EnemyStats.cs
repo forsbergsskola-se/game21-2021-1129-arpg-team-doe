@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JD_EnemyStats : MonoBehaviour{
+public class JD_EnemyStats : MonoBehaviour{ //Revamped into Stats and it works for both player and enemies?
 
     [SerializeField] float toughness, strength, dexterity, knowledge, reflex, luck;
-    public float maxHP;
-    public float currentHP { get; private set; }
+    public float maxHP; //Int! floats are to annoying when it comes to health
+    public float currentHP { get; private set; } //Int
     public bool dealingDmg = false;
 
 
@@ -19,15 +19,15 @@ public class JD_EnemyStats : MonoBehaviour{
         this.reflex = reflex;
         this.luck = luck;
         currentHP = maxHP;
-        
+
     }
 
     void Start(){
-        currentHP = maxHP;
+        currentHP = maxHP; //Redundant because of constructor
     }
 
     void Update(){
-        DealDmg();
+        DealDmg(); //Used for debugging? Probably best to keep the two things apart, damage should be dealt with somewhere else
     }
 
     public void DealDmg(){
