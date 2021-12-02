@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class FD_Fighter : MonoBehaviour
@@ -10,9 +9,12 @@ public class FD_Fighter : MonoBehaviour
        
     }
 
+    public void Attack(Transform target){
+        Debug.Log(transform.name + " Attacking " + target.name);
+    }
 
-    public void Attack(){
-        Debug.Log("attack");
+    public void StopAttack(Transform target){
+        Debug.Log(transform.name + " Stop attacking " + target.name);
     }
     
 }

@@ -9,6 +9,7 @@ public class FD_EnemyMovement : MonoBehaviour{
    FD_TargetDetection _targetDetection;
    FD_Player _player;
    FD_Movement _movement;
+   FD_Fighter _fighter;
    Transform _desiredTarget;
    Transform _target;
    Transform _patrolTarget; 
@@ -23,6 +24,7 @@ public class FD_EnemyMovement : MonoBehaviour{
       _player = FindObjectOfType<FD_Player>(); //maybe use player tag instead? Will save performance
       _targetDetection = GetComponent<FD_TargetDetection>();
       _movement = GetComponent<FD_Movement>();
+      _fighter = GetComponent<FD_Fighter>();
       _desiredTarget = _player.transform;
    }
 
@@ -35,7 +37,7 @@ public class FD_EnemyMovement : MonoBehaviour{
       if (_target != null && !needsToWalkBack){
          
          //Calculates distance to target
-         distanceToTarget = _targetDetection.DistanceToTarget(this.transform.position, _target.transform);
+         distanceToTarget = _targetDetection.DistanceToTarget(this.transform.position, _target);
          
          if (_target != _patrolTarget){ //This if check is meant for possibly future implementation of AI Patrolling
             if (!activeSavedPosition){
@@ -45,7 +47,8 @@ public class FD_EnemyMovement : MonoBehaviour{
             if (distanceToTarget > attackRange && !needsToWalkBack)
             { 
                // stop attacking ??(Bool/State ATTACKING = False)??
-               _movement.Mover(_target.transform.position);
+               //_fighter.StopAttack(_target);
+               _movement.Mover(_target.position);
             }
             
             //Checks if we're outside of the maxFollowRange
@@ -55,10 +58,10 @@ public class FD_EnemyMovement : MonoBehaviour{
             
             if (distanceToTarget < attackRange){
                _movement.StopMoving();
+               _fighter.Attack(_target);
                //attack target  ??(Bool/state ATTACKING = True)??.
             }
          }
-         
       }
       
       if (_target == null){
