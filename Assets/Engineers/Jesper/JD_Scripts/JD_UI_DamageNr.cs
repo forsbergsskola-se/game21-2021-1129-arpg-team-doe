@@ -56,10 +56,10 @@ public class JD_UI_DamageNr : MonoBehaviour{
         
     }
 
-    int CollectDmg(int damage){
+    int CollectDmg(int damage){ 
         // Put real logic here
 
-        damage = 10;
+        damage = 10; 
         return  dmg = damage;
     }
 }

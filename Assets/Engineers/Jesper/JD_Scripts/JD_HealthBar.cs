@@ -12,7 +12,7 @@ public class JD_HealthBar : MonoBehaviour{
 
     public void Start(){
         var maxHP = GetComponentInParent<JD_EnemyStats>().maxHP;
-        SetMaxHealth(maxHP);
+        SetMaxHealth(maxHP); 
     }
 
     // void OnMouseOver(){
@@ -23,7 +23,7 @@ public class JD_HealthBar : MonoBehaviour{
         SetHealth();
     }
 
-    public void SetMaxHealth(float maxHP){
+    public void SetMaxHealth(float maxHP){ //We should rename this (probably SetSliderMaxHealth)
         slider.maxValue = maxHP;
         slider.value = maxHP;
 
