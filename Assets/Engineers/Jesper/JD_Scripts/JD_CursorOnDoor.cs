@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class JD_CursorOnDoor : MonoBehaviour
 {
-    internal bool unOpenable = true;
+    internal bool unOpenable = true; //Why not call it unopenable?
 
     public Texture2D lockedTexture;
     public Texture2D unLockedTexture;
