@@ -31,11 +31,11 @@ public class JD_EnemyStats : MonoBehaviour{ //Name:Stats
 
     public void DealDmg(){ //used for debug
         if (Input.GetKeyDown(KeyCode.E)){
+            dealingDmg = true;
             currentHP -= 10;
             FindObjectOfType<JD_UI_DamageNr>().Display();
             
         }
         Debug.Log(currentHP);
-        dealingDmg = true;
     }
 }
