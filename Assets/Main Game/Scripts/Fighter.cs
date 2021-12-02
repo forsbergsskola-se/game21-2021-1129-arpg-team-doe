@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class FD_Fighter : MonoBehaviour
+public class Fighter : MonoBehaviour
 {
     [SerializeField] internal float attackRange = 2f;
     GameObject target;
@@ -16,5 +18,5 @@ public class FD_Fighter : MonoBehaviour
     public void StopAttack(Transform target){
         Debug.Log(transform.name + " Stop attacking " + target.name);
     }
-    
+
 }

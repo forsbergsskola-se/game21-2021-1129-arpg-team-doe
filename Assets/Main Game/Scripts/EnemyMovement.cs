@@ -1,15 +1,15 @@
 using UnityEngine;
 
-public class FD_EnemyMovement : MonoBehaviour{
+public class EnemyMovement : MonoBehaviour{
    
    [SerializeField] float attackRange = 5f;
    [SerializeField] float maxFollowRange = 30f;
    [SerializeField] float closeEnoughToSavedPosition = 3f;
    
-   FD_TargetDetection _targetDetection;
-   FD_Player _player;
-   FD_Movement _movement;
-   FD_Fighter _fighter;
+   TargetDetection _targetDetection;
+   Player _player;
+   Movement _movement;
+   Fighter _fighter;
    Transform _desiredTarget;
    Transform _target;
    Transform _patrolTarget; 
@@ -21,10 +21,10 @@ public class FD_EnemyMovement : MonoBehaviour{
    bool needsToWalkBack; 
 
    void Start(){
-      _player = FindObjectOfType<FD_Player>(); //maybe use player tag instead? Will save performance
-      _targetDetection = GetComponent<FD_TargetDetection>();
-      _movement = GetComponent<FD_Movement>();
-      _fighter = GetComponent<FD_Fighter>();
+      _player = FindObjectOfType<Player>(); //maybe use player tag instead? Will save performance
+      _targetDetection = GetComponent<TargetDetection>();
+      _movement = GetComponent<Movement>();
+      _fighter = GetComponent<Fighter>();
       _desiredTarget = _player.transform;
    }
 
