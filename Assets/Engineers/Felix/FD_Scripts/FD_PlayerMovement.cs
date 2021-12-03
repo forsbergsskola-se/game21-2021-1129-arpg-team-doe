@@ -13,11 +13,11 @@ public class FD_PlayerMovement : MonoBehaviour
     }
 
     void MoveToCursor(){
-        if (Input.GetMouseButton(0)){ //if doesnt have to be in update, could be in the MoveToCursor method?
+        if (Input.GetMouseButton(0)){
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            Physics.Raycast(ray, out hit);
-            if (hit.point != null){ _navmeshMover.Mover(hit.point);
+            bool hasHit = Physics.Raycast(ray, out hit);
+            if (hasHit){ _navmeshMover.Mover(hit.point);
             }
         }
     }
