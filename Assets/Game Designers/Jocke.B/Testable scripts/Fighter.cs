@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Fighter : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    GameObject target;
+    
+    public void Attack(Transform target){
+        Debug.Log(transform.name + " Attacking " + target.name);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void StopAttack(Transform target){
+        Debug.Log(transform.name + " Stop attacking " + target.name);
     }
 }

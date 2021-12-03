@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    FD_Movement _navmeshMover;
+    Movement _navmeshMover;
     void Start(){
-        _navmeshMover = GetComponent<FD_Movement>();
+        _navmeshMover = GetComponent<Movement>();
     }
 
     void Update(){

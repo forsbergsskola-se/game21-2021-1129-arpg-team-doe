@@ -29,7 +29,7 @@ public class CameraFollow : MonoBehaviour
     int zoomLevel = 0;
 
     void Start(){
-        target = FindObjectOfType<FD_PlayerMovement>().transform;
+        target = FindObjectOfType<PlayerMovement>().transform;
         transform.position = new Vector3(target.position.x, transform.position.y, target.position.z); //inefficient
         startZoom = transform.position.y;
         offset = transform.position - target.position;
