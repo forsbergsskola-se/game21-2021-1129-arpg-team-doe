@@ -2400,5 +2400,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Text (TMP)
       objectReference: {fileID: 0}
+    - target: {fileID: 3155159136200028547, guid: 6b427759c7ed64e47ac47a328a8f9a0b, type: 3}
+      propertyPath: Txt
+      value: 
+      objectReference: {fileID: 3155159136200028545, guid: 6b427759c7ed64e47ac47a328a8f9a0b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b427759c7ed64e47ac47a328a8f9a0b, type: 3}
