@@ -2,27 +2,29 @@ using UnityEngine;
 
 public class FD_CameraFollow : MonoBehaviour
 {
+    const float closeToRightScreenEdge = 0.95f;
+    const float closeToLeftScreenEdge = 0.05f;
+    const float rightScreenEdge = 1f;
+    const float leftScreenEdge = 0f;
+    const int zoomLevels = 3;
+    
     [SerializeField] float smoothTime = 0.3f;
     [SerializeField] float rotationSpeedMultiplier = 500f;
     [SerializeField] float snapRotationSpeedMultiplier = 30f;
     [SerializeField] float minZoom = 3f;
     [SerializeField] float maxZoom = 15f;
-
-    float startZoom;
+    
     Transform target;
+    
     Vector3 offset;
     Vector3 rotationAxis = new Vector3(0, 1, 0);
     Vector3 snapRotationAxis = new Vector3(0, 1, 0);
-    const float closeToRightScreenEdge = 0.95f;
-    const float closeToLeftScreenEdge = 0.05f;
-    const float rightScreenEdge = 1f;
-    const float leftScreenEdge = 0f;
-    float speed;
-    int zoomLevel = 0;
-    const int zoomLevels = 3;
-    
-    
     Vector3 _velocity = Vector3.zero;
+    
+    float startZoom;
+    float speed;
+    
+    int zoomLevel = 0;
 
     void Start(){
         target = FindObjectOfType<FD_PlayerMovement>().transform;
@@ -48,11 +50,11 @@ public class FD_CameraFollow : MonoBehaviour
                 offset.y = minZoom;
             }
             //Change to maxZoom
-            else if (currentZoomLevel == 1){ //else if?
+            else if (currentZoomLevel == 1){
                 offset.y = maxZoom;
             }
             //Change to startZoom
-            else { //last could be else for efficiency?
+            else { 
                 offset.y = startZoom;
             }
             zoomLevel++;

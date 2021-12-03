@@ -1,11 +1,9 @@
 using UnityEngine;
 
-public class FD_Fighter : MonoBehaviour
+public class FD_Fighter : MonoBehaviour //Used for debug
 
 {
     
-    //Used for debug
-    [SerializeField] internal float attackRange = 2f;
     GameObject target;
     
     public void Attack(Transform target){
