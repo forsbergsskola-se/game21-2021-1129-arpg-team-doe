@@ -5,19 +5,26 @@ using UnityEngine;
 
 public class Statistics : MonoBehaviour{
 
-    [SerializeField] float toughness, strength, dexterity, knowledge, reflex, luck;
+    [SerializeField] float toughness, strength, dexterity, knowledge, reflex, luck, actionRange;
     public int maxHP;
-    public int currentHP { get; private set; } 
+    public int currentHP { get; private set; }
+
+    public float ActionRange{
+        get{ return actionRange; }
+        private set{ actionRange = value; }
+    }
+
     public bool dealingDmg; //used for debug
 
 
-    public Statistics(float toughness, float strength, float dexterity, float knowledge, float reflex, float luck,int currentHp,int maxHp){
+    public Statistics(float toughness, float strength, float dexterity, float knowledge, float reflex, float luck,float actionRange,int maxHp){
         this.toughness = toughness;
         this.strength = strength;
         this.dexterity = dexterity;
         this.knowledge = knowledge;
         this.reflex = reflex;
         this.luck = luck;
+        this.actionRange = actionRange;
         this.maxHP = maxHp;
     }
 
@@ -34,7 +41,6 @@ public class Statistics : MonoBehaviour{
             dealingDmg = true;
             currentHP -= 10;
             FindObjectOfType<UIDamageNr>().Display();
-            
         }
     }
 }

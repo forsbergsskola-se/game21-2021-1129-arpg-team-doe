@@ -5,14 +5,21 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class Destruction : MonoBehaviour{
-    [SerializeField] float actionRange;
     [SerializeField] int health;
 
+    PlayerMovement _playerMovement;
+    Statistics _statistics; //Used for Debug
+
     float distance;
-    
+    float actionRange;
+
+    void Start(){
+        _playerMovement = FindObjectOfType<PlayerMovement>();
+        _statistics = FindObjectOfType<Statistics>(); //Used for Debug
+    }
 
     void Update(){
-        distance = Vector3.Distance(this.transform.position, FindObjectOfType<PlayerMovement>().transform.position);
+        distance = Vector3.Distance(this.transform.position, _playerMovement.transform.position);
     }
 
     void OnMouseUpAsButton(){
@@ -20,7 +27,7 @@ public class Destruction : MonoBehaviour{
     }
 
     void DealDamage(){ //Used for Debug
-        if (actionRange > distance){
+        if (_statistics.ActionRange > distance){
             health = 0; //put real logic here
         }
         Death();
