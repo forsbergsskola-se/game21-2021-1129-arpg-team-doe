@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JD_EnemyStats : MonoBehaviour{ //Name:Stats
+public class Stats : MonoBehaviour{ //Name:Stats
 
     [SerializeField] float toughness, strength, dexterity, knowledge, reflex, luck;
     public int maxHP;
@@ -11,7 +11,7 @@ public class JD_EnemyStats : MonoBehaviour{ //Name:Stats
     public bool dealingDmg; //used for debug
 
 
-    public JD_EnemyStats(float toughness, float strength, float dexterity, float knowledge, float reflex, float luck,int currentHp,int maxHp){
+    public Stats(float toughness, float strength, float dexterity, float knowledge, float reflex, float luck,int currentHp,int maxHp){
         this.toughness = toughness;
         this.strength = strength;
         this.dexterity = dexterity;
