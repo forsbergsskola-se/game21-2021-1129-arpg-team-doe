@@ -12,6 +12,7 @@ public class JD_UI_DamageNr : MonoBehaviour{
 
     [SerializeField] float duration;
     [SerializeField] TextMeshProUGUI _textMeshProUGUI;
+    [SerializeField] GameObject Txt;
     
     string dmgText;
     int dmg;
@@ -29,6 +30,7 @@ public class JD_UI_DamageNr : MonoBehaviour{
     }
 
     void Update(){
+        Instantiate()
         takingDamage = _enemyStats.dealingDmg;
         CollectDmg(dmg);
         dmgText = Convert.ToString(dmg);
