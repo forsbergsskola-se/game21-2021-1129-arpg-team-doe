@@ -11,7 +11,7 @@ public class HealthBar : MonoBehaviour{
     public Image fill;
 
     public void Start(){
-        var maxHP = GetComponentInParent<JD_EnemyStats>().maxHP;
+        var maxHP = GetComponentInParent<Statistics>().maxHP;
         SetSliderMaxHealth(maxHP); 
     }
 
@@ -32,7 +32,7 @@ public class HealthBar : MonoBehaviour{
     }
 
     public void SetSliderHealth(){
-        var currentHealth = GetComponentInParent<JD_EnemyStats>().currentHP;
+        var currentHealth = GetComponentInParent<Statistics>().currentHP;
         slider.value = currentHealth;
 
         // changes the health bar gradient to whatever the health is
