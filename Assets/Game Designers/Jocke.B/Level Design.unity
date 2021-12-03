@@ -353,6 +353,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5374974044679791858, guid: e31cf9a5d6ce27446a4e2f937c659f3c, type: 3}
+      propertyPath: defaultCursor
+      value: 
+      objectReference: {fileID: 2800000, guid: c63a54ea45b38eb4d885614761c41837, type: 3}
+    - target: {fileID: 5374974044679791858, guid: e31cf9a5d6ce27446a4e2f937c659f3c, type: 3}
+      propertyPath: interactableObject
+      value: 
+      objectReference: {fileID: 2800000, guid: 4b59b17f0070e0446acd604e65d1616a, type: 3}
     - target: {fileID: 8705401766356934899, guid: e31cf9a5d6ce27446a4e2f937c659f3c, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -734,8 +742,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af37473a87f5f274f858b2339f151ba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCursor: {fileID: 0}
-  interactableObject: {fileID: 0}
+  defaultCursor: {fileID: 2800000, guid: c63a54ea45b38eb4d885614761c41837, type: 3}
+  interactableObject: {fileID: 2800000, guid: 320d423528b0c2040bc426544ae0bc59, type: 3}
 --- !u!114 &204006144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1429,7 +1437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fd87bd283f4c5245bc35e5d63e92957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionRange: 3
+  actionRange: 5
 --- !u!114 &1001156137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1516,7 +1524,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001156134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.6, y: 1.7489, z: -0.03}
+  m_LocalPosition: {x: -3.5, y: 1.7489, z: -0.03}
   m_LocalScale: {x: 2.1393, y: 3.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
