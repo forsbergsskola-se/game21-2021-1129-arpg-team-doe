@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class UI_Interaction : MonoBehaviour{
+public class UIInteraction : MonoBehaviour{
 
     [SerializeField] GameObject healthBar; //the active enemies HPbar only. needs combat implemented first. //wrong capitalization and maybe call it healthBar
     bool pursuing;

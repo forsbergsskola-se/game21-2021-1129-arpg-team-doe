@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hover_interactable : MonoBehaviour{
+public class HoverInteractable : MonoBehaviour{
     [SerializeField] Texture2D defaultCursor;
     [SerializeField] Texture2D interactableObject;
     void OnMouseEnter(){

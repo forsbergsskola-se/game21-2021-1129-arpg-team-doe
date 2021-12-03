@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stats : MonoBehaviour{ //Name:Stats
+public class Stats : MonoBehaviour{
 
     [SerializeField] float toughness, strength, dexterity, knowledge, reflex, luck;
     public int maxHP;
