@@ -11,7 +11,7 @@ public class UnlockDoor : MonoBehaviour{
     [SerializeField] float actionRange;
     
     NavMeshAgent player;
-    Conditions _conditions; //Change name: Conditions
+    Conditions _conditions; 
     CursorOnDoor _cursorOnDoor;
     
     bool locked = true;
@@ -40,7 +40,7 @@ public class UnlockDoor : MonoBehaviour{
     }
 
     void OnMouseDown(){
-        if (!locked && distance > actionRange){
+        if (!locked && distance < actionRange){
             GetComponent<BoxCollider>().enabled = false;
             GetComponent<NavMeshObstacle>().enabled = false;
         }
