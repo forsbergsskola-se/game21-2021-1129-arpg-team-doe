@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Statistics : MonoBehaviour{
-
+    
     [SerializeField] float toughness, strength, dexterity, knowledge, reflex, luck, interactRange, attackRange;
     public int maxHP;
     public int currentHP { get; private set; }
@@ -46,6 +46,7 @@ public class Statistics : MonoBehaviour{
             dealingDmg = true;
             currentHP -= 10;
             FindObjectOfType<UIDamageNr>().Display();
+            
         }
     }
 }
