@@ -710,7 +710,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 966dcf47f72c80b4b8c03c0e5aec1776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 5
   maxFollowRange: 30
   closeEnoughToSavedPosition: 3
 --- !u!114 &204006142
@@ -731,6 +730,8 @@ MonoBehaviour:
   knowledge: 0
   reflex: 0
   luck: 0
+  interactRange: 0
+  attackRange: 0
   maxHP: 100
   dealingDmg: 0
 --- !u!114 &204006143
@@ -1003,7 +1004,7 @@ MonoBehaviour:
   rotationSpeedMultiplier: 500
   snapRotationSpeedMultiplier: 30
   minZoom: 3
-  maxZoom: 15
+  maxZoom: 30
 --- !u!1 &752224606
 GameObject:
   m_ObjectHideFlags: 0

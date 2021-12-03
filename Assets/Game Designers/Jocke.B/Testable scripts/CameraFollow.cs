@@ -56,7 +56,7 @@ public class CameraFollow : MonoBehaviour
                 offset.y = maxZoom;
             }
             //Change to startZoom
-            else { 
+            else{ 
                 offset.y = startZoom;
             }
             zoomLevel++;
