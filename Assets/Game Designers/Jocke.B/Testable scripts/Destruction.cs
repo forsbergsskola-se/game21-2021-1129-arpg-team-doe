@@ -27,7 +27,7 @@ public class Destruction : MonoBehaviour{
     }
 
     void DealDamage(){ //Used for Debug
-        if (_statistics.ActionRange > distance){
+        if (_statistics.InteractRange > distance){
             health = 0; //put real logic here
         }
         Death();

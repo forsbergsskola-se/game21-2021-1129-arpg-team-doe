@@ -1,17 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-   [SerializeField] float attackRange = 5f;
    [SerializeField] float maxFollowRange = 30f;
    [SerializeField] float closeEnoughToSavedPosition = 3f;
    
    TargetDetection _targetDetection;
-   Player _player;
+   PlayerMovement _playerMovement;
    Movement _movement;
    Fighter _fighter;
+   Statistics _statistics;
    
    Transform _desiredTarget;
    Transform _target;
@@ -21,16 +22,19 @@ public class EnemyMovement : MonoBehaviour
    
    float distanceToPlayer;
    float distanceToTarget;
+   float attackRange;
    
    bool activeSavedPosition; 
    bool needsToWalkBack; 
 
    void Start(){
-      _player = FindObjectOfType<Player>(); //maybe use player tag instead? Will save performance
+      _statistics = GetComponent<Statistics>();
+      _playerMovement = FindObjectOfType<PlayerMovement>(); //maybe use player tag instead? Will save performance
       _targetDetection = GetComponent<TargetDetection>();
       _movement = GetComponent<Movement>();
       _fighter = GetComponent<Fighter>();
-      _desiredTarget = _player.transform;
+      _desiredTarget = _playerMovement.transform;
+      attackRange = _statistics.AttackRange;
    }
 
    void Update(){ // very long update, might want to refactor
@@ -39,7 +43,8 @@ public class EnemyMovement : MonoBehaviour
          _target = _desiredTarget;
       }
       
-      if (_target != null && !needsToWalkBack){
+      if (!needsToWalkBack){
+         if (_target == null) return;
          
          //Calculates distance to target
          distanceToTarget = _targetDetection.DistanceToTarget(this.transform.position, _target);
@@ -94,9 +99,12 @@ public class EnemyMovement : MonoBehaviour
    }
 
    void StopMovingThenAttackTarget(){
-      //TODO: Look at target when attacking
-      _movement.StopMoving();
-      _fighter.Attack(_target);
+      if (_target != null){
+         _movement.StopMoving();
+         transform.LookAt(_target);
+         _fighter.Attack(_target);
+      }
+      
       //attack target  ??(Bool/state ATTACKING = True)??.
    }
 

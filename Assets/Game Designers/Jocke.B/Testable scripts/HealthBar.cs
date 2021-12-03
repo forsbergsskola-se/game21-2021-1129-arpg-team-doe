@@ -6,18 +6,17 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour{
 
+    Statistics _statistics;
+
     public Slider slider;
     public Gradient gradient;
     public Image fill;
 
     public void Start(){
-        var maxHP = GetComponentInParent<Statistics>().maxHP;
+        _statistics = GetComponentInParent<Statistics>();
+        var maxHP = _statistics.maxHP;
         SetSliderMaxHealth(maxHP); 
     }
-
-    // void OnMouseOver(){
-    //     this.gameObject.SetActive(true);
-    // }
 
     void Update(){
         SetSliderHealth();
@@ -32,7 +31,7 @@ public class HealthBar : MonoBehaviour{
     }
 
     public void SetSliderHealth(){
-        var currentHealth = GetComponentInParent<Statistics>().currentHP;
+        var currentHealth = _statistics.currentHP;
         slider.value = currentHealth;
 
         // changes the health bar gradient to whatever the health is
