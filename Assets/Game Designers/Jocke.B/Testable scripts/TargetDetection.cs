@@ -11,6 +11,7 @@ public class TargetDetection : MonoBehaviour
 
     void Start(){
         viewAngle = Mathf.Cos(viewAngle * MathF.PI / 180 / 2);
+        
     }
     
     public float DistanceToTarget(Vector3 position, Transform target){
