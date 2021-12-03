@@ -11,8 +11,8 @@ public class UnlockDoor : MonoBehaviour{
     [SerializeField] float actionRange;
     
     NavMeshAgent player;
-    JD_Conditioner _jdConditioner; //Change name: Conditions
-    JD_CursorOnDoor _jdCursorOnDoor;
+    Conditions _conditions; //Change name: Conditions
+    CursorOnDoor _cursorOnDoor;
     
     bool locked = true;
     bool conditionCompleted;
@@ -20,14 +20,14 @@ public class UnlockDoor : MonoBehaviour{
 
     void Start(){
         player = FindObjectOfType<NavMeshAgent>();
-        _jdConditioner = FindObjectOfType<JD_Conditioner>();
-        _jdCursorOnDoor = FindObjectOfType<JD_CursorOnDoor>();
+        _conditions = FindObjectOfType<Conditions>();
+        _cursorOnDoor = FindObjectOfType<CursorOnDoor>();
     }
 
     void Update(){
-        conditionCompleted = _jdConditioner.completed;
+        conditionCompleted = _conditions.completed;
         LockingMechanism();
-        _jdCursorOnDoor.openable = locked;
+        _cursorOnDoor.openable = locked;
         distance = Vector3.Magnitude(player.destination); //TODO:Replace with Detection from Detection script
     }
 

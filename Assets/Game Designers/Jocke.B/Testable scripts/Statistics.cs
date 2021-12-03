@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stats : MonoBehaviour{
+public class Statistics : MonoBehaviour{
 
     [SerializeField] float toughness, strength, dexterity, knowledge, reflex, luck;
     public int maxHP;
@@ -11,7 +11,7 @@ public class Stats : MonoBehaviour{
     public bool dealingDmg; //used for debug
 
 
-    public Stats(float toughness, float strength, float dexterity, float knowledge, float reflex, float luck,int currentHp,int maxHp){
+    public Statistics(float toughness, float strength, float dexterity, float knowledge, float reflex, float luck,int currentHp,int maxHp){
         this.toughness = toughness;
         this.strength = strength;
         this.dexterity = dexterity;
@@ -33,9 +33,8 @@ public class Stats : MonoBehaviour{
         if (Input.GetKeyDown(KeyCode.E)){
             dealingDmg = true;
             currentHP -= 10;
-            FindObjectOfType<JD_UI_DamageNr>().Display();
+            FindObjectOfType<UIDamageNr>().Display();
             
         }
-        Debug.Log(currentHP);
     }
 }
