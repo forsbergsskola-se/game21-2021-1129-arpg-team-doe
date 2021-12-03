@@ -1,10 +1,8 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class FD_TargetDetection : MonoBehaviour{
-    
+public class TargetDetection : MonoBehaviour
+{
     [SerializeField] float areaDetectionRange = 5.0f;
     [SerializeField] float visionRange = 20.0f;
     [SerializeField] [Range(0,360)] float viewAngle;
