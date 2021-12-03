@@ -92,6 +92,7 @@ public class FD_EnemyMovement : MonoBehaviour{
    }
 
    void StopMovingThenAttackTarget(){
+      //TODO: Look at target when attacking
       _movement.StopMoving();
       _fighter.Attack(_target);
       //attack target  ??(Bool/state ATTACKING = True)??.

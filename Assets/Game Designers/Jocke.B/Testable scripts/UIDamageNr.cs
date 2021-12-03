@@ -17,7 +17,7 @@ public class UIDamageNr : MonoBehaviour{
     int dmg;
     bool active;
     bool takingDamage;
-    JD_EnemyStats _enemyStats;
+    Statistics _stats;
     
     Animator _animator;
     string _text;
@@ -25,11 +25,11 @@ public class UIDamageNr : MonoBehaviour{
     void Start(){
         _animator = gameObject.GetComponent<Animator>();
         _text = _textMeshProUGUI.text;
-        _enemyStats = FindObjectOfType<JD_EnemyStats>();
+        _stats = GetComponentInParent<Statistics>();
     }
 
     void Update(){
-        takingDamage = _enemyStats.dealingDmg;
+        takingDamage = _stats.dealingDmg;
         CollectDmg(dmg);
         dmgText = Convert.ToString(dmg);
         
