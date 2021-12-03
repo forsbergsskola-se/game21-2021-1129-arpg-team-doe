@@ -11,6 +11,7 @@ using UnityEngine.UIElements;
 public class JD_UI_DamageNr : MonoBehaviour{
 
     [SerializeField] float duration;
+    [SerializeField] TextMeshProUGUI _textMeshProUGUI;
     
     string dmgText;
     int dmg;
@@ -23,7 +24,7 @@ public class JD_UI_DamageNr : MonoBehaviour{
 
     void Start(){
         _animator = gameObject.GetComponent<Animator>();
-        _text = GetComponent<TextMeshProUGUI>().text;
+        _text = _textMeshProUGUI.text;
         _enemyStats = FindObjectOfType<JD_EnemyStats>();
     }
 
@@ -35,11 +36,11 @@ public class JD_UI_DamageNr : MonoBehaviour{
         if (takingDamage){
             Timer();
             if (duration > 0){
-                GetComponent<TextMeshProUGUI>().text= dmgText; //Maybe cache the TextMesh in a var, since its used twice
+                _textMeshProUGUI.text= dmgText;
                 _animator.Play("FloatingPoint");
             }
             else if (!takingDamage){
-                GetComponent<TextMeshProUGUI>().text = "";
+                _textMeshProUGUI.text = "";
             }
         }
         takingDamage = false;
