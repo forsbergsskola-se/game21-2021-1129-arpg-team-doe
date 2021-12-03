@@ -18,11 +18,11 @@ public class CursorOnDoor : MonoBehaviour{
     }
 
     void OnMouseEnter(){
-        if (!openable){
-            Cursor.SetCursor(unLockedTexture, offSet, CursorMode.ForceSoftware);
-        }
         if (openable){
             Cursor.SetCursor(lockedTexture, offSet, CursorMode.ForceSoftware);
+        }
+        if (!openable){
+            Cursor.SetCursor(unLockedTexture, offSet, CursorMode.ForceSoftware);
         }
     }
 
