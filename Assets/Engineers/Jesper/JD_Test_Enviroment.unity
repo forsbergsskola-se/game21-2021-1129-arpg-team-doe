@@ -1608,7 +1608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 436dc20bcca984acb918f4ee37018dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpbar: {fileID: 1896626444}
+  healthBar: {fileID: 0}
 --- !u!114 &1349617192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1621,13 +1621,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a603cefa6ea40456eb5a341e08d367f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  constitution: 0
+  toughness: 0
   strength: 0
   dexterity: 0
-  wisdom: 0
-  charisma: 0
+  knowledge: 0
+  reflex: 0
   luck: 0
-  maxHP: 100
+  maxHP: 0
   dealingDmg: 0
 --- !u!208 &1349617193
 NavMeshObstacle:
@@ -1851,7 +1851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionRange: 2
-  health: 1.19
+  health: 0
 --- !u!208 &1460556701
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -2128,11 +2128,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a603cefa6ea40456eb5a341e08d367f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  constitution: 0
+  toughness: 0
   strength: 0
   dexterity: 0
-  wisdom: 0
-  charisma: 0
+  knowledge: 0
+  reflex: 0
   luck: 0
   maxHP: 100
   dealingDmg: 0
@@ -2148,7 +2148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 436dc20bcca984acb918f4ee37018dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpbar: {fileID: 883704710}
+  healthBar: {fileID: 883704710}
 --- !u!1 &1680788604
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ public class UnlockDoor : MonoBehaviour{
     }
 
     void Update(){
-        conditionCompleted = FindObjectOfType<Conditioner>().completed;
+        conditionCompleted = FindObjectOfType<Conditions>().completed;
         LockingMechanism();
         // Does the same thing.
         if (locked){

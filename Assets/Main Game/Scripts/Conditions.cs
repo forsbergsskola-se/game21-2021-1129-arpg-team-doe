@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Conditioner : MonoBehaviour
+public class Conditions : MonoBehaviour
 {
-    internal bool completed = false;
+    internal bool completed;
     void OnMouseDown(){
         completed = true;
     }

@@ -12,7 +12,7 @@ public class JD_HealthBar : MonoBehaviour{
 
     public void Start(){
         var maxHP = GetComponentInParent<JD_EnemyStats>().maxHP;
-        SetMaxHealth(maxHP);
+        SetSliderMaxHealth(maxHP); 
     }
 
     // void OnMouseOver(){
@@ -20,10 +20,10 @@ public class JD_HealthBar : MonoBehaviour{
     // }
 
     void Update(){
-        SetHealth();
+        SetSliderHealth();
     }
 
-    public void SetMaxHealth(float maxHP){
+    public void SetSliderMaxHealth(float maxHP){
         slider.maxValue = maxHP;
         slider.value = maxHP;
 
@@ -31,7 +31,7 @@ public class JD_HealthBar : MonoBehaviour{
         fill.color = gradient.Evaluate(1f);
     }
 
-    public void SetHealth(){
+    public void SetSliderHealth(){
         var currentHealth = GetComponentInParent<JD_EnemyStats>().currentHP;
         slider.value = currentHealth;
 

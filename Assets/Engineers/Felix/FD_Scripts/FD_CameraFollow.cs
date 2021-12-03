@@ -19,7 +19,7 @@ public class FD_CameraFollow : MonoBehaviour
     const float leftScreenEdge = 0f;
     float speed;
     int zoomLevel = 0;
-    int zoomLevels = 3;
+    const int zoomLevels = 3;
     
     
     Vector3 _velocity = Vector3.zero;
@@ -48,11 +48,11 @@ public class FD_CameraFollow : MonoBehaviour
                 offset.y = minZoom;
             }
             //Change to maxZoom
-            if (currentZoomLevel == 1){ //else if?
+            else if (currentZoomLevel == 1){ //else if?
                 offset.y = maxZoom;
             }
             //Change to startZoom
-            if (currentZoomLevel == 2){ //last could be else for efficiency?
+            else { //last could be else for efficiency?
                 offset.y = startZoom;
             }
             zoomLevel++;
