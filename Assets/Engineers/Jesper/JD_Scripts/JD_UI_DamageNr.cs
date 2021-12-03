@@ -12,8 +12,7 @@ public class JD_UI_DamageNr : MonoBehaviour{
 
     [SerializeField] float duration;
     [SerializeField] TextMeshProUGUI _textMeshProUGUI;
-    [SerializeField] GameObject Txt;
-    
+
     string dmgText;
     int dmg;
     bool active;
@@ -30,14 +29,12 @@ public class JD_UI_DamageNr : MonoBehaviour{
     }
 
     void Update(){
-        var textprefab = Txt;
         takingDamage = _enemyStats.dealingDmg;
         CollectDmg(dmg);
         dmgText = Convert.ToString(dmg);
         
         if (takingDamage){
             Timer();
-            Instantiate(textprefab);
             if (duration > 0){
                 _textMeshProUGUI.text= dmgText;
                 _animator.Play("FloatingPoint");
@@ -47,7 +44,6 @@ public class JD_UI_DamageNr : MonoBehaviour{
             }
         }
         takingDamage = false;
-        Destroy(textprefab);
     }
 
 
