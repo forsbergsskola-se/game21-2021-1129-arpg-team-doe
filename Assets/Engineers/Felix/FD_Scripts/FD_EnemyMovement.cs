@@ -10,13 +10,16 @@ public class FD_EnemyMovement : MonoBehaviour{
    FD_Player _player;
    FD_Movement _movement;
    FD_Fighter _fighter;
+   
    Transform _desiredTarget;
    Transform _target;
    Transform _patrolTarget; 
    
-   float distanceToPlayer;
-   float distanceToTarget; 
    Vector3 savedPosition;
+   
+   float distanceToPlayer;
+   float distanceToTarget;
+   
    bool activeSavedPosition; 
    bool needsToWalkBack; 
 
@@ -39,48 +42,65 @@ public class FD_EnemyMovement : MonoBehaviour{
          //Calculates distance to target
          distanceToTarget = _targetDetection.DistanceToTarget(this.transform.position, _target);
          
-         if (_target != _patrolTarget){ //This if check is meant for possibly future implementation of AI Patrolling
-            if (!activeSavedPosition){
-               SavePosition();
-            }
-                     
-            if (distanceToTarget > attackRange && !needsToWalkBack) // a lot of ifs, might be able to break it up?
-            { 
-               // stop attacking ??(Bool/State ATTACKING = False)??
-               //_fighter.StopAttack(_target);
-               _movement.Mover(_target.position);
-            }
-            
-            //Checks if we're outside of the maxFollowRange
-            if(_targetDetection.DistanceToTarget(savedPosition,transform) >= maxFollowRange){
-               ForgetTarget();
-            }
-            
-            if (distanceToTarget < attackRange){
-               _movement.StopMoving();
-               _fighter.Attack(_target);
-               //attack target  ??(Bool/state ATTACKING = True)??.
-            }
+         if (_target != _patrolTarget){
+            //This if check is meant for possibly future implementation of AI Patrolling
+            InteractWithCombat();
          }
       }
       
       if (_target == null){
-         //Walk Back
-         if (needsToWalkBack){
-            _movement.Mover(savedPosition);
-         }
-
-         //Checks if this unit is close enough to saved position and already has an active saved position 
-         if (_targetDetection.DistanceToTarget(savedPosition, transform ) < closeEnoughToSavedPosition && activeSavedPosition){
-            SetIdle();
-         }
-         
+         WalkBackAndSetIdle();
       }
       
       if (_target == _patrolTarget){
          //AI Path walking (Just walking around)
       }
 
+   }
+
+   void WalkBackAndSetIdle(){
+      //Walk Back
+      if (needsToWalkBack){
+         _movement.Mover(savedPosition);
+      }
+
+      //Checks if this unit is close enough to saved position and already has an active saved position 
+      if (_targetDetection.DistanceToTarget(savedPosition, transform) < closeEnoughToSavedPosition &&
+          activeSavedPosition){
+         SetIdle();
+      }
+   }
+
+   void InteractWithCombat(){
+      if (!activeSavedPosition){
+         SavePosition();
+      }
+
+      if (distanceToTarget > attackRange && !needsToWalkBack) // a lot of ifs, might be able to break it up?
+      {
+         StopAttackThenMoveToTarget();
+      }
+
+      //Checks if we're outside of the maxFollowRange
+      if (_targetDetection.DistanceToTarget(savedPosition, transform) >= maxFollowRange){
+         ForgetTarget();
+      }
+
+      if (distanceToTarget < attackRange){
+         StopMovingThenAttackTarget();
+      }
+   }
+
+   void StopMovingThenAttackTarget(){
+      _movement.StopMoving();
+      _fighter.Attack(_target);
+      //attack target  ??(Bool/state ATTACKING = True)??.
+   }
+
+   void StopAttackThenMoveToTarget(){
+      // stop attacking ??(Bool/State ATTACKING = False)??
+      //_fighter.StopAttack(_target);
+      _movement.Mover(_target.position);
    }
 
    void SetIdle(){
