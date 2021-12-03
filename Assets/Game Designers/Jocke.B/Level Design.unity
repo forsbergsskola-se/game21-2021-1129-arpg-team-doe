@@ -531,6 +531,8 @@ GameObject:
   - component: {fileID: 204006139}
   - component: {fileID: 204006138}
   - component: {fileID: 204006142}
+  - component: {fileID: 204006144}
+  - component: {fileID: 204006143}
   m_Layer: 0
   m_Name: Enemy (Zlatan)
   m_TagString: Untagged
@@ -731,6 +733,33 @@ MonoBehaviour:
   luck: 0
   maxHP: 100
   dealingDmg: 0
+--- !u!114 &204006143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204006127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af37473a87f5f274f858b2339f151ba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCursor: {fileID: 0}
+  interactableObject: {fileID: 0}
+--- !u!114 &204006144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204006127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f0e070d902a42e4781ea021fcb9f882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 4079158734565520246}
 --- !u!1 &381320165
 GameObject:
   m_ObjectHideFlags: 0
