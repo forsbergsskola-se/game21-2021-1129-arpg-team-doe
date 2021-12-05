@@ -10,7 +10,7 @@ public class UnlockDoor : MonoBehaviour{
 
     [SerializeField] float actionRange;
     
-    NavMeshAgent player;
+    PlayerMovement player;
     Conditions _conditions; 
     CursorOnDoor _cursorOnDoor;
     
@@ -19,7 +19,7 @@ public class UnlockDoor : MonoBehaviour{
     float distance;
 
     void Start(){
-        player = FindObjectOfType<NavMeshAgent>();
+        player = FindObjectOfType<PlayerMovement>();
         _conditions = FindObjectOfType<Conditions>();
         _cursorOnDoor = FindObjectOfType<CursorOnDoor>();
     }
@@ -28,7 +28,7 @@ public class UnlockDoor : MonoBehaviour{
         conditionCompleted = _conditions.completed;
         LockingMechanism();
         _cursorOnDoor.openable = locked;
-        distance = Vector3.Magnitude(player.destination); //TODO:Replace with Detection from Detection script
+        distance = Vector3.Distance(transform.position, player.transform.position); //TODO:Replace with Detection from Detection script
     }
 
     void LockingMechanism(){
