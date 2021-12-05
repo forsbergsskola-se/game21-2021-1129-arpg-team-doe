@@ -7,6 +7,7 @@ public class Conditions : MonoBehaviour //Name: Conditions (maybe DoorCondition 
 {
     internal bool completed;
     void OnMouseDown(){
+        Debug.Log("KEY TAKEN");
         completed = true;
     }
 }

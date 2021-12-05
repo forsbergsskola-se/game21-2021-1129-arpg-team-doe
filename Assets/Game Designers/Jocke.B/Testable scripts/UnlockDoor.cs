@@ -13,6 +13,9 @@ public class UnlockDoor : MonoBehaviour{
     PlayerMovement player;
     Conditions _conditions; 
     CursorOnDoor _cursorOnDoor;
+    BoxCollider _collider;
+    NavMeshObstacle _obstacle;
+    Animator _animator;
     
     bool locked = true;
     bool conditionCompleted;
@@ -22,12 +25,19 @@ public class UnlockDoor : MonoBehaviour{
         player = FindObjectOfType<PlayerMovement>();
         _conditions = FindObjectOfType<Conditions>();
         _cursorOnDoor = FindObjectOfType<CursorOnDoor>();
+        _collider = GetComponent<BoxCollider>();
+        _obstacle = GetComponent<NavMeshObstacle>();
+        //Test
+        _animator = GetComponent<Animator>();
+        _animator.enabled = false;
+        //Test
+       
     }
 
     void Update(){
         conditionCompleted = _conditions.completed;
         LockingMechanism();
-        _cursorOnDoor.openable = locked;
+        _cursorOnDoor.openable = locked; //? Could you explain why this is in update?
         distance = Vector3.Distance(transform.position, player.transform.position); //TODO:Replace with Detection from Detection script
     }
 
@@ -40,9 +50,17 @@ public class UnlockDoor : MonoBehaviour{
     }
 
     void OnMouseDown(){
+        Debug.Log(distance + " = Distance to door" + "Locked?" +locked);
         if (!locked && distance < actionRange){
-            GetComponent<BoxCollider>().enabled = false;
-            GetComponent<NavMeshObstacle>().enabled = false;
+            OpenDoor();
         }
+    }
+
+    void OpenDoor(){
+        _collider.enabled = false;
+        _obstacle.enabled = false;
+        //Test
+        _animator.enabled = true;
+        //Test
     }
 }
