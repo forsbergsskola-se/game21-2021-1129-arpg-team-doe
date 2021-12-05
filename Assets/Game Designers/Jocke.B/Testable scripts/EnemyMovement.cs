@@ -39,6 +39,7 @@ public class EnemyMovement : MonoBehaviour
 
    void Update(){ // very long update, might want to refactor
       //Sets target if detected and is not walkingback
+     // Debug.Log(transform.name + "I have to go back?" + needsToWalkBack + _targetDetection.DistanceToTarget(savedPosition, transform));
       if (_targetDetection.TargetIsDetected(this.transform.position, _desiredTarget) && !needsToWalkBack){
          _target = _desiredTarget;
       }
@@ -56,6 +57,7 @@ public class EnemyMovement : MonoBehaviour
       }
       
       if (_target == null){
+         
          WalkBackAndSetIdle();
       }
       
@@ -70,11 +72,13 @@ public class EnemyMovement : MonoBehaviour
       if (needsToWalkBack){
          _movement.Mover(savedPosition);
       }
+      Debug.Log(_targetDetection.DistanceToTarget(savedPosition, transform));
 
       //Checks if this unit is close enough to saved position and already has an active saved position 
       if (_targetDetection.DistanceToTarget(savedPosition, transform) < closeEnoughToSavedPosition &&
           activeSavedPosition){
          SetIdle();
+         Debug.Log("AM I SAVING");
       }
    }
 
