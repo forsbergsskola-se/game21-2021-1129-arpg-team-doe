@@ -334,20 +334,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b10ed33a078847841ab8b91893808120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invalidSound:
-    Guid:
-      Data1: -1474790854
-      Data2: 1183911258
-      Data3: 227812503
-      Data4: -450193693
-    Path: event:/Move
-  validSound:
-    Guid:
-      Data1: -1474790854
-      Data2: 1183911258
-      Data3: 227812503
-      Data4: -450193693
-    Path: event:/Move
 --- !u!114 &51088863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7037,6 +7023,10 @@ PrefabInstance:
     - target: {fileID: 6648438412973855904, guid: 8337ccbafa112444bba27d05f2daa569, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6648438412973855904, guid: 8337ccbafa112444bba27d05f2daa569, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6648438412973855905, guid: 8337ccbafa112444bba27d05f2daa569, type: 3}
       propertyPath: m_Speed

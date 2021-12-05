@@ -8,28 +8,28 @@ using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] FMODUnity.EventReference invalidSound;
-    [SerializeField] FMODUnity.EventReference validSound;
-
+    
     FMOD.Studio.EventInstance _moveInstance;
-    
-    
     Movement _navmeshMover;
     Statistics _statistics;
+    Animator _animator;
     RaycastHit hit;
+    
+    string _currentState;
     float _interactionRange;
     bool hasPlayedSound;
-    
- 
-   Vector3 _distanceToTarget;
+    Vector3 _distanceToTarget;
+
+    const string PLAYER_RUN = "playerRun";
+    const string PLAYER_WALK = "playerWalk";
     void Start(){
         _navmeshMover = GetComponent<Movement>();
         _statistics = GetComponent<Statistics>();
         _interactionRange = _statistics.InteractRange;
 
-        
-       // _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
-        
+        _animator = GetComponentInChildren<Animator>();
+        // _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
+
         //_moveInstance.setVolume(50f);
 
 
@@ -55,11 +55,12 @@ public class PlayerMovement : MonoBehaviour
                     PlayMoveFeedback(0f);
                     //_moveInstance.release();
                     _navmeshMover.Mover(hit.point);
+                    ChangeAnimationState(PLAYER_RUN);
                 }
                 else{
                     PlayMoveFeedback(1f);
                     _navmeshMover.Mover(hit.point - _distanceToTarget.normalized * 1);
-                     
+                     ChangeAnimationState(PLAYER_WALK);
                 }
                 Debug.Log(hit.transform.tag);
             }
@@ -78,5 +79,11 @@ public class PlayerMovement : MonoBehaviour
             _moveInstance.start();
             hasPlayedSound = true;
         }
+    }
+
+    void ChangeAnimationState(string newState){
+        if (_currentState == newState) return;
+        _animator.Play(newState);
+        _currentState = newState;
     }
 }
