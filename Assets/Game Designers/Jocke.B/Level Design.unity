@@ -334,6 +334,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b10ed33a078847841ab8b91893808120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invalidSound:
+    Guid:
+      Data1: -1474790854
+      Data2: 1183911258
+      Data3: 227812503
+      Data4: -450193693
+    Path: event:/Move
+  validSound:
+    Guid:
+      Data1: -1474790854
+      Data2: 1183911258
+      Data3: 227812503
+      Data4: -450193693
+    Path: event:/Move
 --- !u!114 &51088863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1012,6 +1026,7 @@ GameObject:
   - component: {fileID: 204006142}
   - component: {fileID: 204006144}
   - component: {fileID: 204006143}
+  - component: {fileID: 204006145}
   m_Layer: 0
   m_Name: Enemy (Zlatan)
   m_TagString: Untagged
@@ -1241,6 +1256,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 4079158734565520246}
+--- !u!114 &204006145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204006127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e71a1c4ef07f9469c2294cf643e6cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &212809247
 GameObject:
   m_ObjectHideFlags: 0
@@ -1496,6 +1523,7 @@ GameObject:
   - component: {fileID: 346626857}
   - component: {fileID: 346626856}
   - component: {fileID: 346626855}
+  - component: {fileID: 346626868}
   m_Layer: 0
   m_Name: Enemy (Zlatan) (2)
   m_TagString: Untagged
@@ -1725,6 +1753,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &346626868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346626854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e71a1c4ef07f9469c2294cf643e6cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &376152115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1746,6 +1786,7 @@ GameObject:
   - component: {fileID: 376152118}
   - component: {fileID: 376152117}
   - component: {fileID: 376152116}
+  - component: {fileID: 376152129}
   m_Layer: 0
   m_Name: Enemy (Zlatan) (3)
   m_TagString: Untagged
@@ -1975,6 +2016,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &376152129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376152115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e71a1c4ef07f9469c2294cf643e6cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &381320165
 GameObject:
   m_ObjectHideFlags: 0
@@ -2653,6 +2706,7 @@ GameObject:
   m_Component:
   - component: {fileID: 662026778}
   - component: {fileID: 662026779}
+  - component: {fileID: 662026780}
   m_Layer: 0
   m_Name: followtarget
   m_TagString: Untagged
@@ -2693,6 +2747,20 @@ MonoBehaviour:
   snapRotationSpeedMultiplier: 30
   minZoom: 3
   maxZoom: 30
+--- !u!114 &662026780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662026776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+  ListenerNumber: -1
 --- !u!1 &720687134
 GameObject:
   m_ObjectHideFlags: 0
@@ -3797,7 +3865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fd87bd283f4c5245bc35e5d63e92957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionRange: 5
+  actionRange: 3
 --- !u!114 &1001156137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3884,7 +3952,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001156134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.5, y: 1.7489, z: -0.03}
+  m_LocalPosition: {x: -3.59, y: 1.7489, z: -0.03}
   m_LocalScale: {x: 2.1393, y: 3.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3948,6 +4016,7 @@ GameObject:
   - component: {fileID: 1087712569}
   - component: {fileID: 1087712568}
   - component: {fileID: 1087712567}
+  - component: {fileID: 1087712580}
   m_Layer: 0
   m_Name: Enemy (Zlatan) (4)
   m_TagString: Untagged
@@ -4177,6 +4246,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1087712580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087712566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e71a1c4ef07f9469c2294cf643e6cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1098150916
 GameObject:
   m_ObjectHideFlags: 0
@@ -4431,6 +4512,7 @@ GameObject:
   - component: {fileID: 1167333615}
   - component: {fileID: 1167333614}
   - component: {fileID: 1167333613}
+  - component: {fileID: 1167333626}
   m_Layer: 0
   m_Name: Enemy (Zlatan) (1)
   m_TagString: Untagged
@@ -4660,6 +4742,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1167333626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167333612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e71a1c4ef07f9469c2294cf643e6cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1188251072
 GameObject:
   m_ObjectHideFlags: 0
@@ -4670,7 +4764,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1188251075}
   - component: {fileID: 1188251074}
-  - component: {fileID: 1188251073}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4678,14 +4771,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1188251073
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1188251072}
-  m_Enabled: 1
 --- !u!20 &1188251074
 Camera:
   m_ObjectHideFlags: 0
@@ -6716,6 +6801,22 @@ PrefabInstance:
     - target: {fileID: 6648438412973855906, guid: 8337ccbafa112444bba27d05f2daa569, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6648438412973855965, guid: 8337ccbafa112444bba27d05f2daa569, type: 3}
+      propertyPath: m_Size.y
+      value: 1.745243
+      objectReference: {fileID: 0}
+    - target: {fileID: 6648438412973855965, guid: 8337ccbafa112444bba27d05f2daa569, type: 3}
+      propertyPath: m_Center.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6648438412973855965, guid: 8337ccbafa112444bba27d05f2daa569, type: 3}
+      propertyPath: m_Center.y
+      value: 0.37262148
+      objectReference: {fileID: 0}
+    - target: {fileID: 6648438412973855965, guid: 8337ccbafa112444bba27d05f2daa569, type: 3}
+      propertyPath: m_Center.z
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6648438412973855966, guid: 8337ccbafa112444bba27d05f2daa569, type: 3}
       propertyPath: m_Name
