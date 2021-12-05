@@ -39,7 +39,7 @@ public class EnemyMovement : MonoBehaviour
 
    void Update(){ // very long update, might want to refactor
       //Sets target if detected and is not walkingback
-     // Debug.Log(transform.name + "I have to go back?" + needsToWalkBack + _targetDetection.DistanceToTarget(savedPosition, transform));
+     //Debug.Log(transform.name + "I have to go back?" + needsToWalkBack + _targetDetection.DistanceToTarget(savedPosition, transform));
       if (_targetDetection.TargetIsDetected(this.transform.position, _desiredTarget) && !needsToWalkBack){
          _target = _desiredTarget;
       }
