@@ -10,9 +10,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] Texture2D validClickTexture;
     [SerializeField] Texture2D invalidClickTexture;
-    
     [SerializeField] Texture2D standardCursorTexture;
-
+    [SerializeField] float distanceToKeepFromKey = 3f;
     
     FMOD.Studio.EventInstance _moveInstance;
     Movement _navmeshMover;
@@ -48,6 +47,11 @@ public class PlayerMovement : MonoBehaviour
         // if (_interactionRange > _distanceToTarget){
         //     _navmeshMover.StopMoving();
         // }
+        
+        if (_navmeshMover._navMeshAgent.remainingDistance < _navmeshMover._navMeshAgent.stoppingDistance){
+            _navmeshMover.StopMoving();
+            ChangeAnimationState(PLAYER_WALK);
+        }
     }
 
     void MoveToCursor(){
@@ -62,15 +66,18 @@ public class PlayerMovement : MonoBehaviour
                     PlayMoveFeedback(0f);
                     //_moveInstance.release();
                     _navmeshMover.Mover(hit.point);
-                    ChangeAnimationState(PLAYER_RUN);
+                    
                     if (_navmeshMover.pathFound){
                         StartCoroutine(ChangeCursorTemporary(validClickTexture,1f));
+                        ChangeAnimationState(PLAYER_RUN);
                     }
                     else{
                         StartCoroutine(ChangeCursorTemporary(invalidClickTexture,1f));
+                        ChangeAnimationState(PLAYER_WALK);
                     }
-                    
                 }
+                
+                
                 // else if (hit.transform.tag != "Ground" ){
                 //     PlayMoveFeedback(1f);
                 //     
@@ -81,13 +88,19 @@ public class PlayerMovement : MonoBehaviour
                 //Hits something
                 else{
                     PlayMoveFeedback(1f);
-                    _navmeshMover.Mover(hit.point - _distanceToTarget.normalized * 1);
-                     ChangeAnimationState(PLAYER_WALK);
-                     StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
+                    Vector3 newDestination = hit.point - _distanceToTarget.normalized * 1;
+                    //_navmeshMover.Mover(hit.point - _distanceToTarget.normalized * 1);
+                    //ChangeAnimationState(PLAYER_WALK);
+                    if (_distanceToTarget.magnitude > distanceToKeepFromKey){
+                        _navmeshMover.Mover(newDestination);
+                        if(_navmeshMover.pathFound)
+                            ChangeAnimationState(PLAYER_RUN);
+                        StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
+                    }
                 }
                 //Debug.Log(hit.transform.tag);
             }
-            else if(!hasHit){
+            else{
                 _navmeshMover.StopMoving();
                 PlayMoveFeedback(1f);
                 StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));

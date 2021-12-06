@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Movement : MonoBehaviour
 {
-    NavMeshAgent _navMeshAgent;
+    internal NavMeshAgent _navMeshAgent;
     NavMeshPath _path;
     internal bool pathFound;
     void Start()

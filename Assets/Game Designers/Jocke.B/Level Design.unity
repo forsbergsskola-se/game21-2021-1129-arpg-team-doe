@@ -337,6 +337,7 @@ MonoBehaviour:
   validClickTexture: {fileID: 2800000, guid: 5272d18cc54beb845a9345fd442c0bb8, type: 3}
   invalidClickTexture: {fileID: 2800000, guid: 0f2bdd9c9686bcf4a955a6f55fce217e, type: 3}
   standardCursorTexture: {fileID: 2800000, guid: c63a54ea45b38eb4d885614761c41837, type: 3}
+  distanceToKeepFromKey: 3
 --- !u!114 &51088863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5191,6 +5192,7 @@ GameObject:
   - component: {fileID: 1274422343}
   - component: {fileID: 1274422342}
   - component: {fileID: 1274422347}
+  - component: {fileID: 1274422348}
   m_Layer: 0
   m_Name: Key
   m_TagString: Interactable
@@ -5303,6 +5305,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultCursor: {fileID: 2800000, guid: c63a54ea45b38eb4d885614761c41837, type: 3}
   interactableObject: {fileID: 2800000, guid: 450d02caf17bbc04ca0d3a7e3714087b, type: 3}
+--- !u!208 &1274422348
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274422341}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1382913372
 GameObject:
   m_ObjectHideFlags: 0
@@ -5396,7 +5414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f594ed249219682469874722697f1657, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.45
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f594ed249219682469874722697f1657, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6993,11 +7011,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6648438412973855904, guid: 8337ccbafa112444bba27d05f2daa569, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6648438412973855904, guid: 8337ccbafa112444bba27d05f2daa569, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.88
+      value: -2.92
       objectReference: {fileID: 0}
     - target: {fileID: 6648438412973855904, guid: 8337ccbafa112444bba27d05f2daa569, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7036,6 +7054,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6648438412973855905, guid: 8337ccbafa112444bba27d05f2daa569, type: 3}
+      propertyPath: m_BaseOffset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6648438412973855905, guid: 8337ccbafa112444bba27d05f2daa569, type: 3}
       propertyPath: m_Acceleration
       value: 50
       objectReference: {fileID: 0}
@@ -7043,13 +7065,17 @@ PrefabInstance:
       propertyPath: m_AngularSpeed
       value: 260
       objectReference: {fileID: 0}
+    - target: {fileID: 6648438412973855905, guid: 8337ccbafa112444bba27d05f2daa569, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 6648438412973855906, guid: 8337ccbafa112444bba27d05f2daa569, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6648438412973855965, guid: 8337ccbafa112444bba27d05f2daa569, type: 3}
       propertyPath: m_Size.y
-      value: 1.745243
+      value: 1.7156452
       objectReference: {fileID: 0}
     - target: {fileID: 6648438412973855965, guid: 8337ccbafa112444bba27d05f2daa569, type: 3}
       propertyPath: m_Center.x
@@ -7057,7 +7083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6648438412973855965, guid: 8337ccbafa112444bba27d05f2daa569, type: 3}
       propertyPath: m_Center.y
-      value: 0.37262148
+      value: 0.86521655
       objectReference: {fileID: 0}
     - target: {fileID: 6648438412973855965, guid: 8337ccbafa112444bba27d05f2daa569, type: 3}
       propertyPath: m_Center.z
