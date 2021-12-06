@@ -9,7 +9,7 @@ using STOP_MODE = FMOD.Studio.STOP_MODE;
 public class PlayerMovement : MonoBehaviour
 {
     
-    FMOD.Studio.EventInstance _moveInstance;
+   // FMOD.Studio.EventInstance _moveInstance;
     Movement _navmeshMover;
     Statistics _statistics;
     Animator _animator;
@@ -67,16 +67,16 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Input.GetMouseButtonUp(0)){
             //_moveInstance.stop(STOP_MODE.ALLOWFADEOUT);
-            _moveInstance.release();
+        //    _moveInstance.release();
             hasPlayedSound = false;
         }
     }
 
     void PlayMoveFeedback(float parameter){
         if (hasPlayedSound == false){
-            _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
-            _moveInstance.setParameterByName("MoveFeedback", parameter);
-            _moveInstance.start();
+           // _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
+            //_moveInstance.setParameterByName("MoveFeedback", parameter);
+           // _moveInstance.start();
             hasPlayedSound = true;
         }
     }
