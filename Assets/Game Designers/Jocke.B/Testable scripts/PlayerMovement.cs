@@ -66,7 +66,9 @@ public class PlayerMovement : MonoBehaviour
                     if (_navmeshMover.pathFound){
                         StartCoroutine(ChangeCursorTemporary(validClickTexture,1f));
                     }
-                    
+                    else{
+                        StartCoroutine(ChangeCursorTemporary(invalidClickTexture,1f));
+                    }
                     
                 }
                 // else if (hit.transform.tag != "Ground" ){
@@ -83,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
                      ChangeAnimationState(PLAYER_WALK);
                      StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
                 }
-                Debug.Log(hit.transform.tag);
+                //Debug.Log(hit.transform.tag);
             }
             else if(!hasHit){
                 _navmeshMover.StopMoving();
@@ -116,7 +118,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     IEnumerator ChangeCursorTemporary(Texture2D texture2D,float variable){
-        Debug.Log("AAAAAAh i went in");
         Cursor.SetCursor(texture2D, Vector2.zero,CursorMode.ForceSoftware);
         yield return new WaitForSeconds(variable) ;
         Cursor.SetCursor(standardCursorTexture, Vector2.zero,CursorMode.ForceSoftware);

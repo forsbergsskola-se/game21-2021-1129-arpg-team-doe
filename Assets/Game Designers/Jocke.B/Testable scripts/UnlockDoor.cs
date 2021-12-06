@@ -65,8 +65,8 @@ public class UnlockDoor : MonoBehaviour{
     }
 
     void OpenDoor(){
-        _collider.enabled = false;
-        _obstacle.enabled = false;
+        // _collider.enabled = false;
+        // _obstacle.enabled = false;
         //Test
         _animator.enabled = true;
         //Test
