@@ -9,6 +9,8 @@ using STOP_MODE = FMOD.Studio.STOP_MODE;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] Texture2D validClickTexture;
+    [SerializeField] Texture2D invalidClickTexture;
+    
     [SerializeField] Texture2D standardCursorTexture;
 
     
@@ -55,27 +57,41 @@ public class PlayerMovement : MonoBehaviour
             bool hasHit = Physics.Raycast(ray, out hit);
             if (hasHit){
                 
+                //Hits Ground
                 if (hit.transform.tag == "Ground"){
                     PlayMoveFeedback(0f);
                     //_moveInstance.release();
                     _navmeshMover.Mover(hit.point);
                     ChangeAnimationState(PLAYER_RUN);
-                    
-                    StartCoroutine(ChangeCursorTemporary(1f));
-                    
+                    if (_navmeshMover.pathFound){
+                        StartCoroutine(ChangeCursorTemporary(validClickTexture,1f));
+                    }
                     
                     
                 }
+                // else if (hit.transform.tag != "Ground" ){
+                //     PlayMoveFeedback(1f);
+                //     
+                //     ChangeAnimationState(PLAYER_WALK);
+                // }
+                
+                
+                //Hits something
                 else{
                     PlayMoveFeedback(1f);
                     _navmeshMover.Mover(hit.point - _distanceToTarget.normalized * 1);
                      ChangeAnimationState(PLAYER_WALK);
+                     StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
                 }
                 Debug.Log(hit.transform.tag);
             }
-            else if (!_navmeshMover.pathFound){
-                
+            else if(!hasHit){
+                _navmeshMover.StopMoving();
+                PlayMoveFeedback(1f);
+                StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
+                ChangeAnimationState(PLAYER_WALK);
             }
+            
         }
         else if (Input.GetMouseButtonUp(0)){
             _moveInstance.stop(STOP_MODE.ALLOWFADEOUT);
@@ -99,9 +115,9 @@ public class PlayerMovement : MonoBehaviour
         _currentState = newState;
     }
 
-    IEnumerator ChangeCursorTemporary(float variable){
+    IEnumerator ChangeCursorTemporary(Texture2D texture2D,float variable){
         Debug.Log("AAAAAAh i went in");
-        Cursor.SetCursor(validClickTexture, Vector2.zero,CursorMode.Auto);
+        Cursor.SetCursor(texture2D, Vector2.zero,CursorMode.Auto);
        yield return new WaitForSeconds(variable) ;
        Cursor.SetCursor(standardCursorTexture, Vector2.zero,CursorMode.Auto);
     }
