@@ -335,6 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   validClickTexture: {fileID: 2800000, guid: 5272d18cc54beb845a9345fd442c0bb8, type: 3}
+  invalidClickTexture: {fileID: 2800000, guid: 0f2bdd9c9686bcf4a955a6f55fce217e, type: 3}
   standardCursorTexture: {fileID: 2800000, guid: c63a54ea45b38eb4d885614761c41837, type: 3}
 --- !u!114 &51088863
 MonoBehaviour:
@@ -366,7 +367,7 @@ MonoBehaviour:
   knowledge: 0
   reflex: 0
   luck: 0
-  interactRange: 10
+  interactRange: 3
   attackRange: 0
   maxHP: 0
   dealingDmg: 0
@@ -3974,7 +3975,7 @@ GameObject:
   - component: {fileID: 1001156142}
   m_Layer: 0
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -5192,7 +5193,7 @@ GameObject:
   - component: {fileID: 1274422347}
   m_Layer: 0
   m_Name: Key
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
