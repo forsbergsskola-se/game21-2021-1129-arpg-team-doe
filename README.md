@@ -13,8 +13,7 @@ Team members and roles:
 * Pavel Sarmiento, engineer [LinkedIn](https://www.linkedin.com/in/pavel-sarmiento-5483661a3/)
 * Efraim Kent, engineer [LinkedIn](https://www.linkedin.com/in/efraim-kent-01b8a33b/)
 * Jack Fors Ahlberg, designer
-
-
+* Filip Suthawan, Artist
 
 ## Design Documents
 
