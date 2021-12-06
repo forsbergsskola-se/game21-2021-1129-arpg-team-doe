@@ -108,6 +108,9 @@ public class PlayerMovement : MonoBehaviour
             hasPlayedSound = true;
         }
     }
+    
+    
+    
 
     void ChangeAnimationState(string newState){
         if (_currentState == newState) return;

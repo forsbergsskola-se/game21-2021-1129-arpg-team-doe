@@ -16,9 +16,11 @@ public class UnlockDoor : MonoBehaviour{
     BoxCollider _collider;
     NavMeshObstacle _obstacle;
     Animator _animator;
+    FMOD.Studio.EventInstance _doorInstance;
     
     bool locked = true;
     bool conditionCompleted;
+    bool hasPlayedSound;
     float distance;
 
     void Start(){
@@ -53,6 +55,12 @@ public class UnlockDoor : MonoBehaviour{
         Debug.Log(distance + " = Distance to door" + "Locked?" +locked);
         if (!locked && distance < actionRange){
             OpenDoor();
+            PlayDoorSound(0f);
+            hasPlayedSound = false;
+        }
+        if (locked && distance < actionRange){
+            PlayDoorSound(1f);
+            hasPlayedSound = false;
         }
     }
 
@@ -62,5 +70,14 @@ public class UnlockDoor : MonoBehaviour{
         //Test
         _animator.enabled = true;
         //Test
+    }
+    
+    void PlayDoorSound(float parameter){
+        if (hasPlayedSound == false){
+            _doorInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Door");
+            _doorInstance.setParameterByName("OpenLocked", parameter);
+            _doorInstance.start();
+            hasPlayedSound = true;
+        }
     }
 }
