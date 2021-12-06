@@ -8,6 +8,9 @@ using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] Texture2D validClickTexture;
+    [SerializeField] Texture2D standardCursorTexture;
+
     
    // FMOD.Studio.EventInstance _moveInstance;
     Movement _navmeshMover;
@@ -18,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     string _currentState;
     float _interactionRange;
     bool hasPlayedSound;
+    bool hasWaitedForTime;
     Vector3 _distanceToTarget;
 
     const string PLAYER_RUN = "playerRun";
@@ -56,6 +60,11 @@ public class PlayerMovement : MonoBehaviour
                     //_moveInstance.release();
                     _navmeshMover.Mover(hit.point);
                     ChangeAnimationState(PLAYER_RUN);
+                    
+                    StartCoroutine(ChangeCursorTemporary(1f));
+                    
+                    
+                    
                 }
                 else{
                     PlayMoveFeedback(1f);
@@ -63,6 +72,9 @@ public class PlayerMovement : MonoBehaviour
                      ChangeAnimationState(PLAYER_WALK);
                 }
                 Debug.Log(hit.transform.tag);
+            }
+            else if (!_navmeshMover.pathFound){
+                
             }
         }
         else if (Input.GetMouseButtonUp(0)){
@@ -85,5 +97,15 @@ public class PlayerMovement : MonoBehaviour
         if (_currentState == newState) return;
         _animator.Play(newState);
         _currentState = newState;
+    }
+
+    IEnumerator ChangeCursorTemporary(float variable){
+        Debug.Log("AAAAAAh i went in");
+        Cursor.SetCursor(validClickTexture, Vector2.zero,CursorMode.Auto);
+       yield return new WaitForSeconds(variable) ;
+        //hasWaitedForTime = true;
+        Cursor.SetCursor(standardCursorTexture, Vector2.zero,CursorMode.Auto);
+        
+
     }
 }

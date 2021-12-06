@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour
 {
     NavMeshAgent _navMeshAgent;
     NavMeshPath _path;
-    
+    internal bool pathFound;
     void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -16,7 +16,7 @@ public class Movement : MonoBehaviour
 
     public void Mover(Vector3 target){
         NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, _path);
-        bool pathFound = _path.status == NavMeshPathStatus.PathComplete;
+        pathFound= _path.status == NavMeshPathStatus.PathComplete;
         if (pathFound){
             _navMeshAgent.isStopped = false;
             _navMeshAgent.destination = target;
