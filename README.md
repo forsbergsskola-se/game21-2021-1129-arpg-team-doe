@@ -15,6 +15,7 @@ Team members and roles:
 * Jack Fors Ahlberg, designer
 * Filip Suthawan, Artist
 * Ava Blixt, Artist
+* Mathilda Christiansson, Artist
 
 ## Design Documents
 
