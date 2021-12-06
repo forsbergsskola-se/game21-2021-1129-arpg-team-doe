@@ -14,6 +14,7 @@ Team members and roles:
 * Efraim Kent, engineer [LinkedIn](https://www.linkedin.com/in/efraim-kent-01b8a33b/)
 * Jack Fors Ahlberg, designer
 * Filip Suthawan, Artist
+* Ava Blixt, Artist
 
 ## Design Documents
 
