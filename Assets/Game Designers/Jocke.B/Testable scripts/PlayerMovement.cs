@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Texture2D standardCursorTexture;
 
     
-   // FMOD.Studio.EventInstance _moveInstance;
+    FMOD.Studio.EventInstance _moveInstance;
     Movement _navmeshMover;
     Statistics _statistics;
     Animator _animator;
@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
         _interactionRange = _statistics.InteractRange;
 
         _animator = GetComponentInChildren<Animator>();
-        // _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
+         _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
 
         //_moveInstance.setVolume(50f);
 
@@ -78,17 +78,17 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         else if (Input.GetMouseButtonUp(0)){
-            //_moveInstance.stop(STOP_MODE.ALLOWFADEOUT);
-        //    _moveInstance.release();
+            _moveInstance.stop(STOP_MODE.ALLOWFADEOUT);
+            _moveInstance.release();
             hasPlayedSound = false;
         }
     }
 
     void PlayMoveFeedback(float parameter){
         if (hasPlayedSound == false){
-           // _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
-            //_moveInstance.setParameterByName("MoveFeedback", parameter);
-           // _moveInstance.start();
+            _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
+            _moveInstance.setParameterByName("MoveFeedback", parameter);
+            _moveInstance.start();
             hasPlayedSound = true;
         }
     }
@@ -103,9 +103,6 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("AAAAAAh i went in");
         Cursor.SetCursor(validClickTexture, Vector2.zero,CursorMode.Auto);
        yield return new WaitForSeconds(variable) ;
-        //hasWaitedForTime = true;
-        Cursor.SetCursor(standardCursorTexture, Vector2.zero,CursorMode.Auto);
-        
-
+       Cursor.SetCursor(standardCursorTexture, Vector2.zero,CursorMode.Auto);
     }
 }
