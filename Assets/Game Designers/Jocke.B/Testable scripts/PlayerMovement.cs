@@ -108,9 +108,6 @@ public class PlayerMovement : MonoBehaviour
             hasPlayedSound = true;
         }
     }
-    
-    
-    
 
     void ChangeAnimationState(string newState){
         if (_currentState == newState) return;
@@ -120,8 +117,8 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator ChangeCursorTemporary(Texture2D texture2D,float variable){
         Debug.Log("AAAAAAh i went in");
-        Cursor.SetCursor(texture2D, Vector2.zero,CursorMode.Auto);
-       yield return new WaitForSeconds(variable) ;
-       Cursor.SetCursor(standardCursorTexture, Vector2.zero,CursorMode.Auto);
+        Cursor.SetCursor(texture2D, Vector2.zero,CursorMode.ForceSoftware);
+        yield return new WaitForSeconds(variable) ;
+        Cursor.SetCursor(standardCursorTexture, Vector2.zero,CursorMode.ForceSoftware);
     }
 }
