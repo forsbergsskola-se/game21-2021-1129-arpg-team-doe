@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public interface IDamageReceiver{
+    void ReceiveDamage(int damage);
+}
+
 public class DealDamage : MonoBehaviour{
 
     Statistics _statistics;
@@ -12,7 +16,6 @@ public class DealDamage : MonoBehaviour{
     float _distance;
     bool isRanged;
 
-
     void Start(){
         _statistics = GetComponent<Statistics>();
         _attackRange = _statistics.AttackRange;
@@ -20,41 +23,31 @@ public class DealDamage : MonoBehaviour{
         InvokeRepeating(nameof(Attack),0, 1f/ _attackSpeed);
     }
 
-    public int DoMeleeDamage(int damage, Transform target){ 
+    public int Attack(int damage, GameObject target){
+        if (isRanged){
+            damage = DoRangedDamage(damage, target);
+        }
+        else{
+            damage = DoMeleeDamage(damage, target);
+        }
+        target.GetComponent<IDamageReceiver>()?.ReceiveDamage(damage); // check!!!
+        return damage;
+    }
+
+    int DoMeleeDamage(int damage, GameObject target){
         return DamageManipulation(damage, target, _statistics.Strength);
     }
-    
-    public int DoRangedDamage(int damage, Transform target){
+
+    int DoRangedDamage(int damage, GameObject target){
         return DamageManipulation(damage, target, _statistics.Dexterity);
     }
 
-    void Attack(int damage, Transform target){
-        if (isRanged){
-            DoRangedDamage(damage, target);
-        }
-        else{
-            DoMeleeDamage(damage, target);
-        }
-        // StartCoroutine()
-                
-    }
-    
-
-    // IEnumerator Wait(){
-            // Attack 
-            // yield return new waitforseconds()
-            
-            
-  //  //    // yield return new WaitForSeconds(_statistics.Dexterity * -0.01f + 1);
-    // }
-
-    int DamageManipulation(int damage, Transform target, float modifier ){
-        _distance = Vector3.Distance(transform.position, target.position);
+    int DamageManipulation(int damage, GameObject target, float modifier ){
+        _distance = Vector3.Distance(transform.position, target.transform.position);
         if (_distance <= _attackRange){
             //Attack
             damage = Mathf.RoundToInt((modifier * 0.01f + 1) * damage);
         }
-
         return damage;
     }
 }

@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
 
-public class TakeDamage : MonoBehaviour{
-    
+public class TakeDamage : MonoBehaviour, IDamageReceiver{
+
     Statistics _stats;
     Random random;
 
@@ -21,11 +21,11 @@ public class TakeDamage : MonoBehaviour{
     public void ReceiveDamage(int damage){ //Toughness should affect this
         _currentHealth -= DamageCalc(damage);
     }
-    
+
     bool DodgeDamage(){
         var dodgeChance = _stats.Reflex;
-        
-        if (random.NextDouble() < dodgeChance){ 
+
+        if (random.NextDouble() < dodgeChance){
             _dodged = true;
         }
         else{
