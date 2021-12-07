@@ -38,6 +38,7 @@ public class TakeDamage : MonoBehaviour, IDamageReceiver{
         if (DodgeDamage()){
             dmg = 0;
         }
+        Debug.Log("Receiving " + dmg + " Damage");
         return dmg;
     }
 }

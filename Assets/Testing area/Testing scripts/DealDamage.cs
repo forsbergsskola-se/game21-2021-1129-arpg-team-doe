@@ -31,6 +31,7 @@ public class DealDamage : MonoBehaviour{
             damage = DoMeleeDamage(damage, target);
         }
         target.GetComponent<IDamageReceiver>()?.ReceiveDamage(damage); // check!!!
+        Debug.Log("Dealing " + damage + " Damage");
         return damage;
     }
 
