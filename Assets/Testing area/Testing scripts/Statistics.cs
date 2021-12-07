@@ -45,7 +45,7 @@ public class Statistics : MonoBehaviour{
     }
     public float AttackSpeed{
         get{ return attackSpeed; }
-        private set{ attackSpeed = value; }
+        private set{ attackSpeed = value * (this.dexterity * 0.01f + 1); }
     }
     
 
@@ -71,6 +71,10 @@ public class Statistics : MonoBehaviour{
 
     void Update(){
         DealDmg(); 
+    }
+
+    float AttacksPerSecond(){
+        return attackSpeed * (this.dexterity * 0.01f + 1);
     }
 
     public void DealDmg(){ //used for debug
