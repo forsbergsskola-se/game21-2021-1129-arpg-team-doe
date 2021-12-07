@@ -6,6 +6,32 @@ using UnityEngine;
 public class Statistics : MonoBehaviour{
     
     [SerializeField] float toughness, strength, dexterity, knowledge, reflex, luck, interactRange, attackRange;
+
+    public float Toughness{
+        get => toughness;
+        private set => toughness = value;
+    }
+    public float Strength{
+        get => strength;
+        private set => strength = value;
+    }
+    public float Dexterity{
+        get => dexterity;
+        private set => dexterity = value;
+    }
+    public float Knowledge{
+        get => knowledge;
+        private set => knowledge = value;
+    }
+    public float Reflex{ //0-100 dodgechance
+        get => reflex;
+        private set => reflex = value;
+    }
+    public float Luck{
+        get => luck;
+        private set => luck = value;
+    }
+
     public int maxHP;
     public int currentHP { get; private set; }
 
@@ -20,17 +46,17 @@ public class Statistics : MonoBehaviour{
 
     public bool dealingDmg; //used for debug
 
-
-    public Statistics(float toughness, float strength, float dexterity, float knowledge, float reflex, float luck,float interactRange, float attackRange, int maxHp){
+    public Statistics(float toughness, float strength, float dexterity, float knowledge, float reflex, float luck, float interactRange, float attackRange, int maxHp, bool dealingDmg){
         this.toughness = toughness;
         this.strength = strength;
         this.dexterity = dexterity;
         this.knowledge = knowledge;
-        this.reflex = reflex;
+        this.reflex = reflex; 
         this.luck = luck;
         this.interactRange = interactRange;
         this.attackRange = attackRange;
-        this.maxHP = maxHp;
+        maxHP = maxHp;
+        this.dealingDmg = dealingDmg;
     }
 
     void Start(){
