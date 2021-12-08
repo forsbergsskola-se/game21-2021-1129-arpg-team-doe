@@ -41,6 +41,19 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update(){
+        // if player is dead, do nothing
+        if(!_statistics.IsAlive) return;
+        
+        // if player is in combat, combat
+        if (InteractWithCombat()){
+            return;
+        }
+        
+        // if target is interactable, interact
+        // if click on the ground, move to cursor
+        
+        
+        
         MoveToCursor();
         _distanceToTarget = hit.point - transform.position ;
         
@@ -52,6 +65,10 @@ public class PlayerController : MonoBehaviour
             _navmeshMover.StopMoving();
             ChangeAnimationState(PLAYER_WALK);
         }
+    }
+
+    bool InteractWithCombat(){
+        return false;
     }
 
     void MoveToCursor(){

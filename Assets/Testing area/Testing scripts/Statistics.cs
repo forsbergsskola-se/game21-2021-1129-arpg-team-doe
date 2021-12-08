@@ -47,9 +47,10 @@ public class Statistics : MonoBehaviour{
         get{ return attackSpeed; }
         private set{ attackSpeed = value * (this.dexterity * 0.01f + 1); }
     }
-    
 
-    public bool dealingDmg; //used for debug
+    public bool IsAlive => currentHP > 0;
+
+        public bool dealingDmg; //used for debug
 
     public Statistics(float toughness, float strength, float dexterity, float knowledge, float reflex, float luck, float interactRange, float attackRange, float attackSpeed, int maxHp, bool dealingDmg){
         this.toughness = toughness;
