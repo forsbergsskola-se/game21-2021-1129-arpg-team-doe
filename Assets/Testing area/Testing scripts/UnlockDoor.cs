@@ -10,7 +10,7 @@ public class UnlockDoor : MonoBehaviour{
 
     [SerializeField] float actionRange;
     
-    PlayerMovement player;
+    PlayerController player;
     Conditions _conditions; 
     CursorOnDoor _cursorOnDoor;
     BoxCollider _collider;
@@ -24,7 +24,7 @@ public class UnlockDoor : MonoBehaviour{
     float distance;
 
     void Start(){
-        player = FindObjectOfType<PlayerMovement>();
+        player = FindObjectOfType<PlayerController>();
         _conditions = FindObjectOfType<Conditions>();
         _cursorOnDoor = FindObjectOfType<CursorOnDoor>();
         _collider = GetComponent<BoxCollider>();

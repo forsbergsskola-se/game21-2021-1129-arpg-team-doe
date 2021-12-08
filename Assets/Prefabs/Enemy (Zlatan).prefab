@@ -653,10 +653,11 @@ GameObject:
   - component: {fileID: 615129224609624724}
   - component: {fileID: 2402392299167721498}
   - component: {fileID: 1209891564928626856}
-  - component: {fileID: 5267292073064204666}
+  - component: {fileID: 6801725445022384116}
+  - component: {fileID: 1499735538449174856}
   m_Layer: 0
   m_Name: Enemy (Zlatan)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -855,7 +856,7 @@ MonoBehaviour:
   interactRange: 0
   attackRange: 0
   attackSpeed: 0
-  maxHP: 0
+  maxHP: 20
   dealingDmg: 0
 --- !u!114 &1209891564928626856
 MonoBehaviour:
@@ -870,7 +871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1386220651167043233}
---- !u!114 &5267292073064204666
+--- !u!114 &6801725445022384116
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -879,11 +880,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 3143738041877798712}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e03ec8dcf1ae437488bcb0127f86b932, type: 3}
+  m_Script: {fileID: 11500000, guid: c7339576714a584429c762c90bef9491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCursor: {fileID: 2800000, guid: c63a54ea45b38eb4d885614761c41837, type: 3}
-  interactableObject: {fileID: 2800000, guid: 320d423528b0c2040bc426544ae0bc59, type: 3}
+--- !u!114 &1499735538449174856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3143738041877798712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b09ae97b484b5b44a1e6db1192cbbd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  critDamageMultiplier: 1.5
 --- !u!1 &3143738042323338802
 GameObject:
   m_ObjectHideFlags: 0

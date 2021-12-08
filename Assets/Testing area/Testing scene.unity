@@ -227,22 +227,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1386220650913189916, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1386220650913189916, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1386220651167043233, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2402392299167721498, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: maxHP
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 3143738041877798692, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -291,12 +275,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (Zlatan) (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: _healthBar
-      value: 
-      objectReference: {fileID: 1507483907}
+    - target: {fileID: 3143738041877798712, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 1209891564928626856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+    - {fileID: 5267292073064204666, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
 --- !u!1 &24169356
 GameObject:
@@ -485,6 +469,14 @@ MonoBehaviour:
   invalidClickTexture: {fileID: 2800000, guid: 0f2bdd9c9686bcf4a955a6f55fce217e, type: 3}
   standardCursorTexture: {fileID: 2800000, guid: c63a54ea45b38eb4d885614761c41837, type: 3}
   distanceToKeepFromKey: 3
+  _navmeshMover: {fileID: 0}
+  _statistics: {fileID: 0}
+  _animator: {fileID: 0}
+  _currentState: 
+  _interactionRange: 0
+  hasPlayedSound: 0
+  hasWaitedForTime: 0
+  _distanceToTarget: {x: 0, y: 0, z: 0}
 --- !u!114 &51088889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,11 +489,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ee2f15259042c24d83e3cde42986425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &51804115 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1386220651167043233, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-  m_PrefabInstance: {fileID: 3143738041947586007}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &103270043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -666,24 +653,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!1 &366483364 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3143738041877798712, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-  m_PrefabInstance: {fileID: 3143738041947586007}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &366483377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 366483364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f0907ec0385109469afe75f4c7166f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _healthBar: {fileID: 51804115}
 --- !u!1 &475430777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1951,11 +1920,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1507483907 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1386220651167043233, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-  m_PrefabInstance: {fileID: 17086527}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1725746314
 GameObject:
   m_ObjectHideFlags: 0
@@ -2268,24 +2232,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1903715727 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3143738041877798712, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-  m_PrefabInstance: {fileID: 17086527}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1903715741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1903715727}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f0907ec0385109469afe75f4c7166f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _healthBar: {fileID: 1507483907}
 --- !u!1 &2049258884
 GameObject:
   m_ObjectHideFlags: 0
@@ -2490,6 +2436,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6648438412973855966, guid: 8337ccbafa112444bba27d05f2daa569, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8593748415892266518, guid: 8337ccbafa112444bba27d05f2daa569, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -2504,10 +2454,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2402392299167721498, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: maxHP
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 3143738041877798692, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -2556,11 +2502,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (Zlatan)
       objectReference: {fileID: 0}
-    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: _healthBar
-      value: 
-      objectReference: {fileID: 51804115}
-    m_RemovedComponents:
-    - {fileID: 5267292073064204666, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-    - {fileID: 1209891564928626856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}

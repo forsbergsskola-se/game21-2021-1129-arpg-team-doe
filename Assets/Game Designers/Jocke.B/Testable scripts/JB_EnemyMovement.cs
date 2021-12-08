@@ -132,6 +132,6 @@ public class JB_EnemyMovement : MonoBehaviour
    void SavePosition(){
       savedPosition = this.transform.position;
       activeSavedPosition = true;
-      Debug.Log(savedPosition);
+//      Debug.Log(savedPosition);
    }
 }
