@@ -4,9 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour{
+public interface IHealthbar{
+    void SetSliderCurrentHealth(int currentHealth);
+}
+public class HealthBar : MonoBehaviour, IHealthbar{
 
     Statistics _statistics;
+    TakeDamage _takeDamage;
 
     public Slider slider;
     public Gradient gradient;
@@ -15,14 +19,10 @@ public class HealthBar : MonoBehaviour{
     public void Start(){
         _statistics = GetComponentInParent<Statistics>();
         var maxHP = _statistics.maxHP;
-        SetSliderMaxHealth(maxHP); 
+        SetSliderMaxHealth(maxHP);
     }
 
-    void Update(){
-        SetSliderHealth();
-    }
-
-    public void SetSliderMaxHealth(float maxHP){
+    void SetSliderMaxHealth(float maxHP){
         slider.maxValue = maxHP;
         slider.value = maxHP;
 
@@ -30,8 +30,8 @@ public class HealthBar : MonoBehaviour{
         fill.color = gradient.Evaluate(1f);
     }
 
-    public void SetSliderHealth(){
-        var currentHealth = _statistics.currentHP;
+    public void SetSliderCurrentHealth(int currentHealth){
+        currentHealth = _statistics.currentHP;
         slider.value = currentHealth;
 
         // changes the health bar gradient to whatever the health is
