@@ -57,7 +57,6 @@ public class EnemyMovement : MonoBehaviour
       }
       
       if (_target == null){
-         
          WalkBackAndSetIdle();
       }
       
