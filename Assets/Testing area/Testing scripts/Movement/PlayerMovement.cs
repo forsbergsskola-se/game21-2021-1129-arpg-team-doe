@@ -76,17 +76,15 @@ public class PlayerMovement : MonoBehaviour
                         ChangeAnimationState(PLAYER_WALK);
                     }
                 }
-                
-                
+
                 // else if (hit.transform.tag != "Ground" ){
                 //     PlayMoveFeedback(1f);
                 //     
                 //     ChangeAnimationState(PLAYER_WALK);
                 // }
-                
-                
+
                 //Hits something
-                else{
+                else if(hit.transform.tag == "Interactable"){
                     PlayMoveFeedback(1f);
                     Vector3 newDestination = hit.point - _distanceToTarget.normalized * 1;
                     //_navmeshMover.Mover(hit.point - _distanceToTarget.normalized * 1);
@@ -97,6 +95,38 @@ public class PlayerMovement : MonoBehaviour
                             ChangeAnimationState(PLAYER_RUN);
                         StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
                     }
+                }
+                
+                else if(hit.transform.tag == "Enemy"){ // if hit is enemy
+                    GameObject enemy = hit.transform.GetComponent<TakeDamage>().gameObject;
+                    int enemyHealth = enemy.GetComponent<Statistics>().currentHP;
+                    
+                    // 1. if enemy is not alive, do nothing
+                    if (enemyHealth <= 0){  
+                        Debug.Log("Enemy is dead");
+                        return;
+                    }
+
+                    bool isInAttackRange = _distanceToTarget.magnitude < 2f; // just for debug whether player is in attack range
+                    
+                    // 2. if enemy is alive and player is in attack range, attack
+                    if (enemyHealth > 0 && isInAttackRange){ 
+                        GetComponent<DealDamage>().Attack(5, enemy);
+                        Debug.Log("Attacking");
+                    }
+
+                    // 3. if enemy is alive and there is no valid path, do nothing
+                    if (enemyHealth > 0 && !_navmeshMover.pathFound){ 
+                        Debug.Log("No valid path to the enemy.");
+                        return;
+                    }
+
+                    // 4. if enemy is alive and player is not in attack range and there is valid path, go to the enemy
+                    if (enemyHealth > 0 && !isInAttackRange){
+                        Vector3 newDestination = hit.point - _distanceToTarget.normalized * 1;
+                        _navmeshMover.Mover(newDestination);
+                    }
+
                 }
                 //Debug.Log(hit.transform.tag);
             }

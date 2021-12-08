@@ -71,13 +71,13 @@ public class EnemyMovement : MonoBehaviour
       if (needsToWalkBack){
          _movement.Mover(savedPosition);
       }
-      Debug.Log(_targetDetection.DistanceToTarget(savedPosition, transform));
+      //Debug.Log(_targetDetection.DistanceToTarget(savedPosition, transform));
 
       //Checks if this unit is close enough to saved position and already has an active saved position 
       if (_targetDetection.DistanceToTarget(savedPosition, transform) < closeEnoughToSavedPosition &&
           activeSavedPosition){
          SetIdle();
-         Debug.Log("AM I SAVING");
+         //Debug.Log("AM I SAVING");
       }
    }
 
@@ -131,6 +131,6 @@ public class EnemyMovement : MonoBehaviour
    void SavePosition(){
       savedPosition = this.transform.position;
       activeSavedPosition = true;
-      Debug.Log(savedPosition);
+//      Debug.Log(savedPosition);
    }
 }
