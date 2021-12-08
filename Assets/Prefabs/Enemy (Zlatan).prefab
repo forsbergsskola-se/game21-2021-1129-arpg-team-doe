@@ -741,9 +741,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 1.9661858
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.86123335, z: 0}
 --- !u!195 &3143738041877798691
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -806,6 +806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02db91af0b4f5e249bcc698c975c0592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _healthBar: {fileID: 1386220651167043233}
   maxFollowRange: 30
   closeEnoughToSavedPosition: 3
 --- !u!114 &3461945314607559741
@@ -870,7 +871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f0907ec0385109469afe75f4c7166f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 1386220651167043233}
+  _healthBar: {fileID: 1386220651167043233}
 --- !u!114 &6801725445022384116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -896,6 +897,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   critDamageMultiplier: 1.5
+  critChance: 0.5
+  weaponDamage: 5
 --- !u!1 &3143738042323338802
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,7 +1013,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1b4737688768e7e4aaebc1e417c93747, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.18
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1b4737688768e7e4aaebc1e417c93747, type: 3}
       propertyPath: m_LocalPosition.z
