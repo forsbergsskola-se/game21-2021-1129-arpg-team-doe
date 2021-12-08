@@ -14,13 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   type: 0
-  description: 
-  restoreHealthValue: 100
+  price: 100
+  weight: 1.5
+  description: This pie is well beyond its expiration date, but when has that ever
+    stopped you before?
+  restoreHealthValue: 30
   buffDuration: 120
   toughnessBuff: 0
   strengthBuff: 0
   dexterityBuff: 0
   knowledgeBuff: 0
-  luckBuff: 0
+  luckBuff: -1
   attackSpeedBuff: 0
   damageBuff: 0
+  consumeSound: {fileID: 0}

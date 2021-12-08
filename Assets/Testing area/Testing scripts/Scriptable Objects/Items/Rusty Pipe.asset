@@ -12,15 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89ad8768f5907443bb949cb069eee6a, type: 3}
   m_Name: Rusty Pipe
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 1227366717112117007, guid: 725e968b6cbac0046a2e231b93ec4d28, type: 3}
   type: 1
-  description: 
+  price: 125
+  weight: 0
+  description: This in a rusty pipe.
   equipmentPrefab: {fileID: 0}
-  equipmentName: 
+  equipmentName: Rusty Pipe
   toughnessBuff: 0
   strengthBuff: 0
-  dexterityBuff: 0
+  dexterityBuff: 1
   knowledgeBuff: 0
   luckBuff: 0
   attackSpeedBuff: 0
-  damageBuff: 0
+  attackSpeed: 0
+  damage: 0

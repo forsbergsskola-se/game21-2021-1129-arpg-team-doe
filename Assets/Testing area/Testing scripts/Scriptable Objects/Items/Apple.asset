@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   type: 0
-  price: 0
-  description: 
-  restoreHealthValue: 0
-  buffDuration: 0
+  price: 50
+  weight: 0.2
+  description: This is an apple in perfect condition, a rare sight nowadays.
+  restoreHealthValue: 370
+  buffDuration: 6
   toughnessBuff: 0
   strengthBuff: 0
   dexterityBuff: 0

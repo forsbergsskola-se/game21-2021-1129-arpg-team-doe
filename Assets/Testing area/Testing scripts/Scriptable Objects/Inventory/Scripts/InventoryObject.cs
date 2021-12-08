@@ -10,7 +10,9 @@ public class InventoryObject : ScriptableObject{
 
       bool hasItem = false;
       for (int i = 0; i < Container.Count; i++){
+         //Here we check if the container already has the item
          if (Container[i].item == _item){
+            //If we have the item, we add to the amount of that item, instead of adding the item itself
             Container[i].AddAmount(_amount);
             hasItem = true;
             break;
@@ -18,6 +20,7 @@ public class InventoryObject : ScriptableObject{
       }
 
       if (!hasItem){
+         //If we do not have the item already, we add the item
          Container.Add(new InventorySlot(_item,_amount));
       }
    }

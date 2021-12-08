@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using FMOD;
 using FMODUnity;
+using UnityEditor;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
@@ -13,6 +15,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Texture2D standardCursorTexture;
     [SerializeField] float distanceToKeepFromKey = 3f;
     [SerializeField] float attackRange = 2f;
+
+    public InventoryObject inventory;
     
     FMOD.Studio.EventInstance _moveInstance;
     Movement _navmeshMover;
@@ -58,6 +62,21 @@ public class PlayerController : MonoBehaviour
             _navmeshMover.StopMoving();
             ChangeAnimationState(PLAYER_WALK);
         }
+    }
+
+    void OnTriggerEnter(Collider other){
+        //Check if other has Item script
+        if (other.GetComponent<Item>() != null){
+            var item = other.GetComponent<Item>();
+            //Adds item to inventory
+            inventory.AddItem(item.item	,1);
+            //Destroys the item from the world
+            Destroy(other.gameObject);
+        }
+    }
+
+    void OnApplicationQuit(){
+        inventory.Container.Clear();
     }
 
     bool InteractWithCombat(){
