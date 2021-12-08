@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     FMOD.Studio.EventInstance _moveInstance;
     Movement _navmeshMover;
     Statistics _statistics;
+    TargetDetection _targetDetection;
+    
     Animator _animator;
     RaycastHit hit;
     
@@ -23,43 +25,36 @@ public class PlayerController : MonoBehaviour
     float _interactionRange;
     bool hasPlayedSound;
     bool hasWaitedForTime;
-    Vector3 _distanceToTarget;
 
     const string PLAYER_RUN = "playerRun";
     const string PLAYER_WALK = "playerWalk";
+    
     void Start(){
         _navmeshMover = GetComponent<Movement>();
         _statistics = GetComponent<Statistics>();
+        _targetDetection = GetComponent<TargetDetection>();
         _interactionRange = _statistics.InteractRange;
-
         _animator = GetComponentInChildren<Animator>();
          _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
          //_moveInstance.setVolume(50f);
     }
 
     void Update(){
-        _distanceToTarget = hit.point - transform.position ;
-        // if player is dead, do nothing
-        if(!_statistics.IsAlive) return;
+        if (!_statistics.IsAlive){
+            return;
+        }
         
-        // if player is in combat, combat
         if (InteractWithCombat()){
             return;
         }
 
-        // if target is interactable, interact
         if (InteractWithInteractable()){
-            //return;
+            return;
         }
         
         // if click on the ground, move to cursor
         MoveToCursor();
-        
-        
-        // if (_interactionRange > _distanceToTarget){
-        //     _navmeshMover.StopMoving();
-        // }
-        
+
         if (_navmeshMover._navMeshAgent.remainingDistance < _navmeshMover._navMeshAgent.stoppingDistance){
             _navmeshMover.StopMoving();
             ChangeAnimationState(PLAYER_WALK);
@@ -85,7 +80,9 @@ public class PlayerController : MonoBehaviour
             InteractableObject interactableObject = hit.transform.GetComponent<InteractableObject>();
             if (interactableObject == null) continue;
             if (Input.GetMouseButton(0)){
-                MoveToInteractable(); 
+                Vector3 _distanceToTarget = hit.point - transform.position ;
+                Vector3 positionCloseToTarget = hit.point - _distanceToTarget.normalized * 1;
+                MoveToInteractable(interactableObject, positionCloseToTarget); 
             }
             return true;
         }
@@ -134,13 +131,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void MoveToInteractable(){
+    void MoveToInteractable(InteractableObject target, Vector3 destination){
         PlayMoveFeedback(1f);
-        Vector3 newDestination = hit.point - _distanceToTarget.normalized * 1;
-        //_navmeshMover.Mover(hit.point - _distanceToTarget.normalized * 1);
         //ChangeAnimationState(PLAYER_WALK);
-        if (_distanceToTarget.magnitude > distanceToKeepFromKey){
-            _navmeshMover.Mover(newDestination);
+        float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+        if(distanceToTarget > distanceToKeepFromKey){
+            _navmeshMover.Mover(destination);
             if (_navmeshMover.pathFound)
                 ChangeAnimationState(PLAYER_RUN);
             StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
