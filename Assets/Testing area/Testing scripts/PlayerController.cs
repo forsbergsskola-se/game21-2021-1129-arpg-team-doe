@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update(){
+        _distanceToTarget = hit.point - transform.position ;
         // if player is dead, do nothing
         if(!_statistics.IsAlive) return;
         
@@ -50,12 +51,10 @@ public class PlayerController : MonoBehaviour
         }
         
         // if target is interactable, interact
+        
         // if click on the ground, move to cursor
-        
-        
-        
         MoveToCursor();
-        _distanceToTarget = hit.point - transform.position ;
+        
         
         // if (_interactionRange > _distanceToTarget){
         //     _navmeshMover.StopMoving();
@@ -68,6 +67,15 @@ public class PlayerController : MonoBehaviour
     }
 
     bool InteractWithCombat(){
+        RaycastHit[] hits = Physics.RaycastAll(Camera.main.ScreenPointToRay(Input.mousePosition));
+        foreach (RaycastHit hit in hits){
+            TakeDamage enemy = hit.transform.GetComponent<TakeDamage>();
+            if (enemy == null) continue;
+            if (Input.GetMouseButton(0)){
+                TryToAttackEnemy(enemy); // can be moved to player combat script
+            }
+            return true;
+        }
         return false;
     }
 
@@ -77,7 +85,6 @@ public class PlayerController : MonoBehaviour
             
             bool hasHit = Physics.Raycast(ray, out hit);
             if (hasHit){
-                
                 //Hits Ground
                 if (hit.transform.tag == "Ground"){
                     PlayMoveFeedback(0f);
@@ -114,37 +121,10 @@ public class PlayerController : MonoBehaviour
                     }
                 }
                 
-                else if(hit.transform.tag == "Enemy"){ // if hit is enemy
-                    GameObject enemy = hit.transform.GetComponent<TakeDamage>().gameObject;
-                    int enemyHealth = enemy.GetComponent<Statistics>().currentHP;
-                    
-                    // 1. if enemy is not alive, do nothing
-                    if (enemyHealth <= 0){  
-                        Debug.Log("Enemy is dead");
-                        return;
-                    }
-
-                    bool isInAttackRange = _distanceToTarget.magnitude < 2f; // just for debug whether player is in attack range
-                    
-                    // 2. if enemy is alive and player is in attack range, attack
-                    if (enemyHealth > 0 && isInAttackRange){ 
-                        GetComponent<DealDamage>().Attack(5, enemy);
-                        Debug.Log("Attacking");
-                    }
-
-                    // 3. if enemy is alive and there is no valid path, do nothing
-                    if (enemyHealth > 0 && !_navmeshMover.pathFound){ 
-                        Debug.Log("No valid path to the enemy.");
-                        return;
-                    }
-
-                    // 4. if enemy is alive and player is not in attack range and there is valid path, go to the enemy
-                    if (enemyHealth > 0 && !isInAttackRange){
-                        Vector3 newDestination = hit.point - _distanceToTarget.normalized * 1;
-                        _navmeshMover.Mover(newDestination);
-                    }
-
-                }
+                // else if(hit.transform.tag == "Enemy"){
+                //     // if hit is enemy
+                //     AttackEnemy();
+                // }
                 //Debug.Log(hit.transform.tag);
             }
             else{
@@ -159,6 +139,35 @@ public class PlayerController : MonoBehaviour
             _moveInstance.stop(STOP_MODE.ALLOWFADEOUT);
             _moveInstance.release();
             hasPlayedSound = false;
+        }
+    }
+
+    void TryToAttackEnemy(TakeDamage target){
+        int enemyHealth = target.GetComponent<Statistics>().currentHP;
+
+        // 1. if enemy is not alive, do nothing
+        if (enemyHealth <= 0){
+            Debug.Log("Enemy is dead");
+            return;
+        }
+
+        bool isInAttackRange = Vector3.Distance(transform.position, target.transform.position) < 2f; // just for debug whether player is in attack range
+        
+        // 2. if enemy is alive and player is in attack range, attack
+        if (enemyHealth > 0 && isInAttackRange){
+            GetComponent<DealDamage>().Attack(5, target.gameObject);
+            Debug.Log("Attacking");
+        }
+
+        // 3. if enemy is alive and there is no valid path, do nothing
+        if (enemyHealth > 0 && !_navmeshMover.pathFound){
+            Debug.Log("No valid path to the enemy.");
+            return;
+        }
+
+        // 4. if enemy is alive and player is not in attack range and there is valid path, go to the enemy
+        if (enemyHealth > 0 && !isInAttackRange){
+            _navmeshMover.Mover(target.transform.position);
         }
     }
 
