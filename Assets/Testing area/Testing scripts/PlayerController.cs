@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
     Animator _animator;
     RaycastHit hit;
-    
+
     string _currentState;
     float _interactionRange;
     bool hasPlayedSound;
@@ -82,10 +82,11 @@ public class PlayerController : MonoBehaviour
     bool InteractWithCombat(){
         RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
         foreach (RaycastHit hit in hits){
-            TakeDamage enemy = hit.transform.GetComponent<TakeDamage>();
+            GameObject enemy = hit.transform.GetComponent<TakeDamage>()?.gameObject;
             if (enemy == null) continue;
             if (Input.GetMouseButton(0)){
-                TryToAttackEnemy(enemy); // can be moved to player combat script
+                //TryToAttackEnemy(enemy);
+                GetComponent<DealDamage>().GetAttackTarget(enemy);
             }
             return true;
         }
@@ -95,7 +96,7 @@ public class PlayerController : MonoBehaviour
     bool InteractWithInteractable(){
         RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
         foreach (RaycastHit hit in hits){
-            InteractableObject interactableObject = hit.transform.GetComponent<InteractableObject>();
+            GameObject interactableObject = hit.transform.GetComponent<InteractableObject>()?.gameObject;
             if (interactableObject == null) continue;
             if (Input.GetMouseButton(0)){
                 Vector3 positionCloseToTarget = hit.point - (hit.point - transform.position).normalized * 1;
@@ -111,11 +112,12 @@ public class PlayerController : MonoBehaviour
             Ray ray = GetMouseRay();
             bool hasHit = Physics.Raycast(ray, out hit);
             if (hasHit){
-                if (hit.transform.tag == "Ground"){
+                if (hit.transform.CompareTag("Ground")){
                     PlayMoveFeedback(0f);
                     //_moveInstance.release();
                     _navmeshMover.Mover(hit.point);
                     if (_navmeshMover.pathFound){
+                        GetComponent<DealDamage>().CancelAttack();
                         StartCoroutine(ChangeCursorTemporary(validClickTexture,1f));
                         ChangeAnimationState(PLAYER_RUN);
                     }
@@ -139,7 +141,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void MoveToInteractable(InteractableObject target, Vector3 destination){
+    void MoveToInteractable(GameObject target, Vector3 destination){
         PlayMoveFeedback(1f);
         //ChangeAnimationState(PLAYER_WALK);
         bool isCloseEnoughToTarget = GetIsInRange(target.transform, distanceToKeepFromKey);
@@ -151,7 +153,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void TryToAttackEnemy(TakeDamage target){
+    void TryToAttackEnemy(GameObject target){
         bool targetIsAlive = target.GetComponent<Statistics>().IsAlive;
         if (!targetIsAlive){
             return;
@@ -159,7 +161,7 @@ public class PlayerController : MonoBehaviour
         bool isInAttackRange = GetIsInRange(target.transform, attackRange);
         // 2. if player is in attack range, attack
         if (isInAttackRange){
-            GetComponent<DealDamage>().Attack(5, target.gameObject);
+            GetComponent<DealDamage>().Attack(target.gameObject);
             Debug.Log("Attacking");
         }
         // 3. if there is no valid path, do nothing
