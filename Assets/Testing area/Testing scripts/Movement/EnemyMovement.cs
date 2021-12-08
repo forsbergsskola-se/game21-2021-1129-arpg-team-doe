@@ -11,7 +11,7 @@ public class EnemyMovement : MonoBehaviour
    [SerializeField] float closeEnoughToSavedPosition = 3f;
   
    TargetDetection _targetDetection;
-   PlayerMovement _playerMovement;
+   PlayerController _playerController;
    Movement _movement;
    Fighter _fighter;
    Statistics _statistics;
@@ -33,11 +33,11 @@ public class EnemyMovement : MonoBehaviour
 
    void Start(){
       _statistics = GetComponent<Statistics>();
-      _playerMovement = FindObjectOfType<PlayerMovement>(); //maybe use player tag instead? Will save performance
+      _playerController = FindObjectOfType<PlayerController>(); //maybe use player tag instead? Will save performance
       _targetDetection = GetComponent<TargetDetection>();
       _movement = GetComponent<Movement>();
       _fighter = GetComponent<Fighter>();
-      _desiredTarget = _playerMovement.transform;
+      _desiredTarget = _playerController.transform;
       attackRange = _statistics.AttackRange;
    }
 
