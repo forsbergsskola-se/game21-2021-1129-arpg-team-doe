@@ -20,6 +20,7 @@ public class TakeDamage : MonoBehaviour, IDamageReceiver{
 
     public void ReceiveDamage(int damage){ //Toughness should affect this
         _currentHealth -= DamageCalc(damage);
+        GetComponent<IDestructible>()?.Destruction(damage);
         GetComponent<IHealthbar>()?.SetSliderCurrentHealth(_currentHealth);
     }
 

@@ -37,7 +37,7 @@ public class Statistics : MonoBehaviour{
 
     public float InteractRange{
         get{ return interactRange; }
-        //private set{ interactRange = value; }
+        private set{ interactRange = value; }
     }
     public float AttackRange{
         get{ return attackRange; }
