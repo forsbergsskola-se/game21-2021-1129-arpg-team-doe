@@ -49,8 +49,11 @@ public class PlayerController : MonoBehaviour
         if (InteractWithCombat()){
             return;
         }
-        
+
         // if target is interactable, interact
+        if (InteractWithInteractable()){
+            //return;
+        }
         
         // if click on the ground, move to cursor
         MoveToCursor();
@@ -73,6 +76,20 @@ public class PlayerController : MonoBehaviour
             if (enemy == null) continue;
             if (Input.GetMouseButton(0)){
                 TryToAttackEnemy(enemy); // can be moved to player combat script
+            }
+            return true;
+        }
+        return false;
+    }
+
+    bool InteractWithInteractable(){
+        RaycastHit[] hits = Physics.RaycastAll(Camera.main.ScreenPointToRay(Input.mousePosition));
+        foreach (RaycastHit hit in hits){
+            // TODO: implement interact action here
+            TakeDamage enemy = hit.transform.GetComponent<TakeDamage>();
+            if (enemy == null) continue;
+            if (Input.GetMouseButton(0)){
+                TryToAttackEnemy(enemy); 
             }
             return true;
         }
@@ -120,12 +137,6 @@ public class PlayerController : MonoBehaviour
                         StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
                     }
                 }
-                
-                // else if(hit.transform.tag == "Enemy"){
-                //     // if hit is enemy
-                //     AttackEnemy();
-                // }
-                //Debug.Log(hit.transform.tag);
             }
             else{
                 _navmeshMover.StopMoving();
@@ -133,7 +144,6 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
                 ChangeAnimationState(PLAYER_WALK);
             }
-            
         }
         else if (Input.GetMouseButtonUp(0)){
             _moveInstance.stop(STOP_MODE.ALLOWFADEOUT);
