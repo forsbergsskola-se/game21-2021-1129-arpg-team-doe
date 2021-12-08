@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public interface IHealthbar{
     void SetSliderCurrentHealth(int currentHealth);
+
 }
 public class HealthBar : MonoBehaviour, IHealthbar{
 
@@ -18,9 +20,12 @@ public class HealthBar : MonoBehaviour, IHealthbar{
 
     public void Start(){
         _statistics = GetComponentInParent<Statistics>();
+        
         var maxHP = _statistics.maxHP;
         SetSliderMaxHealth(maxHP);
     }
+
+  
 
     void SetSliderMaxHealth(float maxHP){
         slider.maxValue = maxHP;
@@ -37,4 +42,6 @@ public class HealthBar : MonoBehaviour, IHealthbar{
         // changes the health bar gradient to whatever the health is
         fill.color = gradient.Evaluate(slider.normalizedValue);
     }
+
+    
 }

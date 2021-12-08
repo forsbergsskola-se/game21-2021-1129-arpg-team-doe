@@ -28,14 +28,15 @@ public class DealDamage : MonoBehaviour{
         InvokeRepeating(nameof(Attack),0, 1f/ _attackSpeed);
     }
 
-    public int Attack(int damage, GameObject target){
+    public void Attack(int damage, GameObject target){
         if (_random.NextDouble() < _critChance){
             damage = Mathf.RoundToInt(damage * critDamageMultiplier);
         }
 
+        
         target.GetComponent<IDamageReceiver>()?.ReceiveDamage(damage); // check!!!
         Debug.Log("Dealing " + damage + " Damage");
-        return damage;
+        //return damage; //Is this needed?
     }
 
     // int DoMeleeDamage(int damage, GameObject target){
