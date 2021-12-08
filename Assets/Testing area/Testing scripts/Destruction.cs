@@ -14,7 +14,7 @@ public class Destruction : MonoBehaviour{
     
 
     void Update(){
-        distance = Vector3.Distance(this.transform.position, FindObjectOfType<PlayerMovement>().transform.position);
+        distance = Vector3.Distance(this.transform.position, FindObjectOfType<PlayerController>().transform.position);
     }
 
     void OnMouseUpAsButton(){
