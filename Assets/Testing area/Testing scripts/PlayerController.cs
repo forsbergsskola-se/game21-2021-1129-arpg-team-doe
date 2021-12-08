@@ -12,12 +12,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Texture2D invalidClickTexture;
     [SerializeField] Texture2D standardCursorTexture;
     [SerializeField] float distanceToKeepFromKey = 3f;
+    [SerializeField] float attackRange = 2f;
     
     FMOD.Studio.EventInstance _moveInstance;
     Movement _navmeshMover;
     Statistics _statistics;
-    TargetDetection _targetDetection;
-    
+
     Animator _animator;
     RaycastHit hit;
     
@@ -32,7 +32,6 @@ public class PlayerController : MonoBehaviour
     void Start(){
         _navmeshMover = GetComponent<Movement>();
         _statistics = GetComponent<Statistics>();
-        _targetDetection = GetComponent<TargetDetection>();
         _interactionRange = _statistics.InteractRange;
         _animator = GetComponentInChildren<Animator>();
          _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
@@ -62,7 +61,7 @@ public class PlayerController : MonoBehaviour
     }
 
     bool InteractWithCombat(){
-        RaycastHit[] hits = Physics.RaycastAll(Camera.main.ScreenPointToRay(Input.mousePosition));
+        RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
         foreach (RaycastHit hit in hits){
             TakeDamage enemy = hit.transform.GetComponent<TakeDamage>();
             if (enemy == null) continue;
@@ -75,13 +74,12 @@ public class PlayerController : MonoBehaviour
     }
 
     bool InteractWithInteractable(){
-        RaycastHit[] hits = Physics.RaycastAll(Camera.main.ScreenPointToRay(Input.mousePosition));
+        RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
         foreach (RaycastHit hit in hits){
             InteractableObject interactableObject = hit.transform.GetComponent<InteractableObject>();
             if (interactableObject == null) continue;
             if (Input.GetMouseButton(0)){
-                Vector3 _distanceToTarget = hit.point - transform.position ;
-                Vector3 positionCloseToTarget = hit.point - _distanceToTarget.normalized * 1;
+                Vector3 positionCloseToTarget = hit.point - (hit.point - transform.position).normalized * 1;
                 MoveToInteractable(interactableObject, positionCloseToTarget); 
             }
             return true;
@@ -91,16 +89,13 @@ public class PlayerController : MonoBehaviour
 
     void MoveToCursor(){
         if (Input.GetMouseButton(0)){
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            
+            Ray ray = GetMouseRay();
             bool hasHit = Physics.Raycast(ray, out hit);
             if (hasHit){
-                //Hits Ground
                 if (hit.transform.tag == "Ground"){
                     PlayMoveFeedback(0f);
                     //_moveInstance.release();
                     _navmeshMover.Mover(hit.point);
-                    
                     if (_navmeshMover.pathFound){
                         StartCoroutine(ChangeCursorTemporary(validClickTexture,1f));
                         ChangeAnimationState(PLAYER_RUN);
@@ -110,12 +105,6 @@ public class PlayerController : MonoBehaviour
                         ChangeAnimationState(PLAYER_WALK);
                     }
                 }
-
-                // else if (hit.transform.tag != "Ground" ){
-                //     PlayMoveFeedback(1f);
-                //     
-                //     ChangeAnimationState(PLAYER_WALK);
-                // }
             }
             else{
                 _navmeshMover.StopMoving();
@@ -134,8 +123,8 @@ public class PlayerController : MonoBehaviour
     void MoveToInteractable(InteractableObject target, Vector3 destination){
         PlayMoveFeedback(1f);
         //ChangeAnimationState(PLAYER_WALK);
-        float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
-        if(distanceToTarget > distanceToKeepFromKey){
+        bool isCloseEnoughToTarget = GetIsInRange(target.transform, distanceToKeepFromKey);
+        if(!isCloseEnoughToTarget){
             _navmeshMover.Mover(destination);
             if (_navmeshMover.pathFound)
                 ChangeAnimationState(PLAYER_RUN);
@@ -144,32 +133,33 @@ public class PlayerController : MonoBehaviour
     }
 
     void TryToAttackEnemy(TakeDamage target){
-        int enemyHealth = target.GetComponent<Statistics>().currentHP;
-
-        // 1. if enemy is not alive, do nothing
-        if (enemyHealth <= 0){
-            Debug.Log("Enemy is dead");
+        bool targetIsAlive = target.GetComponent<Statistics>().IsAlive;
+        if (!targetIsAlive){
             return;
         }
-
-        bool isInAttackRange = Vector3.Distance(transform.position, target.transform.position) < 2f; // just for debug whether player is in attack range
-        
-        // 2. if enemy is alive and player is in attack range, attack
-        if (enemyHealth > 0 && isInAttackRange){
+        bool isInAttackRange = GetIsInRange(target.transform, attackRange);
+        // 2. if player is in attack range, attack
+        if (isInAttackRange){
             GetComponent<DealDamage>().Attack(5, target.gameObject);
             Debug.Log("Attacking");
         }
-
-        // 3. if enemy is alive and there is no valid path, do nothing
-        if (enemyHealth > 0 && !_navmeshMover.pathFound){
+        // 3. if there is no valid path, do nothing
+        if (!_navmeshMover.pathFound){
             Debug.Log("No valid path to the enemy.");
             return;
         }
-
-        // 4. if enemy is alive and player is not in attack range and there is valid path, go to the enemy
-        if (enemyHealth > 0 && !isInAttackRange){
+        // 4. if player is not in attack range and there is valid path, go to the enemy
+        if (!isInAttackRange){
             _navmeshMover.Mover(target.transform.position);
         }
+    }
+
+    bool GetIsInRange(Transform target, float range){
+        return Vector3.Distance(transform.position, target.position) < range;
+    }
+    
+    static Ray GetMouseRay(){
+        return Camera.main.ScreenPointToRay(Input.mousePosition);
     }
 
     void PlayMoveFeedback(float parameter){
