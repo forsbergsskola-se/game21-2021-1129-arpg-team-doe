@@ -703,8 +703,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  _statistics: {fileID: 0}
-  distance: 0
+  _spriteIntact: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  _spriteDestroyed: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &408597631
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -926,14 +926,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 51088861}
-        m_TargetAssemblyTypeName: TakeDamage, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 408597630}
+        m_TargetAssemblyTypeName: Destruct, Assembly-CSharp
+        m_MethodName: Destruction
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1758,8 +1758,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  _statistics: {fileID: 0}
-  distance: 0
+  _spriteIntact: {fileID: 0}
+  _spriteDestroyed: {fileID: 0}
 --- !u!1 &1274422341
 GameObject:
   m_ObjectHideFlags: 0

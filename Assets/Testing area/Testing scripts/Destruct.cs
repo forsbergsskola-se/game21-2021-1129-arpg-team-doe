@@ -11,20 +11,17 @@ public interface IDestructible{
 public class Destruct : MonoBehaviour,IDestructible{
     
     [SerializeField] int health;
-
+    [SerializeField] Mesh _spriteIntact;
+    [SerializeField] Mesh _spriteDestroyed;
+    
     Statistics _statistics;
 
     float distance;
     bool isDestroyed;
-
-
+    
     void Start(){
+        GetComponent<MeshFilter>().mesh = _spriteIntact;
         _statistics =GameObject.FindWithTag("Player").GetComponent<Statistics>();
-    }
-    void OnMouseUpAsButton(){
-        if (health<=0){
-            isDestroyed = true;
-        }
     }
     public void Destruction(int damage){ //Used for Debug
         health -= damage;
@@ -32,10 +29,14 @@ public class Destruct : MonoBehaviour,IDestructible{
             isDestroyed = true;
         }
         if (isDestroyed){
-            //animation here plxz
-            GetComponent<NavMeshObstacle>().enabled = false;
-            GetComponent<Collider>().enabled = false;
-            GetComponent<Destruct>().enabled = false; // maybe useful?
+            DeactivateComponents();
         }
+    }
+
+    void DeactivateComponents(){
+        GetComponent<MeshFilter>().mesh = _spriteDestroyed;
+        GetComponent<NavMeshObstacle>().enabled = false;
+        GetComponent<Collider>().enabled = false;
+        GetComponent<Destruct>().enabled = false; // maybe useful?
     }
 }
