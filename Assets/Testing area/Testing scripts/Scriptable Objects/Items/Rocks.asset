@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   type: 2
-  description: 
+  price: 0
+  weight: 15
+  description: This is a pile of rocks.

@@ -13,6 +13,7 @@ public abstract class ItemObject : ScriptableObject{
     public GameObject prefab;
     public ItemType type;
    [Min(0f)] public float price;
+   [Tooltip("Weight in kg")][Min(0f)] public float weight;
     [TextArea (10,10)] public string description;
     
 }

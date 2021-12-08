@@ -15,7 +15,7 @@ public class ConsumableObject : ItemObject{
    [Tooltip	("Amount of attacks per second Buff")] public int attackSpeedBuff;
    public int damageBuff;
    public AudioClip consumeSound;
-
+   
    public void Awake(){
       type = ItemType.Consumable;
    }
