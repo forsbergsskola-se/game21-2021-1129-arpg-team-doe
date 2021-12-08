@@ -4,15 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
-{
+{ 
+   [SerializeField] GameObject _healthBar;
+   
    [SerializeField] float maxFollowRange = 30f;
    [SerializeField] float closeEnoughToSavedPosition = 3f;
-   
+  
    TargetDetection _targetDetection;
    PlayerMovement _playerMovement;
    Movement _movement;
    Fighter _fighter;
    Statistics _statistics;
+   
    
    Transform _desiredTarget;
    Transform _target;
@@ -23,6 +26,7 @@ public class EnemyMovement : MonoBehaviour
    float distanceToPlayer;
    float distanceToTarget;
    float attackRange;
+   
    
    bool activeSavedPosition; 
    bool needsToWalkBack; 
@@ -82,6 +86,8 @@ public class EnemyMovement : MonoBehaviour
    }
 
    void InteractWithCombat(){
+      
+       
       if (!activeSavedPosition){
          SavePosition();
       }
@@ -115,6 +121,7 @@ public class EnemyMovement : MonoBehaviour
       // stop attacking ??(Bool/State ATTACKING = False)??
       //_fighter.StopAttack(_target);
       _movement.Mover(_target.position);
+      _healthBar.SetActive(true);
    }
 
    void SetIdle(){
@@ -125,6 +132,8 @@ public class EnemyMovement : MonoBehaviour
    void ForgetTarget(){
       _target = null;
       needsToWalkBack = true;
+      _healthBar.SetActive(false);
+      
       //break;
    }
 
