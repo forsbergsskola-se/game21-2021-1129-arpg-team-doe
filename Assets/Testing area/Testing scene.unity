@@ -1502,6 +1502,7 @@ GameObject:
   - component: {fileID: 1001156143}
   - component: {fileID: 1001156135}
   - component: {fileID: 1001156142}
+  - component: {fileID: 1001156145}
   m_Layer: 0
   m_Name: Door
   m_TagString: Interactable
@@ -1635,7 +1636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b81ba6352fb564c4cbcf97267f3a0993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionRange: 0
+  actionRange: 5
 --- !u!114 &1001156144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1651,6 +1652,18 @@ MonoBehaviour:
   lockedTexture: {fileID: 2800000, guid: 5d631712e2f24944a9199ccf33105e03, type: 3}
   unLockedTexture: {fileID: 2800000, guid: 76ec3c1319a98ea4aabb5a261d0a7aec, type: 3}
   cursor: {fileID: 2800000, guid: c63a54ea45b38eb4d885614761c41837, type: 3}
+--- !u!114 &1001156145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001156134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 135fa44ce2ec39b4ea1c674ad53b9beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1188251072
 GameObject:
   m_ObjectHideFlags: 0
@@ -1775,6 +1788,7 @@ GameObject:
   - component: {fileID: 1274422350}
   - component: {fileID: 1274422349}
   - component: {fileID: 1274422348}
+  - component: {fileID: 1274422351}
   m_Layer: 0
   m_Name: Key
   m_TagString: Interactable
@@ -1901,6 +1915,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5ccff9e413373b41b62bb12a32a81ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1274422351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274422341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 135fa44ce2ec39b4ea1c674ad53b9beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1384142744

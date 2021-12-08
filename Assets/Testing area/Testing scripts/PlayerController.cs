@@ -34,10 +34,7 @@ public class PlayerController : MonoBehaviour
 
         _animator = GetComponentInChildren<Animator>();
          _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
-
-        //_moveInstance.setVolume(50f);
-
-
+         //_moveInstance.setVolume(50f);
     }
 
     void Update(){
@@ -85,11 +82,10 @@ public class PlayerController : MonoBehaviour
     bool InteractWithInteractable(){
         RaycastHit[] hits = Physics.RaycastAll(Camera.main.ScreenPointToRay(Input.mousePosition));
         foreach (RaycastHit hit in hits){
-            // TODO: implement interact action here
-            TakeDamage enemy = hit.transform.GetComponent<TakeDamage>();
-            if (enemy == null) continue;
+            InteractableObject interactableObject = hit.transform.GetComponent<InteractableObject>();
+            if (interactableObject == null) continue;
             if (Input.GetMouseButton(0)){
-                TryToAttackEnemy(enemy); 
+                MoveToInteractable(); 
             }
             return true;
         }
@@ -123,20 +119,6 @@ public class PlayerController : MonoBehaviour
                 //     
                 //     ChangeAnimationState(PLAYER_WALK);
                 // }
-
-                //Hits something
-                else if(hit.transform.tag == "Interactable"){
-                    PlayMoveFeedback(1f);
-                    Vector3 newDestination = hit.point - _distanceToTarget.normalized * 1;
-                    //_navmeshMover.Mover(hit.point - _distanceToTarget.normalized * 1);
-                    //ChangeAnimationState(PLAYER_WALK);
-                    if (_distanceToTarget.magnitude > distanceToKeepFromKey){
-                        _navmeshMover.Mover(newDestination);
-                        if(_navmeshMover.pathFound)
-                            ChangeAnimationState(PLAYER_RUN);
-                        StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
-                    }
-                }
             }
             else{
                 _navmeshMover.StopMoving();
@@ -149,6 +131,19 @@ public class PlayerController : MonoBehaviour
             _moveInstance.stop(STOP_MODE.ALLOWFADEOUT);
             _moveInstance.release();
             hasPlayedSound = false;
+        }
+    }
+
+    void MoveToInteractable(){
+        PlayMoveFeedback(1f);
+        Vector3 newDestination = hit.point - _distanceToTarget.normalized * 1;
+        //_navmeshMover.Mover(hit.point - _distanceToTarget.normalized * 1);
+        //ChangeAnimationState(PLAYER_WALK);
+        if (_distanceToTarget.magnitude > distanceToKeepFromKey){
+            _navmeshMover.Mover(newDestination);
+            if (_navmeshMover.pathFound)
+                ChangeAnimationState(PLAYER_RUN);
+            StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
         }
     }
 
