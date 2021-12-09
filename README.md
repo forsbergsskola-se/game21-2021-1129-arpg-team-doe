@@ -17,6 +17,7 @@ Team members and roles:
 * Filip Suthawan, Artist
 * Ava Blixt, Artist
 * Mathilda Christiansson, Artist
+* Tom Olovsson, Sound Designer
 
 ## Design Documents
 

@@ -11,15 +11,17 @@ public class TakeDamage : MonoBehaviour, IDamageReceiver{
 
     void Start(){
         _stats = GetComponent<Statistics>();
-        _currentHealth = _stats.currentHP;
         random = new Random();
     }
 
-    public void ReceiveDamage(int damage){ //Toughness should affect this
-        _currentHealth -= DamageCalc(damage);
+    public void ReceiveDamage(int damage, bool isCrit){ //Toughness should affect this
+        int currentDamage = DamageCalc(damage);
+        _stats.UpdateHealth(currentDamage);
         GetComponent<IDestructible>()?.Destruction(damage);
+        _currentHealth = _stats.currentHP;
         GetComponent<IHealthbar>()?.SetSliderCurrentHealth(_currentHealth);
-        
+        Debug.Log(_currentHealth);
+        Debug.Log(isCrit);
     }
 
     bool DodgeDamage(){
