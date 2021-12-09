@@ -19,6 +19,7 @@ public class TakeDamage : MonoBehaviour, IDamageReceiver{
         _currentHealth -= DamageCalc(damage);
         GetComponent<IDestructible>()?.Destruction(damage);
         GetComponent<IHealthbar>()?.SetSliderCurrentHealth(_currentHealth);
+        
     }
 
     bool DodgeDamage(){

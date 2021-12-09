@@ -231,6 +231,10 @@ PrefabInstance:
       propertyPath: _healthBar
       value: 
       objectReference: {fileID: 1868564248}
+    - target: {fileID: 2402392299167721498, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: maxHP
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3143738041877798692, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2640,6 +2644,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1386220650913189916, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1386220650913189916, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1386220651167043233, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3143738041877798692, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -2687,6 +2703,58 @@ PrefabInstance:
     - target: {fileID: 3143738041877798712, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_Name
       value: Enemy (Zlatan)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542542508433219154, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: gradient.ctime0
+      value: 11565
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542542508433219154, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: gradient.ctime1
+      value: 34695
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542542508433219154, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: gradient.ctime2
+      value: 55705
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542542508433219154, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: gradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542542508433219154, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: gradient.key0.g
+      value: 0.111712284
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542542508433219154, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: gradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542542508433219154, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: gradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542542508433219154, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: gradient.key1.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542542508433219154, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: gradient.key1.r
+      value: 0.062471986
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542542508433219154, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: gradient.key2.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542542508433219154, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: gradient.key2.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542542508433219154, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: gradient.key2.r
+      value: 0.062471986
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542542508433219154, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: gradient.m_NumColorKeys
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using System.Timers;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,7 +16,7 @@ public class UIDamageNr : MonoBehaviour{
 
     string dmgText;
     int dmg;
-    bool active;
+    bool activeTimer;
     bool takingDamage;
     Statistics _stats;
     
@@ -31,8 +32,7 @@ public class UIDamageNr : MonoBehaviour{
     void Update(){
         takingDamage = _stats.dealingDmg;
         CollectDmg(dmg);
-        dmgText = Convert.ToString(dmg);
-        
+
         if (takingDamage){
             Timer();
             if (duration > 0){
@@ -45,29 +45,37 @@ public class UIDamageNr : MonoBehaviour{
         }
         takingDamage = false;
     }
-
+    void CollectDmg(int damage){ //used for Debug
+        dmgText = Convert.ToString(dmg);
+        Timer();
+        SetAndPlayText();
+    } 
 
     public void Display(){
-        active = true;
-        duration = 1;
+      //  activeTimer = true;
+        //duration = 1;
     }
-    void Timer(){
-        if (active){
-            duration -= Time.deltaTime;
-            if (duration <= 0f){
-                End();
-            }
-        }
-    }
+   
 
     void End(){
-        active = false;
+        activeTimer = false;
         takingDamage = false;
+        ClearText();
     }
 
-    int CollectDmg(int damage){ //used for Debug
-        // Put real logic here
-        damage = 10; 
-        return  dmg = damage;
+    
+    async void Timer(){
+        //Converting milliseconds to seconds.
+        await Task.Delay((int)duration*1000);
+        End();
+    }
+
+    void SetAndPlayText(){
+        _textMeshProUGUI.text = dmgText;
+        _animator.Play("FloatingPoint");
+    }
+
+    void ClearText(){
+        _textMeshProUGUI.text = "";
     }
 }
