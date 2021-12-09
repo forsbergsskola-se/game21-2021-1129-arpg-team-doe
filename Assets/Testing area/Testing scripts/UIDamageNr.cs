@@ -1,52 +1,43 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Net;
-using System.Timers;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
+public interface IDamageNumbers{
+    public void DisplayDmg(int damage, bool isCrit);
+}
 public class UIDamageNr : MonoBehaviour{
 
     [SerializeField] float duration;
     [SerializeField] TextMeshProUGUI _textMeshProUGUI;
 
+    Animator _animator;
+    
     string dmgText;
-    int dmg;
     bool activeTimer;
     bool takingDamage;
-    Statistics _stats;
     
-    Animator _animator;
-    string _text;
+    const string FLOATING_POINT = "FloatingPoint";
+    
+    
 
     void Start(){
         _animator = gameObject.GetComponent<Animator>();
-        _text = _textMeshProUGUI.text;
-        _stats = GetComponentInParent<Statistics>();
+        _animator.enabled = false;
+    }
+    
+    void Update(){ //Debug
+        DealDmg();
     }
 
-    void Update(){
-        takingDamage = _stats.dealingDmg;
-        CollectDmg(dmg);
-
-        if (takingDamage){
-            Timer();
-            if (duration > 0){
-                _textMeshProUGUI.text = dmgText;
-                _animator.Play("FloatingPoint");
-            }
-            else if (!takingDamage){
-                _textMeshProUGUI.text = "";
-            }
+    public void DealDmg(){ //used for debug
+        if (Input.GetKeyDown(KeyCode.E)){
+            DisplayDmg(10, true);
         }
-        takingDamage = false;
     }
-    void CollectDmg(int damage){ //used for Debug
-        dmgText = Convert.ToString(dmg);
+    void DisplayDmg(int damage, bool isCrit){ //used for Debug
+        dmgText = Convert.ToString(damage);
+        FontChange(isCrit);
         Timer();
         SetAndPlayText();
     } 
@@ -55,27 +46,33 @@ public class UIDamageNr : MonoBehaviour{
       //  activeTimer = true;
         //duration = 1;
     }
-   
-
-    void End(){
-        activeTimer = false;
-        takingDamage = false;
-        ClearText();
-    }
-
     
     async void Timer(){
         //Converting milliseconds to seconds.
         await Task.Delay((int)duration*1000);
-        End();
+        
+       // ClearText(); //Temporary
+        Destroy(gameObject);
     }
 
     void SetAndPlayText(){
         _textMeshProUGUI.text = dmgText;
-        _animator.Play("FloatingPoint");
+        _animator.enabled = true;
+        _animator.Play(FLOATING_POINT);
     }
 
     void ClearText(){
         _textMeshProUGUI.text = "";
+    }
+    
+    
+
+    void FontChange(bool isCrit){
+        if (isCrit){
+            _textMeshProUGUI.color = Color.yellow;
+        }
+        else{
+            _textMeshProUGUI.color = Color.white;
+        }
     }
 }
