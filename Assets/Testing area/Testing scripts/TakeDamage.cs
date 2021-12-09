@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Random = System.Random;
 
 public class TakeDamage : MonoBehaviour, IDamageReceiver{
@@ -29,21 +30,28 @@ public class TakeDamage : MonoBehaviour, IDamageReceiver{
         _currentHealth = _stats.currentHP;
         GetComponent<IHealthbar>()?.SetSliderCurrentHealth(_currentHealth);
         GetComponentInChildren<ITextSpawner>()?.Spawn(damage,isCrit);
-        DamageNumbersCuller(damage,isCrit);
+        IDamageNumbers[] damageNumbersArray = GetComponentsInChildren<IDamageNumbers>();
+        
+        foreach (IDamageNumbers damageNumber in damageNumbersArray){
+            if (damageNumber != null){
+                damageNumber.DisplayDmg(damage, isCrit);
+            }
+            
+        }
+        
+        //DamageNumbersCuller(damage,isCrit);
         Debug.Log(_currentHealth);
         Debug.Log(isCrit);
     }
 
     void DamageNumbersCuller(int damage, bool isCrit){
-        if (GetComponentInChildren<IDamageNumbers>() != null){
-            foreach (var VARIABLE in GetComponentsInChildren<IDamageNumbers>()){
-                damagenumbers.Add(VARIABLE);
-            }
+        
+            
 
             for (int i = 0; i < damagenumbers.Count; i++){
-                damagenumbers[i].DisplayDmg(damage, isCrit);
+               ;
             }
-        }
+        
     }
 
     bool DodgeDamage(){
