@@ -293,7 +293,39 @@ PrefabInstance:
       objectReference: {fileID: 1868564248}
     m_RemovedComponents:
     - {fileID: 5267292073064204666, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+    - {fileID: 3461945314607559741, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+--- !u!1 &17086528 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3143738041877798712, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+  m_PrefabInstance: {fileID: 17086527}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &17086529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17086528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962858f06cb599e469fe7bd40450d934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCursor: {fileID: 2800000, guid: c63a54ea45b38eb4d885614761c41837, type: 3}
+  onEnemyCursor: {fileID: 2800000, guid: 320d423528b0c2040bc426544ae0bc59, type: 3}
+--- !u!114 &17086530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17086528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a75a9b0056d4254ad0defc32d23090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &24169356
 GameObject:
   m_ObjectHideFlags: 0
@@ -2328,6 +2360,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+--- !u!1 &3143738041947586008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3143738041877798712, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+  m_PrefabInstance: {fileID: 3143738041947586007}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3143738041947586009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3143738041947586008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962858f06cb599e469fe7bd40450d934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCursor: {fileID: 2800000, guid: c63a54ea45b38eb4d885614761c41837, type: 3}
+  onEnemyCursor: {fileID: 2800000, guid: 320d423528b0c2040bc426544ae0bc59, type: 3}
+--- !u!114 &3143738041947586010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3143738041947586008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a75a9b0056d4254ad0defc32d23090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6614988170983185384
 PrefabInstance:
   m_ObjectHideFlags: 0
