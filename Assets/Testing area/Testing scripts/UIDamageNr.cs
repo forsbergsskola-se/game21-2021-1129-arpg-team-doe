@@ -6,7 +6,7 @@ using UnityEngine;
 public interface IDamageNumbers{
     public void DisplayDmg(int damage, bool isCrit);
 }
-public class UIDamageNr : MonoBehaviour{
+public class UIDamageNr : MonoBehaviour, IDamageNumbers{
 
     [SerializeField] float duration;
     [SerializeField] TextMeshProUGUI _textMeshProUGUI;
@@ -23,20 +23,11 @@ public class UIDamageNr : MonoBehaviour{
 
     void Start(){
         _animator = gameObject.GetComponent<Animator>();
-        _animator.enabled = false;
-    }
-    
-    void Update(){ //Debug
-        DealDmg();
     }
 
-    public void DealDmg(){ //used for debug
-        if (Input.GetKeyDown(KeyCode.E)){
-            DisplayDmg(10, true);
-        }
-    }
-    void DisplayDmg(int damage, bool isCrit){ //used for Debug
+    public void DisplayDmg(int damage, bool isCrit){
         dmgText = Convert.ToString(damage);
+        Debug.Log("im displaying");
         FontChange(isCrit);
         Timer();
         SetAndPlayText();
@@ -57,7 +48,8 @@ public class UIDamageNr : MonoBehaviour{
 
     void SetAndPlayText(){
         _textMeshProUGUI.text = dmgText;
-        _animator.enabled = true;
+        //_animator.enabled = true;
+        Debug.Log("im animating");
         _animator.Play(FLOATING_POINT);
     }
 
