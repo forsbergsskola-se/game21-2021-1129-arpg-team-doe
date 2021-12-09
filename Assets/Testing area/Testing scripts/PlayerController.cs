@@ -153,28 +153,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void TryToAttackEnemy(GameObject target){
-        bool targetIsAlive = target.GetComponent<Statistics>().IsAlive;
-        if (!targetIsAlive){
-            return;
-        }
-        bool isInAttackRange = GetIsInRange(target.transform, attackRange);
-        // 2. if player is in attack range, attack
-        if (isInAttackRange){
-            GetComponent<Fighter>().Attack(target.gameObject);
-            Debug.Log("Attacking");
-        }
-        // 3. if there is no valid path, do nothing
-        if (!_navmeshMover.pathFound){
-            Debug.Log("No valid path to the enemy.");
-            return;
-        }
-        // 4. if player is not in attack range and there is valid path, go to the enemy
-        if (!isInAttackRange){
-            _navmeshMover.Mover(target.transform.position);
-        }
-    }
-
     bool GetIsInRange(Transform target, float range){
         return Vector3.Distance(transform.position, target.position) < range;
     }

@@ -74,6 +74,11 @@ public class Statistics : MonoBehaviour{
         DealDmg(); 
     }
 
+    public void UpdateHealth(int healthChange){
+        currentHP -= healthChange;
+        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+    }
+
     float AttacksPerSecond(){
         return attackSpeed * (this.dexterity * 0.01f + 1);
     }

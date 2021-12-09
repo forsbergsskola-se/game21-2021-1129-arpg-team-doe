@@ -33,29 +33,39 @@ public class Fighter : MonoBehaviour{
 
     void Update(){
         _timeSinceLastAttack += Time.deltaTime;
-        if (_combatTarget == null) return;
-        if (!_combatTarget.GetComponent<Statistics>().IsAlive) return;
+        if (_combatTarget == null){
+            return;
+        }
+
+        if (!_combatTarget.GetComponent<Statistics>().IsAlive){
+            Debug.Log(_combatTarget.name + " is defeated.");
+            return;
+        }
+        
         if (!GetIsInRange()){
             _movement.Mover(_combatTarget.transform.position);
         }
+        
         else{
             _movement.StopMoving();
             Attack(_combatTarget.gameObject);
+            
         }
     }
 
     public void Attack(GameObject target){
         Transform lookAtTransform = _combatTarget.transform;
         Vector3 lookAtPosition = lookAtTransform.transform.position;
-        lookAtTransform.position = new Vector3(lookAtPosition.x,0f, lookAtPosition.z);
+        lookAtTransform.position = new Vector3(lookAtPosition.x,transform.position.y, lookAtPosition.z);
         transform.LookAt(lookAtTransform);
         
         if (_timeSinceLastAttack > 1f / _attackSpeed){
+            // TODO: trigger attack animation and sound here
             _damage = weaponDamage;
             if (_random.NextDouble() < critChance){
                 _damage = Mathf.RoundToInt(weaponDamage * critDamageMultiplier);
             }
-            target.GetComponent<IDamageReceiver>()?.ReceiveDamage(_damage); // check!!!
+            target.GetComponent<IDamageReceiver>()?.ReceiveDamage(_damage);
             Debug.Log(transform.name + " is dealing " + _damage + " damage to " + _combatTarget.name);
             _timeSinceLastAttack = 0f;
         }
