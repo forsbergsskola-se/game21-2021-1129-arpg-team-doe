@@ -7,7 +7,6 @@ using UnityEngine;
 public class EquipmentObject : ItemObject
 {
     public GameObject equipmentPrefab;
-    public string equipmentName;
     [Tooltip("The equipment's attackspeed")] public int attackSpeed;
     [Tooltip("The equipment's damage")] public int damage;
     [Header("Attribute Buffs")]
