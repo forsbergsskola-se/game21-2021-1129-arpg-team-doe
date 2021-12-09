@@ -56,7 +56,7 @@ public class DealDamage : MonoBehaviour{
                 _damage = Mathf.RoundToInt(weaponDamage * critDamageMultiplier);
             }
             target.GetComponent<IDamageReceiver>()?.ReceiveDamage(_damage); // check!!!
-            Debug.Log("Dealing " + _damage + " Damage");
+            Debug.Log(transform.name + " is dealing " + _damage + " damage to " + _combatTarget.name);
             _timeSinceLastAttack = 0f;
         }
         

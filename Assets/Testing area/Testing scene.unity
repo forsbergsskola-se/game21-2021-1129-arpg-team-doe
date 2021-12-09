@@ -438,6 +438,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   critDamageMultiplier: 1.5
+  critChance: 0.5
+  weaponDamage: 5
 --- !u!114 &51088883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,8 +459,8 @@ MonoBehaviour:
   reflex: 0
   luck: 0
   interactRange: 0
-  attackRange: 0
-  attackSpeed: 0
+  attackRange: 2
+  attackSpeed: 0.5
   maxHP: 100
   dealingDmg: 0
 --- !u!114 &51088888
