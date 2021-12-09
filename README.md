@@ -12,10 +12,12 @@ Team members and roles:
 * Jesper Danielsson, engineer [LinkedIn](https://www.linkedin.com/in/jesper-danielsson-9b7048159/)
 * Pavel Sarmiento, engineer [LinkedIn](https://www.linkedin.com/in/pavel-sarmiento-5483661a3/)
 * Efraim Kent, engineer [LinkedIn](https://www.linkedin.com/in/efraim-kent-01b8a33b/)
+* Felix Kjellberg, Engineer [LinkedIn](https://www.linkedin.com/in/felix-kjellberg-837321228/)
 * Jack Fors Ahlberg, designer
 * Filip Suthawan, Artist
 * Ava Blixt, Artist
 * Mathilda Christiansson, Artist
+* Tom Olovsson, Sound Designer
 
 ## Design Documents
 
