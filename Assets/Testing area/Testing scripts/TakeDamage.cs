@@ -27,7 +27,7 @@ public class TakeDamage : MonoBehaviour, IDamageReceiver{
     }
 
     bool DodgeDamage(){
-        var dodgeChance = _stats.Reflex;
+        var dodgeChance = _stats.Reflex;//This calculation should be in statistics?
 
         if (random.NextDouble() < dodgeChance){
             _dodged = true;
