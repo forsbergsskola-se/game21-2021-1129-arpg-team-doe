@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Statistics : MonoBehaviour{
-    
+
     [SerializeField] float toughness, strength, dexterity, knowledge, reflex, luck, interactRange, attackRange, attackSpeed;
 
     public float Toughness{
@@ -57,7 +57,7 @@ public class Statistics : MonoBehaviour{
         this.strength = strength;
         this.dexterity = dexterity;
         this.knowledge = knowledge;
-        this.reflex = reflex; 
+        this.reflex = reflex;
         this.luck = luck;
         this.interactRange = interactRange;
         this.attackRange = attackRange;
@@ -67,13 +67,14 @@ public class Statistics : MonoBehaviour{
     }
 
     void Start(){
-        currentHP = maxHP; 
+        currentHP = maxHP;
     }
 
     void Update(){
-        DealDmg(); 
+        DealDmg();
     }
 
+    // maybe change later
     public void UpdateHealth(int healthChange){
         currentHP -= healthChange;
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
@@ -88,7 +89,7 @@ public class Statistics : MonoBehaviour{
             dealingDmg = true;
             currentHP -= 10;
             FindObjectOfType<UIDamageNr>().Display();
-            
+
         }
     }
 }

@@ -27,7 +27,6 @@ public class Fighter : MonoBehaviour{
         _attackRange = _statistics.AttackRange;
         _attackSpeed = _statistics.AttackSpeed;
         _random = new Random();
-        //InvokeRepeating(nameof(Attack),0, 1f/ _attackSpeed);
         _movement = GetComponent<Movement>();
     }
 
@@ -38,15 +37,14 @@ public class Fighter : MonoBehaviour{
         }
 
         if (!_combatTarget.GetComponent<Statistics>().IsAlive){
-            Debug.Log(_combatTarget.name + " is defeated.");
             _combatTarget = null;
             return;
         }
-        
+
         if (!GetIsInRange()){
             _movement.Mover(_combatTarget.transform.position);
         }
-        
+
         else{
             _movement.StopMoving();
             Attack(_combatTarget.gameObject);
