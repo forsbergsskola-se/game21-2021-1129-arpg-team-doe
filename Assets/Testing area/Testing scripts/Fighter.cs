@@ -2,7 +2,7 @@ using UnityEngine;
 using Random = System.Random;
 
 public interface IDamageReceiver{
-    void ReceiveDamage(int damage);
+    void ReceiveDamage(int damage, bool isCrit);
 }
 
 public class Fighter : MonoBehaviour{
@@ -59,13 +59,16 @@ public class Fighter : MonoBehaviour{
         lookAtTransform.position = new Vector3(lookAtPosition.x,transform.position.y, lookAtPosition.z);
         transform.LookAt(lookAtTransform);
         
+        
         if (_timeSinceLastAttack > 1f / _attackSpeed){
             // TODO: trigger attack animation and sound here
             _damage = weaponDamage;
+            bool isCrit = false;
             if (_random.NextDouble() < critChance){
                 _damage = Mathf.RoundToInt(weaponDamage * critDamageMultiplier);
+                isCrit = true;
             }
-            target.GetComponent<IDamageReceiver>()?.ReceiveDamage(_damage);
+            target.GetComponent<IDamageReceiver>()?.ReceiveDamage(_damage, isCrit);
             Debug.Log(transform.name + " is dealing " + _damage + " damage to " + _combatTarget.name);
             _timeSinceLastAttack = 0f;
         }

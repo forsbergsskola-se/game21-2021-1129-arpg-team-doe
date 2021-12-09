@@ -36,7 +36,7 @@ public class UIDamageNr : MonoBehaviour{
         if (takingDamage){
             Timer();
             if (duration > 0){
-                _textMeshProUGUI.text= dmgText;
+                _textMeshProUGUI.text = dmgText;
                 _animator.Play("FloatingPoint");
             }
             else if (!takingDamage){
