@@ -39,6 +39,7 @@ public class Fighter : MonoBehaviour{
 
         if (!_combatTarget.GetComponent<Statistics>().IsAlive){
             Debug.Log(_combatTarget.name + " is defeated.");
+            _combatTarget = null;
             return;
         }
         
@@ -49,7 +50,6 @@ public class Fighter : MonoBehaviour{
         else{
             _movement.StopMoving();
             Attack(_combatTarget.gameObject);
-            
         }
     }
 
@@ -58,8 +58,7 @@ public class Fighter : MonoBehaviour{
         Vector3 lookAtPosition = lookAtTransform.transform.position;
         lookAtTransform.position = new Vector3(lookAtPosition.x,transform.position.y, lookAtPosition.z);
         transform.LookAt(lookAtTransform);
-        
-        
+
         if (_timeSinceLastAttack > 1f / _attackSpeed){
             // TODO: trigger attack animation and sound here
             _damage = weaponDamage;
@@ -82,23 +81,6 @@ public class Fighter : MonoBehaviour{
         _combatTarget = target.GetComponent<TakeDamage>();
     }
 
-    // int DoMeleeDamage(int damage, GameObject target){
-    //     return DamageManipulation(damage, target, _statistics.Strength);
-    // }
-    //
-    // int DoRangedDamage(int damage, GameObject target){
-    //     return DamageManipulation(damage, target, _statistics.Dexterity);
-    // }
-
-    int DamageManipulation(int damage, GameObject target, float modifier ){
-        _distance = Vector3.Distance(transform.position, target.transform.position);
-        if (_distance <= _attackRange){
-            //Attack
-            damage = Mathf.RoundToInt((modifier * 0.01f + 1) * damage);
-        }
-        return damage;
-    }
-    
     bool GetIsInRange(){
         return Vector3.Distance(transform.position, _combatTarget.transform.position) < _attackRange;
     }
