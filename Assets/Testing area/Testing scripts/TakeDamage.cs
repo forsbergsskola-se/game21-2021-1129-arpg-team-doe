@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Random = System.Random;
 
@@ -20,6 +21,7 @@ public class TakeDamage : MonoBehaviour, IDamageReceiver{
         GetComponent<IDestructible>()?.Destruction(damage);
         _currentHealth = _stats.currentHP;
         GetComponent<IHealthbar>()?.SetSliderCurrentHealth(_currentHealth);
+        GetComponent<IDamageNumbers>()?.DisplayDmg(damage, isCrit);
         Debug.Log(_currentHealth);
         Debug.Log(isCrit);
     }
