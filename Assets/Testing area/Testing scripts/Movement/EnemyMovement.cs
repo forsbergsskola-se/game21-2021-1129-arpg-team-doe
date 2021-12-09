@@ -111,7 +111,7 @@ public class EnemyMovement : MonoBehaviour
       if (_target != null){
          _movement.StopMoving();
          transform.LookAt(_target);
-         _fighter.Attack(_target);
+         _fighter.Attack(_target.gameObject);
       }
       
       //attack target  ??(Bool/state ATTACKING = True)??.
