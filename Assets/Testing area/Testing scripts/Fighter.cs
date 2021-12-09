@@ -18,7 +18,6 @@ public class Fighter : MonoBehaviour{
     float _attackRange;
     float _attackSpeed;
     float _distance;
-    bool isRanged;
     int _damage;
     float _timeSinceLastAttack = Mathf.Infinity;
 
@@ -52,11 +51,7 @@ public class Fighter : MonoBehaviour{
     }
 
     public void Attack(GameObject target){
-        Transform lookAtTransform = _combatTarget.transform;
-        Vector3 lookAtPosition = lookAtTransform.transform.position;
-        lookAtTransform.position = new Vector3(lookAtPosition.x,transform.position.y, lookAtPosition.z);
-        transform.LookAt(lookAtTransform);
-
+        LookAtTarget();
         if (_timeSinceLastAttack > 1f / _attackSpeed){
             // TODO: trigger attack animation and sound here
             _damage = weaponDamage;
@@ -77,6 +72,13 @@ public class Fighter : MonoBehaviour{
 
     public void GetAttackTarget(GameObject target){
         _combatTarget = target.GetComponent<TakeDamage>();
+    }
+
+    void LookAtTarget(){
+        Transform lookAtTransform = _combatTarget.transform;
+        Vector3 lookAtPosition = lookAtTransform.transform.position;
+        lookAtTransform.position = new Vector3(lookAtPosition.x, transform.position.y, lookAtPosition.z);
+        transform.LookAt(lookAtTransform);
     }
 
     bool GetIsInRange(){

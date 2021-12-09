@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour{
 
@@ -25,6 +26,7 @@ public class Enemy : MonoBehaviour{
       _capsuleCollider.enabled = false;
       _fighter.enabled = false;
       _enemyMovement.enabled = false;
+      GetComponent<NavMeshAgent>().enabled = false;
       isDead = true;
    }
 
