@@ -9,9 +9,7 @@ public class HoverInteractable : MonoBehaviour{
     
     Vector2 offSet = new(15, 15);
     void OnMouseEnter(){
-        if (!GetComponent<Conditions>().completed){
-            Cursor.SetCursor(interactableObject, offSet , CursorMode.ForceSoftware);
-        }
+        Cursor.SetCursor(interactableObject, offSet , CursorMode.ForceSoftware);
     }
 
     void OnMouseExit(){
