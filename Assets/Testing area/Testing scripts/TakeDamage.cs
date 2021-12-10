@@ -14,15 +14,14 @@ public class TakeDamage : MonoBehaviour, IDamageReceiver{
     public bool isAlive;
     
     int _currentHealth;
-    bool _dodged;
     void Start(){
         _stats = GetComponent<Statistics>();
         random = new Random();
     }
 
     public void ReceiveDamage(int damage, bool isCrit){ //Toughness should affect this
-        int currentDamage = DamageCalc(damage);
-        _stats.UpdateHealth(currentDamage);
+        damage = ProcessDamage(damage);
+        _stats.UpdateHealth(damage);
         GetComponent<IDestructible>()?.Destruction();
         _currentHealth = _stats.currentHP;
         GetComponentInChildren<IHealthbar>()?.SetSliderCurrentHealth(_currentHealth);
@@ -43,18 +42,12 @@ public class TakeDamage : MonoBehaviour, IDamageReceiver{
         }
     }
 
-    bool DodgeDamage(){
-        if (random.NextDouble() < _stats.DodgeChance){
-            _dodged = true;
-        }
-        else{
-            _dodged = false;
-        }
-        return _dodged;
+    bool DodgeSuccessful(){
+        return random.NextDouble() < _stats.DodgeChance;
     }
 
-    int DamageCalc(int dmg){
-        if (DodgeDamage()){
+    int ProcessDamage(int dmg){
+        if (DodgeSuccessful()){
             dmg = 0;
         }
         Debug.Log(transform.name + " receives " + dmg + " Damage");
