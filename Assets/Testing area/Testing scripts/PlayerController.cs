@@ -17,10 +17,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float attackRange = 2f;
 
     public InventoryObject inventory;
-    
+
     FMOD.Studio.EventInstance _moveInstance;
     Movement _navmeshMover;
     Statistics _statistics;
+    Health _health;
 
     Animator _animator;
     RaycastHit hit;
@@ -32,21 +33,22 @@ public class PlayerController : MonoBehaviour
 
     const string PLAYER_RUN = "playerRun";
     const string PLAYER_WALK = "playerWalk";
-    
+
     void Start(){
         _navmeshMover = GetComponent<Movement>();
         _statistics = GetComponent<Statistics>();
         _interactionRange = _statistics.InteractRange;
         _animator = GetComponentInChildren<Animator>();
-         _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
-         //_moveInstance.setVolume(50f);
+        _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
+        _health = GetComponent<Health>();
+        //_moveInstance.setVolume(50f);
     }
 
     void Update(){
-        if (!_statistics.IsAlive){
+        if (!_health.IsAlive){
             return;
         }
-        
+
         if (InteractWithCombat()){
             return;
         }
@@ -54,7 +56,7 @@ public class PlayerController : MonoBehaviour
         if (InteractWithInteractable()){
             return;
         }
-        
+
         // if click on the ground, move to cursor
         MoveToCursor();
 
@@ -82,7 +84,7 @@ public class PlayerController : MonoBehaviour
     bool InteractWithCombat(){
         RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
         foreach (RaycastHit hit in hits){
-            GameObject enemy = hit.transform.GetComponent<TakeDamage>()?.gameObject;
+            GameObject enemy = hit.transform.GetComponent<Health>()?.gameObject;
             if (enemy == null) continue;
             if (Input.GetMouseButton(0)){
                 //TryToAttackEnemy(enemy);
@@ -100,7 +102,7 @@ public class PlayerController : MonoBehaviour
             if (interactableObject == null) continue;
             if (Input.GetMouseButton(0)){
                 Vector3 positionCloseToTarget = hit.point - (hit.point - transform.position).normalized * 1;
-                MoveToInteractable(interactableObject, positionCloseToTarget); 
+                MoveToInteractable(interactableObject, positionCloseToTarget);
             }
             return true;
         }
@@ -156,7 +158,7 @@ public class PlayerController : MonoBehaviour
     bool GetIsInRange(Transform target, float range){
         return Vector3.Distance(transform.position, target.position) < range;
     }
-    
+
     static Ray GetMouseRay(){
         return Camera.main.ScreenPointToRay(Input.mousePosition);
     }

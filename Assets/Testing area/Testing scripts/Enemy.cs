@@ -7,13 +7,16 @@ public class Enemy : MonoBehaviour{
    CapsuleCollider _capsuleCollider;
    Fighter _fighter;
    EnemyMovement _enemyMovement;
-   bool isDead;
+   Health _health;
+
+   bool hasDied;
 
    void Start(){
       _statistics = GetComponent<Statistics>();
       _capsuleCollider = GetComponent<CapsuleCollider>();
       _fighter = GetComponent<Fighter>();
       _enemyMovement = GetComponent<EnemyMovement>();
+      _health = GetComponent<Health>();
    }
 
    void Update(){
@@ -27,12 +30,11 @@ public class Enemy : MonoBehaviour{
       _fighter.enabled = false;
       _enemyMovement.enabled = false;
       GetComponent<NavMeshAgent>().enabled = false;
-      isDead = true;
+      hasDied = true;
    }
 
    bool IsDead(){
-      if (!_statistics.IsAlive && !isDead){ return true;}
-
+      if (!_health.IsAlive && !hasDied){ return true;}
       return false;
    }
 }
