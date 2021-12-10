@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+
 public class Statistics : MonoBehaviour{
 
     [SerializeField]
@@ -10,8 +11,8 @@ public class Statistics : MonoBehaviour{
 
     [SerializeField] int weaponDamage = 10; // for debug
     [SerializeField] int defaultDamage = 5;
-    [SerializeField] internal float lowImpactLevelMultiplier = 0.005f;
-    [SerializeField] internal float highImpactLevelMultiplier = 0.01f;
+    [SerializeField] internal float lowImpactLevelMultiplier = 0.5f;
+    [SerializeField] internal float highImpactLevelMultiplier = 1f;
     int damage;
     bool isRanged;
 

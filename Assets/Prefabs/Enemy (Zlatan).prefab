@@ -715,7 +715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultCursor: {fileID: 2800000, guid: c63a54ea45b38eb4d885614761c41837, type: 3}
-  onEnemyCursor: {fileID: 2800000, guid: 320d423528b0c2040bc426544ae0bc59, type: 3}
+  onEnemyCursor: {fileID: 2800000, guid: 4efd44e0760704c46a3dda209ad485fa, type: 3}
 --- !u!114 &326505330
 MonoBehaviour:
   m_ObjectHideFlags: 0

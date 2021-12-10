@@ -47,6 +47,7 @@ public class Health : MonoBehaviour, IDamageReceiver{
     }
 
     public void ReceiveDamage(int damage, bool isCrit){ //Toughness should affect this
+        Debug.Log(IsAlive + this.name + "Is alive?");
         damage = ProcessDamage(damage);
         UpdateHealth(damage);
         //GetComponent<IDestructible>()?.Destruction();

@@ -20,7 +20,7 @@ public class HealthBar : MonoBehaviour, IHealthbar, IHealthListener{
         SetSliderMaxHealth(_health.ModifiedMaxHP);
         _startRotation = transform.rotation;
         _parent = GetComponentInParent<ToggleHealthBar>()?.gameObject;
-        System.Security.Cryptography.X509Certificates.StoreName.Root.Documentation(); // TODO: add passwords
+        
     }
 
     void Update(){
