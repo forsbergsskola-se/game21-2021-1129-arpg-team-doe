@@ -1,0 +1,86 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.UIElements;
+using Random = System.Random;
+
+public interface IHealthListener{
+    void HealthChanged(int currentHealth, int maxHealth, int damage, bool isCrit, bool isAlive);
+}
+
+public class Health : MonoBehaviour, IDamageReceiver{
+
+    [SerializeField] int maxHP = 100;
+    int currentHP;
+
+    Statistics _stats;
+    Random random;
+    List<IDamageNumbers> damageNumbersList;
+
+    public bool IsAlive => CurrentHP > 0;
+
+    public int CurrentHP{
+        get{
+            return currentHP;
+        }
+        private set{
+            currentHP = value;
+        }
+    }
+
+    public int ModifiedMaxHP => CalculateMaxHP();
+
+    void Start(){
+        _stats = GetComponent<Statistics>();
+        random = new Random();
+        CurrentHP = ModifiedMaxHP;
+    }
+
+    void UpdateHealth(int healthChange){
+        CurrentHP -= healthChange;
+        CurrentHP = Mathf.Clamp(CurrentHP, 0, ModifiedMaxHP);
+    }
+
+    int CalculateMaxHP(){
+        return (int) _stats.StatManipulation(maxHP, _stats.Toughness, _stats.highImpactLevelMultiplier);
+    }
+
+    public void ReceiveDamage(int damage, bool isCrit){ //Toughness should affect this
+        Debug.Log(IsAlive + this.name + "Is alive?");
+        damage = ProcessDamage(damage);
+        UpdateHealth(damage);
+        //GetComponent<IDestructible>()?.Destruction();
+        //GetComponentInChildren<IHealthbar>()?.SetSliderCurrentHealth(CurrentHP);
+        //GetComponentInChildren<ITextSpawner>()?.Spawn(damage,isCrit);
+        // damageNumbersList = GetComponentsInChildren<IDamageNumbers>()?.ToList();
+        // ActivateDamageNumbers(damage, isCrit);
+        Debug.Log(this.name + " I took damage");
+        foreach(var healthListener in GetComponentsInChildren<IHealthListener>()){
+            healthListener.HealthChanged(CurrentHP, ModifiedMaxHP, damage, isCrit, IsAlive);
+        }
+    }
+
+    void ActivateDamageNumbers(int damage, bool isCrit){
+        foreach (IDamageNumbers damageNumber in damageNumbersList){
+            if (damageNumber != null){
+                damageNumber.DisplayDmg(damage, isCrit);
+            }
+            else{
+                damageNumbersList.Remove(damageNumber);
+            }
+        }
+    }
+
+    bool DodgeSuccessful(){
+        return random.NextDouble() < _stats.DodgeChance;
+    }
+
+    int ProcessDamage(int dmg){
+        if (DodgeSuccessful()){
+            dmg = 0;
+        }
+        Debug.Log(transform.name + " receives " + dmg + " Damage");
+        return dmg;
+    }
+}

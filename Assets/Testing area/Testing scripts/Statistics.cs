@@ -1,18 +1,18 @@
 using System;
 using UnityEngine;
 
+
 public class Statistics : MonoBehaviour{
-
-
 
     [SerializeField]
     float toughness, strength, dexterity, knowledge, reflex, luck, interactRange, attackRange, attackSpeed;
 
-    // wait for decision of movement speed, affected by reflex?
-    
+    // movement is increased by reflex
+
     [SerializeField] int weaponDamage = 10; // for debug
     [SerializeField] int defaultDamage = 5;
-    [SerializeField] int maxHP = 100;
+    [SerializeField] internal float lowImpactLevelMultiplier = 0.5f;
+    [SerializeField] internal float highImpactLevelMultiplier = 1f;
     int damage;
     bool isRanged;
 
@@ -47,9 +47,6 @@ public class Statistics : MonoBehaviour{
         private set => luck = value;
     }
 
-    public int ModifiedMaxHP => CalculateMaxHP();
-    public int currentHP { get; private set; }
-
     public float InteractRange{
         get { return interactRange; }
         private set { interactRange = value; }
@@ -65,14 +62,16 @@ public class Statistics : MonoBehaviour{
     public float CritChance => CalculateCritChance(); // called in Fighter
     public float DodgeChance => CalculateDodgeChance();  // called in TakeDamage
 
-    int CalculateMaxHP(){
-        return (int) (maxHP * (1 + Toughness * 0.005f));
+    public float StatManipulation(int baseValue, float attribute, float levelMultiplier){
+        return (baseValue * (1 + attribute * levelMultiplier));
     }
 
-    public bool IsAlive => currentHP > 0;
+    public float StatManipulation(float baseValue, float attribute, float levelMultiplier){
+        return (baseValue * (1 + attribute * levelMultiplier));
+    }
 
     public Statistics(float toughness, float strength, float dexterity, float knowledge, float reflex, float luck,
-        float interactRange, float attackRange, float attackSpeed, int maxHp) {
+        float interactRange, float attackRange, float attackSpeed) {
         this.toughness = toughness;
         this.strength = strength;
         this.dexterity = dexterity;
@@ -82,36 +81,27 @@ public class Statistics : MonoBehaviour{
         this.interactRange = interactRange;
         this.attackRange = attackRange;
         this.attackSpeed = attackSpeed;
-        maxHP = maxHp;
         damage = defaultDamage;
     }
 
-    void Start(){
-        currentHP = ModifiedMaxHP;
-    }
-
-    // maybe change later
-    public void UpdateHealth(int healthChange){
-        currentHP -= healthChange;
-        currentHP = Mathf.Clamp(currentHP, 0, ModifiedMaxHP);
-    }
-
     float CalculateAttackSpeed(){
-        return (dexterity * 0.005f + 1) * attackSpeed;
+        return StatManipulation(attackSpeed, dexterity, lowImpactLevelMultiplier);
     }
-    float CalculateCritChance(){
-        return luck * 0.005f;
+    float CalculateCritChance() {
+        return luck * lowImpactLevelMultiplier;
     }
     float CalculateDodgeChance(){
-        return reflex * 0.005f;
+        return reflex * highImpactLevelMultiplier;
     }
+
+    // used for debug
     int CalculateWeaponDamage(){
         float damageMultiplier;
         if (isRanged){
-            damageMultiplier = dexterity * 0.005f + 1;
+            damageMultiplier = dexterity * highImpactLevelMultiplier + 1;
         }
         else{
-            damageMultiplier = strength * 0.005f + 1;
+            damageMultiplier = strength * highImpactLevelMultiplier + 1;
         }
         return damage = (int) (weaponDamage * damageMultiplier);
     }
