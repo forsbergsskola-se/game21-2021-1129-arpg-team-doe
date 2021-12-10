@@ -7,8 +7,6 @@ public interface IDamageReceiver{
 
 public class Fighter : MonoBehaviour{
     [SerializeField] float critDamageMultiplier = 1.5f; // for debug
-    [SerializeField] float critChance = 0.5f; // for debug
-    [SerializeField] int weaponDamage = 5; // for debug, which will be calculated in statistics
 
     Statistics _statistics;
     TakeDamage _combatTarget;
@@ -16,7 +14,6 @@ public class Fighter : MonoBehaviour{
     Random _random;
 
     float _attackRange;
-    float _attackSpeed;
     float _distance;
     int _damage;
     float _timeSinceLastAttack = Mathf.Infinity;
@@ -24,7 +21,6 @@ public class Fighter : MonoBehaviour{
     void Start(){
         _statistics = GetComponent<Statistics>();
         _attackRange = _statistics.AttackRange;
-        _attackSpeed = _statistics.AttackSpeed;
         _random = new Random();
         _movement = GetComponent<Movement>();
     }
@@ -52,12 +48,12 @@ public class Fighter : MonoBehaviour{
 
     public void Attack(GameObject target){
         LookAtTarget();
-        if (_timeSinceLastAttack > 1f / _attackSpeed){
+        if (_timeSinceLastAttack > 1f / _statistics.AttackSpeed){
             // TODO: trigger attack animation and sound here
-            _damage = weaponDamage;
+            _damage = _statistics.AttackDamage;
             bool isCrit = false;
-            if (_random.NextDouble() < critChance){
-                _damage = Mathf.RoundToInt(weaponDamage * critDamageMultiplier);
+            if (_random.NextDouble() < _statistics.CritChance){
+                _damage = Mathf.RoundToInt(_statistics.AttackDamage * critDamageMultiplier);
                 isCrit = true;
             }
             target.GetComponent<IDamageReceiver>()?.ReceiveDamage(_damage, isCrit);

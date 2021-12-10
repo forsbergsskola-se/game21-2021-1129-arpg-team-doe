@@ -27,7 +27,7 @@ public class UIDamageNr : MonoBehaviour, IDamageNumbers{
 
     public void DisplayDmg(int damage, bool isCrit){
         dmgText = Convert.ToString(damage);
-        Debug.Log("im displaying");
+        //Debug.Log("im displaying");
         FontChange(isCrit);
         Timer();
         SetText();
