@@ -9,14 +9,10 @@ public class TakeDamage : MonoBehaviour, IDamageReceiver{
 
     Statistics _stats;
     Random random;
-    List<IDamageNumbers> damagenumbers ;
-
     List<IDamageNumbers> damageNumbersList;
     
     int _currentHealth;
     bool _dodged;
-    
-
     void Start(){
         _stats = GetComponent<Statistics>();
         random = new Random();
@@ -30,7 +26,10 @@ public class TakeDamage : MonoBehaviour, IDamageReceiver{
         GetComponentInChildren<IHealthbar>()?.SetSliderCurrentHealth(_currentHealth);
         GetComponentInChildren<ITextSpawner>()?.Spawn(damage,isCrit);
         damageNumbersList = GetComponentsInChildren<IDamageNumbers>()?.ToList();
-        
+        ActivateDamageNumbers(damage, isCrit);
+    }
+
+    void ActivateDamageNumbers(int damage, bool isCrit){
         foreach (IDamageNumbers damageNumber in damageNumbersList){
             if (damageNumber != null){
                 damageNumber.DisplayDmg(damage, isCrit);
@@ -39,10 +38,6 @@ public class TakeDamage : MonoBehaviour, IDamageReceiver{
                 damageNumbersList.Remove(damageNumber);
             }
         }
-        
-        //DamageNumbersCuller(damage,isCrit);
-        Debug.Log(_currentHealth);
-        Debug.Log(isCrit);
     }
 
     bool DodgeDamage(){
