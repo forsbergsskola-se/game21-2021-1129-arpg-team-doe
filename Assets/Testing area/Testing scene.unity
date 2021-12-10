@@ -506,8 +506,6 @@ GameObject:
   - component: {fileID: 408597631}
   - component: {fileID: 408597630}
   - component: {fileID: 408597629}
-  - component: {fileID: 408597635}
-  - component: {fileID: 408597636}
   m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
@@ -624,33 +622,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &408597635
+--- !u!1 &452708957 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3143738041877798712, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+  m_PrefabInstance: {fileID: 1612765088}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &452708972
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 408597628}
+  m_GameObject: {fileID: 452708957}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e03ec8dcf1ae437488bcb0127f86b932, type: 3}
+  m_Script: {fileID: 11500000, guid: e6a75a9b0056d4254ad0defc32d23090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCursor: {fileID: 2800000, guid: c63a54ea45b38eb4d885614761c41837, type: 3}
-  interactableObject: {fileID: 2800000, guid: 450d02caf17bbc04ca0d3a7e3714087b, type: 3}
---- !u!114 &408597636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 408597628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7339576714a584429c762c90bef9491, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isAlive: 0
 --- !u!1 &475430777
 GameObject:
   m_ObjectHideFlags: 0
@@ -2217,6 +2205,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1292803965028986595, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
+      propertyPath: MaxHP
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1292803965028986595, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
       propertyPath: weaponDamage
       value: 10
