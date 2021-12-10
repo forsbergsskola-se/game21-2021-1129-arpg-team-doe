@@ -45,8 +45,8 @@ public class TakeDamage : MonoBehaviour, IDamageReceiver{
         }
         
         //DamageNumbersCuller(damage,isCrit);
-        Debug.Log(_currentHealth);
-        Debug.Log(isCrit);
+        Debug.Log(this.name + " health: " + _currentHealth);
+        //Debug.Log(isCrit);
     }
 
     bool DodgeDamage(){

@@ -1,15 +1,17 @@
+using System;
 using UnityEngine;
 
 public class Statistics : MonoBehaviour{
 
-    int weaponDamage = 1; // for debug
-    bool isRanged;
-    int damage;
+
 
     [SerializeField]
     float toughness, strength, dexterity, knowledge, reflex, luck, interactRange, attackRange, attackSpeed;
 
-    float dodgeChance;
+    [SerializeField] int weaponDamage = 10; // for debug
+    [SerializeField] int defaultDamage = 5;
+    int damage;
+    bool isRanged;
 
     public float Toughness{
         get => toughness;
@@ -31,9 +33,6 @@ public class Statistics : MonoBehaviour{
         private set => knowledge = value;
     }
 
-    public float DodgeChance{
-        get => dodgeChance;
-    }
     public float Reflex{
         //0-100 dodge chance
         get => reflex;
@@ -58,11 +57,11 @@ public class Statistics : MonoBehaviour{
         private set { attackRange = value; }
     }
 
-    public float AttackSpeed{
-        get { return attackSpeed; }
-        private set { attackSpeed = value * (this.dexterity * 0.01f + 1); }
-    }
-
+    public float AttackSpeed => CalculateAttackSpeed(); // 1 dexterity -> 0.5 percent change, called in Fighter
+    public int AttackDamage => CalculateWeaponDamage(); // called in Fighter
+    public float CritChance => CalculateCritChance(); // called in Fighter
+    public float DodgeChance => CalculateDodgeChance();  // called in TakeDamage
+    
     public bool IsAlive => currentHP > 0;
     public bool dealingDmg; //used for debug
 
@@ -79,6 +78,7 @@ public class Statistics : MonoBehaviour{
         this.attackSpeed = attackSpeed;
         maxHP = maxHp;
         this.dealingDmg = dealingDmg;
+        damage = defaultDamage;
     }
 
     void Start(){
@@ -91,25 +91,30 @@ public class Statistics : MonoBehaviour{
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
     }
 
-    float AttacksPerSecond(){
-        return attackSpeed * (this.dexterity * 0.01f + 1);
+    float CalculateAttackSpeed(){
+        return (dexterity * 0.005f + 1) * attackSpeed;
     }
 
+    float CalculateCritChance(){
+        return luck * 0.005f;
+    }
     float CalculateDodgeChance(){
-        return dodgeChance = this.reflex * 0.01f;
+        return reflex * 0.005f;
     }
-
-    int CalculateWeaponDamage(int weaponDamage){
+    int CalculateWeaponDamage(){
         float damageMultiplier = 0f;
         if (isRanged){
-            damageMultiplier = (this.dexterity * 0.01f + 1);
+            damageMultiplier = dexterity * 0.005f + 1;
         }
-        if (!isRanged){
-            damageMultiplier = (this.strength * 0.01f + 1);
+        else{
+            damageMultiplier = strength * 0.005f + 1;
         }
         return damage = (int) (weaponDamage * damageMultiplier);
     }
 
+
+
+    // we don't need this?
     float DamageMultiplier(){
         float damageMultiplier;
         if (isRanged){
