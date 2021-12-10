@@ -13,15 +13,12 @@ public class Destruct : MonoBehaviour,IDestructible{
     [SerializeField] int health;
     [SerializeField] Mesh _spriteIntact;
     [SerializeField] Mesh _spriteDestroyed;
-    
-    Statistics _statistics;
 
     float distance;
     bool isDestroyed;
     
     void Start(){
         GetComponent<MeshFilter>().mesh = _spriteIntact;
-        _statistics =GameObject.FindWithTag("Player").GetComponent<Statistics>();
     }
     public void Destruction(int damage){ //Used for Debug
         health -= damage;
@@ -37,6 +34,7 @@ public class Destruct : MonoBehaviour,IDestructible{
         GetComponent<MeshFilter>().mesh = _spriteDestroyed;
         GetComponent<NavMeshObstacle>().enabled = false;
         GetComponent<Collider>().enabled = false;
-        GetComponent<Destruct>().enabled = false; // maybe useful?
+        GetComponent<Destruct>().enabled = false;
+        GetComponent<HoverInteractable>().enabled = false;
     }
 }

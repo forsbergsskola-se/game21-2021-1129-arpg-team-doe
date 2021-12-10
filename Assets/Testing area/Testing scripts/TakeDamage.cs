@@ -10,6 +10,8 @@ public class TakeDamage : MonoBehaviour, IDamageReceiver{
     Statistics _stats;
     Random random;
     List<IDamageNumbers> damageNumbersList;
+
+    public bool isAlive;
     
     int _currentHealth;
     bool _dodged;
@@ -27,6 +29,7 @@ public class TakeDamage : MonoBehaviour, IDamageReceiver{
         GetComponentInChildren<ITextSpawner>()?.Spawn(damage,isCrit);
         damageNumbersList = GetComponentsInChildren<IDamageNumbers>()?.ToList();
         ActivateDamageNumbers(damage, isCrit);
+        isAlive = _currentHealth <= 0;
     }
 
     void ActivateDamageNumbers(int damage, bool isCrit){

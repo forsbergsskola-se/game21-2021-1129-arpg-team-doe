@@ -31,7 +31,7 @@ public class Fighter : MonoBehaviour{
             return;
         }
 
-        if (!_combatTarget.GetComponent<Statistics>().IsAlive){
+        if (!_combatTarget.isAlive){
             _combatTarget = null;
             return;
         }
