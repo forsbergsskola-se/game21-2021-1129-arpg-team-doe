@@ -48,20 +48,17 @@ public class Statistics : MonoBehaviour{
     public int maxHP;
     public int currentHP { get; private set; }
 
-    public float InteractRange
-    {
+    public float InteractRange{
         get { return interactRange; }
         private set { interactRange = value; }
     }
 
-    public float AttackRange
-    {
+    public float AttackRange{
         get { return attackRange; }
         private set { attackRange = value; }
     }
 
-    public float AttackSpeed
-    {
+    public float AttackSpeed{
         get { return attackSpeed; }
         private set { attackSpeed = value * (this.dexterity * 0.01f + 1); }
     }
