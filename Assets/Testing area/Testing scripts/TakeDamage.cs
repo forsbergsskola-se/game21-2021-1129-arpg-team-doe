@@ -38,12 +38,10 @@ public class TakeDamage : MonoBehaviour, IDamageReceiver{
         foreach (IDamageNumbers damageNumber in damageNumbersList){
             if (damageNumber != null){
                 damageNumber.DisplayDmg(damage, isCrit);
-                
             }
             else{
                 damageNumbersList.Remove(damageNumber);
             }
-            
         }
         
         //DamageNumbersCuller(damage,isCrit);
