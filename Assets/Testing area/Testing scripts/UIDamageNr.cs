@@ -30,7 +30,7 @@ public class UIDamageNr : MonoBehaviour, IDamageNumbers{
         Debug.Log("im displaying");
         FontChange(isCrit);
         Timer();
-        SetAndPlayText();
+        SetText();
     } 
 
     public void Display(){
@@ -43,14 +43,13 @@ public class UIDamageNr : MonoBehaviour, IDamageNumbers{
         await Task.Delay((int)duration*1000);
         
        // ClearText(); //Temporary
-        Destroy(gameObject);
+       if (this != null){
+           Destroy(gameObject);
+       }
     }
 
-    void SetAndPlayText(){
+    void SetText(){
         _textMeshProUGUI.text = dmgText;
-        //_animator.enabled = true;
-        Debug.Log("im animating");
-        _animator.Play(FLOATING_POINT);
     }
 
     void ClearText(){
