@@ -24,7 +24,7 @@ public class HealthBar : MonoBehaviour, IHealthbar{
     public void Start(){
         _statistics = GetComponentInParent<Statistics>();
 
-        var maxHP = _statistics.maxHP;
+        var maxHP = _statistics.ModifiedMaxHP;
         SetSliderMaxHealth(maxHP);
 
         _startRotation = transform.rotation;
