@@ -9,7 +9,7 @@ public class Fighter : MonoBehaviour{
     [SerializeField] float critDamageMultiplier = 1.5f; // for debug
 
     Statistics _statistics;
-    TakeDamage _combatTarget;
+    Health _combatTarget;
     Movement _movement;
     Random _random;
 
@@ -31,7 +31,7 @@ public class Fighter : MonoBehaviour{
             return;
         }
 
-        if (!_combatTarget.GetComponent<Statistics>().IsAlive){
+        if (!_combatTarget.GetComponent<Health>().IsAlive){
             _combatTarget = null;
             return;
         }
@@ -67,7 +67,7 @@ public class Fighter : MonoBehaviour{
     }
 
     public void GetAttackTarget(GameObject target){
-        _combatTarget = target.GetComponent<TakeDamage>();
+        _combatTarget = target.GetComponent<Health>();
     }
 
     void LookAtTarget(){

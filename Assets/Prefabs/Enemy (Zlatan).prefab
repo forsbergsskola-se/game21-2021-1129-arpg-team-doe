@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9f0cc024c87c9458471721329bd5ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textPrefab: {fileID: 3405523494101610779, guid: b1be384a9a368f64db1f8d566aaf65ac, type: 3}
+  textPrefab: {fileID: 1208941954714662203, guid: b1be384a9a368f64db1f8d566aaf65ac, type: 3}
   spreadRange: 2
 --- !u!1 &1386220650300128875
 GameObject:
@@ -661,7 +661,8 @@ MonoBehaviour:
   attackSpeed: 0
   weaponDamage: 0
   defaultDamage: 0
-  maxHP: 20
+  lowImpactLevelMultiplier: 0
+  highImpactLevelMultiplier: 0
 --- !u!114 &1209891564928626856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,6 +688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7339576714a584429c762c90bef9491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHP: 100
 --- !u!114 &1499735538449174856
 MonoBehaviour:
   m_ObjectHideFlags: 0
