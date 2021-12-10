@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
             if (enemy == null) continue;
             if (Input.GetMouseButton(0)){
                 //TryToAttackEnemy(enemy);
-                GetComponent<DealDamage>().GetAttackTarget(enemy);
+                GetComponent<Fighter>().GetAttackTarget(enemy);
             }
             return true;
         }
@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
                     //_moveInstance.release();
                     _navmeshMover.Mover(hit.point);
                     if (_navmeshMover.pathFound){
-                        GetComponent<DealDamage>().CancelAttack();
+                        GetComponent<Fighter>().CancelAttack();
                         StartCoroutine(ChangeCursorTemporary(validClickTexture,1f));
                         ChangeAnimationState(PLAYER_RUN);
                     }
@@ -150,28 +150,6 @@ public class PlayerController : MonoBehaviour
             if (_navmeshMover.pathFound)
                 ChangeAnimationState(PLAYER_RUN);
             StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
-        }
-    }
-
-    void TryToAttackEnemy(GameObject target){
-        bool targetIsAlive = target.GetComponent<Statistics>().IsAlive;
-        if (!targetIsAlive){
-            return;
-        }
-        bool isInAttackRange = GetIsInRange(target.transform, attackRange);
-        // 2. if player is in attack range, attack
-        if (isInAttackRange){
-            GetComponent<DealDamage>().Attack(target.gameObject);
-            Debug.Log("Attacking");
-        }
-        // 3. if there is no valid path, do nothing
-        if (!_navmeshMover.pathFound){
-            Debug.Log("No valid path to the enemy.");
-            return;
-        }
-        // 4. if player is not in attack range and there is valid path, go to the enemy
-        if (!isInAttackRange){
-            _navmeshMover.Mover(target.transform.position);
         }
     }
 

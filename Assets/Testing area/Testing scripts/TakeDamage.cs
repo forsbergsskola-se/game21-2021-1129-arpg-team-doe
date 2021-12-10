@@ -1,28 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Random = System.Random;
 
 public class TakeDamage : MonoBehaviour, IDamageReceiver{
 
     Statistics _stats;
     Random random;
+    List<IDamageNumbers> damageNumbersList;
     
     int _currentHealth;
     bool _dodged;
-
     void Start(){
         _stats = GetComponent<Statistics>();
-        _currentHealth = _stats.currentHP;
         random = new Random();
     }
 
-    public void ReceiveDamage(int damage){ //Toughness should affect this
-        _currentHealth -= DamageCalc(damage);
+    public void ReceiveDamage(int damage, bool isCrit){ //Toughness should affect this
+        int currentDamage = DamageCalc(damage);
+        _stats.UpdateHealth(currentDamage);
         GetComponent<IDestructible>()?.Destruction(damage);
-        GetComponent<IHealthbar>()?.SetSliderCurrentHealth(_currentHealth);
+        _currentHealth = _stats.currentHP;
+        GetComponentInChildren<IHealthbar>()?.SetSliderCurrentHealth(_currentHealth);
+        GetComponentInChildren<ITextSpawner>()?.Spawn(damage,isCrit);
+        damageNumbersList = GetComponentsInChildren<IDamageNumbers>()?.ToList();
+        ActivateDamageNumbers(damage, isCrit);
+    }
+
+    void ActivateDamageNumbers(int damage, bool isCrit){
+        foreach (IDamageNumbers damageNumber in damageNumbersList){
+            if (damageNumber != null){
+                damageNumber.DisplayDmg(damage, isCrit);
+            }
+            else{
+                damageNumbersList.Remove(damageNumber);
+            }
+        }
     }
 
     bool DodgeDamage(){
-        var dodgeChance = _stats.Reflex;
+        var dodgeChance = _stats.Reflex;//This calculation should be in statistics?
 
         if (random.NextDouble() < dodgeChance){
             _dodged = true;
