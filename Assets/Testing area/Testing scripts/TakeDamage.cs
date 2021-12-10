@@ -23,7 +23,7 @@ public class TakeDamage : MonoBehaviour, IDamageReceiver{
     public void ReceiveDamage(int damage, bool isCrit){ //Toughness should affect this
         int currentDamage = DamageCalc(damage);
         _stats.UpdateHealth(currentDamage);
-        GetComponent<IDestructible>()?.Destruction(damage);
+        GetComponent<IDestructible>()?.Destruction();
         _currentHealth = _stats.currentHP;
         GetComponentInChildren<IHealthbar>()?.SetSliderCurrentHealth(_currentHealth);
         GetComponentInChildren<ITextSpawner>()?.Spawn(damage,isCrit);

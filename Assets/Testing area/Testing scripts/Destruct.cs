@@ -5,24 +5,23 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public interface IDestructible{
-    void Destruction(int damage);
+    void Destruction();
 
 }
 public class Destruct : MonoBehaviour,IDestructible{
-    
-    [SerializeField] int health;
+     
     [SerializeField] Mesh _spriteIntact;
     [SerializeField] Mesh _spriteDestroyed;
-
+    
+    Statistics _statistics;
     float distance;
     bool isDestroyed;
     
     void Start(){
         GetComponent<MeshFilter>().mesh = _spriteIntact;
     }
-    public void Destruction(int damage){ //Used for Debug
-        health -= damage;
-        if (health <= 0){
+    public void Destruction(){ //Used for Debug
+        if (!_statistics.IsAlive){
             isDestroyed = true;
         }
         if (isDestroyed){
