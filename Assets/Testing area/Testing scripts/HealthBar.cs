@@ -10,38 +10,39 @@ public interface IHealthbar{
 
 }
 public class HealthBar : MonoBehaviour, IHealthbar{
-
+    
     Statistics _statistics;
     TakeDamage _takeDamage;
-
+    GameObject _parent;
+    
     public Slider slider;
-    public Gradient gradient;
-    public Image fill;
+    
+    Quaternion _startRotation;
 
+    Vector3 _offset = new Vector3(0, 2, 1);
+    
     public void Start(){
         _statistics = GetComponentInParent<Statistics>();
-        
+
         var maxHP = _statistics.maxHP;
         SetSliderMaxHealth(maxHP);
+
+        _startRotation = transform.rotation;
+        _parent = GetComponentInParent<ToggleHealthBar>()?.gameObject;
     }
 
-  
+    void Update(){
+        transform.rotation = _startRotation;
+        transform.position = _parent.transform.position + _offset;
+    }
 
     void SetSliderMaxHealth(float maxHP){
         slider.maxValue = maxHP;
         slider.value = maxHP;
-
-        // puts the health bar gradient to green
-        fill.color = gradient.Evaluate(1f);
     }
 
     public void SetSliderCurrentHealth(int currentHealth){
-        currentHealth = _statistics.currentHP;
         slider.value = currentHealth;
-
-        // changes the health bar gradient to whatever the health is
-        fill.color = gradient.Evaluate(slider.normalizedValue);
     }
-
     
 }

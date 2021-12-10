@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class UIInteraction : MonoBehaviour{
+public class ToggleHealthBar : MonoBehaviour{
 
     [SerializeField] GameObject _healthBar; //the active enemies HPbar only. needs combat implemented first. //wrong capitalization and maybe call it _healthBar
     bool inPursuit;

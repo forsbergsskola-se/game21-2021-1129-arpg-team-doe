@@ -22,16 +22,12 @@ public class TakeDamage : MonoBehaviour, IDamageReceiver{
         random = new Random();
     }
 
-    void OnMouseEnter(){
-        ReceiveDamage(10,false);
-    }
-
     public void ReceiveDamage(int damage, bool isCrit){ //Toughness should affect this
         int currentDamage = DamageCalc(damage);
         _stats.UpdateHealth(currentDamage);
         GetComponent<IDestructible>()?.Destruction(damage);
         _currentHealth = _stats.currentHP;
-        GetComponent<IHealthbar>()?.SetSliderCurrentHealth(_currentHealth);
+        GetComponentInChildren<IHealthbar>()?.SetSliderCurrentHealth(_currentHealth);
         GetComponentInChildren<ITextSpawner>()?.Spawn(damage,isCrit);
         damageNumbersList = GetComponentsInChildren<IDamageNumbers>()?.ToList();
         
