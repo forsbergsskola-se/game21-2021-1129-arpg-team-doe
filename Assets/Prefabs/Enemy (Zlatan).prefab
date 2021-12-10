@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 1386220649754958181}
   - component: {fileID: 1386220649754958182}
   - component: {fileID: 1386220649754958183}
+  - component: {fileID: 2389471391965844041}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -137,6 +138,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2389471391965844041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386220649754958104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a9f0cc024c87c9458471721329bd5ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textPrefab: {fileID: 3405523494101610779, guid: b1be384a9a368f64db1f8d566aaf65ac, type: 3}
+  spreadRange: 2
 --- !u!1 &1386220650300128875
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,6 +467,7 @@ GameObject:
   - component: {fileID: 1209891564928626856}
   - component: {fileID: 6801725445022384116}
   - component: {fileID: 1499735538449174856}
+  - component: {fileID: 1095566062284832604}
   m_Layer: 0
   m_Name: Enemy (Zlatan)
   m_TagString: Enemy
@@ -684,6 +700,20 @@ MonoBehaviour:
   critDamageMultiplier: 1.5
   critChance: 0.5
   weaponDamage: 5
+--- !u!114 &1095566062284832604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3143738041877798712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962858f06cb599e469fe7bd40450d934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCursor: {fileID: 2800000, guid: c63a54ea45b38eb4d885614761c41837, type: 3}
+  onEnemyCursor: {fileID: 2800000, guid: 320d423528b0c2040bc426544ae0bc59, type: 3}
 --- !u!1 &3143738042323338802
 GameObject:
   m_ObjectHideFlags: 0
