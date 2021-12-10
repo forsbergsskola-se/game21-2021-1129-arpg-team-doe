@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9f0cc024c87c9458471721329bd5ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textPrefab: {fileID: 3405523494101610779, guid: 093b1b1cf10cdf24da489ed876df25d6, type: 3}
+  textPrefab: {fileID: 3405523494101610779, guid: b1be384a9a368f64db1f8d566aaf65ac, type: 3}
   spreadRange: 2
 --- !u!1001 &17086527
 PrefabInstance:
@@ -252,7 +252,7 @@ PrefabInstance:
       objectReference: {fileID: 1868564248}
     - target: {fileID: 2402392299167721498, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: maxHP
-      value: 5
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3143738041877798692, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_RootOrder
@@ -1581,6 +1581,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135fa44ce2ec39b4ea1c674ad53b9beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1045717680 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1386220649754958104, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+  m_PrefabInstance: {fileID: 17086527}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1045717685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045717680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a9f0cc024c87c9458471721329bd5ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textPrefab: {fileID: 3405523494101610779, guid: b1be384a9a368f64db1f8d566aaf65ac, type: 3}
+  spreadRange: 2
 --- !u!1 &1270537176 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8705401766356934911, guid: e31cf9a5d6ce27446a4e2f937c659f3c, type: 3}
@@ -2276,6 +2295,10 @@ PrefabInstance:
     - target: {fileID: 1386220651167043233, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2402392299167721498, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: maxHP
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3143738041877798692, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_RootOrder
