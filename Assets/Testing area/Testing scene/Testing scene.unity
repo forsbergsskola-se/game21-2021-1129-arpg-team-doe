@@ -700,23 +700,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
---- !u!1 &452708957 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3143738041877798712, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-  m_PrefabInstance: {fileID: 1612765088}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &452708972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 452708957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6a75a9b0056d4254ad0defc32d23090, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &475430777
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,22 +959,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2402392299167721498, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: attackRange
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2402392299167721498, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: attackSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2402392299167721498, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: weaponDamage
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2402392299167721498, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: defaultDamage
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 3143738041877798692, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_RootOrder
       value: 21

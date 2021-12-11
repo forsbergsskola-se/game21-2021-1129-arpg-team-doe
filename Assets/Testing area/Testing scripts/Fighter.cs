@@ -30,23 +30,28 @@ public class Fighter : MonoBehaviour{
         if (_combatTarget == null){
             return;
         }
-
-        if (!_combatTarget.GetComponent<Health>().IsAlive){
+        if (!_combatTarget.GetComponent<Health>().IsAlive || IsClickOnItself()){
             _combatTarget = null;
             return;
         }
-
-        if (!GetIsInRange()){
+        if (!IsInAttackRange()){
             _movement.Mover(_combatTarget.transform.position);
         }
-
         else{
             _movement.StopMoving();
             Attack(_combatTarget.gameObject);
         }
     }
+    
+    public void GetAttackTarget(GameObject target){
+        _combatTarget = target.GetComponent<Health>();
+    }
+    
+    public void CancelAttack(){
+        _combatTarget = null;
+    }
 
-    public void Attack(GameObject target){
+    void Attack(GameObject target){
         LookAtTarget();
         if (_timeSinceLastAttack > 1f / _statistics.AttackSpeed){
             // TODO: trigger attack animation and sound here
@@ -63,14 +68,6 @@ public class Fighter : MonoBehaviour{
         }
     }
 
-    public void CancelAttack(){
-        _combatTarget = null;
-    }
-
-    public void GetAttackTarget(GameObject target){
-        _combatTarget = target.GetComponent<Health>();
-    }
-
     void LookAtTarget(){
         Transform lookAtTransform = _combatTarget.transform;
         Vector3 lookAtPosition = lookAtTransform.transform.position;
@@ -78,7 +75,11 @@ public class Fighter : MonoBehaviour{
         transform.LookAt(lookAtTransform);
     }
 
-    bool GetIsInRange(){
+    bool IsInAttackRange(){
         return Vector3.Distance(transform.position, _combatTarget.transform.position) < _attackRange;
+    }
+    
+    bool IsClickOnItself(){
+        return _combatTarget.transform.gameObject == gameObject;
     }
 }
