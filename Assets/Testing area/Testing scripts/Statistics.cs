@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -13,6 +14,7 @@ public class Statistics : MonoBehaviour{
     [SerializeField] int defaultDamage = 5;
     [SerializeField] internal float lowImpactLevelMultiplier = 0.5f;
     [SerializeField] internal float highImpactLevelMultiplier = 1f;
+    [SerializeField] List<DamageType> vulnerabilities;
     int damage;
     bool isRanged;
 

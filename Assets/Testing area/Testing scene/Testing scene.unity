@@ -648,6 +648,7 @@ MonoBehaviour:
   defaultDamage: 0
   lowImpactLevelMultiplier: 0
   highImpactLevelMultiplier: 0
+  vulnerabilities: []
 --- !u!136 &408597639
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1026,7 +1027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83ef1b69dc8a0b24ca6c6a1e6a6c0dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 4d32df5e6b3e73a4aa1d89643afe952e, type: 2}
+  item: {fileID: 11400000, guid: e36c4f0e5b6d1174f95c41d329c99658, type: 2}
 --- !u!1 &752224606
 GameObject:
   m_ObjectHideFlags: 0
@@ -2289,6 +2290,18 @@ PrefabInstance:
       propertyPath: defaultDamage
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1292803965028986595, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
+      propertyPath: vulnerabilities.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1292803965028986595, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
+      propertyPath: vulnerabilities.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3e87e5d953dae5a469e386c015c103e1, type: 2}
+    - target: {fileID: 1292803965028986595, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
+      propertyPath: vulnerabilities.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 08778ce313064eb42bf34ef5e34d7eb5, type: 2}
     - target: {fileID: 1292803965028986615, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
       propertyPath: m_Constraints
       value: 112

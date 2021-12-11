@@ -5,12 +5,12 @@ using UnityEngine;
 public enum ItemType{
     Consumable,
     Equipment,
+    Weapon,
     Default
 }
 
 
 public abstract class ItemObject : ScriptableObject{
-    public GameObject prefab;
     public ItemType type;
     public string name;
     [Min(0f)] public float price;
