@@ -1007,6 +1007,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (Zlatan)
       objectReference: {fileID: 0}
+    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: maxFollowRange
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
 --- !u!1 &540884983 stripped
@@ -2288,6 +2292,10 @@ PrefabInstance:
     - target: {fileID: 1292803965028986595, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
       propertyPath: defaultDamage
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1292803965028986600, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
+      propertyPath: playerDefeatedThreshold
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1292803965028986615, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
       propertyPath: m_Constraints

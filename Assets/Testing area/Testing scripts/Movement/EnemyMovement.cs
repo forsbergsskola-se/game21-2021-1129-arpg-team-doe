@@ -14,10 +14,12 @@ public class EnemyMovement : MonoBehaviour
    GameObject _player;
    Transform _desiredTarget;
    Transform _target;
-   Transform _patrolTarget;
    Vector3 _savedPosition;
    bool _activeSavedPosition; 
-   bool _needsToWalkBack; 
+   bool _needsToWalkBack;
+   
+   bool _isAttacking;
+   bool _playerIsDetected;
 
    void Start(){
       _targetDetection = GetComponent<TargetDetection>();
@@ -29,49 +31,59 @@ public class EnemyMovement : MonoBehaviour
    }
 
    void Update(){ // very long update, might want to refactor
+      if(!_health.IsAlive) return;
       //Sets target if detected and is not walking back
-      if (_targetDetection.TargetIsDetected(transform.position, _desiredTarget) && !_needsToWalkBack){
-         _target = _desiredTarget;
+      _playerIsDetected = _targetDetection.TargetIsDetected(transform.position, _desiredTarget);
+      if (_targetDetection.DistanceToTarget(_savedPosition, transform) < closeEnoughToSavedPosition){
+         _needsToWalkBack = false;
       }
-      
-      if (!_needsToWalkBack){
-         if (_target == null) return;
-         InteractWithCombat();
+      _isAttacking = _playerIsDetected && !_needsToWalkBack;
+      if (_isAttacking){
+            _target = _desiredTarget;
+            InteractCombat(_target); 
       }
-      
-      if (_target == null){
+      // if (_target == null){
+      //    WalkBackAndSetIdle();
+      //    // Or do patrol behavior
+      // }
+   }
+
+   void InteractCombat(Transform target){
+      if (!_activeSavedPosition){
+         SavePosition();
+      }
+      if (_targetDetection.DistanceToTarget(_savedPosition, transform) < maxFollowRange){
+         _fighter.GetAttackTarget(target.gameObject);
+         _needsToWalkBack = false;
+         _healthBar.SetActive(true);
+      }
+      else{
          WalkBackAndSetIdle();
-         // Or do patrol behavior
       }
    }
 
+   // void InteractWithCombat(){
+   //    if (!_activeSavedPosition){
+   //       SavePosition();
+   //    }
+   //    if (_target != null && isAttacking){
+   //       _fighter.GetAttackTarget(_target.gameObject);
+   //       _healthBar.SetActive(true);
+   //    }
+   //    //Checks if we're outside of the maxFollowRange
+   //    if (_targetDetection.DistanceToTarget(_savedPosition, transform) >= maxFollowRange){
+   //       ForgetTarget();
+   //    }
+   // }
+   
    void WalkBackAndSetIdle(){
-      if (_needsToWalkBack){
-         _movement.Mover(_savedPosition);
-      }
-      //Debug.Log(_targetDetection.DistanceToTarget(savedPosition, transform));
-
+      ForgetTarget();
+      _movement.Mover(_savedPosition);
+      _fighter.CancelAttack();
       //Checks if this unit is close enough to saved position and already has an active saved position 
       if (_targetDetection.DistanceToTarget(_savedPosition, transform) < closeEnoughToSavedPosition &&
           _activeSavedPosition){
          SetIdle();
-      }
-   }
-
-   void InteractWithCombat(){
-
-      if (!_activeSavedPosition){
-         SavePosition();
-      }
-      if (!_health.IsAlive){
-         return;
-      }
-      _fighter.GetAttackTarget(_target.gameObject);
-      _healthBar.SetActive(true);
-
-      //Checks if we're outside of the maxFollowRange
-      if (_targetDetection.DistanceToTarget(_savedPosition, transform) >= maxFollowRange){
-         ForgetTarget();
       }
    }
    
@@ -87,7 +99,7 @@ public class EnemyMovement : MonoBehaviour
    }
 
    void SavePosition(){
-      _savedPosition = this.transform.position;
+      _savedPosition = transform.position;
       _activeSavedPosition = true;
    }
 }
