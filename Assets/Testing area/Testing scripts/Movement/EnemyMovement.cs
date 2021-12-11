@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -11,12 +8,12 @@ public class EnemyMovement : MonoBehaviour
    [SerializeField] float closeEnoughToSavedPosition = 3f;
   
    TargetDetection _targetDetection;
-   PlayerController _playerController;
    Movement _movement;
    Fighter _fighter;
    Statistics _statistics;
-   
-   
+   Health _health;
+   GameObject _player;
+
    Transform _desiredTarget;
    Transform _target;
    Transform _patrolTarget; 
@@ -33,18 +30,19 @@ public class EnemyMovement : MonoBehaviour
 
    void Start(){
       _statistics = GetComponent<Statistics>();
-      _playerController = FindObjectOfType<PlayerController>(); //maybe use player tag instead? Will save performance
       _targetDetection = GetComponent<TargetDetection>();
       _movement = GetComponent<Movement>();
       _fighter = GetComponent<Fighter>();
-      _desiredTarget = _playerController.transform;
+      _health = GetComponent<Health>();
+      _player = GameObject.FindWithTag("Player");
+      _desiredTarget = _player.transform;
       attackRange = _statistics.AttackRange;
    }
 
    void Update(){ // very long update, might want to refactor
       //Sets target if detected and is not walkingback
      //Debug.Log(transform.name + "I have to go back?" + needsToWalkBack + _targetDetection.DistanceToTarget(savedPosition, transform));
-      if (_targetDetection.TargetIsDetected(this.transform.position, _desiredTarget) && !needsToWalkBack){
+      if (_targetDetection.TargetIsDetected(transform.position, _desiredTarget) && !needsToWalkBack){
          _target = _desiredTarget;
       }
       
@@ -52,22 +50,14 @@ public class EnemyMovement : MonoBehaviour
          if (_target == null) return;
          
          //Calculates distance to target
-         distanceToTarget = _targetDetection.DistanceToTarget(this.transform.position, _target);
-         
-         if (_target != _patrolTarget){
-            //This if check is meant for possibly future implementation of AI Patrolling
-            InteractWithCombat();
-         }
+         distanceToTarget = _targetDetection.DistanceToTarget(transform.position, _target);
+         InteractWithCombat();
       }
       
       if (_target == null){
          WalkBackAndSetIdle();
+         // Or do patrol behavior
       }
-      
-      if (_target == _patrolTarget){
-         //AI Path walking (Just walking around)
-      }
-
    }
 
    void WalkBackAndSetIdle(){
@@ -86,32 +76,36 @@ public class EnemyMovement : MonoBehaviour
    }
 
    void InteractWithCombat(){
-      
-       
+
       if (!activeSavedPosition){
          SavePosition();
       }
+      
+      if(!_health.IsAlive) return;
+      _fighter.GetAttackTarget(_target.gameObject);
+      
 
-      if (distanceToTarget > attackRange && !needsToWalkBack) // a lot of ifs, might be able to break it up?
-      {
-         StopAttackThenMoveToTarget();
-      }
+      // if (distanceToTarget > attackRange && !needsToWalkBack) // a lot of ifs, might be able to break it up?
+      // {
+      //    StopAttackThenMoveToTarget();
+      // }
 
       //Checks if we're outside of the maxFollowRange
       if (_targetDetection.DistanceToTarget(savedPosition, transform) >= maxFollowRange){
          ForgetTarget();
       }
 
-      if (distanceToTarget < attackRange){
-         StopMovingThenAttackTarget();
-      }
+      // if (distanceToTarget < attackRange){
+      //    StopMovingThenAttackTarget();
+      // }
    }
 
    void StopMovingThenAttackTarget(){
       if (_target != null){
          _movement.StopMoving();
          transform.LookAt(_target);
-         _fighter.Attack(_target.gameObject);
+         //_fighter.Attack(_target.gameObject);
+         _fighter.Attack(_player);
       }
       
       //attack target  ??(Bool/state ATTACKING = True)??.

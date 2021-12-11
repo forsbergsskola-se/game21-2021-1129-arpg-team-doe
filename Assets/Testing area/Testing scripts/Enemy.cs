@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour{
       _fighter.enabled = false;
       _enemyMovement.enabled = false;
       GetComponent<NavMeshAgent>().enabled = false;
+      GetComponent<Fighter>().enabled = false;
       hasDied = true;
    }
 

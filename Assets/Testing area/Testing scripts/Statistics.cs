@@ -5,8 +5,8 @@ using UnityEngine;
 public class Statistics : MonoBehaviour{
 
     [SerializeField]
+    [Min(0f)]
     float toughness, strength, dexterity, knowledge, reflex, luck, interactRange, attackRange, attackSpeed;
-
     // movement is increased by reflex
 
     [SerializeField] int weaponDamage = 10; // for debug

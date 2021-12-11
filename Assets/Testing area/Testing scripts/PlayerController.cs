@@ -1,11 +1,8 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using FMOD;
 using FMODUnity;
-using UnityEditor;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
+using Debug = System.Diagnostics.Debug;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 public class PlayerController : MonoBehaviour
@@ -13,8 +10,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Texture2D validClickTexture;
     [SerializeField] Texture2D invalidClickTexture;
     [SerializeField] Texture2D standardCursorTexture;
-    [SerializeField] float distanceToKeepFromKey = 3f;
-    [SerializeField] float attackRange = 2f;
 
     public InventoryObject inventory;
 
@@ -24,12 +19,11 @@ public class PlayerController : MonoBehaviour
     Health _health;
 
     Animator _animator;
-    RaycastHit hit;
-
+    RaycastHit _hit;
     string _currentState;
     float _interactionRange;
-    bool hasPlayedSound;
-    bool hasWaitedForTime;
+    bool _hasPlayedSound;
+    bool _hasWaitedForTime;
 
     const string PLAYER_RUN = "playerRun";
     const string PLAYER_WALK = "playerWalk";
@@ -87,7 +81,6 @@ public class PlayerController : MonoBehaviour
             GameObject enemy = hit.transform.GetComponent<Health>()?.gameObject;
             if (enemy == null) continue;
             if (Input.GetMouseButton(0)){
-                //TryToAttackEnemy(enemy);
                 GetComponent<Fighter>().GetAttackTarget(enemy);
             }
             return true;
@@ -112,12 +105,12 @@ public class PlayerController : MonoBehaviour
     void MoveToCursor(){
         if (Input.GetMouseButton(0)){
             Ray ray = GetMouseRay();
-            bool hasHit = Physics.Raycast(ray, out hit);
+            bool hasHit = Physics.Raycast(ray, out _hit);
             if (hasHit){
-                if (hit.transform.CompareTag("Ground")){
+                if (_hit.transform.CompareTag("Ground")){
                     PlayMoveFeedback(0f);
                     //_moveInstance.release();
-                    _navmeshMover.Mover(hit.point);
+                    _navmeshMover.Mover(_hit.point);
                     if (_navmeshMover.pathFound){
                         GetComponent<Fighter>().CancelAttack();
                         StartCoroutine(ChangeCursorTemporary(validClickTexture,1f));
@@ -139,14 +132,14 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetMouseButtonUp(0)){
             _moveInstance.stop(STOP_MODE.ALLOWFADEOUT);
             _moveInstance.release();
-            hasPlayedSound = false;
+            _hasPlayedSound = false;
         }
     }
 
     void MoveToInteractable(GameObject target, Vector3 destination){
         PlayMoveFeedback(1f);
         //ChangeAnimationState(PLAYER_WALK);
-        bool isCloseEnoughToTarget = GetIsInRange(target.transform, distanceToKeepFromKey);
+        bool isCloseEnoughToTarget = GetIsInRange(target.transform, _interactionRange);
         if(!isCloseEnoughToTarget){
             _navmeshMover.Mover(destination);
             if (_navmeshMover.pathFound)
@@ -160,15 +153,16 @@ public class PlayerController : MonoBehaviour
     }
 
     static Ray GetMouseRay(){
+        Debug.Assert(Camera.main != null, "Camera.main != null");
         return Camera.main.ScreenPointToRay(Input.mousePosition);
     }
 
     void PlayMoveFeedback(float parameter){
-        if (hasPlayedSound == false){
+        if (_hasPlayedSound == false){
             _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
             _moveInstance.setParameterByName("MoveFeedback", parameter);
             _moveInstance.start();
-            hasPlayedSound = true;
+            _hasPlayedSound = true;
         }
     }
 

@@ -460,6 +460,7 @@ GameObject:
   - component: {fileID: 3143738041877798695}
   - component: {fileID: 3143738041877798691}
   - component: {fileID: 3143738041877798702}
+  - component: {fileID: 326505330}
   - component: {fileID: 6853580289907481125}
   - component: {fileID: 8616334650171279432}
   - component: {fileID: 615129224609624724}
@@ -468,7 +469,6 @@ GameObject:
   - component: {fileID: 6801725445022384116}
   - component: {fileID: 1499735538449174856}
   - component: {fileID: 1095566062284832604}
-  - component: {fileID: 326505330}
   m_Layer: 0
   m_Name: Enemy (Zlatan)
   m_TagString: Enemy
@@ -596,6 +596,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &326505330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3143738041877798712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a75a9b0056d4254ad0defc32d23090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6853580289907481125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,10 +669,10 @@ MonoBehaviour:
   reflex: 0
   luck: 0
   interactRange: 0
-  attackRange: 0
-  attackSpeed: 0
-  weaponDamage: 0
-  defaultDamage: 0
+  attackRange: 2
+  attackSpeed: 1
+  weaponDamage: 10
+  defaultDamage: 5
   lowImpactLevelMultiplier: 0
   highImpactLevelMultiplier: 0
 --- !u!114 &1209891564928626856
@@ -716,18 +728,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultCursor: {fileID: 2800000, guid: c63a54ea45b38eb4d885614761c41837, type: 3}
   onEnemyCursor: {fileID: 2800000, guid: 4efd44e0760704c46a3dda209ad485fa, type: 3}
---- !u!114 &326505330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3143738041877798712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6a75a9b0056d4254ad0defc32d23090, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3143738042323338802
 GameObject:
   m_ObjectHideFlags: 0
