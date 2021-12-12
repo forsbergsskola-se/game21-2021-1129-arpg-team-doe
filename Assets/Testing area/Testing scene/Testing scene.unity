@@ -944,6 +944,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 615129224609624724, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: visionRange
+      value: 21.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 615129224609624724, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: areaDetectionRange
+      value: 5.36
+      objectReference: {fileID: 0}
     - target: {fileID: 2402392299167721498, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: luck
       value: 138.33
@@ -951,6 +959,18 @@ PrefabInstance:
     - target: {fileID: 2402392299167721498, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: attackSpeed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435457428800173010, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435457428800173010, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435457428800173010, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3143738041877798692, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_RootOrder
@@ -1813,6 +1833,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 615129224609624724, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: areaDetectionRange
+      value: 5.21
+      objectReference: {fileID: 0}
     - target: {fileID: 2402392299167721498, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: luck
       value: 138.33
@@ -2283,6 +2307,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1292803965028986595, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
+      propertyPath: attackRange
+      value: 3.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1292803965028986595, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
       propertyPath: attackSpeed
       value: 1
       objectReference: {fileID: 0}
@@ -2293,6 +2321,10 @@ PrefabInstance:
     - target: {fileID: 1292803965028986595, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
       propertyPath: defaultDamage
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1292803965028986595, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
+      propertyPath: interactRange
+      value: 9.73
       objectReference: {fileID: 0}
     - target: {fileID: 1292803965028986595, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
       propertyPath: movementSpeed
