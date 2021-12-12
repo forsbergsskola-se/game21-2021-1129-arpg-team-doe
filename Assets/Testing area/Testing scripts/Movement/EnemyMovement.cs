@@ -1,3 +1,8 @@
+using System;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -113,4 +118,12 @@ public class EnemyMovement : MonoBehaviour
       _savedPosition = transform.position;
       _activeSavedPosition = true;
    }
+
+   #if UNITY_EDITOR
+   void OnDrawGizmosSelected(){
+      Handles.color = Color.magenta;
+      Handles.DrawWireDisc(_savedPosition, transform.up,maxFollowRange);
+      Handles.color = Color.white;
+   }
+   #endif
 }
