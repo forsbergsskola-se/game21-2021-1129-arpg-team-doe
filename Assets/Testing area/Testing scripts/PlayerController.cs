@@ -44,7 +44,6 @@ public class PlayerController : MonoBehaviour
         if (!_health.IsAlive){
             return;
         }
-        this.LogHealth(_health.CurrentHP);
         if (GetPlayerIsDefeated()){
             return;
         }
@@ -88,7 +87,7 @@ public class PlayerController : MonoBehaviour
         _health.UpdateHealth(-1);
     }
 
-    void OnTriggerEnter(Collider other){
+    void OnTriggerEnter(Collider other){ //Break out into its own script with onApplicationQuit
         //Check if other has Item script
         if (other.GetComponent<Item>() != null){
             var item = other.GetComponent<Item>();

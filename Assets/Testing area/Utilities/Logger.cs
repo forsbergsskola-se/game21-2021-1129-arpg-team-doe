@@ -7,8 +7,9 @@ using Object = UnityEngine.Object;
 using Transform = UnityEngine.Transform;
 using GameObject = UnityEngine.GameObject;
 namespace CustomLogs{
-   public static class Logger 
-   {
+   public static class Logger{
+
+      public static string critMessage = ""; 
       public static void Log(this Object myObject, object message){
          Debug.Log($"[<color=lightblue>{myObject.name}</color>]: {message}");
       }
@@ -28,10 +29,20 @@ namespace CustomLogs{
       }
       
       public static void LogDealDamage(this Object myObject,int damage, GameObject target){
-         Debug.Log($"[<color=lightblue>{myObject.name}</color>] I am dealing: [<color=red>{damage}</color>] Damage to [<color=yellow>{target.name}</color>]");
+         Debug.Log($"[<color=lightblue>{myObject.name}</color>] I am dealing: [<color=red>{damage}</color>] Damage to [<color=orange>{target.name}</color>]");
       }
       public static void LogDealDamage(this Object myObject,int damage, GameObject target, int targetCurrentHealth){
-         Debug.Log($"[<color=lightblue>{myObject.name}</color>] I am dealing: [<color=red>{damage}</color>] Damage to [<color=yellow>{target.name}</color>] and it now has [<color=green>{targetCurrentHealth}</color>] Health");
+         Debug.Log($"[<color=lightblue>{myObject.name}</color>] I am dealing: [<color=red>{damage}</color>] Damage to [<color=orange>{target.name}</color>] and it now has [<color=green>{targetCurrentHealth}</color>] Health");
+      }
+      public static void LogDealDamage(this Object myObject,int damage, bool crit, GameObject target, int targetCurrentHealth){
+         
+         if (crit){
+             critMessage = "Critical hit!";
+         }
+         if (crit == false){
+             critMessage = "Non-Crit";
+         }
+         Debug.Log($"[<color=lightblue>{myObject.name}</color>] I am dealing: [<color=red>{damage}</color>] Damage [<color=yellow>{critMessage}</color>] to [<color=orange>{target.name}</color>] and it now has [<color=green>{targetCurrentHealth}</color>] Health");
       }
    }
 }
