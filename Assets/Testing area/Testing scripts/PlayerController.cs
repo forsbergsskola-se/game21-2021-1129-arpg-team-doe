@@ -11,8 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Texture2D validClickTexture;
     [SerializeField] Texture2D invalidClickTexture;
     [SerializeField] Texture2D standardCursorTexture;
-    [SerializeField] int playerDefeatedThreshold = 20;
-    [SerializeField] int playerRegenerateThreshold = 80;
+    [SerializeField] int DefeatedThreshold = 20;
+    [SerializeField] int RegenerateThreshold = 80;
 
     public InventoryObject inventory;
     internal bool playerIsDefeated;
@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
     string _currentState;
     float _interactionRange;
     bool _hasPlayedSound;
-    bool _hasWaitedForTime;
 
     const string PLAYER_RUN = "playerRun";
     const string PLAYER_WALK = "playerWalk";
@@ -47,11 +46,9 @@ public class PlayerController : MonoBehaviour
         if (GetPlayerIsDefeated()){
             return;
         }
-
         if (InteractWithCombat()){
             return;
         }
-
         if (InteractWithInteractable()){
             return;
         }
@@ -66,25 +63,29 @@ public class PlayerController : MonoBehaviour
     }
 
     bool GetPlayerIsDefeated(){
-        if (_health.CurrentHP <= playerDefeatedThreshold){
+        if (_health.CurrentHP <= DefeatedThreshold){
             playerIsDefeated = true;
         }
-        if (_health.CurrentHP >= playerRegenerateThreshold){
+
+        if (_health.CurrentHP >= RegenerateThreshold){
             playerIsDefeated = false;
         }
+
         if (playerIsDefeated){
             _movement.enabled = false;
-            PlayerRegeneration();
-        }
-        else{
+            StartCoroutine(HealthRegeneration());
             _movement.enabled = true;
         }
         return playerIsDefeated;
     }
 
-    void PlayerRegeneration(){
+    IEnumerator HealthRegeneration(){
         Debug.Log(this.name + " is defeated.");
-        _health.UpdateHealth(-1);
+        for (float healthRegen = 0f; _health.CurrentHP < RegenerateThreshold; healthRegen += Time.deltaTime){
+            _health.UpdateHealth(-(int)healthRegen);
+            this.LogHealth(_health.CurrentHP);
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
     }
 
     void OnTriggerEnter(Collider other){ //Break out into its own script with onApplicationQuit
