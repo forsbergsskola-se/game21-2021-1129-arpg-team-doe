@@ -643,6 +643,7 @@ MonoBehaviour:
   interactRange: 0
   attackRange: 0
   attackSpeed: 0
+  critChance: 0
   weaponDamage: 0
   defaultDamage: 0
   lowImpactLevelMultiplier: 0
@@ -943,6 +944,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2402392299167721498, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: luck
+      value: 138.33
+      objectReference: {fileID: 0}
     - target: {fileID: 2402392299167721498, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: attackSpeed
       value: 1
@@ -1808,6 +1813,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2402392299167721498, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: luck
+      value: 138.33
+      objectReference: {fileID: 0}
     - target: {fileID: 3143738041877798692, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -2255,14 +2264,22 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1292803965028986595, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
       propertyPath: luck
-      value: 111.46
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1292803965028986595, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
       propertyPath: MaxHP
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1292803965028986595, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
+      propertyPath: dexterity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1292803965028986595, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
       propertyPath: toughness
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1292803965028986595, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
+      propertyPath: critChance
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1292803965028986595, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
@@ -2280,6 +2297,14 @@ PrefabInstance:
     - target: {fileID: 1292803965028986595, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
       propertyPath: movementSpeed
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1292803965028986595, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
+      propertyPath: lowImpactLevelMultiplier
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1292803965028986595, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
+      propertyPath: highImpactLevelMultiplier
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1292803965028986595, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
       propertyPath: vulnerabilities.Array.size

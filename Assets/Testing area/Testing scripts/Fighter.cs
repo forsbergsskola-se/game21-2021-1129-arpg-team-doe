@@ -56,9 +56,8 @@ public class Fighter : MonoBehaviour{
         if (_timeSinceLastAttack > 1f / _statistics.AttackSpeed){
             // TODO: trigger attack animation and sound here
             _damage = _statistics.AttackDamage;
-            bool isCrit = false; 
+            bool isCrit = false;
             if (_random.NextDouble() < _statistics.CritChance){
-                Debug.Log("I AM CRITTING");
                 _damage = Mathf.RoundToInt(_statistics.AttackDamage * critDamageMultiplier);
                 isCrit = true;
             }

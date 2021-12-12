@@ -7,7 +7,7 @@ public class Statistics : MonoBehaviour{
 
     [SerializeField]
     [Min(0f)]
-    float toughness, strength, dexterity, knowledge, reflex, luck, interactRange, attackRange, attackSpeed;
+    float toughness, strength, dexterity, knowledge, reflex, luck, interactRange, attackRange, attackSpeed, critChance;
     // movement is increased by reflex
 
     [SerializeField] int weaponDamage = 10; // for debug
@@ -83,14 +83,15 @@ public class Statistics : MonoBehaviour{
         this.interactRange = interactRange;
         this.attackRange = attackRange;
         this.attackSpeed = attackSpeed;
+        this.critChance = critChance;
         damage = defaultDamage;
     }
 
     float CalculateAttackSpeed(){
         return StatManipulation(attackSpeed, dexterity, lowImpactLevelMultiplier);
     }
-    float CalculateCritChance() {
-        return luck * lowImpactLevelMultiplier;
+    float CalculateCritChance(){
+        return Luck * lowImpactLevelMultiplier;
     }
     float CalculateDodgeChance(){
         return reflex * highImpactLevelMultiplier;
