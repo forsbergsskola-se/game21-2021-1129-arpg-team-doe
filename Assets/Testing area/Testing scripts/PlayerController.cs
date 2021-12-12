@@ -1,4 +1,5 @@
 using System.Collections;
+using CustomLogs;
 using FMOD;
 using FMODUnity;
 using UnityEngine;
@@ -43,7 +44,7 @@ public class PlayerController : MonoBehaviour
         if (!_health.IsAlive){
             return;
         }
-        Debug.Log(_health.CurrentHP);
+        this.LogHealth(_health.CurrentHP);
         if (GetPlayerIsDefeated()){
             return;
         }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CustomLogs;
 using UnityEngine;
 using Random = System.Random;
 
@@ -12,7 +13,7 @@ public class Health : MonoBehaviour, IDamageReceiver{
 
     Statistics _stats;
     Random random;
-    List<IDamageNumbers> damageNumbersList;
+    //List<IDamageNumbers> damageNumbersList;
 
     public bool IsAlive => CurrentHP > 0;
     public int CurrentHP{ get; private set; }
@@ -34,30 +35,24 @@ public class Health : MonoBehaviour, IDamageReceiver{
     }
 
     public void ReceiveDamage(int damage, bool isCrit){ //Toughness should affect this
-        //Debug.Log(IsAlive + this.name + "Is alive?");
         damage = ProcessDamage(damage);
+        this.LogTakeDamage(damage,CurrentHP);
         UpdateHealth(damage);
-        //GetComponent<IDestructible>()?.Destruction();
-        //GetComponentInChildren<IHealthbar>()?.SetSliderCurrentHealth(CurrentHP);
-        //GetComponentInChildren<ITextSpawner>()?.Spawn(damage,isCrit);
-        // damageNumbersList = GetComponentsInChildren<IDamageNumbers>()?.ToList();
-        // ActivateDamageNumbers(damage, isCrit);
-        //Debug.Log(this.name + " I took damage");
         foreach(var healthListener in GetComponentsInChildren<IHealthListener>()){
             healthListener.HealthChanged(CurrentHP, ModifiedMaxHP, damage, isCrit, IsAlive);
         }
     }
 
-    void ActivateDamageNumbers(int damage, bool isCrit){
-        foreach (IDamageNumbers damageNumber in damageNumbersList){
-            if (damageNumber != null){
-                damageNumber.DisplayDmg(damage, isCrit);
-            }
-            else{
-                damageNumbersList.Remove(damageNumber);
-            }
-        }
-    }
+    // void ActivateDamageNumbers(int damage, bool isCrit){
+    //     foreach (IDamageNumbers damageNumber in damageNumbersList){
+    //         if (damageNumber != null){
+    //             damageNumber.DisplayDmg(damage, isCrit);
+    //         }
+    //         else{
+    //             damageNumbersList.Remove(damageNumber);
+    //         }
+    //     }
+    // }
 
     bool DodgeSuccessful(){
         return random.NextDouble() < _stats.DodgeChance;

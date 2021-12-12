@@ -1,3 +1,4 @@
+using CustomLogs;
 using UnityEngine;
 using Random = System.Random;
 
@@ -60,9 +61,11 @@ public class Fighter : MonoBehaviour{
             if (_random.NextDouble() < _statistics.CritChance){
                 _damage = Mathf.RoundToInt(_statistics.AttackDamage * critDamageMultiplier);
                 isCrit = true;
+                this.LogPosition(this.gameObject);
             }
             target.GetComponent<IDamageReceiver>()?.ReceiveDamage(_damage, isCrit);
-            Debug.Log(transform.name + " is dealing " + _damage + " damage to " + _combatTarget.name);
+            this.LogDealDamage(_damage,target);
+            this.LogDealDamage(_damage,target,_combatTarget.CurrentHP);
             _timeSinceLastAttack = 0f;
         }
     }
