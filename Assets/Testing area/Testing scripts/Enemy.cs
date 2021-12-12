@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour{
       _fighter.enabled = false;
       _enemyMovement.enabled = false;
       _hasDied = true;
+      
    }
 
    bool IsDead(){

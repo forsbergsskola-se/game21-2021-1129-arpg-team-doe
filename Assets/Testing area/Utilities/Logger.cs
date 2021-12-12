@@ -18,8 +18,8 @@ namespace CustomLogs{
          Debug.Log($"[<color=lightblue>{myObject.name}</color>] I have [<color=green>{currentHealth}</color>] health!");
       }
 
-      public static void LogPosition(this Object myObject,GameObject myGameObjectObject){
-         Debug.Log($"[<color=lightblue>{myObject.name}</color>] My position is: [<color=gray>{myGameObjectObject.transform.position}</color>]");
+      public static void LogPosition(this Object myObject,GameObject myGameObject){
+         Debug.Log($"[<color=lightblue>{myObject.name}</color>] My position is: [<color=gray>{myGameObject.transform.position}</color>]");
       }
       public static void LogTakeDamage(this Object myObject,int damage){
          Debug.Log($"[<color=lightblue>{myObject.name}</color>] I took: [<color=red>{damage}</color>] Damage!");

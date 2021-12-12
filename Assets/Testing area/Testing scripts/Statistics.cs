@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 
 
@@ -108,4 +111,14 @@ public class Statistics : MonoBehaviour{
         }
         return damage = (int) (weaponDamage * damageMultiplier);
     }
+
+#if UNITY_EDITOR
+    void OnDrawGizmosSelected(){
+        Handles.color = Color.red;
+        Handles.DrawWireDisc(transform.position, transform.up,AttackRange);
+        Handles.color = Color.gray;
+        Handles.DrawWireDisc(transform.position,transform.up,interactRange);
+        
+    }
+#endif
 }
