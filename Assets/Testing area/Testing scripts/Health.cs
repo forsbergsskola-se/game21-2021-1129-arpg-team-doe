@@ -24,7 +24,7 @@ public class Health : MonoBehaviour, IDamageReceiver{
         CurrentHP = ModifiedMaxHP;
     }
 
-    void UpdateHealth(int healthChange){
+    public void UpdateHealth(int healthChange){
         CurrentHP -= healthChange;
         CurrentHP = Mathf.Clamp(CurrentHP, 0, ModifiedMaxHP);
     }

@@ -52,6 +52,17 @@ public class EnemyMovement : MonoBehaviour
       if (!_activeSavedPosition){
          SavePosition();
       }
+      
+      if (!_target.GetComponent<Health>().IsAlive){
+         WalkBackAndSetIdle();
+         return;
+      }
+
+      if (_target.GetComponent<PlayerController>().playerIsDefeated){
+         WalkBackAndSetIdle();
+         return;
+      }
+      
       if (_targetDetection.DistanceToTarget(_savedPosition, transform) < maxFollowRange){
          _fighter.GetAttackTarget(target.gameObject);
          _needsToWalkBack = false;

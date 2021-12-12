@@ -2,7 +2,7 @@ using System.Collections;
 using FMOD;
 using FMODUnity;
 using UnityEngine;
-using Debug = System.Diagnostics.Debug;
+using Debug = UnityEngine.Debug;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 public class PlayerController : MonoBehaviour
@@ -10,11 +10,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Texture2D validClickTexture;
     [SerializeField] Texture2D invalidClickTexture;
     [SerializeField] Texture2D standardCursorTexture;
+    [SerializeField] int playerDefeatedThreshold = 20;
+    [SerializeField] int playerRegenerateThreshold = 80;
 
     public InventoryObject inventory;
-
+    internal bool playerIsDefeated;
     FMOD.Studio.EventInstance _moveInstance;
-    Movement _navmeshMover;
+    Movement _movement;
     Statistics _statistics;
     Health _health;
 
@@ -29,17 +31,20 @@ public class PlayerController : MonoBehaviour
     const string PLAYER_WALK = "playerWalk";
 
     void Start(){
-        _navmeshMover = GetComponent<Movement>();
+        _movement = GetComponent<Movement>();
         _statistics = GetComponent<Statistics>();
         _interactionRange = _statistics.InteractRange;
         _animator = GetComponentInChildren<Animator>();
         _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
         _health = GetComponent<Health>();
-        //_moveInstance.setVolume(50f);
     }
 
     void Update(){
         if (!_health.IsAlive){
+            return;
+        }
+        Debug.Log(_health.CurrentHP);
+        if (GetPlayerIsDefeated()){
             return;
         }
 
@@ -54,10 +59,32 @@ public class PlayerController : MonoBehaviour
         // if click on the ground, move to cursor
         MoveToCursor();
 
-        if (_navmeshMover._navMeshAgent.remainingDistance < _navmeshMover._navMeshAgent.stoppingDistance){
-            _navmeshMover.StopMoving();
+        if (_movement._navMeshAgent.remainingDistance < _movement._navMeshAgent.stoppingDistance){
+            _movement.StopMoving();
             ChangeAnimationState(PLAYER_WALK);
         }
+    }
+
+    bool GetPlayerIsDefeated(){
+        if (_health.CurrentHP <= playerDefeatedThreshold){
+            playerIsDefeated = true;
+        }
+        if (_health.CurrentHP >= playerRegenerateThreshold){
+            playerIsDefeated = false;
+        }
+        if (playerIsDefeated){
+            _movement.enabled = false;
+            PlayerRegeneration();
+        }
+        else{
+            _movement.enabled = true;
+        }
+        return playerIsDefeated;
+    }
+
+    void PlayerRegeneration(){
+        Debug.Log(this.name + " is defeated.");
+        _health.UpdateHealth(-1);
     }
 
     void OnTriggerEnter(Collider other){
@@ -110,8 +137,8 @@ public class PlayerController : MonoBehaviour
                 if (_hit.transform.CompareTag("Ground")){
                     PlayMoveFeedback(0f);
                     //_moveInstance.release();
-                    _navmeshMover.Mover(_hit.point);
-                    if (_navmeshMover.pathFound){
+                    _movement.Mover(_hit.point);
+                    if (_movement.pathFound){
                         GetComponent<Fighter>().CancelAttack();
                         StartCoroutine(ChangeCursorTemporary(validClickTexture,1f));
                         ChangeAnimationState(PLAYER_RUN);
@@ -123,7 +150,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
             else{
-                _navmeshMover.StopMoving();
+                _movement.StopMoving();
                 PlayMoveFeedback(1f);
                 StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
                 ChangeAnimationState(PLAYER_WALK);
@@ -141,8 +168,8 @@ public class PlayerController : MonoBehaviour
         //ChangeAnimationState(PLAYER_WALK);
         bool isCloseEnoughToTarget = GetIsInRange(target.transform, _interactionRange);
         if(!isCloseEnoughToTarget){
-            _navmeshMover.Mover(destination);
-            if (_navmeshMover.pathFound)
+            _movement.Mover(destination);
+            if (_movement.pathFound)
                 ChangeAnimationState(PLAYER_RUN);
             StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
         }
@@ -153,7 +180,6 @@ public class PlayerController : MonoBehaviour
     }
 
     static Ray GetMouseRay(){
-        Debug.Assert(Camera.main != null, "Camera.main != null");
         return Camera.main.ScreenPointToRay(Input.mousePosition);
     }
 
