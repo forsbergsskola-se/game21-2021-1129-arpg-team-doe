@@ -509,6 +509,7 @@ GameObject:
   - component: {fileID: 408597637}
   - component: {fileID: 408597639}
   - component: {fileID: 408597638}
+  - component: {fileID: 408597640}
   m_Layer: 0
   m_Name: Urn
   m_TagString: Untagged
@@ -606,6 +607,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7339576714a584429c762c90bef9491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fmodEvent: 
+  parameter: 0
   maxHP: 10
 --- !u!114 &408597636
 MonoBehaviour:
@@ -684,6 +687,36 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &408597640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408597628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 669435313
+      Data2: 1205610412
+      Data3: -2039444083
+      Data4: -1904916957
+    Path: event:/UrnDestroy
+  Event: 
+  PlayEvent: 2
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &475430777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1482,6 +1515,7 @@ GameObject:
   - component: {fileID: 1001156135}
   - component: {fileID: 1001156142}
   - component: {fileID: 1001156145}
+  - component: {fileID: 1001156146}
   m_Layer: 0
   m_Name: Door
   m_TagString: Interactable
@@ -1643,6 +1677,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135fa44ce2ec39b4ea1c674ad53b9beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1001156146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001156134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -371116407
+      Data2: 1078181224
+      Data3: -52037748
+      Data4: 815914976
+    Path: event:/Door
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1270537176 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8705401766356934911, guid: e31cf9a5d6ce27446a4e2f937c659f3c, type: 3}
@@ -2377,6 +2441,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7339576714a584429c762c90bef9491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fmodEvent: 
+  parameter: 0
   maxHP: 20
 --- !u!114 &1995880704
 MonoBehaviour:
@@ -2413,6 +2479,36 @@ NavMeshAgent:
   m_BaseOffset: 0.005387813
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1995880710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995880699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1021483213
+      Data2: 1141013879
+      Data3: 534693036
+      Data4: 95020224
+    Path: event:/WoodenCrateDestroy
+  Event: 
+  PlayEvent: 2
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &2049258884
 GameObject:
   m_ObjectHideFlags: 0
@@ -2607,7 +2703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4629773942705059104, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.92
+      value: 15.39
       objectReference: {fileID: 0}
     - target: {fileID: 4629773942705059104, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
       propertyPath: m_LocalRotation.w
