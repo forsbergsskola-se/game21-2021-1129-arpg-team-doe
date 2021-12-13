@@ -13,40 +13,38 @@ public class Fighter : MonoBehaviour{
     Health _combatTarget;
     Movement _movement;
     Random _random;
-    Animator _animator;
+    AnimationController _animationController;
 
     float _attackRange;
     float _distance;
     int _damage;
     float _timeSinceLastAttack = Mathf.Infinity;
-    string _currentState;
-    
+
     const string RUN = "Run";
     const string ATTACK = "Punch";
-    const string SCREAM = "Scream";
+    //const string SCREAM = "Scream";
 
     void Start(){
         _statistics = GetComponent<Statistics>();
         _attackRange = _statistics.AttackRange;
         _random = new Random();
         _movement = GetComponent<Movement>();
-        _animator = GetComponentInChildren<Animator>();
+        _animationController = GetComponentInChildren<AnimationController>();
     }
 
     void Update(){
         _timeSinceLastAttack += Time.deltaTime;
         if (_combatTarget == null){
-            ChangeAnimationState(SCREAM);
             return;
         }
         if (!_combatTarget.GetComponent<Health>().IsAlive || IsClickOnItself()){
             _combatTarget = null;
-            ChangeAnimationState(SCREAM);
             return;
         }
         if (!IsInAttackRange()){
             _movement.Mover(_combatTarget.transform.position);
-            ChangeAnimationState(RUN);
+            if(_animationController!= null)
+                _animationController.ChangeAnimationState(RUN);
         }
         else{
             _movement.StopMoving();
@@ -66,7 +64,7 @@ public class Fighter : MonoBehaviour{
         LookAtTarget();
         if (_timeSinceLastAttack > 1f / _statistics.AttackSpeed){
             // TODO: trigger attack animation and sound here
-            ChangeAnimationState(ATTACK);
+            _animationController.ChangeAnimationState(ATTACK);
             _damage = _statistics.AttackDamage;
             bool isCrit = false;
             if (_random.NextDouble() < _statistics.CritChance){
@@ -93,10 +91,5 @@ public class Fighter : MonoBehaviour{
     bool IsClickOnItself(){
         return _combatTarget.transform.gameObject == gameObject;
     }
-    
-    void ChangeAnimationState(string newState){
-        if (_currentState == newState) return;
-        _animator.Play(newState);
-        _currentState = newState;
-    }
+
 }

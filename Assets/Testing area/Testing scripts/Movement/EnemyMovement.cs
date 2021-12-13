@@ -1,5 +1,3 @@
-using System;
-
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -15,6 +13,7 @@ public class EnemyMovement : MonoBehaviour
    Movement _movement;
    Fighter _fighter;
    Health _health;
+   AnimationController _animationController;
    
    GameObject _player;
    Transform _desiredTarget;
@@ -25,12 +24,17 @@ public class EnemyMovement : MonoBehaviour
    
    bool _isAttacking;
    bool _playerIsDetected;
+   string _currentState;
+    
+   const string RUN = "Run";
+   const string SCREAM = "Scream";
 
    void Start(){
       _targetDetection = GetComponent<TargetDetection>();
       _movement = GetComponent<Movement>();
       _fighter = GetComponent<Fighter>();
       _health = GetComponent<Health>();
+      _animationController = GetComponentInChildren<AnimationController>();
       _player = GameObject.FindWithTag("Player");
       _desiredTarget = _player.transform;
    }
@@ -57,17 +61,14 @@ public class EnemyMovement : MonoBehaviour
       if (!_activeSavedPosition){
          SavePosition();
       }
-      
       if (!_target.GetComponent<Health>().IsAlive){
          WalkBackAndSetIdle();
          return;
       }
-
       if (_target.GetComponent<PlayerController>().playerIsDefeated){
          WalkBackAndSetIdle();
          return;
       }
-      
       if (_targetDetection.DistanceToTarget(_savedPosition, transform) < maxFollowRange){
          _fighter.GetAttackTarget(target.gameObject);
          _needsToWalkBack = false;
@@ -96,6 +97,8 @@ public class EnemyMovement : MonoBehaviour
       ForgetTarget();
       _movement.Mover(_savedPosition);
       _fighter.CancelAttack();
+      _animationController.ChangeAnimationState(RUN);
+
       //Checks if this unit is close enough to saved position and already has an active saved position 
       if (_targetDetection.DistanceToTarget(_savedPosition, transform) < closeEnoughToSavedPosition &&
           _activeSavedPosition){
@@ -104,6 +107,7 @@ public class EnemyMovement : MonoBehaviour
    }
    
    void SetIdle(){
+      _animationController.ChangeAnimationState(SCREAM);
       _activeSavedPosition = false;
       _needsToWalkBack = false;
    }
@@ -118,6 +122,7 @@ public class EnemyMovement : MonoBehaviour
       _savedPosition = transform.position;
       _activeSavedPosition = true;
    }
+  
 
    #if UNITY_EDITOR
    void OnDrawGizmosSelected(){
