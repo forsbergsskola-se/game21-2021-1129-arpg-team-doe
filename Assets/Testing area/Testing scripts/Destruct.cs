@@ -5,25 +5,19 @@ public interface IDestructible{
     void Destruction(bool isAlive);
 }
 public class Destruct : MonoBehaviour,IDestructible, IHealthListener{
+    
+    [SerializeField] GameObject _prefab;
 
-    [SerializeField] Mesh _spriteIntact;
-    [SerializeField] Mesh _spriteDestroyed;
-
-    void Start(){
-        GetComponent<MeshFilter>().mesh = _spriteIntact;
-    }
-    public void Destruction(bool IsAlive){ //Used for Debug
+    public void Destruction(bool IsAlive){ 
         if (!IsAlive){
             DeactivateComponents();
         }
     }
 
     void DeactivateComponents(){
-        GetComponent<MeshFilter>().mesh = _spriteDestroyed;
-        GetComponent<NavMeshAgent>().enabled = false;
-        GetComponent<Collider>().enabled = false;
-        GetComponent<Destruct>().enabled = false;
-        GetComponent<HoverInteractable>().enabled = false;
+
+        Instantiate(_prefab,this.transform.position,Quaternion.identity);
+        Destroy(this.gameObject);
     }
 
     public void HealthChanged(int currentHealth, int maxHealth, int damage, bool isCrit, bool isAlive){
