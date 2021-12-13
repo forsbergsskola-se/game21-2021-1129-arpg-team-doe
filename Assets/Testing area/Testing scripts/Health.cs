@@ -11,12 +11,12 @@ public interface IHealthListener{
 
 public class Health : MonoBehaviour, IDamageReceiver{
 
+    // unfinished FMOD implementation
     FMOD.Studio.EventInstance instance;
     FMOD.Studio.PARAMETER_ID fmodParameterID;
-
     [FMODUnity.EventRef] public string fmodEvent;
-
     [SerializeField] [Min(0)] int parameter;
+    // remove if unsuccessful
 
     [SerializeField] int maxHP = 100;
 
@@ -33,13 +33,16 @@ public class Health : MonoBehaviour, IDamageReceiver{
         random = new Random();
         CurrentHP = ModifiedMaxHP;
 
+        // unfinished FMOD implementation
         FMODEvent();
     }
 
     void Update() {
+        // unfinished FMOD implementation
         instance.setParameterByID(fmodParameterID, parameter);
     }
 
+    // unfinished FMOD implementation
     void FMODEvent() {
         instance = FMODUnity.RuntimeManager.CreateInstance(fmodEvent);
 
