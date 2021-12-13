@@ -85,7 +85,6 @@ public class PlayerController : MonoBehaviour
         Debug.Log(this.name + " is defeated.");
         for (float healthRegen = 0f; _health.CurrentHP < RegenerateThreshold; healthRegen += Time.deltaTime){
             _health.UpdateHealth(-(int)healthRegen);
-            this.LogHealth(_health.CurrentHP);
             yield return new WaitForSeconds(Time.deltaTime);
         }
     }

@@ -952,6 +952,26 @@ PrefabInstance:
       propertyPath: areaDetectionRange
       value: 5.36
       objectReference: {fileID: 0}
+    - target: {fileID: 1386220650913189916, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1386220650913189916, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1386220650923937753, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1386220650923937753, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1386220651167043246, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: m_WholeNumbers
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2402392299167721498, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: luck
       value: 138.33
@@ -1837,6 +1857,22 @@ PrefabInstance:
       propertyPath: areaDetectionRange
       value: 5.21
       objectReference: {fileID: 0}
+    - target: {fileID: 1386220650913189916, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1386220650913189916, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1386220650923937753, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1386220650923937753, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2402392299167721498, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: luck
       value: 138.33
@@ -2458,6 +2494,10 @@ PrefabInstance:
     - target: {fileID: 6614988171499839986, guid: 1b36c6334384e4b4982240dd55541241, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614988171499839989, guid: 1b36c6334384e4b4982240dd55541241, type: 3}
+      propertyPath: minZoom
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b36c6334384e4b4982240dd55541241, type: 3}
