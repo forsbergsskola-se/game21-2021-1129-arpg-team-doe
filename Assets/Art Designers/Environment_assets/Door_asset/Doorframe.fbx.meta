@@ -1,14 +1,8 @@
 fileFormatVersion: 2
-guid: 4221cc288aca63144be9fc3379a21fd8
+guid: 9ba449162b696864aa3a0013f514f7c9
 ModelImporter:
   serializedVersion: 21202
-  internalIDToNameTable:
-  - first:
-      74: 7546500420867923891
-    second: Door_L|Cube.003Action
-  - first:
-      74: 2497628429828642280
-    second: Door_L|Door_RAction
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 2
