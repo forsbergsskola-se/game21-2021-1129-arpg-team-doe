@@ -2739,18 +2739,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 598700149607846328, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: c0c57d62fb21aa54bb6b963bf3c2ae40, type: 2}
-    - target: {fileID: 8090075324040430833, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8535200300468700476, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
-      propertyPath: attackRange
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8972526659047141890, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
       propertyPath: m_RootOrder
       value: 24

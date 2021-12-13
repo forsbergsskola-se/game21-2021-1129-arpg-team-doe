@@ -470,6 +470,7 @@ GameObject:
   - component: {fileID: 4896606745485573230}
   - component: {fileID: 6345615741836710522}
   - component: {fileID: 6279174991548507978}
+  - component: {fileID: 2123096904}
   m_Layer: 0
   m_Name: EnemyMonster
   m_TagString: Enemy
@@ -669,7 +670,7 @@ MonoBehaviour:
   reflex: 0
   luck: 138.33
   interactRange: 0
-  attackRange: 5
+  attackRange: 3
   attackSpeed: 1
   critChance: 0
   weaponDamage: 10
@@ -740,6 +741,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6a75a9b0056d4254ad0defc32d23090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2123096904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8972526659047141918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3f439af3bbefdd4fab33972cebb55c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &7942529602061083479
@@ -819,7 +832,7 @@ Animator:
   m_GameObject: {fileID: 7131697703270817286}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c0c57d62fb21aa54bb6b963bf3c2ae40, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
