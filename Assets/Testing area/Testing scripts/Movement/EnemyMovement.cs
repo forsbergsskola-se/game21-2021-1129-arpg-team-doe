@@ -4,40 +4,40 @@ using UnityEditor;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
-{ 
+{
    [SerializeField] GameObject _healthBar;
    [SerializeField] float maxFollowRange = 30f;
    [SerializeField] float closeEnoughToSavedPosition = 3f;
-  
+
    TargetDetection _targetDetection;
    Movement _movement;
    Fighter _fighter;
    Health _health;
    AnimationController _animationController;
-   
+
    GameObject _player;
    Transform _desiredTarget;
    Transform _target;
    Vector3 _savedPosition;
-   bool _activeSavedPosition; 
+   bool _activeSavedPosition;
    bool _needsToWalkBack;
-   
+
    bool _isAttacking;
    bool _playerIsDetected;
    string _currentState;
-    
-   const string RUN = "Run";
-   const string SCREAM = "Scream";
+
+   // const string RUN = "Run";
+   // const string SCREAM = "Scream";
 
    void Start(){
       _targetDetection = GetComponent<TargetDetection>();
       _movement = GetComponent<Movement>();
       _fighter = GetComponent<Fighter>();
       _health = GetComponent<Health>();
-      _animationController = GetComponentInChildren<AnimationController>();
+      //_animationController = GetComponentInChildren<AnimationController>();
       _player = GameObject.FindWithTag("Player");
       _desiredTarget = _player.transform;
-      
+
    }
 
    void Update(){ // very long update, might want to refactor
@@ -46,13 +46,13 @@ public class EnemyMovement : MonoBehaviour
       _playerIsDetected = _targetDetection.TargetIsDetected(transform.position, _desiredTarget);
       if (_targetDetection.DistanceToTarget(_savedPosition, transform) < closeEnoughToSavedPosition){
          _needsToWalkBack = false;
-         if(!_isAttacking)
-            _animationController.ChangeAnimationState(SCREAM);
+         if (!_isAttacking) ;
+         //_animationController.ChangeAnimationState(SCREAM);
       }
       _isAttacking = _playerIsDetected && !_needsToWalkBack;
       if (_isAttacking){
             _target = _desiredTarget;
-            InteractCombat(_target); 
+            InteractCombat(_target);
       }
       // if (_target == null){
       //    WalkBackAndSetIdle();
@@ -79,7 +79,7 @@ public class EnemyMovement : MonoBehaviour
       }
       else{
          WalkBackAndSetIdle();
-         
+
       }
    }
 
@@ -96,20 +96,20 @@ public class EnemyMovement : MonoBehaviour
    //       ForgetTarget();
    //    }
    // }
-   
+
    void WalkBackAndSetIdle(){
       ForgetTarget();
       _movement.Mover(_savedPosition);
       _fighter.CancelAttack();
-      _animationController.ChangeAnimationState(RUN);
+      //_animationController.ChangeAnimationState(RUN);
 
-      //Checks if this unit is close enough to saved position and already has an active saved position 
+      //Checks if this unit is close enough to saved position and already has an active saved position
       if (_targetDetection.DistanceToTarget(_savedPosition, transform) < closeEnoughToSavedPosition &&
           _activeSavedPosition){
          SetIdle();
       }
    }
-   
+
    void SetIdle(){
       _activeSavedPosition = false;
       _needsToWalkBack = false;
@@ -125,7 +125,7 @@ public class EnemyMovement : MonoBehaviour
       _savedPosition = transform.position;
       _activeSavedPosition = true;
    }
-  
+
 
    #if UNITY_EDITOR
    void OnDrawGizmosSelected(){
