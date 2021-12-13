@@ -20,6 +20,7 @@ public class Health : MonoBehaviour, IDamageReceiver{
 
     [SerializeField] int maxHP = 100;
 
+    [SerializeField] GameEvent _deathEvent;
     Statistics _stats;
     Random random;
     //List<IDamageNumbers> damageNumbersList;
@@ -68,6 +69,9 @@ public class Health : MonoBehaviour, IDamageReceiver{
         damage = ProcessDamage(damage);
         UpdateHealth(damage);
         this.LogTakeDamage(damage,CurrentHP);
+        if (!IsAlive){
+            OnDeath();
+        }
 
         foreach(var healthListener in GetComponentsInChildren<IHealthListener>()){
             healthListener.HealthChanged(CurrentHP, ModifiedMaxHP, damage, isCrit, IsAlive);
@@ -95,5 +99,12 @@ public class Health : MonoBehaviour, IDamageReceiver{
         }
         Debug.Log(transform.name + " receives " + dmg + " Damage");
         return dmg;
+    }
+
+    //This calls the event that you put in if you put it in, if there's no event, nothing happens.
+    void OnDeath(){
+        if (_deathEvent != null){
+            _deathEvent.Invoke();
+        }
     }
 }
