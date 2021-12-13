@@ -37,6 +37,7 @@ public class EnemyMovement : MonoBehaviour
       _animationController = GetComponentInChildren<AnimationController>();
       _player = GameObject.FindWithTag("Player");
       _desiredTarget = _player.transform;
+      
    }
 
    void Update(){ // very long update, might want to refactor
@@ -45,6 +46,8 @@ public class EnemyMovement : MonoBehaviour
       _playerIsDetected = _targetDetection.TargetIsDetected(transform.position, _desiredTarget);
       if (_targetDetection.DistanceToTarget(_savedPosition, transform) < closeEnoughToSavedPosition){
          _needsToWalkBack = false;
+         if(!_isAttacking)
+            _animationController.ChangeAnimationState(SCREAM);
       }
       _isAttacking = _playerIsDetected && !_needsToWalkBack;
       if (_isAttacking){
@@ -76,6 +79,7 @@ public class EnemyMovement : MonoBehaviour
       }
       else{
          WalkBackAndSetIdle();
+         
       }
    }
 
@@ -107,7 +111,6 @@ public class EnemyMovement : MonoBehaviour
    }
    
    void SetIdle(){
-      _animationController.ChangeAnimationState(SCREAM);
       _activeSavedPosition = false;
       _needsToWalkBack = false;
    }
