@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Texture2D validClickTexture;
     [SerializeField] Texture2D invalidClickTexture;
     [SerializeField] Texture2D standardCursorTexture;
+    //[SerializeField] GameObject _healthBar;
     [SerializeField] int DefeatedThreshold = 20;
     [SerializeField] int RegenerateThreshold = 80;
 
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
         _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
         _health = GetComponent<Health>();
+        //_healthBar.SetActive(true);
     }
 
     void Update(){
