@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using CustomLogs;
+using FMODUnity;
 using UnityEngine;
 using Random = System.Random;
 
@@ -8,6 +10,13 @@ public interface IHealthListener{
 }
 
 public class Health : MonoBehaviour, IDamageReceiver{
+
+    FMOD.Studio.EventInstance instance;
+    FMOD.Studio.PARAMETER_ID fmodParameterID;
+
+    [FMODUnity.EventRef] public string fmodEvent;
+
+    [SerializeField] [Min(0)] int parameter;
 
     [SerializeField] int maxHP = 100;
 
@@ -23,6 +32,24 @@ public class Health : MonoBehaviour, IDamageReceiver{
         _stats = GetComponent<Statistics>();
         random = new Random();
         CurrentHP = ModifiedMaxHP;
+
+        FMODEvent();
+    }
+
+    void Update() {
+        instance.setParameterByID(fmodParameterID, parameter);
+    }
+
+    void FMODEvent() {
+        instance = FMODUnity.RuntimeManager.CreateInstance(fmodEvent);
+
+        FMOD.Studio.EventDescription parameterEventDescription;
+        instance.getDescription(out parameterEventDescription);
+        FMOD.Studio.PARAMETER_DESCRIPTION parameterDescription;
+        parameterEventDescription.getParameterDescriptionByName("Parameter", out parameterDescription);
+        fmodParameterID = parameterDescription.id;
+
+        instance.start();
     }
 
     public void UpdateHealth(int healthChange){
@@ -38,7 +65,7 @@ public class Health : MonoBehaviour, IDamageReceiver{
         damage = ProcessDamage(damage);
         UpdateHealth(damage);
         this.LogTakeDamage(damage,CurrentHP);
-       
+
         foreach(var healthListener in GetComponentsInChildren<IHealthListener>()){
             healthListener.HealthChanged(CurrentHP, ModifiedMaxHP, damage, isCrit, IsAlive);
         }
