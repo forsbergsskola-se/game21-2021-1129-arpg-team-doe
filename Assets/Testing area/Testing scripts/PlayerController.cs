@@ -28,8 +28,6 @@ public class PlayerController : MonoBehaviour
     float _interactionRange;
     bool _hasPlayedSound;
 
-    const string PLAYER_RUN = "playerRun";
-    const string PLAYER_WALK = "playerWalk";
 
     void Start(){
         _movement = GetComponent<Movement>();
@@ -178,7 +176,7 @@ public class PlayerController : MonoBehaviour
         bool isCloseEnoughToTarget = GetIsInRange(target.transform, _interactionRange);
         if(!isCloseEnoughToTarget){
             _movement.Mover(destination);
-            if (_movement.pathFound)
+            //if (_movement.pathFound)
                 // ChangeAnimationState(PLAYER_RUN);
             StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
         }

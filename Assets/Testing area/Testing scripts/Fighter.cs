@@ -20,9 +20,8 @@ public class Fighter : MonoBehaviour{
     int _damage;
     float _timeSinceLastAttack = Mathf.Infinity;
 
-    //const string RUN = "Run";
-    //const string ATTACK = "Attack";
-    //const string SCREAM = "Scream";
+    const string RUN = "Run";
+    const string ATTACK = "Attack";
 
     void Start(){
         _statistics = GetComponent<Statistics>();
@@ -44,8 +43,7 @@ public class Fighter : MonoBehaviour{
         if (!IsInAttackRange()){
             _movement.Mover(_combatTarget.transform.position);
             if (_animationController != null)
-                //_animationController.ChangeAnimationState(RUN);
-                ;
+                _animationController.ChangeAnimationState(RUN);
         }
         else{
             _movement.StopMoving();
@@ -65,7 +63,8 @@ public class Fighter : MonoBehaviour{
         LookAtTarget();
         if (_timeSinceLastAttack > 1f / _statistics.AttackSpeed){
             // TODO: trigger attack animation and sound here
-            //_animationController.ChangeAnimationState(ATTACK);
+            if(_animationController != null)
+                _animationController.ChangeAnimationState(ATTACK);
             _damage = _statistics.AttackDamage;
             bool isCrit = false;
             if (_random.NextDouble() < _statistics.CritChance){
