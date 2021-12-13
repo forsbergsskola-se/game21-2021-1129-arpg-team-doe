@@ -20,6 +20,7 @@ public class Movement : MonoBehaviour
         if (pathFound){
             _navMeshAgent.isStopped = false;
             _navMeshAgent.destination = target;
+            GetComponentInChildren<Animator>().SetTrigger("run");
         }
         else{
             StopMoving();
