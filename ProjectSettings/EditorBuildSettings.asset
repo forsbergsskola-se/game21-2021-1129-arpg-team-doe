@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Game Designers/Jocke.B/Level Design.unity
-    guid: 814c3af8682b8164eb108c9bd8550280
+    path: Assets/Testing area/Testing scene/Testing scene.unity
+    guid: f5e87c5d46d639e4f877529ae54def98
   m_configObjects: {}

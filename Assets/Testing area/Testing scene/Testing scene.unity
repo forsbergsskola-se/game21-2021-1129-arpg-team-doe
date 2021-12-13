@@ -528,7 +528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b3dba1840249f4fbe42576c2edd3f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 5512245523321869101, guid: a04325d0c8f8ea1419607814b0492c48, type: 3}
 --- !u!23 &408597632
 MeshRenderer:
   m_ObjectHideFlags: 0
