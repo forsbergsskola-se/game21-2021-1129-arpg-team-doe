@@ -11,18 +11,16 @@ public class CursorOnDoor : MonoBehaviour{
     [SerializeField] Texture2D unLockedTexture;
     [SerializeField] Texture2D cursor;
 
-    Vector2 offSet = new(15, 15);
-
     void Start(){
-        Cursor.SetCursor(cursor, offSet, CursorMode.ForceSoftware);
+        Cursor.SetCursor(cursor, Vector2.zero, CursorMode.ForceSoftware);
     }
 
     void OnMouseEnter(){
         if (openable){
-            Cursor.SetCursor(lockedTexture, offSet, CursorMode.ForceSoftware);
+            Cursor.SetCursor(lockedTexture, Vector2.zero, CursorMode.ForceSoftware);
         }
         if (!openable){
-            Cursor.SetCursor(unLockedTexture, offSet, CursorMode.ForceSoftware);
+            Cursor.SetCursor(unLockedTexture, Vector2.zero, CursorMode.ForceSoftware);
         }
     }
 

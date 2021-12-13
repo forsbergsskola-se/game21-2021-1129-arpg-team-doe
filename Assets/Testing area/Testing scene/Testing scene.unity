@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964124, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -619,8 +619,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e03ec8dcf1ae437488bcb0127f86b932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCursor: {fileID: 2800000, guid: c63a54ea45b38eb4d885614761c41837, type: 3}
-  interactableObject: {fileID: 2800000, guid: 4efd44e0760704c46a3dda209ad485fa, type: 3}
+  defaultCursor: {fileID: 2800000, guid: 036b493ef9cad4882999b895da76e4ef, type: 3}
+  interactableObject: {fileID: 2800000, guid: 606dc05b8b59a470687e80c6932c2995, type: 3}
 --- !u!114 &408597637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -951,6 +951,14 @@ PrefabInstance:
       propertyPath: areaDetectionRange
       value: 5.36
       objectReference: {fileID: 0}
+    - target: {fileID: 1095566062284832604, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: defaultCursor
+      value: 
+      objectReference: {fileID: 2800000, guid: 036b493ef9cad4882999b895da76e4ef, type: 3}
+    - target: {fileID: 1095566062284832604, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: onEnemyCursor
+      value: 
+      objectReference: {fileID: 2800000, guid: 606dc05b8b59a470687e80c6932c2995, type: 3}
     - target: {fileID: 1386220650913189916, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -1047,6 +1055,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (Zlatan)
       objectReference: {fileID: 0}
+    - target: {fileID: 8847981991113582871, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c815c9af6cab4694da0e443b670c4e8f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
 --- !u!1 &540884983 stripped
@@ -1616,9 +1628,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9d121477b989aa4b97973116aadb0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockedTexture: {fileID: 2800000, guid: 5d631712e2f24944a9199ccf33105e03, type: 3}
-  unLockedTexture: {fileID: 2800000, guid: 76ec3c1319a98ea4aabb5a261d0a7aec, type: 3}
-  cursor: {fileID: 2800000, guid: c63a54ea45b38eb4d885614761c41837, type: 3}
+  lockedTexture: {fileID: 2800000, guid: 1b3474c7a9092444ea78c0b0db729059, type: 3}
+  unLockedTexture: {fileID: 2800000, guid: 61f190213096d4e5f8960aa0e2f0dd00, type: 3}
+  cursor: {fileID: 2800000, guid: 036b493ef9cad4882999b895da76e4ef, type: 3}
 --- !u!114 &1001156145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1648,8 +1660,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e03ec8dcf1ae437488bcb0127f86b932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCursor: {fileID: 2800000, guid: c63a54ea45b38eb4d885614761c41837, type: 3}
-  interactableObject: {fileID: 2800000, guid: 4b59b17f0070e0446acd604e65d1616a, type: 3}
+  defaultCursor: {fileID: 2800000, guid: 036b493ef9cad4882999b895da76e4ef, type: 3}
+  interactableObject: {fileID: 2800000, guid: 241aaa6134a444a40aa7c936e9d0a900, type: 3}
 --- !u!114 &1270537185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1793,8 +1805,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e03ec8dcf1ae437488bcb0127f86b932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCursor: {fileID: 2800000, guid: c63a54ea45b38eb4d885614761c41837, type: 3}
-  interactableObject: {fileID: 2800000, guid: 450d02caf17bbc04ca0d3a7e3714087b, type: 3}
+  defaultCursor: {fileID: 2800000, guid: 036b493ef9cad4882999b895da76e4ef, type: 3}
+  interactableObject: {fileID: 2800000, guid: 3fb7311d7fefb4f2089ea5538cddd7da, type: 3}
 --- !u!114 &1274422350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1875,7 +1887,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: crate_pivot_fix
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: 4b4ce3f784f60a54fa33974f6adfe285, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4b4ce3f784f60a54fa33974f6adfe285, type: 3}
 --- !u!1 &1468103337
 GameObject:
@@ -1920,6 +1933,14 @@ PrefabInstance:
       propertyPath: areaDetectionRange
       value: 5.21
       objectReference: {fileID: 0}
+    - target: {fileID: 1095566062284832604, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: defaultCursor
+      value: 
+      objectReference: {fileID: 2800000, guid: 036b493ef9cad4882999b895da76e4ef, type: 3}
+    - target: {fileID: 1095566062284832604, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: onEnemyCursor
+      value: 
+      objectReference: {fileID: 2800000, guid: 606dc05b8b59a470687e80c6932c2995, type: 3}
     - target: {fileID: 1386220650913189916, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -1988,6 +2009,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (Zlatan) (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8847981991113582871, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c815c9af6cab4694da0e443b670c4e8f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
 --- !u!1 &1725746314
@@ -2338,8 +2363,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e03ec8dcf1ae437488bcb0127f86b932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCursor: {fileID: 2800000, guid: c63a54ea45b38eb4d885614761c41837, type: 3}
-  interactableObject: {fileID: 2800000, guid: 4efd44e0760704c46a3dda209ad485fa, type: 3}
+  defaultCursor: {fileID: 2800000, guid: 036b493ef9cad4882999b895da76e4ef, type: 3}
+  interactableObject: {fileID: 2800000, guid: 606dc05b8b59a470687e80c6932c2995, type: 3}
 --- !u!114 &1995880703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2556,6 +2581,14 @@ PrefabInstance:
       propertyPath: vulnerabilities.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: 08778ce313064eb42bf34ef5e34d7eb5, type: 2}
+    - target: {fileID: 1292803965028986600, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
+      propertyPath: invalidClickTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 53c0409fc6abc4b2aa327c1d0430cb68, type: 3}
+    - target: {fileID: 1292803965028986600, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
+      propertyPath: standardCursorTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 036b493ef9cad4882999b895da76e4ef, type: 3}
     - target: {fileID: 1292803965028986615, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
       propertyPath: m_Constraints
       value: 112
@@ -2739,18 +2772,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 598700149607846328, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
-      propertyPath: m_Controller
+    - target: {fileID: 6345615741836710522, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
+      propertyPath: defaultCursor
       value: 
-      objectReference: {fileID: 9100000, guid: c0c57d62fb21aa54bb6b963bf3c2ae40, type: 2}
-    - target: {fileID: 8090075324040430833, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8535200300468700476, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
-      propertyPath: attackRange
-      value: 3
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2800000, guid: 036b493ef9cad4882999b895da76e4ef, type: 3}
+    - target: {fileID: 6345615741836710522, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
+      propertyPath: onEnemyCursor
+      value: 
+      objectReference: {fileID: 2800000, guid: 606dc05b8b59a470687e80c6932c2995, type: 3}
     - target: {fileID: 8972526659047141890, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
       propertyPath: m_RootOrder
       value: 24

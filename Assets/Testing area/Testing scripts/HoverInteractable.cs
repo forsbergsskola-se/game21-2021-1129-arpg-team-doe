@@ -6,13 +6,12 @@ using UnityEngine;
 public class HoverInteractable : MonoBehaviour{
     [SerializeField] Texture2D defaultCursor;
     [SerializeField] Texture2D interactableObject;
-    
-    Vector2 offSet = new(15, 15);
+
     void OnMouseEnter(){
-        Cursor.SetCursor(interactableObject, offSet , CursorMode.ForceSoftware);
+        Cursor.SetCursor(interactableObject, Vector2.zero , CursorMode.ForceSoftware);
     }
 
     void OnMouseExit(){
-        Cursor.SetCursor(defaultCursor, offSet , CursorMode.ForceSoftware);
+        Cursor.SetCursor(defaultCursor, Vector2.zero , CursorMode.ForceSoftware);
     }
 }
