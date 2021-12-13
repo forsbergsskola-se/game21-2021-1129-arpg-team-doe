@@ -1,4 +1,7 @@
 using System;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 
 public class TargetDetection : MonoBehaviour
@@ -64,4 +67,12 @@ public class TargetDetection : MonoBehaviour
         }
         return false;
     }
+
+    //The #if means when we build, it will ignore this, which would otherwise cause errors because unity editor things cannot be built.
+    #if UNITY_EDITOR
+    void OnDrawGizmosSelected(){
+        Handles.color = Color.yellow;
+        Handles.DrawWireDisc(transform.position,transform.up, areaDetectionRange);
+    }
+    #endif
 }

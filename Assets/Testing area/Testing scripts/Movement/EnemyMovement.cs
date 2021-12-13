@@ -1,145 +1,129 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 { 
    [SerializeField] GameObject _healthBar;
-   
    [SerializeField] float maxFollowRange = 30f;
    [SerializeField] float closeEnoughToSavedPosition = 3f;
   
    TargetDetection _targetDetection;
-   PlayerController _playerController;
    Movement _movement;
    Fighter _fighter;
-   Statistics _statistics;
+   Health _health;
    
-   
+   GameObject _player;
    Transform _desiredTarget;
    Transform _target;
-   Transform _patrolTarget; 
+   Vector3 _savedPosition;
+   bool _activeSavedPosition; 
+   bool _needsToWalkBack;
    
-   Vector3 savedPosition;
-   
-   float distanceToPlayer;
-   float distanceToTarget;
-   float attackRange;
-   
-   
-   bool activeSavedPosition; 
-   bool needsToWalkBack; 
+   bool _isAttacking;
+   bool _playerIsDetected;
 
    void Start(){
-      _statistics = GetComponent<Statistics>();
-      _playerController = FindObjectOfType<PlayerController>(); //maybe use player tag instead? Will save performance
       _targetDetection = GetComponent<TargetDetection>();
       _movement = GetComponent<Movement>();
       _fighter = GetComponent<Fighter>();
-      _desiredTarget = _playerController.transform;
-      attackRange = _statistics.AttackRange;
+      _health = GetComponent<Health>();
+      _player = GameObject.FindWithTag("Player");
+      _desiredTarget = _player.transform;
    }
 
    void Update(){ // very long update, might want to refactor
-      //Sets target if detected and is not walkingback
-     //Debug.Log(transform.name + "I have to go back?" + needsToWalkBack + _targetDetection.DistanceToTarget(savedPosition, transform));
-      if (_targetDetection.TargetIsDetected(this.transform.position, _desiredTarget) && !needsToWalkBack){
-         _target = _desiredTarget;
+      if(!_health.IsAlive) return;
+      //Sets target if detected and is not walking back
+      _playerIsDetected = _targetDetection.TargetIsDetected(transform.position, _desiredTarget);
+      if (_targetDetection.DistanceToTarget(_savedPosition, transform) < closeEnoughToSavedPosition){
+         _needsToWalkBack = false;
       }
-      
-      if (!needsToWalkBack){
-         if (_target == null) return;
-         
-         //Calculates distance to target
-         distanceToTarget = _targetDetection.DistanceToTarget(this.transform.position, _target);
-         
-         if (_target != _patrolTarget){
-            //This if check is meant for possibly future implementation of AI Patrolling
-            InteractWithCombat();
-         }
+      _isAttacking = _playerIsDetected && !_needsToWalkBack;
+      if (_isAttacking){
+            _target = _desiredTarget;
+            InteractCombat(_target); 
       }
-      
-      if (_target == null){
-         WalkBackAndSetIdle();
-      }
-      
-      if (_target == _patrolTarget){
-         //AI Path walking (Just walking around)
-      }
-
+      // if (_target == null){
+      //    WalkBackAndSetIdle();
+      //    // Or do patrol behavior
+      // }
    }
 
-   void WalkBackAndSetIdle(){
-      //Walk Back
-      if (needsToWalkBack){
-         _movement.Mover(savedPosition);
-      }
-      //Debug.Log(_targetDetection.DistanceToTarget(savedPosition, transform));
-
-      //Checks if this unit is close enough to saved position and already has an active saved position 
-      if (_targetDetection.DistanceToTarget(savedPosition, transform) < closeEnoughToSavedPosition &&
-          activeSavedPosition){
-         SetIdle();
-         //Debug.Log("AM I SAVING");
-      }
-   }
-
-   void InteractWithCombat(){
-      
-       
-      if (!activeSavedPosition){
+   void InteractCombat(Transform target){
+      if (!_activeSavedPosition){
          SavePosition();
       }
-
-      if (distanceToTarget > attackRange && !needsToWalkBack) // a lot of ifs, might be able to break it up?
-      {
-         StopAttackThenMoveToTarget();
+      
+      if (!_target.GetComponent<Health>().IsAlive){
+         WalkBackAndSetIdle();
+         return;
       }
 
-      //Checks if we're outside of the maxFollowRange
-      if (_targetDetection.DistanceToTarget(savedPosition, transform) >= maxFollowRange){
-         ForgetTarget();
-      }
-
-      if (distanceToTarget < attackRange){
-         StopMovingThenAttackTarget();
-      }
-   }
-
-   void StopMovingThenAttackTarget(){
-      if (_target != null){
-         _movement.StopMoving();
-         transform.LookAt(_target);
-         _fighter.Attack(_target.gameObject);
+      if (_target.GetComponent<PlayerController>().playerIsDefeated){
+         WalkBackAndSetIdle();
+         return;
       }
       
-      //attack target  ??(Bool/state ATTACKING = True)??.
+      if (_targetDetection.DistanceToTarget(_savedPosition, transform) < maxFollowRange){
+         _fighter.GetAttackTarget(target.gameObject);
+         _needsToWalkBack = false;
+         _healthBar.SetActive(true);
+      }
+      else{
+         WalkBackAndSetIdle();
+      }
    }
 
-   void StopAttackThenMoveToTarget(){
-      // stop attacking ??(Bool/State ATTACKING = False)??
-      //_fighter.StopAttack(_target);
-      _movement.Mover(_target.position);
-      _healthBar.SetActive(true);
+   // void InteractWithCombat(){
+   //    if (!_activeSavedPosition){
+   //       SavePosition();
+   //    }
+   //    if (_target != null && isAttacking){
+   //       _fighter.GetAttackTarget(_target.gameObject);
+   //       _healthBar.SetActive(true);
+   //    }
+   //    //Checks if we're outside of the maxFollowRange
+   //    if (_targetDetection.DistanceToTarget(_savedPosition, transform) >= maxFollowRange){
+   //       ForgetTarget();
+   //    }
+   // }
+   
+   void WalkBackAndSetIdle(){
+      ForgetTarget();
+      _movement.Mover(_savedPosition);
+      _fighter.CancelAttack();
+      //Checks if this unit is close enough to saved position and already has an active saved position 
+      if (_targetDetection.DistanceToTarget(_savedPosition, transform) < closeEnoughToSavedPosition &&
+          _activeSavedPosition){
+         SetIdle();
+      }
    }
-
+   
    void SetIdle(){
-      activeSavedPosition = false;
-      needsToWalkBack = false;
+      _activeSavedPosition = false;
+      _needsToWalkBack = false;
    }
 
    void ForgetTarget(){
       _target = null;
-      needsToWalkBack = true;
+      _needsToWalkBack = true;
       _healthBar.SetActive(false);
-      
-      //break;
    }
 
    void SavePosition(){
-      savedPosition = this.transform.position;
-      activeSavedPosition = true;
-//      Debug.Log(savedPosition);
+      _savedPosition = transform.position;
+      _activeSavedPosition = true;
    }
+
+   #if UNITY_EDITOR
+   void OnDrawGizmosSelected(){
+      Handles.color = Color.magenta;
+      Handles.DrawWireDisc(_savedPosition, transform.up,maxFollowRange);
+      Handles.color = Color.white;
+   }
+   #endif
 }

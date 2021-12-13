@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
+using CustomLogs;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Random = System.Random;
 
 public interface IHealthListener{
@@ -12,23 +10,13 @@ public interface IHealthListener{
 public class Health : MonoBehaviour, IDamageReceiver{
 
     [SerializeField] int maxHP = 100;
-    int currentHP;
 
     Statistics _stats;
     Random random;
-    List<IDamageNumbers> damageNumbersList;
+    //List<IDamageNumbers> damageNumbersList;
 
     public bool IsAlive => CurrentHP > 0;
-
-    public int CurrentHP{
-        get{
-            return currentHP;
-        }
-        private set{
-            currentHP = value;
-        }
-    }
-
+    public int CurrentHP{ get; private set; }
     public int ModifiedMaxHP => CalculateMaxHP();
 
     void Start(){
@@ -37,7 +25,7 @@ public class Health : MonoBehaviour, IDamageReceiver{
         CurrentHP = ModifiedMaxHP;
     }
 
-    void UpdateHealth(int healthChange){
+    public void UpdateHealth(int healthChange){
         CurrentHP -= healthChange;
         CurrentHP = Mathf.Clamp(CurrentHP, 0, ModifiedMaxHP);
     }
@@ -47,30 +35,24 @@ public class Health : MonoBehaviour, IDamageReceiver{
     }
 
     public void ReceiveDamage(int damage, bool isCrit){ //Toughness should affect this
-        Debug.Log(IsAlive + this.name + "Is alive?");
         damage = ProcessDamage(damage);
+        this.LogTakeDamage(damage,CurrentHP);
         UpdateHealth(damage);
-        //GetComponent<IDestructible>()?.Destruction();
-        //GetComponentInChildren<IHealthbar>()?.SetSliderCurrentHealth(CurrentHP);
-        //GetComponentInChildren<ITextSpawner>()?.Spawn(damage,isCrit);
-        // damageNumbersList = GetComponentsInChildren<IDamageNumbers>()?.ToList();
-        // ActivateDamageNumbers(damage, isCrit);
-        Debug.Log(this.name + " I took damage");
         foreach(var healthListener in GetComponentsInChildren<IHealthListener>()){
             healthListener.HealthChanged(CurrentHP, ModifiedMaxHP, damage, isCrit, IsAlive);
         }
     }
 
-    void ActivateDamageNumbers(int damage, bool isCrit){
-        foreach (IDamageNumbers damageNumber in damageNumbersList){
-            if (damageNumber != null){
-                damageNumber.DisplayDmg(damage, isCrit);
-            }
-            else{
-                damageNumbersList.Remove(damageNumber);
-            }
-        }
-    }
+    // void ActivateDamageNumbers(int damage, bool isCrit){
+    //     foreach (IDamageNumbers damageNumber in damageNumbersList){
+    //         if (damageNumber != null){
+    //             damageNumber.DisplayDmg(damage, isCrit);
+    //         }
+    //         else{
+    //             damageNumbersList.Remove(damageNumber);
+    //         }
+    //     }
+    // }
 
     bool DodgeSuccessful(){
         return random.NextDouble() < _stats.DodgeChance;

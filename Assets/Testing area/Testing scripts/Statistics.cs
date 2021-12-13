@@ -1,18 +1,23 @@
 using System;
+using System.Collections.Generic;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 
 
 public class Statistics : MonoBehaviour{
 
     [SerializeField]
-    float toughness, strength, dexterity, knowledge, reflex, luck, interactRange, attackRange, attackSpeed;
-
+    [Min(0f)]
+    float toughness, strength, dexterity, knowledge, reflex, luck, interactRange, attackRange, attackSpeed, critChance;
     // movement is increased by reflex
 
     [SerializeField] int weaponDamage = 10; // for debug
     [SerializeField] int defaultDamage = 5;
     [SerializeField] internal float lowImpactLevelMultiplier = 0.5f;
     [SerializeField] internal float highImpactLevelMultiplier = 1f;
+    [SerializeField] List<DamageType> vulnerabilities;
     int damage;
     bool isRanged;
 
@@ -81,14 +86,15 @@ public class Statistics : MonoBehaviour{
         this.interactRange = interactRange;
         this.attackRange = attackRange;
         this.attackSpeed = attackSpeed;
+        this.critChance = critChance;
         damage = defaultDamage;
     }
 
     float CalculateAttackSpeed(){
         return StatManipulation(attackSpeed, dexterity, lowImpactLevelMultiplier);
     }
-    float CalculateCritChance() {
-        return luck * lowImpactLevelMultiplier;
+    float CalculateCritChance(){
+        return Luck * lowImpactLevelMultiplier;
     }
     float CalculateDodgeChance(){
         return reflex * highImpactLevelMultiplier;
@@ -105,4 +111,14 @@ public class Statistics : MonoBehaviour{
         }
         return damage = (int) (weaponDamage * damageMultiplier);
     }
+
+#if UNITY_EDITOR
+    void OnDrawGizmosSelected(){
+        Handles.color = Color.red;
+        Handles.DrawWireDisc(transform.position, transform.up,AttackRange);
+        Handles.color = Color.gray;
+        Handles.DrawWireDisc(transform.position,transform.up,interactRange);
+        
+    }
+#endif
 }

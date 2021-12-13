@@ -2,17 +2,13 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour{
-
-   Statistics _statistics;
    CapsuleCollider _capsuleCollider;
    Fighter _fighter;
    EnemyMovement _enemyMovement;
    Health _health;
-
-   bool hasDied;
+   bool _hasDied;
 
    void Start(){
-      _statistics = GetComponent<Statistics>();
       _capsuleCollider = GetComponent<CapsuleCollider>();
       _fighter = GetComponent<Fighter>();
       _enemyMovement = GetComponent<EnemyMovement>();
@@ -29,12 +25,12 @@ public class Enemy : MonoBehaviour{
       _capsuleCollider.enabled = false;
       _fighter.enabled = false;
       _enemyMovement.enabled = false;
-      GetComponent<NavMeshAgent>().enabled = false;
-      hasDied = true;
+      _hasDied = true;
+      
    }
 
    bool IsDead(){
-      if (!_health.IsAlive && !hasDied){ return true;}
+      if (!_health.IsAlive && !_hasDied){ return true;}
       return false;
    }
 }

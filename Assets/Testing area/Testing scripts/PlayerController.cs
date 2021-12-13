@@ -1,9 +1,7 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
+using CustomLogs;
 using FMOD;
 using FMODUnity;
-using UnityEditor;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
@@ -13,46 +11,46 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Texture2D validClickTexture;
     [SerializeField] Texture2D invalidClickTexture;
     [SerializeField] Texture2D standardCursorTexture;
-    [SerializeField] float distanceToKeepFromKey = 3f;
-    [SerializeField] float attackRange = 2f;
+    //[SerializeField] GameObject _healthBar;
+    [SerializeField] int DefeatedThreshold = 20;
+    [SerializeField] int RegenerateThreshold = 80;
 
     public InventoryObject inventory;
-
+    internal bool playerIsDefeated;
     FMOD.Studio.EventInstance _moveInstance;
-    Movement _navmeshMover;
+    Movement _movement;
     Statistics _statistics;
     Health _health;
 
     Animator _animator;
-    RaycastHit hit;
-
+    RaycastHit _hit;
     string _currentState;
     float _interactionRange;
-    bool hasPlayedSound;
-    bool hasWaitedForTime;
+    bool _hasPlayedSound;
 
     const string PLAYER_RUN = "playerRun";
     const string PLAYER_WALK = "playerWalk";
 
     void Start(){
-        _navmeshMover = GetComponent<Movement>();
+        _movement = GetComponent<Movement>();
         _statistics = GetComponent<Statistics>();
         _interactionRange = _statistics.InteractRange;
         _animator = GetComponentInChildren<Animator>();
         _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
         _health = GetComponent<Health>();
-        //_moveInstance.setVolume(50f);
+        //_healthBar.SetActive(true);
     }
 
     void Update(){
         if (!_health.IsAlive){
             return;
         }
-
+        if (GetPlayerIsDefeated()){
+            return;
+        }
         if (InteractWithCombat()){
             return;
         }
-
         if (InteractWithInteractable()){
             return;
         }
@@ -60,13 +58,39 @@ public class PlayerController : MonoBehaviour
         // if click on the ground, move to cursor
         MoveToCursor();
 
-        if (_navmeshMover._navMeshAgent.remainingDistance < _navmeshMover._navMeshAgent.stoppingDistance){
-            _navmeshMover.StopMoving();
+        if (_movement._navMeshAgent.remainingDistance < _movement._navMeshAgent.stoppingDistance){
+            _movement.StopMoving();
             ChangeAnimationState(PLAYER_WALK);
         }
     }
 
-    void OnTriggerEnter(Collider other){
+    bool GetPlayerIsDefeated(){
+        if (_health.CurrentHP <= DefeatedThreshold){
+            playerIsDefeated = true;
+        }
+
+        if (_health.CurrentHP >= RegenerateThreshold){
+            playerIsDefeated = false;
+        }
+
+        if (playerIsDefeated){
+            _movement.enabled = false;
+            StartCoroutine(HealthRegeneration());
+            _movement.enabled = true;
+        }
+        return playerIsDefeated;
+    }
+
+    IEnumerator HealthRegeneration(){
+        Debug.Log(this.name + " is defeated.");
+        for (float healthRegen = 0f; _health.CurrentHP < RegenerateThreshold; healthRegen += Time.deltaTime){
+            _health.UpdateHealth(-(int)healthRegen);
+            this.LogHealth(_health.CurrentHP);
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+    }
+
+    void OnTriggerEnter(Collider other){ //Break out into its own script with onApplicationQuit
         //Check if other has Item script
         if (other.GetComponent<Item>() != null){
             var item = other.GetComponent<Item>();
@@ -87,7 +111,6 @@ public class PlayerController : MonoBehaviour
             GameObject enemy = hit.transform.GetComponent<Health>()?.gameObject;
             if (enemy == null) continue;
             if (Input.GetMouseButton(0)){
-                //TryToAttackEnemy(enemy);
                 GetComponent<Fighter>().GetAttackTarget(enemy);
             }
             return true;
@@ -112,13 +135,13 @@ public class PlayerController : MonoBehaviour
     void MoveToCursor(){
         if (Input.GetMouseButton(0)){
             Ray ray = GetMouseRay();
-            bool hasHit = Physics.Raycast(ray, out hit);
+            bool hasHit = Physics.Raycast(ray, out _hit);
             if (hasHit){
-                if (hit.transform.CompareTag("Ground")){
+                if (_hit.transform.CompareTag("Ground")){
                     PlayMoveFeedback(0f);
                     //_moveInstance.release();
-                    _navmeshMover.Mover(hit.point);
-                    if (_navmeshMover.pathFound){
+                    _movement.Mover(_hit.point);
+                    if (_movement.pathFound){
                         GetComponent<Fighter>().CancelAttack();
                         StartCoroutine(ChangeCursorTemporary(validClickTexture,1f));
                         ChangeAnimationState(PLAYER_RUN);
@@ -130,7 +153,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
             else{
-                _navmeshMover.StopMoving();
+                _movement.StopMoving();
                 PlayMoveFeedback(1f);
                 StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
                 ChangeAnimationState(PLAYER_WALK);
@@ -139,17 +162,17 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetMouseButtonUp(0)){
             _moveInstance.stop(STOP_MODE.ALLOWFADEOUT);
             _moveInstance.release();
-            hasPlayedSound = false;
+            _hasPlayedSound = false;
         }
     }
 
     void MoveToInteractable(GameObject target, Vector3 destination){
         PlayMoveFeedback(1f);
         //ChangeAnimationState(PLAYER_WALK);
-        bool isCloseEnoughToTarget = GetIsInRange(target.transform, distanceToKeepFromKey);
+        bool isCloseEnoughToTarget = GetIsInRange(target.transform, _interactionRange);
         if(!isCloseEnoughToTarget){
-            _navmeshMover.Mover(destination);
-            if (_navmeshMover.pathFound)
+            _movement.Mover(destination);
+            if (_movement.pathFound)
                 ChangeAnimationState(PLAYER_RUN);
             StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
         }
@@ -164,11 +187,11 @@ public class PlayerController : MonoBehaviour
     }
 
     void PlayMoveFeedback(float parameter){
-        if (hasPlayedSound == false){
+        if (_hasPlayedSound == false){
             _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
             _moveInstance.setParameterByName("MoveFeedback", parameter);
             _moveInstance.start();
-            hasPlayedSound = true;
+            _hasPlayedSound = true;
         }
     }
 

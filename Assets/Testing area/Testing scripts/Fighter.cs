@@ -1,3 +1,4 @@
+using CustomLogs;
 using UnityEngine;
 using Random = System.Random;
 
@@ -30,45 +31,41 @@ public class Fighter : MonoBehaviour{
         if (_combatTarget == null){
             return;
         }
-
-        if (!_combatTarget.GetComponent<Health>().IsAlive){
+        if (!_combatTarget.GetComponent<Health>().IsAlive || IsClickOnItself()){
             _combatTarget = null;
             return;
         }
-
-        if (!GetIsInRange()){
+        if (!IsInAttackRange()){
             _movement.Mover(_combatTarget.transform.position);
         }
-
         else{
             _movement.StopMoving();
             Attack(_combatTarget.gameObject);
         }
     }
-
-    public void Attack(GameObject target){
-        LookAtTarget();
-        if (_timeSinceLastAttack > 1f / _statistics.AttackSpeed){
-            // TODO: trigger attack animation and sound here
-            _damage = _statistics.AttackDamage;
-            bool isCrit = false; 
-            if (_random.NextDouble() < _statistics.CritChance){
-                Debug.Log("I AM CRITTING");
-                _damage = Mathf.RoundToInt(_statistics.AttackDamage * critDamageMultiplier);
-                isCrit = true;
-            }
-            target.GetComponent<IDamageReceiver>()?.ReceiveDamage(_damage, isCrit);
-            Debug.Log(transform.name + " is dealing " + _damage + " damage to " + _combatTarget.name);
-            _timeSinceLastAttack = 0f;
-        }
+    
+    public void GetAttackTarget(GameObject target){
+        _combatTarget = target.GetComponent<Health>();
     }
-
+    
     public void CancelAttack(){
         _combatTarget = null;
     }
 
-    public void GetAttackTarget(GameObject target){
-        _combatTarget = target.GetComponent<Health>();
+    void Attack(GameObject target){
+        LookAtTarget();
+        if (_timeSinceLastAttack > 1f / _statistics.AttackSpeed){
+            // TODO: trigger attack animation and sound here
+            _damage = _statistics.AttackDamage;
+            bool isCrit = false;
+            if (_random.NextDouble() < _statistics.CritChance){
+                _damage = Mathf.RoundToInt(_statistics.AttackDamage * critDamageMultiplier);
+                isCrit = true;
+            }
+            target.GetComponent<IDamageReceiver>()?.ReceiveDamage(_damage, isCrit);
+            this.LogDealDamage(_damage, isCrit, target,_combatTarget.CurrentHP);
+            _timeSinceLastAttack = 0f;
+        }
     }
 
     void LookAtTarget(){
@@ -78,7 +75,11 @@ public class Fighter : MonoBehaviour{
         transform.LookAt(lookAtTransform);
     }
 
-    bool GetIsInRange(){
+    bool IsInAttackRange(){
         return Vector3.Distance(transform.position, _combatTarget.transform.position) < _attackRange;
+    }
+    
+    bool IsClickOnItself(){
+        return _combatTarget.transform.gameObject == gameObject;
     }
 }
