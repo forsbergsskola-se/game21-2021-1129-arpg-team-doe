@@ -264,7 +264,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1386220650913189914
 CanvasRenderer:
@@ -339,7 +339,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -9.999992, y: 50}
+  m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1386220651167043233
 GameObject:
@@ -672,6 +672,7 @@ MonoBehaviour:
   interactRange: 0
   attackRange: 5
   attackSpeed: 1
+  critChance: 0
   weaponDamage: 10
   defaultDamage: 5
   lowImpactLevelMultiplier: 0
