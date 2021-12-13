@@ -1,4 +1,5 @@
 using System.Security.Cryptography.X509Certificates;
+using CustomLogs;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,6 +31,7 @@ public class HealthBar : MonoBehaviour, IHealthbar, IHealthListener{
 
     void SetSliderMaxHealth(float maxHP){
         slider.maxValue = maxHP;
+        slider.minValue = maxHP - maxHP;
         slider.value = maxHP;
     }
 
