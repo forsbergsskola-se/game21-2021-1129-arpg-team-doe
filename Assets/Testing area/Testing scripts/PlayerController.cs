@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
 
         if (_movement._navMeshAgent.remainingDistance < _movement._navMeshAgent.stoppingDistance){
             _movement.StopMoving();
-            ChangeAnimationState(PLAYER_WALK);
+            // ChangeAnimationState(PLAYER_WALK);
         }
     }
 
@@ -111,7 +111,9 @@ public class PlayerController : MonoBehaviour
             if (enemy == null) continue;
             if (Input.GetMouseButton(0)){
                 GetComponent<Fighter>().GetAttackTarget(enemy);
-                ChangeAnimationState("attack");
+                // ChangeAnimationState("attack");
+                _animator.SetBool("isRunning", false);
+                _animator.SetBool("isAttacking", true);
             }
             return true;
         }
@@ -126,6 +128,8 @@ public class PlayerController : MonoBehaviour
             if (Input.GetMouseButton(0)){
                 Vector3 positionCloseToTarget = hit.point - (hit.point - transform.position).normalized * 1;
                 MoveToInteractable(interactableObject, positionCloseToTarget);
+                _animator.SetBool("isRunning", false);
+                _animator.SetBool("isAttacking", true);
             }
             return true;
         }
@@ -144,11 +148,13 @@ public class PlayerController : MonoBehaviour
                     if (_movement.pathFound){
                         GetComponent<Fighter>().CancelAttack();
                         StartCoroutine(ChangeCursorTemporary(validClickTexture,1f));
-                        ChangeAnimationState(PLAYER_RUN);
+                        // ChangeAnimationState(PLAYER_RUN);
+                        _animator.SetBool("isRunning", true);
+                        _animator.SetBool("isAttacking", false);
                     }
                     else{
                         StartCoroutine(ChangeCursorTemporary(invalidClickTexture,1f));
-                        ChangeAnimationState(PLAYER_WALK);
+                        // ChangeAnimationState(PLAYER_WALK);
                     }
                 }
             }
@@ -156,7 +162,7 @@ public class PlayerController : MonoBehaviour
                 _movement.StopMoving();
                 PlayMoveFeedback(1f);
                 StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
-                ChangeAnimationState(PLAYER_WALK);
+                // ChangeAnimationState(PLAYER_WALK);
             }
         }
         else if (Input.GetMouseButtonUp(0)){
@@ -173,7 +179,7 @@ public class PlayerController : MonoBehaviour
         if(!isCloseEnoughToTarget){
             _movement.Mover(destination);
             if (_movement.pathFound)
-                ChangeAnimationState(PLAYER_RUN);
+                // ChangeAnimationState(PLAYER_RUN);
             StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
         }
     }

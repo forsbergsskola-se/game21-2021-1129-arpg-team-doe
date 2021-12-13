@@ -2,6 +2,7 @@
 using UnityEditor;
 #endif
 using UnityEngine;
+using AnimatorChanger;
 
 public class EnemyMovement : MonoBehaviour
 {

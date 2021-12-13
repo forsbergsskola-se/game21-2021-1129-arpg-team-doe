@@ -1,7 +1,7 @@
 using CustomLogs;
 using UnityEngine;
 using Random = System.Random;
-
+using AnimatorChanger;
 public interface IDamageReceiver{
     void ReceiveDamage(int damage, bool isCrit);
 }
