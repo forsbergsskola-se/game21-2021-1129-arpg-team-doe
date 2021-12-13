@@ -36,8 +36,9 @@ public class Health : MonoBehaviour, IDamageReceiver{
 
     public void ReceiveDamage(int damage, bool isCrit){ //Toughness should affect this
         damage = ProcessDamage(damage);
-        this.LogTakeDamage(damage,CurrentHP);
         UpdateHealth(damage);
+        this.LogTakeDamage(damage,CurrentHP);
+       
         foreach(var healthListener in GetComponentsInChildren<IHealthListener>()){
             healthListener.HealthChanged(CurrentHP, ModifiedMaxHP, damage, isCrit, IsAlive);
         }

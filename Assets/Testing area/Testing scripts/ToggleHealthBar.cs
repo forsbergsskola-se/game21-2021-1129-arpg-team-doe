@@ -7,9 +7,8 @@ using UnityEngine;
 
 public class ToggleHealthBar : MonoBehaviour{
 
-    [SerializeField] GameObject _healthBar; //the active enemies HPbar only. needs combat implemented first. //wrong capitalization and maybe call it _healthBar
-    bool inPursuit;
-    
+    [SerializeField] GameObject _healthBar;
+
     void Start(){
         _healthBar.SetActive(false);
     }
