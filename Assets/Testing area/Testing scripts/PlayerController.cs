@@ -111,6 +111,7 @@ public class PlayerController : MonoBehaviour
             if (enemy == null) continue;
             if (Input.GetMouseButton(0)){
                 GetComponent<Fighter>().GetAttackTarget(enemy);
+                ChangeAnimationState("attack");
             }
             return true;
         }
