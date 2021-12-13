@@ -1,14 +1,11 @@
 fileFormatVersion: 2
-guid: 84839d73e4a45e742beaf7a7ce1279d7
+guid: 7eaed34af9e5cbb489dae09a5809ee0f
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
-      74: -8493068199533406792
-    second: Door_R|Cube.003Action
-  - first:
-      74: 5701565174435321463
-    second: Door_R|Door_RAction
+      74: -623603649343465320
+    second: Scene
   externalObjects: {}
   materials:
     materialImportMode: 2
