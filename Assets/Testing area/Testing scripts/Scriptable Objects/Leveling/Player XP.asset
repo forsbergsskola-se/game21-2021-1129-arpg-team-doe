@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c363e0a24b81fe24b865728d412eae14, type: 3}
   m_Name: Player XP
   m_EditorClassIdentifier: 
+  level: 1
+  currentXP: 0
+  requiredXPInt: 0
+  xpScale: 0
+  _levelUp: {fileID: 11400000, guid: acac836e5fe18f1449f57d3a2734a6e5, type: 2}

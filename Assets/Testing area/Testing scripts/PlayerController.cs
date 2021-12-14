@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     AnimationController _animationController;
     Animator _animator;
     RaycastHit _hit;
+    Fighter _fighter;
     string _currentState;
     float _interactionRange;
     bool _hasPlayedSound;
@@ -38,13 +39,12 @@ public class PlayerController : MonoBehaviour
         _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
         _health = GetComponent<Health>();
         _animationController = GetComponentInChildren<AnimationController>();
+        _fighter = GetComponent<Fighter>();
         //_healthBar.SetActive(true);
     }
 
     void Update(){
-        // if (!_health.IsAlive){
-        //     return;
-        // }
+
         if (GetPlayerIsDefeated()){
             return;
         }
@@ -68,16 +68,19 @@ public class PlayerController : MonoBehaviour
         }
         if (playerIsDefeated){
             _movement.enabled = false;
+            _fighter.enabled = false;
             StartCoroutine(HealthRegeneration());
             _movement.enabled = true;
+            _fighter.enabled = true;
         }
         return playerIsDefeated;
     }
 
-    IEnumerator HealthRegeneration(){
+    IEnumerator HealthRegeneration(){ // health regeneration seems weird
         Debug.Log(this.name + " is defeated.");
         for (float healthRegen = 0f; _health.CurrentHP < RegenerateThreshold; healthRegen += Time.deltaTime){
             _health.UpdateHealth(-(int)healthRegen);
+            Debug.Log(_health.CurrentHP);
             yield return new WaitForSeconds(Time.deltaTime);
         }
     }
@@ -103,7 +106,7 @@ public class PlayerController : MonoBehaviour
             GameObject enemy = hit.transform.GetComponent<Health>()?.gameObject;
             if (enemy == null) continue;
             if (Input.GetMouseButton(0)){
-                GetComponent<Fighter>().GetAttackTarget(enemy);
+                _fighter.GetAttackTarget(enemy);
                 _animator.SetBool("isRunning", false);
                 _animator.SetBool("isAttacking", true);
             }
@@ -123,7 +126,6 @@ public class PlayerController : MonoBehaviour
                 MoveToInteractable(interactableObject, positionCloseToTarget);
                 _animator.SetBool("isRunning", false);
                 _animator.SetBool("isAttacking", true);
-                
             }
             return true;
         }
@@ -140,7 +142,7 @@ public class PlayerController : MonoBehaviour
                     //_moveInstance.release();
                     _movement.Mover(_hit.point);
                     if (_movement.pathFound){
-                        GetComponent<Fighter>().CancelAttack();
+                        _fighter.CancelAttack();
                         StartCoroutine(ChangeCursorTemporary(validClickTexture,1f));
                         //_animationController.ChangeAnimationState("Run");
                         _animator.SetBool("isRunning", true);
