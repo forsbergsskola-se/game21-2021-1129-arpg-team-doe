@@ -1,44 +1,40 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-[CreateAssetMenu(fileName = "New Leveling System", menuName = "Leveling System")]
-public class XPGameObject : ScriptableObject
+[CreateAssetMenu(fileName = "New Leveling System", menuName = "Leveling System/Leveling System")]
+public class LevelingGameObject : ScriptableObject
 {
-    [SerializeField] int level = 1;
-    [SerializeField] int currentXP = 0;
-    
-    [SerializeField] int requiredXPInt; //Used for display and starting value
+    [Min(0)][SerializeField] int level = 1;
+    [Min(0)][SerializeField] int currentXP = 0;
+
+    [Min(0)][SerializeField] int requiredXPInt; //Used for display and starting value
     float requiredXPFloat; //Used for calculations
-    
+
     [Tooltip("How much more xp you'll need each level to level up")]
-    [SerializeField] float xpScale;
+    [Min(0)][SerializeField] float xpScale;
 
     [SerializeField] GameEvent _levelUp;
 
-
-    void Awake(){
+    void OnEnable(){
         requiredXPFloat = requiredXPInt;
     }
-    
+
+    public void ReceiveXP(int XP){
+        currentXP += XP;
+        CheckLevelUp();
+    }
+
     //We currently have 55 xp
     //Killing an enemy -
     //Gives 10 xp
-    
-    
-
 
     public void CheckLevelUp(){ //Every time we get xp, run this method
-        if (currentXP >= requiredXPFloat){
-            currentXP -= (int)requiredXPFloat;
+        if (currentXP >= requiredXPInt){
+            currentXP -= requiredXPInt;
             level++;
             requiredXPFloat *= xpScale;
             requiredXPInt = (int)requiredXPFloat;
         }
     }
-    
-    
-    
-    
 }
