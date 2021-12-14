@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour
         if (playerIsDefeated){
             _movement.enabled = false;
             _fighter.enabled = false;
+            _animationController.ChangeAnimationState("Die");
             StartCoroutine(HealthRegeneration());
             _movement.enabled = true;
             _fighter.enabled = true;
@@ -144,9 +145,9 @@ public class PlayerController : MonoBehaviour
                     if (_movement.pathFound){
                         _fighter.CancelAttack();
                         StartCoroutine(ChangeCursorTemporary(validClickTexture,1f));
-                        //_animationController.ChangeAnimationState("Run");
-                        _animator.SetBool("isRunning", true);
-                        _animator.SetBool("isAttacking", false);
+                        _animationController.ChangeAnimationState("Run");
+                        // _animator.SetBool("isRunning", true);
+                        // _animator.SetBool("isAttacking", false);
                     }
                     else{
                         StartCoroutine(ChangeCursorTemporary(invalidClickTexture,1f));
@@ -157,7 +158,7 @@ public class PlayerController : MonoBehaviour
                 _movement.StopMoving();
                 PlayMoveFeedback(1f);
                 StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
-                //_animationController.ChangeAnimationState("Idle");
+                _animationController.ChangeAnimationState("Idle");
             }
         }
         else if (Input.GetMouseButtonUp(0)){
@@ -168,7 +169,7 @@ public class PlayerController : MonoBehaviour
         
         if (_movement._navMeshAgent.remainingDistance < _movement._navMeshAgent.stoppingDistance){
             _movement.StopMoving();
-            //_animationController.ChangeAnimationState("Idle");
+            _animationController.ChangeAnimationState("Idle");
         }
     }
 
