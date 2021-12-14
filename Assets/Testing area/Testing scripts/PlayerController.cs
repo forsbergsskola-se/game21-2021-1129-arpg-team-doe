@@ -101,18 +101,18 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){ //Break out into its own script with onApplicationQuit
-        //Check if other has Item script
-        if (other.GetComponent<Item>() != null){
-            var item = other.GetComponent<Item>();
+        //Check if other has GroundItem script
+        if (other.GetComponent<GroundItem>() != null){
+            var item = other.GetComponent<GroundItem>();
             //Adds item to inventory
-            inventory.AddItem(item.item	,1);
+            inventory.AddItem(new Item(item.item),1);
             //Destroys the item from the world
             Destroy(other.gameObject);
         }
     }
 
     void OnApplicationQuit(){
-        //inventory.Container.Clear();
+        inventory.Container.Items.Clear();
     }
 
     bool InteractWithCombat(){
