@@ -8,7 +8,7 @@ using UnityEngine.Rendering.VirtualTexturing;
 
 public class UnlockDoor : MonoBehaviour, Iinteractable{
     
-    Conditions _conditions; 
+    DoorConditions _doorConditions; 
     CursorOnDoor _cursorOnDoor;
     BoxCollider _collider;
     Animator _animator;
@@ -19,7 +19,7 @@ public class UnlockDoor : MonoBehaviour, Iinteractable{
     bool _hasPlayedSound;
 
     void Start(){
-        _conditions = FindObjectOfType<Conditions>();
+        _doorConditions = FindObjectOfType<DoorConditions>();
         _cursorOnDoor = FindObjectOfType<CursorOnDoor>();
         _collider = GetComponent<BoxCollider>();
         _animator = GetComponent<Animator>();
@@ -28,17 +28,13 @@ public class UnlockDoor : MonoBehaviour, Iinteractable{
     }
 
     void Update(){
-        _conditionCompleted = _conditions.completed;
+        _conditionCompleted = _doorConditions.Completed;
         LockingMechanism();
         _cursorOnDoor.openable = _locked;
     }
 
     void LockingMechanism(){
-        if (_conditionCompleted){
-            _locked = false;
-        }else{
-            _locked = true;
-        }
+        _locked = !_conditionCompleted;
     }
 
     public void Use(){
