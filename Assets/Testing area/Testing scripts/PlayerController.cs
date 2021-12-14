@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Texture2D invalidClickTexture;
     [SerializeField] Texture2D standardCursorTexture;
     //[SerializeField] GameObject _healthBar;
-    [SerializeField] int DefeatedThreshold = 20;
+    [SerializeField] int DefeatedThreshold;
     [SerializeField] int RegenerateThreshold = 80;
 
     public InventoryObject inventory;
@@ -42,9 +42,9 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update(){
-        if (!_health.IsAlive){
-            return;
-        }
+        // if (!_health.IsAlive){
+        //     return;
+        // }
         if (GetPlayerIsDefeated()){
             return;
         }
@@ -118,10 +118,12 @@ public class PlayerController : MonoBehaviour
             GameObject interactableObject = hit.transform.GetComponent<InteractableObject>()?.gameObject;
             if (interactableObject == null) continue;
             if (Input.GetMouseButton(0)){
-                Vector3 positionCloseToTarget = hit.point - (hit.point - transform.position).normalized * 1;
+                StartCoroutine(GoToPosistionThenInteract(hit));
+                Vector3 positionCloseToTarget = hit.point - (hit.point - transform.position).normalized;
                 MoveToInteractable(interactableObject, positionCloseToTarget);
                 _animator.SetBool("isRunning", false);
                 _animator.SetBool("isAttacking", true);
+                
             }
             return true;
         }
@@ -192,6 +194,14 @@ public class PlayerController : MonoBehaviour
             _moveInstance.start();
             _hasPlayedSound = true;
         }
+    }
+
+    IEnumerator GoToPosistionThenInteract(RaycastHit hit){
+        _movement.Mover(hit.point);
+        while (GetIsInRange(hit.transform, _interactionRange) == false){
+            yield return null;
+        }
+        hit.transform.GetComponent<Iinteractable>()?.Use();
     }
 
     IEnumerator ChangeCursorTemporary(Texture2D texture2D,float variable){

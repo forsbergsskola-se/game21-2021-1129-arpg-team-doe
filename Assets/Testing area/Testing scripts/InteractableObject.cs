@@ -1,6 +1,10 @@
 using UnityEngine;
 
-public class InteractableObject : MonoBehaviour
-{
-    
+public interface Iinteractable{
+    public void Use(){}
+}
+public class InteractableObject : MonoBehaviour,Iinteractable{
+    public void Use(){
+        
+    }
 }
