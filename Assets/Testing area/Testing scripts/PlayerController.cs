@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Texture2D invalidClickTexture;
     [SerializeField] Texture2D standardCursorTexture;
     //[SerializeField] GameObject _healthBar;
-    [SerializeField] int DefeatedThreshold = 20;
+    [SerializeField] int DefeatedThreshold;
     [SerializeField] int RegenerateThreshold = 80;
 
     public InventoryObject inventory;
@@ -42,9 +42,9 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update(){
-        if (!_health.IsAlive){
-            return;
-        }
+        // if (!_health.IsAlive){
+        //     return;
+        // }
         if (GetPlayerIsDefeated()){
             return;
         }

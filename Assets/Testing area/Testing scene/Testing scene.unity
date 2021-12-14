@@ -2754,7 +2754,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 08778ce313064eb42bf34ef5e34d7eb5, type: 2}
     - target: {fileID: 1292803965028986600, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
       propertyPath: DefeatedThreshold
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1292803965028986600, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
       propertyPath: invalidClickTexture
