@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class WeaponObject :ItemObject
 {
-    public GameObject weaponPrefab;
-    
     [Header("Weapon Stats")]
     [Min(0)][Tooltip("The equipment's attackspeed")] 
     public int attackSpeed;

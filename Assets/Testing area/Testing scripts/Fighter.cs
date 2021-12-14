@@ -65,8 +65,8 @@ public class Fighter : MonoBehaviour{
         LookAtTarget();
         if (_timeSinceLastAttack > 1f / _statistics.AttackSpeed){
             // TODO: trigger attack animation and sound here
-            if(_animationController != null)
-                _animationController.ChangeAnimationState(ATTACK);
+            //if(_animationController != null)
+            _animationController.ChangeAnimationState(ATTACK);
             _damage = _statistics.AttackDamage;
             bool isCrit = false;
             if (_random.NextDouble() < _statistics.CritChance){
