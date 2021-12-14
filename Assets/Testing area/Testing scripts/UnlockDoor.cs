@@ -68,6 +68,7 @@ public class UnlockDoor : MonoBehaviour, Iinteractable{
         OpenDoor();
         PlayDoorSound(0f);
         hasPlayedSound = false;
+        GetComponentInParent<BoxCollider>().enabled = false;
     }
 
     void OpenDoor(){

@@ -118,16 +118,12 @@ public class PlayerController : MonoBehaviour
             GameObject interactableObject = hit.transform.GetComponent<InteractableObject>()?.gameObject;
             if (interactableObject == null) continue;
             if (Input.GetMouseButton(0)){
-                if (hit.point.magnitude > _interactionRange){
-                    _movement.Mover(hit.point);
-                }
-                else{
-                    Vector3 positionCloseToTarget = hit.point - (hit.point - transform.position).normalized;
-                    MoveToInteractable(interactableObject, positionCloseToTarget);
-                    _animator.SetBool("isRunning", false);
-                    _animator.SetBool("isAttacking", true);
-                    hit.transform.GetComponent<Iinteractable>()?.Use();
-                }
+                StartCoroutine(GoToPosistionThenInteract(hit));
+                Vector3 positionCloseToTarget = hit.point - (hit.point - transform.position).normalized;
+                MoveToInteractable(interactableObject, positionCloseToTarget);
+                _animator.SetBool("isRunning", false);
+                _animator.SetBool("isAttacking", true);
+                
             }
             return true;
         }
@@ -198,6 +194,14 @@ public class PlayerController : MonoBehaviour
             _moveInstance.start();
             _hasPlayedSound = true;
         }
+    }
+
+    IEnumerator GoToPosistionThenInteract(RaycastHit hit){
+        _movement.Mover(hit.point);
+        while (GetIsInRange(hit.transform, _interactionRange) == false){
+            yield return null;
+        }
+        hit.transform.GetComponent<Iinteractable>()?.Use();
     }
 
     IEnumerator ChangeCursorTemporary(Texture2D texture2D,float variable){
