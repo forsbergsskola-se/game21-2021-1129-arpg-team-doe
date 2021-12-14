@@ -2726,7 +2726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1292803965028986595, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
       propertyPath: interactRange
-      value: 9.73
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1292803965028986595, guid: 76ba6e62de5f7ce46bfa987149926339, type: 3}
       propertyPath: movementSpeed
