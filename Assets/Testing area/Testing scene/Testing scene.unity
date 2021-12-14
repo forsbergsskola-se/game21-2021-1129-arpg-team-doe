@@ -1270,7 +1270,7 @@ GameObject:
   - component: {fileID: 616178346}
   - component: {fileID: 616178345}
   m_Layer: 0
-  m_Name: Sphere (2)
+  m_Name: Rusty Pipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1575,7 +1575,7 @@ GameObject:
   - component: {fileID: 764443532}
   - component: {fileID: 764443531}
   m_Layer: 0
-  m_Name: Sphere (3)
+  m_Name: Expired Pie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2283,7 +2283,7 @@ GameObject:
   - component: {fileID: 1448457190}
   - component: {fileID: 1448457189}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Apple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2730,7 +2730,7 @@ GameObject:
   - component: {fileID: 1743232328}
   - component: {fileID: 1743232327}
   m_Layer: 0
-  m_Name: Sphere (1)
+  m_Name: Rocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

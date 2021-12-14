@@ -44,7 +44,6 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update(){
-
         if (GetPlayerIsDefeated()){
             return;
         }
@@ -81,9 +80,14 @@ public class PlayerController : MonoBehaviour
         Debug.Log(this.name + " is defeated.");
         for (float healthRegen = 0f; _health.CurrentHP < RegenerateThreshold; healthRegen += Time.deltaTime){
             _health.UpdateHealth(-(int)healthRegen);
-            Debug.Log(_health.CurrentHP);
-            yield return new WaitForSeconds(Time.deltaTime);
+            //Debug.Log(_health.CurrentHP);
+            yield return new WaitForSeconds(5f);
         }
+        // _health.UpdateHealth(-1);
+        // Debug.Log(_health.CurrentHP);
+        // while (_health.CurrentHP < RegenerateThreshold){
+        //     yield return null;
+        // }
     }
 
     void OnTriggerEnter(Collider other){ //Break out into its own script with onApplicationQuit
