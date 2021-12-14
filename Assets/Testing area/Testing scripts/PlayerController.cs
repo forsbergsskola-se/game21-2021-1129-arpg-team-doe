@@ -44,6 +44,12 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update(){
+        if (Input.GetKeyDown(KeyCode.Space)){
+            inventory.Save();
+        }
+        if (Input.GetKeyDown(KeyCode.KeypadEnter)){
+            inventory.Load();
+        }
         if (GetPlayerIsDefeated()){
             return;
         }
@@ -102,7 +108,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnApplicationQuit(){
-        inventory.Container.Clear();
+        //inventory.Container.Clear();
     }
 
     bool InteractWithCombat(){
