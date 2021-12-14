@@ -8,7 +8,7 @@ using UnityEngine.Rendering.VirtualTexturing;
 
 public class UnlockDoor : MonoBehaviour, Iinteractable{
 
-    [SerializeField] float actionRange;
+    [SerializeField] float actionRange; //TODO:Remove and use statistics instead
     
     PlayerController player;
     Conditions _conditions; 
@@ -68,11 +68,10 @@ public class UnlockDoor : MonoBehaviour, Iinteractable{
         OpenDoor();
         PlayDoorSound(0f);
         hasPlayedSound = false;
-        GetComponentInParent<BoxCollider>().enabled = false;
     }
 
     void OpenDoor(){
-        // _collider.enabled = false;
+        _collider.enabled = false;
         // _obstacle.enabled = false;
         //Test
         _animator.enabled = true;
