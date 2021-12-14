@@ -5,6 +5,9 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Consumable Object", menuName = "Inventory System/Items/Consumable")]
 public class ConsumableObject : ItemObject{
+
+    public GameObject prefab;
+    
    public int restoreHealthValue;
    public AudioClip consumeSound; 
     [Header("Attribute Buffs")]
