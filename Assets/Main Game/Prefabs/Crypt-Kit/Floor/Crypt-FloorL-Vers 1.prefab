@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 6194347912081465378}
   - component: {fileID: 1947927723046692588}
   m_Layer: 0
-  m_Name: Crypt-floor 11x1x6
+  m_Name: Crypt-floor 11x1x11
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
