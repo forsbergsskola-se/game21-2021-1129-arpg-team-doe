@@ -14,10 +14,12 @@ public class Health : MonoBehaviour, IDamageReceiver{
     // unfinished FMOD implementation
     FMOD.Studio.EventInstance instance;
     FMOD.Studio.PARAMETER_ID fmodParameterID;
-    [FMODUnity.EventRef] public string fmodEvent;
-    [SerializeField] [Min(0)] int parameter;
+    public FMODUnity.EventReference fmodEvent;
+    [SerializeField] [Min(0)] float parameter;
     // remove if unsuccessful
 
+    //[SerializeField] Fmod event - Having this public or serialized doesnt work
+    
     [SerializeField] int maxHP = 100;
 
     [SerializeField] GameEvent _deathEvent;
@@ -40,19 +42,21 @@ public class Health : MonoBehaviour, IDamageReceiver{
 
     void Update() {
         // unfinished FMOD implementation
-        instance.setParameterByID(fmodParameterID, parameter);
+        
     }
 
     // unfinished FMOD implementation
     void FMODEvent() {
-        instance = FMODUnity.RuntimeManager.CreateInstance(fmodEvent);
-
+        if (!fmodEvent.IsNull){
+            instance = FMODUnity.RuntimeManager.CreateInstance(fmodEvent);
+        }
+        
         FMOD.Studio.EventDescription parameterEventDescription;
         instance.getDescription(out parameterEventDescription);
         FMOD.Studio.PARAMETER_DESCRIPTION parameterDescription;
         parameterEventDescription.getParameterDescriptionByName("Parameter", out parameterDescription);
         fmodParameterID = parameterDescription.id;
-
+        instance.setParameterByID(fmodParameterID, parameter);
         instance.start();
     }
 
@@ -72,10 +76,12 @@ public class Health : MonoBehaviour, IDamageReceiver{
         if (!IsAlive){
             OnDeath();
         }
-
+        
         foreach(var healthListener in GetComponentsInChildren<IHealthListener>()){
             healthListener.HealthChanged(CurrentHP, ModifiedMaxHP, damage, isCrit, IsAlive);
         }
+        FMODEvent();
+
     }
 
     // void ActivateDamageNumbers(int damage, bool isCrit){
@@ -103,8 +109,10 @@ public class Health : MonoBehaviour, IDamageReceiver{
 
     //This calls the event that you put in if you put it in, if there's no event, nothing happens.
     void OnDeath(){
-        if (_deathEvent != null){
+        //Check if event is not null and is not player, and attacker is player, call event. OR if event is not null and is player, call event.
+        if (_deathEvent != null && this.gameObject.tag != "Player" /*&& IsAttackerPlayer*/ || _deathEvent != null && this.gameObject.tag == "Player"){
             _deathEvent.Invoke();
         }
     }
+    
 }

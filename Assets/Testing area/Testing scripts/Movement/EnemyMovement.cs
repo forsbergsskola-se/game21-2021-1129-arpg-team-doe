@@ -1,6 +1,7 @@
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
+using System.Collections;
 using UnityEngine;
 using AnimatorChanger;
 
@@ -47,7 +48,7 @@ public class EnemyMovement : MonoBehaviour
       _playerIsDetected = _targetDetection.TargetIsDetected(transform.position, _desiredTarget);
       if (_targetDetection.DistanceToTarget(_savedPosition, transform) < closeEnoughToSavedPosition){
          _needsToWalkBack = false;
-         if (!_isAttacking) ;
+         if (!_isAttacking) ; // there is a semicolon here?
             _animationController.ChangeAnimationState(IDLE);
       }
       _isAttacking = _playerIsDetected && !_needsToWalkBack;
@@ -80,7 +81,6 @@ public class EnemyMovement : MonoBehaviour
       }
       else{
          WalkBackAndSetIdle();
-
       }
    }
 

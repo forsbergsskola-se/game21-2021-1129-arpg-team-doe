@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Texture2D invalidClickTexture;
     [SerializeField] Texture2D standardCursorTexture;
     //[SerializeField] GameObject _healthBar;
-    [SerializeField] int DefeatedThreshold = 20;
+    [SerializeField] int DefeatedThreshold;
     [SerializeField] int RegenerateThreshold = 80;
 
     public InventoryObject inventory;
@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     AnimationController _animationController;
     Animator _animator;
     RaycastHit _hit;
+    Fighter _fighter;
     string _currentState;
     float _interactionRange;
     bool _hasPlayedSound;
@@ -38,13 +39,12 @@ public class PlayerController : MonoBehaviour
         _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
         _health = GetComponent<Health>();
         _animationController = GetComponentInChildren<AnimationController>();
+        _fighter = GetComponent<Fighter>();
         //_healthBar.SetActive(true);
     }
 
     void Update(){
-        if (!_health.IsAlive){
-            return;
-        }
+
         if (GetPlayerIsDefeated()){
             return;
         }
@@ -68,16 +68,20 @@ public class PlayerController : MonoBehaviour
         }
         if (playerIsDefeated){
             _movement.enabled = false;
+            _fighter.enabled = false;
+            _animationController.ChangeAnimationState("Die");
             StartCoroutine(HealthRegeneration());
             _movement.enabled = true;
+            _fighter.enabled = true;
         }
         return playerIsDefeated;
     }
 
-    IEnumerator HealthRegeneration(){
+    IEnumerator HealthRegeneration(){ // health regeneration seems weird
         Debug.Log(this.name + " is defeated.");
         for (float healthRegen = 0f; _health.CurrentHP < RegenerateThreshold; healthRegen += Time.deltaTime){
             _health.UpdateHealth(-(int)healthRegen);
+            Debug.Log(_health.CurrentHP);
             yield return new WaitForSeconds(Time.deltaTime);
         }
     }
@@ -103,7 +107,7 @@ public class PlayerController : MonoBehaviour
             GameObject enemy = hit.transform.GetComponent<Health>()?.gameObject;
             if (enemy == null) continue;
             if (Input.GetMouseButton(0)){
-                GetComponent<Fighter>().GetAttackTarget(enemy);
+                _fighter.GetAttackTarget(enemy);
                 _animator.SetBool("isRunning", false);
                 _animator.SetBool("isAttacking", true);
             }
@@ -118,16 +122,11 @@ public class PlayerController : MonoBehaviour
             GameObject interactableObject = hit.transform.GetComponent<InteractableObject>()?.gameObject;
             if (interactableObject == null) continue;
             if (Input.GetMouseButton(0)){
-                if (hit.point.magnitude > _interactionRange){
-                    _movement.Mover(hit.point);
-                }
-                else{
-                    Vector3 positionCloseToTarget = hit.point - (hit.point - transform.position).normalized;
-                    MoveToInteractable(interactableObject, positionCloseToTarget);
-                    _animator.SetBool("isRunning", false);
-                    _animator.SetBool("isAttacking", true);
-                    hit.transform.GetComponent<Iinteractable>()?.Use();
-                }
+                StartCoroutine(GoToPosistionThenInteract(hit));
+                Vector3 positionCloseToTarget = hit.point - (hit.point - transform.position).normalized;
+                MoveToInteractable(interactableObject, positionCloseToTarget);
+                _animator.SetBool("isRunning", false);
+                _animator.SetBool("isAttacking", true);
             }
             return true;
         }
@@ -144,11 +143,11 @@ public class PlayerController : MonoBehaviour
                     //_moveInstance.release();
                     _movement.Mover(_hit.point);
                     if (_movement.pathFound){
-                        GetComponent<Fighter>().CancelAttack();
+                        _fighter.CancelAttack();
                         StartCoroutine(ChangeCursorTemporary(validClickTexture,1f));
-                        //_animationController.ChangeAnimationState("Run");
-                        _animator.SetBool("isRunning", true);
-                        _animator.SetBool("isAttacking", false);
+                        _animationController.ChangeAnimationState("Run");
+                        // _animator.SetBool("isRunning", true);
+                        // _animator.SetBool("isAttacking", false);
                     }
                     else{
                         StartCoroutine(ChangeCursorTemporary(invalidClickTexture,1f));
@@ -159,7 +158,7 @@ public class PlayerController : MonoBehaviour
                 _movement.StopMoving();
                 PlayMoveFeedback(1f);
                 StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
-                //_animationController.ChangeAnimationState("Idle");
+                _animationController.ChangeAnimationState("Idle");
             }
         }
         else if (Input.GetMouseButtonUp(0)){
@@ -170,7 +169,7 @@ public class PlayerController : MonoBehaviour
         
         if (_movement._navMeshAgent.remainingDistance < _movement._navMeshAgent.stoppingDistance){
             _movement.StopMoving();
-            //_animationController.ChangeAnimationState("Idle");
+            _animationController.ChangeAnimationState("Idle");
         }
     }
 
@@ -198,6 +197,14 @@ public class PlayerController : MonoBehaviour
             _moveInstance.start();
             _hasPlayedSound = true;
         }
+    }
+
+    IEnumerator GoToPosistionThenInteract(RaycastHit hit){
+        _movement.Mover(hit.point);
+        while (GetIsInRange(hit.transform, _interactionRange) == false){
+            yield return null;
+        }
+        hit.transform.GetComponent<Iinteractable>()?.Use();
     }
 
     IEnumerator ChangeCursorTemporary(Texture2D texture2D,float variable){
