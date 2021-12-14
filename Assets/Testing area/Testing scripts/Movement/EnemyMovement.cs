@@ -1,7 +1,9 @@
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
+using System.Collections;
 using UnityEngine;
+using AnimatorChanger;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -26,15 +28,15 @@ public class EnemyMovement : MonoBehaviour
    bool _playerIsDetected;
    string _currentState;
 
-   // const string RUN = "Run";
-   // const string SCREAM = "Scream";
+   const string RUN = "Run";
+   const string IDLE = "Idle";
 
    void Start(){
       _targetDetection = GetComponent<TargetDetection>();
       _movement = GetComponent<Movement>();
       _fighter = GetComponent<Fighter>();
       _health = GetComponent<Health>();
-      //_animationController = GetComponentInChildren<AnimationController>();
+      _animationController = GetComponentInChildren<AnimationController>();
       _player = GameObject.FindWithTag("Player");
       _desiredTarget = _player.transform;
 
@@ -46,8 +48,8 @@ public class EnemyMovement : MonoBehaviour
       _playerIsDetected = _targetDetection.TargetIsDetected(transform.position, _desiredTarget);
       if (_targetDetection.DistanceToTarget(_savedPosition, transform) < closeEnoughToSavedPosition){
          _needsToWalkBack = false;
-         if (!_isAttacking) ;
-         //_animationController.ChangeAnimationState(SCREAM);
+         if (!_isAttacking) ; // there is a semicolon here?
+            _animationController.ChangeAnimationState(IDLE);
       }
       _isAttacking = _playerIsDetected && !_needsToWalkBack;
       if (_isAttacking){
@@ -79,7 +81,6 @@ public class EnemyMovement : MonoBehaviour
       }
       else{
          WalkBackAndSetIdle();
-
       }
    }
 
@@ -101,7 +102,7 @@ public class EnemyMovement : MonoBehaviour
       ForgetTarget();
       _movement.Mover(_savedPosition);
       _fighter.CancelAttack();
-      //_animationController.ChangeAnimationState(RUN);
+      _animationController.ChangeAnimationState(RUN);
 
       //Checks if this unit is close enough to saved position and already has an active saved position
       if (_targetDetection.DistanceToTarget(_savedPosition, transform) < closeEnoughToSavedPosition &&

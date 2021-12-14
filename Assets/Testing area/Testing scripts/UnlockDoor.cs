@@ -6,78 +6,61 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering.VirtualTexturing;
 
-public class UnlockDoor : MonoBehaviour{
-
-    [SerializeField] float actionRange;
+public class UnlockDoor : MonoBehaviour, Iinteractable{
     
-    PlayerController player;
-    Conditions _conditions; 
+    DoorConditions _doorConditions; 
     CursorOnDoor _cursorOnDoor;
     BoxCollider _collider;
-    NavMeshObstacle _obstacle;
     Animator _animator;
     FMOD.Studio.EventInstance _doorInstance;
     
-    bool locked = true;
-    bool conditionCompleted;
-    bool hasPlayedSound;
-    float distance;
+    bool _locked = true;
+    bool _conditionCompleted;
+    bool _hasPlayedSound;
 
     void Start(){
-        player = FindObjectOfType<PlayerController>();
-        _conditions = FindObjectOfType<Conditions>();
+        _doorConditions = FindObjectOfType<DoorConditions>();
         _cursorOnDoor = FindObjectOfType<CursorOnDoor>();
         _collider = GetComponent<BoxCollider>();
-        _obstacle = GetComponent<NavMeshObstacle>();
-        //Test
         _animator = GetComponent<Animator>();
         _animator.enabled = false;
-        //Test
-       
+
     }
 
     void Update(){
-        conditionCompleted = _conditions.completed;
+        _conditionCompleted = _doorConditions.Completed;
         LockingMechanism();
-        _cursorOnDoor.openable = locked; //? Could you explain why this is in update?
-        distance = Vector3.Distance(transform.position, player.transform.position); //TODO:Replace with Detection from Detection script
+        _cursorOnDoor.openable = _locked;
     }
 
     void LockingMechanism(){
-        if (conditionCompleted){
-            locked = false;
-        }else{
-            locked = true;
-        }
+        _locked = !_conditionCompleted;
     }
 
-    void OnMouseDown(){
-        Debug.Log(distance + " = Distance to door" + "Locked?" +locked);
-        if (!locked && distance < actionRange){
+    public void Use(){
+        if (_locked){
+            PlayDoorSound(1f);
+            _hasPlayedSound = false;
+        }
+        else if (!_locked){
             OpenDoor();
             PlayDoorSound(0f);
-            hasPlayedSound = false;
-        }
-        if (locked && distance < actionRange){
-            PlayDoorSound(1f);
-            hasPlayedSound = false;
+            _hasPlayedSound = false; 
         }
     }
 
     void OpenDoor(){
-        // _collider.enabled = false;
-        // _obstacle.enabled = false;
-        //Test
+        PlayDoorSound(0f);
+        _collider.enabled = false;
         _animator.enabled = true;
-        //Test
     }
     
     void PlayDoorSound(float parameter){
-        if (hasPlayedSound == false){
+        if (_hasPlayedSound == false){
             _doorInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Door");
             _doorInstance.setParameterByName("OpenLocked", parameter);
             _doorInstance.start();
-            hasPlayedSound = true;
+            _hasPlayedSound = true;
         }
     }
 }

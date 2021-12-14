@@ -470,6 +470,7 @@ GameObject:
   - component: {fileID: 1499735538449174856}
   - component: {fileID: 1095566062284832604}
   - component: {fileID: 452708972}
+  - component: {fileID: 4973783309038112611}
   m_Layer: 0
   m_Name: Enemy (Zlatan)
   m_TagString: Enemy
@@ -648,7 +649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3f0030217a3cc4ca9f9f819cf0f668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areaDetectionRange: 5
+  areaDetectionRange: 5.21
   visionRange: 20
   viewAngle: 90
 --- !u!114 &2402392299167721498
@@ -668,7 +669,7 @@ MonoBehaviour:
   dexterity: 0
   knowledge: 0
   reflex: 0
-  luck: 0
+  luck: 138.33
   interactRange: 0
   attackRange: 5
   attackSpeed: 1
@@ -703,7 +704,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7339576714a584429c762c90bef9491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fmodEvent: 
+  parameter: 0
   maxHP: 40
+  _deathEvent: {fileID: 0}
 --- !u!114 &1499735538449174856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -729,8 +733,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962858f06cb599e469fe7bd40450d934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCursor: {fileID: 2800000, guid: c63a54ea45b38eb4d885614761c41837, type: 3}
-  onEnemyCursor: {fileID: 2800000, guid: 4efd44e0760704c46a3dda209ad485fa, type: 3}
+  defaultCursor: {fileID: 2800000, guid: 036b493ef9cad4882999b895da76e4ef, type: 3}
+  onEnemyCursor: {fileID: 2800000, guid: 606dc05b8b59a470687e80c6932c2995, type: 3}
 --- !u!114 &452708972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -741,6 +745,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6a75a9b0056d4254ad0defc32d23090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4973783309038112611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3143738041877798712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3f439af3bbefdd4fab33972cebb55c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3143738042323338802

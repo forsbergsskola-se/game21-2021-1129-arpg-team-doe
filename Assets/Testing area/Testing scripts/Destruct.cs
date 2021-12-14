@@ -5,17 +5,18 @@ public interface IDestructible{
     void Destruction(bool isAlive);
 }
 public class Destruct : MonoBehaviour,IDestructible, IHealthListener{
-    
+
+    //FMODUnity.StudioEventEmitter _destructionEventEmitter;
+
     [SerializeField] GameObject _prefab;
 
-    public void Destruction(bool IsAlive){ 
+    public void Destruction(bool IsAlive){
         if (!IsAlive){
             DeactivateComponents();
         }
     }
 
-    void DeactivateComponents(){
-
+    void DeactivateComponents() {
         Instantiate(_prefab,this.transform.position,Quaternion.identity);
         Destroy(this.gameObject);
     }

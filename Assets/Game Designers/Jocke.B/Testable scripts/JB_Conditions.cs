@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JB_Conditions : MonoBehaviour //Name: Conditions (maybe DoorCondition if only used for doors)
+public class JB_Conditions : MonoBehaviour //Name: DoorConditions (maybe DoorCondition if only used for doors)
 {
     internal bool completed;
     void OnMouseDown(){

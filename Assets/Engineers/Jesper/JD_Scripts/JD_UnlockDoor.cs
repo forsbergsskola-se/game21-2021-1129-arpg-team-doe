@@ -11,7 +11,7 @@ public class JD_UnlockDoor : MonoBehaviour{
     [SerializeField] float actionRange;
     
     NavMeshAgent player;
-    JD_Conditioner _jdConditioner; //Change name: Conditions
+    JD_Conditioner _jdConditioner; //Change name: DoorConditions
     JD_CursorOnDoor _jdCursorOnDoor;
     
     bool locked = true;

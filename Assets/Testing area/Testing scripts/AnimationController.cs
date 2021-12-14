@@ -1,5 +1,7 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
+namespace AnimatorChanger{
 public class AnimationController : MonoBehaviour
 {
     string _currentState;
@@ -15,4 +17,6 @@ public class AnimationController : MonoBehaviour
         _animator.Play(newState);
         _currentState = newState;
     }
+}
+
 }

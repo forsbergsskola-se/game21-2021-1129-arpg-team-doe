@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using CustomLogs;
+using FMODUnity;
 using UnityEngine;
 using Random = System.Random;
 
@@ -9,8 +11,18 @@ public interface IHealthListener{
 
 public class Health : MonoBehaviour, IDamageReceiver{
 
+    // unfinished FMOD implementation
+    FMOD.Studio.EventInstance instance;
+    FMOD.Studio.PARAMETER_ID fmodParameterID;
+    public FMODUnity.EventReference fmodEvent;
+    [SerializeField] [Min(0)] float parameter;
+    // remove if unsuccessful
+
+    //[SerializeField] Fmod event - Having this public or serialized doesnt work
+    
     [SerializeField] int maxHP = 100;
 
+    [SerializeField] GameEvent _deathEvent;
     Statistics _stats;
     Random random;
     //List<IDamageNumbers> damageNumbersList;
@@ -23,6 +35,29 @@ public class Health : MonoBehaviour, IDamageReceiver{
         _stats = GetComponent<Statistics>();
         random = new Random();
         CurrentHP = ModifiedMaxHP;
+
+        // unfinished FMOD implementation
+        FMODEvent();
+    }
+
+    void Update() {
+        // unfinished FMOD implementation
+        
+    }
+
+    // unfinished FMOD implementation
+    void FMODEvent() {
+        if (!fmodEvent.IsNull){
+            instance = FMODUnity.RuntimeManager.CreateInstance(fmodEvent);
+        }
+        
+        FMOD.Studio.EventDescription parameterEventDescription;
+        instance.getDescription(out parameterEventDescription);
+        FMOD.Studio.PARAMETER_DESCRIPTION parameterDescription;
+        parameterEventDescription.getParameterDescriptionByName("Parameter", out parameterDescription);
+        fmodParameterID = parameterDescription.id;
+        instance.setParameterByID(fmodParameterID, parameter);
+        instance.start();
     }
 
     public void UpdateHealth(int healthChange){
@@ -38,10 +73,15 @@ public class Health : MonoBehaviour, IDamageReceiver{
         damage = ProcessDamage(damage);
         UpdateHealth(damage);
         this.LogTakeDamage(damage,CurrentHP);
-       
+        if (!IsAlive){
+            OnDeath();
+        }
+        
         foreach(var healthListener in GetComponentsInChildren<IHealthListener>()){
             healthListener.HealthChanged(CurrentHP, ModifiedMaxHP, damage, isCrit, IsAlive);
         }
+        FMODEvent();
+
     }
 
     // void ActivateDamageNumbers(int damage, bool isCrit){
@@ -66,4 +106,13 @@ public class Health : MonoBehaviour, IDamageReceiver{
         Debug.Log(transform.name + " receives " + dmg + " Damage");
         return dmg;
     }
+
+    //This calls the event that you put in if you put it in, if there's no event, nothing happens.
+    void OnDeath(){
+        //Check if event is not null and is not player, and attacker is player, call event. OR if event is not null and is player, call event.
+        if (_deathEvent != null && this.gameObject.tag != "Player" /*&& IsAttackerPlayer*/ || _deathEvent != null && this.gameObject.tag == "Player"){
+            _deathEvent.Invoke();
+        }
+    }
+    
 }
