@@ -2,9 +2,6 @@ using CustomLogs;
 using UnityEngine;
 using Random = System.Random;
 using AnimatorChanger;
-public interface IDamageReceiver{
-    void ReceiveDamage(int damage, bool isCrit);
-}
 
 public class Fighter : MonoBehaviour{
     [SerializeField] float critDamageMultiplier = 1.5f; // for debug
@@ -14,6 +11,8 @@ public class Fighter : MonoBehaviour{
     Movement _movement;
     Random _random;
     AnimationController _animationController;
+
+    bool isPlayer;
 
     float _attackRange;
     float _distance;
@@ -29,6 +28,9 @@ public class Fighter : MonoBehaviour{
         _random = new Random();
         _movement = GetComponent<Movement>();
         _animationController = GetComponentInChildren<AnimationController>();
+        if (this.gameObject.tag == "Player") {
+            isPlayer = true;
+        }
     }
 
     void Update(){
@@ -71,7 +73,7 @@ public class Fighter : MonoBehaviour{
                 _damage = Mathf.RoundToInt(_statistics.AttackDamage * critDamageMultiplier);
                 isCrit = true;
             }
-            target.GetComponent<IDamageReceiver>()?.ReceiveDamage(_damage, isCrit);
+            target.GetComponent<IDamageReceiver>()?.ReceiveDamage(_damage, isCrit, isPlayer);
             this.LogDealDamage(_damage, isCrit, target,_combatTarget.CurrentHP);
             _timeSinceLastAttack = 0f;
         }
