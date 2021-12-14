@@ -8,13 +8,15 @@ using UnityEngine.Rendering.VirtualTexturing;
 
 public class UnlockDoor : MonoBehaviour, Iinteractable{
     
+    [SerializeField]bool _locked = true;
+    
     DoorConditions _doorConditions; 
     CursorOnDoor _cursorOnDoor;
     BoxCollider _collider;
     Animator _animator;
     FMOD.Studio.EventInstance _doorInstance;
     
-    bool _locked = true;
+    
     bool _conditionCompleted;
     bool _hasPlayedSound;
 
