@@ -18,6 +18,8 @@ public class Health : MonoBehaviour, IDamageReceiver{
     [SerializeField] [Min(0)] int parameter;
     // remove if unsuccessful
 
+    //[SerializeField] Fmod event - Having this public or serialized doesnt work
+    
     [SerializeField] int maxHP = 100;
 
     [SerializeField] GameEvent _deathEvent;
@@ -73,9 +75,12 @@ public class Health : MonoBehaviour, IDamageReceiver{
             OnDeath();
         }
 
+        //Call fmodevent
         foreach(var healthListener in GetComponentsInChildren<IHealthListener>()){
             healthListener.HealthChanged(CurrentHP, ModifiedMaxHP, damage, isCrit, IsAlive);
         }
+        
+        
     }
 
     // void ActivateDamageNumbers(int damage, bool isCrit){
@@ -103,8 +108,10 @@ public class Health : MonoBehaviour, IDamageReceiver{
 
     //This calls the event that you put in if you put it in, if there's no event, nothing happens.
     void OnDeath(){
-        if (_deathEvent != null){
+        //Check if event is not null and is not player, and attacker is player, call event. OR if event is not null and is player, call event.
+        if (_deathEvent != null && this.gameObject.tag != "Player" /*&& IsAttackerPlayer*/ || _deathEvent != null && this.gameObject.tag == "Player"){
             _deathEvent.Invoke();
         }
     }
+    
 }
