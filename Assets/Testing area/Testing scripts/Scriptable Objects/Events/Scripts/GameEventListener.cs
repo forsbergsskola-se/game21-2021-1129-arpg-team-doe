@@ -10,6 +10,4 @@ public class GameEventListener : MonoBehaviour{
     void Awake() => _gameEvent.Register(this);
     void OnDestroy() => _gameEvent.Deregister(this);
     public void RaiseEvent() => _unityEvent.Invoke();
-
-
 }
