@@ -1,4 +1,5 @@
 using System.Collections;
+using AnimatorChanger;
 using CustomLogs;
 using FMOD;
 using FMODUnity;
@@ -21,7 +22,7 @@ public class PlayerController : MonoBehaviour
     Movement _movement;
     Statistics _statistics;
     Health _health;
-
+    AnimationController _animationController;
     Animator _animator;
     RaycastHit _hit;
     string _currentState;
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
         _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
         _health = GetComponent<Health>();
+        _animationController = GetComponentInChildren<AnimationController>();
         //_healthBar.SetActive(true);
     }
 
@@ -55,22 +57,15 @@ public class PlayerController : MonoBehaviour
 
         // if click on the ground, move to cursor
         MoveToCursor();
-
-        if (_movement._navMeshAgent.remainingDistance < _movement._navMeshAgent.stoppingDistance){
-            _movement.StopMoving();
-            // ChangeAnimationState(PLAYER_WALK);
-        }
     }
 
     bool GetPlayerIsDefeated(){
         if (_health.CurrentHP <= DefeatedThreshold){
             playerIsDefeated = true;
         }
-
         if (_health.CurrentHP >= RegenerateThreshold){
             playerIsDefeated = false;
         }
-
         if (playerIsDefeated){
             _movement.enabled = false;
             StartCoroutine(HealthRegeneration());
@@ -109,7 +104,6 @@ public class PlayerController : MonoBehaviour
             if (enemy == null) continue;
             if (Input.GetMouseButton(0)){
                 GetComponent<Fighter>().GetAttackTarget(enemy);
-                // ChangeAnimationState("attack");
                 _animator.SetBool("isRunning", false);
                 _animator.SetBool("isAttacking", true);
             }
@@ -146,13 +140,12 @@ public class PlayerController : MonoBehaviour
                     if (_movement.pathFound){
                         GetComponent<Fighter>().CancelAttack();
                         StartCoroutine(ChangeCursorTemporary(validClickTexture,1f));
-                        // ChangeAnimationState(PLAYER_RUN);
+                        //_animationController.ChangeAnimationState("Run");
                         _animator.SetBool("isRunning", true);
                         _animator.SetBool("isAttacking", false);
                     }
                     else{
                         StartCoroutine(ChangeCursorTemporary(invalidClickTexture,1f));
-                        // ChangeAnimationState(PLAYER_WALK);
                     }
                 }
             }
@@ -160,7 +153,7 @@ public class PlayerController : MonoBehaviour
                 _movement.StopMoving();
                 PlayMoveFeedback(1f);
                 StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
-                // ChangeAnimationState(PLAYER_WALK);
+                //_animationController.ChangeAnimationState("Idle");
             }
         }
         else if (Input.GetMouseButtonUp(0)){
@@ -168,16 +161,18 @@ public class PlayerController : MonoBehaviour
             _moveInstance.release();
             _hasPlayedSound = false;
         }
+        
+        if (_movement._navMeshAgent.remainingDistance < _movement._navMeshAgent.stoppingDistance){
+            _movement.StopMoving();
+            //_animationController.ChangeAnimationState("Idle");
+        }
     }
 
     void MoveToInteractable(GameObject target, Vector3 destination){
         PlayMoveFeedback(1f);
-        //ChangeAnimationState(PLAYER_WALK);
         bool isCloseEnoughToTarget = GetIsInRange(target.transform, _interactionRange);
         if(!isCloseEnoughToTarget){
             _movement.Mover(destination);
-            //if (_movement.pathFound)
-                // ChangeAnimationState(PLAYER_RUN);
             StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
         }
     }
@@ -197,12 +192,6 @@ public class PlayerController : MonoBehaviour
             _moveInstance.start();
             _hasPlayedSound = true;
         }
-    }
-
-    void ChangeAnimationState(string newState){
-        if (_currentState == newState) return;
-        _animator.Play(newState);
-        _currentState = newState;
     }
 
     IEnumerator ChangeCursorTemporary(Texture2D texture2D,float variable){
