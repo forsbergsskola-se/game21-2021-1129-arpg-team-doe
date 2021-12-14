@@ -118,10 +118,16 @@ public class PlayerController : MonoBehaviour
             GameObject interactableObject = hit.transform.GetComponent<InteractableObject>()?.gameObject;
             if (interactableObject == null) continue;
             if (Input.GetMouseButton(0)){
-                Vector3 positionCloseToTarget = hit.point - (hit.point - transform.position).normalized * 1;
-                MoveToInteractable(interactableObject, positionCloseToTarget);
-                _animator.SetBool("isRunning", false);
-                _animator.SetBool("isAttacking", true);
+                if (hit.point.magnitude > _interactionRange){
+                    _movement.Mover(hit.point);
+                }
+                else{
+                    Vector3 positionCloseToTarget = hit.point - (hit.point - transform.position).normalized;
+                    MoveToInteractable(interactableObject, positionCloseToTarget);
+                    _animator.SetBool("isRunning", false);
+                    _animator.SetBool("isAttacking", true);
+                    hit.transform.GetComponent<Iinteractable>()?.Use();
+                }
             }
             return true;
         }

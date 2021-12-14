@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering.VirtualTexturing;
 
-public class UnlockDoor : MonoBehaviour{
+public class UnlockDoor : MonoBehaviour, Iinteractable{
 
     [SerializeField] float actionRange;
     
@@ -62,6 +62,12 @@ public class UnlockDoor : MonoBehaviour{
             PlayDoorSound(1f);
             hasPlayedSound = false;
         }
+    }
+
+    public void Use(){
+        OpenDoor();
+        PlayDoorSound(0f);
+        hasPlayedSound = false;
     }
 
     void OpenDoor(){
