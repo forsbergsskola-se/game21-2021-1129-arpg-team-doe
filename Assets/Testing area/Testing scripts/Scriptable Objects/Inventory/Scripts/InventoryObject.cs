@@ -13,17 +13,17 @@ public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver
    public List<InventorySlot> Container = new List<InventorySlot>();
    ItemDatabaseObject database;
 
-   public void AddItem(ItemObject _item, int _amount){
+   public void AddItem(ItemObject item, int amount){
       for (int i = 0; i < Container.Count; i++){
          //Here we check if the container already has the item
-         if (Container[i].item == _item){
+         if (Container[i].item == item){
             //If we have the item, we add to the amount of that item, instead of adding the item itself
-            Container[i].AddAmount(_amount);
+            Container[i].AddAmount(amount);
             return;
          }
       }
       //If we do not have the item already, we add the item
-      Container.Add(new InventorySlot(database.GetId[_item], _item,_amount));
+      Container.Add(new InventorySlot(database.GetId[item], item, amount));
    }
 
    public void Save(){
@@ -68,10 +68,10 @@ public class InventorySlot{
    public ItemObject item;
    [Min(0)]public int amount;
 
-   public InventorySlot(int _id, ItemObject _item, int _amount){
-      ID = _id;
-      item = _item;
-      amount = _amount;
+   public InventorySlot(int id, ItemObject item, int amount){
+      ID = id;
+      this.item = item;
+      this.amount = amount;
    }
 
    public void AddAmount(int value){

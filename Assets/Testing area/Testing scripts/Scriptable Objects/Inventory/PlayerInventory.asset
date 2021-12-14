@@ -13,4 +13,13 @@ MonoBehaviour:
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
   savePath: /inventory.save
-  Container: []
+  Container:
+  - ID: 0
+    item: {fileID: 11400000, guid: d27ce4dde9e895649a8d5bd87834c246, type: 2}
+    amount: 1
+  - ID: 1
+    item: {fileID: 11400000, guid: dddc4062bf8d75940acdac0d86f6d1a0, type: 2}
+    amount: 2
+  - ID: 2
+    item: {fileID: 11400000, guid: dc0481157cd316b42a13b388a2d7f011, type: 2}
+    amount: 4

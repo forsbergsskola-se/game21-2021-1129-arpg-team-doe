@@ -5,8 +5,6 @@ using TMPro;
 
 public class DisplayInventory : MonoBehaviour{
     public InventoryObject inventory;
-
-
     public int XStart;
     public int YStart;
     public int XSpaceBetweenItem;
@@ -14,12 +12,11 @@ public class DisplayInventory : MonoBehaviour{
     public int YSpaceBetweenItems;
 
     Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
-    // Start is called before the first frame update
+    
     void Start(){
         CreateDisplay();
     }
 
-    // Update is called once per frame
     void Update(){
         UpdateDisplay();
     }

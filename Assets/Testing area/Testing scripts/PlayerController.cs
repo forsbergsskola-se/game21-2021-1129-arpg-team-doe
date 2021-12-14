@@ -49,12 +49,13 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update(){
-        if (Input.GetKeyDown(KeyCode.O)){
+        if (Input.GetKeyDown(KeyCode.Space)){
             inventory.Save();
         }
-        if (Input.GetKeyDown(KeyCode.P)){
+        if (Input.GetKeyDown(KeyCode.KeypadEnter)){
             inventory.Load();
         }
+        
         if (GetPlayerIsDefeated()){
             return;
         }
