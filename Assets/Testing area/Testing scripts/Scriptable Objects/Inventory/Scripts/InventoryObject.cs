@@ -10,8 +10,9 @@ using UnityEditor;
 public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver
 {
    public string savePath;
-   private ItemDatabaseObject database;
    public List<InventorySlot> Container = new List<InventorySlot>();
+   ItemDatabaseObject database;
+
    public void AddItem(ItemObject _item, int _amount){
       for (int i = 0; i < Container.Count; i++){
          //Here we check if the container already has the item
@@ -22,7 +23,7 @@ public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver
          }
       }
       //If we do not have the item already, we add the item
-      //Container.Add(new InventorySlot(database.GetId[_item], _item,_amount));
+      Container.Add(new InventorySlot(database.GetId[_item], _item,_amount));
    }
 
    public void Save(){
@@ -32,7 +33,7 @@ public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver
       bf.Serialize(file, saveData);
       file.Close();
    }
-
+   
    public void Load(){
       if (File.Exists(string.Concat(Application.persistentDataPath, savePath))){
          BinaryFormatter bf = new BinaryFormatter();
@@ -53,7 +54,7 @@ public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver
 
    void OnEnable(){
 #if UNITY_EDITOR
-      database = (ItemDatabaseObject) AssetDatabase.LoadAssetAtPath("Assets/Resources/Database.asset",
+      database = (ItemDatabaseObject) AssetDatabase.LoadAssetAtPath("Assets/Testing area/Resources/Database.asset",
          typeof(ItemDatabaseObject));
 #else
       database = Resources.Load<ItemDatabaseObject>("Database");
@@ -68,6 +69,7 @@ public class InventorySlot{
    [Min(0)]public int amount;
 
    public InventorySlot(int _id, ItemObject _item, int _amount){
+      ID = _id;
       item = _item;
       amount = _amount;
    }

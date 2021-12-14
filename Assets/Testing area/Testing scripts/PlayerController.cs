@@ -49,10 +49,10 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update(){
-        if (Input.GetKeyDown(KeyCode.Space)){
+        if (Input.GetKeyDown(KeyCode.O)){
             inventory.Save();
         }
-        if (Input.GetKeyDown(KeyCode.KeypadEnter)){
+        if (Input.GetKeyDown(KeyCode.P)){
             inventory.Load();
         }
         if (GetPlayerIsDefeated()){
@@ -79,9 +79,9 @@ public class PlayerController : MonoBehaviour
         if (playerIsDefeated){
             _movement.enabled = false;
             _fighter.enabled = false;
-            _animationController.ChangeAnimationState("Die");
-            _movement.enabled = true;
-            _fighter.enabled = true;
+           _animationController.ChangeAnimationState("Die");
+           _movement.enabled = true;
+           _fighter.enabled = true;
         }
         return playerIsDefeated;
     }
@@ -121,8 +121,8 @@ public class PlayerController : MonoBehaviour
             if (enemy == null) continue;
             if (Input.GetMouseButton(0)){
                 _fighter.GetAttackTarget(enemy);
-                _animator.SetBool("isRunning", false);
-                _animator.SetBool("isAttacking", true);
+                // _animator.SetBool("isRunning", false);
+                // _animator.SetBool("isAttacking", true);
             }
             return true;
         }
@@ -138,8 +138,8 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(GoToPosistionThenInteract(hit));
                 Vector3 positionCloseToTarget = hit.point - (hit.point - transform.position).normalized;
                 MoveToInteractable(interactableObject, positionCloseToTarget);
-                _animator.SetBool("isRunning", false);
-                _animator.SetBool("isAttacking", true);
+                // _animator.SetBool("isRunning", false);
+                // _animator.SetBool("isAttacking", true);
             }
             return true;
         }
