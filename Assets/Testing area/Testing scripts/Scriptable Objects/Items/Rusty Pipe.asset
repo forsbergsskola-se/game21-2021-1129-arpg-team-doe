@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d09408c5fcef1c04198aa03e7cf84e8a, type: 3}
   m_Name: Rusty Pipe
   m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
   type: 2
   name: Rusty Pipe
   price: 1273
   weight: 0
   description: This in a rusty pipe.
-  weaponPrefab: {fileID: 0}
+  weaponPrefab: {fileID: 4801744184740293225, guid: c9d379ab9bcb17d4bb6b6a888a27b156, type: 3}
   attackSpeed: 0
   damage: 5
   attackSpeedBuff: 0
