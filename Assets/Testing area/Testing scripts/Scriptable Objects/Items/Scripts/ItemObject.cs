@@ -11,6 +11,7 @@ public enum ItemType{
 
 
 public abstract class ItemObject : ScriptableObject{
+    public GameObject prefab;
     public ItemType type;
     public string name;
     [Min(0f)] public float price;
