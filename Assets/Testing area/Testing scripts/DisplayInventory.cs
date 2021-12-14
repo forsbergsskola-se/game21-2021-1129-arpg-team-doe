@@ -39,7 +39,7 @@ public class DisplayInventory : MonoBehaviour{
         }
     }
     
-    public void CreateDisplay(){
+    public void CreateDisplay(){ 
         for (int i = 0; i < inventory.Container.Count; i++){
             var obj = Instantiate(inventory.Container[i].item.prefab, Vector3.zero, Quaternion.identity, transform);
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
@@ -48,7 +48,7 @@ public class DisplayInventory : MonoBehaviour{
         }
     }
 
-    public Vector3 GetPosition(int i){
+    public Vector3 GetPosition(int i){ //Gets the position of item to the inventory space
         return new Vector3(XStart+ (XSpaceBetweenItem * (i % NumberOfColumn)), (YStart + (-YSpaceBetweenItems * (i/NumberOfColumn))), 0f);
     }
 }
