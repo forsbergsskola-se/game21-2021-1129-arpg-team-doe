@@ -30,9 +30,18 @@ public class UnlockDoor : MonoBehaviour, Iinteractable{
     }
 
     void Update(){
-        _conditionCompleted = _doorConditions.Completed;
-        LockingMechanism();
-        _cursorOnDoor.openable = _locked;
+        if (!_locked){
+            _conditionCompleted = true;
+            _cursorOnDoor.openable = true;
+            return;
+        }
+        else{
+            _conditionCompleted = _doorConditions.Completed;
+            LockingMechanism();
+            _cursorOnDoor.openable = _locked;
+        }
+
+        
     }
 
     void LockingMechanism(){
@@ -46,7 +55,6 @@ public class UnlockDoor : MonoBehaviour, Iinteractable{
         }
         else if (!_locked){
             OpenDoor();
-            PlayDoorSound(0f);
             _hasPlayedSound = false; 
         }
     }
