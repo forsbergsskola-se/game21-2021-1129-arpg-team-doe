@@ -2455,6 +2455,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1535776509353853777, guid: 16bb142f47e2eb247bb312c84e702fce, type: 3}
+      propertyPath: _xpDrop
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535776509353853777, guid: 16bb142f47e2eb247bb312c84e702fce, type: 3}
+      propertyPath: _xpDropEvent
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4963134041443440784, guid: 16bb142f47e2eb247bb312c84e702fce, type: 3}
       propertyPath: m_RootOrder
       value: 26
@@ -2636,25 +2644,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1671769838}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b732b65092b0904a9d94b09335636b7, type: 3}
+  m_Script: {fileID: 11500000, guid: 369dda3d9a9aa4633bc2cab71ac9a10c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameEvent: {fileID: 11400000, guid: f7d11bc4b9cc55d4b993bd3a8cb566f2, type: 2}
-  _unityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1671769838}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  _xpDropEvent: {fileID: 11400000, guid: 44b23296178544384ad6b8052486b374, type: 2}
+  xpAmount: 20
 --- !u!1 &1725746314
 GameObject:
   m_ObjectHideFlags: 0
@@ -3874,6 +3868,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 666683531177710290, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
+      propertyPath: _xpDrop
+      value: 
+      objectReference: {fileID: 1671769839}
+    - target: {fileID: 666683531177710290, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
+      propertyPath: _xpDropEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 44b23296178544384ad6b8052486b374, type: 2}
     - target: {fileID: 6345615741836710522, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
       propertyPath: defaultCursor
       value: 

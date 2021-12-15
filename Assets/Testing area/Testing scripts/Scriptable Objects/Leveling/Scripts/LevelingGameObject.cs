@@ -5,14 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Leveling System", menuName = "Leveling System/Leveling System")]
 public class LevelingGameObject : ScriptableObject
 {
-    [Min(0)][SerializeField] int level = 1;
-    [Min(0)][SerializeField] int currentXP = 0;
+    [Min(0)][SerializeField] public int level = 1;
+    [Min(0)][SerializeField] public int currentXP = 0;
 
-    [Min(0)][SerializeField] int requiredXPInt; //Used for display and starting value
+    [Min(0)][SerializeField] public int requiredXPInt; //Used for display and starting value
     float requiredXPFloat; //Used for calculations
 
     [Tooltip("How much more xp you'll need each level to level up")]
-    [Min(0)][SerializeField] float xpScale;
+    [Min(0)][SerializeField] public float xpScale;
 
     [SerializeField] GameEvent _levelUp;
 
