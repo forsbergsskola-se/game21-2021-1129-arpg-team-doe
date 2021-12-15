@@ -79,7 +79,7 @@ public class Health : MonoBehaviour, IDamageReceiver{
     public void ReceiveDamage(int damage, bool isCrit, bool isPlayer){ //Toughness should affect this
         damage = ProcessDamage(damage);
         UpdateHealth(damage);
-        this.LogTakeDamage(damage,CurrentHP);
+        //this.LogTakeDamage(damage,CurrentHP);
         if (!IsAlive){
             OnDeath(isPlayer);
         }
@@ -98,13 +98,13 @@ public class Health : MonoBehaviour, IDamageReceiver{
         if (DodgeSuccessful()){
             dmg = 0;
         }
-        Debug.Log(transform.name + " receives " + dmg + " Damage");
+        //Debug.Log(transform.name + " receives " + dmg + " Damage");
         return dmg;
     }
 
     //This calls the event that you put in if you put it in, if there's no event, nothing happens.
     void OnDeath(bool isPlayer){
-        Debug.Log(isPlayer);
+        //Debug.Log(isPlayer);
         //Check if event is not null and is not player, and attacker is player, call event. OR if event is not null and is player, call event.
         if (_xpDropEvent != null && this.gameObject.tag != "Player" && isPlayer || _xpDropEvent != null && this.gameObject.tag == "Player"){
             _xpDropEvent.Invoke(_xpDrop.xpAmount);

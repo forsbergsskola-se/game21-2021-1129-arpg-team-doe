@@ -74,7 +74,7 @@ public class Fighter : MonoBehaviour{
                 isCrit = true;
             }
             target.GetComponent<IDamageReceiver>()?.ReceiveDamage(_damage, isCrit, isPlayer);
-            this.LogDealDamage(_damage, isCrit, target,_combatTarget.CurrentHP);
+            //this.LogDealDamage(_damage, isCrit, target,_combatTarget.CurrentHP);
             _timeSinceLastAttack = 0f;
         }
     }

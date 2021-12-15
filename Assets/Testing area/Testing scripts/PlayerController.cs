@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
             if (_health.CurrentHP < regenerateThreshold){
                 yield return new WaitForSeconds(1f);
                 _health.UpdateHealth(-healthRegen);
-                Debug.Log(_health.CurrentHP);
+                //Debug.Log(_health.CurrentHP);
             }
             else{
                 yield return null;
