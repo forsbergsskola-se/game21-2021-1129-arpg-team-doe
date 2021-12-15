@@ -6,8 +6,9 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DisplayInventory : MonoBehaviour
-{
+public class DisplayInventory : MonoBehaviour{
+    public MouseItem mouseItem = new MouseItem();
+    
     public GameObject inventoryPrefab;
     public InventoryObject inventory;
     public int XStart;
@@ -84,15 +85,27 @@ public class DisplayInventory : MonoBehaviour
             img.sprite = inventory.database.GetItem[itemsDisplayed[obj].ID].uiDisplay;
             img.raycastTarget = false; //to make sure mouse ignores object
         }
+
+        mouseItem.obj = mouseObject;
+        mouseItem.item = itemsDisplayed[obj];
     }
     public void OnDragEnd(GameObject obj){
         
     }
     public void OnDrag(GameObject obj){
-        
+        if (mouseItem.obj !=null){
+            mouseItem.obj.GetComponent<RectTransform>().position = Input.mousePosition;
+        }
     }
     
     public Vector3 GetPosition(int i){ //Gets the position of item to the inventory space
         return new Vector3(XStart+ (XSpaceBetweenItem * (i % NumberOfColumn)), (YStart + (-YSpaceBetweenItems * (i/NumberOfColumn))), 0f);
     }
+}
+
+public class MouseItem{
+    public GameObject obj;
+    public InventorySlot item;
+    public InventorySlot hoverItem;
+    public GameObject hoverObj;
 }
