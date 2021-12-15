@@ -3154,8 +3154,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -87.916626, y: 0}
-  m_SizeDelta: {x: 175.83313, y: 207.5459}
+  m_AnchoredPosition: {x: -100, y: 0}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1938351791
 MonoBehaviour:
@@ -3169,12 +3169,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6458e02bb16834dadcfcead3433d93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryPrefab: {fileID: 9083230645249896634, guid: 90195164809c4e54bbe5716673716089, type: 3}
   inventory: {fileID: 11400000, guid: 77e2291076a7dee459893b29befa9b36, type: 2}
-  XStart: -61
-  YStart: 83
-  XSpaceBetweenItem: 25
+  XStart: -70
+  YStart: 70
+  XSpaceBetweenItem: 40
   NumberOfColumn: 6
-  YSpaceBetweenItems: 25
+  YSpaceBetweenItems: 40
 --- !u!114 &1938351792
 MonoBehaviour:
   m_ObjectHideFlags: 0
