@@ -26,6 +26,7 @@ public class UnlockDoor : MonoBehaviour, Iinteractable{
         _collider = GetComponent<BoxCollider>();
         _animator = GetComponent<Animator>();
         _animator.enabled = false;
+        _doorInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Door");
 
     }
 
@@ -67,7 +68,6 @@ public class UnlockDoor : MonoBehaviour, Iinteractable{
     
     void PlayDoorSound(float parameter){
         if (_hasPlayedSound == false){
-            _doorInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Door");
             _doorInstance.setParameterByName("OpenLocked", parameter);
             _doorInstance.start();
             _hasPlayedSound = true;
