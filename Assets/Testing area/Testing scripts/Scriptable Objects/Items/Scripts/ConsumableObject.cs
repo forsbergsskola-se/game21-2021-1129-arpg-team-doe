@@ -7,7 +7,7 @@ using UnityEngine;
 public class ConsumableObject : ItemObject{
 
     public int restoreHealthValue;
-   public AudioClip consumeSound; 
+    public FMODUnity.EventReference fmodEvent;
     [Header("Attribute Buffs")]
    [Min(0f)][Tooltip	("Duration in Seconds")] public int buffDuration;
    public int toughnessBuff;
