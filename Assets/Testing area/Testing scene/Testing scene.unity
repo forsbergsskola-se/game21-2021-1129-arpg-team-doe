@@ -2427,7 +2427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 803274960}
-  _health: {fileID: 1280433321}
+  health: {fileID: 1280433321}
 --- !u!1 &806120240
 GameObject:
   m_ObjectHideFlags: 0

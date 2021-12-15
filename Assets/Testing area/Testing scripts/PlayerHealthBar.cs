@@ -1,28 +1,24 @@
-using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealthBar : MonoBehaviour, IHealthbar//, IHealthListener
+public class PlayerHealthBar : MonoBehaviour, IHealthbar
 {
     public Slider slider;
-    public Health _health;
-    int currentHealth;
+    public Health health;
     bool _isSliderShown;
 
-
     void Start(){
-        //slider.maxValue = _health.ModifiedMaxHP;
+        //slider.maxValue = health.ModifiedMaxHP;
     }
 
     void Update(){
         if (_isSliderShown){
-            SetSliderCurrentHealth(_health.CurrentHP);
+            SetSliderCurrentHealth(health.CurrentHP);
             return;
         }
         if (!_isSliderShown){
             _isSliderShown = true;
-            SetSliderMaxHealth(_health.ModifiedMaxHP);
+            SetSliderMaxHealth(health.ModifiedMaxHP);
         }
     }
 
@@ -34,8 +30,4 @@ public class PlayerHealthBar : MonoBehaviour, IHealthbar//, IHealthListener
     public void SetSliderCurrentHealth(int currentHealth){
         slider.value = currentHealth;
     }
-
-    // public void HealthChanged(int currentHealth, int maxHealth, int damage, bool isCrit, bool isAlive){
-    //     SetSliderCurrentHealth(currentHealth);
-    // }
 }
