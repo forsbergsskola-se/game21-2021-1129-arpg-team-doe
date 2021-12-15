@@ -74,7 +74,16 @@ public class DisplayInventory : MonoBehaviour
         
     }
     public void OnDragStart(GameObject obj){
-        
+        //Visual representation of draging item
+        var mouseObject = new GameObject();
+        var rt = mouseObject.AddComponent<RectTransform>();
+        rt.sizeDelta = new Vector2(50, 50);
+        mouseObject.transform.SetParent(transform.parent);
+        if (itemsDisplayed[obj].ID >= 0){
+            var img = mouseObject.AddComponent<Image>();
+            img.sprite = inventory.database.GetItem[itemsDisplayed[obj].ID].uiDisplay;
+            img.raycastTarget = false; //to make sure mouse ignores object
+        }
     }
     public void OnDragEnd(GameObject obj){
         
