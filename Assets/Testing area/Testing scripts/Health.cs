@@ -65,7 +65,6 @@ public class Health : MonoBehaviour, IDamageReceiver{
         parameterEventDescription.getParameterDescriptionByName("Parameter", out parameterDescription);
         fmodParameterID = parameterDescription.id;
         instance.setParameterByID(fmodParameterID, parameter);
-        instance.start();
     }
 
     public void UpdateHealth(int healthChange){
@@ -88,7 +87,7 @@ public class Health : MonoBehaviour, IDamageReceiver{
         foreach(var healthListener in GetComponentsInChildren<IHealthListener>()){
             healthListener.HealthChanged(CurrentHP, ModifiedMaxHP, damage, isCrit, IsAlive);
         }
-        FMODEvent();
+        PlaySound();
     }
 
     bool DodgeSuccessful(){
@@ -110,5 +109,10 @@ public class Health : MonoBehaviour, IDamageReceiver{
         if (_xpDropEvent != null && this.gameObject.tag != "Player" && isPlayer || _xpDropEvent != null && this.gameObject.tag == "Player"){
             _xpDropEvent.Invoke(_xpDrop.xpAmount);
         }
+    }
+
+    void PlaySound(){
+        instance.start();
+        instance.release();
     }
 }

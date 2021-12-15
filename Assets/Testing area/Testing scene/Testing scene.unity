@@ -2235,6 +2235,50 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!1 &1280433299 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4963134041443440878, guid: 16bb142f47e2eb247bb312c84e702fce, type: 3}
+  m_PrefabInstance: {fileID: 1504705453}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1280433300 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1060939051481108185, guid: 16bb142f47e2eb247bb312c84e702fce, type: 3}
+  m_PrefabInstance: {fileID: 1504705453}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280433299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac744252cfca4a36bcec80f8da059e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1280433314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280433299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b732b65092b0904a9d94b09335636b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEvent: {fileID: 11400000, guid: acac836e5fe18f1449f57d3a2734a6e5, type: 2}
+  _unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1280433300}
+        m_TargetAssemblyTypeName: Level, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1382635029
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2455,6 +2499,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1060939051481108185, guid: 16bb142f47e2eb247bb312c84e702fce, type: 3}
+      propertyPath: fmodEvent.Path
+      value: event:/LvlUP
+      objectReference: {fileID: 0}
+    - target: {fileID: 1060939051481108185, guid: 16bb142f47e2eb247bb312c84e702fce, type: 3}
+      propertyPath: fmodEvent.Guid.Data1
+      value: -542430724
+      objectReference: {fileID: 0}
+    - target: {fileID: 1060939051481108185, guid: 16bb142f47e2eb247bb312c84e702fce, type: 3}
+      propertyPath: fmodEvent.Guid.Data2
+      value: 1268527413
+      objectReference: {fileID: 0}
+    - target: {fileID: 1060939051481108185, guid: 16bb142f47e2eb247bb312c84e702fce, type: 3}
+      propertyPath: fmodEvent.Guid.Data3
+      value: 1053398163
+      objectReference: {fileID: 0}
+    - target: {fileID: 1060939051481108185, guid: 16bb142f47e2eb247bb312c84e702fce, type: 3}
+      propertyPath: fmodEvent.Guid.Data4
+      value: 2091630610
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535776509353853777, guid: 16bb142f47e2eb247bb312c84e702fce, type: 3}
+      propertyPath: maxHP
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 1535776509353853777, guid: 16bb142f47e2eb247bb312c84e702fce, type: 3}
       propertyPath: _xpDrop
       value: 
