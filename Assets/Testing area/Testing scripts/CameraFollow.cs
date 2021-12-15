@@ -15,13 +15,16 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] float snapRotationSpeedMultiplier = 30f;
     [SerializeField] float minZoom = 3f;
     [SerializeField] float maxZoom = 15f;
+    [SerializeField] [Range(50,90)] float cameraAngle = 60f;
     
     Transform target;
+    Transform camera;
     
     Vector3 offset;
     Vector3 rotationAxis = new Vector3(0, 1, 0);
     Vector3 snapRotationAxis = new Vector3(0, 1, 0);
     Vector3 _velocity = Vector3.zero;
+    Vector3 _cameraRotation;
     
     float startZoom;
     float speed;
@@ -30,17 +33,24 @@ public class CameraFollow : MonoBehaviour
 
     void Start(){
         target = FindObjectOfType<PlayerController>().transform;
-        transform.position = new Vector3(target.position.x, transform.position.y, target.position.z); //inefficient
+        camera = GetComponentInChildren<Camera>().transform;
+        transform.position = new Vector3(target.position.x, transform.position.y, target.position.z);
         startZoom = transform.position.y;
         offset = transform.position - target.position;
+        var rotation = camera.transform.rotation;
+        _cameraRotation = rotation.eulerAngles;
+        _cameraRotation.x = cameraAngle;
+        rotation.eulerAngles = _cameraRotation;
+        camera.transform.rotation = rotation;
     }
 
     void LateUpdate(){
-        Vector3 targetPosition = target.position + offset; 
+        Vector3 targetPosition = target.position + offset;
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _velocity, smoothTime);
         CameraZoom();
         SnapCameraRotation();
         MouseCameraRotation();
+        //AdjustAngle();
     }
 
     void CameraZoom(){
@@ -86,5 +96,27 @@ public class CameraFollow : MonoBehaviour
             rotationAxis.y =   currentMousePosition.x - closeToLeftScreenEdge;
             transform.Rotate(mouseRotation);
         }
+    }
+
+    void AdjustAngle(){
+        
+        
+        //change the x-rotation of the camera
+        var cameraRotation = camera.rotation;
+        _cameraRotation = new Vector3(cameraAngle,0f,0f);
+        cameraRotation.eulerAngles = _cameraRotation;
+        //needs to be final line in rotation
+        camera.rotation = cameraRotation;
+        //Change the z distance on the followtarget
+        var cameraOffset = offset.y;
+        var cameraPosition = camera.position;
+        cameraPosition.z = target.position.z-cameraOffset;
+        //needs to be final line in position
+        camera.position = cameraPosition;
+        
+        
+        //use the same numbers as before to follow the player
+        //when angle is lower the z position of parent needs to be more negative to compensate
+
     }
 }

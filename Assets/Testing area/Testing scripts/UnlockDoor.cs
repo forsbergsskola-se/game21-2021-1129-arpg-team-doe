@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.Rendering.VirtualTexturing;
+using FMOD.Studio;
 
 public class UnlockDoor : MonoBehaviour, Iinteractable{
     
@@ -14,11 +12,10 @@ public class UnlockDoor : MonoBehaviour, Iinteractable{
     CursorOnDoor _cursorOnDoor;
     BoxCollider _collider;
     Animator _animator;
-    FMOD.Studio.EventInstance _doorInstance;
+    EventInstance _doorInstance;
     
     
     bool _conditionCompleted;
-    bool _hasPlayedSound;
 
     void Start(){
         _doorConditions = FindObjectOfType<DoorConditions>();
@@ -34,7 +31,6 @@ public class UnlockDoor : MonoBehaviour, Iinteractable{
         if (!_locked){
             _conditionCompleted = true;
             _cursorOnDoor.openable = true;
-            return;
         }
         else{
             _conditionCompleted = _doorConditions.Completed;
@@ -52,11 +48,9 @@ public class UnlockDoor : MonoBehaviour, Iinteractable{
     public void Use(){
         if (_locked){
             PlayDoorSound(1f);
-            _hasPlayedSound = false;
         }
         else if (!_locked){
             OpenDoor();
-            _hasPlayedSound = false; 
         }
     }
 
@@ -67,10 +61,9 @@ public class UnlockDoor : MonoBehaviour, Iinteractable{
     }
     
     void PlayDoorSound(float parameter){
-        if (_hasPlayedSound == false){
-            _doorInstance.setParameterByName("OpenLocked", parameter);
-            _doorInstance.start();
-            _hasPlayedSound = true;
-        }
+        _doorInstance.setParameterByName("OpenLocked", parameter);
+        _doorInstance.start();
+        
+        //_doorInstance.stop(STOP_MODE.ALLOWFADEOUT);
     }
 }
