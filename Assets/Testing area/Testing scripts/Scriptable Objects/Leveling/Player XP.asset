@@ -12,8 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c363e0a24b81fe24b865728d412eae14, type: 3}
   m_Name: Player XP
   m_EditorClassIdentifier: 
+  _levelUp: {fileID: 11400000, guid: acac836e5fe18f1449f57d3a2734a6e5, type: 2}
   level: 1
   currentXP: 0
-  requiredXPInt: 22
-  xpScale: 1
-  _levelUp: {fileID: 11400000, guid: acac836e5fe18f1449f57d3a2734a6e5, type: 2}
+  requiredXPInt: 100
+  xpScale: 1.8
+  fmodEvent:
+    Guid:
+      Data1: -542430724
+      Data2: 1268527413
+      Data3: 1053398163
+      Data4: 2091630610
+    Path: event:/LvlUP
