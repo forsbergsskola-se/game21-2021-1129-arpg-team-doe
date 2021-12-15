@@ -664,7 +664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toughness: 0
-  strength: 0
+  strength: 10.14
   dexterity: 0
   knowledge: 0
   reflex: 0
@@ -703,7 +703,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7339576714a584429c762c90bef9491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fmodEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  parameter: 0
   maxHP: 40
+  _xpDrop: {fileID: 0}
+  _xpDropEvent: {fileID: 0}
 --- !u!114 &4896606745485573230
 MonoBehaviour:
   m_ObjectHideFlags: 0

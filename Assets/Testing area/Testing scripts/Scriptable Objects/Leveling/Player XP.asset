@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Player XP
   m_EditorClassIdentifier: 
   level: 1
-  currentXP: 22
-  requiredXPInt: 0
+  currentXP: 0
+  requiredXPInt: 22
   xpScale: 1
   _levelUp: {fileID: 11400000, guid: acac836e5fe18f1449f57d3a2734a6e5, type: 2}
