@@ -3416,7 +3416,7 @@ MonoBehaviour:
   inventoryPrefab: {fileID: 9083230645249896634, guid: 90195164809c4e54bbe5716673716089, type: 3}
   inventory: {fileID: 11400000, guid: 77e2291076a7dee459893b29befa9b36, type: 2}
   XStart: -70
-  YStart: 70
+  YStart: 80
   XSpaceBetweenItem: 35
   NumberOfColumn: 5
   YSpaceBetweenItems: 40
