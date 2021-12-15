@@ -22,8 +22,8 @@ GameObject:
   m_Name: Crypt-Urn Vers 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6272300592998699402
 Transform:
@@ -124,7 +124,8 @@ MonoBehaviour:
     Path: 
   parameter: 0
   maxHP: 10
-  _deathEvent: {fileID: 0}
+  _xpDrop: {fileID: 0}
+  _xpDropEvent: {fileID: 0}
 --- !u!114 &2013919976991523665
 MonoBehaviour:
   m_ObjectHideFlags: 0
