@@ -69,9 +69,14 @@ public class DisplayInventory : MonoBehaviour{
     }
 
     public void OnEnter(GameObject obj){
-        
+        mouseItem.hoverObj = obj;
+        if (itemsDisplayed.ContainsKey(obj)){
+            mouseItem.hoverItem = itemsDisplayed[obj];
+        }
     }
     public void OnExit(GameObject obj){
+        mouseItem.hoverObj = null;
+        mouseItem.hoverItem = null;
         
     }
     public void OnDragStart(GameObject obj){
@@ -90,8 +95,16 @@ public class DisplayInventory : MonoBehaviour{
         mouseItem.item = itemsDisplayed[obj];
     }
     public void OnDragEnd(GameObject obj){
-        
+        if (mouseItem.hoverObj){
+            inventory.MoveItem(itemsDisplayed[obj], itemsDisplayed[mouseItem.hoverObj]);
+        }
+        else{
+            inventory.RemoveItem(itemsDisplayed[obj].item);
+        }
+        Destroy(mouseItem.obj);
+        mouseItem.item = null;
     }
+    
     public void OnDrag(GameObject obj){
         if (mouseItem.obj !=null){
             mouseItem.obj.GetComponent<RectTransform>().position = Input.mousePosition;
