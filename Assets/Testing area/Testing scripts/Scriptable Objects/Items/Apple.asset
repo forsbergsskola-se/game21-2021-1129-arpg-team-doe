@@ -19,15 +19,7 @@ MonoBehaviour:
   price: 0
   weight: 0.14
   description: This is an apple in perfect condition, a rare sight nowadays.
-  buffs:
-  - attribute: 4
-    value: 0
-    max: 4
-    min: 2
-  - attribute: 2
-    value: 0
-    max: 5
-    min: 2
+  buffs: []
   restoreHealthValue: 370
   consumeSound: {fileID: 0}
   buffDuration: 6
