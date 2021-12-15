@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnApplicationQuit(){
-        inventory.Container.Items.Clear();
+        inventory.Container.Items = new InventorySlot[25];
     }
 
     bool InteractWithCombat(){

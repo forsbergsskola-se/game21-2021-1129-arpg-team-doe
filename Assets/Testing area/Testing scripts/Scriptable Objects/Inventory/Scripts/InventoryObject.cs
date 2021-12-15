@@ -16,22 +16,32 @@ public class InventoryObject : ScriptableObject
 
    public void AddItem(Item item, int amount){
       if (item.buffs.Length > 0){
-         Container.Items.Add(new InventorySlot(item.Id, item, amount));
+         SetEmptySlot(item, amount);
          return;
       }
       
-      for (int i = 0; i < Container.Items.Count; i++){
+      for (int i = 0; i < Container.Items.Length; i++){
          //Here we check if the container already has the item
-         if (Container.Items[i].item.Id == item.Id){
+         if (Container.Items[i].ID == item.Id){
             //If we have the item, we add to the amount of that item, instead of adding the item itself
             Container.Items[i].AddAmount(amount);
             return;
          }
       }
-      //If we do not have the item already, we add the item
-      Container.Items.Add(new InventorySlot(item.Id, item, amount));
+      SetEmptySlot(item, amount);
    }
 
+   public InventorySlot SetEmptySlot(Item item,int amount){
+      for (int i = 0; i < Container.Items.Length; i++){
+         if (Container.Items[i].ID <= -1){
+            Container.Items[i].UpdateSlot(item.Id, item, amount);
+            return Container.Items[i];
+         }
+      }
+      //set up function for full inventory
+      return null;
+   }
+   
    // Player is able to edit the file
    // public void Save(){
    //    string saveData = JsonUtility.ToJson(this, true);
@@ -85,18 +95,29 @@ public class InventoryObject : ScriptableObject
 }
 
 [System.Serializable]
-public class Inventory
-{
-   public List<InventorySlot> Items = new List<InventorySlot>();
+public class Inventory{
+   public InventorySlot[] Items = new InventorySlot[25];
 }
 
 [System.Serializable]
 public class InventorySlot{
-   public int ID;
+   public int ID = -1;
    public Item item;
    [Min(0)]public int amount;
 
+   public InventorySlot(){
+      ID = -1;
+      this.item = null;
+      this.amount = 0;
+   }
+   
    public InventorySlot(int id, Item item, int amount){
+      ID = id;
+      this.item = item;
+      this.amount = amount;
+   }
+   
+   public void UpdateSlot(int id, Item item, int amount){
       ID = id;
       this.item = item;
       this.amount = amount;

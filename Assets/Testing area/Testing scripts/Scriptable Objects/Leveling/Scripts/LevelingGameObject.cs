@@ -9,14 +9,16 @@ using STOP_MODE = FMOD.Studio.STOP_MODE;
 public class LevelingGameObject : ScriptableObject
 {
     [SerializeField] GameEvent _levelUp;
-    
+
     [Min(0)][SerializeField] public int level = 1;
     [Min(0)][SerializeField] public int currentXP = 0;
     [Min(0)][SerializeField] public int requiredXPInt; //Used for display and starting value
     float requiredXPFloat; //Used for calculations
     [Tooltip("How much more xp you'll need each level to level up")]
     [Min(0)][SerializeField] public float xpScale;
-    
+
+    [SerializeField] public ReceiveXPEvent receiveXpEvent;
+
     FMOD.Studio.EventInstance instance;
     [SerializeField] public FMODUnity.EventReference fmodEvent;
     void OnEnable(){
@@ -25,8 +27,9 @@ public class LevelingGameObject : ScriptableObject
 
     public void ReceiveXP(int XP){
         currentXP += XP;
-        //Visual indication here
+        receiveXpEvent.Invoke();
         CheckLevelUp();
+
     }
     public void CheckLevelUp(){ //Every time we get xp, run this method
         while (currentXP >= requiredXPInt){
