@@ -22,7 +22,7 @@ public class InventoryObject : ScriptableObject
       
       for (int i = 0; i < Container.Items.Length; i++){
          //Here we check if the container already has the item
-         if (Container.Items[i].item.Id == item.Id){
+         if (Container.Items[i].ID == item.Id){
             //If we have the item, we add to the amount of that item, instead of adding the item itself
             Container.Items[i].AddAmount(amount);
             return;
