@@ -3206,7 +3206,7 @@ MonoBehaviour:
   XStart: -70
   YStart: 70
   XSpaceBetweenItem: 35
-  NumberOfColumn: 6
+  NumberOfColumn: 5
   YSpaceBetweenItems: 40
 --- !u!114 &1938351792
 MonoBehaviour:
