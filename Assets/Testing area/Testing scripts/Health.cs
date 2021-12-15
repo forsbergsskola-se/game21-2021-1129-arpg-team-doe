@@ -45,9 +45,9 @@ public class Health : MonoBehaviour, IDamageReceiver{
             _xpDrop = GetComponent<XPDrop>();
         }
 
-        if (_xpDropEvent != null) {
-            _xpDropEvent = GetComponent<XPDropEvent>();
-        }
+        // if (_xpDropEvent != null) {
+        //     _xpDropEvent = GetComponent<XPDropEvent>();
+        // }
 
             // unfinished FMOD implementation
         FMODEvent();
