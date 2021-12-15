@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using AnimatorChanger;
 using CustomLogs;
@@ -13,8 +14,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Texture2D invalidClickTexture;
     [SerializeField] Texture2D standardCursorTexture;
     //[SerializeField] GameObject _healthBar;
-    [SerializeField] int DefeatedThreshold;
-    [SerializeField] int RegenerateThreshold = 80;
+    [SerializeField] int defeatedThreshold;
+    [SerializeField] int regenerateThreshold = 80;
+    [SerializeField] int healthRegen = 10;
 
     public InventoryObject inventory;
     internal bool playerIsDefeated;
@@ -30,21 +32,30 @@ public class PlayerController : MonoBehaviour
     float _interactionRange;
     bool _hasPlayedSound;
 
-
-    void Start(){
+    void Awake(){
         _movement = GetComponent<Movement>();
         _statistics = GetComponent<Statistics>();
-        _interactionRange = _statistics.InteractRange;
         _animator = GetComponentInChildren<Animator>();
         _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
         _health = GetComponent<Health>();
         _animationController = GetComponentInChildren<AnimationController>();
         _fighter = GetComponent<Fighter>();
+    }
+
+    void Start(){
+        _interactionRange = _statistics.InteractRange;
+        StartCoroutine(HealthRegeneration());
         //_healthBar.SetActive(true);
     }
 
     void Update(){
-
+        if (Input.GetKeyDown(KeyCode.Space)){
+            inventory.Save();
+        }
+        if (Input.GetKeyDown(KeyCode.KeypadEnter)){
+            inventory.Load();
+        }
+        
         if (GetPlayerIsDefeated()){
             return;
         }
@@ -60,45 +71,48 @@ public class PlayerController : MonoBehaviour
     }
 
     bool GetPlayerIsDefeated(){
-        if (_health.CurrentHP <= DefeatedThreshold){
+        if (_health.CurrentHP <= defeatedThreshold){
             playerIsDefeated = true;
         }
-        if (_health.CurrentHP >= RegenerateThreshold){
+        if (_health.CurrentHP >= regenerateThreshold){
             playerIsDefeated = false;
         }
         if (playerIsDefeated){
             _movement.enabled = false;
             _fighter.enabled = false;
-            _animationController.ChangeAnimationState("Die");
-            StartCoroutine(HealthRegeneration());
-            _movement.enabled = true;
-            _fighter.enabled = true;
+           _animationController.ChangeAnimationState("Die");
+           _movement.enabled = true;
+           _fighter.enabled = true;
         }
         return playerIsDefeated;
     }
 
     IEnumerator HealthRegeneration(){ // health regeneration seems weird
-        Debug.Log(this.name + " is defeated.");
-        for (float healthRegen = 0f; _health.CurrentHP < RegenerateThreshold; healthRegen += Time.deltaTime){
-            _health.UpdateHealth(-(int)healthRegen);
-            Debug.Log(_health.CurrentHP);
-            yield return new WaitForSeconds(Time.deltaTime);
+        while (true){
+            if (_health.CurrentHP < regenerateThreshold){
+                yield return new WaitForSeconds(1f);
+                _health.UpdateHealth(-healthRegen);
+                Debug.Log(_health.CurrentHP);
+            }
+            else{
+                yield return null;
+            }
         }
     }
 
     void OnTriggerEnter(Collider other){ //Break out into its own script with onApplicationQuit
-        //Check if other has Item script
-        if (other.GetComponent<Item>() != null){
-            var item = other.GetComponent<Item>();
+        //Check if other has GroundItem script
+        if (other.GetComponent<GroundItem>() != null){
+            var item = other.GetComponent<GroundItem>();
             //Adds item to inventory
-            inventory.AddItem(item.item	,1);
+            inventory.AddItem(new Item(item.item),1);
             //Destroys the item from the world
             Destroy(other.gameObject);
         }
     }
 
     void OnApplicationQuit(){
-        inventory.Container.Clear();
+        inventory.Container.Items.Clear();
     }
 
     bool InteractWithCombat(){
@@ -108,8 +122,8 @@ public class PlayerController : MonoBehaviour
             if (enemy == null) continue;
             if (Input.GetMouseButton(0)){
                 _fighter.GetAttackTarget(enemy);
-                _animator.SetBool("isRunning", false);
-                _animator.SetBool("isAttacking", true);
+                // _animator.SetBool("isRunning", false);
+                // _animator.SetBool("isAttacking", true);
             }
             return true;
         }
@@ -125,8 +139,8 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(GoToPosistionThenInteract(hit));
                 Vector3 positionCloseToTarget = hit.point - (hit.point - transform.position).normalized;
                 MoveToInteractable(interactableObject, positionCloseToTarget);
-                _animator.SetBool("isRunning", false);
-                _animator.SetBool("isAttacking", true);
+                // _animator.SetBool("isRunning", false);
+                // _animator.SetBool("isAttacking", true);
             }
             return true;
         }

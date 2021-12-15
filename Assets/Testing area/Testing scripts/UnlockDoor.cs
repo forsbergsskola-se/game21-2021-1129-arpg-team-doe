@@ -26,13 +26,23 @@ public class UnlockDoor : MonoBehaviour, Iinteractable{
         _collider = GetComponent<BoxCollider>();
         _animator = GetComponent<Animator>();
         _animator.enabled = false;
+        _doorInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Door");
 
     }
 
     void Update(){
-        _conditionCompleted = _doorConditions.Completed;
-        LockingMechanism();
-        _cursorOnDoor.openable = _locked;
+        if (!_locked){
+            _conditionCompleted = true;
+            _cursorOnDoor.openable = true;
+            return;
+        }
+        else{
+            _conditionCompleted = _doorConditions.Completed;
+            LockingMechanism();
+            _cursorOnDoor.openable = _locked;
+        }
+
+        
     }
 
     void LockingMechanism(){
@@ -46,7 +56,6 @@ public class UnlockDoor : MonoBehaviour, Iinteractable{
         }
         else if (!_locked){
             OpenDoor();
-            PlayDoorSound(0f);
             _hasPlayedSound = false; 
         }
     }
@@ -59,7 +68,6 @@ public class UnlockDoor : MonoBehaviour, Iinteractable{
     
     void PlayDoorSound(float parameter){
         if (_hasPlayedSound == false){
-            _doorInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Door");
             _doorInstance.setParameterByName("OpenLocked", parameter);
             _doorInstance.start();
             _hasPlayedSound = true;

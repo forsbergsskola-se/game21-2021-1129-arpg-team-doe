@@ -5,6 +5,10 @@ using FMODUnity;
 using UnityEngine;
 using Random = System.Random;
 
+public interface IDamageReceiver{
+    void ReceiveDamage(int damage, bool isCrit, bool isPlayer);
+}
+
 public interface IHealthListener{
     void HealthChanged(int currentHealth, int maxHealth, int damage, bool isCrit, bool isAlive);
 }
@@ -19,10 +23,11 @@ public class Health : MonoBehaviour, IDamageReceiver{
     // remove if unsuccessful
 
     //[SerializeField] Fmod event - Having this public or serialized doesnt work
-    
+
     [SerializeField] int maxHP = 100;
 
-    [SerializeField] GameEvent _deathEvent;
+    [SerializeField] XPDrop _xpDrop;
+    [SerializeField] XPDropEvent _xpDropEvent;
     Statistics _stats;
     Random random;
     //List<IDamageNumbers> damageNumbersList;
@@ -36,13 +41,16 @@ public class Health : MonoBehaviour, IDamageReceiver{
         random = new Random();
         CurrentHP = ModifiedMaxHP;
 
-        // unfinished FMOD implementation
-        FMODEvent();
-    }
+        if (_xpDrop != null) {
+            _xpDrop = GetComponent<XPDrop>();
+        }
 
-    void Update() {
-        // unfinished FMOD implementation
-        
+        // if (_xpDropEvent != null) {
+        //     _xpDropEvent = GetComponent<XPDropEvent>();
+        // }
+
+            // unfinished FMOD implementation
+        FMODEvent();
     }
 
     // unfinished FMOD implementation
@@ -50,14 +58,13 @@ public class Health : MonoBehaviour, IDamageReceiver{
         if (!fmodEvent.IsNull){
             instance = FMODUnity.RuntimeManager.CreateInstance(fmodEvent);
         }
-        
+
         FMOD.Studio.EventDescription parameterEventDescription;
         instance.getDescription(out parameterEventDescription);
         FMOD.Studio.PARAMETER_DESCRIPTION parameterDescription;
         parameterEventDescription.getParameterDescriptionByName("Parameter", out parameterDescription);
         fmodParameterID = parameterDescription.id;
         instance.setParameterByID(fmodParameterID, parameter);
-        instance.start();
     }
 
     public void UpdateHealth(int healthChange){
@@ -69,31 +76,19 @@ public class Health : MonoBehaviour, IDamageReceiver{
         return (int) _stats.StatManipulation(maxHP, _stats.Toughness, _stats.highImpactLevelMultiplier);
     }
 
-    public void ReceiveDamage(int damage, bool isCrit){ //Toughness should affect this
+    public void ReceiveDamage(int damage, bool isCrit, bool isPlayer){ //Toughness should affect this
         damage = ProcessDamage(damage);
         UpdateHealth(damage);
         this.LogTakeDamage(damage,CurrentHP);
         if (!IsAlive){
-            OnDeath();
+            OnDeath(isPlayer);
         }
-        
+
         foreach(var healthListener in GetComponentsInChildren<IHealthListener>()){
             healthListener.HealthChanged(CurrentHP, ModifiedMaxHP, damage, isCrit, IsAlive);
         }
-        FMODEvent();
-
+        PlaySound();
     }
-
-    // void ActivateDamageNumbers(int damage, bool isCrit){
-    //     foreach (IDamageNumbers damageNumber in damageNumbersList){
-    //         if (damageNumber != null){
-    //             damageNumber.DisplayDmg(damage, isCrit);
-    //         }
-    //         else{
-    //             damageNumbersList.Remove(damageNumber);
-    //         }
-    //     }
-    // }
 
     bool DodgeSuccessful(){
         return random.NextDouble() < _stats.DodgeChance;
@@ -108,11 +103,16 @@ public class Health : MonoBehaviour, IDamageReceiver{
     }
 
     //This calls the event that you put in if you put it in, if there's no event, nothing happens.
-    void OnDeath(){
+    void OnDeath(bool isPlayer){
+        Debug.Log(isPlayer);
         //Check if event is not null and is not player, and attacker is player, call event. OR if event is not null and is player, call event.
-        if (_deathEvent != null && this.gameObject.tag != "Player" /*&& IsAttackerPlayer*/ || _deathEvent != null && this.gameObject.tag == "Player"){
-            _deathEvent.Invoke();
+        if (_xpDropEvent != null && this.gameObject.tag != "Player" && isPlayer || _xpDropEvent != null && this.gameObject.tag == "Player"){
+            _xpDropEvent.Invoke(_xpDrop.xpAmount);
         }
     }
-    
+
+    void PlaySound(){
+        instance.start();
+        instance.release();
+    }
 }

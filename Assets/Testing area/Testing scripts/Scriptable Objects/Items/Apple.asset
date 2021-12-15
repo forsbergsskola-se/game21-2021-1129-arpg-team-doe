@@ -12,13 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae3992d91e599748a612c3b4fc875a3, type: 3}
   m_Name: Apple
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6487583237927717554, guid: 15e42a61bd8f06b49bc8b48c1a1ba861, type: 3}
+  Id: 0
+  uiDisplay: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   type: 0
-  name: 
+  name: Apple
   price: 0
   weight: 0.14
   description: This is an apple in perfect condition, a rare sight nowadays.
-  prefab: {fileID: 6487583237927717554, guid: 15e42a61bd8f06b49bc8b48c1a1ba861, type: 3}
+  buffs:
+  - attribute: 4
+    value: 0
+    max: 4
+    min: 2
+  - attribute: 2
+    value: 0
+    max: 5
+    min: 2
   restoreHealthValue: 370
   consumeSound: {fileID: 0}
   buffDuration: 6
