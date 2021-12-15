@@ -19,6 +19,15 @@ MonoBehaviour:
   price: 1273
   weight: 0
   description: This in a rusty pipe.
+  buffs:
+  - attribute: 6
+    value: 0
+    max: 5
+    min: 2
+  - attribute: 3
+    value: 0
+    max: 10
+    min: 5
   attackSpeed: 0
   damage: 5
   attackSpeedBuff: 0

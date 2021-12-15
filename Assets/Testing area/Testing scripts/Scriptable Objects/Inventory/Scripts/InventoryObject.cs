@@ -15,6 +15,11 @@ public class InventoryObject : ScriptableObject
    public Inventory Container;
 
    public void AddItem(Item item, int amount){
+      if (item.buffs.Length > 0){
+         Container.Items.Add(new InventorySlot(item.Id, item, amount));
+         return;
+      }
+      
       for (int i = 0; i < Container.Items.Count; i++){
          //Here we check if the container already has the item
          if (Container.Items[i].item.Id == item.Id){
