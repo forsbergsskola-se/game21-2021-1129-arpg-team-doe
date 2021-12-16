@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Player XP
   m_EditorClassIdentifier: 
   _levelUp: {fileID: 11400000, guid: acac836e5fe18f1449f57d3a2734a6e5, type: 2}
-  level: 1
-  currentXP: 50
-  requiredXPInt: 5
-  xpScale: 1.2
-  receiveXpEvent: {fileID: 0}
+  level: 5
+  currentXP: 14
+  requiredXPInt: 48
+  xpScale: 1
+  receiveXpEvent: {fileID: 11400000, guid: 40f4d1ad04e0e45719c6c6da61a685cd, type: 2}
   fmodEvent:
     Guid:
       Data1: -542430724
