@@ -23,43 +23,44 @@ public class Statistics : MonoBehaviour{
 
     public float Toughness{
         get => toughness;
-        private set => toughness = value;
+         set => toughness = value;
     }
 
+
     public float Strength{
-        get => strength;
-        private set => strength = value;
+        get => strength; 
+        set => strength = value;
     }
 
     public float Dexterity{
         get => dexterity;
-        private set => dexterity = value;
+        set => dexterity = value;
     }
 
     public float Knowledge{
         get => knowledge;
-        private set => knowledge = value;
+        set => knowledge = value;
     }
 
     public float Reflex{
         //0-100 dodge chance
         get => reflex;
-        private set => reflex = value;
+        set => reflex = value;
     }
 
     public float Luck{
         get => luck;
-        private set => luck = value;
+        set => luck = value;
     }
 
     public float InteractRange{
         get { return interactRange; }
-        private set { interactRange = value; }
+        set { interactRange = value; }
     }
 
     public float AttackRange{
         get { return attackRange; }
-        private set { attackRange = value; }
+        set { attackRange = value; }
     }
 
     public float AttackSpeed => CalculateAttackSpeed(); // 1 dexterity -> 0.5 percent change, called in Fighter
@@ -111,6 +112,26 @@ public class Statistics : MonoBehaviour{
         }
         return damage = (int) (weaponDamage * damageMultiplier);
     }
+
+    public void AddToughness(int amount){
+       Toughness += amount;
+    }
+    public void AddStrength(int amount){
+        Strength += amount;
+    }
+    public void AddDexterity(int amount){
+        Dexterity += amount;
+    }
+    public void AddKnowledge(int amount){
+        Knowledge += amount;
+    }
+    public void AddReflex(int amount){
+        Reflex += amount;
+    }
+    public void AddLuck(int amount){
+        Luck += amount;
+    }
+    
 
 #if UNITY_EDITOR
     void OnDrawGizmosSelected(){
