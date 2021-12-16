@@ -17,6 +17,9 @@ public class LevelingGameObject : ScriptableObject
     [Tooltip("How much more xp you'll need each level to level up")]
     [Min(0)][SerializeField] public float xpScale;
 
+    [Min(0)] [SerializeField] public int skillPoint;
+    [Min(0)] [SerializeField] public int skillPointsPerLevel;
+
     [SerializeField] public ReceiveXPEvent receiveXpEvent;
 
     FMOD.Studio.EventInstance instance;
@@ -37,7 +40,7 @@ public class LevelingGameObject : ScriptableObject
             level++;
             requiredXPFloat *= xpScale;
             requiredXPInt = (int)requiredXPFloat;
-            //Get Stat point
+            skillPoint += skillPointsPerLevel;
             _levelUp.Invoke();
         }
     }
