@@ -5409,6 +5409,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6283401748861730810, guid: 4c7f95c47f90d7a4486d6954bbd557e2, type: 3}
+      propertyPath: PlayEvent
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283401748861730810, guid: 4c7f95c47f90d7a4486d6954bbd557e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283401749242483050, guid: 4c7f95c47f90d7a4486d6954bbd557e2, type: 3}
+      propertyPath: DoorReference.Path
+      value: event:/Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283401749242483050, guid: 4c7f95c47f90d7a4486d6954bbd557e2, type: 3}
+      propertyPath: DoorReference.Guid.Data1
+      value: -371116407
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283401749242483050, guid: 4c7f95c47f90d7a4486d6954bbd557e2, type: 3}
+      propertyPath: DoorReference.Guid.Data2
+      value: 1078181224
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283401749242483050, guid: 4c7f95c47f90d7a4486d6954bbd557e2, type: 3}
+      propertyPath: DoorReference.Guid.Data3
+      value: -52037748
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283401749242483050, guid: 4c7f95c47f90d7a4486d6954bbd557e2, type: 3}
+      propertyPath: DoorReference.Guid.Data4
+      value: 815914976
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283401749826031252, guid: 4c7f95c47f90d7a4486d6954bbd557e2, type: 3}
+      propertyPath: PlayEvent
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6625438577072939771, guid: 4c7f95c47f90d7a4486d6954bbd557e2, type: 3}
       propertyPath: m_Name
       value: Doorframe
