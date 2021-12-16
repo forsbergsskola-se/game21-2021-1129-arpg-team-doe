@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class InventoryController : MonoBehaviour
 {
-    [SerializeField] ItemGrid selectedItemGrid;
+    [SerializeField] public ItemGrid selectedItemGrid;
 
     void Update(){
         if (selectedItemGrid == null){
