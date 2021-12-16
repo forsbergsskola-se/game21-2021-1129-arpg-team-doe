@@ -3,7 +3,7 @@ using UnityEngine.PlayerLoop;
 
 public class ItemGrid : MonoBehaviour
 {
-    [SerializeField] int gridSizeWidth = 20;
+    [SerializeField] int gridSizeWidth = 10;
     [SerializeField] int gridSizeHeight = 10;
     [SerializeField] GameObject inventoryItemPrefab;
     
