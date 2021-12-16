@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// This script is attached to the camera to get mouse position for item placement
 public class InventoryController : MonoBehaviour
 {
     [HideInInspector]
