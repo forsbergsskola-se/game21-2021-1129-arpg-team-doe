@@ -383,7 +383,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3734
+  m_Name: pb_Mesh-3086
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -652,7 +652,8 @@ MonoBehaviour:
     Path: 
   parameter: 0
   maxHP: 20
-  _deathEvent: {fileID: 0}
+  _xpDrop: {fileID: 0}
+  _xpDropEvent: {fileID: 0}
 --- !u!114 &1129788675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -925,7 +926,8 @@ MonoBehaviour:
     Path: 
   parameter: 0
   maxHP: 10
-  _deathEvent: {fileID: 0}
+  _xpDrop: {fileID: 0}
+  _xpDropEvent: {fileID: 0}
 --- !u!114 &1256626923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1488,7 +1490,8 @@ MonoBehaviour:
     Path: 
   parameter: 0
   maxHP: 10
-  _deathEvent: {fileID: 0}
+  _xpDrop: {fileID: 0}
+  _xpDropEvent: {fileID: 0}
 --- !u!114 &1519714797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1678,7 +1681,8 @@ MonoBehaviour:
     Path: 
   parameter: 0
   maxHP: 20
-  _deathEvent: {fileID: 0}
+  _xpDrop: {fileID: 0}
+  _xpDropEvent: {fileID: 0}
 --- !u!114 &1664621309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1909,11 +1913,11 @@ GameObject:
   - component: {fileID: 2142324928}
   - component: {fileID: 2142324927}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Ambience Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2142324926
 Transform:
@@ -1923,7 +1927,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142324925}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.88, y: 2.63, z: -18.34}
+  m_LocalPosition: {x: -6.25, y: 3.21, z: -17.88}
   m_LocalScale: {x: 8.300186, y: 0.8540827, z: 0.82576}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2203,7 +2207,8 @@ MonoBehaviour:
     Path: 
   parameter: 0
   maxHP: 20
-  _deathEvent: {fileID: 0}
+  _xpDrop: {fileID: 0}
+  _xpDropEvent: {fileID: 0}
 --- !u!65 &4690727181062431542
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2357,7 +2362,8 @@ MonoBehaviour:
     Path: 
   parameter: 0
   maxHP: 10
-  _deathEvent: {fileID: 0}
+  _xpDrop: {fileID: 0}
+  _xpDropEvent: {fileID: 0}
 --- !u!114 &6330638830678781188
 MonoBehaviour:
   m_ObjectHideFlags: 0
