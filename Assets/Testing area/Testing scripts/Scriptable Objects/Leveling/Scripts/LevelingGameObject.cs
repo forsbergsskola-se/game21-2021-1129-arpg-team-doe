@@ -27,10 +27,10 @@ public class LevelingGameObject : ScriptableObject
 
     public void ReceiveXP(int XP){
         currentXP += XP;
-        receiveXpEvent.Invoke();
         CheckLevelUp();
-
+        receiveXpEvent.Invoke();
     }
+    [ContextMenu("Check Level Up")]
     public void CheckLevelUp(){ //Every time we get xp, run this method
         while (currentXP >= requiredXPInt){
             currentXP -= requiredXPInt;
