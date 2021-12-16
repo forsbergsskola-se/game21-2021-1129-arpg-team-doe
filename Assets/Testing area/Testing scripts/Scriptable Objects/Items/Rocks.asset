@@ -19,8 +19,4 @@ MonoBehaviour:
   price: 0
   weight: 15
   description: This is a pile of rocks.
-  buffs:
-  - attribute: 0
-    value: 0
-    max: 5
-    min: 2
+  buffs: []

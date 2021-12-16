@@ -8,5 +8,5 @@ public class ReceiveXPEventListener : MonoBehaviour
 
     void Awake() => _receiveXpEvent.Register(this);
     void OnDestroy() => _receiveXpEvent.Deregister(this);
-    public void RaiseEvent() => gameObject.GetComponent<XPBar>().SetSliderXP();
+    public void RaiseEvent() => gameObject.GetComponent<XPBar>().SetXPBar();
 }

@@ -7,15 +7,13 @@ using UnityEngine.UI;
 public class XPBar : MonoBehaviour
 {
     [SerializeField] LevelingGameObject playerXP;
-    public Slider slider;
-
-    void Start(){
-        playerXP = GetComponent<LevelingGameObject>();
-    }
-
-    public void SetSliderXP(){
-        slider.maxValue = playerXP.requiredXPInt;
-        slider.minValue = 0;
-        slider.value = playerXP.currentXP;
+    //public Slider slider;
+    public Image image;
+    public float XPValue;
+    
+    [ContextMenu("SetSliderXP")]
+    public void SetXPBar(){ 
+        XPValue = ((float)playerXP.currentXP/(float)playerXP.requiredXPInt);
+        image.fillAmount = XPValue;
     }
 }

@@ -20,17 +20,15 @@ MonoBehaviour:
   weight: 1.5
   description: This pie is well beyond its expiration date, but when has that ever
     stopped you before?
-  buffs:
-  - attribute: 6
-    value: 0
-    max: -2
-    min: -10
-  - attribute: 0
-    value: 0
-    max: -2
-    min: -10
+  buffs: []
   restoreHealthValue: 30
-  consumeSound: {fileID: 0}
+  fmodEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   buffDuration: 120
   toughnessBuff: 0
   strengthBuff: 0

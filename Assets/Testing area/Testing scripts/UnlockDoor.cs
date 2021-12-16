@@ -4,7 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMOD.Studio;
 
-public class UnlockDoor : MonoBehaviour, Iinteractable{
+public interface IInteractSound{
+    void PlaySound(float parameter){
+        PLAYBACK_STATE playback_state;
+    }
+}
+
+public class UnlockDoor : MonoBehaviour, Iinteractable,IInteractSound{
     
     [SerializeField]bool _locked = true;
     
@@ -13,6 +19,7 @@ public class UnlockDoor : MonoBehaviour, Iinteractable{
     BoxCollider _collider;
     Animator _animator;
     EventInstance _doorInstance;
+    public FMODUnity.EventReference DoorReference;
     
     
     bool _conditionCompleted;
@@ -23,7 +30,8 @@ public class UnlockDoor : MonoBehaviour, Iinteractable{
         _collider = GetComponent<BoxCollider>();
         _animator = GetComponent<Animator>();
         _animator.enabled = false;
-        _doorInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Door");
+        
+        _doorInstance = FMODUnity.RuntimeManager.CreateInstance(DoorReference);
 
     }
 
@@ -47,7 +55,7 @@ public class UnlockDoor : MonoBehaviour, Iinteractable{
 
     public void Use(){
         if (_locked){
-            PlayDoorSound(1f);
+            PlaySound(1f);
         }
         else if (!_locked){
             OpenDoor();
@@ -55,15 +63,16 @@ public class UnlockDoor : MonoBehaviour, Iinteractable{
     }
 
     void OpenDoor(){
-        PlayDoorSound(0f);
+        PlaySound(0f);
         _collider.enabled = false;
         _animator.enabled = true;
     }
-    
-    void PlayDoorSound(float parameter){
-        _doorInstance.setParameterByName("OpenLocked", parameter);
-        _doorInstance.start();
-        
-        //_doorInstance.stop(STOP_MODE.ALLOWFADEOUT);
+
+    public void PlaySound(float parameter){
+        _doorInstance.getPlaybackState(out var playbackState);
+        if (playbackState == PLAYBACK_STATE.STOPPED){
+            _doorInstance.setParameterByName("OpenLocked", parameter);
+            _doorInstance.start();  
+        }
     }
 }
