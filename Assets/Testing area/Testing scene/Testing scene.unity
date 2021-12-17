@@ -6816,7 +6816,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77492b46d24f73b43807c70501d4261d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedItemGrid: {fileID: 0}
   items:
   - {fileID: 11400000, guid: 3f85e6a042ba153498c3f518ad12e599, type: 2}
   - {fileID: 11400000, guid: 0f3e118f0d3d37543b26fea8604887c8, type: 2}
@@ -6843,6 +6842,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 165529997, guid: 0b061c1f75e4d044d8ae7f45af7f299e, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 438515532, guid: 0b061c1f75e4d044d8ae7f45af7f299e, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 835845756, guid: 0b061c1f75e4d044d8ae7f45af7f299e, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 936896825, guid: 0b061c1f75e4d044d8ae7f45af7f299e, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1047280916, guid: 0b061c1f75e4d044d8ae7f45af7f299e, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662674184, guid: 0b061c1f75e4d044d8ae7f45af7f299e, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6729527584724963856, guid: 0b061c1f75e4d044d8ae7f45af7f299e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -6890,6 +6913,10 @@ PrefabInstance:
     - target: {fileID: 6729527584963372137, guid: 0b061c1f75e4d044d8ae7f45af7f299e, type: 3}
       propertyPath: m_Name
       value: Canvas Skills
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729527584963372137, guid: 0b061c1f75e4d044d8ae7f45af7f299e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6729527584963372141, guid: 0b061c1f75e4d044d8ae7f45af7f299e, type: 3}
       propertyPath: m_Pivot.x
