@@ -35,15 +35,21 @@ public class InventoryController : MonoBehaviour
     void Update(){
         ItemIconDrag();
 
-        if (Input.GetKeyDown(KeyCode.Q)){
+        if (Input.GetKeyDown(KeyCode.Q)){ //debug version
             CreateRandomItem();
         }
 
-        if (Input.GetKeyDown(KeyCode.W)){
+        //add item to inventory
+        if (Input.GetKeyDown(KeyCode.W)){ //debug verision
             InsertRandomItem();
         }
+
+        //rotate items
+        if (Input.GetKeyDown(KeyCode.R)){
+            RotateItem(); 
+        }
         
-        if (selectedItemGrid == null){
+        if (selectedItemGrid == null){ 
             _inventoryHighlight.Show(false);
             return;
         }
@@ -53,6 +59,14 @@ public class InventoryController : MonoBehaviour
         if (Input.GetMouseButtonDown(0)){
             LeftMouseButtonPress();
         }
+    }
+
+    void RotateItem(){
+        if (_selectedItem == null){
+            return;
+        }
+
+        _selectedItem.Rotate();
     }
 
     void InsertRandomItem(){
