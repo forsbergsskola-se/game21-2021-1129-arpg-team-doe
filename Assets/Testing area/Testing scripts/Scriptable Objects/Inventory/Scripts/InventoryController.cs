@@ -39,6 +39,7 @@ public class InventoryController : MonoBehaviour
             CreateRandomItem();
         }
         
+        
         if (selectedItemGrid == null){
             _inventoryHighlight.Show(false);
             return;
