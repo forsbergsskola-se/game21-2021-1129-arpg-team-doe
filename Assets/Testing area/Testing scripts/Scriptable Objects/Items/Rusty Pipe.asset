@@ -32,7 +32,7 @@ MonoBehaviour:
   damage: 5
   attackSpeedBuff: 0
   damageType: {fileID: 11400000, guid: d7229c798ff2c7b47a778190fbcd48e8, type: 2}
-  toughnessBuff: -114
+  toughnessBuff: 10
   strengthBuff: -103
   dexterityBuff: -207
   knowledgeBuff: -315
