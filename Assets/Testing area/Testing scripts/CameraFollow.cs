@@ -9,54 +9,46 @@ public class CameraFollow : MonoBehaviour
     const float rightScreenEdge = 1f;
     const float leftScreenEdge = 0f;
     const int zoomLevels = 3;
-    
+
     [SerializeField] float smoothTime = 0.3f;
     [SerializeField] float rotationSpeedMultiplier = 500f;
     [SerializeField] float snapRotationSpeedMultiplier = 30f;
     [SerializeField] float minZoom = 3f;
     [SerializeField] float maxZoom = 15f;
-    [SerializeField] [Range(30,90)] float cameraAngle = 60f;
-    
+    [SerializeField] [Range(30,90)] float cameraAngleX;
+
     Transform target;
-    Transform camera;
 
     Vector3 offset;
     Vector3 rotationAxis = new Vector3(0, 1, 0);
     Vector3 snapRotationAxis = new Vector3(0, 1, 0);
     Vector3 _velocity = Vector3.zero;
-    Vector3 _cameraRotation;
-    Vector3 rotationOffset= new Vector3(10, 0, 0);
 
     float startZoom;
     float speed;
-    
+
     int zoomLevel = 0;
 
     void Start(){
         target = FindObjectOfType<PlayerController>().transform;
-        camera = GetComponentInChildren<Camera>().transform;
         transform.position = new Vector3(target.position.x, transform.position.y, target.position.z);
         startZoom = transform.position.y;
-        offset = transform.position - target.position;
-        var rotation = camera.transform.rotation;
-        _cameraRotation = rotation.eulerAngles;
-        _cameraRotation.x = cameraAngle;
-        rotation.eulerAngles = _cameraRotation;
-        camera.transform.rotation = rotation;
+        offset = new Vector3(0, transform.position.y - target.position.y, 0);
     }
-    
 
     void LateUpdate(){
-        Vector3 targetPosition = target.position + offset;
+        // camera tilt:
+        Vector3 adjustedOffset = Quaternion.Euler(90 - cameraAngleX, transform.rotation.eulerAngles.y - 180, 0) * offset;
+        Vector3 targetPosition = target.position + adjustedOffset;
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _velocity, smoothTime);
         CameraZoom();
         SnapCameraRotation();
         MouseCameraRotation();
-        AdjustAngle();
+        transform.eulerAngles = new Vector3(cameraAngleX, transform.rotation.eulerAngles.y,0f);
     }
 
     void CameraZoom(){
-        
+
         if (Input.GetKeyDown(KeyCode.R)){
             var currentZoomLevel = zoomLevel % zoomLevels;
             //Change to minZoom
@@ -68,7 +60,7 @@ public class CameraFollow : MonoBehaviour
                 offset.y = maxZoom;
             }
             //Change to startZoom
-            else{ 
+            else{
                 offset.y = startZoom;
             }
             zoomLevel++;
@@ -78,16 +70,16 @@ public class CameraFollow : MonoBehaviour
     void SnapCameraRotation(){
         snapRotationAxis.y = 1;
         var snapRotation = snapRotationAxis * snapRotationSpeedMultiplier;
-        
+
         if (Input.GetKeyDown(KeyCode.D)){
-            transform.Rotate(snapRotation); 
+            transform.Rotate(snapRotation);
         }
         if (Input.GetKeyDown(KeyCode.A)){
             transform.Rotate(-snapRotation);
         }
     }
 
-    void MouseCameraRotation(){ 
+    void MouseCameraRotation(){
         var mouseRotation = rotationAxis * rotationSpeedMultiplier * Time.deltaTime;
         var currentMousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         if (currentMousePosition.x > closeToRightScreenEdge && currentMousePosition.x < rightScreenEdge){
@@ -98,14 +90,5 @@ public class CameraFollow : MonoBehaviour
             rotationAxis.y =   currentMousePosition.x - closeToLeftScreenEdge;
             transform.Rotate(mouseRotation);
         }
-    }
-
-    void AdjustAngle(){
-        //change the x-rotation of the camera
-        var cameraRotation = camera.localEulerAngles;
-        _cameraRotation = new Vector3(cameraAngle,0f,0f);
-        cameraRotation = _cameraRotation;
-        //needs to be final line in rotation
-        camera.localEulerAngles = cameraRotation;
     }
 }

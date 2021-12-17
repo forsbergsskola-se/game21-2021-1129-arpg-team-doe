@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964124, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4971,11 +4971,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6614988171499839986, guid: 1b36c6334384e4b4982240dd55541241, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.76
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6614988171499839986, guid: 1b36c6334384e4b4982240dd55541241, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6614988171499839986, guid: 1b36c6334384e4b4982240dd55541241, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5008,6 +5008,30 @@ PrefabInstance:
     - target: {fileID: 6614988171499839989, guid: 1b36c6334384e4b4982240dd55541241, type: 3}
       propertyPath: minZoom
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614988172009823786, guid: 1b36c6334384e4b4982240dd55541241, type: 3}
+      propertyPath: field of view
+      value: 85.189255
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614988172009823786, guid: 1b36c6334384e4b4982240dd55541241, type: 3}
+      propertyPath: m_FOVAxisMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614988172009823787, guid: 1b36c6334384e4b4982240dd55541241, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614988172009823787, guid: 1b36c6334384e4b4982240dd55541241, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614988172009823787, guid: 1b36c6334384e4b4982240dd55541241, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614988172009823787, guid: 1b36c6334384e4b4982240dd55541241, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b36c6334384e4b4982240dd55541241, type: 3}
