@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 120430161}
   - component: {fileID: 120430160}
   m_Layer: 0
-  m_Name: TorchLoop
+  m_Name: TorchAudioLoop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
