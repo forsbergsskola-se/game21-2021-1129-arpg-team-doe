@@ -7,8 +7,15 @@ using Random = System.Random;
 public class InventoryController : MonoBehaviour
 {
     [HideInInspector]
-    public ItemGrid selectedItemGrid;
-    
+    ItemGrid selectedItemGrid;
+    public ItemGrid SelectedItemGrid{
+        get => selectedItemGrid;
+        set{
+            selectedItemGrid = value;
+            _inventoryHighlight.SetParent(value);
+        }
+    }
+
     [SerializeField] List<ItemData> items;
     [SerializeField] GameObject itemPrefab;
     [SerializeField] Transform canvsTransform;
@@ -18,6 +25,7 @@ public class InventoryController : MonoBehaviour
     RectTransform _rectTransform;
     InventoryHighlight _inventoryHighlight;
     InventoryItem _itemToHighligt;
+    Vector2Int oldPosition;
 
     void Awake(){
         _inventoryHighlight = GetComponent<InventoryHighlight>();
@@ -32,6 +40,7 @@ public class InventoryController : MonoBehaviour
         }
         
         if (selectedItemGrid == null){
+            _inventoryHighlight.Show(false);
             return;
         }
         
@@ -46,13 +55,35 @@ public class InventoryController : MonoBehaviour
 
     void HandleHighlight(){
         Vector2Int positionOnGrid = GetTileGridPosition();
+        if (oldPosition == positionOnGrid){
+            return;
+        }
+        oldPosition = positionOnGrid;
+
+        //if(oldPosition != positionOnGrid)
         if (_selectedItem == null){
             _itemToHighligt = selectedItemGrid.GetItem(positionOnGrid.x, positionOnGrid.y);
             if (_itemToHighligt != null){
+                _inventoryHighlight.Show(true);
                 _inventoryHighlight.SetSize(_itemToHighligt);
+                //_inventoryHighlight.SetParent(selectedItemGrid);
                 _inventoryHighlight.SetPosition(selectedItemGrid, _itemToHighligt);
             }
+            else{
+                _inventoryHighlight.Show(false);
+            }
         }
+        else{
+            {
+                _inventoryHighlight.Show(selectedItemGrid.BoundryCheck(positionOnGrid.x, positionOnGrid.y, 
+                    _selectedItem.itemData.width, _selectedItem.itemData.height));
+                _inventoryHighlight.SetSize(_selectedItem);
+                //_inventoryHighlight.SetParent(selectedItemGrid);
+                _inventoryHighlight.SetPosition(selectedItemGrid, _selectedItem, positionOnGrid.x, 
+                    positionOnGrid.y);
+            }
+        }
+        
     }
 
     void CreateRandomItem(){

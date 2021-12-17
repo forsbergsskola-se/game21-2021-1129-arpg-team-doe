@@ -130,7 +130,7 @@ public class ItemGrid : MonoBehaviour
         return true;
     }
 
-    bool BoundryCheck(int posX, int posY, int width, int height){
+    public bool BoundryCheck(int posX, int posY, int width, int height){
         if (PositionCheck(posX,posY) == false){
             return false;
         }
