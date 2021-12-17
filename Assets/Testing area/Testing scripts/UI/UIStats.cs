@@ -25,9 +25,12 @@ public class UIStats : MonoBehaviour
 
 
     //float attribute;
+    void Awake(){
+       _playerStatistics = GameObject.FindWithTag("Player").GetComponent<Statistics>();
+    }
 
     void Start(){
-        _playerStatistics = GameObject.FindWithTag("Player").GetComponent<Statistics>();
+        
         AttributeAssingment();
         UpdateUIStats();
     }
@@ -44,6 +47,8 @@ public class UIStats : MonoBehaviour
  
     public void ApplySkillPoints(){
         AttributeAssingment();
+        UpdateUIStats();
+        _decreaseButton.gameObject.SetActive(false);
     }
 
     void Update(){
