@@ -36,7 +36,9 @@ public class InventoryController : MonoBehaviour
         ItemIconDrag();
 
         if (Input.GetKeyDown(KeyCode.Q)){ //debug version
-            CreateRandomItem();
+            if (_selectedItem == null){
+                CreateRandomItem();
+            }
         }
 
         //add item to inventory
@@ -130,6 +132,7 @@ public class InventoryController : MonoBehaviour
         
         _rectTransform = inventoryItem.GetComponent<RectTransform>();
         _rectTransform.SetParent(canvsTransform);
+        _rectTransform.SetAsLastSibling(); //item you hold dont get behind a placed item in inventory
 
         int selectedItemID = UnityEngine.Random.Range(0, items.Count);
         inventoryItem.Set(items[selectedItemID]);
@@ -165,6 +168,7 @@ public class InventoryController : MonoBehaviour
                 _selectedItem = _overlapItem;
                 _overlapItem = null;
                 _rectTransform = _selectedItem.GetComponent<RectTransform>();
+                _rectTransform.SetAsLastSibling(); //item you hold dont get behind a placed item in inventory
             }
         }
         
