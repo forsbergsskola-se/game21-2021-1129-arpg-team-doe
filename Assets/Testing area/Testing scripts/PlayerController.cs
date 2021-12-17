@@ -60,9 +60,9 @@ public class PlayerController : MonoBehaviour
         if (GetPlayerIsDefeated()){
             return;
         }
-        if (EventSystem.current.IsPointerOverGameObject()){ //Player won't do anything when click on UI
-            return;
-        }
+        //if (EventSystem.current.IsPointerOverGameObject()){ //Player won't do anything when click on UI
+        //  return;
+        //}
         if (InteractWithCombat()){
             return;
         }
