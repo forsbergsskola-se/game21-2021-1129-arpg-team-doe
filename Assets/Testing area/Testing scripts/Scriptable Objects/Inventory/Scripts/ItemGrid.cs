@@ -32,13 +32,16 @@ public class ItemGrid : MonoBehaviour
             return null;
         }
 
-        for (int ix = 0; ix < toReturn.itemData.width; ix++){
-            for (int iy = 0; iy < toReturn.itemData.height; iy++){
-                _inventoryItemSlot[toReturn.onGridPositionX + ix, toReturn.onGridPositionY + iy] = null;
+        CleanGridReference(toReturn);
+        return toReturn;
+    }
+
+    void CleanGridReference(InventoryItem item){
+        for (int ix = 0; ix < item.itemData.width; ix++){
+            for (int iy = 0; iy < item.itemData.height; iy++){
+                _inventoryItemSlot[item.onGridPositionX + ix, item.onGridPositionY + iy] = null;
             }
         }
-        
-        return toReturn;
     }
 
     public Vector2Int GetTileGridPosition(Vector2 mousePosition){
@@ -56,12 +59,18 @@ public class ItemGrid : MonoBehaviour
             return false;
         }
 
-        if (OverlapCheck(posX,posY, inventoryItem.itemData.width, inventoryItem.itemData.height, ref _overlapItem) = false){
+        if (OverlapCheck(posX,posY, inventoryItem.itemData.width, inventoryItem.itemData.height, ref _overlapItem) == false){
+            _overlapItem = null;
             return false;
+        }
+
+        if (_overlapItem != null){
+            CleanGridReference(_overlapItem);
         }
         
         RectTransform rectTransform = inventoryItem.GetComponent<RectTransform>();
         rectTransform.SetParent(this._rectTransform);
+        
         for (int x = 0; x < inventoryItem.itemData.width; x++){
             for (int y = 0; y < inventoryItem.itemData.height; y++){
                 _inventoryItemSlot[posX + x, posY + y] = inventoryItem;

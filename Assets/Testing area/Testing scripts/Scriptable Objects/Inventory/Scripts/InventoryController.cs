@@ -45,7 +45,15 @@ public class InventoryController : MonoBehaviour
     }
 
     void LeftMouseButtonPress(){
-        Vector2Int tileGridPosition = selectedItemGrid.GetTileGridPosition(Input.mousePosition);
+        Vector2 position = Input.mousePosition;
+
+        if (_selectedItem != null){
+            position.x -= (_selectedItem.itemData.width - 1) * ItemGrid.tileSizeWidth / 2;
+            position.y += (_selectedItem.itemData.height - 1) * ItemGrid.tileSizeHeight / 2;
+        }
+        
+        Vector2Int tileGridPosition = selectedItemGrid.GetTileGridPosition(position);
+        
         if (_selectedItem == null){
             PickUpItem(tileGridPosition);
         }
@@ -58,6 +66,11 @@ public class InventoryController : MonoBehaviour
         bool complete = selectedItemGrid.PlaceItem(_selectedItem, tileGridPosition.x, tileGridPosition.y, ref _overlapItem);
         if (complete){
             _selectedItem = null;
+            if (_overlapItem != null){
+                _selectedItem = _overlapItem;
+                _overlapItem = null;
+                _rectTransform = _selectedItem.GetComponent<RectTransform>();
+            }
         }
         
     }

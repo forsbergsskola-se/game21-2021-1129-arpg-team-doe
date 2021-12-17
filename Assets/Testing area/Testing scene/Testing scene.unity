@@ -4120,7 +4120,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1178, y: 380}
+  m_AnchoredPosition: {x: 915, y: 391}
   m_SizeDelta: {x: 160, y: 320}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1989549049
@@ -4149,7 +4149,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSizeWidth: 5
   gridSizeHeight: 10
-  inventoryItemPrefab: {fileID: 3378097737434846926, guid: 7c97bfcbdf1b1aa4cb379fcba585140a, type: 3}
 --- !u!114 &1989549051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4959,6 +4958,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedItemGrid: {fileID: 0}
+  items:
+  - {fileID: 11400000, guid: 3f85e6a042ba153498c3f518ad12e599, type: 2}
+  - {fileID: 11400000, guid: 0f3e118f0d3d37543b26fea8604887c8, type: 2}
+  - {fileID: 11400000, guid: 2a248e3b74a62c349953ba6aaef2a62e, type: 2}
+  itemPrefab: {fileID: 3378097737434846926, guid: 7c97bfcbdf1b1aa4cb379fcba585140a, type: 3}
+  canvsTransform: {fileID: 708504958}
 --- !u!1001 &6729527585571558858
 PrefabInstance:
   m_ObjectHideFlags: 0
