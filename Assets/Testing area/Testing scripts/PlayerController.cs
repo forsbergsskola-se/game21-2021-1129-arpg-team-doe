@@ -5,6 +5,7 @@ using CustomLogs;
 using FMOD;
 using FMODUnity;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Debug = UnityEngine.Debug;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
@@ -57,6 +58,9 @@ public class PlayerController : MonoBehaviour
         }
         
         if (GetPlayerIsDefeated()){
+            return;
+        }
+        if (EventSystem.current.IsPointerOverGameObject()){ //Player won't do anything when click on UI
             return;
         }
         if (InteractWithCombat()){
