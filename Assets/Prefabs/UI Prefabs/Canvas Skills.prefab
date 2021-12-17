@@ -1553,7 +1553,7 @@ GameObject:
   - component: {fileID: 1662674186}
   - component: {fileID: 1662674185}
   m_Layer: 5
-  m_Name: Decrease
+  m_Name: Decrease (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4862,7 +4862,7 @@ MonoBehaviour:
   _valueText: {fileID: 6729527584701451844}
   _playerLevel: {fileID: 11400000, guid: bac969c35aac6924fb6519533e2f15c4, type: 2}
   _increaseButton: {fileID: 6729527586394075606}
-  _decreaseButton: {fileID: 1662674185}
+  _decreaseButton: {fileID: 0}
 --- !u!1 &6729527586394075600
 GameObject:
   m_ObjectHideFlags: 0
