@@ -33,6 +33,11 @@ public class LevelingGameObject : ScriptableObject
         CheckLevelUp();
         receiveXpEvent.Invoke();
     }
+    [ContextMenu("GiveXp")]
+    public void GiveXp(){//used for debug
+        currentXP += requiredXPInt;
+        CheckLevelUp();
+    }
     [ContextMenu("Check Level Up")]
     public void CheckLevelUp(){ //Every time we get xp, run this method
         while (currentXP >= requiredXPInt){
