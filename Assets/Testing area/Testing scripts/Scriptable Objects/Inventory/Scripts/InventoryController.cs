@@ -38,7 +38,10 @@ public class InventoryController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q)){
             CreateRandomItem();
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.W)){
+            InsertRandomItem();
+        }
         
         if (selectedItemGrid == null){
             _inventoryHighlight.Show(false);
@@ -52,7 +55,27 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-    
+    void InsertRandomItem(){
+        if (selectedItemGrid == null){
+            return;
+        }
+        
+        CreateRandomItem();
+        InventoryItem itemToInsert = _selectedItem;
+        _selectedItem = null;
+        InsertItem(itemToInsert);
+    }
+
+    void InsertItem(InventoryItem itemToInsert){
+        Vector2Int? posOnGrid = selectedItemGrid.FindSpaceForObject(itemToInsert);
+
+        if (posOnGrid == null){
+            return;
+        }
+
+        selectedItemGrid.PlaceItem(itemToInsert, posOnGrid.Value.x, posOnGrid.Value.y);
+    }
+
 
     void HandleHighlight(){
         Vector2Int positionOnGrid = GetTileGridPosition();

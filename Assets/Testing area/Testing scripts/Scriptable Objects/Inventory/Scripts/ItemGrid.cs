@@ -72,9 +72,16 @@ public class ItemGrid : MonoBehaviour
             CleanGridReference(_overlapItem);
         }
         
+        PlaceItem(inventoryItem, posX, posY);
+
+        return true;
+    }
+
+    public void PlaceItem(InventoryItem inventoryItem, int posX, int posY){
+        
         RectTransform rectTransform = inventoryItem.GetComponent<RectTransform>();
         rectTransform.SetParent(this._rectTransform);
-        
+
         for (int x = 0; x < inventoryItem.itemData.width; x++){
             for (int y = 0; y < inventoryItem.itemData.height; y++){
                 _inventoryItemSlot[posX + x, posY + y] = inventoryItem;
@@ -83,11 +90,10 @@ public class ItemGrid : MonoBehaviour
 
         inventoryItem.onGridPositionX = posX;
         inventoryItem.onGridPositionY = posY;
-        
-        Vector2 position = CalculatePositionOnGrid(inventoryItem, posX, posY);
-        rectTransform.localPosition = position;
 
-        return true;
+        Vector2 position = CalculatePositionOnGrid(inventoryItem, posX, posY);
+
+        rectTransform.localPosition = position;
     }
 
     public Vector2 CalculatePositionOnGrid(InventoryItem inventoryItem, int posX, int posY){
@@ -117,6 +123,18 @@ public class ItemGrid : MonoBehaviour
         
         return true;
     }
+    
+    bool CheckAvailableSpace(int posX, int posY, int width, int height){
+        for (int x = 0; x < width; x++){
+            for (int y = 0; y < height; y++){
+                if (_inventoryItemSlot[posX+x, posY + y] != null){
+                    
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
     bool PositionCheck(int posX, int posY){
         if (posX < 0 || posY < 0){
@@ -143,5 +161,19 @@ public class ItemGrid : MonoBehaviour
         }
         
         return true;
+    }
+
+    public Vector2Int? FindSpaceForObject(InventoryItem itemToInsert){
+        int height = gridSizeHeight - itemToInsert.itemData.height + 1;
+        int width = gridSizeWidth - itemToInsert.itemData.width + 1;
+        
+        for (int y = 0; y < height; y++){
+            for (int x = 0; x < width; x++){
+                if (CheckAvailableSpace(x, y, itemToInsert.itemData.width, itemToInsert.itemData.height) == true){
+                    return new Vector2Int(x, y);
+                }
+            }
+        }
+        return null;
     }
 }
