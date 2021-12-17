@@ -4,10 +4,31 @@ using UnityEngine.UI;
 public class InventoryItem : MonoBehaviour{
    public ItemData itemData;
 
+   
+
    public int onGridPositionX;
    public int onGridPositionY;
 
    public bool rotated = false;
+
+   //for rotating tiles
+   public int HEIGHT{
+      get{
+         if (rotated == false){
+            return itemData.height;
+         }
+         return itemData.width;
+      }
+   }
+
+   public int WIDTH{
+      get{
+         if (rotated == false){
+            return itemData.width;
+         }
+         return itemData.height;
+      }
+   }
    
 
    internal void Set(ItemData itemData){

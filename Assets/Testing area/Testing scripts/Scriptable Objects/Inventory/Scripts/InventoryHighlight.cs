@@ -10,8 +10,8 @@ public class InventoryHighlight : MonoBehaviour
 
     public void SetSize(InventoryItem targetItem){
         Vector2 size = new Vector2();
-        size.x = targetItem.itemData.width * ItemGrid.tileSizeWidth;
-        size.y = targetItem.itemData.height * ItemGrid.tileSizeHeight;
+        size.x = targetItem.WIDTH * ItemGrid.tileSizeWidth;
+        size.y = targetItem.HEIGHT * ItemGrid.tileSizeHeight;
         highlighter.sizeDelta = size;
     }
 

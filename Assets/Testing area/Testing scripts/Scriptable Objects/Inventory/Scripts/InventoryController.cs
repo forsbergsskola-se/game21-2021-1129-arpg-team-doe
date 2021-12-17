@@ -114,7 +114,7 @@ public class InventoryController : MonoBehaviour
         else{
             {
                 _inventoryHighlight.Show(selectedItemGrid.BoundryCheck(positionOnGrid.x, positionOnGrid.y, 
-                    _selectedItem.itemData.width, _selectedItem.itemData.height));
+                    _selectedItem.WIDTH, _selectedItem.HEIGHT));
                 _inventoryHighlight.SetSize(_selectedItem);
                 //_inventoryHighlight.SetParent(selectedItemGrid);
                 _inventoryHighlight.SetPosition(selectedItemGrid, _selectedItem, positionOnGrid.x, 
@@ -150,8 +150,8 @@ public class InventoryController : MonoBehaviour
         Vector2 position = Input.mousePosition;
 
         if (_selectedItem != null){
-            position.x -= (_selectedItem.itemData.width - 1) * ItemGrid.tileSizeWidth / 2;
-            position.y += (_selectedItem.itemData.height - 1) * ItemGrid.tileSizeHeight / 2;
+            position.x -= (_selectedItem.WIDTH - 1) * ItemGrid.tileSizeWidth / 2;
+            position.y += (_selectedItem.HEIGHT - 1) * ItemGrid.tileSizeHeight / 2;
         }
 
         return selectedItemGrid.GetTileGridPosition(position);
