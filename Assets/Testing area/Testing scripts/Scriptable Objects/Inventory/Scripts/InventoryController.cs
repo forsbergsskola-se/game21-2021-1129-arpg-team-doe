@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
@@ -8,14 +9,20 @@ public class InventoryController : MonoBehaviour
     [HideInInspector]
     public ItemGrid selectedItemGrid;
     
+    [SerializeField] List<ItemData> items;
+    [SerializeField] GameObject itemPrefab;
+    [SerializeField] Transform canvsTransform;
 
     InventoryItem _selectedItem;
     InventoryItem _overlapItem;
     RectTransform _rectTransform;
+    InventoryHighlight _inventoryHighlight;
+    InventoryItem _itemToHighligt;
 
-    [SerializeField] List<ItemData> items;
-    [SerializeField] GameObject itemPrefab;
-    [SerializeField] Transform canvsTransform;
+    void Awake(){
+        _inventoryHighlight = GetComponent<InventoryHighlight>();
+    }
+
 
     void Update(){
         ItemIconDrag();
@@ -28,8 +35,23 @@ public class InventoryController : MonoBehaviour
             return;
         }
         
+        HandleHighlight();
+        
         if (Input.GetMouseButtonDown(0)){
             LeftMouseButtonPress();
+        }
+    }
+
+    
+
+    void HandleHighlight(){
+        Vector2Int positionOnGrid = GetTileGridPosition();
+        if (_selectedItem == null){
+            _itemToHighligt = selectedItemGrid.GetItem(positionOnGrid.x, positionOnGrid.y);
+            if (_itemToHighligt != null){
+                _inventoryHighlight.SetSize(_itemToHighligt);
+                _inventoryHighlight.SetPosition(selectedItemGrid, _itemToHighligt);
+            }
         }
     }
 
@@ -45,21 +67,25 @@ public class InventoryController : MonoBehaviour
     }
 
     void LeftMouseButtonPress(){
-        Vector2 position = Input.mousePosition;
+        var tileGridPosition = GetTileGridPosition();
 
-        if (_selectedItem != null){
-            position.x -= (_selectedItem.itemData.width - 1) * ItemGrid.tileSizeWidth / 2;
-            position.y += (_selectedItem.itemData.height - 1) * ItemGrid.tileSizeHeight / 2;
-        }
-        
-        Vector2Int tileGridPosition = selectedItemGrid.GetTileGridPosition(position);
-        
         if (_selectedItem == null){
             PickUpItem(tileGridPosition);
         }
         else{
             PlaceItem(tileGridPosition);
         }
+    }
+
+    Vector2Int GetTileGridPosition(){
+        Vector2 position = Input.mousePosition;
+
+        if (_selectedItem != null){
+            position.x -= (_selectedItem.itemData.width - 1) * ItemGrid.tileSizeWidth / 2;
+            position.y += (_selectedItem.itemData.height - 1) * ItemGrid.tileSizeHeight / 2;
+        }
+
+        return selectedItemGrid.GetTileGridPosition(position);
     }
 
     void PlaceItem(Vector2Int tileGridPosition){

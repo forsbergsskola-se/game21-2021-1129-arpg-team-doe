@@ -43,6 +43,10 @@ public class ItemGrid : MonoBehaviour
             }
         }
     }
+    
+    internal InventoryItem GetItem(int x, int y){
+        return _inventoryItemSlot[x, y];
+    }
 
     public Vector2Int GetTileGridPosition(Vector2 mousePosition){
         positionOnTheGrid.x = mousePosition.x - _rectTransform.position.x;
@@ -80,13 +84,17 @@ public class ItemGrid : MonoBehaviour
         inventoryItem.onGridPositionX = posX;
         inventoryItem.onGridPositionY = posY;
         
-        Vector2 position = new Vector2();
-        position.x = posX * tileSizeWidth + tileSizeWidth * inventoryItem.itemData.width/ 2;
-        position.y = -(posY * tileSizeHeight + tileSizeHeight * inventoryItem.itemData.height / 2);
-
+        Vector2 position = CalculatePositionOnGrid(inventoryItem, posX, posY);
         rectTransform.localPosition = position;
 
         return true;
+    }
+
+    public Vector2 CalculatePositionOnGrid(InventoryItem inventoryItem, int posX, int posY){
+        Vector2 position;
+        position.x = posX * tileSizeWidth + tileSizeWidth * inventoryItem.itemData.width / 2;
+        position.y = -(posY * tileSizeHeight + tileSizeHeight * inventoryItem.itemData.height / 2);
+        return position;
     }
 
     bool OverlapCheck(int posX, int posY, int width, int height, ref InventoryItem overlapItem){
