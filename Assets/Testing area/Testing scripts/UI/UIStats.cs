@@ -28,16 +28,22 @@ public class UIStats : MonoBehaviour
 
     void Start(){
         _playerStatistics = GameObject.FindWithTag("Player").GetComponent<Statistics>();
+        AttributeAssingment();
         UpdateUIStats();
     }
 
     public void AttributeAssingment(){
+        availableSkillPoints = _playerLevel.skillPoint;
         currentToughness = _playerStatistics.Toughness;
         currentStrength = _playerStatistics.Strength;
         currentDexterity = _playerStatistics.Dexterity;
         currentKnowledge = _playerStatistics.Knowledge;
         currentReflex = _playerStatistics.Reflex;
         currentLuck = _playerStatistics.Luck;
+    }
+ 
+    public void ApplySkillPoints(){
+        AttributeAssingment();
     }
 
     void Update(){
@@ -50,6 +56,7 @@ public class UIStats : MonoBehaviour
     }
 
     public void ChangeSkillPoint(int amount){
+        availableSkillPoints += amount;
         _playerLevel.skillPoint += amount;
         UpdateUIStats();
     }
@@ -60,7 +67,10 @@ public class UIStats : MonoBehaviour
     [ContextMenu("UpdateUIStats")]
     public void UpdateUIStats(){ //"This is bad, but it works" - Creator of ze code
 
-        if (_playerLevel.skillPoint > 0){
+        if (_playerLevel.skillPoint <= 0){
+            _increaseButton.gameObject.SetActive(false);
+        }
+        else if (_playerLevel.skillPoint > 0){
             _increaseButton.gameObject.SetActive(true);
             if (_attributeText.text == nameof(_playerStatistics.Toughness)){
                 _valueText.text = ((int)_playerStatistics.Toughness).ToString();
@@ -73,22 +83,49 @@ public class UIStats : MonoBehaviour
             }
             if (_attributeText.text == nameof(_playerStatistics.Strength)){
                 _valueText.text = ((int)_playerStatistics.Strength).ToString();
+                if (currentStrength < _playerStatistics.Strength){
+                    _decreaseButton.gameObject.SetActive(true);
+                }
+                else{
+                    _decreaseButton.gameObject.SetActive(false);
+                }
             }
             if (_attributeText.text == nameof(_playerStatistics.Dexterity)){
                 _valueText.text = ((int)_playerStatistics.Dexterity).ToString();
+                if (currentDexterity < _playerStatistics.Dexterity){
+                    _decreaseButton.gameObject.SetActive(true);
+                }
+                else{
+                    _decreaseButton.gameObject.SetActive(false);
+                }
             }
             if (_attributeText.text == nameof(_playerStatistics.Knowledge)){
                 _valueText.text = ((int)_playerStatistics.Knowledge).ToString();
+                if (currentKnowledge < _playerStatistics.Knowledge){
+                    _decreaseButton.gameObject.SetActive(true);
+                }
+                else{
+                    _decreaseButton.gameObject.SetActive(false);
+                }
             }
             if (_attributeText.text == nameof(_playerStatistics.Reflex)){
                 _valueText.text =((int)_playerStatistics.Reflex).ToString();
+                if (currentReflex < _playerStatistics.Reflex){
+                    _decreaseButton.gameObject.SetActive(true);
+                }
+                else{
+                    _decreaseButton.gameObject.SetActive(false);
+                }
             }
             if (_attributeText.text == nameof(_playerStatistics.Luck)){
                 _valueText.text = ((int)_playerStatistics.Luck).ToString();
+                if (currentLuck < _playerStatistics.Luck){
+                    _decreaseButton.gameObject.SetActive(true);
+                }
+                else{
+                    _decreaseButton.gameObject.SetActive(false);
+                }
             }
-        }
-        else{
-            _increaseButton.gameObject.SetActive(false);
         }
     }
 }
