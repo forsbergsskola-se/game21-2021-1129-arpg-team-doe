@@ -15,17 +15,18 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] float snapRotationSpeedMultiplier = 30f;
     [SerializeField] float minZoom = 3f;
     [SerializeField] float maxZoom = 15f;
-    [SerializeField] [Range(50,90)] float cameraAngle = 60f;
+    [SerializeField] [Range(30,90)] float cameraAngle = 60f;
     
     Transform target;
     Transform camera;
-    
+
     Vector3 offset;
     Vector3 rotationAxis = new Vector3(0, 1, 0);
     Vector3 snapRotationAxis = new Vector3(0, 1, 0);
     Vector3 _velocity = Vector3.zero;
     Vector3 _cameraRotation;
-    
+    Vector3 rotationOffset= new Vector3(10, 0, 0);
+
     float startZoom;
     float speed;
     
@@ -43,6 +44,7 @@ public class CameraFollow : MonoBehaviour
         rotation.eulerAngles = _cameraRotation;
         camera.transform.rotation = rotation;
     }
+    
 
     void LateUpdate(){
         Vector3 targetPosition = target.position + offset;
@@ -50,7 +52,7 @@ public class CameraFollow : MonoBehaviour
         CameraZoom();
         SnapCameraRotation();
         MouseCameraRotation();
-        //AdjustAngle();
+        AdjustAngle();
     }
 
     void CameraZoom(){
@@ -99,24 +101,11 @@ public class CameraFollow : MonoBehaviour
     }
 
     void AdjustAngle(){
-        
-        
         //change the x-rotation of the camera
-        var cameraRotation = camera.rotation;
+        var cameraRotation = camera.localEulerAngles;
         _cameraRotation = new Vector3(cameraAngle,0f,0f);
-        cameraRotation.eulerAngles = _cameraRotation;
+        cameraRotation = _cameraRotation;
         //needs to be final line in rotation
-        camera.rotation = cameraRotation;
-        //Change the z distance on the followtarget
-        var cameraOffset = offset.y;
-        var cameraPosition = camera.position;
-        cameraPosition.z = target.position.z-cameraOffset;
-        //needs to be final line in position
-        camera.position = cameraPosition;
-        
-        
-        //use the same numbers as before to follow the player
-        //when angle is lower the z position of parent needs to be more negative to compensate
-
+        camera.localEulerAngles = cameraRotation;
     }
 }
