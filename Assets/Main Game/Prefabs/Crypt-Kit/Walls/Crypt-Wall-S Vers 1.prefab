@@ -941,7 +941,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3285
+  m_VersionIndex: 3288
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1106,8 +1106,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c77eeacdf406e24b907ace9c5b61c7f, type: 3}
+--- !u!1 &1543577959135219101 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c77eeacdf406e24b907ace9c5b61c7f, type: 3}
+  m_PrefabInstance: {fileID: 1849442502020280524}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2170791462098229031 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3c77eeacdf406e24b907ace9c5b61c7f, type: 3}
   m_PrefabInstance: {fileID: 1849442502020280524}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1496217473650540771
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543577959135219101}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.009999998, z: 0.03999999}
+  m_Center: {x: -0.0014688373, y: 0.004160694, z: 0.008553447}
