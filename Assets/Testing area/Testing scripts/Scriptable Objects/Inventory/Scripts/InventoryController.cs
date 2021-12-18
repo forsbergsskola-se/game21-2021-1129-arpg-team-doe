@@ -18,7 +18,7 @@ public class InventoryController : MonoBehaviour
 
     [SerializeField] List<ItemData> items;
     [SerializeField] GameObject itemPrefab;
-    [SerializeField] Transform canvsTransform;
+    [SerializeField] Transform canvasTransform;
 
     InventoryItem _selectedItem;
     InventoryItem _overlapItem;
@@ -26,6 +26,7 @@ public class InventoryController : MonoBehaviour
     InventoryHighlight _inventoryHighlight;
     InventoryItem _itemToHighligt;
     Vector2Int oldPosition;
+    bool _clickOnInventory;
 
     void Awake(){
         _inventoryHighlight = GetComponent<InventoryHighlight>();
@@ -42,7 +43,7 @@ public class InventoryController : MonoBehaviour
         }
 
         //add item to inventory
-        if (Input.GetKeyDown(KeyCode.W)){ //debug verision
+        if (Input.GetKeyDown(KeyCode.W)){ //debug version
             InsertRandomItem();
         }
 
@@ -50,17 +51,30 @@ public class InventoryController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R)){
             RotateItem(); 
         }
-        
-        if (selectedItemGrid == null){ 
+
+        if (selectedItemGrid == null){
             _inventoryHighlight.Show(false);
-            return;
+            _clickOnInventory = false;
+            //return;
+        }
+        else{
+            _clickOnInventory = true;
+        }
+
+        if (_clickOnInventory){
+            HandleHighlight();
+            if (Input.GetMouseButtonDown(0)){
+                LeftMouseButtonPress();
+            }
         }
         
-        HandleHighlight();
-        
-        if (Input.GetMouseButtonDown(0)){
-            LeftMouseButtonPress();
+        if (!_clickOnInventory && Input.GetMouseButtonDown(0) && _selectedItem != null){
+            DropItemToGround();
         }
+    }
+
+    void DropItemToGround(){
+        RemoveItem();
     }
 
     void RotateItem(){
@@ -123,7 +137,6 @@ public class InventoryController : MonoBehaviour
                     positionOnGrid.y);
             }
         }
-        
     }
 
     void CreateRandomItem(){
@@ -131,11 +144,16 @@ public class InventoryController : MonoBehaviour
         _selectedItem = inventoryItem;
         
         _rectTransform = inventoryItem.GetComponent<RectTransform>();
-        _rectTransform.SetParent(canvsTransform);
+        _rectTransform.SetParent(canvasTransform);
         _rectTransform.SetAsLastSibling(); //item you hold dont get behind a placed item in inventory
 
         int selectedItemID = UnityEngine.Random.Range(0, items.Count);
         inventoryItem.Set(items[selectedItemID]);
+    }
+    
+    void RemoveItem(){
+        _selectedItem.gameObject.SetActive(false);
+        _selectedItem = null;
     }
 
     void LeftMouseButtonPress(){
@@ -151,12 +169,11 @@ public class InventoryController : MonoBehaviour
 
     Vector2Int GetTileGridPosition(){
         Vector2 position = Input.mousePosition;
-
         if (_selectedItem != null){
             position.x -= (_selectedItem.WIDTH - 1) * ItemGrid.tileSizeWidth / 2;
             position.y += (_selectedItem.HEIGHT - 1) * ItemGrid.tileSizeHeight / 2;
         }
-
+        //Debug.Log(position);
         return selectedItemGrid.GetTileGridPosition(position);
     }
 
@@ -171,7 +188,6 @@ public class InventoryController : MonoBehaviour
                 _rectTransform.SetAsLastSibling(); //item you hold dont get behind a placed item in inventory
             }
         }
-        
     }
 
     void PickUpItem(Vector2Int tileGridPosition){

@@ -80,7 +80,7 @@ public class ItemGrid : MonoBehaviour
     public void PlaceItem(InventoryItem inventoryItem, int posX, int posY){
         
         RectTransform rectTransform = inventoryItem.GetComponent<RectTransform>();
-        rectTransform.SetParent(this._rectTransform);
+        rectTransform.SetParent(_rectTransform);
 
         for (int x = 0; x < inventoryItem.WIDTH; x++){
             for (int y = 0; y < inventoryItem.HEIGHT; y++){
@@ -169,7 +169,7 @@ public class ItemGrid : MonoBehaviour
         
         for (int y = 0; y < height; y++){
             for (int x = 0; x < width; x++){
-                if (CheckAvailableSpace(x, y, itemToInsert.WIDTH, itemToInsert.HEIGHT) == true){
+                if (CheckAvailableSpace(x, y, itemToInsert.WIDTH, itemToInsert.HEIGHT)){
                     return new Vector2Int(x, y);
                 }
             }
