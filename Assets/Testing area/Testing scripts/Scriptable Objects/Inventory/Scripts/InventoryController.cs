@@ -6,6 +6,7 @@ using Random = System.Random;
 // This script is attached to the camera to get mouse position for item placement
 public class InventoryController : MonoBehaviour
 {
+    public GameObject canvasInventory;
     [HideInInspector]
     ItemGrid selectedItemGrid;
     public ItemGrid SelectedItemGrid{
@@ -25,8 +26,8 @@ public class InventoryController : MonoBehaviour
     InventoryItem _overlapItem;
     RectTransform _rectTransform;
     InventoryHighlight _inventoryHighlight;
-    InventoryItem _itemToHighligt;
-    Vector2Int oldPosition;
+    InventoryItem _itemToHighlight;
+    Vector2Int _oldPosition;
     bool _clickOnInventory;
 
     void Awake(){
@@ -36,6 +37,10 @@ public class InventoryController : MonoBehaviour
 
     void Update(){
         ItemIconDrag();
+
+        if (Input.GetKeyDown(KeyCode.I)){
+            ToggleInventory();
+        }
 
         if (Input.GetKeyDown(KeyCode.Q)){ //debug version
             if (_selectedItem == null){
@@ -74,6 +79,10 @@ public class InventoryController : MonoBehaviour
         }
     }
 
+    void ToggleInventory(){
+        canvasInventory.SetActive(!canvasInventory.activeInHierarchy);
+    }
+
     void DropItemToGround(){
         RemoveItem();
     }
@@ -82,7 +91,6 @@ public class InventoryController : MonoBehaviour
         if (_selectedItem == null){
             return;
         }
-
         _selectedItem.Rotate();
     }
 
@@ -110,19 +118,19 @@ public class InventoryController : MonoBehaviour
 
     void HandleHighlight(){
         Vector2Int positionOnGrid = GetTileGridPosition();
-        if (oldPosition == positionOnGrid){
+        if (_oldPosition == positionOnGrid){
             return;
         }
-        oldPosition = positionOnGrid;
+        _oldPosition = positionOnGrid;
 
         //if(oldPosition != positionOnGrid)
         if (_selectedItem == null){
-            _itemToHighligt = selectedItemGrid.GetItem(positionOnGrid.x, positionOnGrid.y);
-            if (_itemToHighligt != null){
+            _itemToHighlight = selectedItemGrid.GetItem(positionOnGrid.x, positionOnGrid.y);
+            if (_itemToHighlight != null){
                 _inventoryHighlight.Show(true);
-                _inventoryHighlight.SetSize(_itemToHighligt);
+                _inventoryHighlight.SetSize(_itemToHighlight);
                 //_inventoryHighlight.SetParent(selectedItemGrid);
-                _inventoryHighlight.SetPosition(selectedItemGrid, _itemToHighligt);
+                _inventoryHighlight.SetPosition(selectedItemGrid, _itemToHighlight);
             }
             else{
                 _inventoryHighlight.Show(false);

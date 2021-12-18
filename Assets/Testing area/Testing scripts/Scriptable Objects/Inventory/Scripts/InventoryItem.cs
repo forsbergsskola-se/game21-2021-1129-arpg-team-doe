@@ -5,7 +5,7 @@ public class InventoryItem : MonoBehaviour{
    public ItemData itemData;
    public int onGridPositionX;
    public int onGridPositionY;
-   public bool rotated = false;
+   public bool rotated;
 
    //for rotating tiles
    public int HEIGHT{
@@ -25,13 +25,10 @@ public class InventoryItem : MonoBehaviour{
          return itemData.height;
       }
    }
-   
-
+ 
    internal void Set(ItemData itemData){
       this.itemData = itemData;
-
       GetComponent<Image>().sprite = itemData.itemIcon;
-
       Vector2 size = new Vector2();
       size.x = itemData.width * ItemGrid.tileSizeWidth;
       size.y = itemData.height * ItemGrid.tileSizeHeight;
@@ -40,7 +37,6 @@ public class InventoryItem : MonoBehaviour{
 
    internal void Rotate(){
       rotated = !rotated;
-
       RectTransform rectTransform = GetComponent<RectTransform>();
       rectTransform.rotation = Quaternion.Euler(0, 0, rotated == true ? 90f : 0f);
    }

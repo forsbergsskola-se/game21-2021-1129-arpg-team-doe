@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
         // if click on the ground, move to cursor
         MoveToCursor();
     }
-
+    
     bool GetPlayerIsDefeated(){
         if (_health.CurrentHP <= defeatedThreshold){
             playerIsDefeated = true;
