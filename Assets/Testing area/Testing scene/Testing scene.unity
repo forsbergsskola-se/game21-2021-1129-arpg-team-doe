@@ -1229,6 +1229,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (Zlatan)
       objectReference: {fileID: 0}
+    - target: {fileID: 3143738041877798712, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5390644642141334288, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.00877901
@@ -1260,6 +1264,26 @@ PrefabInstance:
     - target: {fileID: 6801725445022384116, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: TakeDamageReference.Guid.Data4
       value: 1873771730
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: alertReference.Path
+      value: event:/ZombieAlert
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: alertReference.Guid.Data1
+      value: 1464525013
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: alertReference.Guid.Data2
+      value: 1092484123
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: alertReference.Guid.Data3
+      value: -1553806203
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: alertReference.Guid.Data4
+      value: 1802021503
       objectReference: {fileID: 0}
     - target: {fileID: 8847981991113582871, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_Controller
@@ -2807,6 +2831,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (Zlatan) (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3143738041877798712, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5390644642141334288, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.00877901
@@ -2838,6 +2866,26 @@ PrefabInstance:
     - target: {fileID: 6801725445022384116, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: TakeDamageReference.Guid.Data4
       value: 1873771730
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: alertReference.Path
+      value: event:/ZombieAlert
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: alertReference.Guid.Data1
+      value: 1464525013
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: alertReference.Guid.Data2
+      value: 1092484123
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: alertReference.Guid.Data3
+      value: -1553806203
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: alertReference.Guid.Data4
+      value: 1802021503
       objectReference: {fileID: 0}
     - target: {fileID: 8847981991113582871, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_Controller
@@ -3931,26 +3979,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8245414175371773564, guid: 778dbe75f281c9145a2bfb739c624812, type: 3}
-      propertyPath: attackReference.Path
-      value: event:/FastWeaponSwing
-      objectReference: {fileID: 0}
-    - target: {fileID: 8245414175371773564, guid: 778dbe75f281c9145a2bfb739c624812, type: 3}
-      propertyPath: attackReference.Guid.Data1
-      value: -1054985321
-      objectReference: {fileID: 0}
-    - target: {fileID: 8245414175371773564, guid: 778dbe75f281c9145a2bfb739c624812, type: 3}
-      propertyPath: attackReference.Guid.Data2
-      value: 1270899441
-      objectReference: {fileID: 0}
-    - target: {fileID: 8245414175371773564, guid: 778dbe75f281c9145a2bfb739c624812, type: 3}
-      propertyPath: attackReference.Guid.Data3
-      value: -1379749704
-      objectReference: {fileID: 0}
-    - target: {fileID: 8245414175371773564, guid: 778dbe75f281c9145a2bfb739c624812, type: 3}
-      propertyPath: attackReference.Guid.Data4
-      value: 102819547
-      objectReference: {fileID: 0}
     - target: {fileID: 8245414175371773565, guid: 778dbe75f281c9145a2bfb739c624812, type: 3}
       propertyPath: luck
       value: 0
@@ -3976,66 +4004,6 @@ PrefabInstance:
       propertyPath: _xpDropEvent
       value: 
       objectReference: {fileID: 11400000, guid: 44b23296178544384ad6b8052486b374, type: 2}
-    - target: {fileID: 666683531177710290, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
-      propertyPath: TakeDamageReference.Path
-      value: event:/PlayerTakingDMG
-      objectReference: {fileID: 0}
-    - target: {fileID: 666683531177710290, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
-      propertyPath: TakeDamageReference.Guid.Data1
-      value: -1548147627
-      objectReference: {fileID: 0}
-    - target: {fileID: 666683531177710290, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
-      propertyPath: TakeDamageReference.Guid.Data2
-      value: 1151887429
-      objectReference: {fileID: 0}
-    - target: {fileID: 666683531177710290, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
-      propertyPath: TakeDamageReference.Guid.Data3
-      value: -1037099638
-      objectReference: {fileID: 0}
-    - target: {fileID: 666683531177710290, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
-      propertyPath: TakeDamageReference.Guid.Data4
-      value: 1873771730
-      objectReference: {fileID: 0}
-    - target: {fileID: 4896606745485573230, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
-      propertyPath: critReference.Path
-      value: event:/CritHit
-      objectReference: {fileID: 0}
-    - target: {fileID: 4896606745485573230, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
-      propertyPath: attackReference.Path
-      value: event:/FastWeaponSwing
-      objectReference: {fileID: 0}
-    - target: {fileID: 4896606745485573230, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
-      propertyPath: critReference.Guid.Data1
-      value: -1447269917
-      objectReference: {fileID: 0}
-    - target: {fileID: 4896606745485573230, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
-      propertyPath: critReference.Guid.Data2
-      value: 1094244117
-      objectReference: {fileID: 0}
-    - target: {fileID: 4896606745485573230, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
-      propertyPath: critReference.Guid.Data3
-      value: 1211020455
-      objectReference: {fileID: 0}
-    - target: {fileID: 4896606745485573230, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
-      propertyPath: critReference.Guid.Data4
-      value: -30663946
-      objectReference: {fileID: 0}
-    - target: {fileID: 4896606745485573230, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
-      propertyPath: attackReference.Guid.Data1
-      value: -1054985321
-      objectReference: {fileID: 0}
-    - target: {fileID: 4896606745485573230, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
-      propertyPath: attackReference.Guid.Data2
-      value: 1270899441
-      objectReference: {fileID: 0}
-    - target: {fileID: 4896606745485573230, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
-      propertyPath: attackReference.Guid.Data3
-      value: -1379749704
-      objectReference: {fileID: 0}
-    - target: {fileID: 4896606745485573230, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
-      propertyPath: attackReference.Guid.Data4
-      value: 102819547
-      objectReference: {fileID: 0}
     - target: {fileID: 4906887523955336071, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
       propertyPath: m_IsActive
       value: 0

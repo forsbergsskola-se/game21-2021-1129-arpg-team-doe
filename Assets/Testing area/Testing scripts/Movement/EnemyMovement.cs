@@ -4,6 +4,7 @@ using UnityEditor;
 using System.Collections;
 using UnityEngine;
 using AnimatorChanger;
+using FMOD.Studio;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class EnemyMovement : MonoBehaviour
    Fighter _fighter;
    Health _health;
    AnimationController _animationController;
+   EventInstance _alertInstance;
+   public FMODUnity.EventReference alertReference;
+   
 
    GameObject _player;
    Transform _desiredTarget;
@@ -27,6 +31,7 @@ public class EnemyMovement : MonoBehaviour
    bool _isAttacking;
    bool _playerIsDetected;
    string _currentState;
+   bool _alerted = true;
 
    const string RUN = "Run";
    const string IDLE = "Idle";
@@ -40,6 +45,8 @@ public class EnemyMovement : MonoBehaviour
       _player = GameObject.FindWithTag("Player");
       _desiredTarget = _player.transform;
 
+      _alertInstance = FMODUnity.RuntimeManager.CreateInstance(alertReference);
+
    }
 
    void Update(){ // very long update, might want to refactor
@@ -48,13 +55,18 @@ public class EnemyMovement : MonoBehaviour
       _playerIsDetected = _targetDetection.TargetIsDetected(transform.position, _desiredTarget);
       if (_targetDetection.DistanceToTarget(_savedPosition, transform) < closeEnoughToSavedPosition){
          _needsToWalkBack = false;
-         if (!_isAttacking) // there is a semicolon here?
+         if (!_isAttacking) 
             _animationController.ChangeAnimationState(IDLE);
       }
       _isAttacking = _playerIsDetected && !_needsToWalkBack;
       if (_isAttacking){
             _target = _desiredTarget;
             InteractCombat(_target);
+      }
+      
+      if (_playerIsDetected && _alerted){
+         PlayAlertSound();
+         _alerted = false;
       }
       // if (_target == null){
       //    WalkBackAndSetIdle();
@@ -74,6 +86,10 @@ public class EnemyMovement : MonoBehaviour
          WalkBackAndSetIdle();
          return;
       }
+      if (!_playerIsDetected && !_alerted){
+         _alerted = true;
+      }
+      
       if (_targetDetection.DistanceToTarget(_savedPosition, transform) < maxFollowRange){
          _fighter.GetAttackTarget(target.gameObject);
          _needsToWalkBack = false;
@@ -125,6 +141,18 @@ public class EnemyMovement : MonoBehaviour
    void SavePosition(){
       _savedPosition = transform.position;
       _activeSavedPosition = true;
+   }
+   public void PlayAlertSound(){
+      _alertInstance.getPlaybackState(out var playbackState);
+      if (playbackState == PLAYBACK_STATE.STOPPED){
+         _alertInstance.start();  
+      }
+   }
+
+   void Alert(){
+      if (_targetDetection.TargetIsDetected(transform.position,_target.transform)&& !_alerted){
+         _alerted = true;
+      }
    }
 
 
