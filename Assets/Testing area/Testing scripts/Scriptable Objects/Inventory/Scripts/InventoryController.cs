@@ -60,25 +60,23 @@ public class InventoryController : MonoBehaviour
 
         if (selectedItemGrid == null){
             _inventoryHighlight.Show(false);
-            _clickOnInventory = false;
-            //return;
+            //_clickOnInventory = false;
+            return;
         }
-        else{
-            _clickOnInventory = true;
-        }
-
-        if (_clickOnInventory){
-            HandleHighlight();
-            if (Input.GetMouseButtonDown(0)){
-                LeftMouseButtonPress();
-            }
+        // else{
+        //     _clickOnInventory = true;
+        // }
+        
+        HandleHighlight();
+        if (Input.GetMouseButtonDown(0)){
+            LeftMouseButtonPress();
         }
         
-        if (!_clickOnInventory && Input.GetMouseButtonDown(0) && _selectedItem != null){
-            DropItemToGround();
-        }
+        // if (!_clickOnInventory && Input.GetMouseButtonDown(0) && _selectedItem != null){
+        //     DropItemToGround();
+        // }
     }
-
+    
     void ToggleInventory(){
         canvasInventory.SetActive(!canvasInventory.activeInHierarchy);
     }
@@ -98,14 +96,14 @@ public class InventoryController : MonoBehaviour
         if (selectedItemGrid == null){
             return;
         }
-        
+
         CreateRandomItem();
-        InventoryItem itemToInsert = _selectedItem;
+        InventoryItem itemToInsert = _selectedItem ;
         _selectedItem = null;
         InsertItem(itemToInsert);
     }
 
-    void InsertItem(InventoryItem itemToInsert){
+    public void InsertItem(InventoryItem itemToInsert){
         Vector2Int? posOnGrid = selectedItemGrid.FindSpaceForObject(itemToInsert);
 
         if (posOnGrid == null){
@@ -148,9 +146,9 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-    void CreateRandomItem(){
+    public InventoryItem CreateRandomItem(){
         InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
-        _selectedItem = inventoryItem;
+        //_selectedItem = inventoryItem;
         
         _rectTransform = inventoryItem.GetComponent<RectTransform>();
         _rectTransform.SetParent(canvasTransform);
@@ -158,6 +156,8 @@ public class InventoryController : MonoBehaviour
 
         int selectedItemID = UnityEngine.Random.Range(0, items.Count);
         inventoryItem.Set(items[selectedItemID]);
+
+        return inventoryItem;
     }
     
     void RemoveItem(){
