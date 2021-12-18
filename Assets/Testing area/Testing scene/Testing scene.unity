@@ -5004,6 +5004,10 @@ PrefabInstance:
       propertyPath: minZoom
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6614988171499839989, guid: 1b36c6334384e4b4982240dd55541241, type: 3}
+      propertyPath: cameraAngleX
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 6614988172009823786, guid: 1b36c6334384e4b4982240dd55541241, type: 3}
       propertyPath: field of view
       value: 85.189255
@@ -5052,6 +5056,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0f3e118f0d3d37543b26fea8604887c8, type: 2}
   - {fileID: 11400000, guid: 2a248e3b74a62c349953ba6aaef2a62e, type: 2}
   itemPrefab: {fileID: 3378097737434846926, guid: 7c97bfcbdf1b1aa4cb379fcba585140a, type: 3}
+  droppedItem: {fileID: 4537476586442300296, guid: 7e6421aaab3e55f489d475a131951c00, type: 3}
   canvasTransform: {fileID: 0}
 --- !u!114 &6614988170983185390
 MonoBehaviour:

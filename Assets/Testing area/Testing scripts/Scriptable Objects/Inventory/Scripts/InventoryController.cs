@@ -18,6 +18,7 @@ public class InventoryController : MonoBehaviour
 
     [SerializeField] List<ItemData> items;
     [SerializeField] GameObject itemPrefab;
+    [SerializeField] GameObject droppedItem;
     [SerializeField] Transform canvasTransform;
 
     InventoryItem _selectedItem;
@@ -154,6 +155,8 @@ public class InventoryController : MonoBehaviour
     void RemoveItem(){
         _selectedItem.gameObject.SetActive(false);
         _selectedItem = null;
+        GameObject droppedObject = Instantiate(droppedItem);
+        droppedObject.transform.position = GameObject.FindWithTag("Player").transform.position;
     }
 
     void LeftMouseButtonPress(){
