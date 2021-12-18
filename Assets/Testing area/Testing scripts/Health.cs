@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using CustomLogs;
+using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
 using Random = System.Random;
@@ -20,6 +21,9 @@ public class Health : MonoBehaviour, IDamageReceiver{
     FMOD.Studio.PARAMETER_ID fmodParameterID;
     public FMODUnity.EventReference fmodEvent;
     [SerializeField] [Min(0)] float parameter;
+    
+    EventInstance _takeDamage;
+    public EventReference TakeDamageReference;
     // remove if unsuccessful
 
     //[SerializeField] Fmod event - Having this public or serialized doesnt work
@@ -40,6 +44,7 @@ public class Health : MonoBehaviour, IDamageReceiver{
         _stats = GetComponent<Statistics>();
         random = new Random();
         CurrentHP = ModifiedMaxHP;
+        _takeDamage = RuntimeManager.CreateInstance(TakeDamageReference);
 
         if (_xpDrop != null) {
             _xpDrop = GetComponent<XPDrop>();
@@ -79,6 +84,9 @@ public class Health : MonoBehaviour, IDamageReceiver{
     public void ReceiveDamage(int damage, bool isCrit, bool isPlayer){ //Toughness should affect this
         damage = ProcessDamage(damage);
         UpdateHealth(damage);
+        if (gameObject.tag == "Player"){
+            PlaySound();
+        }
         //this.LogTakeDamage(damage,CurrentHP);
         if (!IsAlive){
             OnDeath(isPlayer);
@@ -111,8 +119,10 @@ public class Health : MonoBehaviour, IDamageReceiver{
         }
     }
 
-    void PlaySound(){
-        instance.start();
-        instance.release();
+    public void PlaySound(){
+        _takeDamage.getPlaybackState(out var playbackState);
+        if (playbackState == PLAYBACK_STATE.STOPPED){
+            _takeDamage.start();  
+        }
     }
 }

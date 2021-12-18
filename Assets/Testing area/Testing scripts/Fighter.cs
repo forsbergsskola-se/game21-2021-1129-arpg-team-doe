@@ -2,8 +2,9 @@ using CustomLogs;
 using UnityEngine;
 using Random = System.Random;
 using AnimatorChanger;
+using FMOD.Studio;
 
-public class Fighter : MonoBehaviour{
+public class Fighter : MonoBehaviour, IInteractSound{
     [SerializeField] float critDamageMultiplier = 1.5f; // for debug
 
     Statistics _statistics;
@@ -11,6 +12,10 @@ public class Fighter : MonoBehaviour{
     Movement _movement;
     Random _random;
     AnimationController _animationController;
+    EventInstance _critAttackInstance;
+    public FMODUnity.EventReference critReference;
+    EventInstance _attackInstance;
+    public FMODUnity.EventReference attackReference;
 
     bool isPlayer;
 
@@ -31,6 +36,11 @@ public class Fighter : MonoBehaviour{
         if (this.gameObject.tag == "Player") {
             isPlayer = true;
         }
+
+        if (gameObject.tag == "Player"){
+            _critAttackInstance = FMODUnity.RuntimeManager.CreateInstance(critReference);
+        }
+        _attackInstance = FMODUnity.RuntimeManager.CreateInstance(attackReference);
     }
 
     void Update(){
@@ -65,6 +75,7 @@ public class Fighter : MonoBehaviour{
         LookAtTarget();
         if (_timeSinceLastAttack > 1f / _statistics.AttackSpeed){
             // TODO: trigger attack animation and sound here
+            PlayAttackSound();
             //if(_animationController != null)
             _animationController.ChangeAnimationState(ATTACK);
             _damage = _statistics.AttackDamage;
@@ -72,6 +83,7 @@ public class Fighter : MonoBehaviour{
             if (_random.NextDouble() < _statistics.CritChance){
                 _damage = Mathf.RoundToInt(_statistics.AttackDamage * critDamageMultiplier);
                 isCrit = true;
+                PlayCritSound(); 
             }
             target.GetComponent<IDamageReceiver>()?.ReceiveDamage(_damage, isCrit, isPlayer);
             //this.LogDealDamage(_damage, isCrit, target,_combatTarget.CurrentHP);
@@ -92,6 +104,18 @@ public class Fighter : MonoBehaviour{
 
     bool IsClickOnItself(){
         return _combatTarget.transform.gameObject == gameObject;
+    }
+    public void PlayCritSound(){
+        _critAttackInstance.getPlaybackState(out var playbackState);
+        if (playbackState == PLAYBACK_STATE.STOPPED){
+            _critAttackInstance.start();  
+        }
+    }
+    public void PlayAttackSound(){
+        _attackInstance.getPlaybackState(out var playbackState);
+        if (playbackState == PLAYBACK_STATE.STOPPED){
+            _attackInstance.start();  
+        }
     }
 
 }
