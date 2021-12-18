@@ -40,7 +40,7 @@ public class ItemGrid : MonoBehaviour
         return toReturn;
     }
 
-    bool IsOutOfInventoryGrid(int x, int y){
+    public bool IsOutOfInventoryGrid(int x, int y){
         Vector2 inventorySize = _rectTransform.sizeDelta;
         return x < 0 || x > inventorySize.x || y < 0 || y > inventorySize.y;
     }
@@ -62,8 +62,9 @@ public class ItemGrid : MonoBehaviour
     }
 
     public Vector2Int GetTileGridPosition(Vector2 mousePosition){
-        positionOnTheGrid.x = mousePosition.x - _rectTransform.position.x;
-        positionOnTheGrid.y = _rectTransform.position.y - mousePosition.y;
+        Vector2 rectPosition = _rectTransform.position;
+        positionOnTheGrid.x = mousePosition.x - rectPosition.x;
+        positionOnTheGrid.y = rectPosition.y - mousePosition.y;
         tileGridPosition.x = (int) (positionOnTheGrid.x / tileSizeWidth);
         tileGridPosition.y = (int) (positionOnTheGrid.y / tileSizeHeight);
 

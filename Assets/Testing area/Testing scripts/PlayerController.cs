@@ -139,6 +139,7 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(GoToPosistionThenInteract(hit));
                 Vector3 positionCloseToTarget = hit.point - (hit.point - transform.position).normalized;
                 MoveToInteractable(interactableObject, positionCloseToTarget);
+                _animationController.ChangeAnimationState("Run");
                 // _animator.SetBool("isRunning", false);
                 // _animator.SetBool("isAttacking", true);
             }

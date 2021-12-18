@@ -27,6 +27,7 @@ public class InventoryController : MonoBehaviour
     RectTransform _rectTransform;
     InventoryHighlight _inventoryHighlight;
     InventoryItem _itemToHighlight;
+    Transform _playerTransform;
     Vector2Int _oldPosition;
     bool _clickOnInventory;
 
@@ -34,6 +35,9 @@ public class InventoryController : MonoBehaviour
         _inventoryHighlight = GetComponent<InventoryHighlight>();
     }
 
+    void Start(){
+        _playerTransform = GameObject.FindWithTag("Player").transform;
+    }
 
     void Update(){
         ItemIconDrag();
@@ -60,21 +64,37 @@ public class InventoryController : MonoBehaviour
 
         if (selectedItemGrid == null){
             _inventoryHighlight.Show(false);
-            //_clickOnInventory = false;
             return;
         }
-        // else{
-        //     _clickOnInventory = true;
-        // }
         
         HandleHighlight();
         if (Input.GetMouseButtonDown(0)){
             LeftMouseButtonPress();
         }
+    }
+    
+    public void InsertItem(InventoryItem itemToInsert){
+        Vector2Int? posOnGrid = selectedItemGrid.FindSpaceForObject(itemToInsert);
+
+        if (posOnGrid == null){
+            return;
+        }
+
+        selectedItemGrid.PlaceItem(itemToInsert, posOnGrid.Value.x, posOnGrid.Value.y);
+    }
+    
+    public InventoryItem CreateRandomItem(){
+        InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
+        //_selectedItem = inventoryItem;
         
-        // if (!_clickOnInventory && Input.GetMouseButtonDown(0) && _selectedItem != null){
-        //     DropItemToGround();
-        // }
+        _rectTransform = inventoryItem.GetComponent<RectTransform>();
+        _rectTransform.SetParent(canvasTransform);
+        _rectTransform.SetAsLastSibling(); //item you hold dont get behind a placed item in inventory
+
+        int selectedItemID = UnityEngine.Random.Range(0, items.Count);
+        inventoryItem.Set(items[selectedItemID]);
+
+        return inventoryItem;
     }
     
     void ToggleInventory(){
@@ -82,7 +102,8 @@ public class InventoryController : MonoBehaviour
     }
 
     void DropItemToGround(){
-        RemoveItem();
+        SpawnItemOnGround();
+        RemoveItemFromInventory();
     }
 
     void RotateItem(){
@@ -102,17 +123,6 @@ public class InventoryController : MonoBehaviour
         _selectedItem = null;
         InsertItem(itemToInsert);
     }
-
-    public void InsertItem(InventoryItem itemToInsert){
-        Vector2Int? posOnGrid = selectedItemGrid.FindSpaceForObject(itemToInsert);
-
-        if (posOnGrid == null){
-            return;
-        }
-
-        selectedItemGrid.PlaceItem(itemToInsert, posOnGrid.Value.x, posOnGrid.Value.y);
-    }
-
 
     void HandleHighlight(){
         Vector2Int positionOnGrid = GetTileGridPosition();
@@ -147,25 +157,15 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-    public InventoryItem CreateRandomItem(){
-        InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
-        //_selectedItem = inventoryItem;
-        
-        _rectTransform = inventoryItem.GetComponent<RectTransform>();
-        _rectTransform.SetParent(canvasTransform);
-        _rectTransform.SetAsLastSibling(); //item you hold dont get behind a placed item in inventory
-
-        int selectedItemID = UnityEngine.Random.Range(0, items.Count);
-        inventoryItem.Set(items[selectedItemID]);
-
-        return inventoryItem;
+    void RemoveItemFromInventory(){
+        Destroy(_selectedItem.gameObject);
+        _selectedItem = null;
     }
     
-    void RemoveItem(){
-        _selectedItem.gameObject.SetActive(false);
-        _selectedItem = null;
-        GameObject droppedObject = Instantiate(droppedItem);
-        droppedObject.transform.position = GameObject.FindWithTag("Player").transform.position;
+    void SpawnItemOnGround(){
+        Vector3 spawnPosition = _playerTransform.position + new Vector3(0, 0, 2);
+        GameObject droppedObject = Instantiate(droppedItem, spawnPosition, Quaternion.identity); // for debug
+        // Here we need to instantiate the corresponding game object.
     }
 
     void LeftMouseButtonPress(){
@@ -189,6 +189,10 @@ public class InventoryController : MonoBehaviour
     }
 
     void PlaceItem(Vector2Int tileGridPosition){
+        if (selectedItemGrid.IsOutOfInventoryGrid(tileGridPosition.x, tileGridPosition.y)){
+            DropItemToGround();
+            return;
+        }
         bool complete = selectedItemGrid.PlaceItem(_selectedItem, tileGridPosition.x, tileGridPosition.y, ref _overlapItem);
         if (complete){
             _selectedItem = null;
