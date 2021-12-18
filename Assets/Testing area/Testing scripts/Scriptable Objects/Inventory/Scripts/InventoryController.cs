@@ -123,6 +123,7 @@ public class InventoryController : MonoBehaviour
 
         //if(oldPosition != positionOnGrid)
         if (_selectedItem == null){
+            
             _itemToHighlight = selectedItemGrid.GetItem(positionOnGrid.x, positionOnGrid.y);
             if (_itemToHighlight != null){
                 _inventoryHighlight.Show(true);
@@ -184,7 +185,6 @@ public class InventoryController : MonoBehaviour
             position.x -= (_selectedItem.WIDTH - 1) * ItemGrid.tileSizeWidth / 2;
             position.y += (_selectedItem.HEIGHT - 1) * ItemGrid.tileSizeHeight / 2;
         }
-        //Debug.Log(position);
         return selectedItemGrid.GetTileGridPosition(position);
     }
 

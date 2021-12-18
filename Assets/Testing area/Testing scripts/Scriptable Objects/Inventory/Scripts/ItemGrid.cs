@@ -26,6 +26,10 @@ public class ItemGrid : MonoBehaviour
     Vector2Int tileGridPosition = new Vector2Int();
 
     public InventoryItem PickUpItem(int x, int y){
+        if (IsOutOfInventoryGrid(x, y)){
+            return null;
+        }
+        
         InventoryItem toReturn = _inventoryItemSlot[x, y];
 
         if (toReturn == null){
@@ -34,6 +38,11 @@ public class ItemGrid : MonoBehaviour
 
         CleanGridReference(toReturn);
         return toReturn;
+    }
+
+    bool IsOutOfInventoryGrid(int x, int y){
+        Vector2 inventorySize = _rectTransform.sizeDelta;
+        return x < 0 || x > inventorySize.x || y < 0 || y > inventorySize.y;
     }
 
     void CleanGridReference(InventoryItem item){
@@ -45,6 +54,10 @@ public class ItemGrid : MonoBehaviour
     }
     
     internal InventoryItem GetItem(int x, int y){
+        if (IsOutOfInventoryGrid(x, y)){
+            return null;
+        }
+        //Debug.Log(new Vector2(x,y));
         return _inventoryItemSlot[x, y];
     }
 
