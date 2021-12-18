@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         _movement = GetComponent<Movement>();
         _statistics = GetComponent<Statistics>();
         _animator = GetComponentInChildren<Animator>();
-        _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
+        _moveInstance = RuntimeManager.CreateInstance("event:/Move");
         _health = GetComponent<Health>();
         _animationController = GetComponentInChildren<AnimationController>();
         _fighter = GetComponent<Fighter>();
@@ -46,7 +46,6 @@ public class PlayerController : MonoBehaviour
     void Start(){
         _interactionRange = _statistics.InteractRange;
         StartCoroutine(HealthRegeneration());
-        //_healthBar.SetActive(true);
     }
 
     void Update(){
@@ -93,10 +92,9 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator HealthRegeneration(){ // health regeneration seems weird
         while (true){
-            if (_health.CurrentHP < regenerateThreshold){
+            if (_health.CurrentHP <= regenerateThreshold){
                 yield return new WaitForSeconds(1f);
                 _health.UpdateHealth(-healthRegen);
-                //Debug.Log(_health.CurrentHP);
             }
             else{
                 yield return null;
@@ -126,8 +124,6 @@ public class PlayerController : MonoBehaviour
             if (enemy == null) continue;
             if (Input.GetMouseButton(0)){
                 _fighter.GetAttackTarget(enemy);
-                // _animator.SetBool("isRunning", false);
-                // _animator.SetBool("isAttacking", true);
             }
             return true;
         }
