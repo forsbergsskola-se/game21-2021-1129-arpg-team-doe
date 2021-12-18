@@ -49,12 +49,12 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update(){
-        if (Input.GetKeyDown(KeyCode.Space)){
-            inventory.Save();
-        }
-        if (Input.GetKeyDown(KeyCode.KeypadEnter)){
-            inventory.Load();
-        }
+        // if (Input.GetKeyDown(KeyCode.Space)){
+        //     inventory.Save();
+        // }
+        // if (Input.GetKeyDown(KeyCode.KeypadEnter)){
+        //     inventory.Load();
+        // }
         
         if (GetPlayerIsDefeated()){
             return;
@@ -102,20 +102,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other){ //Break out into its own script with onApplicationQuit
-        //Check if other has GroundItem script
-        if (other.GetComponent<GroundItem>() != null){
-            var item = other.GetComponent<GroundItem>();
-            //Adds item to inventory
-            inventory.AddItem(new Item(item.item),1);
-            //Destroys the item from the world
-            Destroy(other.gameObject);
-        }
-    }
+    // void OnTriggerEnter(Collider other){ //Break out into its own script with onApplicationQuit
+    //     //Check if other has GroundItem script
+    //     if (other.GetComponent<GroundItem>() != null){
+    //         var item = other.GetComponent<GroundItem>();
+    //         //Adds item to inventory
+    //         inventory.AddItem(new Item(item.item),1);
+    //         //Destroys the item from the world
+    //         Destroy(other.gameObject);
+    //     }
+    // }
 
-    void OnApplicationQuit(){
-        inventory.Container.Items = new InventorySlot[25];
-    }
+    // void OnApplicationQuit(){
+    //     inventory.Container.Items = new InventorySlot[25];
+    // }
 
     bool InteractWithCombat(){
         RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
