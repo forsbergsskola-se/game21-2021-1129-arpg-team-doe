@@ -92,3 +92,4 @@ MonoBehaviour:
   itemData: {fileID: 0}
   onGridPositionX: 0
   onGridPositionY: 0
+  rotated: 0
