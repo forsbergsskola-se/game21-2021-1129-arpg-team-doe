@@ -166,6 +166,13 @@ MonoBehaviour:
       Data4: 0
     Path: 
   parameter: 0
+  TakeDamageReference:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   maxHP: 100
   _xpDrop: {fileID: 0}
   _xpDropEvent: {fileID: 0}
@@ -182,6 +189,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   critDamageMultiplier: 1.5
+  critReference:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  attackReference:
+    Guid:
+      Data1: -1054985321
+      Data2: 1270899441
+      Data3: -1379749704
+      Data4: 102819547
+    Path: event:/FastWeaponSwing
 --- !u!114 &1535776509353853779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,6 +301,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelingGameObject: {fileID: 11400000, guid: bac969c35aac6924fb6519533e2f15c4, type: 2}
+  fmodEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  receiveXpEventListener: {fileID: 0}
 --- !u!1001 &8925168225513398043
 PrefabInstance:
   m_ObjectHideFlags: 0

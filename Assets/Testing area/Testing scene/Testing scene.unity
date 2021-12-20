@@ -512,7 +512,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &259013879
 Transform:
@@ -548,7 +548,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &267599986
 Transform:
@@ -689,6 +689,13 @@ MonoBehaviour:
       Data4: 0
     Path: 
   parameter: 0
+  TakeDamageReference:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   maxHP: 10
   _xpDrop: {fileID: 0}
   _xpDropEvent: {fileID: 0}
@@ -1094,6 +1101,46 @@ PrefabInstance:
       propertyPath: m_WholeNumbers
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: critReference.Path
+      value: event:/CritHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: attackReference.Path
+      value: event:/FastWeaponSwing
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: critReference.Guid.Data1
+      value: -1447269917
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: critReference.Guid.Data2
+      value: 1094244117
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: critReference.Guid.Data3
+      value: 1211020455
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: critReference.Guid.Data4
+      value: -30663946
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: attackReference.Guid.Data1
+      value: -1054985321
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: attackReference.Guid.Data2
+      value: 1270899441
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: attackReference.Guid.Data3
+      value: -1379749704
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: attackReference.Guid.Data4
+      value: 102819547
+      objectReference: {fileID: 0}
     - target: {fileID: 2402392299167721498, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: luck
       value: 138.33
@@ -1182,6 +1229,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (Zlatan)
       objectReference: {fileID: 0}
+    - target: {fileID: 3143738041877798712, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5390644642141334288, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.00877901
@@ -1193,6 +1244,46 @@ PrefabInstance:
     - target: {fileID: 5390644642141334288, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.019072557
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801725445022384116, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: TakeDamageReference.Path
+      value: event:/PlayerTakingDMG
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801725445022384116, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: TakeDamageReference.Guid.Data1
+      value: -1548147627
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801725445022384116, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: TakeDamageReference.Guid.Data2
+      value: 1151887429
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801725445022384116, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: TakeDamageReference.Guid.Data3
+      value: -1037099638
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801725445022384116, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: TakeDamageReference.Guid.Data4
+      value: 1873771730
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: alertReference.Path
+      value: event:/ZombieAlert
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: alertReference.Guid.Data1
+      value: 1464525013
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: alertReference.Guid.Data2
+      value: 1092484123
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: alertReference.Guid.Data3
+      value: -1553806203
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: alertReference.Guid.Data4
+      value: 1802021503
       objectReference: {fileID: 0}
     - target: {fileID: 8847981991113582871, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_Controller
@@ -1238,7 +1329,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!135 &616178346
 SphereCollider:
@@ -1572,7 +1663,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!135 &764443532
 SphereCollider:
@@ -1712,7 +1803,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &765376375
 Transform:
@@ -2165,6 +2256,25 @@ NavMeshAgent:
   m_BaseOffset: 0.49999997
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!1 &1219675010 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2584270164984782272, guid: 778dbe75f281c9145a2bfb739c624812, type: 3}
+  m_PrefabInstance: {fileID: 7439300178194185859}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1219675012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219675010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e823775e63fe2a449e75a700dea31ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _consumableObject: {fileID: 11400000, guid: dddc4062bf8d75940acdac0d86f6d1a0, type: 2}
+  maxToxicityLevel: 3
 --- !u!1 &1270537176 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8705401766356934911, guid: e31cf9a5d6ce27446a4e2f937c659f3c, type: 3}
@@ -2449,7 +2559,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!135 &1448457190
 SphereCollider:
@@ -2636,6 +2746,46 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: critReference.Path
+      value: event:/CritHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: attackReference.Path
+      value: event:/FastWeaponSwing
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: critReference.Guid.Data1
+      value: -1447269917
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: critReference.Guid.Data2
+      value: 1094244117
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: critReference.Guid.Data3
+      value: 1211020455
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: critReference.Guid.Data4
+      value: -30663946
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: attackReference.Guid.Data1
+      value: -1054985321
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: attackReference.Guid.Data2
+      value: 1270899441
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: attackReference.Guid.Data3
+      value: -1379749704
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: attackReference.Guid.Data4
+      value: 102819547
+      objectReference: {fileID: 0}
     - target: {fileID: 2402392299167721498, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: luck
       value: 138.33
@@ -2700,6 +2850,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (Zlatan) (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3143738041877798712, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5390644642141334288, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.00877901
@@ -2711,6 +2865,46 @@ PrefabInstance:
     - target: {fileID: 5390644642141334288, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.019072557
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801725445022384116, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: TakeDamageReference.Path
+      value: event:/PlayerTakingDMG
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801725445022384116, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: TakeDamageReference.Guid.Data1
+      value: -1548147627
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801725445022384116, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: TakeDamageReference.Guid.Data2
+      value: 1151887429
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801725445022384116, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: TakeDamageReference.Guid.Data3
+      value: -1037099638
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801725445022384116, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: TakeDamageReference.Guid.Data4
+      value: 1873771730
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: alertReference.Path
+      value: event:/ZombieAlert
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: alertReference.Guid.Data1
+      value: 1464525013
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: alertReference.Guid.Data2
+      value: 1092484123
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: alertReference.Guid.Data3
+      value: -1553806203
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: alertReference.Guid.Data4
+      value: 1802021503
       objectReference: {fileID: 0}
     - target: {fileID: 8847981991113582871, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_Controller
@@ -2751,7 +2945,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1707408118
 Transform:
@@ -2886,7 +3080,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!135 &1743232328
 SphereCollider:
@@ -3346,6 +3540,13 @@ MonoBehaviour:
       Data4: 0
     Path: 
   parameter: 0
+  TakeDamageReference:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   maxHP: 20
   _xpDrop: {fileID: 0}
   _xpDropEvent: {fileID: 0}
@@ -3737,6 +3938,10 @@ PrefabInstance:
       propertyPath: canvasTransform
       value: 
       objectReference: {fileID: 205886862}
+    - target: {fileID: 4796008556883555161, guid: 778dbe75f281c9145a2bfb739c624812, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7439300178248752360, guid: 778dbe75f281c9145a2bfb739c624812, type: 3}
       propertyPath: m_Name
       value: === Player everything ====
@@ -3792,6 +3997,14 @@ PrefabInstance:
     - target: {fileID: 7439300178482429040, guid: 778dbe75f281c9145a2bfb739c624812, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245414175371773565, guid: 778dbe75f281c9145a2bfb739c624812, type: 3}
+      propertyPath: luck
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245414175371773565, guid: 778dbe75f281c9145a2bfb739c624812, type: 3}
+      propertyPath: dexterity
+      value: 0.21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 778dbe75f281c9145a2bfb739c624812, type: 3}

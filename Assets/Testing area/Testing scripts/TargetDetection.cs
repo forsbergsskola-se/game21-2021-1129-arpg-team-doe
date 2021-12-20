@@ -1,4 +1,5 @@
 using System;
+using FMOD.Studio;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -9,12 +10,11 @@ public class TargetDetection : MonoBehaviour
     [SerializeField] float areaDetectionRange = 5.0f;
     [SerializeField] float visionRange = 20.0f;
     [SerializeField] [Range(0,360)] float viewAngle;
-    
+
     float distanceToTarget;
 
     void Start(){
         viewAngle = Mathf.Cos(viewAngle * MathF.PI / 180 / 2);
-        
     }
     
     public float DistanceToTarget(Vector3 position, Transform target){

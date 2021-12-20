@@ -636,6 +636,13 @@ MonoBehaviour:
   _healthBar: {fileID: 4906887523955336071}
   maxFollowRange: 30
   closeEnoughToSavedPosition: 3
+  alertReference:
+    Guid:
+      Data1: 1464525013
+      Data2: 1092484123
+      Data3: -1553806203
+      Data4: 1802021503
+    Path: event:/ZombieAlert
 --- !u!114 &6894303664310673330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -711,6 +718,13 @@ MonoBehaviour:
       Data4: 0
     Path: 
   parameter: 0
+  TakeDamageReference:
+    Guid:
+      Data1: -1548147627
+      Data2: 1151887429
+      Data3: -1037099638
+      Data4: 1873771730
+    Path: event:/PlayerTakingDMG
   maxHP: 40
   _xpDrop: {fileID: 0}
   _xpDropEvent: {fileID: 0}
@@ -727,6 +741,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   critDamageMultiplier: 1.5
+  critReference:
+    Guid:
+      Data1: -1447269917
+      Data2: 1094244117
+      Data3: 1211020455
+      Data4: -30663946
+    Path: event:/CritHit
+  attackReference:
+    Guid:
+      Data1: -1054985321
+      Data2: 1270899441
+      Data3: -1379749704
+      Data4: 102819547
+    Path: event:/FastWeaponSwing
 --- !u!114 &6345615741836710522
 MonoBehaviour:
   m_ObjectHideFlags: 0

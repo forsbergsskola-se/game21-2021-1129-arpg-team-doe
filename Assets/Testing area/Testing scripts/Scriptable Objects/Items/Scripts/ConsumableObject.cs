@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Consumable Object", menuName = "Inventory System/Items/Consumable")]
-public class ConsumableObject : ItemObject{
+public class ConsumableObject : ItemObject, IConsumable{
 
     public int restoreHealthValue;
     public FMODUnity.EventReference fmodEvent;
@@ -17,9 +17,15 @@ public class ConsumableObject : ItemObject{
    public int luckBuff;
    [Tooltip	("Amount of attacks per second Buff")] public int attackSpeedBuff;
    public int damageBuff;
+
+   public int toxicityAmount;
   
    
    public void Awake(){
       type = ItemType.Consumable;
+   }
+   
+   public void Consume(){
+       
    }
 }
