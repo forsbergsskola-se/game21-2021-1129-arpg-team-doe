@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour{
    public ItemData itemData;
+   public ItemObject itemObject;
    public int onGridPositionX;
    public int onGridPositionY;
    public bool rotated;

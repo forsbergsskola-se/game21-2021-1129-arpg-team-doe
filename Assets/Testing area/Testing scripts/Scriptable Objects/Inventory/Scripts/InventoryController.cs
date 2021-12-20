@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = System.Random;
 
@@ -70,6 +71,11 @@ public class InventoryController : MonoBehaviour
         HandleHighlight();
         if (Input.GetMouseButtonDown(0)){
             LeftMouseButtonPress();
+        }
+        //if mouse over, display item object stats etc. _selecteditem.itemobject.whatever
+
+        if (Input.GetMouseButtonDown(1)){
+            RightMouseButtonPress();
         }
     }
     
@@ -176,6 +182,17 @@ public class InventoryController : MonoBehaviour
         }
         else{
             PlaceItem(tileGridPosition);
+        }
+    }
+
+    void RightMouseButtonPress(){
+        var tileGridPosition = GetTileGridPosition();
+        var hoveredItem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
+        if (hoveredItem != null){
+            hoveredItem.itemObject.UseItem();
+        }
+        else{
+            
         }
     }
 
