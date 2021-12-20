@@ -21,6 +21,7 @@ MonoBehaviour:
   description: This pie is well beyond its expiration date, but when has that ever
     stopped you before?
   buffs: []
+  _consumeEvent: {fileID: 11400000, guid: e6ac37807d1d72b45a4aa327ca0377d5, type: 2}
   restoreHealthValue: 30
   fmodEvent:
     Guid:
