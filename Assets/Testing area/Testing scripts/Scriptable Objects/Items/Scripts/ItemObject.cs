@@ -35,6 +35,9 @@ public abstract class ItemObject : ScriptableObject
         Item newItem = new Item(this);
         return newItem;
     }
+
+    public virtual void UseItem(){
+    }
 }
 
 [System.Serializable]

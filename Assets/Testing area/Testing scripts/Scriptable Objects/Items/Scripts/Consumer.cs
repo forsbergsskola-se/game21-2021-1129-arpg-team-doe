@@ -11,11 +11,12 @@ public interface IConsumable{
 public class Consumer : MonoBehaviour,IConsumable
 {
     [SerializeField] ConsumableObject _consumableObject;
+    [SerializeField] int maxToxicityLevel = 3;
 
     Statistics _statistics;
     Health _health;
-
-    [SerializeField] int maxToxicityLevel = 3;
+    
+    
     
     int toxicityLevel;
 
@@ -35,6 +36,8 @@ public class Consumer : MonoBehaviour,IConsumable
             Debug.Log("Toxicity level too high!" + toxicityLevel + "/" + maxToxicityLevel);
         }
     }
+    
+    
 
     IEnumerator Consume(){
         _health.UpdateHealth(_consumableObject.restoreHealthValue);

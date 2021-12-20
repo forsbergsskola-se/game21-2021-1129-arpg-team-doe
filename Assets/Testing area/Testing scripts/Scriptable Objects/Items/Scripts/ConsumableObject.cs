@@ -5,6 +5,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Consumable Object", menuName = "Inventory System/Items/Consumable")]
 public class ConsumableObject : ItemObject, IConsumable{
+    [SerializeField] GameEvent _consumeEvent;
 
     public int restoreHealthValue;
     public FMODUnity.EventReference fmodEvent;
@@ -24,8 +25,12 @@ public class ConsumableObject : ItemObject, IConsumable{
    public void Awake(){
       type = ItemType.Consumable;
    }
-   
+
+   public override void UseItem(){
+       Consume();
+   }
+
    public void Consume(){
-       
+       _consumeEvent.Invoke();
    }
 }
