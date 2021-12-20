@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour{
-   public ItemData itemData;
    public ItemObject itemObject;
    public int onGridPositionX;
    public int onGridPositionY;
@@ -12,27 +11,27 @@ public class InventoryItem : MonoBehaviour{
    public int HEIGHT{
       get{
          if (rotated == false){
-            return itemData.height;
+            return itemObject.height;
          }
-         return itemData.width;
+         return itemObject.width;
       }
    }
 
    public int WIDTH{
       get{
          if (rotated == false){
-            return itemData.width;
+            return itemObject.width;
          }
-         return itemData.height;
+         return itemObject.height;
       }
    }
  
-   internal void Set(ItemData itemData){
-      this.itemData = itemData;
-      GetComponent<Image>().sprite = itemData.itemIcon;
+   internal void Set(ItemObject itemObjectsasd){
+      this.itemObject = itemObjectsasd;
+      GetComponent<Image>().sprite = itemObject.itemIcon;
       Vector2 size = new Vector2();
-      size.x = itemData.width * ItemGrid.tileSizeWidth;
-      size.y = itemData.height * ItemGrid.tileSizeHeight;
+      size.x = itemObject.width * ItemGrid.tileSizeWidth;
+      size.y = itemObject.height * ItemGrid.tileSizeHeight;
       GetComponent<RectTransform>().sizeDelta = size;
    }
 

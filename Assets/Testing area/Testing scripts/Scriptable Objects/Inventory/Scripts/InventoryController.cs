@@ -18,7 +18,7 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-    [SerializeField] List<ItemData> items;
+    [SerializeField] ItemDatabaseObject itemsInDatabase;
     [SerializeField] GameObject itemPrefab;
     [SerializeField] GameObject droppedItem;
     [SerializeField] Transform canvasTransform;
@@ -97,8 +97,8 @@ public class InventoryController : MonoBehaviour
         _rectTransform.SetParent(canvasTransform);
         _rectTransform.SetAsLastSibling(); //item you hold dont get behind a placed item in inventory
 
-        int selectedItemID = UnityEngine.Random.Range(0, items.Count);
-        inventoryItem.Set(items[selectedItemID]);
+        int selectedItemID = UnityEngine.Random.Range(0, itemsInDatabase.GetItem.Count);
+        inventoryItem.Set(itemsInDatabase.GetItem[selectedItemID]);
 
         return inventoryItem;
     }

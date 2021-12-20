@@ -19,11 +19,14 @@ public enum Attributes{
     Strength
 }
 
-public abstract class ItemObject : ScriptableObject
-{
+public abstract class ItemObject : ScriptableObject{
+    
+    
     public int Id;
     //public GameObject prefab;
-    public Sprite uiDisplay;
+    public Sprite itemIcon;
+    public int width = 1;
+    public int height = 1;
     public ItemType type;
     public string name;
     [Min(0f)] public float price;
