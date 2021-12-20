@@ -72,8 +72,8 @@ public class Health : MonoBehaviour, IDamageReceiver{
         instance.setParameterByID(fmodParameterID, parameter);
     }
 
-    public void UpdateHealth(int healthChange){
-        CurrentHP -= healthChange;
+    public void UpdateHealth(int healthChange){ //What about healing
+        CurrentHP += healthChange;
         CurrentHP = Mathf.Clamp(CurrentHP, 0, ModifiedMaxHP);
     }
 
@@ -83,7 +83,7 @@ public class Health : MonoBehaviour, IDamageReceiver{
 
     public void ReceiveDamage(int damage, bool isCrit, bool isPlayer){ //Toughness should affect this
         damage = ProcessDamage(damage);
-        UpdateHealth(damage);
+        UpdateHealth(-damage);
         if (gameObject.tag == "Player"){
             PlaySound();
         }

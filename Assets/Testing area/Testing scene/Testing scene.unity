@@ -2256,6 +2256,25 @@ NavMeshAgent:
   m_BaseOffset: 0.49999997
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!1 &1219675010 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2584270164984782272, guid: 778dbe75f281c9145a2bfb739c624812, type: 3}
+  m_PrefabInstance: {fileID: 7439300178194185859}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1219675012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219675010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e823775e63fe2a449e75a700dea31ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _consumableObject: {fileID: 11400000, guid: dddc4062bf8d75940acdac0d86f6d1a0, type: 2}
+  maxToxicityLevel: 3
 --- !u!1 &1270537176 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8705401766356934911, guid: e31cf9a5d6ce27446a4e2f937c659f3c, type: 3}

@@ -63,8 +63,26 @@ public class Statistics : MonoBehaviour{
         set { attackRange = value; }
     }
 
-    public float AttackSpeed => CalculateAttackSpeed(); // 1 dexterity -> 0.5 percent change, called in Fighter
-    public int AttackDamage => CalculateWeaponDamage(); // called in Fighter
+    public float AttackSpeed{
+        get{
+            return CalculateAttackSpeed();
+            // 1 dexterity -> 0.5 percent change, called in Fighter
+        }
+        set{
+            attackSpeed = value;
+        }
+    }
+
+    public int AttackDamage{
+        get{
+            return CalculateWeaponDamage();
+            // called in Fighter
+        }
+        set{
+            damage = value;
+        }
+    }
+
     public float CritChance => CalculateCritChance(); // called in Fighter
     public float DodgeChance => CalculateDodgeChance();  // called in TakeDamage
 
