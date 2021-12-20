@@ -25,6 +25,7 @@ public class InventoryController : MonoBehaviour
 
     InventoryItem _selectedItem;
     InventoryItem _overlapItem;
+    InventoryItem _hoveredItem;
     RectTransform _rectTransform;
     InventoryHighlight _inventoryHighlight;
     InventoryItem _itemToHighlight;
@@ -72,13 +73,25 @@ public class InventoryController : MonoBehaviour
         if (Input.GetMouseButtonDown(0)){
             LeftMouseButtonPress();
         }
+        
+        MouseOver();
+        
+       
         //if mouse over, display item object stats etc. _selecteditem.itemobject.whatever
 
         if (Input.GetMouseButtonDown(1)){
             RightMouseButtonPress();
         }
     }
-    
+    void MouseOver()
+    {
+        var tileGridPosition = GetTileGridPosition();
+        _hoveredItem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
+        
+        if (_hoveredItem != null){
+           // _hoveredItem.itemObject.DisplayItem(); // Here we want to display the item information in the game view
+        }
+    }
     public void InsertItem(InventoryItem itemToInsert){
         Vector2Int? posOnGrid = selectedItemGrid.FindSpaceForObject(itemToInsert);
 
@@ -187,9 +200,9 @@ public class InventoryController : MonoBehaviour
 
     void RightMouseButtonPress(){
         var tileGridPosition = GetTileGridPosition();
-        var hoveredItem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
-        if (hoveredItem != null){
-            hoveredItem.itemObject.UseItem();
+        _hoveredItem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
+        if (_hoveredItem != null){
+            _hoveredItem.itemObject.UseItem();
         }
         else{
             
