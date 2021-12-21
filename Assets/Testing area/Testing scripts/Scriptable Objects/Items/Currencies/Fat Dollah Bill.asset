@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 0
   itemIcon: {fileID: 0}
-  width: 1
+  width: 2
   height: 1
   type: 3
   name: 
   price: 0
   weight: 0
-  _pickupEvent: {fileID: 0}
+  _pickupEvent: {fileID: 11400000, guid: 069c43142d26da9409a1e35212edcd5c, type: 2}
   description: 
   buffs: []
   fmodEvent:
@@ -30,4 +30,4 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
-  currencyAmount: 0
+  currencyAmount: 100
