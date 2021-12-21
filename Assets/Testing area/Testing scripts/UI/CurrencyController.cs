@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CurrencyController : MonoBehaviour{
-   [SerializeField] CurrencySO playerCurrencySo;
+   [SerializeField] CurrencyHolderSO playerCurrencySo;
    [SerializeField] TextMeshProUGUI textMesh;
    [SerializeField] string currencyName;
    

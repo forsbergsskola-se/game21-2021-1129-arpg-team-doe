@@ -12,8 +12,4 @@ public class CurrencyObject : ItemObject{
     void Awake(){
         type = ItemType.Currency;
     }
-    
-    public void callEvent(){
-     // this.fmodEvent.   
-    }
 }
