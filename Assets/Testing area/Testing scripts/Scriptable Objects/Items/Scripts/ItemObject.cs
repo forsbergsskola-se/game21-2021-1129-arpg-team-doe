@@ -6,6 +6,7 @@ public enum ItemType{
     Consumable,
     Equipment,
     Weapon,
+    Currency,
     Default
 }
 
@@ -29,8 +30,9 @@ public abstract class ItemObject : ScriptableObject{
     public int height = 1;
     public ItemType type;
     public string name;
-    [Min(0f)] public float price;
-    [Tooltip("Weight in kg")][Min(0f)] public float weight;
+    [Min(0f)] public int price;
+    //[Tooltip("Weight in kg")][Min(0f)] public float weight; TODO:remove?
+    [SerializeField] GameEvent _pickupEvent;
     [TextArea (10,10)] public string description;
     public ItemBuff[] buffs;
 
@@ -40,6 +42,11 @@ public abstract class ItemObject : ScriptableObject{
     }
 
     public virtual void UseItem(){
+    }
+    public void CallEvent(){
+        if (_pickupEvent != null){
+            _pickupEvent.Invoke();
+        }
     }
 }
 

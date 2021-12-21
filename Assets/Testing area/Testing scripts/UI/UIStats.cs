@@ -98,6 +98,7 @@ public class UIStats : MonoBehaviour
 
         if (_playerLevel.skillPoint <= 0){
             _increaseButton.gameObject.SetActive(false);
+            
         }
           if (_playerLevel.skillPoint > 0 || hasStarted == false){
             _increaseButton.gameObject.SetActive(true);
