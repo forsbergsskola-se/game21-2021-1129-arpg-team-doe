@@ -10,7 +10,7 @@ public class CurrencyPickup : MonoBehaviour{
         if (other.gameObject.CompareTag("Player")){
             //pickup the money my g
             //Curreny += GoldAmount
-            other.gameObject.GetComponent<CurrencyHolderSO>();
+            other.gameObject.GetComponent<CurrencyHolderDataSO>();
         }
     }
 }
