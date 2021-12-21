@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Expired Pie
   m_EditorClassIdentifier: 
   Id: 1
-  uiDisplay: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  itemIcon: {fileID: 0}
+  width: 1
+  height: 1
   type: 0
   name: Expired Pie
   price: 100
@@ -25,11 +27,11 @@ MonoBehaviour:
   restoreHealthValue: 30
   fmodEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -371116407
+      Data2: 1078181224
+      Data3: -52037748
+      Data4: 815914976
+    Path: event:/Door
   buffDuration: 5
   toughnessBuff: 53
   strengthBuff: 58

@@ -16,6 +16,7 @@ public class UIStats : MonoBehaviour
     [SerializeField] Button _increaseButton;
     [SerializeField] Button _decreaseButton;
     int availableSkillPoints;
+    int usedSkillPoints;
     float currentToughness;
     float currentStrength;
     float currentDexterity;
@@ -23,10 +24,26 @@ public class UIStats : MonoBehaviour
     float currentReflex;
     float currentLuck;
 
+    public bool NeedToApplySkills{
+        get
+        {
+            if (usedSkillPoints > 0){
+                return true;
+            }
+
+            return false;
+        }
+    }
+
 
     //float attribute;
     void Awake(){
        _playerStatistics = GameObject.FindWithTag("Player").GetComponent<Statistics>();
+       
+    }
+
+    void OnEnable(){
+        UpdateUIStats();
     }
 
     void Start(){
@@ -48,6 +65,7 @@ public class UIStats : MonoBehaviour
     public void ApplySkillPoints(){
         AttributeAssingment();
         UpdateUIStats();
+        usedSkillPoints = 0;
         _decreaseButton.gameObject.SetActive(false);
     }
 
@@ -63,6 +81,7 @@ public class UIStats : MonoBehaviour
     public void ChangeSkillPoint(int amount){
         availableSkillPoints += amount;
         _playerLevel.skillPoint += amount;
+        usedSkillPoints-= amount;
         UpdateUIStats();
     }
     

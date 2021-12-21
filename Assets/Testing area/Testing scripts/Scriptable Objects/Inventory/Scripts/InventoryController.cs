@@ -31,6 +31,8 @@ public class InventoryController : MonoBehaviour
     InventoryItem _itemToHighlight;
     Transform _playerTransform;
     Vector2Int _oldPosition;
+    UIStats[] UIStatsArray;
+    
     bool _clickOnInventory;
 
     void Awake(){
@@ -39,12 +41,14 @@ public class InventoryController : MonoBehaviour
 
     void Start(){
         _playerTransform = GameObject.FindWithTag("Player").transform;
+         UIStatsArray = FindObjectsOfType<UIStats>();
+        
     }
 
     void Update(){
         ItemIconDrag();
 
-        if (Input.GetKeyDown(KeyCode.I)){
+        if (Input.GetKeyDown(KeyCode.I) && !SkillPointApplyCheck()){
             ToggleInventory();
         }
 
@@ -246,5 +250,14 @@ public class InventoryController : MonoBehaviour
         if (_selectedItem != null){
             _rectTransform.position = Input.mousePosition;
         }
+    }
+
+    bool SkillPointApplyCheck(){
+        foreach (var UIStat in UIStatsArray){
+            if (UIStat.NeedToApplySkills){
+                return true;
+            }
+        }
+        return false;
     }
 }
