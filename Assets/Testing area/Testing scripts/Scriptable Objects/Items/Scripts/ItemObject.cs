@@ -29,7 +29,7 @@ public abstract class ItemObject : ScriptableObject{
     public int height = 1;
     public ItemType type;
     public string name;
-    [Min(0f)] public float price;
+    [Min(0f)] public int price;
     [Tooltip("Weight in kg")][Min(0f)] public float weight;
     [TextArea (10,10)] public string description;
     public ItemBuff[] buffs;
