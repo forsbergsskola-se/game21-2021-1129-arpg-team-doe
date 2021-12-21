@@ -23,6 +23,7 @@ public class UIStats : MonoBehaviour
     float currentKnowledge;
     float currentReflex;
     float currentLuck;
+    bool hasStarted = false;
 
     public bool NeedToApplySkills{
         get
@@ -40,10 +41,14 @@ public class UIStats : MonoBehaviour
     void Awake(){
        _playerStatistics = GameObject.FindWithTag("Player").GetComponent<Statistics>();
        
+       
+       
     }
 
     void OnEnable(){
+        AttributeAssingment();
         UpdateUIStats();
+        hasStarted = true;
     }
 
     void Start(){
@@ -94,7 +99,7 @@ public class UIStats : MonoBehaviour
         if (_playerLevel.skillPoint <= 0){
             _increaseButton.gameObject.SetActive(false);
         }
-        else if (_playerLevel.skillPoint > 0){
+          if (_playerLevel.skillPoint > 0 || hasStarted == false){
             _increaseButton.gameObject.SetActive(true);
             if (_attributeText.text == nameof(_playerStatistics.Toughness)){
                 _valueText.text = ((int)_playerStatistics.Toughness).ToString();
