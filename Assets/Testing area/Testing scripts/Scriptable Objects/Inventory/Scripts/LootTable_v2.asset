@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 012aff261baa20b44b4b149247ba55da, type: 3}
-  m_Name: LootTable
+  m_Name: LootTable_v2
   m_EditorClassIdentifier: 
-  table: 000000000000000000000000
+  table: []
