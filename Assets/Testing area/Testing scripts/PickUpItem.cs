@@ -11,17 +11,14 @@ public class PickUpItem : MonoBehaviour, Iinteractable{
     
     void Start(){
         _inventoryController = FindObjectOfType<InventoryController>();
-        
     }
     
     public void Use(){
-
         if (!_used){
             _inventoryController.InsertItem(_inventoryController.CreateRandomItem());
             Debug.Log("Used");
             _used = true;
             Destroy(this.gameObject);
         }
-        
     }
 }

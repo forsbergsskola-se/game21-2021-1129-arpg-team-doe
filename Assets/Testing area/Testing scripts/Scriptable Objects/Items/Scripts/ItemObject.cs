@@ -6,6 +6,7 @@ public enum ItemType{
     Consumable,
     Equipment,
     Weapon,
+    Currency,
     Default
 }
 
