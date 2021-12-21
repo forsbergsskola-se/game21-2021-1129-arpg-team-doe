@@ -845,7 +845,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh25802
+  m_Name: pb_Mesh26384
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1185,13 +1185,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686953586}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 67.7, y: -12.814827, z: -49}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.001, y: 17.07, z: 0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_Father: {fileID: 1977385399}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &744646625
 Mesh:
@@ -2957,6 +2957,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6719406489279044987, guid: 778dbe75f281c9145a2bfb739c624812, type: 3}
+      propertyPath: offset.x
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719406489279044987, guid: 778dbe75f281c9145a2bfb739c624812, type: 3}
+      propertyPath: offset.y
+      value: 4.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719406489279044987, guid: 778dbe75f281c9145a2bfb739c624812, type: 3}
+      propertyPath: offset.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054809874095855820, guid: 778dbe75f281c9145a2bfb739c624812, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7439300178248752360, guid: 778dbe75f281c9145a2bfb739c624812, type: 3}
       propertyPath: m_Name
       value: === Player everything ====
@@ -3497,7 +3513,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh25808
+  m_Name: pb_Mesh26390
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3655,6 +3671,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!4 &1977385399 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7439300178248752367, guid: 778dbe75f281c9145a2bfb739c624812, type: 3}
+  m_PrefabInstance: {fileID: 1643798799}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2134728443
 GameObject:
   m_ObjectHideFlags: 0
@@ -4053,7 +4074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    rid: 2154947526907396440
+    rid: 2154947616646103106
   m_Size: {x: 0.05, y: 0.4, z: 0.05}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -4065,7 +4086,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 2154947526907396440
+    - rid: 2154947616646103106
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &4128382159843488926
 MonoBehaviour:
@@ -4753,7 +4774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    rid: 2154947526907396437
+    rid: 2154947616646103114
   m_Size: {x: -0.07614977, y: 0.0880484, z: -0.070461035}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -4765,7 +4786,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 2154947526907396437
+    - rid: 2154947616646103114
       type: {class: Cone, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
       data:
         m_NumberOfSides: 6

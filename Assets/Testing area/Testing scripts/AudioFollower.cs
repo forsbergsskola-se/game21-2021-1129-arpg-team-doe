@@ -9,7 +9,7 @@ public class AudioFollower : MonoBehaviour{
 
     void Start(){
         player = GetComponentInParent<PlayerController>().transform;
-        camera = GetComponentInParent<CameraFollow>().transform;
+        camera = FindObjectOfType<CameraFollow>().transform;
     }
 
     void Update(){
@@ -20,4 +20,5 @@ public class AudioFollower : MonoBehaviour{
         transform.position = transform1.position;
         transform.rotation = transform1.rotation;
     }
+
 }
