@@ -32,6 +32,7 @@ public abstract class ItemObject : ScriptableObject{
     public string name;
     [Min(0f)] public int price;
     [Tooltip("Weight in kg")][Min(0f)] public float weight;
+    [SerializeField] GameEvent _pickupEvent;
     [TextArea (10,10)] public string description;
     public ItemBuff[] buffs;
 
