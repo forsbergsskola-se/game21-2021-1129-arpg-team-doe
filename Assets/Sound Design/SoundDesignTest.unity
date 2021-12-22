@@ -201,6 +201,73 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1856306144545947803, guid: 1ed350ad449d65442a1d0acef371c45e, type: 3}
   m_PrefabInstance: {fileID: 1856306144530980554}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &165435699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7054809874095855820, guid: 778dbe75f281c9145a2bfb739c624812, type: 3}
+  m_PrefabInstance: {fileID: 4352918977669876232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &165435703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165435699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -989999048
+      Data2: 1170180359
+      Data3: -169463664
+      Data4: -1261707272
+    Path: event:/CryptAmbience
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &165435704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165435699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1537488437
+      Data2: 1235902526
+      Data3: -564755521
+      Data4: -1530201539
+    Path: event:/MusicCrypt
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: PlayerProgress
+    Value: 6.14
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!43 &280335877
 Mesh:
   m_ObjectHideFlags: 0
@@ -1806,6 +1873,8 @@ MonoBehaviour:
       Data4: 0
     Path: 
   parameter: 0
+  stopRegenerateThreshold: 0
+  healthRegen: 10
   TakeDamageReference:
     Guid:
       Data1: 0
@@ -1816,6 +1885,7 @@ MonoBehaviour:
   maxHP: 20
   _xpDrop: {fileID: 0}
   _xpDropEvent: {fileID: 0}
+  isRegenerating: 0
 --- !u!114 &1129788675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2160,6 +2230,8 @@ MonoBehaviour:
       Data4: 0
     Path: 
   parameter: 0
+  stopRegenerateThreshold: 0
+  healthRegen: 10
   TakeDamageReference:
     Guid:
       Data1: 0
@@ -2170,6 +2242,7 @@ MonoBehaviour:
   maxHP: 10
   _xpDrop: {fileID: 0}
   _xpDropEvent: {fileID: 0}
+  isRegenerating: 0
 --- !u!114 &1256626923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2800,6 +2873,8 @@ MonoBehaviour:
       Data4: 0
     Path: 
   parameter: 0
+  stopRegenerateThreshold: 0
+  healthRegen: 10
   TakeDamageReference:
     Guid:
       Data1: 0
@@ -2810,6 +2885,7 @@ MonoBehaviour:
   maxHP: 10
   _xpDrop: {fileID: 0}
   _xpDropEvent: {fileID: 0}
+  isRegenerating: 0
 --- !u!114 &1519714797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2998,6 +3074,8 @@ MonoBehaviour:
       Data4: 0
     Path: 
   parameter: 0
+  stopRegenerateThreshold: 0
+  healthRegen: 10
   TakeDamageReference:
     Guid:
       Data1: 0
@@ -3008,6 +3086,7 @@ MonoBehaviour:
   maxHP: 20
   _xpDrop: {fileID: 0}
   _xpDropEvent: {fileID: 0}
+  isRegenerating: 0
 --- !u!114 &1664621309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4338,6 +4417,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4352918978086297210, guid: 778dbe75f281c9145a2bfb739c624812, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6719406489279044987, guid: 778dbe75f281c9145a2bfb739c624812, type: 3}
       propertyPath: offset.x
       value: 0
@@ -4847,6 +4930,8 @@ MonoBehaviour:
       Data4: 0
     Path: 
   parameter: 0
+  stopRegenerateThreshold: 0
+  healthRegen: 10
   TakeDamageReference:
     Guid:
       Data1: 0
@@ -4857,6 +4942,7 @@ MonoBehaviour:
   maxHP: 20
   _xpDrop: {fileID: 0}
   _xpDropEvent: {fileID: 0}
+  isRegenerating: 0
 --- !u!65 &4690727181062431542
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5074,6 +5160,8 @@ MonoBehaviour:
       Data4: 0
     Path: 
   parameter: 0
+  stopRegenerateThreshold: 0
+  healthRegen: 10
   TakeDamageReference:
     Guid:
       Data1: 0
@@ -5084,6 +5172,7 @@ MonoBehaviour:
   maxHP: 10
   _xpDrop: {fileID: 0}
   _xpDropEvent: {fileID: 0}
+  isRegenerating: 0
 --- !u!114 &6330638830678781188
 MonoBehaviour:
   m_ObjectHideFlags: 0
