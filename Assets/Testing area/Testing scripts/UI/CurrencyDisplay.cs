@@ -5,9 +5,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CurrencyController : MonoBehaviour{
+public class CurrencyDisplay : MonoBehaviour{
    [SerializeField] CurrencyHolderDataSO playerCurrencyHolderDataSo;
-   [SerializeField] TextMeshProUGUI textMesh;
+   [SerializeField] TextMeshProUGUI currencyText;
    [SerializeField] string currencyName;
    
 
@@ -16,6 +16,6 @@ public class CurrencyController : MonoBehaviour{
    }
 
    public void UpdateCurrency(){
-      textMesh.text = $"{currencyName}: {playerCurrencyHolderDataSo.currency}";
+      currencyText.text = $"{currencyName}: {playerCurrencyHolderDataSo.Currency}";
    }
 }
