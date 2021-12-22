@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "New Currency Object", menuName = "Inventory System/Items/Currency")]
-public class CurrencyObject : ItemObject{
+[CreateAssetMenu(fileName = "New Currency Data", menuName = "Inventory System/Items/Currency Data")]
+public class CurrencyData : ItemObject{
     public FMODUnity.EventReference fmodEvent;
     public int currencyAmount;
 
