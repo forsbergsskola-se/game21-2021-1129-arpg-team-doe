@@ -227,6 +227,8 @@ MonoBehaviour:
       Data4: 0
     Path: 
   parameter: 0
+  regenerateThreshold: 80
+  healthRegen: 10
   TakeDamageReference:
     Guid:
       Data1: 0
@@ -237,6 +239,7 @@ MonoBehaviour:
   maxHP: 100
   _xpDrop: {fileID: 0}
   _xpDropEvent: {fileID: 0}
+  isRegenerating: 0
 --- !u!114 &1535776509353853778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,8 +312,6 @@ MonoBehaviour:
   invalidClickTexture: {fileID: 2800000, guid: 53c0409fc6abc4b2aa327c1d0430cb68, type: 3}
   standardCursorTexture: {fileID: 2800000, guid: 036b493ef9cad4882999b895da76e4ef, type: 3}
   defeatedThreshold: 0
-  regenerateThreshold: 80
-  healthRegen: 10
   inventory: {fileID: 11400000, guid: 77e2291076a7dee459893b29befa9b36, type: 2}
 --- !u!114 &1535776509353853785
 MonoBehaviour:
@@ -369,7 +370,6 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
-  receiveXpEventListener: {fileID: 0}
 --- !u!1001 &8925168225513398043
 PrefabInstance:
   m_ObjectHideFlags: 0
