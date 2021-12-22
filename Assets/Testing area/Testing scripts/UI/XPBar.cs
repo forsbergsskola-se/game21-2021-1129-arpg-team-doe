@@ -11,9 +11,13 @@ public class XPBar : MonoBehaviour
     public Image image;
     public float XPValue;
     
-    [ContextMenu("SetSliderXP")]
+    void Awake(){
+        SetXPBar();
+    }
     public void SetXPBar(){ 
         XPValue = ((float)playerXP.currentXP/(float)playerXP.requiredXPInt);
         image.fillAmount = XPValue;
     }
+
+    
 }

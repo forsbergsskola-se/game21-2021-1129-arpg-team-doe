@@ -5,6 +5,7 @@ using UnityEngine;
 public class CurrencyHolderDataSO : ScriptableObject{ //Wallet
    [Min(0)][SerializeField] int currency;
    [SerializeField] GameEvent currencyChangeEvent;
+  
    
 
    public int Currency{
@@ -15,5 +16,6 @@ public class CurrencyHolderDataSO : ScriptableObject{ //Wallet
    public void AddCurrency(int amount){
       Currency += amount;
       currencyChangeEvent.Invoke();
+      //Play currency sound
    }
 }

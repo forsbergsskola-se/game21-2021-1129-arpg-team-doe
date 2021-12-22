@@ -20,7 +20,7 @@ public class LevelingGameObject : ScriptableObject
     [Min(0)] [SerializeField] public int skillPoint;
     [Min(0)] [SerializeField] public int skillPointsPerLevel;
 
-    [SerializeField] public ReceiveXPEvent receiveXpEvent;
+    [SerializeField] public GameEvent GetXPEvent;
 
     FMOD.Studio.EventInstance instance;
     [SerializeField] public FMODUnity.EventReference fmodEvent;
@@ -31,7 +31,7 @@ public class LevelingGameObject : ScriptableObject
     public void ReceiveXP(int XP){
         currentXP += XP;
         CheckLevelUp();
-        receiveXpEvent.Invoke();
+        GetXPEvent.Invoke();
     }
     [ContextMenu("GiveXp")]
     public void GiveXp(){//used for debug

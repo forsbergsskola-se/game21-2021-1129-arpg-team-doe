@@ -1604,7 +1604,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704069855}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.53, y: 0.95, z: 0}
+  m_LocalPosition: {x: 13.08, y: 0.95, z: 13.31}
   m_LocalScale: {x: 0.51418, y: 0.09810352, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3073,6 +3073,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currencyHolderDataSo: {fileID: 11400000, guid: 9985d91f1e392e143b9995ac900fce68, type: 2}
+  fmodEvent:
+    Guid:
+      Data1: -542430724
+      Data2: 1268527413
+      Data3: 1053398163
+      Data4: 2091630610
+    Path: event:/LvlUP
+--- !u!114 &1657072521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657072501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b732b65092b0904a9d94b09335636b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEvent: {fileID: 11400000, guid: 069c43142d26da9409a1e35212edcd5c, type: 2}
+  _unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1657072520}
+        m_TargetAssemblyTypeName: CurrencyHolder, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1671769838 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8972526659047141918, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
@@ -3622,6 +3657,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1872833737 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6598838207175824988, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+  m_PrefabInstance: {fileID: 6598838206894276446}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1872833740 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6598838207175824986, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+  m_PrefabInstance: {fileID: 6598838206894276446}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872833737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9970faf164184d78b897b7eb5755da0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1872833743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872833737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b732b65092b0904a9d94b09335636b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEvent: {fileID: 11400000, guid: 623451f3003fdfe4c8daa71bc1038cea, type: 2}
+  _unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1872833740}
+        m_TargetAssemblyTypeName: XPBar, Assembly-CSharp
+        m_MethodName: SetXPBar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1995880699 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4b4ce3f784f60a54fa33974f6adfe285, type: 3}
@@ -4056,7 +4135,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 9985d91f1e392e143b9995ac900fce68, type: 2}
     - target: {fileID: 4372569158332973656, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4372569158332973656, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -4069,6 +4148,14 @@ PrefabInstance:
     - target: {fileID: 4372569158332973656, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: Consumer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136996793197890090, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+      propertyPath: getXPEventListener
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136996793197890090, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+      propertyPath: receiveXpEventListener
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6598838206839561522, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
       propertyPath: m_RootOrder
@@ -4242,7 +4329,8 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6598838207175824985, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
 --- !u!1001 &7270093828532130178
 PrefabInstance:

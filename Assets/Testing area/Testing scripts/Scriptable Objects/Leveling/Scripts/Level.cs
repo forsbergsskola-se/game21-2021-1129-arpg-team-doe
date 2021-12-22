@@ -9,16 +9,12 @@ public class Level : MonoBehaviour
 {
     [SerializeField] public LevelingGameObject LevelingGameObject;
     [SerializeField] public FMODUnity.EventReference fmodEvent;
-    [SerializeField] public ReceiveXPEventListener receiveXpEventListener;
+    //[SerializeField] public GameEventListener getXPEventListener;
 
     FMOD.Studio.EventInstance instance;
     void Start(){
         if (!fmodEvent.IsNull){
             instance = FMODUnity.RuntimeManager.CreateInstance(fmodEvent);
-        }
-
-        if (receiveXpEventListener != null) {
-            receiveXpEventListener.GetComponent<ReceiveXPEventListener>();
         }
     }
     public void PlaySound(){
