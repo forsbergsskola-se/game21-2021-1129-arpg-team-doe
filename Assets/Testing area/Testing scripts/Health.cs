@@ -23,7 +23,7 @@ public class Health : MonoBehaviour, IDamageReceiver{
     public FMODUnity.EventReference fmodEvent;
     [SerializeField] [Min(0)] float parameter;
     
-    [SerializeField] internal int regenerateThreshold = 80;
+    [SerializeField] internal int stopRegenerateThreshold;
     [SerializeField] int healthRegen = 10;
     
     EventInstance _takeDamage;
@@ -41,7 +41,7 @@ public class Health : MonoBehaviour, IDamageReceiver{
     //List<IDamageNumbers> damageNumbersList;
 
     public bool isRegenerating;
-    public bool IsAlive => CurrentHP > 0;
+    public bool IsAlive => CurrentHP > 0 && !isRegenerating;
     public int CurrentHP{ get; private set; }
     public int ModifiedMaxHP => CalculateMaxHP();
 
@@ -80,16 +80,21 @@ public class Health : MonoBehaviour, IDamageReceiver{
     public void UpdateHealth(int healthChange){ //What about healing
         CurrentHP += healthChange;
         CurrentHP = Mathf.Clamp(CurrentHP, 0, ModifiedMaxHP);
+        this.LogHealth(CurrentHP);
     }
     
     public IEnumerator HealthRegeneration(){ // health regeneration seems weird
         isRegenerating = true;
-        while(CurrentHP <= regenerateThreshold){
-                yield return new WaitForSeconds(1f);
-                UpdateHealth(healthRegen);
+        while(CurrentHP <= stopRegenerateThreshold){
+            UpdateHealth(healthRegen);
+            if (CurrentHP >= stopRegenerateThreshold){
+                 isRegenerating = false;
+                 yield return null;
+            }
+            
+            yield return new WaitForSeconds(1f);
         }
         isRegenerating = false;
-        yield return null;
     }
 
     int CalculateMaxHP(){

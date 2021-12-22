@@ -18,7 +18,7 @@ Team members and roles:
 * Ava Blixt, Artist
 * Mathilda Christiansson, Artist
 * Tom Olovsson, Sound Designer
-
+* Joakim Blomstrand , Designer
 ## Design Documents
 
 [GDD](https://docs.google.com/document/d/103UANcyFQGBr5ccG3n7Q8oSQjugDNR5p6Y5rvAKcghM/edit#heading=h.ctqszdyarbr8)
