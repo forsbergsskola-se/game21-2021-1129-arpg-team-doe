@@ -2,16 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 
 [CreateAssetMenu(fileName = "New Currency Data", menuName = "Inventory System/Items/Currency Data")]
 public class CurrencyData : ItemObject{
     public FMODUnity.EventReference fmodEvent;
-    public int currencyAmount;
-    public int minAmount;
-    public int maxAmount;
+    [SerializeField] int minAmount;
+    [SerializeField] int maxAmount;
 
     void Awake(){
         type = ItemType.Currency;
+    }
+
+    public int GenerateValue(){
+        return Random.Range(minAmount, maxAmount);
     }
 }

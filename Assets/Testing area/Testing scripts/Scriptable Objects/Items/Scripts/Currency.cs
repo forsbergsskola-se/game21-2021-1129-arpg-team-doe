@@ -8,7 +8,7 @@ public class Currency : MonoBehaviour{
 
     void OnCollisionEnter(Collision other){
         if (other.gameObject.tag == "Player"){
-            other.gameObject.GetComponent<CurrencyHolder>()._currencyHolderDataSo.AddCurrency(_currencyData.currencyAmount);
+            other.gameObject.GetComponent<CurrencyHolder>()._currencyHolderDataSo.AddCurrency(_currencyData.GenerateValue());
             Destroy(this.gameObject);
         }
     }
