@@ -8,6 +8,8 @@ using UnityEngine;
 public class CurrencyData : ItemObject{
     public FMODUnity.EventReference fmodEvent;
     public int currencyAmount;
+    public int minAmount;
+    public int maxAmount;
 
     void Awake(){
         type = ItemType.Currency;
