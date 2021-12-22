@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -130,6 +131,41 @@ public class Statistics : MonoBehaviour{
         }
         return damage = (int) (weaponDamage * damageMultiplier);
     }
+
+    public void AddStats(float toughnessBuff, float strengthBuff, float dexterityBuff, float knowledgeBuff, float reflexBuff, float luckBuff,
+        float interactRangeBuff, float attackRangeBuff, float attackSpeedBuff,int damageBuff){
+        Toughness += toughnessBuff;
+        Strength += strengthBuff;
+        Dexterity += dexterityBuff;
+        Knowledge += knowledgeBuff;
+        Reflex += reflexBuff;
+        Luck += luckBuff;
+        InteractRange += interactRangeBuff;
+        AttackRange += attackRangeBuff;
+        AttackSpeed += attackSpeedBuff;
+        AttackDamage += damageBuff;
+    }
+
+    //Takes in temp values and then starts a coroutine to add them then after a duration it removes them.
+    // public void AddStatsTemp(int buffDuration,float toughnessBuff, float strengthBuff, 
+    //     float dexterityBuff, float knowledgeBuff, float reflexBuff,
+    //     float luckBuff, float interactRangeBuff, float attackRangeBuff, 
+    //     float attackSpeedBuff,int damageBuff){
+    //     
+    //     StartCoroutine(AddStatsCoroutine(buffDuration,toughnessBuff,strengthBuff,dexterityBuff,knowledgeBuff,reflexBuff,luckBuff,interactRangeBuff,attackRangeBuff,attackSpeedBuff,damageBuff));
+    // }
+
+    // IEnumerator AddStatsCoroutine(int buffDuration,float toughnessBuff, float strengthBuff, 
+    //     float dexterityBuff, float knowledgeBuff, float reflexBuff, 
+    //     float luckBuff, float interactRangeBuff, float attackRangeBuff, 
+    //     float attackSpeedBuff,int damageBuff){
+    //     
+    //     
+    //     AddStats(toughnessBuff,strengthBuff,dexterityBuff,knowledgeBuff,reflexBuff,luckBuff,interactRangeBuff,attackRangeBuff,attackSpeedBuff,damageBuff);
+    //     yield return new WaitForSeconds(buffDuration);
+    //     AddStats(-toughnessBuff,-strengthBuff,-dexterityBuff,-knowledgeBuff,-reflexBuff,-luckBuff,-interactRangeBuff,-attackRangeBuff,-attackSpeedBuff,-damageBuff);
+    //
+    // }
 
     public void AddToughness(int amount){
        Toughness += amount;

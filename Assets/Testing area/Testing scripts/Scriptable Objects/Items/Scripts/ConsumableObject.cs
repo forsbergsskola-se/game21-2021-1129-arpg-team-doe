@@ -4,21 +4,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Consumable Object", menuName = "Inventory System/Items/Consumable")]
-public class ConsumableObject : ItemObject, IConsumable{
-    [SerializeField] GameEvent _consumeEvent;
-
-    public int restoreHealthValue;
+//[CreateAssetMenu(fileName = "New Consumable Object", menuName = "Inventory System/Items/Consumable")]
+public abstract class ConsumableObject : ItemObject, IConsumable{
+    [SerializeField] protected GameEvent _consumeEvent;
+    [SerializeField] protected Consumer _consumer;
     public FMODUnity.EventReference fmodEvent;
-    [Header("Attribute Buffs")]
-    [Min(0f)][Tooltip	("Duration in Seconds")] public int buffDuration;
-    public int toughnessBuff;
-   public int strengthBuff;
-   public int dexterityBuff;
-   public int knowledgeBuff;
-   public int luckBuff;
-   [Tooltip	("Amount of attacks per second Buff")] public int attackSpeedBuff;
-   public int damageBuff;
+   
 
    public int toxicityAmount;
 
@@ -28,11 +19,14 @@ public class ConsumableObject : ItemObject, IConsumable{
        type = ItemType.Consumable;
    }
 
-   public virtual void UseItem(){
+   public virtual void UseItem(){ //When used in inventory
        Consume();
    }
 
    public virtual void Consume(){
        _consumeEvent.Invoke();
+       
    }
+   
+   
 }
