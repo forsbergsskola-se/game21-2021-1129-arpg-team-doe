@@ -739,6 +739,8 @@ MonoBehaviour:
       Data4: 0
     Path: 
   parameter: 0
+  regenerateThreshold: 80
+  healthRegen: 10
   TakeDamageReference:
     Guid:
       Data1: 0
@@ -749,6 +751,7 @@ MonoBehaviour:
   maxHP: 10
   _xpDrop: {fileID: 0}
   _xpDropEvent: {fileID: 0}
+  isRegenerating: 0
 --- !u!114 &408597636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3780,6 +3783,8 @@ MonoBehaviour:
       Data4: 0
     Path: 
   parameter: 0
+  regenerateThreshold: 80
+  healthRegen: 10
   TakeDamageReference:
     Guid:
       Data1: 0
@@ -3790,6 +3795,7 @@ MonoBehaviour:
   maxHP: 20
   _xpDrop: {fileID: 0}
   _xpDropEvent: {fileID: 0}
+  isRegenerating: 0
 --- !u!114 &1995880704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4148,6 +4154,10 @@ PrefabInstance:
     - target: {fileID: 4372569158332973656, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: Consumer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5675631719487080354, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+      propertyPath: regenerateThreshold
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 6136996793197890090, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
       propertyPath: getXPEventListener

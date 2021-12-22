@@ -19,7 +19,13 @@ MonoBehaviour:
   type: 3
   name: 
   price: 0
-  weight: 0
+  pickupSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   _pickupEvent: {fileID: 11400000, guid: 069c43142d26da9409a1e35212edcd5c, type: 2}
   description: 
   buffs: []
@@ -30,4 +36,5 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
-  currencyAmount: 100
+  minAmount: 50
+  maxAmount: 100
