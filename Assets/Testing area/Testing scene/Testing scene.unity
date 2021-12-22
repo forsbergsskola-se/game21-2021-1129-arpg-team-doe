@@ -739,7 +739,7 @@ MonoBehaviour:
       Data4: 0
     Path: 
   parameter: 0
-  regenerateThreshold: 80
+  stopRegenerateThreshold: 80
   healthRegen: 10
   TakeDamageReference:
     Guid:
@@ -3783,7 +3783,7 @@ MonoBehaviour:
       Data4: 0
     Path: 
   parameter: 0
-  regenerateThreshold: 80
+  stopRegenerateThreshold: 80
   healthRegen: 10
   TakeDamageReference:
     Guid:
@@ -4156,8 +4156,16 @@ PrefabInstance:
       value: Consumer, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5675631719487080354, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+      propertyPath: maxHP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5675631719487080354, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
       propertyPath: regenerateThreshold
-      value: 40
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5675631719487080354, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+      propertyPath: stopRegenerateThreshold
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6136996793197890090, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
       propertyPath: getXPEventListener

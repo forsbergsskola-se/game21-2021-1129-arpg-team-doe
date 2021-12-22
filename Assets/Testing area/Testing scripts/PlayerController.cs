@@ -54,9 +54,22 @@ public class PlayerController : MonoBehaviour
         //     inventory.Load();
         // }
         
+        if (!GetPlayerIsDefeated()){
+            _movement.enabled = true;
+            _fighter.enabled = true;
+            StopCoroutine(_health.HealthRegeneration());
+        }
         if (GetPlayerIsDefeated()){
+            _movement.StopMoving();
+            _movement.enabled = false; 
+            _fighter.enabled = false;
+            _animationController.ChangeAnimationState("Die");
+            if (!_health.isRegenerating){
+                StartCoroutine(_health.HealthRegeneration());
+            }
             return;
         }
+        
         //if (EventSystem.current.IsPointerOverGameObject()){ //Player won't do anything when click on UI
         //  return;
         //}
@@ -71,27 +84,32 @@ public class PlayerController : MonoBehaviour
         MoveToCursor();
     }
     
+    // if (playerIsDefeated){
+    //     _movement.enabled = false; 
+    //     _fighter.enabled = false;
+    //     _animationController.ChangeAnimationState("Die");
+    //     if (!_health.isRegenerating){
+    //         StartCoroutine(_health.HealthRegeneration());
+    //     }
+    //         
+    // }
+    // if (!playerIsDefeated){
+    //     _movement.enabled = true;
+    //     _fighter.enabled = true;
+    //     StopCoroutine(_health.HealthRegeneration());
+    // }
+    
     bool GetPlayerIsDefeated(){
         if (_health.CurrentHP <= defeatedThreshold){
             playerIsDefeated = true;
         }
-        if (_health.CurrentHP >= _health.regenerateThreshold){
+        if (_health.CurrentHP >= _health.stopRegenerateThreshold){
             playerIsDefeated = false;
-        }
-        if (playerIsDefeated){
-            _movement.enabled = false; 
-            _fighter.enabled = false;
-            _animationController.ChangeAnimationState("Die");
-            if (!_health.isRegenerating){
-                StartCoroutine(_health.HealthRegeneration());
-            }
-            if (!playerIsDefeated){
-                _movement.enabled = true;
-                _fighter.enabled = true;
-            }
         }
         return playerIsDefeated;
     }
+    
+    
     
 
     // void OnTriggerEnter(Collider other){ //Break out into its own script with onApplicationQuit
