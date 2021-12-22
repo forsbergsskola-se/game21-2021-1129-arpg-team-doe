@@ -9057,6 +9057,13 @@ MonoBehaviour:
   itemPrefab: {fileID: 3378097737434846926, guid: 7c97bfcbdf1b1aa4cb379fcba585140a, type: 3}
   droppedItem: {fileID: 4537476586442300296, guid: 7e6421aaab3e55f489d475a131951c00, type: 3}
   canvasTransform: {fileID: 4796008557103758678}
+  inventoryReference:
+    Guid:
+      Data1: 1223393582
+      Data2: 1271087801
+      Data3: -1877310552
+      Data4: 2082565317
+    Path: event:/OpenInventory
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 0
