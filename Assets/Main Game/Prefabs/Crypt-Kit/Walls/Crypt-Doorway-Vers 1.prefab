@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3846018093981099296, guid: 9ba449162b696864aa3a0013f514f7c9, type: 3}
+  - {fileID: 2100000, guid: a57caa9b6e6aa6a45b5cbc2fc2113467, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -151,6 +151,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _locked: 1
+  DoorReference:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &-3446460669921585751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +233,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 7eaed34af9e5cbb489dae09a5809ee0f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1ac9afc32964c174db4a239b66d01e85, type: 2}
     - target: {fileID: 919132149155446097, guid: 7eaed34af9e5cbb489dae09a5809ee0f, type: 3}
       propertyPath: m_Name
       value: Door_R 1
@@ -351,6 +362,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 272f05374c0f87d45802f09c4405bd6c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1ac9afc32964c174db4a239b66d01e85, type: 2}
     - target: {fileID: 919132149155446097, guid: 272f05374c0f87d45802f09c4405bd6c, type: 3}
       propertyPath: m_Name
       value: Door_L 1
