@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Net;
 using AnimatorChanger;
 using CustomLogs;
 using FMOD;
@@ -14,10 +15,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Texture2D validClickTexture;
     [SerializeField] Texture2D invalidClickTexture;
     [SerializeField] Texture2D standardCursorTexture;
-    //[SerializeField] GameObject _healthBar;
-    [SerializeField] int defeatedThreshold;
-    [SerializeField] int regenerateThreshold = 80;
-    [SerializeField] int healthRegen = 10;
+
+    [SerializeField] int defeatedThreshold = 40;
 
     public InventoryObject inventory;
     internal bool playerIsDefeated;
@@ -45,7 +44,6 @@ public class PlayerController : MonoBehaviour
 
     void Start(){
         _interactionRange = _statistics.InteractRange;
-        StartCoroutine(HealthRegeneration());
     }
 
     void Update(){
@@ -77,30 +75,24 @@ public class PlayerController : MonoBehaviour
         if (_health.CurrentHP <= defeatedThreshold){
             playerIsDefeated = true;
         }
-        if (_health.CurrentHP >= regenerateThreshold){
+        if (_health.CurrentHP >= _health.regenerateThreshold){
             playerIsDefeated = false;
         }
         if (playerIsDefeated){
-            _movement.enabled = false;
+            _movement.enabled = false; 
             _fighter.enabled = false;
-           _animationController.ChangeAnimationState("Die");
-           _movement.enabled = true;
-           _fighter.enabled = true;
+            _animationController.ChangeAnimationState("Die");
+            if (!_health.isRegenerating){
+                StartCoroutine(_health.HealthRegeneration());
+            }
+            if (!playerIsDefeated){
+                _movement.enabled = true;
+                _fighter.enabled = true;
+            }
         }
         return playerIsDefeated;
     }
-
-    IEnumerator HealthRegeneration(){ // health regeneration seems weird
-        while (true){
-            if (_health.CurrentHP <= regenerateThreshold){
-                yield return new WaitForSeconds(1f);
-                _health.UpdateHealth(-healthRegen);
-            }
-            else{
-                yield return null;
-            }
-        }
-    }
+    
 
     // void OnTriggerEnter(Collider other){ //Break out into its own script with onApplicationQuit
     //     //Check if other has GroundItem script

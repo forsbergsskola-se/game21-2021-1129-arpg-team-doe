@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using CustomLogs;
 using FMOD.Studio;
@@ -22,6 +23,9 @@ public class Health : MonoBehaviour, IDamageReceiver{
     public FMODUnity.EventReference fmodEvent;
     [SerializeField] [Min(0)] float parameter;
     
+    [SerializeField] internal int regenerateThreshold = 80;
+    [SerializeField] int healthRegen = 10;
+    
     EventInstance _takeDamage;
     public EventReference TakeDamageReference;
     // remove if unsuccessful
@@ -36,6 +40,7 @@ public class Health : MonoBehaviour, IDamageReceiver{
     Random random;
     //List<IDamageNumbers> damageNumbersList;
 
+    public bool isRegenerating;
     public bool IsAlive => CurrentHP > 0;
     public int CurrentHP{ get; private set; }
     public int ModifiedMaxHP => CalculateMaxHP();
@@ -75,6 +80,16 @@ public class Health : MonoBehaviour, IDamageReceiver{
     public void UpdateHealth(int healthChange){ //What about healing
         CurrentHP += healthChange;
         CurrentHP = Mathf.Clamp(CurrentHP, 0, ModifiedMaxHP);
+    }
+    
+    public IEnumerator HealthRegeneration(){ // health regeneration seems weird
+        isRegenerating = true;
+        while(CurrentHP <= regenerateThreshold){
+                yield return new WaitForSeconds(1f);
+                UpdateHealth(healthRegen);
+        }
+        isRegenerating = false;
+        yield return null;
     }
 
     int CalculateMaxHP(){
