@@ -3111,6 +3111,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1657072526 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4372569158332973657, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+  m_PrefabInstance: {fileID: 6598838206894276446}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657072501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e823775e63fe2a449e75a700dea31ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1671769838 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8972526659047141918, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
@@ -4141,19 +4152,39 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 9985d91f1e392e143b9995ac900fce68, type: 2}
     - target: {fileID: 4372569158332973656, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372569158332973656, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+      propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4372569158332973656, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4372569158332973656, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+      propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1657072526}
     - target: {fileID: 4372569158332973656, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4372569158332973656, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+      propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ConsumeItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372569158332973656, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: Consumer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372569158332973656, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+      propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: StatBuffObject, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372569158332973656, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+      propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: HealingObject, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5675631719487080354, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
       propertyPath: maxHP

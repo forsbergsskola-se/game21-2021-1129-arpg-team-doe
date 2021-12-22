@@ -29,9 +29,8 @@ MonoBehaviour:
   _pickupEvent: {fileID: 0}
   description: 
   buffs: []
-  _consumeEvent: {fileID: 0}
+  _consumeEvent: {fileID: 11400000, guid: e6ac37807d1d72b45a4aa327ca0377d5, type: 2}
   _consumer: {fileID: 0}
-  restoreHealthValue: 0
   fmodEvent:
     Guid:
       Data1: 0
@@ -39,6 +38,6 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
-  toxicityAmount: 0
-  restoreHealthValue: 0
-  toxicityDuration: 0
+  toxicityAmount: 1
+  restoreHealthValue: 30
+  toxicityDuration: 10
