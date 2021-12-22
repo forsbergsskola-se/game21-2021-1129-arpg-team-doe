@@ -74,7 +74,7 @@ public class Fighter : MonoBehaviour, IInteractSound{
     void Attack(GameObject target){
         LookAtTarget();
         if (_timeSinceLastAttack > 1f / _statistics.AttackSpeed){
-            // TODO: trigger attack animation and sound here
+            // TODO: trigger attack animation
             PlayAttackSound();
             //if(_animationController != null)
             _animationController.ChangeAnimationState(ATTACK);
@@ -86,7 +86,6 @@ public class Fighter : MonoBehaviour, IInteractSound{
                 PlayCritSound(); 
             }
             target.GetComponent<IDamageReceiver>()?.ReceiveDamage(_damage, isCrit, isPlayer);
-            //this.LogDealDamage(_damage, isCrit, target,_combatTarget.CurrentHP);
             _timeSinceLastAttack = 0f;
         }
     }

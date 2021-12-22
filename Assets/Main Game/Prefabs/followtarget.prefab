@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6614988171499839986}
   - component: {fileID: 6614988171499839989}
-  - component: {fileID: 6614988171499839988}
+  - component: {fileID: 4391181887660270953}
+  - component: {fileID: 4391181887660270957}
   m_Layer: 0
   m_Name: followtarget
   m_TagString: Untagged
@@ -49,9 +50,10 @@ MonoBehaviour:
   smoothTime: 0.3
   rotationSpeedMultiplier: 500
   snapRotationSpeedMultiplier: 30
-  minZoom: 3
+  minZoom: 5
   maxZoom: 15
---- !u!114 &6614988171499839988
+  cameraAngleX: 50
+--- !u!114 &4391181887660270953
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -60,11 +62,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 6614988171499839984}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Script: {fileID: 11500000, guid: 77492b46d24f73b43807c70501d4261d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attenuationObject: {fileID: 0}
-  ListenerNumber: -1
+  canvasInventory: {fileID: 0}
+  itemsInDatabase: {fileID: 11400000, guid: 8df4ad38724c8cd45940a9a27513d54b, type: 2}
+  itemPrefab: {fileID: 3378097737434846926, guid: 7c97bfcbdf1b1aa4cb379fcba585140a, type: 3}
+  droppedItem: {fileID: 4537476586442300296, guid: 7e6421aaab3e55f489d475a131951c00, type: 3}
+  canvasTransform: {fileID: 0}
+--- !u!114 &4391181887660270957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6614988171499839984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39e24e90f481cc24c9bffc402249aac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlighter: {fileID: 0}
 --- !u!1 &6614988172009823784
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,14 +107,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6614988172009823784}
-  m_LocalRotation: {x: 0.6427876, y: 0, z: 0, w: 0.7660445}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6614988171499839986}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 80, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &6614988172009823786
 Camera:
   m_ObjectHideFlags: 0
@@ -110,7 +128,7 @@ Camera:
   m_BackGroundColor: {r: 0, g: 0.25681338, b: 0.6603774, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
-  m_FOVAxisMode: 1
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
   m_FocalLength: 50
@@ -122,7 +140,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 73.73739
+  field of view: 85.189255
   orthographic: 0
   orthographic size: 5
   m_Depth: -1

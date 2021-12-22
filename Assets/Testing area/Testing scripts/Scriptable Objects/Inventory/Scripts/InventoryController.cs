@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = System.Random;
 
@@ -17,18 +18,21 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-    [SerializeField] List<ItemData> items;
+    [SerializeField] ItemDatabaseObject itemsInDatabase;
     [SerializeField] GameObject itemPrefab;
     [SerializeField] GameObject droppedItem;
     [SerializeField] Transform canvasTransform;
 
     InventoryItem _selectedItem;
     InventoryItem _overlapItem;
+    InventoryItem _hoveredItem;
     RectTransform _rectTransform;
     InventoryHighlight _inventoryHighlight;
     InventoryItem _itemToHighlight;
     Transform _playerTransform;
     Vector2Int _oldPosition;
+    UIStats[] UIStatsArray;
+    
     bool _clickOnInventory;
 
     void Awake(){
@@ -37,12 +41,14 @@ public class InventoryController : MonoBehaviour
 
     void Start(){
         _playerTransform = GameObject.FindWithTag("Player").transform;
+         UIStatsArray = FindObjectsOfType<UIStats>();
+        
     }
 
     void Update(){
         ItemIconDrag();
 
-        if (Input.GetKeyDown(KeyCode.I)){
+        if (Input.GetKeyDown(KeyCode.I) && !SkillPointApplyCheck()){
             ToggleInventory();
         }
 
@@ -71,8 +77,25 @@ public class InventoryController : MonoBehaviour
         if (Input.GetMouseButtonDown(0)){
             LeftMouseButtonPress();
         }
+        
+        MouseOver();
+        
+       
+        //if mouse over, display item object stats etc. _selecteditem.itemobject.whatever
+
+        if (Input.GetMouseButtonDown(1)){
+            RightMouseButtonPress();
+        }
     }
-    
+    void MouseOver()
+    {
+        var tileGridPosition = GetTileGridPosition();
+        _hoveredItem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
+        
+        if (_hoveredItem != null){
+           // _hoveredItem.itemObject.DisplayItem(); // Here we want to display the item information in the game view
+        }
+    }
     public void InsertItem(InventoryItem itemToInsert){
         Vector2Int? posOnGrid = selectedItemGrid.FindSpaceForObject(itemToInsert);
 
@@ -91,8 +114,8 @@ public class InventoryController : MonoBehaviour
         _rectTransform.SetParent(canvasTransform);
         _rectTransform.SetAsLastSibling(); //item you hold dont get behind a placed item in inventory
 
-        int selectedItemID = UnityEngine.Random.Range(0, items.Count);
-        inventoryItem.Set(items[selectedItemID]);
+        int selectedItemID = UnityEngine.Random.Range(0, itemsInDatabase.GetItem.Count);
+        inventoryItem.Set(itemsInDatabase.GetItem[selectedItemID]);
 
         return inventoryItem;
     }
@@ -179,6 +202,17 @@ public class InventoryController : MonoBehaviour
         }
     }
 
+    void RightMouseButtonPress(){
+        var tileGridPosition = GetTileGridPosition();
+        _hoveredItem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
+        if (_hoveredItem != null){
+            _hoveredItem.itemObject.UseItem();
+        }
+        else{
+            
+        }
+    }
+
     Vector2Int GetTileGridPosition(){
         Vector2 position = Input.mousePosition;
         if (_selectedItem != null){
@@ -216,5 +250,14 @@ public class InventoryController : MonoBehaviour
         if (_selectedItem != null){
             _rectTransform.position = Input.mousePosition;
         }
+    }
+
+    bool SkillPointApplyCheck(){
+        foreach (var UIStat in UIStatsArray){
+            if (UIStat.NeedToApplySkills){
+                return true;
+            }
+        }
+        return false;
     }
 }

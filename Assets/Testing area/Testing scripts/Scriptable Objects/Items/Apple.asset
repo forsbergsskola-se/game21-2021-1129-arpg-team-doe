@@ -13,15 +13,24 @@ MonoBehaviour:
   m_Name: Apple
   m_EditorClassIdentifier: 
   Id: 0
-  uiDisplay: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  itemIcon: {fileID: 0}
+  width: 1
+  height: 1
   type: 0
   name: Apple
   price: 0
   weight: 0.14
   description: This is an apple in perfect condition, a rare sight nowadays.
   buffs: []
+  _consumeEvent: {fileID: 0}
   restoreHealthValue: 370
-  consumeSound: {fileID: 0}
+  fmodEvent:
+    Guid:
+      Data1: 1927553125
+      Data2: 1093883294
+      Data3: -778861660
+      Data4: -755455540
+    Path: event:/Enemy1BattleCry
   buffDuration: 6
   toughnessBuff: 0
   strengthBuff: 0
@@ -30,3 +39,4 @@ MonoBehaviour:
   luckBuff: 0
   attackSpeedBuff: 0
   damageBuff: 0
+  toxicityAmount: 0
