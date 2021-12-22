@@ -18,8 +18,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] int defeatedThreshold = 40;
 
-    public InventoryObject inventory;
-    internal bool playerIsDefeated;
+    public InventoryObject inventory; 
+    bool playerIsDefeated;
     FMOD.Studio.EventInstance _moveInstance;
     Movement _movement;
     Statistics _statistics;

@@ -89,7 +89,7 @@ public class Health : MonoBehaviour, IDamageReceiver{
             UpdateHealth(healthRegen);
             if (CurrentHP >= stopRegenerateThreshold){
                  isRegenerating = false;
-                 yield return null;
+                 break;
             }
             
             yield return new WaitForSeconds(1f);

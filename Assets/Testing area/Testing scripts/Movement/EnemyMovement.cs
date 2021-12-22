@@ -82,10 +82,10 @@ public class EnemyMovement : MonoBehaviour
          WalkBackAndSetIdle();
          return;
       }
-      if (_target.GetComponent<PlayerController>().playerIsDefeated){
-         WalkBackAndSetIdle();
-         return;
-      }
+      // if (_target.GetComponent<PlayerController>().playerIsDefeated){
+      //    WalkBackAndSetIdle();
+      //    return;
+      // }
       if (!_playerIsDetected && !_alerted){
          _alerted = true;
       }
