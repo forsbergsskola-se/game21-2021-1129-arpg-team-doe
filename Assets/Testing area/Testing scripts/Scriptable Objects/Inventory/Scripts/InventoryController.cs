@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using FMOD.Studio;
 using Unity.VisualScripting;
 using UnityEngine;
 using Random = System.Random;
@@ -32,6 +33,8 @@ public class InventoryController : MonoBehaviour
     Transform _playerTransform;
     Vector2Int _oldPosition;
     UIStats[] UIStatsArray;
+    EventInstance _inventoryInstance;
+    public FMODUnity.EventReference inventoryReference;
     
     bool _clickOnInventory;
 
@@ -42,7 +45,7 @@ public class InventoryController : MonoBehaviour
     void Start(){
         _playerTransform = GameObject.FindWithTag("Player").transform;
          UIStatsArray = FindObjectsOfType<UIStats>();
-        
+         _inventoryInstance = FMODUnity.RuntimeManager.CreateInstance(inventoryReference);
     }
 
     void Update(){
@@ -50,6 +53,7 @@ public class InventoryController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.I) && !SkillPointApplyCheck()){
             ToggleInventory();
+            PlayInventorySound();
         }
 
         if (Input.GetKeyDown(KeyCode.Q)){ //debug version
@@ -259,5 +263,11 @@ public class InventoryController : MonoBehaviour
             }
         }
         return false;
+    }
+    public void PlayInventorySound(){
+        _inventoryInstance.getPlaybackState(out var playbackState);
+        if (playbackState == PLAYBACK_STATE.STOPPED){
+            _inventoryInstance.start();  
+        }
     }
 }
