@@ -4186,6 +4186,10 @@ PrefabInstance:
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: HealingObject, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 4372569159284212191, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+      propertyPath: _pickUpItem
+      value: 
+      objectReference: {fileID: 1448457195}
     - target: {fileID: 5675631719487080354, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
       propertyPath: maxHP
       value: 100
