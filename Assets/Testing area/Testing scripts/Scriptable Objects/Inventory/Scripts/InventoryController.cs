@@ -24,6 +24,7 @@ public class InventoryController : MonoBehaviour
     [SerializeField] GameObject droppedItem;
     [SerializeField] Transform canvasTransform;
 
+    public GameObject DroppedObject{ get; private set; }
     InventoryItem _selectedItem;
     InventoryItem _overlapItem;
     InventoryItem _hoveredItem;
@@ -63,9 +64,9 @@ public class InventoryController : MonoBehaviour
         }
 
         //add item to inventory
-        if (Input.GetKeyDown(KeyCode.W)){ //debug version
-            InsertRandomItem();
-        }
+        //if (Input.GetKeyDown(KeyCode.W)){ //debug version
+        //    InsertRandomItem();
+        //}
 
         //rotate items
         if (Input.GetKeyDown(KeyCode.R)){
@@ -191,8 +192,8 @@ public class InventoryController : MonoBehaviour
     
     void SpawnItemOnGround(){
         Vector3 spawnPosition = _playerTransform.position + new Vector3(0, 0, 2);
-        GameObject droppedObject = Instantiate(droppedItem, spawnPosition, Quaternion.identity); // for debug
-        // Here we need to instantiate the corresponding game object.
+        DroppedObject = Instantiate(droppedItem, spawnPosition, Quaternion.identity); // for debug
+        // Here we need to instantiate the corresponding game object. selectedItem??
     }
 
     void LeftMouseButtonPress(){

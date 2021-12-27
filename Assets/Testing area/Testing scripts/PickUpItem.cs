@@ -15,10 +15,9 @@ public class PickUpItem : MonoBehaviour, Iinteractable{
     
     public void Use(){
         if (!_used){
-            _inventoryController.InsertItem(_inventoryController.CreateRandomItem()); //TODO:Move to when item spawns
-            Debug.Log("Used");
+            _inventoryController.InsertItem(_inventoryController.CreateRandomItem());
             _used = true;
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }
