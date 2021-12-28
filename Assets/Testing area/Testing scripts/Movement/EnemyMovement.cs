@@ -11,7 +11,9 @@ public class EnemyMovement : MonoBehaviour
    [SerializeField] GameObject _healthBar;
    [SerializeField] float maxFollowRange = 30f;
    [SerializeField] float closeEnoughToSavedPosition = 3f;
-
+   [SerializeField] PatrolPath patrolPath;
+   [SerializeField] float waypointTolerance = 5f;
+   
    TargetDetection _targetDetection;
    Movement _movement;
    Fighter _fighter;
@@ -20,11 +22,11 @@ public class EnemyMovement : MonoBehaviour
    EventInstance _alertInstance;
    public FMODUnity.EventReference alertReference;
    
-
    GameObject _player;
    Transform _desiredTarget;
    Transform _target;
    Vector3 _savedPosition;
+   int _currentWaypointIndex;
    bool _activeSavedPosition;
    bool _needsToWalkBack;
 
@@ -44,6 +46,7 @@ public class EnemyMovement : MonoBehaviour
       _animationController = GetComponentInChildren<AnimationController>();
       _player = GameObject.FindWithTag("Player");
       _desiredTarget = _player.transform;
+      _savedPosition = transform.position;
 
       _alertInstance = FMODUnity.RuntimeManager.CreateInstance(alertReference);
 
@@ -55,8 +58,12 @@ public class EnemyMovement : MonoBehaviour
       _playerIsDetected = _targetDetection.TargetIsDetected(transform.position, _desiredTarget);
       if (_targetDetection.DistanceToTarget(_savedPosition, transform) < closeEnoughToSavedPosition){
          _needsToWalkBack = false;
-         if (!_isAttacking) 
+         if (!_isAttacking && patrolPath == null){
             _animationController.ChangeAnimationState(IDLE);
+         }
+      }
+      if (!_isAttacking && patrolPath != null){
+         Patrol();
       }
       _isAttacking = _playerIsDetected && !_needsToWalkBack;
       if (_isAttacking){
@@ -68,10 +75,6 @@ public class EnemyMovement : MonoBehaviour
          PlayAlertSound();
          _alerted = false;
       }
-      // if (_target == null){
-      //    WalkBackAndSetIdle();
-      //    // Or do patrol behavior
-      // }
    }
 
    void InteractCombat(Transform target){
@@ -100,20 +103,6 @@ public class EnemyMovement : MonoBehaviour
       }
    }
 
-   // void InteractWithCombat(){
-   //    if (!_activeSavedPosition){
-   //       SavePosition();
-   //    }
-   //    if (_target != null && isAttacking){
-   //       _fighter.GetAttackTarget(_target.gameObject);
-   //       _healthBar.SetActive(true);
-   //    }
-   //    //Checks if we're outside of the maxFollowRange
-   //    if (_targetDetection.DistanceToTarget(_savedPosition, transform) >= maxFollowRange){
-   //       ForgetTarget();
-   //    }
-   // }
-
    void WalkBackAndSetIdle(){
       ForgetTarget();
       _movement.Mover(_savedPosition);
@@ -125,6 +114,25 @@ public class EnemyMovement : MonoBehaviour
           _activeSavedPosition){
          SetIdle();
       }
+   }
+
+   void Patrol(){
+      Vector3 nextWaypointPosition = _savedPosition;
+      if (HasArrivedWaypoint()){
+         _currentWaypointIndex = patrolPath.GetNextWaypointIndex(_currentWaypointIndex);
+      }
+      nextWaypointPosition = GetCurrentWaypointPosition();
+      _movement.Mover(nextWaypointPosition);
+      _animationController.ChangeAnimationState(RUN);
+   }
+   
+   bool HasArrivedWaypoint(){
+      float distanceToWaypoint = _targetDetection.DistanceToTarget(GetCurrentWaypointPosition(), transform);
+      return distanceToWaypoint < waypointTolerance;
+   }
+
+   Vector3 GetCurrentWaypointPosition(){
+      return patrolPath.GetWaypointPosition(_currentWaypointIndex);
    }
 
    void SetIdle(){
