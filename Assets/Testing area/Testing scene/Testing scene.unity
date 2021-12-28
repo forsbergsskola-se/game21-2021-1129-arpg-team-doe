@@ -1346,6 +1346,8 @@ GameObject:
   - component: {fileID: 616178352}
   - component: {fileID: 616178350}
   - component: {fileID: 616178353}
+  - component: {fileID: 616178354}
+  - component: {fileID: 616178355}
   m_Layer: 0
   m_Name: Rusty Pipe
   m_TagString: Untagged
@@ -1485,6 +1487,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   labelPrefab: {fileID: 2960489290053376558, guid: 01df79adbbc77024bb41496a837eac57, type: 3}
   offset: {x: 0, y: 2, z: 0}
+  labelShowRange: 5
+--- !u!114 &616178354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616178344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d3f0030217a3cc4ca9f9f819cf0f668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  areaDetectionRange: 5
+  visionRange: 20
+  viewAngle: 0
+--- !u!208 &616178355
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616178344}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &704069855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1807,6 +1841,8 @@ GameObject:
   - component: {fileID: 764443538}
   - component: {fileID: 764443536}
   - component: {fileID: 764443539}
+  - component: {fileID: 764443540}
+  - component: {fileID: 764443541}
   m_Layer: 0
   m_Name: Expired Pie
   m_TagString: Untagged
@@ -1946,6 +1982,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   labelPrefab: {fileID: 2960489290053376558, guid: 01df79adbbc77024bb41496a837eac57, type: 3}
   offset: {x: 0, y: 2, z: 0}
+  labelShowRange: 5
+--- !u!114 &764443540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764443530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d3f0030217a3cc4ca9f9f819cf0f668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  areaDetectionRange: 5
+  visionRange: 20
+  viewAngle: 0
+--- !u!208 &764443541
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764443530}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &765376374
 GameObject:
   m_ObjectHideFlags: 0
@@ -1962,6 +2030,8 @@ GameObject:
   - component: {fileID: 765376382}
   - component: {fileID: 765376380}
   - component: {fileID: 765376383}
+  - component: {fileID: 765376384}
+  - component: {fileID: 765376385}
   m_Layer: 0
   m_Name: Apple (1)
   m_TagString: Untagged
@@ -2101,6 +2171,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   labelPrefab: {fileID: 2960489290053376558, guid: 01df79adbbc77024bb41496a837eac57, type: 3}
   offset: {x: 0, y: 2, z: 0}
+  labelShowRange: 5
+--- !u!114 &765376384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765376374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d3f0030217a3cc4ca9f9f819cf0f668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  areaDetectionRange: 5
+  visionRange: 20
+  viewAngle: 0
+--- !u!208 &765376385
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765376374}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &806120240
 GameObject:
   m_ObjectHideFlags: 0
@@ -2714,6 +2816,8 @@ GameObject:
   - component: {fileID: 1448457196}
   - component: {fileID: 1448457197}
   - component: {fileID: 1448457198}
+  - component: {fileID: 1448457199}
+  - component: {fileID: 1448457200}
   m_Layer: 0
   m_Name: Apple
   m_TagString: Untagged
@@ -2853,6 +2957,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   labelPrefab: {fileID: 2960489290053376558, guid: 01df79adbbc77024bb41496a837eac57, type: 3}
   offset: {x: 0, y: 2, z: 0}
+  labelShowRange: 5
+--- !u!114 &1448457199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448457188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d3f0030217a3cc4ca9f9f819cf0f668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  areaDetectionRange: 5
+  visionRange: 20
+  viewAngle: 0
+--- !u!208 &1448457200
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448457188}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1468103337
 GameObject:
   m_ObjectHideFlags: 0
@@ -3283,6 +3419,8 @@ GameObject:
   - component: {fileID: 1743232332}
   - component: {fileID: 1743232336}
   - component: {fileID: 1743232335}
+  - component: {fileID: 1743232337}
+  - component: {fileID: 1743232338}
   m_Layer: 0
   m_Name: Rocks
   m_TagString: Untagged
@@ -3434,6 +3572,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   labelPrefab: {fileID: 2960489290053376558, guid: 01df79adbbc77024bb41496a837eac57, type: 3}
   offset: {x: 0, y: 2, z: 0}
+  labelShowRange: 5
+--- !u!114 &1743232337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743232326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d3f0030217a3cc4ca9f9f819cf0f668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  areaDetectionRange: 5
+  visionRange: 20
+  viewAngle: 0
+--- !u!208 &1743232338
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743232326}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1792349742
 GameObject:
   m_ObjectHideFlags: 0

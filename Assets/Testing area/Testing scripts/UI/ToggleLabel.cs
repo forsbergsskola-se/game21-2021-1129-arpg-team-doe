@@ -1,38 +1,46 @@
+using System;
 using UnityEngine;
 
 public class ToggleLabel : MonoBehaviour
 {
     [SerializeField] GameObject labelPrefab;
     [SerializeField] Vector3 offset = new Vector3(0, 2, 0);
-    GameObject newLabel;
-    
-    void Update(){
-        if (Input.GetKeyDown(KeyCode.T)){
-            if(newLabel == null)
-                ShowLabel();
-            else{
-                TurnOffLabel();
-            }
-        }
-        
-        // if (Input.GetKeyDown(KeyCode.K)){
-        //     TurnOffLabel();
-        // }
+    [SerializeField] float labelShowRange = 5f;
+    GameObject _label;
+    GameObject _player;
+    TargetDetection _targetDetection;
+
+    void Start(){
+        _player = GameObject.FindWithTag("Player");
+        _targetDetection = GetComponent<TargetDetection>();
     }
 
-    void TurnOffLabel(){
-        if (newLabel != null){
-            Destroy(newLabel);
+    void Update(){
+        if (IsInRange() && _label == null){
+            ShowLabel();
+            return;
+        }
+        if(!IsInRange()){
+            TurnOffLabel();
         }
     }
 
     void ShowLabel(){
-        // if (newLabel != null){
-        //     return;
-        // }
         Vector3 position = transform.position + offset;
-        newLabel = Instantiate(labelPrefab, position, Quaternion.identity);
-        newLabel.SetActive(true);
-        newLabel.GetComponent<Label>().SetLabel(name);
+        _label = Instantiate(labelPrefab, position, Quaternion.identity);
+        _label.transform.parent = gameObject.transform;
+        _label.SetActive(true);
+        _label.GetComponent<Label>().SetLabel(name);
+    }
+    
+    void TurnOffLabel(){
+        if (_label != null){
+            Destroy(_label);
+        }
+    }
+
+    bool IsInRange(){
+        var distance = _targetDetection.DistanceToTarget(transform.position, _player.transform);
+        return distance < labelShowRange;
     }
 }

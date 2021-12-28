@@ -3,10 +3,10 @@ using UnityEngine.UI;
 
 public class Label : MonoBehaviour
 {
-    Text labelText;
+    Text _labelText;
 
     public void SetLabel(string textStr){
-        labelText = GetComponentInChildren<Text>();
-        labelText.text = textStr;
+        _labelText = GetComponentInChildren<Text>();
+        _labelText.text = textStr;
     }
 }
