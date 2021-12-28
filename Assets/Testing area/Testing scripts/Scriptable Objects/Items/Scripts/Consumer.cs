@@ -39,6 +39,12 @@ public class Consumer : MonoBehaviour, IConsumable
         if (_consumableObject is HealingObject){
             ConsumeItem((HealingObject)_consumableObject);
         }
+
+        if (_consumableObject is TeleportPotionSO)
+        {
+            ConsumeItem((TeleportPotionSO)_consumableObject);
+        }
+            
         
     }
 
@@ -56,7 +62,7 @@ public class Consumer : MonoBehaviour, IConsumable
         }
     }
 
-    public void ConsumeItem(StatBuffObject consumedItem){
+    void ConsumeItem(StatBuffObject consumedItem){
         if (_consumableObject == null){
             return;
         }
@@ -69,7 +75,7 @@ public class Consumer : MonoBehaviour, IConsumable
         }
     }
     
-    public void ConsumeItem(TeleportPotionSO consumedItem){
+     void ConsumeItem(TeleportPotionSO consumedItem){
         if (_consumableObject == null){
             return;
         }
@@ -104,7 +110,7 @@ public class Consumer : MonoBehaviour, IConsumable
     IEnumerator TeleportToTargetCoroutine(TeleportPotionSO consumedItem){
         this.Log("Starts Teleporting");
         yield return new WaitForSeconds(consumedItem.durationUntilTeleport);
-        gameObject.transform.position = consumedItem.targetTeleportLocation.transform.position;
+        gameObject.transform.position = consumedItem.targetTeleportLocation;
         toxicityLevel += consumedItem.toxicityAmount;
         yield return new WaitForSeconds(consumedItem.toxicityDuration);
         toxicityLevel -= consumedItem.toxicityAmount;

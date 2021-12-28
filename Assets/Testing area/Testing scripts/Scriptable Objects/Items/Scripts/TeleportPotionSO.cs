@@ -6,7 +6,7 @@ using UnityEngine;
 public class TeleportPotionSO : ConsumableObject
 {
 
-    [SerializeField] public TeleportTarget targetTeleportLocation;
+    [SerializeField] public Vector3 targetTeleportLocation;
     [Min(0f)][Tooltip("Duration in Seconds")] public int durationUntilTeleport;
     [Min(0f)][Tooltip("Duration in Seconds")] public int toxicityDuration;
     
