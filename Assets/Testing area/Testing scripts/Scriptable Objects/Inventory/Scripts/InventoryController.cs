@@ -128,6 +128,16 @@ public class InventoryController : MonoBehaviour
         return inventoryItem;
     }
     
+    public InventoryItem CreateItem(int selectedItemID){
+        InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
+        _rectTransform = inventoryItem.GetComponent<RectTransform>();
+        _rectTransform.SetParent(canvasTransform);
+        _rectTransform.SetAsLastSibling();
+        inventoryItem.Set(itemsInDatabase.GetItem[selectedItemID]);
+
+        return inventoryItem;
+    }
+    
     void ToggleInventory(){
         canvasInventory.SetActive(!canvasInventory.activeInHierarchy);
     }

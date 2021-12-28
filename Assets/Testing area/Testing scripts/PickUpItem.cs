@@ -15,7 +15,9 @@ public class PickUpItem : MonoBehaviour, Iinteractable{
     
     public void Use(){
         if (!_used){
-            _inventoryController.InsertItem(_inventoryController.CreateRandomItem());
+            int id = gameObject.GetComponent<InventoryItem>().itemObject.Id;
+            //_inventoryController.InsertItem(_inventoryController.CreateRandomItem());
+            _inventoryController.InsertItem(_inventoryController.CreateItem(id));
             _used = true;
             Destroy(gameObject);
         }
