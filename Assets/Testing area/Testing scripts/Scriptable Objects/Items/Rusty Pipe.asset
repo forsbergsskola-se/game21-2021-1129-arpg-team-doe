@@ -13,11 +13,20 @@ MonoBehaviour:
   m_Name: Rusty Pipe
   m_EditorClassIdentifier: 
   Id: 3
-  uiDisplay: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  itemIcon: {fileID: 21300000, guid: b37ec804b5a92fd45a10eddd8f58ca03, type: 3}
+  width: 1
+  height: 1
   type: 2
   name: Rusty Pipe
   price: 1273
-  weight: 0
+  pickupSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _pickupEvent: {fileID: 0}
   description: This in a rusty pipe.
   buffs:
   - attribute: 6
