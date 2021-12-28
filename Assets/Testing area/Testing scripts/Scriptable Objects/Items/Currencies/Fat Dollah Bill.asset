@@ -31,10 +31,10 @@ MonoBehaviour:
   buffs: []
   fmodEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 400691481
+      Data2: 1216791760
+      Data3: 961683596
+      Data4: -1380130837
+    Path: event:/MoneyDrop
   minAmount: 50
   maxAmount: 100

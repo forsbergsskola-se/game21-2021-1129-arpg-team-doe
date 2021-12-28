@@ -23,7 +23,8 @@ public abstract class ConsumableObject : ItemObject, IConsumable{
        Consume();
    }
 
-   public virtual void Consume(){
+   public virtual void Consume()
+   {
        _consumeEvent.Invoke();
        
    }

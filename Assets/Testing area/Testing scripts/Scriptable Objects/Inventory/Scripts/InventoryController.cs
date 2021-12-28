@@ -32,6 +32,7 @@ public class InventoryController : MonoBehaviour
     InventoryHighlight _inventoryHighlight;
     InventoryItem _itemToHighlight;
     Transform _playerTransform;
+    Consumer _playerConsumer;
     Vector2Int _oldPosition;
     UIStats[] UIStatsArray;
     EventInstance _inventoryInstance;
@@ -44,7 +45,9 @@ public class InventoryController : MonoBehaviour
     }
 
     void Start(){
+        
         _playerTransform = GameObject.FindWithTag("Player").transform;
+        _playerConsumer = _playerTransform.GetComponent<Consumer>();
          UIStatsArray = FindObjectsOfType<UIStats>();
          _inventoryInstance = FMODUnity.RuntimeManager.CreateInstance(inventoryReference);
     }
@@ -211,7 +214,19 @@ public class InventoryController : MonoBehaviour
         var tileGridPosition = GetTileGridPosition();
         _hoveredItem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
         if (_hoveredItem != null){
-            _hoveredItem.itemObject.UseItem();
+            if (_hoveredItem.itemObject is ConsumableObject itemObject)
+            {
+              
+                _playerConsumer._consumableObject = itemObject;
+                itemObject.Consume();
+            }
+            else
+            {
+               _hoveredItem.itemObject.UseItem(); 
+            }
+            
+            
+            
         }
         else{
             

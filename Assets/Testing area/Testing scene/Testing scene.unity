@@ -3078,11 +3078,11 @@ MonoBehaviour:
   _currencyHolderDataSo: {fileID: 11400000, guid: 9985d91f1e392e143b9995ac900fce68, type: 2}
   fmodEvent:
     Guid:
-      Data1: -542430724
-      Data2: 1268527413
-      Data3: 1053398163
-      Data4: 2091630610
-    Path: event:/LvlUP
+      Data1: 400691481
+      Data2: 1216791760
+      Data3: 961683596
+      Data4: -1380130837
+    Path: event:/MoneyDrop
 --- !u!114 &1657072521
 MonoBehaviour:
   m_ObjectHideFlags: 0

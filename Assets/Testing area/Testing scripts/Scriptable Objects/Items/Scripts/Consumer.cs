@@ -15,7 +15,7 @@ public class Consumer : MonoBehaviour, IConsumable
     // * If right clicking on consumable object in inventory, set that object as _consumableObject
     // * Then call that consumable objects use function which holds the consume method.
     
-    [SerializeField] ConsumableObject _consumableObject;
+    [SerializeField] public ConsumableObject _consumableObject;
     [SerializeField] int maxToxicityLevel = 3;
 
     public Statistics _statistics;
