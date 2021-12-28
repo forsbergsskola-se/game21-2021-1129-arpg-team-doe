@@ -74,7 +74,7 @@ public class Consumer : MonoBehaviour, IConsumable
         _statistics.AddStats(-consumedItem.toughnessBuff,-consumedItem.strengthBuff,-consumedItem.dexterityBuff,-consumedItem.knowledgeBuff,-consumedItem.reflexBuff,-consumedItem.luckBuff,-consumedItem.interactRangeBuff,-consumedItem.attackRangeBuff,-consumedItem.attackSpeedBuff,-consumedItem.damageBuff);
         toxicityLevel -= consumedItem.toxicityAmount;
     }
-
+    
     IEnumerator AddHealthCoroutine(HealingObject consumedItem){
         _health.UpdateHealth(consumedItem.restoreHealthValue);
         toxicityLevel += consumedItem.toxicityAmount;
