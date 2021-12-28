@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using CustomLogs;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -68,6 +69,7 @@ public class Consumer : MonoBehaviour, IConsumable
     }
 
     IEnumerator AddStatsCoroutine(StatBuffObject consumedItem){
+        this.Log("Consumed Stat Buff");
         _statistics.AddStats(consumedItem.toughnessBuff,consumedItem.strengthBuff,consumedItem.dexterityBuff,consumedItem.knowledgeBuff,consumedItem.reflexBuff,consumedItem.luckBuff,consumedItem.interactRangeBuff,consumedItem.attackRangeBuff,consumedItem.attackSpeedBuff,consumedItem.damageBuff);
         toxicityLevel += consumedItem.toxicityAmount;
         yield return new WaitForSeconds(consumedItem.buffDuration);
@@ -76,6 +78,7 @@ public class Consumer : MonoBehaviour, IConsumable
     }
     
     IEnumerator AddHealthCoroutine(HealingObject consumedItem){
+        this.Log("Consumed Health Potion for" + consumedItem.restoreHealthValue);
         _health.UpdateHealth(consumedItem.restoreHealthValue);
         toxicityLevel += consumedItem.toxicityAmount;
         yield return new WaitForSeconds(consumedItem.toxicityDuration);

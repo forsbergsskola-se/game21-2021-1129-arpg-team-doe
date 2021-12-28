@@ -214,11 +214,12 @@ public class InventoryController : MonoBehaviour
         var tileGridPosition = GetTileGridPosition();
         _hoveredItem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
         if (_hoveredItem != null){
-            if (_hoveredItem.itemObject is ConsumableObject itemObject)
+            if (_hoveredItem.itemObject is ConsumableObject)
             {
               
-                _playerConsumer._consumableObject = itemObject;
-                itemObject.Consume();
+                _playerConsumer._consumableObject = (ConsumableObject)_hoveredItem.itemObject;
+                _hoveredItem.itemObject.UseItem();
+                _playerConsumer._consumableObject = null;
             }
             else
             {
