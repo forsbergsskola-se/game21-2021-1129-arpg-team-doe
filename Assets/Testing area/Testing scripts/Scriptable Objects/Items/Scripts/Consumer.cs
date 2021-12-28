@@ -16,7 +16,7 @@ public class Consumer : MonoBehaviour, IConsumable
     // * If right clicking on consumable object in inventory, set that object as _consumableObject
     // * Then call that consumable objects use function which holds the consume method.
     
-    [SerializeField] public ConsumableObject _consumableObject;
+    [HideInInspector] public ConsumableObject _consumableObject;
     [SerializeField] int maxToxicityLevel = 3;
 
     public Statistics _statistics;
@@ -42,7 +42,7 @@ public class Consumer : MonoBehaviour, IConsumable
     }
 
     [ContextMenu("ConsumeItem")]
-    public void ConsumeItem(HealingObject consumedItem){
+     void ConsumeItem(HealingObject consumedItem){
         if (_consumableObject == null){
             return;
         }
@@ -75,6 +75,7 @@ public class Consumer : MonoBehaviour, IConsumable
         yield return new WaitForSeconds(consumedItem.buffDuration);
         _statistics.AddStats(-consumedItem.toughnessBuff,-consumedItem.strengthBuff,-consumedItem.dexterityBuff,-consumedItem.knowledgeBuff,-consumedItem.reflexBuff,-consumedItem.luckBuff,-consumedItem.interactRangeBuff,-consumedItem.attackRangeBuff,-consumedItem.attackSpeedBuff,-consumedItem.damageBuff);
         toxicityLevel -= consumedItem.toxicityAmount;
+        this.Log(toxicityLevel);
     }
     
     IEnumerator AddHealthCoroutine(HealingObject consumedItem){
@@ -83,6 +84,7 @@ public class Consumer : MonoBehaviour, IConsumable
         toxicityLevel += consumedItem.toxicityAmount;
         yield return new WaitForSeconds(consumedItem.toxicityDuration);
         toxicityLevel -= consumedItem.toxicityAmount;
+        this.Log(toxicityLevel);
     }
 
 

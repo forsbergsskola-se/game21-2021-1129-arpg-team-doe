@@ -10,6 +10,6 @@ public class HealingObject : ConsumableObject
 
     public override void Consume(){
         base.Consume();
-        _consumer.ConsumeItem(this);
+      //  _consumer.ConsumeItem(this);
     }
 }

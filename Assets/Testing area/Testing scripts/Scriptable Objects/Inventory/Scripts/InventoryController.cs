@@ -228,7 +228,7 @@ public class InventoryController : MonoBehaviour
             {
               
                 _playerConsumer._consumableObject = (ConsumableObject)_hoveredItem.itemObject;
-                _hoveredItem.itemObject.UseItem();
+                _playerConsumer.Consume();
                 _playerConsumer._consumableObject = null;
             }
             else

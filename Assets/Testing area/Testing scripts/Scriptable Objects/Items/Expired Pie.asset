@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9aa9d84f5e818d4b9ff5048760e0971, type: 3}
+  m_Name: Expired Pie
+  m_EditorClassIdentifier: 
+  Id: 3
+  itemIcon: {fileID: 21300000, guid: 3bd21342ff245be45a465edd6119520e, type: 3}
+  width: 2
+  height: 1
+  type: 0
+  name: Expired Pie
+  price: 163
+  pickupSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _pickupEvent: {fileID: 0}
+  description: 
+  buffs: []
+  fmodEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  toxicityAmount: 0
+  buffDuration: 10
+  toughnessBuff: 1
+  strengthBuff: 5
+  dexterityBuff: 3
+  knowledgeBuff: 4
+  reflexBuff: 7
+  luckBuff: 89
+  interactRangeBuff: 5
+  attackRangeBuff: 43
+  attackSpeedBuff: 4
+  damageBuff: 7
