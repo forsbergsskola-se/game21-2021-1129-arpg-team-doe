@@ -8,5 +8,6 @@ public class Label : MonoBehaviour
     public void SetLabel(string textStr){
         _labelText = GetComponentInChildren<Text>();
         _labelText.text = textStr;
+        _labelText.color = Color.yellow;
     }
 }

@@ -21,8 +21,8 @@ public class InventoryController : MonoBehaviour
 
     [SerializeField] ItemDatabaseObject itemsInDatabase;
     [SerializeField] GameObject itemPrefab;
-    [SerializeField] GameObject droppedItem;
     [SerializeField] Transform canvasTransform;
+    [SerializeField] GameObject[] groundItemPrefabs;
 
     public GameObject DroppedObject{ get; private set; }
     InventoryItem _selectedItem;
@@ -204,9 +204,9 @@ public class InventoryController : MonoBehaviour
     }
     
     void SpawnItemOnGround(){
+        var droppedItem = groundItemPrefabs[_selectedItem.itemObject.Id];
         Vector3 spawnPosition = _playerTransform.position + new Vector3(0, 0, 2);
-        DroppedObject = Instantiate(droppedItem, spawnPosition, Quaternion.identity); // for debug
-        // Here we need to instantiate the corresponding game object. selectedItem??
+        DroppedObject = Instantiate(droppedItem, spawnPosition, Quaternion.identity);
     }
 
     void LeftMouseButtonPress(){
