@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using CustomLogs;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -67,6 +68,19 @@ public class Consumer : MonoBehaviour, IConsumable
             Debug.Log("Toxicity level too high!" + toxicityLevel + "/" + maxToxicityLevel);
         }
     }
+    
+    public void ConsumeItem(TeleportPotionSO consumedItem){
+        if (_consumableObject == null){
+            return;
+        }
+        if (toxicityLevel < maxToxicityLevel){
+            StartCoroutine(TeleportToTargetCoroutine(consumedItem));
+        }
+        
+        else{
+            Debug.Log("Toxicity level too high!" + toxicityLevel + "/" + maxToxicityLevel);
+        }
+    }
 
     IEnumerator AddStatsCoroutine(StatBuffObject consumedItem){
         this.Log("Consumed Stat Buff");
@@ -81,6 +95,16 @@ public class Consumer : MonoBehaviour, IConsumable
     IEnumerator AddHealthCoroutine(HealingObject consumedItem){
         this.Log("Consumed Health Potion for" + consumedItem.restoreHealthValue);
         _health.UpdateHealth(consumedItem.restoreHealthValue);
+        toxicityLevel += consumedItem.toxicityAmount;
+        yield return new WaitForSeconds(consumedItem.toxicityDuration);
+        toxicityLevel -= consumedItem.toxicityAmount;
+        this.Log(toxicityLevel);
+    }
+    
+    IEnumerator TeleportToTargetCoroutine(TeleportPotionSO consumedItem){
+        this.Log("Starts Teleporting");
+        yield return new WaitForSeconds(consumedItem.durationUntilTeleport);
+        gameObject.transform.position = consumedItem.targetTeleportLocation.transform.position;
         toxicityLevel += consumedItem.toxicityAmount;
         yield return new WaitForSeconds(consumedItem.toxicityDuration);
         toxicityLevel -= consumedItem.toxicityAmount;

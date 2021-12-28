@@ -6,6 +6,11 @@ using UnityEngine;
 public class TeleportPotionSO : ConsumableObject
 {
 
+    [SerializeField] public TeleportTarget targetTeleportLocation;
+    [Min(0f)][Tooltip("Duration in Seconds")] public int durationUntilTeleport;
+    [Min(0f)][Tooltip("Duration in Seconds")] public int toxicityDuration;
+    
+    
     public override void Consume(){
         base.Consume();
 
