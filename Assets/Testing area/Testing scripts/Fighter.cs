@@ -53,7 +53,7 @@ public class Fighter : MonoBehaviour, IInteractSound{
             return;
         }
         if (!IsInAttackRange()){
-            _movement.Mover(_combatTarget.transform.position);
+            _movement.Mover(_combatTarget.transform.position, 1f);
             if (_animationController != null)
                 _animationController.ChangeAnimationState(RUN);
         }

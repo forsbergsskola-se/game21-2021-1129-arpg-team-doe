@@ -529,6 +529,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &310079919 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4906887523955336071, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
+  m_PrefabInstance: {fileID: 1511514185}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &362504282 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9088444525093977231, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
@@ -1289,6 +1294,14 @@ PrefabInstance:
       propertyPath: TakeDamageReference.Guid.Data4
       value: 1873771730
       objectReference: {fileID: 0}
+    - target: {fileID: 6853580289907481125, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: maxSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 786961540}
     - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: alertReference.Path
       value: event:/ZombieAlert
@@ -1649,6 +1662,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2603801455782169042, guid: 96073dff66b365d418aa30610c442dfe, type: 3}
   m_PrefabInstance: {fileID: 2603801455288316509}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &786961540 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1386220651167043233, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+  m_PrefabInstance: {fileID: 528519601}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &806120240
 GameObject:
   m_ObjectHideFlags: 0
@@ -1743,6 +1761,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &958865620 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4906887523955336071, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
+  m_PrefabInstance: {fileID: 7737373944875792578}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &976373846
 GameObject:
   m_ObjectHideFlags: 0
@@ -2363,6 +2386,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 592454887396472579, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
+      propertyPath: maxSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 666683531177710290, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
       propertyPath: _xpDrop
       value: 
@@ -2372,9 +2399,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 44b23296178544384ad6b8052486b374, type: 2}
     - target: {fileID: 2357426410238338414, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 310079919}
+    - target: {fileID: 2357426410238338414, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
       propertyPath: patrolPath
       value: 
       objectReference: {fileID: 1765126182}
+    - target: {fileID: 2357426410238338414, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
+      propertyPath: dwellingTime
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2357426410238338414, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
       propertyPath: waypointTolerance
       value: 3
@@ -2651,6 +2686,14 @@ PrefabInstance:
       propertyPath: TakeDamageReference.Guid.Data4
       value: 1873771730
       objectReference: {fileID: 0}
+    - target: {fileID: 6853580289907481125, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: maxSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 1752748633}
     - target: {fileID: 8616334650171279432, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: alertReference.Path
       value: event:/ZombieAlert
@@ -2861,6 +2904,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7092348782955867998, guid: 2c1c2674701834f40bb4953dfd7d3e7b, type: 3}
   m_PrefabInstance: {fileID: 7092348783381819925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1752748633 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1386220651167043233, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
+  m_PrefabInstance: {fileID: 1612765088}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1765126182 stripped
 MonoBehaviour:
@@ -4183,6 +4231,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 592454887396472579, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
+      propertyPath: maxSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 666683531177710290, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
       propertyPath: _xpDrop
       value: 
@@ -4191,6 +4243,10 @@ PrefabInstance:
       propertyPath: _xpDropEvent
       value: 
       objectReference: {fileID: 11400000, guid: 44b23296178544384ad6b8052486b374, type: 2}
+    - target: {fileID: 2357426410238338414, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 958865620}
     - target: {fileID: 4906887523955336071, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
       propertyPath: m_IsActive
       value: 0

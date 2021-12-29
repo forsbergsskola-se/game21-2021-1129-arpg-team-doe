@@ -25,7 +25,7 @@ public class MoveToObject : MonoBehaviour{
         if (isObstacle){
             Debug.Log("walking here!");
             Debug.Log(_object.transform.position - new Vector3(0,_movement.transform.position.y,-2));
-            _movement.Mover(_object.transform.position - new Vector3(0,0,-2));
+            _movement.Mover(_object.transform.position - new Vector3(0,0,-2), 1f);
         }
         else if (!isObstacle){
             Debug.Log("stopping");

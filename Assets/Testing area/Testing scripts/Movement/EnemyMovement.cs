@@ -8,11 +8,14 @@ using FMOD.Studio;
 
 public class EnemyMovement : MonoBehaviour
 {
-   [SerializeField] GameObject _healthBar;
+   [SerializeField] GameObject healthBar;
    [SerializeField] float maxFollowRange = 30f;
    [SerializeField] float closeEnoughToSavedPosition = 3f;
    [SerializeField] PatrolPath patrolPath;
-   [SerializeField] float waypointTolerance = 5f;
+   [SerializeField] float waypointTolerance = 4f;
+   [Range(0,1)]
+   [SerializeField] float patrolSpeedFraction = 0.3f;
+   [SerializeField] float dwellingTime = 6f;
    
    TargetDetection _targetDetection;
    Movement _movement;
@@ -26,6 +29,7 @@ public class EnemyMovement : MonoBehaviour
    Transform _desiredTarget;
    Transform _target;
    Vector3 _savedPosition;
+   float _dwellingTimer = Mathf.Infinity;
    int _currentWaypointIndex;
    bool _activeSavedPosition;
    bool _needsToWalkBack;
@@ -64,6 +68,7 @@ public class EnemyMovement : MonoBehaviour
       }
       if (!_isAttacking && patrolPath != null){
          Patrol();
+         _dwellingTimer += Time.deltaTime;
       }
       _isAttacking = _playerIsDetected && !_needsToWalkBack;
       if (_isAttacking){
@@ -96,7 +101,7 @@ public class EnemyMovement : MonoBehaviour
       if (_targetDetection.DistanceToTarget(_savedPosition, transform) < maxFollowRange){
          _fighter.GetAttackTarget(target.gameObject);
          _needsToWalkBack = false;
-         _healthBar.SetActive(true);
+         healthBar.SetActive(true);
       }
       else{
          WalkBackAndSetIdle();
@@ -105,7 +110,7 @@ public class EnemyMovement : MonoBehaviour
 
    void WalkBackAndSetIdle(){
       ForgetTarget();
-      _movement.Mover(_savedPosition);
+      _movement.Mover(_savedPosition, 1f);
       _fighter.CancelAttack();
       _animationController.ChangeAnimationState(RUN);
 
@@ -117,13 +122,16 @@ public class EnemyMovement : MonoBehaviour
    }
 
    void Patrol(){
-      Vector3 nextWaypointPosition = _savedPosition;
       if (HasArrivedWaypoint()){
          _currentWaypointIndex = patrolPath.GetNextWaypointIndex(_currentWaypointIndex);
+         _dwellingTimer = 0;
+         _animationController.ChangeAnimationState(IDLE);
       }
-      nextWaypointPosition = GetCurrentWaypointPosition();
-      _movement.Mover(nextWaypointPosition);
-      _animationController.ChangeAnimationState(RUN);
+      var nextWaypointPosition = GetCurrentWaypointPosition();
+      if (_dwellingTimer > dwellingTime){
+         _movement.Mover(nextWaypointPosition, patrolSpeedFraction);
+         _animationController.ChangeAnimationState(RUN);
+      }
    }
    
    bool HasArrivedWaypoint(){
@@ -143,7 +151,7 @@ public class EnemyMovement : MonoBehaviour
    void ForgetTarget(){
       _target = null;
       _needsToWalkBack = true;
-      _healthBar.SetActive(false);
+      healthBar.SetActive(false);
    }
 
    void SavePosition(){
