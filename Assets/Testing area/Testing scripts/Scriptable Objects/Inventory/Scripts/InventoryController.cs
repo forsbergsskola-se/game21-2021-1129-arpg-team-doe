@@ -9,8 +9,8 @@ using Random = System.Random;
 public class InventoryController : MonoBehaviour
 {
     public GameObject canvasInventory;
-    [HideInInspector]
-    ItemGrid selectedItemGrid;
+    //[HideInInspector]
+    public ItemGrid selectedItemGrid;
     public ItemGrid SelectedItemGrid{
         get => selectedItemGrid;
         set{
@@ -207,6 +207,7 @@ public class InventoryController : MonoBehaviour
         var droppedItem = groundItemPrefabs[_selectedItem.itemObject.Id];
         Vector3 spawnPosition = _playerTransform.position + new Vector3(0, 0, 2);
         DroppedObject = Instantiate(droppedItem, spawnPosition, Quaternion.identity);
+        DroppedObject.name = droppedItem.name;
     }
 
     void LeftMouseButtonPress(){
@@ -235,9 +236,7 @@ public class InventoryController : MonoBehaviour
             {
                _hoveredItem.itemObject.UseItem(); 
             }
-            
-            
-            
+
         }
         else{
             
