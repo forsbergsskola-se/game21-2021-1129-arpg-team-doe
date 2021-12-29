@@ -66,7 +66,7 @@ public class EnemyMovement : MonoBehaviour
             _animationController.ChangeAnimationState(IDLE);
          }
       }
-      if (!_isAttacking && patrolPath != null){
+      if (!_playerIsDetected && patrolPath != null && !_needsToWalkBack){
          Patrol();
          _dwellingTimer += Time.deltaTime;
       }

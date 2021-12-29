@@ -2523,6 +2523,10 @@ PrefabInstance:
       propertyPath: waypointTolerance
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2357426410238338414, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
+      propertyPath: patrolSpeedFraction
+      value: 0.525
+      objectReference: {fileID: 0}
     - target: {fileID: 4906887523955336071, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2547,6 +2551,18 @@ PrefabInstance:
       propertyPath: onEnemyCursor
       value: 
       objectReference: {fileID: 2800000, guid: 606dc05b8b59a470687e80c6932c2995, type: 3}
+    - target: {fileID: 6894303664310673330, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
+      propertyPath: viewAngle
+      value: 150.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 6894303664310673330, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
+      propertyPath: visionRange
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6894303664310673330, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
+      propertyPath: areaDetectionRange
+      value: 5.8
+      objectReference: {fileID: 0}
     - target: {fileID: 8972526659047141890, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3540,7 +3556,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040484209}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 903.9331, y: 323.5098, z: -3.0063262}
+  m_LocalPosition: {x: 903.9331, y: 323.5098, z: 19.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
