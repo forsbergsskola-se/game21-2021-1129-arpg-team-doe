@@ -13,10 +13,26 @@ MonoBehaviour:
   m_Name: Rocks
   m_EditorClassIdentifier: 
   Id: 2
-  uiDisplay: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  type: 3
+  itemIcon: {fileID: 0}
+  width: 1
+  height: 1
+  type: 4
   name: Rocks
   price: 0
-  weight: 15
+  pickupSound:
+    Guid:
+      Data1: -312644212
+      Data2: 1199521289
+      Data3: 7098806
+      Data4: 756995485
+    Path: event:/UI
+  dropSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
   description: This is a pile of rocks.
   buffs: []

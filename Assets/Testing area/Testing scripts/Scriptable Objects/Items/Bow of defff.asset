@@ -21,12 +21,19 @@ MonoBehaviour:
   price: 1
   pickupSound:
     Guid:
+      Data1: 932151635
+      Data2: 1318326047
+      Data3: -1646563165
+      Data4: -700181130
+    Path: event:/PickUp
+  dropSound:
+    Guid:
       Data1: 1900887504
       Data2: 1196688114
       Data3: 2018678679
       Data4: 1010304396
     Path: event:/BowInventory
-  _pickupEvent: {fileID: 0}
+  _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
   description: 
   buffs: []
   attackSpeed: 12

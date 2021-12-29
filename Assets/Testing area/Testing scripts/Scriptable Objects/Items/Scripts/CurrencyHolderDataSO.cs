@@ -16,6 +16,5 @@ public class CurrencyHolderDataSO : ScriptableObject{ //Wallet
    public void AddCurrency(int amount){
       Currency += amount;
       currencyChangeEvent.Invoke();
-      //Play currency sound
    }
 }
