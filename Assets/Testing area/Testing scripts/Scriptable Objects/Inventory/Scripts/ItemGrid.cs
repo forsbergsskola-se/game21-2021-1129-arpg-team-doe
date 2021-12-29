@@ -42,7 +42,7 @@ public class ItemGrid : MonoBehaviour
 
     public bool IsOutOfInventoryGrid(int x, int y){
         Vector2 inventorySize = _rectTransform.sizeDelta;
-        return x < 0 || x > inventorySize.x || y < 0 || y > inventorySize.y;
+        return x < 0 || x >= inventorySize.x / tileSizeWidth || y < 0 || y >= inventorySize.y / tileSizeHeight;
     }
 
     void CleanGridReference(InventoryItem item){
