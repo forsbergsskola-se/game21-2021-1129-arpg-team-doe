@@ -6,7 +6,8 @@ using FMOD.Studio;
 
 public class Fighter : MonoBehaviour, IInteractSound{
     [SerializeField] float critDamageMultiplier = 1.5f; // for debug
-
+    [SerializeField] DamageType wepDamageType; //TODO: Use actual weapon damage type here, just for debug for now
+    
     Statistics _statistics;
     Health _combatTarget;
     Movement _movement;
@@ -16,12 +17,11 @@ public class Fighter : MonoBehaviour, IInteractSound{
     public FMODUnity.EventReference critReference;
     EventInstance _attackInstance;
     public FMODUnity.EventReference attackReference;
-
+    
+    int _damage;
     bool isPlayer;
-
     float _attackRange;
     float _distance;
-    int _damage;
     float _timeSinceLastAttack = Mathf.Infinity;
 
     const string RUN = "Run";
@@ -79,13 +79,15 @@ public class Fighter : MonoBehaviour, IInteractSound{
             //if(_animationController != null)
             _animationController.ChangeAnimationState(ATTACK);
             _damage = _statistics.AttackDamage;
+            //Weapon dmg type vs enemy stat res type
             bool isCrit = false;
             if (_random.NextDouble() < _statistics.CritChance){
                 _damage = Mathf.RoundToInt(_statistics.AttackDamage * critDamageMultiplier);
                 isCrit = true;
                 PlayCritSound(); 
             }
-            target.GetComponent<IDamageReceiver>()?.ReceiveDamage(_damage, isCrit, isPlayer);
+            target.GetComponent<IDamageReceiver>()?.ReceiveDamage(_damage, isCrit, isPlayer, wepDamageType/*weapon.damageType */);
+            //TODO: We need an actual weapon to get the damage type of that weapon
             _timeSinceLastAttack = 0f;
         }
     }
@@ -100,7 +102,6 @@ public class Fighter : MonoBehaviour, IInteractSound{
     bool IsInAttackRange(){
         return Vector3.Distance(transform.position, _combatTarget.transform.position) < _attackRange;
     }
-
     bool IsClickOnItself(){
         return _combatTarget.transform.gameObject == gameObject;
     }

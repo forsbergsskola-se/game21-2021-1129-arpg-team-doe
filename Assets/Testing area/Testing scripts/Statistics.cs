@@ -18,7 +18,10 @@ public class Statistics : MonoBehaviour{
     [SerializeField] int defaultDamage = 5;
     [SerializeField] internal float lowImpactLevelMultiplier = 0.5f;
     [SerializeField] internal float highImpactLevelMultiplier = 1f;
-    [SerializeField] List<DamageType> vulnerabilities;
+    [SerializeField] internal List<DamageType> vulnerabilities;
+    [Tooltip("The higher the value, the more damage is taken")][Range(1f,3f)][SerializeField] internal float vulnerabilityDamageModifier = 2f;
+    [SerializeField] internal List<DamageType> resistances;
+    [Tooltip("The higher the value, the more damage is taken")][Range(-1f,1f)][SerializeField] internal float resistanceDamageModifier = 0.5f;
     int damage;
     bool isRanged;
 

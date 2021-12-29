@@ -23,7 +23,7 @@ public enum Attributes{
 public abstract class ItemObject : ScriptableObject{
     
     
-    public int Id;
+    [HideInInspector] public int Id;
     //public GameObject prefab;
     public Sprite itemIcon;
     public int width = 1;

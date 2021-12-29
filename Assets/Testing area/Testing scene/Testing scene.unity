@@ -761,6 +761,9 @@ MonoBehaviour:
   lowImpactLevelMultiplier: 0
   highImpactLevelMultiplier: 0
   vulnerabilities: []
+  vulnerabilityDamageModifier: 0
+  resistances: []
+  resistanceDamageModifier: 0
 --- !u!136 &408597638
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3220,6 +3223,9 @@ MonoBehaviour:
   lowImpactLevelMultiplier: 0
   highImpactLevelMultiplier: 0
   vulnerabilities: []
+  vulnerabilityDamageModifier: 0
+  resistances: []
+  resistanceDamageModifier: 0
 --- !u!114 &1995880702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3841,6 +3847,22 @@ PrefabInstance:
       propertyPath: groundItemPrefabs.Array.data[3]
       value: 
       objectReference: {fileID: 537245930790900980, guid: 394cf008678ceca498b350abfcfa150c, type: 3}
+    - target: {fileID: 5675631719487080352, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+      propertyPath: resistances.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5675631719487080352, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+      propertyPath: resistanceDamageModifier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5675631719487080352, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+      propertyPath: vulnerabilityDamageModifier
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5675631719487080353, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+      propertyPath: wepDamageType
+      value: 
+      objectReference: {fileID: 11400000, guid: dbbc8d142b7dca24f8b0eda4cd410de2, type: 2}
     - target: {fileID: 5675631719487080354, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
       propertyPath: maxHP
       value: 100
@@ -4193,6 +4215,30 @@ PrefabInstance:
       propertyPath: onEnemyCursor
       value: 
       objectReference: {fileID: 2800000, guid: 606dc05b8b59a470687e80c6932c2995, type: 3}
+    - target: {fileID: 8535200300468700476, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
+      propertyPath: resistances.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535200300468700476, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
+      propertyPath: resistanceDamageModifier
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535200300468700476, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
+      propertyPath: resistances.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: dbbc8d142b7dca24f8b0eda4cd410de2, type: 2}
+    - target: {fileID: 8535200300468700476, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
+      propertyPath: vulnerabilities.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535200300468700476, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
+      propertyPath: vulnerabilityDamageModifier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535200300468700476, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
+      propertyPath: vulnerabilities.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: dbbc8d142b7dca24f8b0eda4cd410de2, type: 2}
     - target: {fileID: 8972526659047141890, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
       propertyPath: m_RootOrder
       value: 24

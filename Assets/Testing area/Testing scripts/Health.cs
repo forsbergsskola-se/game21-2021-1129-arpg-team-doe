@@ -8,7 +8,7 @@ using UnityEngine;
 using Random = System.Random;
 
 public interface IDamageReceiver{
-    void ReceiveDamage(int damage, bool isCrit, bool isPlayer);
+    void ReceiveDamage(int damage, bool isCrit, bool isPlayer, DamageType receivedDmgType);
 }
 
 public interface IHealthListener{
@@ -38,7 +38,7 @@ public class Health : MonoBehaviour, IDamageReceiver{
     [SerializeField] XPDropEvent _xpDropEvent;
     Statistics _stats;
     Random random;
-    //List<IDamageNumbers> damageNumbersList;
+    
 
     public bool isRegenerating;
     public bool IsAlive => CurrentHP > 0 && !isRegenerating;
@@ -54,12 +54,6 @@ public class Health : MonoBehaviour, IDamageReceiver{
         if (_xpDrop != null) {
             _xpDrop = GetComponent<XPDrop>();
         }
-
-        // if (_xpDropEvent != null) {
-        //     _xpDropEvent = GetComponent<XPDropEvent>();
-        // }
-
-            // unfinished FMOD implementation
         FMODEvent();
     }
 
@@ -101,8 +95,8 @@ public class Health : MonoBehaviour, IDamageReceiver{
         return (int) _stats.StatManipulation(maxHP, _stats.Toughness, _stats.highImpactLevelMultiplier);
     }
 
-    public void ReceiveDamage(int damage, bool isCrit, bool isPlayer){ //Toughness should affect this
-        damage = ProcessDamage(damage);
+    public void ReceiveDamage(int receivedDamage, bool isCrit, bool isPlayer, DamageType receivedDmgType){ //Toughness should affect this
+        var damage = ProcessDamage(receivedDamage, receivedDmgType);
         UpdateHealth(-damage);
         if (gameObject.tag == "Player"){
             PlaySound();
@@ -122,9 +116,27 @@ public class Health : MonoBehaviour, IDamageReceiver{
         return random.NextDouble() < _stats.DodgeChance;
     }
 
-    int ProcessDamage(int dmg){
+    int ProcessDamage(int dmg, DamageType receivedDmgType)
+    {
         if (DodgeSuccessful()){
             dmg = 0;
+        }
+
+        foreach (var damageType in _stats.vulnerabilities)
+        {
+            if (receivedDmgType == damageType)
+            {
+              dmg = Mathf.RoundToInt(dmg * _stats.vulnerabilityDamageModifier);
+                break;
+            }
+        }
+        foreach (var damageType in _stats.resistances)
+        {
+            if (receivedDmgType == damageType)
+            {
+                dmg = Mathf.RoundToInt(dmg * _stats.resistanceDamageModifier);
+                break;
+            }
         }
         //Debug.Log(transform.name + " receives " + dmg + " Damage");
         return dmg;
