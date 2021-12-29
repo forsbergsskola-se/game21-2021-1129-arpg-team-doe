@@ -2898,6 +2898,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e823775e63fe2a449e75a700dea31ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1657072544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657072501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b732b65092b0904a9d94b09335636b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
+  _unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1743232338}
+        m_TargetAssemblyTypeName: PickUpItem, Assembly-CSharp
+        m_MethodName: Use
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1671769838 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8972526659047141918, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
@@ -3019,6 +3047,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7092348782955867998, guid: 2c1c2674701834f40bb4953dfd7d3e7b, type: 3}
   m_PrefabInstance: {fileID: 7092348783381819925}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1743232338 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7092348782955867995, guid: 2c1c2674701834f40bb4953dfd7d3e7b, type: 3}
+  m_PrefabInstance: {fileID: 7092348783381819925}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2408b0695f2bfea4fb63a6a18fb0d611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1752748633 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1386220651167043233, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}

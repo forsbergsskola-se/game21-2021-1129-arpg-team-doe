@@ -7,7 +7,7 @@ public class Currency : MonoBehaviour{
     [SerializeField] CurrencyData _currencyData;
 
     void OnCollisionEnter(Collision other){
-        if (other.gameObject.tag == "Player"){
+        if (other.gameObject.CompareTag("Player")){
             other.gameObject.GetComponent<CurrencyHolder>()._currencyHolderDataSo.AddCurrency(_currencyData.GenerateValue());
             Destroy(this.gameObject);
         }

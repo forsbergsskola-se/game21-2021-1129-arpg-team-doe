@@ -31,7 +31,8 @@ public abstract class ItemObject : ScriptableObject{
     public ItemType type;
     public string name;
     [Min(0f)] public int price;
-    public FMODUnity.EventReference pickupSound;
+    [SerializeField] public  FMODUnity.EventReference pickupSound;
+    public FMODUnity.EventReference dropSound;
     [SerializeField] GameEvent _pickupEvent;
     [TextArea (10,10)] public string description;
     public ItemBuff[] buffs;
