@@ -19,13 +19,14 @@ public class Fighter : MonoBehaviour, IInteractSound{
     public FMODUnity.EventReference attackReference;
     
     int _damage;
-    bool isPlayer;
+    bool _isPlayer;
     float _attackRange;
     float _distance;
     float _timeSinceLastAttack = Mathf.Infinity;
 
     const string RUN = "Run";
     const string ATTACK = "Attack";
+    const string IDLE = "Idle";
 
     void Start(){
         _statistics = GetComponent<Statistics>();
@@ -33,11 +34,11 @@ public class Fighter : MonoBehaviour, IInteractSound{
         _random = new Random();
         _movement = GetComponent<Movement>();
         _animationController = GetComponentInChildren<AnimationController>();
-        if (this.gameObject.tag == "Player") {
-            isPlayer = true;
+        if (gameObject.CompareTag("Player")) {
+            _isPlayer = true;
         }
 
-        if (gameObject.tag == "Player"){
+        if (gameObject.CompareTag("Player")){
             _critAttackInstance = FMODUnity.RuntimeManager.CreateInstance(critReference);
         }
         _attackInstance = FMODUnity.RuntimeManager.CreateInstance(attackReference);
@@ -50,6 +51,7 @@ public class Fighter : MonoBehaviour, IInteractSound{
         }
         if (!_combatTarget.GetComponent<Health>().IsAlive || IsClickOnItself()){
             _combatTarget = null;
+            _animationController.ChangeAnimationState(IDLE);
             return;
         }
         if (!IsInAttackRange()){
@@ -86,7 +88,7 @@ public class Fighter : MonoBehaviour, IInteractSound{
                 isCrit = true;
                 PlayCritSound(); 
             }
-            target.GetComponent<IDamageReceiver>()?.ReceiveDamage(_damage, isCrit, isPlayer, wepDamageType/*weapon.damageType */);
+            target.GetComponent<IDamageReceiver>()?.ReceiveDamage(_damage, isCrit, _isPlayer, wepDamageType/*weapon.damageType */);
             //TODO: We need an actual weapon to get the damage type of that weapon
             _timeSinceLastAttack = 0f;
         }
@@ -117,5 +119,4 @@ public class Fighter : MonoBehaviour, IInteractSound{
             _attackInstance.start();  
         }
     }
-
 }

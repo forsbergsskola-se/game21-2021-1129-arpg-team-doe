@@ -1,7 +1,10 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour{
+public class Enemy : MonoBehaviour
+{
+   [SerializeField] float timeToVanish = 5f;
    CapsuleCollider _capsuleCollider;
    Fighter _fighter;
    EnemyMovement _enemyMovement;
@@ -26,7 +29,14 @@ public class Enemy : MonoBehaviour{
       _fighter.enabled = false;
       _enemyMovement.enabled = false;
       _hasDied = true;
-      
+      StartCoroutine(CorpseVanish(timeToVanish));
+   }
+
+   IEnumerator CorpseVanish(float time){
+      yield return new WaitForSeconds(time);
+      foreach (Transform child in transform){
+         child.gameObject.SetActive(false);
+      }
    }
 
    bool IsDead(){
