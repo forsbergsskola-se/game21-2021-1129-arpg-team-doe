@@ -2,10 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(fileName = "New Equipment Object", menuName = "Inventory System/Items/Equipment")]
 
-public class EquipmentObject : ItemObject
+public enum EquipmentType{
+    Head,
+    Chest,
+    Accessory,
+    Legs,
+    Feet
+}
+
+public abstract class EquipmentObject : ItemObject
 {
+    [SerializeField] public EquipmentType equipmentType;
+    
     public GameObject equipmentPrefab;
     [Header("Attribute Buffs")]
     public int toughnessBuff;
