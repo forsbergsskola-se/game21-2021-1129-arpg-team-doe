@@ -166,7 +166,7 @@ public class PlayerController : MonoBehaviour
                 if (_hit.transform.CompareTag("Ground")){
                     PlayMoveFeedback(0f);
                     //_moveInstance.release();
-                    _movement.Mover(_hit.point);
+                    _movement.Mover(_hit.point, 1f);
                     if (_movement.pathFound){
                         _fighter.CancelAttack();
                         StartCoroutine(ChangeCursorTemporary(validClickTexture,1f));
@@ -202,7 +202,7 @@ public class PlayerController : MonoBehaviour
         PlayMoveFeedback(1f);
         bool isCloseEnoughToTarget = GetIsInRange(target.transform, _interactionRange);
         if(!isCloseEnoughToTarget){
-            _movement.Mover(destination);
+            _movement.Mover(destination, 1f);
             StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
         }
     }
@@ -225,7 +225,7 @@ public class PlayerController : MonoBehaviour
     }
 
     IEnumerator GoToPosistionThenInteract(RaycastHit hit){
-        _movement.Mover(hit.point);
+        _movement.Mover(hit.point, 1f);
         while (GetIsInRange(hit.transform, _interactionRange) == false){
             yield return null;
         }
