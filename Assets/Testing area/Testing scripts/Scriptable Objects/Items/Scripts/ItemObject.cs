@@ -1,6 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using CustomLogs;
+using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
+using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 public enum ItemType{
     Consumable,
@@ -31,15 +36,50 @@ public abstract class ItemObject : ScriptableObject{
     public ItemType type;
     public string name;
     [Min(0f)] public int price;
-    [SerializeField] public  FMODUnity.EventReference pickupSound;
-    public FMODUnity.EventReference dropSound;
+    [SerializeField] FMODUnity.EventReference pickupSound ;
+    [SerializeField] FMODUnity.EventReference dropSound;
+    
     [SerializeField] GameEvent _pickupEvent;
     [TextArea (10,10)] public string description;
     public ItemBuff[] buffs;
 
+    bool hasFoundPickupSound;
+    bool hasFoundDropSound;
+
+    EventInstance pickupSoundInstance;
+    EventInstance dropSoundInstance;
     public Item CreateItem(){
         Item newItem = new Item(this);
         return newItem;
+    }
+
+  
+
+   public virtual void PlayPickupSound()
+   {
+       if (!hasFoundPickupSound)
+       {
+           pickupSound = EventReference.Find("event:/PickUp");
+           hasFoundPickupSound = true;
+       }
+       pickupSoundInstance = RuntimeManager.CreateInstance("event:/PickUp");
+       Debug.Log("I am playing pick up sound");
+       pickupSoundInstance.start();
+       pickupSoundInstance.release();
+   }
+
+    public virtual void PlayDropSound()
+    {
+        if (!hasFoundDropSound)
+        {
+            dropSound = EventReference.Find("event:/InventoryDrop");
+            hasFoundDropSound = true;
+        }
+        dropSoundInstance = RuntimeManager.CreateInstance("event:/InventoryDrop");
+        
+        Debug.Log("I am playing drop sound");
+        dropSoundInstance.start();
+        dropSoundInstance.release();
     }
 
     public virtual void UseItem(){

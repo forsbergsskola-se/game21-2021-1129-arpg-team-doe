@@ -21,11 +21,11 @@ MonoBehaviour:
   price: 1273
   pickupSound:
     Guid:
-      Data1: -312644212
-      Data2: 1199521289
-      Data3: 7098806
-      Data4: 756995485
-    Path: event:/UI
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   dropSound:
     Guid:
       Data1: 0
