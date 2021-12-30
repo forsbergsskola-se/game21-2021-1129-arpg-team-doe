@@ -44,6 +44,9 @@ public class HotbarButton : MonoBehaviour
 
     void AssignButton(){
         _inventoryItem = _inventoryController.selectedItem;
+        if (_inventoryItem == null){
+            return;
+        }
         button.image.sprite = _inventoryItem.itemObject.itemIcon;
         _inventoryController.PlaceItem(_inventoryController.pickUpPosition);
     }

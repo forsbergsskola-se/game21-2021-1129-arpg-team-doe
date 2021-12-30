@@ -207,7 +207,7 @@ public class InventoryController : MonoBehaviour
         Vector3 spawnPosition = _playerTransform.position + new Vector3(0, 0, 2);
         DroppedObject = Instantiate(droppedItem, spawnPosition, Quaternion.identity);
         DroppedObject.name = droppedItem.name;
-        _selectedItem.itemObject.PlayDropSound();
+        selectedItem.itemObject.PlayDropSound();
     }
 
     void LeftMouseButtonPress(){
