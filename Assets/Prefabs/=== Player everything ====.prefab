@@ -2295,6 +2295,8 @@ MonoBehaviour:
       Data4: 0
     Path: 
   parameter: 0
+  stopRegenerateThreshold: 0
+  healthRegen: 10
   TakeDamageReference:
     Guid:
       Data1: -1548147627
@@ -2305,6 +2307,7 @@ MonoBehaviour:
   maxHP: 200
   _xpDrop: {fileID: 0}
   _xpDropEvent: {fileID: 0}
+  isRegenerating: 0
 --- !u!114 &8245414175371773564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2318,6 +2321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   critDamageMultiplier: 1.5
+  wepDamageType: {fileID: 0}
   critReference:
     Guid:
       Data1: -1447269917
@@ -2361,6 +2365,9 @@ MonoBehaviour:
   vulnerabilities:
   - {fileID: 11400000, guid: 3e87e5d953dae5a469e386c015c103e1, type: 2}
   - {fileID: 11400000, guid: 08778ce313064eb42bf34ef5e34d7eb5, type: 2}
+  vulnerabilityDamageModifier: 0
+  resistances: []
+  resistanceDamageModifier: 0
 --- !u!114 &8245414175371773558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2377,8 +2384,6 @@ MonoBehaviour:
   invalidClickTexture: {fileID: 2800000, guid: 53c0409fc6abc4b2aa327c1d0430cb68, type: 3}
   standardCursorTexture: {fileID: 2800000, guid: 036b493ef9cad4882999b895da76e4ef, type: 3}
   defeatedThreshold: 0
-  regenerateThreshold: 80
-  healthRegen: 10
   inventory: {fileID: 11400000, guid: 77e2291076a7dee459893b29befa9b36, type: 2}
 --- !u!114 &8245414175371773559
 MonoBehaviour:
@@ -2392,6 +2397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ee2f15259042c24d83e3cde42986425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 8
 --- !u!114 &7903226653579900014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2437,7 +2443,6 @@ MonoBehaviour:
       Data3: 1053398163
       Data4: 2091630610
     Path: event:/LvlUP
-  receiveXpEventListener: {fileID: 7439300177318535721}
 --- !u!114 &1219675012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2452,6 +2457,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _consumableObject: {fileID: 11400000, guid: dddc4062bf8d75940acdac0d86f6d1a0, type: 2}
   maxToxicityLevel: 3
+  _statistics: {fileID: 0}
+  _health: {fileID: 0}
 --- !u!114 &1219675013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7206,7 +7213,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 127
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -9053,10 +9060,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasInventory: {fileID: 4796008557103758674}
+  selectedItemGrid: {fileID: 0}
   itemsInDatabase: {fileID: 11400000, guid: 8df4ad38724c8cd45940a9a27513d54b, type: 2}
   itemPrefab: {fileID: 3378097737434846926, guid: 7c97bfcbdf1b1aa4cb379fcba585140a, type: 3}
-  droppedItem: {fileID: 4537476586442300296, guid: 7e6421aaab3e55f489d475a131951c00, type: 3}
   canvasTransform: {fileID: 4796008557103758678}
+  groundItemPrefabs: []
   inventoryReference:
     Guid:
       Data1: 1223393582

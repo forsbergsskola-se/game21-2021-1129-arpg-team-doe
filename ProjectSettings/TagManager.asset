@@ -12,11 +12,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - GameCam
   - Water
   - UI
   - Ground
-  - 
+  - Minimap
   - 
   - 
   - 
