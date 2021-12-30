@@ -25,7 +25,9 @@ public class InventoryController : MonoBehaviour
     [SerializeField] GameObject[] groundItemPrefabs;
 
     public GameObject DroppedObject{ get; private set; }
-    InventoryItem _selectedItem;
+    public InventoryItem selectedItem;
+    public Vector2Int pickUpPosition;
+
     InventoryItem _overlapItem;
     InventoryItem _hoveredItem;
     RectTransform _rectTransform;
@@ -37,6 +39,7 @@ public class InventoryController : MonoBehaviour
     UIStats[] UIStatsArray;
     EventInstance _inventoryInstance;
     public FMODUnity.EventReference inventoryReference;
+    //public bool hotBarSelected;
     
     bool _clickOnInventory;
 
@@ -61,7 +64,7 @@ public class InventoryController : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Q)){ //debug version
-            if (_selectedItem == null){
+            if (selectedItem == null){
                 CreateRandomItem();
             }
         }
@@ -117,14 +120,12 @@ public class InventoryController : MonoBehaviour
     public InventoryItem CreateRandomItem(){
         InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
         //_selectedItem = inventoryItem;
-        
         _rectTransform = inventoryItem.GetComponent<RectTransform>();
         _rectTransform.SetParent(canvasTransform);
         _rectTransform.SetAsLastSibling(); //item you hold dont get behind a placed item in inventory
 
         int selectedItemID = UnityEngine.Random.Range(0, itemsInDatabase.GetItem.Count);
         inventoryItem.Set(itemsInDatabase.GetItem[selectedItemID]);
-
         return inventoryItem;
     }
     
@@ -148,20 +149,19 @@ public class InventoryController : MonoBehaviour
     }
 
     void RotateItem(){
-        if (_selectedItem == null){
+        if (selectedItem == null){
             return;
         }
-        _selectedItem.Rotate();
+        selectedItem.Rotate();
     }
 
     void InsertRandomItem(){
         if (selectedItemGrid == null){
             return;
         }
-
         CreateRandomItem();
-        InventoryItem itemToInsert = _selectedItem ;
-        _selectedItem = null;
+        InventoryItem itemToInsert = selectedItem ;
+        selectedItem = null;
         InsertItem(itemToInsert);
     }
 
@@ -173,8 +173,7 @@ public class InventoryController : MonoBehaviour
         _oldPosition = positionOnGrid;
 
         //if(oldPosition != positionOnGrid)
-        if (_selectedItem == null){
-            
+        if (selectedItem == null){
             _itemToHighlight = selectedItemGrid.GetItem(positionOnGrid.x, positionOnGrid.y);
             if (_itemToHighlight != null){
                 _inventoryHighlight.Show(true);
@@ -189,22 +188,22 @@ public class InventoryController : MonoBehaviour
         else{
             {
                 _inventoryHighlight.Show(selectedItemGrid.BoundryCheck(positionOnGrid.x, positionOnGrid.y, 
-                    _selectedItem.WIDTH, _selectedItem.HEIGHT));
-                _inventoryHighlight.SetSize(_selectedItem);
+                    selectedItem.WIDTH, selectedItem.HEIGHT));
+                _inventoryHighlight.SetSize(selectedItem);
                 //_inventoryHighlight.SetParent(selectedItemGrid);
-                _inventoryHighlight.SetPosition(selectedItemGrid, _selectedItem, positionOnGrid.x, 
+                _inventoryHighlight.SetPosition(selectedItemGrid, selectedItem, positionOnGrid.x, 
                     positionOnGrid.y);
             }
         }
     }
 
     void RemoveItemFromInventory(){
-        Destroy(_selectedItem.gameObject);
-        _selectedItem = null;
+        Destroy(selectedItem.gameObject);
+        selectedItem = null;
     }
     
     void SpawnItemOnGround(){
-        var droppedItem = groundItemPrefabs[_selectedItem.itemObject.Id];
+        var droppedItem = groundItemPrefabs[selectedItem.itemObject.Id];
         Vector3 spawnPosition = _playerTransform.position + new Vector3(0, 0, 2);
         DroppedObject = Instantiate(droppedItem, spawnPosition, Quaternion.identity);
         DroppedObject.name = droppedItem.name;
@@ -213,7 +212,7 @@ public class InventoryController : MonoBehaviour
     void LeftMouseButtonPress(){
         var tileGridPosition = GetTileGridPosition();
 
-        if (_selectedItem == null){
+        if (selectedItem == null){
             PickUpItem(tileGridPosition);
         }
         else{
@@ -245,39 +244,40 @@ public class InventoryController : MonoBehaviour
 
     Vector2Int GetTileGridPosition(){
         Vector2 position = Input.mousePosition;
-        if (_selectedItem != null){
-            position.x -= (_selectedItem.WIDTH - 1) * ItemGrid.tileSizeWidth / 2;
-            position.y += (_selectedItem.HEIGHT - 1) * ItemGrid.tileSizeHeight / 2;
+        if (selectedItem != null){
+            position.x -= (selectedItem.WIDTH - 1) * ItemGrid.tileSizeWidth / 2;
+            position.y += (selectedItem.HEIGHT - 1) * ItemGrid.tileSizeHeight / 2;
         }
         return selectedItemGrid.GetTileGridPosition(position);
     }
 
-    void PlaceItem(Vector2Int tileGridPosition){
+    public void PlaceItem(Vector2Int tileGridPosition){
         if (selectedItemGrid.IsOutOfInventoryGrid(tileGridPosition.x, tileGridPosition.y)){
             DropItemToGround();
             return;
         }
-        bool complete = selectedItemGrid.PlaceItem(_selectedItem, tileGridPosition.x, tileGridPosition.y, ref _overlapItem);
+        bool complete = selectedItemGrid.PlaceItem(selectedItem, tileGridPosition.x, tileGridPosition.y, ref _overlapItem);
         if (complete){
-            _selectedItem = null;
+            selectedItem = null;
             if (_overlapItem != null){
-                _selectedItem = _overlapItem;
+                selectedItem = _overlapItem;
                 _overlapItem = null;
-                _rectTransform = _selectedItem.GetComponent<RectTransform>();
+                _rectTransform = selectedItem.GetComponent<RectTransform>();
                 _rectTransform.SetAsLastSibling(); //item you hold dont get behind a placed item in inventory
             }
         }
     }
 
     void PickUpItem(Vector2Int tileGridPosition){
-        _selectedItem = selectedItemGrid.PickUpItem(tileGridPosition.x, tileGridPosition.y);
-        if (_selectedItem != null){
-            _rectTransform = _selectedItem.GetComponent<RectTransform>();
+        pickUpPosition = tileGridPosition;
+        selectedItem = selectedItemGrid.PickUpItem(tileGridPosition.x, tileGridPosition.y);
+        if (selectedItem != null){
+            _rectTransform = selectedItem.GetComponent<RectTransform>();
         }
     }
 
     void ItemIconDrag(){
-        if (_selectedItem != null){
+        if (selectedItem != null){
             _rectTransform.position = Input.mousePosition;
         }
     }

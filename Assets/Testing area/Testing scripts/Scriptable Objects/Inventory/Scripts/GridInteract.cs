@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,16 +8,18 @@ public class GridInteract : MonoBehaviour //, IPointerEnterHandler, IPointerExit
     ItemGrid _itemGrid;
 
     void Awake(){
-        _inventoryController = FindObjectOfType(typeof(InventoryController)) as InventoryController;
+        //_inventoryController = FindObjectOfType(typeof(InventoryController)) as InventoryController;
+        _inventoryController = FindObjectOfType<InventoryController>();
         _itemGrid = GetComponent<ItemGrid>();
-        //_inventoryController.SelectedItemGrid = _itemGrid;
+        _inventoryController.SelectedItemGrid = _itemGrid;
     }
 
-    void Update(){ // Might use event listener?
-        if (_inventoryController.selectedItemGrid == null){
-            _inventoryController.selectedItemGrid = _itemGrid;
-        }
-    }
+    // This is for multiple inventory
+    // void Update(){
+    //     if (!_inventoryController.hotBarSelected){
+    //         _inventoryController.selectedItemGrid = _itemGrid;
+    //     }
+    // }
 
     // public void OnPointerEnter(PointerEventData eventData){
     //     _inventoryController.SelectedItemGrid = _itemGrid;
