@@ -143,7 +143,7 @@ public class InventoryController : MonoBehaviour
         canvasInventory.SetActive(!canvasInventory.activeInHierarchy);
     }
 
-    void DropItemToGround(){
+    public void DropItemToGround(){
         SpawnItemOnGround();
         RemoveItemFromInventory();
     }

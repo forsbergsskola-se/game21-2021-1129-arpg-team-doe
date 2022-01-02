@@ -1,17 +1,14 @@
-using System;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Hotbar : MonoBehaviour
+public class HotBar : MonoBehaviour
 {
     void Awake(){
-        foreach (var button in GetComponentsInChildren<HotbarButton>()){
+        foreach (var button in GetComponentsInChildren<HotBarButton>()){
             button.OnButtonClicked += ButtonOnOnButtonClicked;
         }
     }
 
     void ButtonOnOnButtonClicked(int buttonNumber){
-        Debug.Log($"Button {buttonNumber} clicked!");
+        //Debug.Log($"Button {buttonNumber} clicked!");
     }
 }

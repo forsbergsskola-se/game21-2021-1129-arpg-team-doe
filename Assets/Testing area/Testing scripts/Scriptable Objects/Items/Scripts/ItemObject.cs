@@ -63,7 +63,7 @@ public abstract class ItemObject : ScriptableObject{
            hasFoundPickupSound = true;
        }
        pickupSoundInstance = RuntimeManager.CreateInstance("event:/PickUp");
-       Debug.Log("I am playing pick up sound");
+       //Debug.Log("I am playing pick up sound");
        pickupSoundInstance.start();
        pickupSoundInstance.release();
    }
@@ -77,7 +77,7 @@ public abstract class ItemObject : ScriptableObject{
         }
         dropSoundInstance = RuntimeManager.CreateInstance("event:/InventoryDrop");
         
-        Debug.Log("I am playing drop sound");
+        //Debug.Log("I am playing drop sound");
         dropSoundInstance.start();
         dropSoundInstance.release();
     }
