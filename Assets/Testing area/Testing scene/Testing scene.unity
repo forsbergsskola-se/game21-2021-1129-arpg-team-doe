@@ -4019,8 +4019,8 @@ GameObject:
   - component: {fileID: 1714940511}
   - component: {fileID: 1714940510}
   - component: {fileID: 1714940509}
-  - component: {fileID: 1714940508}
   - component: {fileID: 1714940507}
+  - component: {fileID: 1714940512}
   m_Layer: 5
   m_Name: HotBar Button1
   m_TagString: Untagged
@@ -4065,20 +4065,6 @@ MonoBehaviour:
   onGridPositionX: 0
   onGridPositionY: 0
   rotated: 0
---- !u!114 &1714940508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1714940505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 0}
-  text: {fileID: 513196511}
 --- !u!114 &1714940509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4161,6 +4147,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1714940505}
   m_CullTransparentMesh: 1
+--- !u!114 &1714940512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714940505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 0}
+  text: {fileID: 513196511}
 --- !u!1 &1725746314
 GameObject:
   m_ObjectHideFlags: 0

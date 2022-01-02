@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class HotBarButton : MonoBehaviour
 {
-    [SerializeField] Button button; //
+    [HideInInspector]
+    [SerializeField] Button button;
+    [HideInInspector]
     [SerializeField] TMP_Text text;
     public event Action<int> OnButtonClicked;
     int _keyNumber;
@@ -51,7 +53,7 @@ public class HotBarButton : MonoBehaviour
         }
         button.image.sprite = _inventoryItem.itemObject.itemIcon;
         _id = _inventoryController.selectedItem.itemObject.Id;
-        Debug.Log(_inventoryController.pickUpPosition); // pick up position need to be recalculated
+        //Debug.Log(_inventoryController.pickUpPosition); // pick up position need to be recalculated
         _inventoryController.PlaceItem(_inventoryController.pickUpPosition);
     }
 
