@@ -9,6 +9,7 @@ public class ToggleLabel : MonoBehaviour
     GameObject _label;
     GameObject _player;
     TargetDetection _targetDetection;
+    bool _labelShown;
 
     void Start(){
         _player = GameObject.FindWithTag("Player");
@@ -18,10 +19,24 @@ public class ToggleLabel : MonoBehaviour
     void Update(){
         if (IsInRange() && _label == null){
             ShowLabel();
+            _labelShown = true;
             return;
         }
         if(!IsInRange()){
             TurnOffLabel();
+            _labelShown = false;
+        }
+
+        if (_labelShown){
+            RotateLabel();
+        }
+    }
+
+    void RotateLabel(){
+        if (Camera.main is not null){
+            Vector3 labelFaceDirection = _label.transform.position - Camera.main.transform.position;
+            labelFaceDirection.y = 0f;
+            _label.transform.rotation = Quaternion.LookRotation(labelFaceDirection);
         }
     }
 
