@@ -51,7 +51,7 @@ public class Health : MonoBehaviour, IDamageReceiver{
         CurrentHP = ModifiedMaxHP;
         _takeDamage = RuntimeManager.CreateInstance(TakeDamageReference);
 
-        if (_xpDrop != null) {
+        if (_xpDrop != null) { //!= or == ?
             _xpDrop = GetComponent<XPDrop>();
         }
         FMODEvent();
@@ -95,7 +95,7 @@ public class Health : MonoBehaviour, IDamageReceiver{
         return (int) _stats.StatManipulation(maxHP, _stats.Toughness, _stats.highImpactLevelMultiplier);
     }
 
-    public void ReceiveDamage(int receivedDamage, bool isCrit, bool isPlayer, DamageType receivedDmgType){ //Toughness should affect this
+    public void ReceiveDamage(int receivedDamage, bool isCrit, bool attackerIsPlayer, DamageType receivedDmgType){ //Toughness should affect this
         var damage = ProcessDamage(receivedDamage, receivedDmgType);
         UpdateHealth(-damage);
         if (gameObject.tag == "Player"){
@@ -103,13 +103,14 @@ public class Health : MonoBehaviour, IDamageReceiver{
         }
         //this.LogTakeDamage(damage,CurrentHP);
         if (!IsAlive){
-            OnDeath(isPlayer);
+            OnDeath(attackerIsPlayer);
         }
 
         foreach(var healthListener in GetComponentsInChildren<IHealthListener>()){
             healthListener.HealthChanged(CurrentHP, ModifiedMaxHP, damage, isCrit, IsAlive);
         }
         PlaySound();
+        this.LogHealth(CurrentHP);
     }
 
     bool DodgeSuccessful(){
@@ -143,11 +144,12 @@ public class Health : MonoBehaviour, IDamageReceiver{
     }
 
     //This calls the event that you put in if you put it in, if there's no event, nothing happens.
-    void OnDeath(bool isPlayer){
+    void OnDeath(bool attackerIsPlayer){
         //Debug.Log(isPlayer);
         //Check if event is not null and is not player, and attacker is player, call event. OR if event is not null and is player, call event.
-        if (_xpDropEvent != null && this.gameObject.tag != "Player" && isPlayer || _xpDropEvent != null && this.gameObject.tag == "Player"){
+        if (_xpDropEvent != null && this.gameObject.tag != "Player" && attackerIsPlayer || _xpDropEvent != null && this.gameObject.tag == "Player"){
             _xpDropEvent.Invoke(_xpDrop.xpAmount);
+            
         }
     }
 

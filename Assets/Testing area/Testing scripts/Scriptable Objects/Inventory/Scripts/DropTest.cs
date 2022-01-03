@@ -7,37 +7,45 @@ using Random = UnityEngine.Random;
 public class DropTest : MonoBehaviour{
     [SerializeField] LootTable lootTable;
     [SerializeField] GameObject cash;
-    [SerializeField] float spreadRange;
-    [SerializeField] int maxRollCount = 2;
+    [Min(0)][SerializeField] float spreadRange;
+    [Min(0)][SerializeField] int maxRollCount;
     Statistics _playerStatistics;
 
-    int rollCount;
+    int rollCount = 0;
     
 
     void Awake(){
         _playerStatistics = GameObject.FindWithTag("Player").GetComponent<Statistics>();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space)){
-            InstantiateItem();
-        }
-    }
+    // void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.Space)){
+    //         InstantiateItem();
+    //     }
+    // }
 
-    void InstantiateItem(){
+    internal void InstantiateItem(){
 
         if (rollCount < maxRollCount){
-            GameObject itemObject = lootTable.GetDropItem();
-            Instantiate(itemObject, transform.position + RandomLocation(), Quaternion.identity);
-            Instantiate(cash, transform.position + RandomLocation(), Quaternion.identity);
             rollCount++;
+            GameObject itemObject = lootTable.GetDropItem();
+            if (itemObject != null)
+            {
+                Instantiate(itemObject, transform.position + RandomLocation(), Quaternion.identity);
+            }
+            if (cash != null)
+            {
+                Instantiate(cash, transform.position + RandomLocation(), Quaternion.identity);
+            }
 
             if (Random.Range(0f, 1f) < _playerStatistics.LuckChance){
                 InstantiateItem();
                 //PlayLuckSound();
             }
         }
+        
+        
     }
 
     Vector3 RandomLocation(){

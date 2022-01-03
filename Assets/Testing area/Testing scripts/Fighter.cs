@@ -74,8 +74,10 @@ public class Fighter : MonoBehaviour, IInteractSound{
     }
 
     void Attack(GameObject target){
+        
         LookAtTarget();
         if (_timeSinceLastAttack > 1f / _statistics.AttackSpeed){
+            this.Log("I am doing damage");
             // TODO: trigger attack animation
             PlayAttackSound();
             //if(_animationController != null)

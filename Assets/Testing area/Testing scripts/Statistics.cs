@@ -129,7 +129,7 @@ public class Statistics : MonoBehaviour{
     }
     
     float CalculateLuckChance(){
-        return Luck * lowImpactLevelMultiplier;
+        return Luck * lowImpactLuckMultiplier;
     }
 
     // used for debug

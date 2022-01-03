@@ -460,7 +460,6 @@ GameObject:
   - component: {fileID: 8972526659047141889}
   - component: {fileID: 8972526659047141893}
   - component: {fileID: 8972526659047141896}
-  - component: {fileID: 6279174991658237524}
   - component: {fileID: 592454887396472579}
   - component: {fileID: 2357426410238338414}
   - component: {fileID: 6894303664310673330}
@@ -471,7 +470,8 @@ GameObject:
   - component: {fileID: 6345615741836710522}
   - component: {fileID: 6279174991548507978}
   - component: {fileID: 2123096904}
-  - component: {fileID: 1671769839}
+  - component: {fileID: 1511514187}
+  - component: {fileID: 1511514222}
   m_Layer: 3
   m_Name: EnemyMonster
   m_TagString: Enemy
@@ -599,19 +599,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &6279174991658237524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8972526659047141918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6a75a9b0056d4254ad0defc32d23090, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToVanish: 5
 --- !u!114 &592454887396472579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -641,9 +628,9 @@ MonoBehaviour:
   maxFollowRange: 30
   closeEnoughToSavedPosition: 3
   patrolPath: {fileID: 0}
-  waypointTolerance: 4
-  patrolSpeedFraction: 0.3
-  dwellingTime: 6
+  waypointTolerance: 3
+  patrolSpeedFraction: 0.525
+  dwellingTime: 4
   alertReference:
     Guid:
       Data1: 1464525013
@@ -663,9 +650,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3f0030217a3cc4ca9f9f819cf0f668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areaDetectionRange: 5.21
+  areaDetectionRange: 5.8
   visionRange: 20
-  viewAngle: 90
+  viewAngle: 150.47
 --- !u!114 &8535200300468700476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -683,7 +670,7 @@ MonoBehaviour:
   dexterity: 0
   knowledge: 0
   reflex: 0
-  luck: 138.33
+  luck: 0
   interactRange: 0
   attackRange: 3
   attackSpeed: 1
@@ -691,6 +678,7 @@ MonoBehaviour:
   weaponDamage: 10
   defaultDamage: 5
   lowImpactLevelMultiplier: 0
+  lowImpactLuckMultiplier: 0
   highImpactLevelMultiplier: 0
   vulnerabilities:
   - {fileID: 11400000, guid: dbbc8d142b7dca24f8b0eda4cd410de2, type: 2}
@@ -741,7 +729,7 @@ MonoBehaviour:
       Data4: 1873771730
     Path: event:/PlayerTakingDMG
   maxHP: 40
-  _xpDrop: {fileID: 1671769839}
+  _xpDrop: {fileID: 1511514187}
   _xpDropEvent: {fileID: 11400000, guid: 44b23296178544384ad6b8052486b374, type: 2}
   isRegenerating: 0
 --- !u!114 &4896606745485573230
@@ -811,7 +799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f439af3bbefdd4fab33972cebb55c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1671769839
+--- !u!114 &1511514187
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -825,6 +813,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _xpDropEvent: {fileID: 11400000, guid: 44b23296178544384ad6b8052486b374, type: 2}
   xpAmount: 20
+--- !u!114 &1511514222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8972526659047141918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b616b520556c9747909095eee8d3d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootTable: {fileID: 11400000, guid: ddad4f478540806499e28ef4f1d3f82e, type: 2}
+  cash: {fileID: 6458768576707232289, guid: 95c88a0e57207324e9fc7d8ae298da71, type: 3}
+  spreadRange: 2
+  maxRollCount: 3
 --- !u!1 &9184515788884814647
 GameObject:
   m_ObjectHideFlags: 0
