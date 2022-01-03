@@ -49,7 +49,7 @@ public class CameraFollow : MonoBehaviour
 
     void CameraZoom(){
 
-        if (Input.GetKeyDown(KeyCode.R)){
+        if (Input.GetKeyDown(KeyCode.Z)){
             var currentZoomLevel = zoomLevel % zoomLevels;
             //Change to minZoom
             if (currentZoomLevel == 0){
