@@ -11,7 +11,6 @@ public class SoundIncrement : MonoBehaviour{
     }
 
     public void OnTriggerEnter(Collider other){
-        Debug.Log(other.tag);
         if (other.CompareTag("Player")){
             _soundControl.soundIncrement++;
             _soundControl.Progress();
