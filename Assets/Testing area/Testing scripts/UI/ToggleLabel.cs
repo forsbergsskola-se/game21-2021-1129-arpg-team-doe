@@ -43,7 +43,6 @@ public class ToggleLabel : MonoBehaviour
     void ShowLabel(){
         Vector3 position = transform.position + offset;
         _label = Instantiate(labelPrefab, position, Quaternion.identity);
-        //_label.transform.parent = gameObject.transform;
         _label.transform.SetParent(gameObject.transform);
         _label.SetActive(true);
         _label.GetComponent<Label>().SetLabel(name);
