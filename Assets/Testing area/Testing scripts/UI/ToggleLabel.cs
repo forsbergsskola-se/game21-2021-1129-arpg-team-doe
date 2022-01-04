@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(Label))]
+[RequireComponent(typeof(TargetDetection))]
 public class ToggleLabel : MonoBehaviour
 {
     [SerializeField] GameObject labelPrefab;
@@ -45,7 +47,12 @@ public class ToggleLabel : MonoBehaviour
         _label = Instantiate(labelPrefab, position, Quaternion.identity);
         _label.transform.SetParent(gameObject.transform);
         _label.SetActive(true);
-        _label.GetComponent<Label>().SetLabel(name);
+        if (GetComponent<Currency>() != null){
+            _label.GetComponent<Label>().SetLabel(name + " " + GetComponent<Currency>().amount);
+        }
+        else{
+            _label.GetComponent<Label>().SetLabel(name);
+        }
     }
     
     void TurnOffLabel(){

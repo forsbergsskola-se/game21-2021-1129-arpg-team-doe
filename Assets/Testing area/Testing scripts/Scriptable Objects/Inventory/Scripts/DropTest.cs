@@ -37,6 +37,7 @@ public class DropTest : MonoBehaviour{
             }
             if (cash != null)
             {
+                
                 Instantiate(cash, transform.position + RandomLocation(), Quaternion.identity);
             }
 
