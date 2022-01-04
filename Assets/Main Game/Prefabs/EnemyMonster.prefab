@@ -711,13 +711,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7339576714a584429c762c90bef9491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fmodEvent:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
   parameter: 0
   stopRegenerateThreshold: 0
   healthRegen: 10
@@ -760,6 +753,13 @@ MonoBehaviour:
       Data3: -1379749704
       Data4: 102819547
     Path: event:/FastWeaponSwing
+  IdleReference:
+    Guid:
+      Data1: 1102551081
+      Data2: 1181041241
+      Data3: -642572407
+      Data4: -438745020
+    Path: event:/ZombieIdle
 --- !u!114 &6345615741836710522
 MonoBehaviour:
   m_ObjectHideFlags: 0

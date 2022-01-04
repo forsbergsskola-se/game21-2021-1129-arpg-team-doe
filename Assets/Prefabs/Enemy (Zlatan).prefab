@@ -610,6 +610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a75a9b0056d4254ad0defc32d23090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToVanish: 5
 --- !u!114 &6853580289907481125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -622,6 +623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ee2f15259042c24d83e3cde42986425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 8
 --- !u!114 &8616334650171279432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -634,9 +636,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02db91af0b4f5e249bcc698c975c0592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthBar: {fileID: 1386220651167043233}
+  healthBar: {fileID: 0}
   maxFollowRange: 30
   closeEnoughToSavedPosition: 3
+  patrolPath: {fileID: 0}
+  waypointTolerance: 4
+  patrolSpeedFraction: 0.3
+  dwellingTime: 6
+  alertReference:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &615129224609624724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -677,8 +690,12 @@ MonoBehaviour:
   weaponDamage: 10
   defaultDamage: 5
   lowImpactLevelMultiplier: 0
+  lowImpactLuckMultiplier: 0
   highImpactLevelMultiplier: 0
   vulnerabilities: []
+  vulnerabilityDamageModifier: 0
+  resistances: []
+  resistanceDamageModifier: 0
 --- !u!114 &1209891564928626856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -704,10 +721,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7339576714a584429c762c90bef9491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fmodEvent: 
   parameter: 0
+  stopRegenerateThreshold: 0
+  healthRegen: 10
+  TakeDamageReference:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   maxHP: 40
-  _deathEvent: {fileID: 0}
+  _xpDrop: {fileID: 0}
+  _xpDropEvent: {fileID: 0}
+  isRegenerating: 0
 --- !u!114 &1499735538449174856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -721,6 +748,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   critDamageMultiplier: 1.5
+  wepDamageType: {fileID: 0}
+  critReference:
+    Guid:
+      Data1: -1447269917
+      Data2: 1094244117
+      Data3: 1211020455
+      Data4: -30663946
+    Path: event:/CritHit
+  attackReference:
+    Guid:
+      Data1: -1054985321
+      Data2: 1270899441
+      Data3: -1379749704
+      Data4: 102819547
+    Path: event:/FastWeaponSwing
+  IdleReference:
+    Guid:
+      Data1: 1102551081
+      Data2: 1181041241
+      Data3: -642572407
+      Data4: -438745020
+    Path: event:/ZombieIdle
 --- !u!114 &1095566062284832604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -747,6 +796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a75a9b0056d4254ad0defc32d23090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToVanish: 5
 --- !u!114 &4973783309038112611
 MonoBehaviour:
   m_ObjectHideFlags: 0

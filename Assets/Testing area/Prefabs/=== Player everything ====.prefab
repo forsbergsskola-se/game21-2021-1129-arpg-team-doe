@@ -2664,7 +2664,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2865943202869001219}
-  - {fileID: 4871597521082802099}
   - {fileID: 67675829771055269}
   m_Father: {fileID: 6598838206839561522}
   m_RootOrder: 0
@@ -2782,13 +2781,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7339576714a584429c762c90bef9491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fmodEvent:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
   parameter: 0
   stopRegenerateThreshold: 0
   healthRegen: 10
@@ -2831,6 +2823,13 @@ MonoBehaviour:
       Data3: -1379749704
       Data4: 102819547
     Path: event:/FastWeaponSwing
+  IdleReference:
+    Guid:
+      Data1: 1251498497
+      Data2: 1153929333
+      Data3: 372511910
+      Data4: 113470447
+    Path: event:/PlayerIdle
 --- !u!114 &5675631719487080352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5785,6 +5784,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6598838207946046109}
+  - {fileID: 4871597521082802099}
   m_Father: {fileID: 6598838206839561522}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5824,6 +5824,8 @@ MonoBehaviour:
   itemPrefab: {fileID: 3378097737434846926, guid: 7c97bfcbdf1b1aa4cb379fcba585140a, type: 3}
   canvasTransform: {fileID: 9088444525093977227}
   groundItemPrefabs: []
+  rightClickMenu: {fileID: 0}
+  HotBarButton: {fileID: 0}
   selectedItem: {fileID: 0}
   pickUpPosition: {x: 0, y: 0}
   inventoryReference:
@@ -9274,6 +9276,7 @@ GameObject:
   - component: {fileID: 4871597521082802099}
   - component: {fileID: 3761908069409280638}
   - component: {fileID: 7056679792272759974}
+  - component: {fileID: 1792550239870752734}
   m_Layer: 3
   m_Name: Player Sound Listener
   m_TagString: Untagged
@@ -9288,12 +9291,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6722119732638521617}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 4.19, y: -20, z: 19.05}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2266243540222221411}
+  m_Father: {fileID: 6598838207415108932}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3761908069409280638
@@ -9322,7 +9325,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9245706ec07d9c41bbf67e6084aa41b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 4.5, z: 0}
+  offset: {x: 0, y: 2, z: 0}
+--- !u!114 &1792550239870752734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6722119732638521617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -989999048
+      Data2: 1170180359
+      Data3: -169463664
+      Data4: -1261707272
+    Path: event:/CryptAmbience
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &6804218633111873720
 GameObject:
   m_ObjectHideFlags: 0
@@ -9481,7 +9514,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2266243540222221411}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!212 &6416739730527643990
 SpriteRenderer:

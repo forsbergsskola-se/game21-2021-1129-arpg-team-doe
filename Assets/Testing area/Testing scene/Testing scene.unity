@@ -1116,13 +1116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7339576714a584429c762c90bef9491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fmodEvent:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
   parameter: 0
   stopRegenerateThreshold: 80
   healthRegen: 10
@@ -1827,46 +1820,6 @@ PrefabInstance:
     - target: {fileID: 1386220651167043246, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_WholeNumbers
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: critReference.Path
-      value: event:/CritHit
-      objectReference: {fileID: 0}
-    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: attackReference.Path
-      value: event:/FastWeaponSwing
-      objectReference: {fileID: 0}
-    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: critReference.Guid.Data1
-      value: -1447269917
-      objectReference: {fileID: 0}
-    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: critReference.Guid.Data2
-      value: 1094244117
-      objectReference: {fileID: 0}
-    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: critReference.Guid.Data3
-      value: 1211020455
-      objectReference: {fileID: 0}
-    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: critReference.Guid.Data4
-      value: -30663946
-      objectReference: {fileID: 0}
-    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: attackReference.Guid.Data1
-      value: -1054985321
-      objectReference: {fileID: 0}
-    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: attackReference.Guid.Data2
-      value: 1270899441
-      objectReference: {fileID: 0}
-    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: attackReference.Guid.Data3
-      value: -1379749704
-      objectReference: {fileID: 0}
-    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: attackReference.Guid.Data4
-      value: 102819547
       objectReference: {fileID: 0}
     - target: {fileID: 2402392299167721498, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: luck
@@ -3117,7 +3070,7 @@ RectTransform:
   m_Children:
   - {fileID: 233208430}
   m_Father: {fileID: 0}
-  m_RootOrder: 32
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4006,46 +3959,6 @@ PrefabInstance:
     - target: {fileID: 1386220650923937753, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: critReference.Path
-      value: event:/CritHit
-      objectReference: {fileID: 0}
-    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: attackReference.Path
-      value: event:/FastWeaponSwing
-      objectReference: {fileID: 0}
-    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: critReference.Guid.Data1
-      value: -1447269917
-      objectReference: {fileID: 0}
-    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: critReference.Guid.Data2
-      value: 1094244117
-      objectReference: {fileID: 0}
-    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: critReference.Guid.Data3
-      value: 1211020455
-      objectReference: {fileID: 0}
-    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: critReference.Guid.Data4
-      value: -30663946
-      objectReference: {fileID: 0}
-    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: attackReference.Guid.Data1
-      value: -1054985321
-      objectReference: {fileID: 0}
-    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: attackReference.Guid.Data2
-      value: 1270899441
-      objectReference: {fileID: 0}
-    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: attackReference.Guid.Data3
-      value: -1379749704
-      objectReference: {fileID: 0}
-    - target: {fileID: 1499735538449174856, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
-      propertyPath: attackReference.Guid.Data4
-      value: 102819547
       objectReference: {fileID: 0}
     - target: {fileID: 2402392299167721498, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
       propertyPath: luck
@@ -5355,13 +5268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7339576714a584429c762c90bef9491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fmodEvent:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
   parameter: 0
   stopRegenerateThreshold: 80
   healthRegen: 10
