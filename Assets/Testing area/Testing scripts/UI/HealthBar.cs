@@ -19,13 +19,13 @@ public class HealthBar : MonoBehaviour, IHealthbar, IHealthListener{
     public void Start() {
         _health = GetComponentInParent<Health>();
         SetSliderMaxHealth(_health.ModifiedMaxHP);
-        _startRotation = Quaternion.identity;
+        _startRotation = Camera.main.transform.rotation;
         _parent = GetComponentInParent<ToggleHealthBar>()?.gameObject;
         
     }
 
     void Update(){
-        transform.rotation = _startRotation;
+        transform.rotation = Camera.main.transform.rotation;
         transform.position = _parent.transform.position + _offset;
     }
 
