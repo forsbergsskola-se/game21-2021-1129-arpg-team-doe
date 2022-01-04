@@ -900,6 +900,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
+  text: {fileID: 1807501440}
 --- !u!114 &347324022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2114,6 +2116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
+  text: {fileID: 706121829}
 --- !u!114 &601881473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2266,6 +2270,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
+  text: {fileID: 278443811}
 --- !u!114 &601936861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4519,6 +4525,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
+  text: {fileID: 513196511}
 --- !u!1 &1725746314
 GameObject:
   m_ObjectHideFlags: 0
@@ -5964,6 +5972,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6458768576707232286, guid: 95c88a0e57207324e9fc7d8ae298da71, type: 3}
+      propertyPath: currencyData
+      value: 
+      objectReference: {fileID: 11400000, guid: 626acccc4a1df4d429e0a48bb056859d, type: 2}
     - target: {fileID: 6458768576707232287, guid: 95c88a0e57207324e9fc7d8ae298da71, type: 3}
       propertyPath: m_Radius
       value: 0.95
