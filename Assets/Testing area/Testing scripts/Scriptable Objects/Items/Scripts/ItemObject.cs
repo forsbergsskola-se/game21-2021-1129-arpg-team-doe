@@ -27,18 +27,14 @@ public enum Attributes{
 
 public abstract class ItemObject : ScriptableObject{
     
-    
     [HideInInspector] public int Id;
-    //public GameObject prefab;
     public Sprite itemIcon;
     public int width = 1;
     public int height = 1;
     public ItemType type;
     public string name;
     [Min(0f)] public int price;
-    [SerializeField] FMODUnity.EventReference pickupSound ;
     [SerializeField] FMODUnity.EventReference dropSound;
-    
     [SerializeField] GameEvent _pickupEvent;
     [TextArea (10,10)] public string description;
     public ItemBuff[] buffs;
@@ -56,28 +52,19 @@ public abstract class ItemObject : ScriptableObject{
   
 
    public virtual void PlayPickupSound()
-   {
-       if (!hasFoundPickupSound)
-       {
-           pickupSound = EventReference.Find("event:/PickUp");
-           hasFoundPickupSound = true;
-       }
+   { 
        pickupSoundInstance = RuntimeManager.CreateInstance("event:/PickUp");
-       //Debug.Log("I am playing pick up sound");
        pickupSoundInstance.start();
        pickupSoundInstance.release();
    }
 
-    public virtual void PlayDropSound()
-    {
+    public virtual void PlayDropSound(){
+        hasFoundDropSound = !dropSound.IsNull;
         if (!hasFoundDropSound)
         {
             dropSound = EventReference.Find("event:/InventoryDrop");
-            hasFoundDropSound = true;
         }
-        dropSoundInstance = RuntimeManager.CreateInstance("event:/InventoryDrop");
-        
-        //Debug.Log("I am playing drop sound");
+        dropSoundInstance = RuntimeManager.CreateInstance(dropSound);
         dropSoundInstance.start();
         dropSoundInstance.release();
     }
