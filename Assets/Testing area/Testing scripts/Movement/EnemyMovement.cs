@@ -41,6 +41,8 @@ public class EnemyMovement : MonoBehaviour
 
    const string RUN = "Run";
    const string IDLE = "Idle";
+   
+   public float distance { get; private set; }
 
    void Start(){
       _targetDetection = GetComponent<TargetDetection>();
@@ -57,6 +59,7 @@ public class EnemyMovement : MonoBehaviour
    }
 
    void Update(){ // very long update, might want to refactor
+      distance = _targetDetection.DistanceToTarget(transform.position, _desiredTarget);
       if(!_health.IsAlive) return;
       //Sets target if detected and is not walking back
       _playerIsDetected = _targetDetection.TargetIsDetected(transform.position, _desiredTarget);

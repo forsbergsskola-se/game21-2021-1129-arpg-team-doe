@@ -40,10 +40,7 @@ public class UIDamageNr : MonoBehaviour, IDamageNumbers, IHealthListener{
     void SetText(){
         _textMeshProUGUI.text = dmgText;
     }
-
-    void ClearText(){
-        _textMeshProUGUI.text = "";
-    }
+    
 
     void FontChange(bool isCrit){
         if (isCrit){
