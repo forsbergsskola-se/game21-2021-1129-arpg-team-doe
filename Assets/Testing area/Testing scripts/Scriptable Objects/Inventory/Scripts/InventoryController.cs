@@ -235,6 +235,7 @@ public class InventoryController : MonoBehaviour
         if (_hoveredItem != null)
         { 
             rightClickMenu.SetActive(true);
+            rightClickMenu.transform.position = lastRightClickedItem.transform.position;
         }
         else{
             rightClickMenu.SetActive(false); 
