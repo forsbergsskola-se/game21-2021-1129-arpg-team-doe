@@ -10,18 +10,14 @@ public class UIDamageNr : MonoBehaviour, IDamageNumbers, IHealthListener{
 
     [SerializeField] float duration;
     [SerializeField] TextMeshProUGUI _textMeshProUGUI;
-
-    Animator _animator;
+    
 
     string dmgText;
     bool activeTimer;
     bool takingDamage;
 
     const string FLOATING_POINT = "FloatingPoint";
-
-    void Start(){
-        _animator = gameObject.GetComponent<Animator>();
-    }
+    
 
     public void DisplayDmg(int damage, bool isCrit){
         dmgText = Convert.ToString(damage);
