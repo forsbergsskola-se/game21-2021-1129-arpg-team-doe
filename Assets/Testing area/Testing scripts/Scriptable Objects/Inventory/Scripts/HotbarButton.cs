@@ -16,6 +16,7 @@ public class HotBarButton : MonoBehaviour
     InventoryItem _inventoryItem;
     InventoryController _inventoryController;
     Sprite _defaultSprite;
+    HotBarButton[] _hotBarButtons;
     void OnValidate(){
         _keyNumber = transform.GetSiblingIndex() + 1;
         _keyCode = KeyCode.Alpha0 + _keyNumber;
@@ -32,29 +33,43 @@ public class HotBarButton : MonoBehaviour
         _inventoryItem = GetComponent<InventoryItem>();
         _inventoryController = FindObjectOfType<InventoryController>();
         button = gameObject.GetComponent<Button>();
+        _hotBarButtons = GetComponentInParent<HotBar>().GetComponentsInChildren<HotBarButton>();
+        _id = -1;
     }
 
     void Update(){
         if (Input.GetKeyDown((_keyCode))){
-            if (Input.GetKey(KeyCode.LeftAlt)){
+            if (Input.GetKey(KeyCode.LeftAlt) && _inventoryController.selectedItem != null){
                 AssignButton();
             }
-            else{
+            else if(!Input.GetKey(KeyCode.LeftAlt)){
                 HandleClick();
             }
         }
     }
 
-    void AssignButton(){
+    public void AssignButton(){
         _defaultSprite = button.image.sprite;
-        _inventoryItem = _inventoryController.selectedItem;
-        if (_inventoryItem == null){
-            return;
+        ItemObject itemObject = _inventoryController.selectedItem.itemObject;
+        foreach (var hotBarButton in _hotBarButtons){
+            if (hotBarButton != null){
+                if (hotBarButton._id == itemObject.Id || itemObject is not ConsumableObject){
+                    _inventoryController.PlaceItem(_inventoryController.pickUpPosition);
+                    return;
+                }
+                if (hotBarButton._id != itemObject.Id){
+                    _inventoryItem = _inventoryController.selectedItem;
+                    if (_inventoryItem == null){
+                        return;
+                    }
+                    button.image.sprite = _inventoryItem.itemObject.itemIcon;
+                    _id = itemObject.Id;
+                    //Debug.Log(_inventoryController.pickUpPosition); // pick up position need to be recalculated
+                    _inventoryController.PlaceItem(_inventoryController.pickUpPosition);
+                    return;
+                }
+            }
         }
-        button.image.sprite = _inventoryItem.itemObject.itemIcon;
-        _id = _inventoryController.selectedItem.itemObject.Id;
-        //Debug.Log(_inventoryController.pickUpPosition); // pick up position need to be recalculated
-        _inventoryController.PlaceItem(_inventoryController.pickUpPosition);
     }
 
     void HandleClick(){

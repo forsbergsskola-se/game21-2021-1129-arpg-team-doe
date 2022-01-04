@@ -1,17 +1,7 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public interface ISpawner
-{
-    public void Spawn() { }
-}
-
-public interface ITextSpawner : ISpawner
-{
-    public void Spawn(int damage, bool crit);
-}
-
-public class DamageTextSpawner : MonoBehaviour, ITextSpawner, IHealthListener
+public class DamageTextSpawner : MonoBehaviour, IHealthListener
 {
     [SerializeField] UIDamageNr textPrefab;
     [SerializeField] float spreadRange;
