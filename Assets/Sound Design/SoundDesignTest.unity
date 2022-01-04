@@ -243,7 +243,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165435699}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
@@ -1925,8 +1925,12 @@ MonoBehaviour:
   weaponDamage: 0
   defaultDamage: 0
   lowImpactLevelMultiplier: 0
+  lowImpactLuckMultiplier: 0
   highImpactLevelMultiplier: 0
   vulnerabilities: []
+  vulnerabilityDamageModifier: 0
+  resistances: []
+  resistanceDamageModifier: 0
 --- !u!65 &1129788677
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2194,8 +2198,12 @@ MonoBehaviour:
   weaponDamage: 0
   defaultDamage: 0
   lowImpactLevelMultiplier: 0
+  lowImpactLuckMultiplier: 0
   highImpactLevelMultiplier: 0
   vulnerabilities: []
+  vulnerabilityDamageModifier: 0
+  resistances: []
+  resistanceDamageModifier: 0
 --- !u!114 &1256626921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2837,8 +2845,12 @@ MonoBehaviour:
   weaponDamage: 0
   defaultDamage: 0
   lowImpactLevelMultiplier: 0
+  lowImpactLuckMultiplier: 0
   highImpactLevelMultiplier: 0
   vulnerabilities: []
+  vulnerabilityDamageModifier: 0
+  resistances: []
+  resistanceDamageModifier: 0
 --- !u!114 &1519714795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3126,8 +3138,12 @@ MonoBehaviour:
   weaponDamage: 0
   defaultDamage: 0
   lowImpactLevelMultiplier: 0
+  lowImpactLuckMultiplier: 0
   highImpactLevelMultiplier: 0
   vulnerabilities: []
+  vulnerabilityDamageModifier: 0
+  resistances: []
+  resistanceDamageModifier: 0
 --- !u!65 &1664621311
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4981,8 +4997,12 @@ MonoBehaviour:
   weaponDamage: 0
   defaultDamage: 0
   lowImpactLevelMultiplier: 0
+  lowImpactLuckMultiplier: 0
   highImpactLevelMultiplier: 0
   vulnerabilities: []
+  vulnerabilityDamageModifier: 0
+  resistances: []
+  resistanceDamageModifier: 0
 --- !u!33 &4757262649470140958
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -5212,8 +5232,12 @@ MonoBehaviour:
   weaponDamage: 0
   defaultDamage: 0
   lowImpactLevelMultiplier: 0
+  lowImpactLuckMultiplier: 0
   highImpactLevelMultiplier: 0
   vulnerabilities: []
+  vulnerabilityDamageModifier: 0
+  resistances: []
+  resistanceDamageModifier: 0
 --- !u!136 &6330638830678781190
 CapsuleCollider:
   m_ObjectHideFlags: 0
