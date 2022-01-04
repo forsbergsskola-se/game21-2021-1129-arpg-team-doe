@@ -13,10 +13,14 @@ public class Fighter : MonoBehaviour, IInteractSound{
     Movement _movement;
     Random _random;
     AnimationController _animationController;
+    Rigidbody _rigidbody;
+    //FMOD
     EventInstance _critAttackInstance;
     public FMODUnity.EventReference critReference;
     EventInstance _attackInstance;
     public FMODUnity.EventReference attackReference;
+    public FMODUnity.EventReference IdleReference;
+    EventInstance idleInstance;
     
     int _damage;
     bool _isPlayer;
@@ -30,6 +34,7 @@ public class Fighter : MonoBehaviour, IInteractSound{
 
     void Start(){
         _statistics = GetComponent<Statistics>();
+        _rigidbody = GetComponent<Rigidbody>();
         _attackRange = _statistics.AttackRange;
         _random = new Random();
         _movement = GetComponent<Movement>();
@@ -42,24 +47,32 @@ public class Fighter : MonoBehaviour, IInteractSound{
             _critAttackInstance = FMODUnity.RuntimeManager.CreateInstance(critReference);
         }
         _attackInstance = FMODUnity.RuntimeManager.CreateInstance(attackReference);
+        idleInstance = FMODUnity.RuntimeManager.CreateInstance(IdleReference);
     }
 
     void Update(){
         _timeSinceLastAttack += Time.deltaTime;
+        if (_combatTarget == null && _rigidbody.velocity.magnitude == 0){
+            Debug.Log("im idleing");
+            idleInstance.start();
+        }   
         if (_combatTarget == null){
             return;
         }
         if (!_combatTarget.GetComponent<Health>().IsAlive || IsClickOnItself()){
             _combatTarget = null;
             _animationController.ChangeAnimationState(IDLE);
+            idleInstance.stop(STOP_MODE.IMMEDIATE);
             return;
         }
         if (!IsInAttackRange()){
+            idleInstance.stop(STOP_MODE.IMMEDIATE);
             _movement.Mover(_combatTarget.transform.position, 1f);
             if (_animationController != null)
                 _animationController.ChangeAnimationState(RUN);
         }
         else{
+            idleInstance.stop(STOP_MODE.IMMEDIATE);
             _movement.StopMoving();
             Attack(_combatTarget.gameObject);
         }

@@ -23,7 +23,6 @@ public class Movement : MonoBehaviour
         }
         else{
             StopMoving();
-            //Debug.Log("no path");
         }
     }
 

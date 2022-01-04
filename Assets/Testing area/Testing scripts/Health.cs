@@ -16,11 +16,7 @@ public interface IHealthListener{
 }
 
 public class Health : MonoBehaviour, IDamageReceiver{
-
-    // unfinished FMOD implementation
-    FMOD.Studio.EventInstance instance;
-    FMOD.Studio.PARAMETER_ID fmodParameterID;
-    public FMODUnity.EventReference fmodEvent;
+    
     [SerializeField] [Min(0)] float parameter;
     
     [SerializeField] internal int stopRegenerateThreshold;
@@ -28,9 +24,6 @@ public class Health : MonoBehaviour, IDamageReceiver{
     
     EventInstance _takeDamage;
     public EventReference TakeDamageReference;
-    // remove if unsuccessful
-
-    //[SerializeField] Fmod event - Having this public or serialized doesnt work
 
     [SerializeField] int maxHP = 100;
 
@@ -54,22 +47,8 @@ public class Health : MonoBehaviour, IDamageReceiver{
         if (_xpDrop != null) { //!= or == ?
             _xpDrop = GetComponent<XPDrop>();
         }
-        FMODEvent();
     }
 
-    // unfinished FMOD implementation
-    void FMODEvent() {
-        if (!fmodEvent.IsNull){
-            instance = FMODUnity.RuntimeManager.CreateInstance(fmodEvent);
-        }
-
-        FMOD.Studio.EventDescription parameterEventDescription;
-        instance.getDescription(out parameterEventDescription);
-        FMOD.Studio.PARAMETER_DESCRIPTION parameterDescription;
-        parameterEventDescription.getParameterDescriptionByName("Parameter", out parameterDescription);
-        fmodParameterID = parameterDescription.id;
-        instance.setParameterByID(fmodParameterID, parameter);
-    }
 
     public void UpdateHealth(int healthChange){ //What about healing
         CurrentHP += healthChange;
