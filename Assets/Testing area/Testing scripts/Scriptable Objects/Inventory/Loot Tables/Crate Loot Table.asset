@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: Crate Loot Table
   m_EditorClassIdentifier: 
   table:
-  - drop: {fileID: 3191504459453181586, guid: 93d5615d2cf77414090060a3775502c7, type: 3}
-    dropWeight: 10
   - drop: {fileID: 5700182911611578800, guid: 9ee9c69ce28cfdf4ea05831bfbc5999f, type: 3}
-    dropWeight: 50
-  - drop: {fileID: 7092348782955867987, guid: 2c1c2674701834f40bb4953dfd7d3e7b, type: 3}
-    dropWeight: 50
+    dropWeight: 10
+  - drop: {fileID: 5700182911611578800, guid: 38b626b2874bb9a46a905087e19f3573, type: 3}
+    dropWeight: 150
