@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using FMOD.Studio;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using Random = System.Random;
 
 // This script is attached to the camera to get mouse position for item placement
-public class InventoryController : MonoBehaviour
+public class InventoryController : MonoBehaviour,IPointerClickHandler
 {
     public GameObject canvasInventory;
     //[HideInInspector]
@@ -23,6 +25,9 @@ public class InventoryController : MonoBehaviour
     [SerializeField] GameObject itemPrefab;
     [SerializeField] Transform canvasTransform;
     [SerializeField] GameObject[] groundItemPrefabs;
+    [SerializeField] GameObject rightClickMenu;
+    [SerializeField] Button UseButton;
+    [SerializeField] Button HotBarButton;
 
     public GameObject DroppedObject{ get; private set; }
     public InventoryItem selectedItem;
@@ -30,11 +35,14 @@ public class InventoryController : MonoBehaviour
 
     InventoryItem _overlapItem;
     InventoryItem _hoveredItem;
+    InventoryItem lastRightClickedItem;
     RectTransform _rectTransform;
     InventoryHighlight _inventoryHighlight;
     InventoryItem _itemToHighlight;
     Transform _playerTransform;
     Consumer _playerConsumer;
+    
+    Vector3 rightClickMenuOffset = new Vector3(2, 0, 0);
     Vector2Int _oldPosition;
     UIStats[] UIStatsArray;
     EventInstance _inventoryInstance;
@@ -53,6 +61,7 @@ public class InventoryController : MonoBehaviour
         _playerConsumer = _playerTransform.GetComponent<Consumer>();
          UIStatsArray = FindObjectsOfType<UIStats>();
          _inventoryInstance = FMODUnity.RuntimeManager.CreateInstance(inventoryReference);
+         
     }
 
     void Update(){
@@ -102,7 +111,6 @@ public class InventoryController : MonoBehaviour
     {
         var tileGridPosition = GetTileGridPosition();
         _hoveredItem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
-        
         if (_hoveredItem != null){
            // _hoveredItem.itemObject.DisplayItem(); // Here we want to display the item information in the game view
         }
@@ -224,22 +232,41 @@ public class InventoryController : MonoBehaviour
     void RightMouseButtonPress(){
         var tileGridPosition = GetTileGridPosition();
         _hoveredItem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
-        if (_hoveredItem != null){
-            if (_hoveredItem.itemObject is ConsumableObject)
-            {
-              
-                _playerConsumer._consumableObject = (ConsumableObject)_hoveredItem.itemObject;
-                _playerConsumer.Consume();
-                _playerConsumer._consumableObject = null;
-            }
-            else
-            {
-               _hoveredItem.itemObject.UseItem(); 
-            }
+        lastRightClickedItem = _hoveredItem;
+        if (_hoveredItem != null)
+        {
+            // rightClickMenu.SetActive(true);
+            // UseButton.onClick 
+            // if (UseButton.OnPointerClick(pointerEventData.button == PointerEventData.InputButton.Left))
+            // {
+            //     Debug.Log("Ripperino Pepperino Knapp");
+            // }
+            
+            
+            
+            //rightClickMenu.SetActive(true);
+            //rightClickMenu.transform.position = _hoveredItem.transform.position + rightClickMenuOffset;
+            //Do button stuff
 
+
+            UseItem();
         }
         else{
             
+        }
+    }
+
+   public void UseItem()
+    {
+        if (lastRightClickedItem.itemObject is ConsumableObject)
+        {
+            _playerConsumer._consumableObject = (ConsumableObject) lastRightClickedItem.itemObject;
+            _playerConsumer.Consume();
+            _playerConsumer._consumableObject = null;
+        }
+        else
+        {
+            lastRightClickedItem.itemObject.UseItem();
         }
     }
 
@@ -296,5 +323,10 @@ public class InventoryController : MonoBehaviour
         if (playbackState == PLAYBACK_STATE.STOPPED){
             _inventoryInstance.start();  
         }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        
     }
 }

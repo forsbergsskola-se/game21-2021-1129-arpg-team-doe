@@ -8,6 +8,7 @@ TagManager:
   - Interactable
   - Enemy
   - Zone
+  - RightClickMenu
   layers:
   - Default
   - TransparentFX
