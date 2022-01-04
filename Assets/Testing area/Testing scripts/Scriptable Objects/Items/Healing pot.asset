@@ -17,7 +17,7 @@ MonoBehaviour:
   width: 1
   height: 2
   type: 0
-  name: 
+  name: Healing pot
   price: 0
   dropSound:
     Guid:

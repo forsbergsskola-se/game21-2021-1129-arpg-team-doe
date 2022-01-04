@@ -12,6 +12,7 @@ public class ToggleLabel : MonoBehaviour
     GameObject _player;
     TargetDetection _targetDetection;
     bool _labelShown;
+    String _shownName;
 
     void Start(){
         _player = GameObject.FindWithTag("Player");
@@ -47,11 +48,12 @@ public class ToggleLabel : MonoBehaviour
         _label = Instantiate(labelPrefab, position, Quaternion.identity);
         _label.transform.SetParent(gameObject.transform);
         _label.SetActive(true);
+        _shownName = GetComponent<InventoryItem>()?.itemObject.name;
         if (GetComponent<Currency>() != null){
             _label.GetComponent<Label>().SetLabel(name + " " + GetComponent<Currency>().amount);
         }
         else{
-            _label.GetComponent<Label>().SetLabel(name);
+            _label.GetComponent<Label>().SetLabel(_shownName);
         }
     }
     
