@@ -8,7 +8,7 @@ using UnityEngine.UI;
 using Random = System.Random;
 
 // This script is attached to the camera to get mouse position for item placement
-public class InventoryController : MonoBehaviour,IPointerClickHandler
+public class InventoryController : MonoBehaviour
 {
     public GameObject canvasInventory;
     //[HideInInspector]
@@ -26,7 +26,6 @@ public class InventoryController : MonoBehaviour,IPointerClickHandler
     [SerializeField] Transform canvasTransform;
     [SerializeField] GameObject[] groundItemPrefabs;
     [SerializeField] GameObject rightClickMenu;
-    [SerializeField] Button UseButton;
     [SerializeField] Button HotBarButton;
 
     public GameObject DroppedObject{ get; private set; }
@@ -234,29 +233,15 @@ public class InventoryController : MonoBehaviour,IPointerClickHandler
         _hoveredItem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
         lastRightClickedItem = _hoveredItem;
         if (_hoveredItem != null)
-        {
-            // rightClickMenu.SetActive(true);
-            // UseButton.onClick 
-            // if (UseButton.OnPointerClick(pointerEventData.button == PointerEventData.InputButton.Left))
-            // {
-            //     Debug.Log("Ripperino Pepperino Knapp");
-            // }
-            
-            
-            
-            //rightClickMenu.SetActive(true);
-            //rightClickMenu.transform.position = _hoveredItem.transform.position + rightClickMenuOffset;
-            //Do button stuff
-
-
-            UseItem();
+        { 
+            rightClickMenu.SetActive(true);
         }
         else{
-            
+            rightClickMenu.SetActive(false); 
         }
     }
 
-   public void UseItem()
+   public void UseItem() //Called by button
     {
         if (lastRightClickedItem.itemObject is ConsumableObject)
         {
@@ -323,10 +308,5 @@ public class InventoryController : MonoBehaviour,IPointerClickHandler
         if (playbackState == PLAYBACK_STATE.STOPPED){
             _inventoryInstance.start();  
         }
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        
     }
 }
