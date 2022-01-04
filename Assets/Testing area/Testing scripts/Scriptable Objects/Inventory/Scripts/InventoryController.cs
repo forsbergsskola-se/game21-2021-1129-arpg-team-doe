@@ -43,6 +43,7 @@ public class InventoryController : MonoBehaviour
     
     Vector3 rightClickMenuOffset = new Vector3(2, 0, 0);
     Vector2Int _oldPosition;
+    Vector2Int _pickOldPosition;
     UIStats[] UIStatsArray;
     EventInstance _inventoryInstance;
     public FMODUnity.EventReference inventoryReference;
@@ -176,7 +177,7 @@ public class InventoryController : MonoBehaviour
     }
 
     void HandleHighlight(){
-        Vector2Int positionOnGrid = GetTileGridPosition();
+        Vector2Int positionOnGrid = GetHighlightTileGridPosition();
         if (_oldPosition == positionOnGrid){
             return;
         }
@@ -222,8 +223,14 @@ public class InventoryController : MonoBehaviour
 
     void LeftMouseButtonPress(){
         var tileGridPosition = GetTileGridPosition();
+        _pickOldPosition = tileGridPosition;
+        //Debug.Log("pick: "+pickOldPosition);
         if (selectedItem == null){
             PickUpItem(tileGridPosition);
+            if (selectedItem != null){
+                pickUpPosition.x = selectedItem.onGridPositionX;
+                pickUpPosition.y = selectedItem.onGridPositionY;
+            }
         }
 
         // if (selectedItem == null){
@@ -236,8 +243,11 @@ public class InventoryController : MonoBehaviour
     
     void LeftMouseButtonRelease(){
         var tileGridPosition = GetTileGridPosition();
+        var highlightTileGridPosition = GetHighlightTileGridPosition();
+        //Debug.Log("release: "+tileGridPosition);
         if (selectedItem != null){
-            PlaceItem(tileGridPosition);
+            //PlaceItem(tileGridPosition);
+            PlaceItem(tileGridPosition == _pickOldPosition ? pickUpPosition : highlightTileGridPosition);
         }
     }
 
@@ -271,6 +281,15 @@ public class InventoryController : MonoBehaviour
 
     Vector2Int GetTileGridPosition(){
         Vector2 position = Input.mousePosition;
+        // if (selectedItem != null){
+        //     position.x -= (selectedItem.WIDTH - 1) * ItemGrid.tileSizeWidth / 2;
+        //     position.y += (selectedItem.HEIGHT - 1) * ItemGrid.tileSizeHeight / 2;
+        // }
+        return selectedItemGrid.GetTileGridPosition(position);
+    }
+    
+    Vector2Int GetHighlightTileGridPosition(){
+        Vector2 position = Input.mousePosition;
         if (selectedItem != null){
             position.x -= (selectedItem.WIDTH - 1) * ItemGrid.tileSizeWidth / 2;
             position.y += (selectedItem.HEIGHT - 1) * ItemGrid.tileSizeHeight / 2;
@@ -297,6 +316,7 @@ public class InventoryController : MonoBehaviour
 
     void PickUpItem(Vector2Int tileGridPosition){
         pickUpPosition = tileGridPosition;
+        //Debug.Log(pickUpPosition);
         selectedItem = selectedItemGrid.PickUpItem(tileGridPosition.x, tileGridPosition.y);
         if (selectedItem != null){
             _rectTransform = selectedItem.GetComponent<RectTransform>();

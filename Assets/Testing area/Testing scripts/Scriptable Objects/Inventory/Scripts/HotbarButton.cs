@@ -66,7 +66,6 @@ public class HotBarButton : MonoBehaviour
         }
         button.image.sprite = itemObject.itemIcon;
         _id = itemObject.Id;
-        //Debug.Log(_inventoryController.pickUpPosition); // pick up position need to be recalculated
         _inventoryController.PlaceItem(_inventoryController.pickUpPosition);
     }
 
