@@ -19,13 +19,6 @@ MonoBehaviour:
   type: 2
   name: Bow of defff
   price: 1
-  pickupSound:
-    Guid:
-      Data1: 932151635
-      Data2: 1318326047
-      Data3: -1646563165
-      Data4: -700181130
-    Path: event:/PickUp
   dropSound:
     Guid:
       Data1: 1900887504

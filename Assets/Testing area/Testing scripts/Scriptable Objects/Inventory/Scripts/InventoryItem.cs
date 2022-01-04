@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,7 @@ public class InventoryItem : MonoBehaviour{
    public int onGridPositionX;
    public int onGridPositionY;
    public bool rotated;
+   
 
    //for rotating tiles
    public int HEIGHT{
@@ -26,8 +28,8 @@ public class InventoryItem : MonoBehaviour{
       }
    }
  
-   internal void Set(ItemObject itemObjectsasd){
-      this.itemObject = itemObjectsasd;
+   internal void Set(ItemObject itemObject){
+      this.itemObject = itemObject;
       GetComponent<Image>().sprite = itemObject.itemIcon;
       Vector2 size = new Vector2();
       size.x = itemObject.width * ItemGrid.tileSizeWidth;

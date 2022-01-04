@@ -32,6 +32,7 @@ public class DropTest : MonoBehaviour{
             GameObject itemObject = lootTable.GetDropItem();
             if (itemObject != null)
             {
+                //itemObject.name = itemObject.name.Replace("(clone)", "").Trim();
                 Instantiate(itemObject, transform.position + RandomLocation(), Quaternion.identity);
             }
             if (cash != null)

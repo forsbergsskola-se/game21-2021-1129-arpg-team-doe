@@ -6,15 +6,9 @@ using UnityEngine;
 
 //[CreateAssetMenu(fileName = "New Consumable Object", menuName = "Inventory System/Items/Consumable")]
 public abstract class ConsumableObject : ItemObject, IConsumable{
-  //  [SerializeField] protected GameEvent _consumeEvent;
-   // [SerializeField] protected Consumer _consumer;
-    public FMODUnity.EventReference fmodEvent;
-   
+    public int toxicityAmount;
 
-   public int toxicityAmount;
-
-
-   public void Awake() {
+    public void Awake() {
        this.GameObject();
        type = ItemType.Consumable;
    }
