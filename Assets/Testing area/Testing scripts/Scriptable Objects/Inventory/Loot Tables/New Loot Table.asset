@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 012aff261baa20b44b4b149247ba55da, type: 3}
+  m_Name: New Loot Table
+  m_EditorClassIdentifier: 
+  table:
+  - drop: {fileID: 1227366717112117007, guid: 725e968b6cbac0046a2e231b93ec4d28, type: 3}
+    dropWeight: 10
+  - drop: {fileID: 5700182911611578800, guid: 9ee9c69ce28cfdf4ea05831bfbc5999f, type: 3}
+    dropWeight: 10
+  - drop: {fileID: 2603801455782169047, guid: 96073dff66b365d418aa30610c442dfe, type: 3}
+    dropWeight: 50
+  - drop: {fileID: 7092348782955867987, guid: 2c1c2674701834f40bb4953dfd7d3e7b, type: 3}
+    dropWeight: 25
+  - drop: {fileID: 537245930790900980, guid: 394cf008678ceca498b350abfcfa150c, type: 3}
+    dropWeight: 5
