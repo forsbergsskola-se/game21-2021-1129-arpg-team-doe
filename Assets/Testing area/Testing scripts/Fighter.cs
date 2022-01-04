@@ -1,3 +1,4 @@
+using System.Net;
 using CustomLogs;
 using UnityEngine;
 using Random = System.Random;
@@ -52,27 +53,29 @@ public class Fighter : MonoBehaviour, IInteractSound{
 
     void Update(){
         _timeSinceLastAttack += Time.deltaTime;
-        if (_combatTarget == null && _rigidbody.velocity.magnitude == 0){
-            Debug.Log("im idleing");
+        if (_combatTarget == null || !_isPlayer && _rigidbody.velocity.magnitude == 0){
+            idleInstance.getPlaybackState(out var playbackState);
+            if (playbackState != PLAYBACK_STATE.STOPPED){
+                return;
+            }
             idleInstance.start();
+            Debug.Log(playbackState);
         }   
         if (_combatTarget == null){
             return;
         }
+        idleInstance.stop(STOP_MODE.IMMEDIATE);
         if (!_combatTarget.GetComponent<Health>().IsAlive || IsClickOnItself()){
             _combatTarget = null;
             _animationController.ChangeAnimationState(IDLE);
-            idleInstance.stop(STOP_MODE.IMMEDIATE);
             return;
         }
         if (!IsInAttackRange()){
-            idleInstance.stop(STOP_MODE.IMMEDIATE);
             _movement.Mover(_combatTarget.transform.position, 1f);
             if (_animationController != null)
                 _animationController.ChangeAnimationState(RUN);
         }
         else{
-            idleInstance.stop(STOP_MODE.IMMEDIATE);
             _movement.StopMoving();
             Attack(_combatTarget.gameObject);
         }
