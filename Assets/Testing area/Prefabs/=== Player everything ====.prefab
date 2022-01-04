@@ -2856,6 +2856,7 @@ MonoBehaviour:
   weaponDamage: 10
   defaultDamage: 5
   lowImpactLevelMultiplier: 0.005
+  lowImpactLuckMultiplier: 0
   highImpactLevelMultiplier: 0.01
   vulnerabilities:
   - {fileID: 11400000, guid: 3e87e5d953dae5a469e386c015c103e1, type: 2}
@@ -5763,6 +5764,7 @@ GameObject:
   - component: {fileID: 6598838207415108931}
   - component: {fileID: 4372569159284212191}
   - component: {fileID: 4372569159284212187}
+  - component: {fileID: 680843089236122546}
   m_Layer: 0
   m_Name: followtarget
   m_TagString: Untagged
@@ -5822,6 +5824,8 @@ MonoBehaviour:
   itemPrefab: {fileID: 3378097737434846926, guid: 7c97bfcbdf1b1aa4cb379fcba585140a, type: 3}
   canvasTransform: {fileID: 9088444525093977227}
   groundItemPrefabs: []
+  selectedItem: {fileID: 0}
+  pickUpPosition: {x: 0, y: 0}
   inventoryReference:
     Guid:
       Data1: 0
@@ -5842,6 +5846,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlighter: {fileID: 9088444524743750279}
+--- !u!114 &680843089236122546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6598838207415108934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 335373424a1a4864dbf2f2734f8c7223, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6598838207471439472
 GameObject:
   m_ObjectHideFlags: 0
