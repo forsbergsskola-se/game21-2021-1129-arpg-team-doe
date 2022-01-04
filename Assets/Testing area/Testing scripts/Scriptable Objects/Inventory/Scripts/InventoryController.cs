@@ -96,6 +96,9 @@ public class InventoryController : MonoBehaviour
         if (Input.GetMouseButtonDown(0)){
             LeftMouseButtonPress();
         }
+        if (Input.GetMouseButtonUp(0)){
+            LeftMouseButtonRelease();
+        }
         
         MouseOver();
         
@@ -124,7 +127,7 @@ public class InventoryController : MonoBehaviour
         selectedItemGrid.PlaceItem(itemToInsert, posOnGrid.Value.x, posOnGrid.Value.y);
     }
     
-    public InventoryItem CreateRandomItem(){
+    InventoryItem CreateRandomItem(){
         InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
         //_selectedItem = inventoryItem;
         _rectTransform = inventoryItem.GetComponent<RectTransform>();
@@ -219,11 +222,21 @@ public class InventoryController : MonoBehaviour
 
     void LeftMouseButtonPress(){
         var tileGridPosition = GetTileGridPosition();
-
         if (selectedItem == null){
             PickUpItem(tileGridPosition);
         }
-        else{
+
+        // if (selectedItem == null){
+        //     PickUpItem(tileGridPosition);
+        // }
+        // else{
+        //     PlaceItem(tileGridPosition);
+        // }
+    }
+    
+    void LeftMouseButtonRelease(){
+        var tileGridPosition = GetTileGridPosition();
+        if (selectedItem != null){
             PlaceItem(tileGridPosition);
         }
     }

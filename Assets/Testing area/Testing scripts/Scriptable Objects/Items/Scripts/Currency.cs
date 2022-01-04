@@ -5,7 +5,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Currency : MonoBehaviour{
-    [SerializeField] CurrencyData _currencyData;
+    [SerializeField] CurrencyData currencyData;
     internal int amount;
 
     void Start(){
@@ -15,12 +15,12 @@ public class Currency : MonoBehaviour{
     void OnTriggerEnter(Collider other){
         if (other.gameObject.CompareTag("Player")){
             other.gameObject.GetComponent<CurrencyHolder>()._currencyHolderDataSo.AddCurrency(amount);
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
-    int GenerateValue(){
-        amount = Random.Range(_currencyData.minAmount, _currencyData.maxAmount);
-        Debug.Log(amount);
-        return amount;
+    void GenerateValue(){
+        amount = Random.Range(currencyData.minAmount, currencyData.maxAmount);
+        //Debug.Log(amount);
+        //return amount;
     }
 }
