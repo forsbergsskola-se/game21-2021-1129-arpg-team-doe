@@ -98,7 +98,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 7.2540774
+  m_Radius: 0.95
   m_Height: 147.88617
   m_Direction: 1
   m_Center: {x: 1.4582558, y: 0, z: 0}
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b14806802c82014e93e5d27fb8257e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currencyData: {fileID: 11400000, guid: 626acccc4a1df4d429e0a48bb056859d, type: 2}
+  currencyData: {fileID: 11400000, guid: 626acccc4a1df4d429e0a48bb056859d, type: 2}
 --- !u!114 &-4366137400059589187
 MonoBehaviour:
   m_ObjectHideFlags: 0
