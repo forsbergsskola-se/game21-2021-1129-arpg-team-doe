@@ -35,5 +35,11 @@ MonoBehaviour:
     dropWeight: 1200
   - drop: {fileID: 5700182911611578800, guid: beab71b0f25a1e34db4329e37bbbf76f, type: 3}
     dropWeight: 1200
-  - drop: {fileID: 5700182911611578800, guid: a37e5162a70dc524fb9afda20125e320, type: 3}
+  - drop: {fileID: 5700182911611578800, guid: 0fdf6cdfa20940c4a802e9219e6ce11a, type: 3}
+    dropWeight: 1200
+  - drop: {fileID: 5700182911611578800, guid: 7d5bbaea87c661e409cc4438a9b35639, type: 3}
+    dropWeight: 1200
+  - drop: {fileID: 5700182911611578800, guid: 8bc4b3564a155c14f94bd0f8e0a07fed, type: 3}
+    dropWeight: 1200
+  - drop: {fileID: 5700182911611578800, guid: 8bc4b3564a155c14f94bd0f8e0a07fed, type: 3}
     dropWeight: 1200

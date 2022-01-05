@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0abf9bcbc448f1842a7785b71642c23e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemObject: {fileID: 11400000, guid: ae922edb1ac63f644a46124460cd4829, type: 2}
+  itemObject: {fileID: 11400000, guid: cf499dadca8264c4287c76dbf8cf3982, type: 2}
   onGridPositionX: 0
   onGridPositionY: 0
   rotated: 0

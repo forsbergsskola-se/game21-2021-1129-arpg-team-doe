@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 5700182911611578811}
   - component: {fileID: 5700182911611578788}
   m_Layer: 0
-  m_Name: Steroids
+  m_Name: Cotton Scrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0abf9bcbc448f1842a7785b71642c23e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemObject: {fileID: 11400000, guid: ca8168c70b4b9da40919617ce166f52e, type: 2}
+  itemObject: {fileID: 11400000, guid: e40173e45c4de554fa2d70833a6269c7, type: 2}
   onGridPositionX: 0
   onGridPositionY: 0
   rotated: 0
