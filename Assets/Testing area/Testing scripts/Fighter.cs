@@ -68,7 +68,6 @@ public class Fighter : MonoBehaviour, IInteractSound{
                 return;
             }
             idleInstance.start();
-            Debug.Log(playbackState);
         }   
         if (_combatTarget == null){
             return;
