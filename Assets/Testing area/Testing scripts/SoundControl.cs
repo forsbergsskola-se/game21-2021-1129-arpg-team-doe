@@ -20,20 +20,13 @@ public class SoundControl : MonoBehaviour{
     void Update(){
         EnemyMovement enemy = _enemyMovements[0];
         foreach (var VARIABLE in _enemyMovements){
-            if (VARIABLE.distance <= enemy.distance){
-                enemy = VARIABLE;
+            if (enemy.distance > VARIABLE.distance){
+                enemy = VARIABLE;S
             }
         }
-        Music.setParameterByName("DistanceFromEnemy", enemy.distance);
-        if (!enemy.isActiveAndEnabled){
-            Music.setParameterByName("InCombat", 0);
-        }
-        else if (enemy.distance < 7){
-            Music.setParameterByName("InCombat", 1);
-        }
-        else{
-            Music.setParameterByName("InCombat", 0);
-        }
+        var dist = enemy.isActiveAndEnabled ? enemy.distance : 20f;
+        Music.setParameterByName("DistanceFromEnemy", dist);
+        Music.setParameterByName("InCombat", dist < 7 ? 1 : 0);
     }
 
     public void Progress(){
