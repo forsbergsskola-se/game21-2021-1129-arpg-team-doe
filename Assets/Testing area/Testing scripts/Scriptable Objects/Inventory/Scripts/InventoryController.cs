@@ -25,7 +25,9 @@ public class InventoryController : MonoBehaviour
     [SerializeField] GameObject itemPrefab;
     [SerializeField] Transform canvasTransform;
     [SerializeField] GameObject[] groundItemPrefabs;
+    [SerializeField] GameObject rightClickMenuHolder;
     [SerializeField] GameObject rightClickMenu;
+    [SerializeField] GameObject rightClickMenuSlots;
     [SerializeField] Button HotBarButton;
 
     public GameObject DroppedObject{ get; private set; }
@@ -34,7 +36,7 @@ public class InventoryController : MonoBehaviour
 
     InventoryItem _overlapItem;
     InventoryItem _hoveredItem;
-    InventoryItem lastRightClickedItem;
+    public InventoryItem lastRightClickedItem;
     RectTransform _rectTransform;
     InventoryHighlight _inventoryHighlight;
     InventoryItem _itemToHighlight;
@@ -258,10 +260,13 @@ public class InventoryController : MonoBehaviour
         if (_hoveredItem != null)
         { 
             rightClickMenu.SetActive(true);
-            rightClickMenu.transform.position = lastRightClickedItem.transform.position;
+            rightClickMenuSlots.SetActive(false);
+            rightClickMenuHolder.transform.position = lastRightClickedItem.transform.position;
         }
         else{
             rightClickMenu.SetActive(false); 
+            rightClickMenuSlots.SetActive(false);
+            
         }
     }
 
