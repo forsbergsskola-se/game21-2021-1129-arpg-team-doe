@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 022ab094917969f4d9bda95980d196b6, type: 3}
   m_Name: Easter Egg
   m_EditorClassIdentifier: 
-  Id: 0
-  itemIcon: {fileID: 21300000, guid: 3bd21342ff245be45a465edd6119520e, type: 3}
+  Id: 2
+  itemIcon: {fileID: 21300000, guid: b37ec804b5a92fd45a10eddd8f58ca03, type: 3}
   width: 1
   height: 2
   type: 4
