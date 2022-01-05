@@ -1926,7 +1926,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1900954220}
         m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-        m_MethodName: UseItem
+        m_MethodName: UseItemButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
