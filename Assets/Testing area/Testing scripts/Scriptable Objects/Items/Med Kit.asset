@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 022ab094917969f4d9bda95980d196b6, type: 3}
-  m_Name: New Healing Object
+  m_Name: Med Kit
   m_EditorClassIdentifier: 
   Id: 0
   itemIcon: {fileID: 21300000, guid: d8a7ba45391846942b10e108ad0bfb44, type: 3}
