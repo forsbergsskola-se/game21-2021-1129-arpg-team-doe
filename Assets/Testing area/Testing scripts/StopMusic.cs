@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class StopMusic : MonoBehaviour{
    EventInstance _idleInstance;
-   Fighter _fighter;
+   public Fighter _fighter; //sorry but this works and idk why and im sad and tired.
 
    void Start(){
       _idleInstance = GetComponentInChildren<EventInstance>();
-      _fighter = GetComponent<Fighter>();
+     // _fighter = GetComponent<Fighter>();
    }
 
    void LateUpdate(){
