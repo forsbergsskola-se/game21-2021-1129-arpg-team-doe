@@ -472,6 +472,7 @@ GameObject:
   - component: {fileID: 2123096904}
   - component: {fileID: 1511514187}
   - component: {fileID: 1511514222}
+  - component: {fileID: 9190938594607513063}
   m_Layer: 3
   m_Name: EnemyMonster
   m_TagString: Enemy
@@ -494,6 +495,7 @@ Transform:
   - {fileID: 4906887525392233538}
   - {fileID: 7616486275945415868}
   - {fileID: 1343884337320422748}
+  - {fileID: 1478629963217002677}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -829,6 +831,80 @@ MonoBehaviour:
   cash: {fileID: 6458768576707232289, guid: 95c88a0e57207324e9fc7d8ae298da71, type: 3}
   spreadRange: 2
   maxRollCount: 3
+--- !u!114 &9190938594607513063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8972526659047141918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12a23579b1f59624fa03b3336dabb42a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &9131742662991410438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1478629963217002677}
+  - component: {fileID: 981383977983163761}
+  m_Layer: 0
+  m_Name: SoundEmitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1478629963217002677
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9131742662991410438}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.017246246, y: 0.5500001, z: 0.12594032}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8972526659047141890}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &981383977983163761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9131742662991410438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1102551081
+      Data2: 1181041241
+      Data3: -642572407
+      Data4: -438745020
+    Path: event:/ZombieIdle
+  Event: 
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 75
 --- !u!1 &9184515788884814647
 GameObject:
   m_ObjectHideFlags: 0
@@ -1294,14 +1370,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 851e9e3b51572454092f264fe6d6abef, type: 3}
---- !u!4 &7616486275945415868 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 851e9e3b51572454092f264fe6d6abef, type: 3}
-  m_PrefabInstance: {fileID: 7942529602061083479}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7131697703270817286 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 851e9e3b51572454092f264fe6d6abef, type: 3}
+  m_PrefabInstance: {fileID: 7942529602061083479}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7616486275945415868 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 851e9e3b51572454092f264fe6d6abef, type: 3}
   m_PrefabInstance: {fileID: 7942529602061083479}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &598700149607846328

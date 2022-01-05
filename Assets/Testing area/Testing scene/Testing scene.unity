@@ -2690,6 +2690,7 @@ GameObject:
   - component: {fileID: 754067676}
   - component: {fileID: 754067675}
   - component: {fileID: 754067674}
+  - component: {fileID: 754067678}
   m_Layer: 0
   m_Name: Cube (5)
   m_TagString: Untagged
@@ -2775,6 +2776,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &754067678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754067673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12a23579b1f59624fa03b3336dabb42a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &764443535 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2603801455782169042, guid: 96073dff66b365d418aa30610c442dfe, type: 3}
@@ -5955,6 +5968,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -172
       objectReference: {fileID: 0}
+    - target: {fileID: 680843089236122546, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792550239870752734, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2716634054633227224, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
       propertyPath: currencyText
       value: 
@@ -6440,6 +6461,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 981383977983163761, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
+      propertyPath: AllowFadeout
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8972526659047141890, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
       propertyPath: m_RootOrder
       value: 24
