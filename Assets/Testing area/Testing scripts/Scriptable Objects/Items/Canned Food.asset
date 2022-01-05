@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 022ab094917969f4d9bda95980d196b6, type: 3}
   m_Name: Canned Food
   m_EditorClassIdentifier: 
-  Id: 0
-  itemIcon: {fileID: 21300000, guid: 127baf0974848564689b57e04d96e152, type: 3}
+  Id: 1
+  itemIcon: {fileID: 21300000, guid: 04463c43781d4604883f298ead8f5ef6, type: 3}
   width: 1
   height: 1
   type: 0
