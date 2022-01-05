@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8118530a322072946bcf4cea18e434c0, type: 3}
   m_Name: Pops 15-30
   m_EditorClassIdentifier: 
-  Id: 0
+  Id: 17
   itemIcon: {fileID: 0}
   width: 2
   height: 1
   type: 3
-  name: 
+  name: Pops
   price: 0
   dropSound:
     Guid:

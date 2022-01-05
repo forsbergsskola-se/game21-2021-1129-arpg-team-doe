@@ -214,6 +214,10 @@ public class InventoryController : MonoBehaviour
         Destroy(selectedItem.gameObject);
         selectedItem = null;
     }
+    void RemoveItemFromInventoryRight(){
+        Destroy(lastRightClickedItem.gameObject);
+        lastRightClickedItem = null;
+    }
     
     void SpawnItemOnGround(){
         var droppedItem = groundItemPrefabs[selectedItem.itemObject.Id];
@@ -277,7 +281,7 @@ public class InventoryController : MonoBehaviour
             _playerConsumer._consumableObject = (ConsumableObject) lastRightClickedItem.itemObject;
             _playerConsumer.Consume();
             _playerConsumer._consumableObject = null;
-            RemoveItemFromInventory();
+            RemoveItemFromInventoryRight();
         }
         else
         {
