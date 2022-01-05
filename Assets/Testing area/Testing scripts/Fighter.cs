@@ -30,7 +30,7 @@ public class Fighter : MonoBehaviour, IInteractSound{
     float _distance;
     float _timeSinceLastAttack;
     
-    public bool isIdle{ get; private set; }
+    public bool IsIdle{ get; private set; }
 
     const string RUN = "Run";
     const string ATTACK = "Attack";
@@ -62,13 +62,12 @@ public class Fighter : MonoBehaviour, IInteractSound{
     void Update(){
         _timeSinceLastAttack += Time.deltaTime;
         if (_combatTarget == null && _rigidbody.velocity.magnitude == 0 || !_isPlayer && _rigidbody.velocity.magnitude == 0){
-            isIdle = true;
+            IsIdle = true;
             idleInstance.getPlaybackState(out var playbackState);
             if (playbackState != PLAYBACK_STATE.STOPPED){
                 return;
             }
             idleInstance.start();
-            Debug.Log(playbackState);
         }   
         if (_combatTarget == null){
             return;
