@@ -739,6 +739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12a23579b1f59624fa03b3336dabb42a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fighter: {fileID: 4896606745485573230}
 --- !u!114 &4896606745485573230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -898,7 +899,7 @@ MonoBehaviour:
   Event: 
   PlayEvent: 11
   StopEvent: 12
-  AllowFadeout: 1
+  AllowFadeout: 0
   TriggerOnce: 0
   Preload: 0
   Params: []
