@@ -25,6 +25,9 @@ public class SoundControl : MonoBehaviour{
             }
         }
         Music.setParameterByName("DistanceFromEnemy", enemy.distance);
+        if (!enemy.isActiveAndEnabled){
+            Music.setParameterByName("InCombat", 0);
+        }
         if (enemy.distance < 7){
             Music.setParameterByName("InCombat", 1);
         }
