@@ -13,19 +13,19 @@ MonoBehaviour:
   m_Name: Wedding Ring
   m_EditorClassIdentifier: 
   Id: 0
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: b37ec804b5a92fd45a10eddd8f58ca03, type: 3}
   width: 1
   height: 1
   type: 4
-  name: 
-  price: 0
+  name: Wedding Ring
+  price: 100
   dropSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  _pickupEvent: {fileID: 0}
-  description: 
+      Data1: 932151635
+      Data2: 1318326047
+      Data3: -1646563165
+      Data4: -700181130
+    Path: event:/PickUp
+  _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
+  description: Proof that money is the root of all love.
   buffs: []
