@@ -25,7 +25,7 @@ public class HealthBar : MonoBehaviour, IHealthbar, IHealthListener{
     }
 
     void Update(){
-        transform.rotation = _startRotation;
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Camera.main.transform.rotation, 1f);
         transform.position = _parent.transform.position + _offset;
     }
 
