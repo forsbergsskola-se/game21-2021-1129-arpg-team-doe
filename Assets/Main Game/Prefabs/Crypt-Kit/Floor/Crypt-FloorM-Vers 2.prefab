@@ -5081,7 +5081,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 9470
+  m_VersionIndex: 9473
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5233,13 +5233,35 @@ PrefabInstance:
       value: Floor_meduim_version2 11x1x6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3a735291999ef264a801aea792114d8c, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3a735291999ef264a801aea792114d8c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a735291999ef264a801aea792114d8c, type: 3}
+--- !u!1 &5666438689676533273 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3a735291999ef264a801aea792114d8c, type: 3}
+  m_PrefabInstance: {fileID: 4783476080398705480}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5037534962727994531 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3a735291999ef264a801aea792114d8c, type: 3}
   m_PrefabInstance: {fileID: 4783476080398705480}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &969030714645914930
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5666438689676533273}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 11, y: 1, z: 6}
+  m_Center: {x: 0, y: 0, z: 0}
