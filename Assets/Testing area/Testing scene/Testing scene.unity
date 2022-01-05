@@ -6928,10 +6928,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 537245930790900978, guid: 394cf008678ceca498b350abfcfa150c, type: 3}
-      propertyPath: itemObject
-      value: 
-      objectReference: {fileID: 11400000, guid: bcad7bc109c9e054885925975aeeb292, type: 2}
     - target: {fileID: 537245930790900980, guid: 394cf008678ceca498b350abfcfa150c, type: 3}
       propertyPath: m_Name
       value: Rusty Pipe

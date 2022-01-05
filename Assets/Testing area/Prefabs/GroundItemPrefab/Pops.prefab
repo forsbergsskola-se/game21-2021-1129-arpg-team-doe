@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a1e4d58cfba6748914d9136af27667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelPrefab: {fileID: 2960489290053376558, guid: 01df79adbbc77024bb41496a837eac57, type: 3}
+  labelCanvas: {fileID: 2960489290053376558, guid: 01df79adbbc77024bb41496a837eac57, type: 3}
   offset: {x: 0, y: 2, z: 0}
   labelShowRange: 5
 --- !u!1001 &356031845349582220

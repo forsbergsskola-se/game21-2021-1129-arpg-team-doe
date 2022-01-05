@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0abf9bcbc448f1842a7785b71642c23e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemObject: {fileID: 11400000, guid: e6c2fdac0573d384a87e409c42da4995, type: 2}
+  itemObject: {fileID: 11400000, guid: bcad7bc109c9e054885925975aeeb292, type: 2}
   onGridPositionX: 0
   onGridPositionY: 0
   rotated: 0
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a1e4d58cfba6748914d9136af27667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelPrefab: {fileID: 2960489290053376558, guid: 01df79adbbc77024bb41496a837eac57, type: 3}
+  labelCanvas: {fileID: 2960489290053376558, guid: 01df79adbbc77024bb41496a837eac57, type: 3}
   offset: {x: 0, y: 2, z: 0}
   labelShowRange: 5
 --- !u!114 &537245930790900974
