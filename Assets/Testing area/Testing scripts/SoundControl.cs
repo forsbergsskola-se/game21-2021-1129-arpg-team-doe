@@ -21,7 +21,7 @@ public class SoundControl : MonoBehaviour{
         EnemyMovement enemy = _enemyMovements[0];
         foreach (var VARIABLE in _enemyMovements){
             if (enemy.distance > VARIABLE.distance){
-                enemy = VARIABLE;S
+                enemy = VARIABLE;
             }
         }
         var dist = enemy.isActiveAndEnabled ? enemy.distance : 20f;
