@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
         //if (EventSystem.current.IsPointerOverGameObject()){ //Player won't do anything when click on UI
         //  return;
         //}
-        if (_pickUpItemFromGround.pickedUpTarget)
+        if (_pickUpItemFromGround.pickedUpTarget != null)
         {
             return;
         }

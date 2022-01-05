@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class PickUpItemFromGround : MonoBehaviour
 {
     InventoryController _inventoryController;
-    public GameObject pickedUpTarget;
+   [HideInInspector] public GameObject pickedUpTarget;
     Vector3 savedPosition;
    [SerializeField]  ItemGrid _itemGrid;
 

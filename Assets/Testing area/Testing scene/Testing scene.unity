@@ -1176,6 +1176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
+  text: {fileID: 1807501440}
 --- !u!114 &347324022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1587,6 +1589,17 @@ MonoBehaviour:
   cash: {fileID: 119589028}
   spreadRange: 0.5
   maxRollCount: 3
+--- !u!114 &434188084 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9088444525977602575, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+  m_PrefabInstance: {fileID: 6598838206894276446}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13884dd1ad7be86428f8329fd47343f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &475430777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1927,6 +1940,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
         m_MethodName: UseItemButton
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 233208429}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2402,6 +2427,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
+  text: {fileID: 706121829}
 --- !u!114 &601881473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2554,6 +2581,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
+  text: {fileID: 278443811}
 --- !u!114 &601936861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4428,6 +4457,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8972526659047141890, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
   m_PrefabInstance: {fileID: 1511514185}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1592705671 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6598838207415108934, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+  m_PrefabInstance: {fileID: 6598838206894276446}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1597955093
 GameObject:
   m_ObjectHideFlags: 0
@@ -5067,6 +5101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
+  text: {fileID: 513196511}
 --- !u!1 &1725746314
 GameObject:
   m_ObjectHideFlags: 0
@@ -5805,12 +5841,26 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4372569159284212191, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
   m_PrefabInstance: {fileID: 6598838206894276446}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1592705671}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77492b46d24f73b43807c70501d4261d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1900954225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592705671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3fb1fb82134bb54392a59802028157e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickedUpTarget: {fileID: 0}
+  _itemGrid: {fileID: 434188084}
 --- !u!1 &1904443187
 GameObject:
   m_ObjectHideFlags: 0
