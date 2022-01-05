@@ -19,7 +19,7 @@ public class DamageTextSpawner : MonoBehaviour, IHealthListener
 
     public void HealthChanged(int currentHealth, int maxHealth, int damage, bool isCrit, bool isAlive){
         if (shouldSpawn){
-            var damageNumber = Instantiate(textPrefab, transform.position + RandomLocation(), textPrefab.transform.rotation, transform);
+            var damageNumber = Instantiate(textPrefab, transform.position + RandomLocation(), Quaternion.identity, transform);
             damageNumber.HealthChanged(currentHealth, maxHealth, damage,isCrit, isAlive);
         }
     }
