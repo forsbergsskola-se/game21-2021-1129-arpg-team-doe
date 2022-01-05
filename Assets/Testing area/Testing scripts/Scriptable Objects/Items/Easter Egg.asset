@@ -27,7 +27,7 @@ MonoBehaviour:
       Data4: -700181130
     Path: event:/PickUp
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
-  description: 
+  description: Perfect Christmas gift!
   buffs: []
   toxicityAmount: 1
   restoreHealthValue: 30
