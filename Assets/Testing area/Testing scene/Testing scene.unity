@@ -1176,8 +1176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
-  text: {fileID: 1807501440}
 --- !u!114 &347324022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2334,11 +2332,6 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: c815c9af6cab4694da0e443b670c4e8f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
---- !u!1 &537887009 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7092348782955867987, guid: 2c1c2674701834f40bb4953dfd7d3e7b, type: 3}
-  m_PrefabInstance: {fileID: 7092348783381819925}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &540884983 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1227366717112117007, guid: 725e968b6cbac0046a2e231b93ec4d28, type: 3}
@@ -2427,8 +2420,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
-  text: {fileID: 706121829}
 --- !u!114 &601881473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2581,8 +2572,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
-  text: {fileID: 278443811}
 --- !u!114 &601936861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5101,8 +5090,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
-  text: {fileID: 513196511}
 --- !u!1 &1725746314
 GameObject:
   m_ObjectHideFlags: 0
@@ -5210,25 +5197,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7092348782955867995, guid: 2c1c2674701834f40bb4953dfd7d3e7b, type: 3}
   m_PrefabInstance: {fileID: 7092348783381819925}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 537887009}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2408b0695f2bfea4fb63a6a18fb0d611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1743232348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 537887009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83ef1b69dc8a0b24ca6c6a1e6a6c0dfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 0}
 --- !u!1 &1752748633 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1386220651167043233, guid: 606800b5e4c1b484fb895e904d6f67f0, type: 3}
@@ -6954,6 +6928,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 537245930790900978, guid: 394cf008678ceca498b350abfcfa150c, type: 3}
+      propertyPath: itemObject
+      value: 
+      objectReference: {fileID: 11400000, guid: bcad7bc109c9e054885925975aeeb292, type: 2}
     - target: {fileID: 537245930790900980, guid: 394cf008678ceca498b350abfcfa150c, type: 3}
       propertyPath: m_Name
       value: Rusty Pipe
@@ -7280,6 +7258,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1904443189}
     - target: {fileID: 4372569159284212191, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+      propertyPath: spawnedObject
+      value: 
+      objectReference: {fileID: 5700182911611578800, guid: 7e01cb6c294b05748931e87121065ba6, type: 3}
+    - target: {fileID: 4372569159284212191, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
       propertyPath: rightClickMenu
       value: 
       objectReference: {fileID: 233208429}
@@ -7605,14 +7587,6 @@ PrefabInstance:
     - target: {fileID: 7092348782955867987, guid: 2c1c2674701834f40bb4953dfd7d3e7b, type: 3}
       propertyPath: m_Name
       value: Amphetamine
-      objectReference: {fileID: 0}
-    - target: {fileID: 7092348782955867993, guid: 2c1c2674701834f40bb4953dfd7d3e7b, type: 3}
-      propertyPath: itemObject
-      value: 
-      objectReference: {fileID: 11400000, guid: cf499dadca8264c4287c76dbf8cf3982, type: 2}
-    - target: {fileID: 7092348782955867993, guid: 2c1c2674701834f40bb4953dfd7d3e7b, type: 3}
-      propertyPath: onGridPositionX
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7092348782955867998, guid: 2c1c2674701834f40bb4953dfd7d3e7b, type: 3}
       propertyPath: m_RootOrder

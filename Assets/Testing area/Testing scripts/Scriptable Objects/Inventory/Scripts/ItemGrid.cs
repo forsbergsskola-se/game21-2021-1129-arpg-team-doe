@@ -8,6 +8,8 @@ public class ItemGrid : MonoBehaviour
 
     public const float tileSizeWidth = 32;
     public const float tileSizeHeight = 32;
+    Vector2 _positionOnTheGrid;
+    Vector2Int _tileGridPosition;
     InventoryItem[,] _inventoryItemSlot;
     RectTransform _rectTransform;
 
@@ -22,8 +24,7 @@ public class ItemGrid : MonoBehaviour
         _rectTransform.sizeDelta = size;
     }
 
-    Vector2 positionOnTheGrid = new Vector2();
-    Vector2Int tileGridPosition = new Vector2Int();
+    
 
     public InventoryItem PickUpItem(int x, int y){
         if (IsOutOfInventoryGrid(x, y)){
@@ -63,17 +64,17 @@ public class ItemGrid : MonoBehaviour
 
     public Vector2Int GetTileGridPosition(Vector2 mousePosition){
         Vector2 rectPosition = _rectTransform.position;
-        positionOnTheGrid.x = mousePosition.x - rectPosition.x;
-        positionOnTheGrid.y = rectPosition.y - mousePosition.y;
-        tileGridPosition.x = (int) (positionOnTheGrid.x / tileSizeWidth);
-        tileGridPosition.y = (int) (positionOnTheGrid.y / tileSizeHeight);
+        _positionOnTheGrid.x = mousePosition.x - rectPosition.x;
+        _positionOnTheGrid.y = rectPosition.y - mousePosition.y;
+        _tileGridPosition.x = (int) (_positionOnTheGrid.x / tileSizeWidth);
+        _tileGridPosition.y = (int) (_positionOnTheGrid.y / tileSizeHeight);
 
-        return tileGridPosition;
+        return _tileGridPosition;
     }
 
     public bool PlaceItem(InventoryItem inventoryItem, int posX, int posY, ref InventoryItem _overlapItem){
         
-        if (BoundryCheck(posX,posY,inventoryItem.WIDTH,inventoryItem.HEIGHT) == false){
+        if (BoundaryCheck(posX,posY,inventoryItem.WIDTH,inventoryItem.HEIGHT) == false){
             return false;
         }
 
@@ -162,7 +163,7 @@ public class ItemGrid : MonoBehaviour
         return true;
     }
 
-    public bool BoundryCheck(int posX, int posY, int width, int height){
+    public bool BoundaryCheck(int posX, int posY, int width, int height){
         if (PositionCheck(posX,posY) == false){
             return false;
         }

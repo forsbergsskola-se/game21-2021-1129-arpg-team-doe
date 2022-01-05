@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(TargetDetection))]
 public class ToggleLabel : MonoBehaviour
 {
-    [SerializeField] GameObject labelPrefab;
+    [SerializeField] GameObject labelCanvas;
     [SerializeField] Vector3 offset = new Vector3(0, 2, 0);
     [SerializeField] float labelShowRange = 5f;
     GameObject _label;
@@ -45,7 +45,7 @@ public class ToggleLabel : MonoBehaviour
 
     void ShowLabel(){
         Vector3 position = transform.position + offset;
-        _label = Instantiate(labelPrefab, position, Quaternion.identity);
+        _label = Instantiate(labelCanvas, position, Quaternion.identity);
         _label.transform.SetParent(gameObject.transform);
         _label.SetActive(true);
         _shownName = GetComponent<InventoryItem>()?.itemObject.name;

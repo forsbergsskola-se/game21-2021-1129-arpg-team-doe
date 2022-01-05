@@ -24,11 +24,12 @@ public class InventoryController : MonoBehaviour
     [SerializeField] ItemDatabaseObject itemsInDatabase;
     [SerializeField] GameObject itemPrefab;
     [SerializeField] Transform canvasTransform;
-    [SerializeField] GameObject[] groundItemPrefabs;
+    //[SerializeField] GameObject[] groundItemPrefabs;
     [SerializeField] GameObject rightClickMenuHolder;
     [SerializeField] GameObject rightClickMenu;
     [SerializeField] GameObject rightClickMenuSlots;
     [SerializeField] Button HotBarButton;
+    [SerializeField] GameObject spawnedObject;
 
     public GameObject DroppedObject{ get; private set; }
     public InventoryItem selectedItem;
@@ -189,7 +190,7 @@ public class InventoryController : MonoBehaviour
         }
         else{
             {
-                _inventoryHighlight.Show(selectedItemGrid.BoundryCheck(positionOnGrid.x, positionOnGrid.y, 
+                _inventoryHighlight.Show(selectedItemGrid.BoundaryCheck(positionOnGrid.x, positionOnGrid.y, 
                     selectedItem.WIDTH, selectedItem.HEIGHT));
                 _inventoryHighlight.SetSize(selectedItem);
                 //_inventoryHighlight.SetParent(selectedItemGrid);
@@ -209,7 +210,9 @@ public class InventoryController : MonoBehaviour
     }
     
     void SpawnItemOnGround(){
-        var droppedItem = groundItemPrefabs[selectedItem.itemObject.Id];
+        //var droppedItem = groundItemPrefabs[selectedItem.itemObject.Id];
+        var droppedItem = spawnedObject;
+        droppedItem.GetComponent<InventoryItem>().itemObject = selectedItem.itemObject;
         Vector3 spawnPosition = _playerTransform.position + new Vector3(0, 0, 2);
         DroppedObject = Instantiate(droppedItem, spawnPosition, Quaternion.identity);
         DroppedObject.name = droppedItem.name;
