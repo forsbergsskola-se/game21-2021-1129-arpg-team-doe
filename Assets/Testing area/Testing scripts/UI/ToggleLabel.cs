@@ -50,7 +50,7 @@ public class ToggleLabel : MonoBehaviour
         _label.SetActive(true);
         _shownName = GetComponent<InventoryItem>()?.itemObject.name;
         if (GetComponent<Currency>() != null){
-            _label.GetComponent<Label>().SetLabel(name + " " + GetComponent<Currency>().amount);
+            _label.GetComponent<Label>().SetLabel(GetComponent<Currency>().amount + " " + name);
         }
         else{
             _label.GetComponent<Label>().SetLabel(_shownName);
