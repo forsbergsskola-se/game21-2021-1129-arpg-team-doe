@@ -858,8 +858,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
-  text: {fileID: 1807501440}
 --- !u!114 &347324022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2074,8 +2072,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
-  text: {fileID: 706121829}
 --- !u!114 &601881473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2228,8 +2224,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
-  text: {fileID: 278443811}
 --- !u!114 &601936861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3874,7 +3868,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1511514222, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
       propertyPath: maxRollCount
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2357426410238338414, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
       propertyPath: patrolPath
@@ -4483,8 +4477,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
-  text: {fileID: 513196511}
 --- !u!1 &1725746314
 GameObject:
   m_ObjectHideFlags: 0
@@ -6045,7 +6037,7 @@ PrefabInstance:
       objectReference: {fileID: 537245930790900980, guid: 394cf008678ceca498b350abfcfa150c, type: 3}
     - target: {fileID: 5675631719487080352, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
       propertyPath: luck
-      value: 10
+      value: 152.03
       objectReference: {fileID: 0}
     - target: {fileID: 5675631719487080352, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
       propertyPath: resistances.Array.size
