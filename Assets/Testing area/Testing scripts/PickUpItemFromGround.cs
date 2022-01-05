@@ -78,7 +78,7 @@ public class PickUpItemFromGround : MonoBehaviour
     void PickUpObject()
     {Ray ray = GetMouseRay();
              bool hasHit= Physics.Raycast(ray, out RaycastHit hit,10000,LayerMask.GetMask("Ground","UI"));
-             Debug.Log("Picking up object");
+             //Debug.Log("Picking up object");
         pickedUpTarget.transform.position = hit.point;
         pickedUpTarget.GetComponent<Collider>().enabled = false;
         pickedUpTarget.GetComponent<NavMeshObstacle>().enabled = false;

@@ -7325,6 +7325,10 @@ PrefabInstance:
       propertyPath: stopRegenerateThreshold
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 5675631719487080363, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+      propertyPath: inventorySprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b37ec804b5a92fd45a10eddd8f58ca03, type: 3}
     - target: {fileID: 6136996793197890090, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
       propertyPath: getXPEventListener
       value: 

@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Texture2D validClickTexture;
     [SerializeField] Texture2D invalidClickTexture;
     [SerializeField] Texture2D standardCursorTexture;
-
     [SerializeField] int defeatedThreshold = 40;
 
     public InventoryObject inventory;
@@ -29,6 +28,7 @@ public class PlayerController : MonoBehaviour
     Animator _animator;
     RaycastHit _hit;
     Fighter _fighter;
+    InventoryController _inventoryController;
     string _currentState;
     float _interactionRange;
     bool _hasPlayedSound;
@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
         _animationController = GetComponentInChildren<AnimationController>();
         _fighter = GetComponent<Fighter>();
         _pickUpItemFromGround = FindObjectOfType<PickUpItemFromGround>();
+        _inventoryController = FindObjectOfType<InventoryController>();
     }
 
     void Start(){
@@ -75,8 +76,11 @@ public class PlayerController : MonoBehaviour
         //if (EventSystem.current.IsPointerOverGameObject()){ //Player won't do anything when click on UI
         //  return;
         //}
-        if (_pickUpItemFromGround.pickedUpTarget != null)
-        {
+        // if (_pickUpItemFromGround.pickedUpTarget != null)
+        // {
+        //     return;
+        // }
+        if (InteractWithPickup()){
             return;
         }
         
@@ -91,7 +95,9 @@ public class PlayerController : MonoBehaviour
         MoveToCursor();
         
     }
-    
+
+  
+
     // if (playerIsDefeated){
     //     _movement.enabled = false; 
     //     _fighter.enabled = false;
@@ -164,6 +170,25 @@ public class PlayerController : MonoBehaviour
             return true;
         }
         return false;
+    }
+    
+    bool InteractWithPickup(){
+        RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+        foreach (RaycastHit hit in hits){
+            GameObject pickUpGameObject = hit.transform.GetComponent<PickUpItem>()?.gameObject;
+            if (pickUpGameObject == null) continue;
+            if (Input.GetMouseButtonDown(0)){
+                DragObject(pickUpGameObject);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    void DragObject(GameObject pickUpGameObject){
+        InventoryItem inventoryItem = pickUpGameObject.GetComponent<InventoryItem>();
+        Destroy(pickUpGameObject);
+        _inventoryController.selectedItem = _inventoryController.CreateItem(inventoryItem.itemObject.Id);
     }
 
     void MoveToCursor(){
