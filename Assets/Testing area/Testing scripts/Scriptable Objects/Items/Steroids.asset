@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9aa9d84f5e818d4b9ff5048760e0971, type: 3}
+  m_Name: Steroids
+  m_EditorClassIdentifier: 
+  Id: 0
+  itemIcon: {fileID: 21300000, guid: 90c6130083ae95d46930527d3502987d, type: 3}
+  width: 1
+  height: 1
+  type: 0
+  name: Steroids
+  price: 40
+  dropSound:
+    Guid:
+      Data1: -1879748765
+      Data2: 1091132112
+      Data3: 1057859713
+      Data4: -1335320419
+    Path: event:/PotionDrop
+  _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
+  description: Makes your muscles bigger and hormones unstable. +5 STR, 120 sec
+  buffs: []
+  toxicityAmount: 1
+  buffDuration: 120
+  toughnessBuff: 0
+  strengthBuff: 5
+  dexterityBuff: 0
+  knowledgeBuff: 0
+  reflexBuff: 0
+  luckBuff: 0
+  interactRangeBuff: 0
+  attackRangeBuff: 0
+  attackSpeedBuff: 0
+  damageBuff: 0

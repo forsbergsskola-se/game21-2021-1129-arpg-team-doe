@@ -68,6 +68,25 @@ public class HotBarButton : MonoBehaviour
         _id = itemObject.Id;
         _inventoryController.PlaceItem(_inventoryController.pickUpPosition);
     }
+    public void AssignButtonButton(){
+        var itemObject = _inventoryController.lastRightClickedItem.itemObject;
+        foreach (var hotBarButton in _hotBarButtons){
+            if (hotBarButton == null){
+                continue;
+            }
+            if (hotBarButton._id == itemObject.Id || itemObject is not ConsumableObject){
+                _inventoryController.PlaceItem(_inventoryController.pickUpPosition);
+                return;
+            }
+        }
+        _inventoryItem = _inventoryController.lastRightClickedItem;
+        if (_inventoryItem == null){
+            return;
+        }
+        button.image.sprite = itemObject.itemIcon;
+        _id = itemObject.Id;
+        _inventoryController.PlaceItem(_inventoryController.pickUpPosition);
+    }
 
     void HandleClick(){
         OnButtonClicked?.Invoke(_keyNumber);
@@ -76,8 +95,8 @@ public class HotBarButton : MonoBehaviour
             return;
         }
         _inventoryController.selectedItem = _inventoryItem;
-        Debug.Log($"Item {_id} is used.");
-        _inventoryController.DropItemToGround(); // Here can be replaced to a consume function
+       Debug.Log($"Item {_id} is used.");
+        _inventoryController.UseItem(); // Here can be replaced to a consume function
         ClearButton();
     }
 
