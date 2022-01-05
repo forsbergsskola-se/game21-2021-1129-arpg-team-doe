@@ -95,8 +95,8 @@ public class HotBarButton : MonoBehaviour
             return;
         }
         _inventoryController.selectedItem = _inventoryItem;
-        Debug.Log($"Item {_id} is used.");
-        _inventoryController.DropItemToGround(); // Here can be replaced to a consume function
+       Debug.Log($"Item {_id} is used.");
+        _inventoryController.UseItem(); // Here can be replaced to a consume function
         ClearButton();
     }
 

@@ -74,11 +74,11 @@ public class InventoryController : MonoBehaviour
             PlayInventorySound();
         }
 
-        if (Input.GetKeyDown(KeyCode.Q)){ //debug version
-            if (selectedItem == null){
-                CreateRandomItem();
-            }
-        }
+        // if (Input.GetKeyDown(KeyCode.Q)){ //debug version
+        //     if (selectedItem == null){
+        //         CreateRandomItem();
+        //     }
+        // }
 
         //add item to inventory
         //if (Input.GetKeyDown(KeyCode.W)){ //debug version
@@ -270,19 +270,34 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-   public void UseItem() //Called by button
+   public void UseItemButton() //Called by button
     {
         if (lastRightClickedItem.itemObject is ConsumableObject)
         {
             _playerConsumer._consumableObject = (ConsumableObject) lastRightClickedItem.itemObject;
             _playerConsumer.Consume();
             _playerConsumer._consumableObject = null;
+            RemoveItemFromInventory();
         }
         else
         {
             lastRightClickedItem.itemObject.UseItem();
         }
     }
+   public void UseItem() //Called by button
+   {
+       if (selectedItem.itemObject is ConsumableObject)
+       {
+           _playerConsumer._consumableObject = (ConsumableObject) selectedItem.itemObject;
+           _playerConsumer.Consume();
+           _playerConsumer._consumableObject = null;
+           RemoveItemFromInventory();
+       }
+       else
+       {
+           selectedItem.itemObject.UseItem();
+       }
+   }
 
     Vector2Int GetTileGridPosition(){
         Vector2 position = Input.mousePosition;
