@@ -5649,6 +5649,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1900954225, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4372569159284212191, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
       propertyPath: HotBarButton
       value: 
