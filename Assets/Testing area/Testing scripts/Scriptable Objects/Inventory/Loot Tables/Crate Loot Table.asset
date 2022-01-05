@@ -14,6 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   table:
   - drop: {fileID: 5700182911611578800, guid: 9ee9c69ce28cfdf4ea05831bfbc5999f, type: 3}
-    dropWeight: 10
+    dropWeight: 1200
   - drop: {fileID: 5700182911611578800, guid: 38b626b2874bb9a46a905087e19f3573, type: 3}
-    dropWeight: 150
+    dropWeight: 35
+  - drop: {fileID: 5700182911611578800, guid: 170fa39fd6f0f754084b52304b964d1b, type: 3}
+    dropWeight: 1200
+  - drop: {fileID: 5700182911611578800, guid: 3c76e82a5fd09da498b5d37a27c2a486, type: 3}
+    dropWeight: 1200
+  - drop: {fileID: 5700182911611578800, guid: 4d1be146aceb34e42a0a9720afea2d60, type: 3}
+    dropWeight: 2800
+  - drop: {fileID: 5700182911611578800, guid: 9ad0b8dc79360e343a2481cde3dbc3d3, type: 3}
+    dropWeight: 2800
+  - drop: {fileID: 5700182911611578800, guid: e600950646a4fde48875f6c2a46be494, type: 3}
+    dropWeight: 2800

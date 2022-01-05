@@ -68,6 +68,25 @@ public class HotBarButton : MonoBehaviour
         _id = itemObject.Id;
         _inventoryController.PlaceItem(_inventoryController.pickUpPosition);
     }
+    public void AssignButtonButton(){
+        var itemObject = _inventoryController.lastRightClickedItem.itemObject;
+        foreach (var hotBarButton in _hotBarButtons){
+            if (hotBarButton == null){
+                continue;
+            }
+            if (hotBarButton._id == itemObject.Id || itemObject is not ConsumableObject){
+                _inventoryController.PlaceItem(_inventoryController.pickUpPosition);
+                return;
+            }
+        }
+        _inventoryItem = _inventoryController.lastRightClickedItem;
+        if (_inventoryItem == null){
+            return;
+        }
+        button.image.sprite = itemObject.itemIcon;
+        _id = itemObject.Id;
+        _inventoryController.PlaceItem(_inventoryController.pickUpPosition);
+    }
 
     void HandleClick(){
         OnButtonClicked?.Invoke(_keyNumber);

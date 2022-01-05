@@ -9,26 +9,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 022ab094917969f4d9bda95980d196b6, type: 3}
-  m_Name: Healing pot
+  m_Script: {fileID: 11500000, guid: 179a9598111edaf4496551596ffe7d50, type: 3}
+  m_Name: Potassium Iodide
   m_EditorClassIdentifier: 
   Id: 0
   itemIcon: {fileID: 21300000, guid: 3bd21342ff245be45a465edd6119520e, type: 3}
   width: 1
-  height: 2
-  type: 0
-  name: Healing pot
-  price: 0
+  height: 1
+  type: 4
+  name: Potassium Iodide
+  price: 10
   dropSound:
     Guid:
-      Data1: -1879748765
-      Data2: 1091132112
-      Data3: 1057859713
-      Data4: -1335320419
-    Path: event:/PotionDrop
+      Data1: 90928835
+      Data2: 1225203162
+      Data3: -200824160
+      Data4: -981507709
+    Path: event:/InventoryDrop
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
-  description: 
+  description: Mostly used for treating radiation sickness... With some nasty side
+    effects, vomiting, diarrhea, abdominal pain, rash, and swelling of the salivary
+    glands.
   buffs: []
-  toxicityAmount: 1
-  restoreHealthValue: 30
-  toxicityDuration: 10
