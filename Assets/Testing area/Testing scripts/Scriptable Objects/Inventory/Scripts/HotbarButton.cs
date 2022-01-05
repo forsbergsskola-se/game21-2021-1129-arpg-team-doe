@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HotBarButton : MonoBehaviour
+public class HotbarButton : MonoBehaviour
 {
     [HideInInspector]
     [SerializeField] Button button;
@@ -16,7 +16,7 @@ public class HotBarButton : MonoBehaviour
     InventoryItem _inventoryItem;
     InventoryController _inventoryController;
     Sprite _defaultSprite;
-    HotBarButton[] _hotBarButtons;
+    HotbarButton[] _hotBarButtons;
     void OnValidate(){
         _keyNumber = transform.GetSiblingIndex() + 1;
         _keyCode = KeyCode.Alpha0 + _keyNumber;
@@ -33,7 +33,7 @@ public class HotBarButton : MonoBehaviour
         _inventoryItem = GetComponent<InventoryItem>();
         _inventoryController = FindObjectOfType<InventoryController>();
         button = gameObject.GetComponent<Button>();
-        _hotBarButtons = GetComponentInParent<HotBar>().GetComponentsInChildren<HotBarButton>();
+        _hotBarButtons = GetComponentInParent<HotBar>().GetComponentsInChildren<HotbarButton>();
         _id = -1;
         _defaultSprite = button.image.sprite;
     }
@@ -49,7 +49,7 @@ public class HotBarButton : MonoBehaviour
         }
     }
 
-    public void AssignButton(){
+    void AssignButton(){
         var itemObject = _inventoryController.selectedItem.itemObject;
         foreach (var hotBarButton in _hotBarButtons){
             if (hotBarButton == null){
@@ -67,7 +67,13 @@ public class HotBarButton : MonoBehaviour
         button.image.sprite = itemObject.itemIcon;
         _id = itemObject.Id;
         _inventoryController.PlaceItem(_inventoryController.pickUpPosition);
+        
+        if (_inventoryController.selectedItemGrid.IsOutOfInventoryGrid(_inventoryController.pickUpPosition.x,
+            _inventoryController.pickUpPosition.y)){
+            ClearButton();
+        }
     }
+    
     public void AssignButtonButton(){
         var itemObject = _inventoryController.lastRightClickedItem.itemObject;
         foreach (var hotBarButton in _hotBarButtons){

@@ -3,7 +3,7 @@ using UnityEngine;
 public class HotBar : MonoBehaviour
 {
     void Awake(){
-        foreach (var button in GetComponentsInChildren<HotBarButton>()){
+        foreach (var button in GetComponentsInChildren<HotbarButton>()){
             button.OnButtonClicked += ButtonOnOnButtonClicked;
         }
     }
