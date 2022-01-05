@@ -5,20 +5,20 @@ using FMOD.Studio;
 using UnityEngine;
 
 public class StopMusic : MonoBehaviour{
-   EventInstance idleInstance;
+   EventInstance _idleInstance;
    Fighter _fighter;
 
    void Start(){
-      idleInstance = GetComponentInChildren<EventInstance>();
+      _idleInstance = GetComponentInChildren<EventInstance>();
       _fighter = GetComponent<Fighter>();
    }
 
-   void Update(){
-      if (!_fighter.isIdle){
-         idleInstance.stop(STOP_MODE.IMMEDIATE);
+   void LateUpdate(){
+      if (!_fighter.IsIdle){
+         _idleInstance.stop(STOP_MODE.IMMEDIATE);
       }
       else{
-         idleInstance.start();
+         _idleInstance.start();
       }
    }
 }
