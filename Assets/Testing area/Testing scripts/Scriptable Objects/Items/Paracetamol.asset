@@ -13,22 +13,22 @@ MonoBehaviour:
   m_Name: Paracetamol
   m_EditorClassIdentifier: 
   Id: 0
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: c2b06c170c779ad468f8391098e6c6a8, type: 3}
   width: 1
   height: 1
   type: 0
-  name: 
-  price: 0
+  name: Paracetamol
+  price: 50
   dropSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  _pickupEvent: {fileID: 0}
-  description: 
+      Data1: -1879748765
+      Data2: 1091132112
+      Data3: 1057859713
+      Data4: -1335320419
+    Path: event:/PotionDrop
+  _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
+  description: 'When it really hurts, take this. Restores 50 health. '
   buffs: []
-  toxicityAmount: 0
-  restoreHealthValue: 0
-  toxicityDuration: 0
+  toxicityAmount: 1
+  restoreHealthValue: 50
+  toxicityDuration: 120
