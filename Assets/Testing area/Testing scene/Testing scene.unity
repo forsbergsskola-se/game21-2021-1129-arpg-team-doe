@@ -1176,6 +1176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
+  text: {fileID: 1807501440}
 --- !u!114 &347324022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2402,6 +2404,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
+  text: {fileID: 706121829}
 --- !u!114 &601881473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2554,6 +2558,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
+  text: {fileID: 278443811}
 --- !u!114 &601936861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3729,6 +3735,17 @@ NavMeshAgent:
   m_BaseOffset: 0.49999997
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1112940857 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9088444525977602575, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
+  m_PrefabInstance: {fileID: 6598838206894276446}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13884dd1ad7be86428f8329fd47343f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1274422341
 GameObject:
   m_ObjectHideFlags: 0
@@ -4767,6 +4784,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1657072562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657072501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3fb1fb82134bb54392a59802028157e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickedUpTarget: {fileID: 0}
+  _itemGrid: {fileID: 1112940857}
 --- !u!1 &1676568232
 GameObject:
   m_ObjectHideFlags: 0
@@ -5054,6 +5085,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
+  text: {fileID: 513196511}
 --- !u!1 &1725746314
 GameObject:
   m_ObjectHideFlags: 0

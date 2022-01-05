@@ -18,7 +18,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] int defeatedThreshold = 40;
 
-    public InventoryObject inventory; 
+    public InventoryObject inventory;
+    PickUpItemFromGround _pickUpItemFromGround;
     bool playerIsDefeated;
     FMOD.Studio.EventInstance _moveInstance;
     Movement _movement;
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
         _health = GetComponent<Health>();
         _animationController = GetComponentInChildren<AnimationController>();
         _fighter = GetComponent<Fighter>();
+        _pickUpItemFromGround = FindObjectOfType<PickUpItemFromGround>();
     }
 
     void Start(){
@@ -73,15 +75,21 @@ public class PlayerController : MonoBehaviour
         //if (EventSystem.current.IsPointerOverGameObject()){ //Player won't do anything when click on UI
         //  return;
         //}
+        if (_pickUpItemFromGround.pickedUpTarget)
+        {
+            return;
+        }
+        
         if (InteractWithCombat()){
             return;
         }
         if (InteractWithInteractable()){
             return;
         }
-
+                     
         // if click on the ground, move to cursor
         MoveToCursor();
+        
     }
     
     // if (playerIsDefeated){
@@ -143,7 +151,7 @@ public class PlayerController : MonoBehaviour
     bool InteractWithInteractable(){
         RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
         foreach (RaycastHit hit in hits){
-            GameObject interactableObject = hit.transform.GetComponent<InteractableObject>()?.gameObject;
+            GameObject interactableObject = hit.transform.GetComponent<InteractableObject>()?.gameObject; //TODO: Why not getcomponent<IInteractable> ?
             if (interactableObject == null) continue;
             if (Input.GetMouseButton(0)){
                 StartCoroutine(GoToPosistionThenInteract(hit));

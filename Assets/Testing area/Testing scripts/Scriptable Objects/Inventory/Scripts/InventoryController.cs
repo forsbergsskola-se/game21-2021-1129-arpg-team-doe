@@ -74,17 +74,6 @@ public class InventoryController : MonoBehaviour
             PlayInventorySound();
         }
 
-        // if (Input.GetKeyDown(KeyCode.Q)){ //debug version
-        //     if (selectedItem == null){
-        //         CreateRandomItem();
-        //     }
-        // }
-
-        //add item to inventory
-        //if (Input.GetKeyDown(KeyCode.W)){ //debug version
-        //    InsertRandomItem();
-        //}
-
         //rotate items
         if (Input.GetKeyDown(KeyCode.R)){
             RotateItem(); 
@@ -304,11 +293,13 @@ public class InventoryController : MonoBehaviour
    }
 
     Vector2Int GetTileGridPosition(){
+        
         Vector2 position = Input.mousePosition;
         // if (selectedItem != null){
         //     position.x -= (selectedItem.WIDTH - 1) * ItemGrid.tileSizeWidth / 2;
         //     position.y += (selectedItem.HEIGHT - 1) * ItemGrid.tileSizeHeight / 2;
         // }
+      //  Debug.Log(position);
         return selectedItemGrid.GetTileGridPosition(position);
     }
     
