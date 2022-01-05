@@ -322,48 +322,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6458768576707232289, guid: 95c88a0e57207324e9fc7d8ae298da71, type: 3}
   m_PrefabInstance: {fileID: 6458768576032555774}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &119589034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 119589028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0a1e4d58cfba6748914d9136af27667, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  labelPrefab: {fileID: 2960489290053376558, guid: 01df79adbbc77024bb41496a837eac57, type: 3}
-  offset: {x: 0, y: 2, z: 0}
-  labelShowRange: 5
---- !u!114 &119589035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 119589028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cd315283ca33944e8fbf6b375731fef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &119589036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 119589028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d3f0030217a3cc4ca9f9f819cf0f668, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  areaDetectionRange: 5
-  visionRange: 20
-  viewAngle: 0
 --- !u!1 &195308059
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,8 +858,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
-  text: {fileID: 1807501440}
 --- !u!114 &347324022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2116,8 +2072,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
-  text: {fileID: 706121829}
 --- !u!114 &601881473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2270,8 +2224,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
-  text: {fileID: 278443811}
 --- !u!114 &601936861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3916,7 +3868,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1511514222, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
       propertyPath: maxRollCount
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2357426410238338414, guid: 0db12c33ee3400b4c910f2fd0ebe5c3c, type: 3}
       propertyPath: patrolPath
@@ -4525,8 +4477,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac082d1ab77da442a5765750237a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
-  text: {fileID: 513196511}
 --- !u!1 &1725746314
 GameObject:
   m_ObjectHideFlags: 0
@@ -5972,21 +5922,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6458768576707232286, guid: 95c88a0e57207324e9fc7d8ae298da71, type: 3}
-      propertyPath: currencyData
-      value: 
-      objectReference: {fileID: 11400000, guid: 626acccc4a1df4d429e0a48bb056859d, type: 2}
-    - target: {fileID: 6458768576707232287, guid: 95c88a0e57207324e9fc7d8ae298da71, type: 3}
-      propertyPath: m_Radius
-      value: 0.95
-      objectReference: {fileID: 0}
     - target: {fileID: 6458768576707232289, guid: 95c88a0e57207324e9fc7d8ae298da71, type: 3}
       propertyPath: m_Name
       value: Cash
-      objectReference: {fileID: 0}
-    - target: {fileID: 6458768576707232289, guid: 95c88a0e57207324e9fc7d8ae298da71, type: 3}
-      propertyPath: m_Layer
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95c88a0e57207324e9fc7d8ae298da71, type: 3}
@@ -6099,7 +6037,7 @@ PrefabInstance:
       objectReference: {fileID: 537245930790900980, guid: 394cf008678ceca498b350abfcfa150c, type: 3}
     - target: {fileID: 5675631719487080352, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
       propertyPath: luck
-      value: 10
+      value: 152.03
       objectReference: {fileID: 0}
     - target: {fileID: 5675631719487080352, guid: 98b794d1e36af3d4ebc791af3aad6a41, type: 3}
       propertyPath: resistances.Array.size
