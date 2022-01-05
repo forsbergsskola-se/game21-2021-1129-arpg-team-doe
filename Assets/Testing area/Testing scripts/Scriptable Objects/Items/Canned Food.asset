@@ -21,14 +21,15 @@ MonoBehaviour:
   price: 10
   dropSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  _pickupEvent: {fileID: 0}
-  description: 
+      Data1: 932151635
+      Data2: 1318326047
+      Data3: -1646563165
+      Data4: -700181130
+    Path: event:/PickUp
+  _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
+  description: Canned food, but you have no idea what's inside. The label is torn
+    off, It might be fruit sallad or some nasty mushroom soup.
   buffs: []
   toxicityAmount: 0
-  restoreHealthValue: 0
+  restoreHealthValue: 10
   toxicityDuration: 0
