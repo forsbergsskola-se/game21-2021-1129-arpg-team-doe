@@ -15,7 +15,7 @@ public class HealthBar : MonoBehaviour, IHealthbar, IHealthListener{
     Health _health;
     Vector3 _offset = new Vector3(0, 2, 1);
 
-    public void Start() {
+    public void Awake() {
         _health = GetComponentInParent<Health>();
         _parent = GetComponentInParent<ToggleHealthBar>()?.gameObject;
         
@@ -27,8 +27,7 @@ public class HealthBar : MonoBehaviour, IHealthbar, IHealthListener{
     }
 
     public void SetSliderCurrentHealth(int currentHealth){
-        var healthValue = ((float)currentHealth/(float)_health.ModifiedMaxHP);
-        healthBar.fillAmount = healthValue;
+        healthBar.fillAmount = ((float)currentHealth/(float)_health.ModifiedMaxHP);
     }
 
     public void HealthChanged(int currentHealth, int maxHealth, int damage, bool isCrit, bool isAlive){

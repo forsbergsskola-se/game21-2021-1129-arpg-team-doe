@@ -1,3 +1,4 @@
+using System;
 using System.Net;
 using CustomLogs;
 using UnityEngine;
@@ -27,7 +28,7 @@ public class Fighter : MonoBehaviour, IInteractSound{
     bool _isPlayer;
     float _attackRange;
     float _distance;
-    float _timeSinceLastAttack = Mathf.Infinity;
+    float _timeSinceLastAttack;
     
     public bool isIdle{ get; private set; }
 
@@ -35,13 +36,18 @@ public class Fighter : MonoBehaviour, IInteractSound{
     const string ATTACK = "Attack";
     const string IDLE = "Idle";
 
-    void Start(){
+    void Awake(){
         _statistics = GetComponent<Statistics>();
         _rigidbody = GetComponent<Rigidbody>();
         _attackRange = _statistics.AttackRange;
         _random = new Random();
         _movement = GetComponent<Movement>();
         _animationController = GetComponentInChildren<AnimationController>();
+    }
+
+    void Start(){
+        
+        
         if (gameObject.CompareTag("Player")) {
             _isPlayer = true;
         }
