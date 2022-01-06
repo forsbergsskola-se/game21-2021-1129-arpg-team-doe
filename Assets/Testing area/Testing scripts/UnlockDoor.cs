@@ -21,18 +21,18 @@ public class UnlockDoor : MonoBehaviour, Iinteractable,IInteractSound{
     EventInstance _doorInstance;
     public FMODUnity.EventReference DoorReference;
     
-    
     bool _conditionCompleted;
 
-    void Start(){
+    void Awake(){
         _doorConditions = FindObjectOfType<DoorConditions>();
         _cursorOnDoor = FindObjectOfType<CursorOnDoor>();
         _collider = GetComponent<BoxCollider>();
         _animator = GetComponent<Animator>();
-        _animator.enabled = false;
-        
-        _doorInstance = FMODUnity.RuntimeManager.CreateInstance(DoorReference);
+    }
 
+    void Start(){
+        _animator.enabled = false;
+        _doorInstance = FMODUnity.RuntimeManager.CreateInstance(DoorReference);
     }
 
     void Update(){
@@ -45,8 +45,6 @@ public class UnlockDoor : MonoBehaviour, Iinteractable,IInteractSound{
             LockingMechanism();
             _cursorOnDoor.openable = _locked;
         }
-
-        
     }
 
     void LockingMechanism(){
