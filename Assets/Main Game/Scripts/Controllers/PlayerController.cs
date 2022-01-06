@@ -14,9 +14,10 @@ public class PlayerController : MonoBehaviour{
     Statistics _statistics;
     Health _health;
     AnimationController _animationController;
-    RaycastHit _hit;
     Fighter _fighter;
     InventoryController _inventoryController;
+    RaycastHit _hit;
+
     string _currentState;
     float _interactionRange;
     bool _hasPlayedSound;

@@ -88,7 +88,7 @@ public class ItemGrid : MonoBehaviour{
         Vector2 position = CalculatePositionOnGrid(inventoryItem, posX, posY);
 
         rectTransform.localPosition = position;
-        inventoryItem.itemObject.PlayDropSound();
+        inventoryItem.itemObject.PlayPickupSound();
     }
 
     public Vector2 CalculatePositionOnGrid(InventoryItem inventoryItem, int posX, int posY){
