@@ -14,6 +14,7 @@ public class InventoryController : MonoBehaviour
     [SerializeField] GameObject spawnedObject;
     [SerializeField] GameObject itemDisplayTextGameObject;
     [SerializeField] TextMeshProUGUI itemDisplayText;
+    [SerializeField] GameObject itemDisplayTextBackground;
     [HideInInspector]
     public ItemGrid selectedItemGrid;
     public ItemGrid SelectedItemGrid{
@@ -42,6 +43,7 @@ public class InventoryController : MonoBehaviour
     Vector2Int _pickOldPosition;
     EventInstance _inventoryInstance;
     bool _clickOnInventory;
+    Vector3 itemDisplayTextBackgroundOffset;
 
     void Awake(){
         _inventoryHighlight = GetComponent<InventoryHighlight>();
@@ -154,24 +156,33 @@ public class InventoryController : MonoBehaviour
     void MouseOver(){
         
         var tileGridPosition = GetTileGridPosition();
-        if (selectedItemGrid.IsOutOfInventoryGrid(tileGridPosition.x, tileGridPosition.y))
+        if (!selectedItemGrid.IsOutOfInventoryGrid(tileGridPosition.x, tileGridPosition.y))
         {
            _hoveredItem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
-            if (_hoveredItem != null)
+            if (_hoveredItem != null && _hoveredItem.itemObject.description != null)
             {
-                if (!itemDisplayTextGameObject.activeInHierarchy)
+                if (!itemDisplayTextBackground.activeInHierarchy)
                 {
-                    itemDisplayTextGameObject.SetActive(true);
+                    itemDisplayTextBackground.SetActive(true);
+                    
                 }
                 
                 itemDisplayText.text = _hoveredItem.itemObject.description;
+                itemDisplayTextBackground.GetComponent<RectTransform>().sizeDelta =
+                new Vector2(Mathf.Clamp(itemDisplayText.preferredWidth, 0, 200)+ 10, (Mathf.Clamp(itemDisplayText.preferredHeight,10, 200))+10); //TODO: MAGIC NUMBERS
             }
-        //     else if (_hoveredItem == null)
-        //     {
-        //      //   itemDisplayTextGameObject.SetActive(false);
-        //       //  itemDisplayText = null;
-        // }  
+
+            
+            else if (_hoveredItem == null) {
+              itemDisplayTextBackground.SetActive(false);
+                itemDisplayText.text = "No Description Available"; 
+            }  
         }
+        else if (itemDisplayTextBackground.activeInHierarchy) {
+            itemDisplayTextBackground.SetActive(false);
+            itemDisplayText.text = "No Description Available"; 
+        }  
+        
         
     }
     
