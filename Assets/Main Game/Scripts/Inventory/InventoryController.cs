@@ -1,4 +1,5 @@
 using FMOD.Studio;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,8 @@ public class InventoryController : MonoBehaviour
     [SerializeField] GameObject rightClickMenu;
     [SerializeField] GameObject rightClickMenuSlots;
     [SerializeField] GameObject spawnedObject;
+    [SerializeField] GameObject itemDisplayTextGameObject;
+    [SerializeField] string itemDisplayText;
     [HideInInspector]
     public ItemGrid selectedItemGrid;
     public ItemGrid SelectedItemGrid{
@@ -22,7 +25,7 @@ public class InventoryController : MonoBehaviour
     }
 
     public GameObject canvasInventory;
-    public InventoryItem selectedItem;
+    [HideInInspector]public InventoryItem selectedItem;
     public Vector2Int pickUpPosition;
     public FMODUnity.EventReference inventoryReference;
     public InventoryItem lastRightClickedItem;
@@ -42,9 +45,11 @@ public class InventoryController : MonoBehaviour
 
     void Awake(){
         _inventoryHighlight = GetComponent<InventoryHighlight>();
+        
     }
 
     void Start(){
+        itemDisplayText = itemDisplayTextGameObject.GetComponent<Text>().text;
         _playerTransform = GameObject.FindWithTag("Player").transform;
         _playerConsumer = _playerTransform.GetComponent<Consumer>();
          UIStatsArray = FindObjectsOfType<UIStats>();
@@ -148,11 +153,24 @@ public class InventoryController : MonoBehaviour
     }
     
     void MouseOver(){
+        
         var tileGridPosition = GetTileGridPosition();
-        _hoveredItem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
-        if (_hoveredItem != null){
-            // _hoveredItem.itemObject.DisplayItem(); // Here we want to display the item information in the game view
+        if (selectedItemGrid.IsOutOfInventoryGrid(tileGridPosition.x, tileGridPosition.y))
+        {
+           _hoveredItem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
+            if (_hoveredItem != null)
+            {
+                itemDisplayTextGameObject.SetActive(true);
+                itemDisplayText = _hoveredItem.itemObject.description;
+                // _hoveredItem.itemObject.DisplayItem(); // Here we want to display the item information in the game view
+            }
+        //     else if (_hoveredItem == null)
+        //     {
+        //      //   itemDisplayTextGameObject.SetActive(false);
+        //       //  itemDisplayText = null;
+        // }  
         }
+        
     }
     
     void ToggleInventory(){

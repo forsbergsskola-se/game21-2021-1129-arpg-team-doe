@@ -7310,6 +7310,8 @@ MonoBehaviour:
   rightClickMenu: {fileID: 0}
   rightClickMenuSlots: {fileID: 0}
   spawnedObject: {fileID: 5700182911611578800, guid: 7e01cb6c294b05748931e87121065ba6, type: 3}
+  itemDisplayTextGameObject: {fileID: 0}
+  itemDisplayText: 
   selectedItemGrid: {fileID: 0}
   canvasInventory: {fileID: 9088444525093977231}
   selectedItem: {fileID: 0}
