@@ -16,12 +16,9 @@ public class UIDamageNr : MonoBehaviour, IDamageNumbers, IHealthListener{
     bool activeTimer;
     bool takingDamage;
 
-    const string FLOATING_POINT = "FloatingPoint";
-    
 
     public void DisplayDmg(int damage, bool isCrit){
         dmgText = Convert.ToString(damage);
-        //Debug.Log("im displaying");
         FontChange(isCrit);
         Timer();
         SetText();
@@ -30,8 +27,7 @@ public class UIDamageNr : MonoBehaviour, IDamageNumbers, IHealthListener{
     async void Timer(){
         //Converting milliseconds to seconds.
         await Task.Delay((int)duration*1000);
-
-       // ClearText(); //Temporary
+        
        if (this != null){
            Destroy(gameObject);
        }
