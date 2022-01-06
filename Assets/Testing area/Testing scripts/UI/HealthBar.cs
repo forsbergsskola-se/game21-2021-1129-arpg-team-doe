@@ -4,10 +4,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public interface IHealthbar{
-    void SetSliderCurrentHealth(int currentHealth);
-}
-public class HealthBar : MonoBehaviour, IHealthbar, IHealthListener{
+
+public class HealthBar : MonoBehaviour, IHealthListener{
     
     public Image healthBar;
 

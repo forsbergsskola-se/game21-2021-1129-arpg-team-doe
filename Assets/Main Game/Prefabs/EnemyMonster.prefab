@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721c7e624820b0948be3acac8abdb93c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 4906887524234165565}
 --- !u!1 &4906887524214498044
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,10 +209,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: cd6850e3a9165c24483dbf6c9aafa98b, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -678,7 +678,6 @@ MonoBehaviour:
   attackSpeed: 1
   critChance: 0
   weaponDamage: 10
-  defaultDamage: 5
   lowImpactLevelMultiplier: 0
   lowImpactLuckMultiplier: 0
   highImpactLevelMultiplier: 0
@@ -843,7 +842,7 @@ MonoBehaviour:
   lootTable: {fileID: 11400000, guid: ddad4f478540806499e28ef4f1d3f82e, type: 2}
   cash: {fileID: 6458768576707232289, guid: 95c88a0e57207324e9fc7d8ae298da71, type: 3}
   spreadRange: 2
-  maxRollCount: 3
+  maxRollCount: 58
 --- !u!1 &9131742662991410438
 GameObject:
   m_ObjectHideFlags: 0
