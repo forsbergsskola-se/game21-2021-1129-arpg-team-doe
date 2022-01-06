@@ -26,8 +26,8 @@ public class SoundControl : MonoBehaviour{
         }
         var dist = enemy.isActiveAndEnabled ? enemy.distance : 20f;
         var fighting = dist < 7;
-        Debug.Log($"Im the distance: {dist}");
-        Debug.Log($"Im in combat: {fighting}");
+        //Debug.Log($"Im the distance: {dist}");
+        //Debug.Log($"Im in combat: {fighting}"); TODO: remove these if tom needs to look at it.
         Music.setParameterByName("DistanceFromEnemy", dist);
         Music.setParameterByName("InCombat", dist < 7 ? 1 : 0);
     }
