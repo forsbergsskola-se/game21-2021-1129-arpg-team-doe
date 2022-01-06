@@ -10,7 +10,6 @@ public class StopMusic : MonoBehaviour{
 
    void Start(){
       _idleInstance = GetComponentInChildren<EventInstance>();
-     // _fighter = GetComponent<Fighter>();
    }
 
    void LateUpdate(){

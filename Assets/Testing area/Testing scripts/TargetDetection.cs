@@ -59,7 +59,6 @@ public class TargetDetection : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, targetDirection, out hit)){
             Debug.DrawRay(transform.position, targetDirection.normalized * hit.distance, color);
-//            Debug.Log(hit.transform);
             if (hit.transform == target.transform){
                 return true;
             }
