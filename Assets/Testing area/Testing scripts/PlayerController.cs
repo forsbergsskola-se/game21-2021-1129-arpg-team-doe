@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
     bool InteractWithInteractable(){
         RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
         foreach (RaycastHit hit in hits){
-            GameObject interactableObject = hit.transform.GetComponent<InteractableObject>()?.gameObject;
+            GameObject interactableObject = hit.transform.GetComponent<InteractableObject>()?.gameObject; //TODO: Why not getcomponent<IInteractable> ?
             if (interactableObject == null) continue;
             if (Input.GetMouseButton(0)){
                 StartCoroutine(GoToPosistionThenInteract(hit));

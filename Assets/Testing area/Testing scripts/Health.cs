@@ -16,17 +16,19 @@ public interface IHealthListener{
 }
 
 public class Health : MonoBehaviour, IDamageReceiver{
-
+    
+    [SerializeField] [Min(0)] float parameter;
+    
     [SerializeField] internal int stopRegenerateThreshold;
     [SerializeField] int healthRegen = 10;
-    [SerializeField] int maxHP = 100;
     
+    EventInstance _takeDamage;
+    public EventReference TakeDamageReference;
+
+    [SerializeField] int maxHP = 100;
+
     [SerializeField] XPDrop _xpDrop;
     [SerializeField] XPDropEvent _xpDropEvent;
-    
-    [SerializeField] EventReference TakeDamageReference;
-    EventInstance _takeDamage;
-    
     Statistics _stats;
     Random random;
     
@@ -36,27 +38,25 @@ public class Health : MonoBehaviour, IDamageReceiver{
     public int CurrentHP{ get; private set; }
     public int ModifiedMaxHP => CalculateMaxHP();
 
-    void Awake(){
+    void Start(){
         _stats = GetComponent<Statistics>();
-        if (_xpDrop.GetComponent<XPDrop>() != null) {
+        random = new Random();
+        CurrentHP = ModifiedMaxHP;
+        _takeDamage = RuntimeManager.CreateInstance(TakeDamageReference);
+
+        if (_xpDrop != null) { //!= or == ?
             _xpDrop = GetComponent<XPDrop>();
         }
     }
 
-    void Start(){
-        random = new Random();
-        CurrentHP = ModifiedMaxHP;
-        _takeDamage = RuntimeManager.CreateInstance(TakeDamageReference);
-    }
 
-
-    public void UpdateHealth(int healthChange){ 
+    public void UpdateHealth(int healthChange){ //What about healing
         CurrentHP += healthChange;
         CurrentHP = Mathf.Clamp(CurrentHP, 0, ModifiedMaxHP);
         this.LogHealth(CurrentHP);
     }
     
-    public IEnumerator HealthRegeneration(){
+    public IEnumerator HealthRegeneration(){ // health regeneration seems weird
         isRegenerating = true;
         while(CurrentHP <= stopRegenerateThreshold){
             UpdateHealth(healthRegen);
@@ -64,6 +64,7 @@ public class Health : MonoBehaviour, IDamageReceiver{
                  isRegenerating = false;
                  break;
             }
+            
             yield return new WaitForSeconds(1f);
         }
         isRegenerating = false;
@@ -95,31 +96,39 @@ public class Health : MonoBehaviour, IDamageReceiver{
         return random.NextDouble() < _stats.DodgeChance;
     }
 
-    int ProcessDamage(int dmg, DamageType receivedDmgType){
+    int ProcessDamage(int dmg, DamageType receivedDmgType)
+    {
         if (DodgeSuccessful()){
             dmg = 0;
         }
 
-        foreach (var damageType in _stats.vulnerabilities){
-            if (receivedDmgType == damageType){
+        foreach (var damageType in _stats.vulnerabilities)
+        {
+            if (receivedDmgType == damageType)
+            {
               dmg = Mathf.RoundToInt(dmg * _stats.vulnerabilityDamageModifier);
                 break;
             }
         }
-        foreach (var damageType in _stats.resistances){
-            if (receivedDmgType == damageType){
+        foreach (var damageType in _stats.resistances)
+        {
+            if (receivedDmgType == damageType)
+            {
                 dmg = Mathf.RoundToInt(dmg * _stats.resistanceDamageModifier);
                 break;
             }
         }
+        //Debug.Log(transform.name + " receives " + dmg + " Damage");
         return dmg;
     }
 
     //This calls the event that you put in if you put it in, if there's no event, nothing happens.
     void OnDeath(bool attackerIsPlayer){
+        //Debug.Log(isPlayer);
         //Check if event is not null and is not player, and attacker is player, call event. OR if event is not null and is player, call event.
         if (_xpDropEvent != null && this.gameObject.tag != "Player" && attackerIsPlayer || _xpDropEvent != null && this.gameObject.tag == "Player"){
             _xpDropEvent.Invoke(_xpDrop.xpAmount);
+            
         }
     }
 
