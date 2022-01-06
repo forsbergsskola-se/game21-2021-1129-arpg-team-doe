@@ -7312,11 +7312,9 @@ MonoBehaviour:
   rightClickMenuHolder: {fileID: 0}
   rightClickMenu: {fileID: 0}
   rightClickMenuSlots: {fileID: 0}
-  HotBarButton: {fileID: 0}
   spawnedObject: {fileID: 5700182911611578800, guid: 7e01cb6c294b05748931e87121065ba6, type: 3}
   selectedItem: {fileID: 0}
   pickUpPosition: {x: 0, y: 0}
-  lastRightClickedItem: {fileID: 0}
   inventoryReference:
     Guid:
       Data1: 0
@@ -7324,6 +7322,7 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
+  lastRightClickedItem: {fileID: 0}
 --- !u!114 &4372569159284212187
 MonoBehaviour:
   m_ObjectHideFlags: 0

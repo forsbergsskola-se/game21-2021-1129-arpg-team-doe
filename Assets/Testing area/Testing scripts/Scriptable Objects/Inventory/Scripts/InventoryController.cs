@@ -1,13 +1,7 @@
-using System;
-using System.Collections.Generic;
 using FMOD.Studio;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using Random = System.Random;
 
-// This script is attached to the camera to get mouse position for item placement
 public class InventoryController : MonoBehaviour
 {
     public GameObject canvasInventory;
@@ -24,16 +18,15 @@ public class InventoryController : MonoBehaviour
     [SerializeField] ItemDatabaseObject itemsInDatabase;
     [SerializeField] GameObject itemPrefab;
     [SerializeField] Transform canvasTransform;
-    //[SerializeField] GameObject[] groundItemPrefabs;
     [SerializeField] GameObject rightClickMenuHolder;
     [SerializeField] GameObject rightClickMenu;
     [SerializeField] GameObject rightClickMenuSlots;
-    [SerializeField] Button HotBarButton;
     [SerializeField] GameObject spawnedObject;
 
-    public GameObject DroppedObject{ get; private set; }
+    GameObject DroppedObject{ get; set; }
     public InventoryItem selectedItem;
     public Vector2Int pickUpPosition;
+    public FMODUnity.EventReference inventoryReference;
 
     InventoryItem _overlapItem;
     InventoryItem _hoveredItem;
@@ -44,13 +37,10 @@ public class InventoryController : MonoBehaviour
     Transform _playerTransform;
     Consumer _playerConsumer;
     
-    Vector3 rightClickMenuOffset = new Vector3(2, 0, 0);
     Vector2Int _oldPosition;
     Vector2Int _pickOldPosition;
     UIStats[] UIStatsArray;
     EventInstance _inventoryInstance;
-    public FMODUnity.EventReference inventoryReference;
-    //public bool hotBarSelected;
     
     bool _clickOnInventory;
 
@@ -75,7 +65,6 @@ public class InventoryController : MonoBehaviour
             PlayInventorySound();
         }
 
-        //rotate items
         if (Input.GetKeyDown(KeyCode.R)){
             RotateItem(); 
         }
@@ -122,7 +111,6 @@ public class InventoryController : MonoBehaviour
     
     InventoryItem CreateRandomItem(){
         InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
-        //_selectedItem = inventoryItem;
         _rectTransform = inventoryItem.GetComponent<RectTransform>();
         _rectTransform.SetParent(canvasTransform);
         _rectTransform.SetAsLastSibling(); //item you hold dont get behind a placed item in inventory
@@ -138,7 +126,6 @@ public class InventoryController : MonoBehaviour
         _rectTransform.SetParent(canvasTransform);
         _rectTransform.SetAsLastSibling();
         inventoryItem.Set(itemsInDatabase.GetItem[selectedItemID]);
-
         return inventoryItem;
     }
     
@@ -146,7 +133,7 @@ public class InventoryController : MonoBehaviour
         canvasInventory.SetActive(!canvasInventory.activeInHierarchy);
     }
 
-    public void DropItemToGround(){
+    void DropItemToGround(){
         SpawnItemOnGround();
         RemoveItemFromInventory();
     }
@@ -175,13 +162,11 @@ public class InventoryController : MonoBehaviour
         }
         _oldPosition = positionOnGrid;
 
-        //if(oldPosition != positionOnGrid)
         if (selectedItem == null){
             _itemToHighlight = selectedItemGrid.GetItem(positionOnGrid.x, positionOnGrid.y);
             if (_itemToHighlight != null){
                 _inventoryHighlight.Show(true);
                 _inventoryHighlight.SetSize(_itemToHighlight);
-                //_inventoryHighlight.SetParent(selectedItemGrid);
                 _inventoryHighlight.SetPosition(selectedItemGrid, _itemToHighlight);
             }
             else{
@@ -193,7 +178,6 @@ public class InventoryController : MonoBehaviour
                 _inventoryHighlight.Show(selectedItemGrid.BoundaryCheck(positionOnGrid.x, positionOnGrid.y, 
                     selectedItem.WIDTH, selectedItem.HEIGHT));
                 _inventoryHighlight.SetSize(selectedItem);
-                //_inventoryHighlight.SetParent(selectedItemGrid);
                 _inventoryHighlight.SetPosition(selectedItemGrid, selectedItem, positionOnGrid.x, 
                     positionOnGrid.y);
             }
@@ -210,7 +194,6 @@ public class InventoryController : MonoBehaviour
     }
     
     void SpawnItemOnGround(){
-        //var droppedItem = groundItemPrefabs[selectedItem.itemObject.Id];
         var droppedItem = spawnedObject;
         droppedItem.GetComponent<InventoryItem>().itemObject = selectedItem.itemObject;
         Vector3 spawnPosition = _playerTransform.position + new Vector3(0, 0, 2);
@@ -222,7 +205,6 @@ public class InventoryController : MonoBehaviour
     void LeftMouseButtonPress(){
         var tileGridPosition = GetTileGridPosition();
         _pickOldPosition = tileGridPosition;
-        //Debug.Log("pick: "+pickOldPosition);
         if (selectedItem == null){
             PickUpItem(tileGridPosition);
             if (selectedItem != null){
@@ -231,20 +213,12 @@ public class InventoryController : MonoBehaviour
             }
         }
 
-        // if (selectedItem == null){
-        //     PickUpItem(tileGridPosition);
-        // }
-        // else{
-        //     PlaceItem(tileGridPosition);
-        // }
     }
     
     void LeftMouseButtonRelease(){
         var tileGridPosition = GetTileGridPosition();
         var highlightTileGridPosition = GetHighlightTileGridPosition();
-        //Debug.Log("release: "+tileGridPosition);
         if (selectedItem != null){
-            //PlaceItem(tileGridPosition);
             PlaceItem(tileGridPosition == _pickOldPosition ? pickUpPosition : highlightTileGridPosition);
         }
     }
@@ -294,15 +268,26 @@ public class InventoryController : MonoBehaviour
            selectedItem.itemObject.UseItem();
        }
    }
+   
+   public void PlaceItem(Vector2Int tileGridPosition){
+       if (selectedItemGrid.IsOutOfInventoryGrid(tileGridPosition.x, tileGridPosition.y)){
+           DropItemToGround();
+           return;
+       }
+       bool complete = selectedItemGrid.PlaceItem(selectedItem, tileGridPosition.x, tileGridPosition.y, ref _overlapItem);
+       if (complete){
+           selectedItem = null;
+           if (_overlapItem != null){
+               selectedItem = _overlapItem;
+               _overlapItem = null;
+               _rectTransform = selectedItem.GetComponent<RectTransform>();
+               _rectTransform.SetAsLastSibling(); //item you hold dont get behind a placed item in inventory
+           }
+       }
+   }
 
     Vector2Int GetTileGridPosition(){
-        
         Vector2 position = Input.mousePosition;
-        // if (selectedItem != null){
-        //     position.x -= (selectedItem.WIDTH - 1) * ItemGrid.tileSizeWidth / 2;
-        //     position.y += (selectedItem.HEIGHT - 1) * ItemGrid.tileSizeHeight / 2;
-        // }
-      //  Debug.Log(position);
         return selectedItemGrid.GetTileGridPosition(position);
     }
     
@@ -315,26 +300,8 @@ public class InventoryController : MonoBehaviour
         return selectedItemGrid.GetTileGridPosition(position);
     }
 
-    public void PlaceItem(Vector2Int tileGridPosition){
-        if (selectedItemGrid.IsOutOfInventoryGrid(tileGridPosition.x, tileGridPosition.y)){
-            DropItemToGround();
-            return;
-        }
-        bool complete = selectedItemGrid.PlaceItem(selectedItem, tileGridPosition.x, tileGridPosition.y, ref _overlapItem);
-        if (complete){
-            selectedItem = null;
-            if (_overlapItem != null){
-                selectedItem = _overlapItem;
-                _overlapItem = null;
-                _rectTransform = selectedItem.GetComponent<RectTransform>();
-                _rectTransform.SetAsLastSibling(); //item you hold dont get behind a placed item in inventory
-            }
-        }
-    }
-
     void PickUpItem(Vector2Int tileGridPosition){
         pickUpPosition = tileGridPosition;
-        //Debug.Log(pickUpPosition);
         selectedItem = selectedItemGrid.PickUpItem(tileGridPosition.x, tileGridPosition.y);
         if (selectedItem != null){
             _rectTransform = selectedItem.GetComponent<RectTransform>();
@@ -355,7 +322,8 @@ public class InventoryController : MonoBehaviour
         }
         return false;
     }
-    public void PlayInventorySound(){
+
+    void PlayInventorySound(){
         _inventoryInstance.getPlaybackState(out var playbackState);
         if (playbackState == PLAYBACK_STATE.STOPPED){
             _inventoryInstance.start();  

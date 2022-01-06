@@ -5,7 +5,7 @@ using UnityEngine;
 using AnimatorChanger;
 using FMOD.Studio;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
    [SerializeField] GameObject healthBar;
    [SerializeField] float maxFollowRange = 30f;

@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour, IHealthListener
    [SerializeField] float timeToVanish = 5f;
    CapsuleCollider _capsuleCollider;
    Fighter _fighter;
-   EnemyMovement _enemyMovement;
+   EnemyController _enemyMovement;
    Health _health;
    DropTest _dropTest;
    bool _hasDied;
@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour, IHealthListener
    void Start(){
       _capsuleCollider = GetComponent<CapsuleCollider>();
       _fighter = GetComponent<Fighter>();
-      _enemyMovement = GetComponent<EnemyMovement>();
+      _enemyMovement = GetComponent<EnemyController>();
       _health = GetComponent<Health>();
       _dropTest = GetComponent<DropTest>();
    }
