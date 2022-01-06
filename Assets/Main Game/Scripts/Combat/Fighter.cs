@@ -1,6 +1,3 @@
-using System;
-using System.Net;
-using CustomLogs;
 using UnityEngine;
 using Random = System.Random;
 using AnimatorChanger;
@@ -8,7 +5,16 @@ using FMOD.Studio;
 
 public class Fighter : MonoBehaviour, IInteractSound{
     [SerializeField] float critDamageMultiplier = 1.5f; // for debug
+    [SerializeField] float attackIntervalMultiplier = 1.5f;
     [SerializeField] DamageType wepDamageType; //TODO: Use actual weapon damage type here, just for debug for now
+    
+    public bool IsIdle{ get; private set; }
+    public FMODUnity.EventReference critReference;
+    public FMODUnity.EventReference attackReference;
+    public FMODUnity.EventReference idleReference;
+    EventInstance _critAttackInstance;
+    EventInstance _attackInstance;
+    EventInstance _idleInstance;
     
     Statistics _statistics;
     Health _combatTarget;
@@ -16,20 +22,12 @@ public class Fighter : MonoBehaviour, IInteractSound{
     Random _random;
     AnimationController _animationController;
     Rigidbody _rigidbody;
-    EventInstance _critAttackInstance;
-    public FMODUnity.EventReference critReference;
-    EventInstance _attackInstance;
-    public FMODUnity.EventReference attackReference;
-    public FMODUnity.EventReference IdleReference;
-    EventInstance idleInstance;
     
     int _damage;
     bool _isPlayer;
     float _attackRange;
     float _distance;
     float _timeSinceLastAttack;
-    
-    public bool IsIdle{ get; private set; }
 
     const string RUN = "Run";
     const string ATTACK = "Attack";
@@ -38,7 +36,6 @@ public class Fighter : MonoBehaviour, IInteractSound{
     void Awake(){
         _statistics = GetComponent<Statistics>();
         _rigidbody = GetComponent<Rigidbody>();
-        _attackRange = _statistics.AttackRange;
         _random = new Random();
         _movement = GetComponent<Movement>();
         _animationController = GetComponentInChildren<AnimationController>();
@@ -52,34 +49,39 @@ public class Fighter : MonoBehaviour, IInteractSound{
         if (gameObject.CompareTag("Player")){
             _critAttackInstance = FMODUnity.RuntimeManager.CreateInstance(critReference);
         }
+        _attackRange = _statistics.AttackRange;
         _attackInstance = FMODUnity.RuntimeManager.CreateInstance(attackReference);
-        idleInstance = FMODUnity.RuntimeManager.CreateInstance(IdleReference);
+        _idleInstance = FMODUnity.RuntimeManager.CreateInstance(idleReference);
     }
 
     void Update(){
         _timeSinceLastAttack += Time.deltaTime;
         if (_combatTarget == null && _rigidbody.velocity.magnitude == 0 || !_isPlayer && _rigidbody.velocity.magnitude == 0){
             IsIdle = true;
-            idleInstance.getPlaybackState(out var playbackState);
+            _idleInstance.getPlaybackState(out var playbackState);
             if (playbackState != PLAYBACK_STATE.STOPPED){
                 return;
             }
-            idleInstance.start();
-        }   
+            _idleInstance.start();
+        }
+        
         if (_combatTarget == null){
             return;
         }
-        idleInstance.stop(STOP_MODE.IMMEDIATE);
+        
+        _idleInstance.stop(STOP_MODE.IMMEDIATE);
         if (!_combatTarget.GetComponent<Health>().IsAlive || IsClickOnItself()){
             _combatTarget = null;
             _animationController.ChangeAnimationState(IDLE);
             return;
         }
+        
         if (!IsInAttackRange()){
             _movement.Mover(_combatTarget.transform.position, 1f);
             if (_animationController != null)
                 _animationController.ChangeAnimationState(RUN);
         }
+        
         else{
             _movement.StopMoving();
             Attack(_combatTarget.gameObject);
@@ -95,11 +97,8 @@ public class Fighter : MonoBehaviour, IInteractSound{
     }
 
     void Attack(GameObject target){
-        
         LookAtTarget();
-        if (_timeSinceLastAttack > 1.5f /_statistics.AttackSpeed){
-            this.Log("I am doing damage");
-            // TODO: trigger attack animation
+        if (_timeSinceLastAttack > attackIntervalMultiplier /_statistics.AttackSpeed){
             PlayAttackSound();
             _animationController.ChangeAnimationState(ATTACK);
             _damage = _statistics.AttackDamage;
@@ -130,13 +129,13 @@ public class Fighter : MonoBehaviour, IInteractSound{
     bool IsClickOnItself(){
         return _combatTarget.transform.gameObject == gameObject;
     }
-    public void PlayCritSound(){
+    void PlayCritSound(){
         _critAttackInstance.getPlaybackState(out var playbackState);
         if (playbackState == PLAYBACK_STATE.STOPPED){
             _critAttackInstance.start();  
         }
     }
-    public void PlayAttackSound(){
+    void PlayAttackSound(){
         _attackInstance.getPlaybackState(out var playbackState);
         if (playbackState == PLAYBACK_STATE.STOPPED){
             _attackInstance.start();  

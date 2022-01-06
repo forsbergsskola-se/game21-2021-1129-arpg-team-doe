@@ -1,18 +1,16 @@
 using UnityEngine;
 
-
 public class Destruct : MonoBehaviour, IHealthListener{
     
     [SerializeField] GameObject _prefab;
     DropTest _dropTest;
 
-    void Awake()
-    {
+    void Awake(){
         _dropTest = GetComponent<DropTest>();
     }
 
-    public void Destruction(bool IsAlive){
-        if (!IsAlive){
+    void Destruction(bool isAlive){
+        if (!isAlive){
             _dropTest.InstantiateItem();
             DeactivateComponents();
         }

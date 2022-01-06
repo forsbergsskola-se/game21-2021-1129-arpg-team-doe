@@ -4653,6 +4653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   critDamageMultiplier: 1.5
+  attackIntervalMultiplier: 1.5
   wepDamageType: {fileID: 11400000, guid: dbbc8d142b7dca24f8b0eda4cd410de2, type: 2}
   critReference:
     Guid:
@@ -4668,7 +4669,7 @@ MonoBehaviour:
       Data3: -1379749704
       Data4: 102819547
     Path: event:/FastWeaponSwing
-  IdleReference:
+  idleReference:
     Guid:
       Data1: 1251498497
       Data2: 1153929333
