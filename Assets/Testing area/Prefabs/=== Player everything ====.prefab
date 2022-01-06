@@ -4236,7 +4236,6 @@ MonoBehaviour:
   attackSpeed: 1
   critChance: 0
   weaponDamage: 10
-  defaultDamage: 5
   lowImpactLevelMultiplier: 0.005
   lowImpactLuckMultiplier: 0.005
   highImpactLevelMultiplier: 0.01
