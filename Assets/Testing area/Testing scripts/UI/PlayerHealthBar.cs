@@ -7,10 +7,6 @@ public class PlayerHealthBar : MonoBehaviour, IHealthbar
     public Health health;
     bool _isSliderShown;
 
-    void Start(){
-        //slider.maxValue = health.ModifiedMaxHP;
-    }
-
     void Update(){
         if (_isSliderShown){
             SetSliderCurrentHealth(health.CurrentHP);
