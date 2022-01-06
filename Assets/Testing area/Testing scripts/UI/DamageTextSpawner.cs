@@ -9,7 +9,6 @@ public class DamageTextSpawner : MonoBehaviour, IHealthListener
     bool shouldSpawn = true;
 
     Vector3 RandomLocation(){
-        //may change x and z between 1-3?
         var position = new Vector3((Random.insideUnitSphere.x * spreadRange), 1f,
             (Random.insideUnitSphere.z * spreadRange));
         return position;
