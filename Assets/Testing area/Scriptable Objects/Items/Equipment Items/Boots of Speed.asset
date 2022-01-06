@@ -19,16 +19,17 @@ MonoBehaviour:
   type: 1
   name: 
   price: 0
-  pickupSound:
+  dropSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 90928835
+      Data2: 1225203162
+      Data3: -200824160
+      Data4: -981507709
+    Path: event:/InventoryDrop
   _pickupEvent: {fileID: 0}
   description: 
   buffs: []
+  equipmentType: 4
   equipmentPrefab: {fileID: 0}
   toughnessBuff: 0
   strengthBuff: 0

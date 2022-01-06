@@ -21,11 +21,11 @@ MonoBehaviour:
   price: 10
   dropSound:
     Guid:
-      Data1: 932151635
-      Data2: 1318326047
-      Data3: -1646563165
-      Data4: -700181130
-    Path: event:/PickUp
+      Data1: -864365459
+      Data2: 1171826038
+      Data3: -608558442
+      Data4: -96976860
+    Path: event:/TinCanDrop
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
   description: Canned food, but you have no idea what's inside. The label is torn
     off, It might be fruit sallad or some nasty mushroom soup.

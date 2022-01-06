@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 179a9598111edaf4496551596ffe7d50, type: 3}
   m_Name: Empty Whiskey
   m_EditorClassIdentifier: 
-  Id: 0
+  Id: 16
   itemIcon: {fileID: 21300000, guid: d8a7ba45391846942b10e108ad0bfb44, type: 3}
   width: 1
   height: 1
@@ -21,11 +21,11 @@ MonoBehaviour:
   price: 1
   dropSound:
     Guid:
-      Data1: 932151635
-      Data2: 1318326047
-      Data3: -1646563165
-      Data4: -700181130
-    Path: event:/PickUp
+      Data1: -290766362
+      Data2: 1225778793
+      Data3: -929812816
+      Data4: 2137709851
+    Path: event:/BottleDrop
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
   description: Damn it, now I can't even drink the sadness away.
   buffs: []

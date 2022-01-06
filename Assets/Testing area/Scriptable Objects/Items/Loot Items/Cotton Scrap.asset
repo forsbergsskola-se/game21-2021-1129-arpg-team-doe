@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 179a9598111edaf4496551596ffe7d50, type: 3}
   m_Name: Cotton Scrap
   m_EditorClassIdentifier: 
-  Id: 0
+  Id: 14
   itemIcon: {fileID: 21300000, guid: 90c6130083ae95d46930527d3502987d, type: 3}
   width: 1
   height: 1
@@ -21,11 +21,11 @@ MonoBehaviour:
   price: 5
   dropSound:
     Guid:
-      Data1: 932151635
-      Data2: 1318326047
-      Data3: -1646563165
-      Data4: -700181130
-    Path: event:/PickUp
+      Data1: -355171329
+      Data2: 1312208184
+      Data3: -468654973
+      Data4: 310783608
+    Path: event:/ClothDrop
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
   description: Cotton rag scraps, it must come from a torn shirt or something.
   buffs: []

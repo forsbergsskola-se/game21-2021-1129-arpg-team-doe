@@ -21,11 +21,11 @@ MonoBehaviour:
   price: 1
   dropSound:
     Guid:
-      Data1: 932151635
-      Data2: 1318326047
-      Data3: -1646563165
-      Data4: -700181130
-    Path: event:/PickUp
+      Data1: 1198168417
+      Data2: 1094421430
+      Data3: 869113504
+      Data4: -398094468
+    Path: event:/RottenEggDropp
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
   description: Would you dare try this rotten egg? Don't think so, throw it away...
     Or at someone.
