@@ -89,6 +89,7 @@ public class InventoryController : MonoBehaviour
             return;
         }
         selectedItemGrid.PlaceItem(itemToInsert, posOnGrid.Value.x, posOnGrid.Value.y);
+        itemToInsert.itemObject.PlayDropSound();
     }
     
     public InventoryItem CreateItem(int selectedItemID){
