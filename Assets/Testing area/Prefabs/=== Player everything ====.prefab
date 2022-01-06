@@ -7316,11 +7316,11 @@ MonoBehaviour:
   pickUpPosition: {x: 0, y: 0}
   inventoryReference:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1223393582
+      Data2: 1271087801
+      Data3: -1877310552
+      Data4: 2082565317
+    Path: event:/OpenInventory
   lastRightClickedItem: {fileID: 0}
 --- !u!114 &4372569159284212187
 MonoBehaviour:
