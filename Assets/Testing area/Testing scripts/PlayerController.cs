@@ -124,7 +124,12 @@ public class PlayerController : MonoBehaviour
             GameObject pickUpGameObject = hit.transform.GetComponent<PickUpItem>()?.gameObject;
             if (pickUpGameObject == null) continue;
             if (Input.GetMouseButtonDown(0)){
-                DragObject(pickUpGameObject);
+                if (Input.GetKey(KeyCode.LeftControl)){
+                    InteractWithInteractable();
+                }
+                else{
+                    DragObject(pickUpGameObject);
+                }
             }
             return true;
         }
