@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class Nothing : MonoBehaviour
-{
+public class Nothing : MonoBehaviour {
     void Awake(){
-      Destroy(gameObject);
-   }
+        Destroy(gameObject);
+    }
 }

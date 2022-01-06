@@ -1,6 +1,5 @@
 using UnityEngine;
 using Random = System.Random;
-using AnimatorChanger;
 using FMOD.Studio;
 
 public class Fighter : MonoBehaviour, IInteractSound{

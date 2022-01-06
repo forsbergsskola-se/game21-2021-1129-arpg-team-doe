@@ -1,6 +1,4 @@
 using System.Collections;
-using AnimatorChanger;
-using CustomLogs;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, IHealthListener

@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using CustomLogs;
 using FMOD.Studio;
@@ -15,24 +14,19 @@ public interface IHealthListener{
 }
 
 public class Health : MonoBehaviour, IDamageReceiver{
-    
     [SerializeField] [Min(0)] float parameter;
-    
     [SerializeField] internal int stopRegenerateThreshold;
     [SerializeField] int healthRegen = 10;
-    
-    EventInstance _takeDamage;
-    public EventReference TakeDamageReference;
-
     [SerializeField] int maxHP = 100;
-
     [SerializeField] XPDrop _xpDrop;
     [SerializeField] XPDropEvent _xpDropEvent;
+    
+    public bool isRegenerating;
+    public EventReference TakeDamageReference;
+    EventInstance _takeDamage;
     Statistics _stats;
     Random random;
-    
 
-    public bool isRegenerating;
     public bool IsAlive => CurrentHP > 0 && !isRegenerating;
     public int CurrentHP{ get; private set; }
     public int ModifiedMaxHP => CalculateMaxHP();
@@ -42,16 +36,13 @@ public class Health : MonoBehaviour, IDamageReceiver{
     }
 
     void Start(){
-        
         random = new Random();
         CurrentHP = ModifiedMaxHP;
         _takeDamage = RuntimeManager.CreateInstance(TakeDamageReference);
-
         if (_xpDrop != null) {
             _xpDrop = GetComponent<XPDrop>();
         }
     }
-
 
     public void UpdateHealth(int healthChange){ 
         CurrentHP += healthChange;
@@ -72,10 +63,6 @@ public class Health : MonoBehaviour, IDamageReceiver{
         isRegenerating = false;
     }
 
-    int CalculateMaxHP(){
-        return (int) _stats.StatManipulation(maxHP, _stats.Toughness, _stats.highImpactLevelMultiplier);
-    }
-
     public void ReceiveDamage(int receivedDamage, bool isCrit, bool attackerIsPlayer, DamageType receivedDmgType){ //Toughness should affect this
         var damage = ProcessDamage(receivedDamage, receivedDmgType);
         UpdateHealth(-damage);
@@ -91,6 +78,10 @@ public class Health : MonoBehaviour, IDamageReceiver{
         }
         PlaySound();
         this.LogHealth(CurrentHP);
+    }
+    
+    int CalculateMaxHP(){
+        return (int) _stats.StatManipulation(maxHP, _stats.Toughness, _stats.highImpactLevelMultiplier);
     }
 
     bool DodgeSuccessful(){
@@ -130,7 +121,7 @@ public class Health : MonoBehaviour, IDamageReceiver{
         }
     }
 
-    public void PlaySound(){
+    void PlaySound(){
         _takeDamage.getPlaybackState(out var playbackState);
         if (playbackState == PLAYBACK_STATE.STOPPED){
             _takeDamage.start();  

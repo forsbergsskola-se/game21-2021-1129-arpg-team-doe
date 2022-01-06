@@ -2,7 +2,6 @@
 using UnityEditor;
 #endif
 using UnityEngine;
-using AnimatorChanger;
 using FMOD.Studio;
 
 public class EnemyController : MonoBehaviour

@@ -4629,6 +4629,10 @@ MonoBehaviour:
   parameter: 0
   stopRegenerateThreshold: 50
   healthRegen: 10
+  maxHP: 100
+  _xpDrop: {fileID: 0}
+  _xpDropEvent: {fileID: 0}
+  isRegenerating: 0
   TakeDamageReference:
     Guid:
       Data1: -1548147627
@@ -4636,10 +4640,6 @@ MonoBehaviour:
       Data3: -1037099638
       Data4: 1873771730
     Path: event:/PlayerTakingDMG
-  maxHP: 100
-  _xpDrop: {fileID: 0}
-  _xpDropEvent: {fileID: 0}
-  isRegenerating: 0
 --- !u!114 &5675631719487080353
 MonoBehaviour:
   m_ObjectHideFlags: 0
