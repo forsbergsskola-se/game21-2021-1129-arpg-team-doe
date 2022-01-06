@@ -16,7 +16,7 @@ public class HotbarButton : MonoBehaviour
     InventoryItem _inventoryItem;
     InventoryController _inventoryController;
     Sprite _defaultSprite;
-    HotbarButton[] _hotBarButtons;
+    HotbarButton[] _hotbarButtons;
     void OnValidate(){
         _keyNumber = transform.GetSiblingIndex() + 1;
         _keyCode = KeyCode.Alpha0 + _keyNumber;
@@ -33,7 +33,7 @@ public class HotbarButton : MonoBehaviour
         _inventoryItem = GetComponent<InventoryItem>();
         _inventoryController = FindObjectOfType<InventoryController>();
         button = gameObject.GetComponent<Button>();
-        _hotBarButtons = GetComponentInParent<Hotbar>().GetComponentsInChildren<HotbarButton>();
+        _hotbarButtons = GetComponentInParent<Hotbar>().GetComponentsInChildren<HotbarButton>();
         _id = -1;
         _defaultSprite = button.image.sprite;
     }
@@ -51,7 +51,7 @@ public class HotbarButton : MonoBehaviour
 
     void AssignButton(){
         var itemObject = _inventoryController.selectedItem.itemObject;
-        foreach (var hotBarButton in _hotBarButtons){
+        foreach (var hotBarButton in _hotbarButtons){
             if (hotBarButton == null){
                 continue;
             }
@@ -76,7 +76,7 @@ public class HotbarButton : MonoBehaviour
     
     public void AssignButtonButton(){
         var itemObject = _inventoryController.lastRightClickedItem.itemObject;
-        foreach (var hotBarButton in _hotBarButtons){
+        foreach (var hotBarButton in _hotbarButtons){
             if (hotBarButton == null){
                 continue;
             }
@@ -97,7 +97,7 @@ public class HotbarButton : MonoBehaviour
     void HandleClick(){
         OnButtonClicked?.Invoke(_keyNumber);
         if (_inventoryItem == null){
-            Debug.Log("HotBar button need to be assigned first");
+            Debug.Log("Hotbar button need to be assigned first");
             return;
         }
         _inventoryController.selectedItem = _inventoryItem;
@@ -106,7 +106,7 @@ public class HotbarButton : MonoBehaviour
         ClearButton();
     }
 
-    void ClearButton(){ //TODO: clear multiple button
+    void ClearButton(){ 
         _inventoryItem = null;
         button.image.sprite = _defaultSprite;
         _id = -1;

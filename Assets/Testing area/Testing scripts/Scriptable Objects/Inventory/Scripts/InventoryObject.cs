@@ -1,15 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
-using UnityEditor;
 
 [CreateAssetMenu(fileName = "New Inventory",menuName = "Inventory System/Inventory")]
 public class InventoryObject : ScriptableObject
 {
+   //TODO: Maybe remove this script??
    public string savePath;
    public ItemDatabaseObject database;
    public Inventory Container;

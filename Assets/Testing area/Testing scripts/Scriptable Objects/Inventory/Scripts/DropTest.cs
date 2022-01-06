@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -18,26 +15,15 @@ public class DropTest : MonoBehaviour{
         _playerStatistics = GameObject.FindWithTag("Player").GetComponent<Statistics>();
     }
 
-    // void Update()
-    // {
-    //     if (Input.GetKeyDown(KeyCode.Space)){
-    //         InstantiateItem();
-    //     }
-    // }
-
     internal void InstantiateItem(){
 
         if (rollCount < maxRollCount){
             rollCount++;
             GameObject itemObject = lootTable.GetDropItem();
-            if (itemObject != null)
-            {
-                //itemObject.name = itemObject.name.Replace("(clone)", "").Trim();
+            if (itemObject != null){
                 Instantiate(itemObject, transform.position + RandomLocation(), Quaternion.identity);
             }
-            if (cash != null)
-            {
-                
+            if (cash != null){
                 Instantiate(cash, transform.position + RandomLocation(), Quaternion.identity);
             }
 
@@ -46,8 +32,6 @@ public class DropTest : MonoBehaviour{
                 //PlayLuckSound();
             }
         }
-        
-        
     }
 
     Vector3 RandomLocation(){

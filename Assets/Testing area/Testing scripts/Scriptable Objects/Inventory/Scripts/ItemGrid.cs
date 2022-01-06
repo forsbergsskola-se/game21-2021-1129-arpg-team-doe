@@ -58,7 +58,6 @@ public class ItemGrid : MonoBehaviour
         if (IsOutOfInventoryGrid(x, y)){
             return null;
         }
-        //Debug.Log(new Vector2(x,y));
         return _inventoryItemSlot[x, y];
     }
 
@@ -129,13 +128,10 @@ public class ItemGrid : MonoBehaviour
                         if (overlapItem != _inventoryItemSlot[posX + x, posY + y]){
                             return false;
                         }
-                        
                     }
-                    
                 }
             }
         }
-        
         return true;
     }
     
@@ -143,7 +139,6 @@ public class ItemGrid : MonoBehaviour
         for (int x = 0; x < width; x++){
             for (int y = 0; y < height; y++){
                 if (_inventoryItemSlot[posX+x, posY + y] != null){
-                    
                     return false;
                 }
             }
