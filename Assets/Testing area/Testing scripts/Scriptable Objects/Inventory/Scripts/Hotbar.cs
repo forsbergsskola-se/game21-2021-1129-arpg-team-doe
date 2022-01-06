@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HotBar : MonoBehaviour
+public class Hotbar : MonoBehaviour
 {
     void Awake(){
         foreach (var button in GetComponentsInChildren<HotbarButton>()){

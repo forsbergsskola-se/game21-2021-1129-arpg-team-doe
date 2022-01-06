@@ -33,7 +33,7 @@ public class HotbarButton : MonoBehaviour
         _inventoryItem = GetComponent<InventoryItem>();
         _inventoryController = FindObjectOfType<InventoryController>();
         button = gameObject.GetComponent<Button>();
-        _hotBarButtons = GetComponentInParent<HotBar>().GetComponentsInChildren<HotbarButton>();
+        _hotBarButtons = GetComponentInParent<Hotbar>().GetComponentsInChildren<HotbarButton>();
         _id = -1;
         _defaultSprite = button.image.sprite;
     }
