@@ -7303,8 +7303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77492b46d24f73b43807c70501d4261d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasInventory: {fileID: 9088444525093977231}
-  selectedItemGrid: {fileID: 0}
   itemsInDatabase: {fileID: 11400000, guid: 8df4ad38724c8cd45940a9a27513d54b, type: 2}
   itemPrefab: {fileID: 3378097737434846926, guid: 7c97bfcbdf1b1aa4cb379fcba585140a, type: 3}
   canvasTransform: {fileID: 9088444525093977227}
@@ -7312,6 +7310,8 @@ MonoBehaviour:
   rightClickMenu: {fileID: 0}
   rightClickMenuSlots: {fileID: 0}
   spawnedObject: {fileID: 5700182911611578800, guid: 7e01cb6c294b05748931e87121065ba6, type: 3}
+  selectedItemGrid: {fileID: 0}
+  canvasInventory: {fileID: 9088444525093977231}
   selectedItem: {fileID: 0}
   pickUpPosition: {x: 0, y: 0}
   inventoryReference:
