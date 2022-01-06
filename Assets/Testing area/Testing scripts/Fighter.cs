@@ -46,8 +46,6 @@ public class Fighter : MonoBehaviour, IInteractSound{
     }
 
     void Start(){
-        
-        
         if (gameObject.CompareTag("Player")) {
             _isPlayer = true;
         }
@@ -61,6 +59,7 @@ public class Fighter : MonoBehaviour, IInteractSound{
 
     void Update(){
         _timeSinceLastAttack += Time.deltaTime;
+        Debug.Log(_timeSinceLastAttack);
         if (_combatTarget == null && _rigidbody.velocity.magnitude == 0 || !_isPlayer && _rigidbody.velocity.magnitude == 0){
             IsIdle = true;
             idleInstance.getPlaybackState(out var playbackState);
@@ -100,7 +99,7 @@ public class Fighter : MonoBehaviour, IInteractSound{
     void Attack(GameObject target){
         
         LookAtTarget();
-        if (_timeSinceLastAttack > 1f / _statistics.AttackSpeed){
+        if (_timeSinceLastAttack > 1.5f){
             this.Log("I am doing damage");
             // TODO: trigger attack animation
             PlayAttackSound();
@@ -112,7 +111,8 @@ public class Fighter : MonoBehaviour, IInteractSound{
             if (_random.NextDouble() < _statistics.CritChance){
                 _damage = Mathf.RoundToInt(_statistics.AttackDamage * critDamageMultiplier);
                 isCrit = true;
-                PlayCritSound(); 
+                PlayCritSound();
+                _timeSinceLastAttack = 0f;
             }
             target.GetComponent<IDamageReceiver>()?.ReceiveDamage(_damage, isCrit, _isPlayer, wepDamageType/*weapon.damageType */);
             //TODO: We need an actual weapon to get the damage type of that weapon
