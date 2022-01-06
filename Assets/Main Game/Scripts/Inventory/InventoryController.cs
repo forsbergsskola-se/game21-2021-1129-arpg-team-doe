@@ -13,7 +13,7 @@ public class InventoryController : MonoBehaviour
     [SerializeField] GameObject rightClickMenuSlots;
     [SerializeField] GameObject spawnedObject;
     [SerializeField] GameObject itemDisplayTextGameObject;
-    [SerializeField] string itemDisplayText;
+    [SerializeField] TextMeshProUGUI itemDisplayText;
     [HideInInspector]
     public ItemGrid selectedItemGrid;
     public ItemGrid SelectedItemGrid{
@@ -49,7 +49,7 @@ public class InventoryController : MonoBehaviour
     }
 
     void Start(){
-        itemDisplayText = itemDisplayTextGameObject.GetComponent<Text>().text;
+        itemDisplayText = itemDisplayTextGameObject.GetComponent<TextMeshProUGUI>();
         _playerTransform = GameObject.FindWithTag("Player").transform;
         _playerConsumer = _playerTransform.GetComponent<Consumer>();
          _uiStatsArray = FindObjectsOfType<UIStats>();
@@ -159,9 +159,12 @@ public class InventoryController : MonoBehaviour
            _hoveredItem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
             if (_hoveredItem != null)
             {
-                itemDisplayTextGameObject.SetActive(true);
-                itemDisplayText = _hoveredItem.itemObject.description;
-                // _hoveredItem.itemObject.DisplayItem(); // Here we want to display the item information in the game view
+                if (!itemDisplayTextGameObject.activeInHierarchy)
+                {
+                    itemDisplayTextGameObject.SetActive(true);
+                }
+                
+                itemDisplayText.text = _hoveredItem.itemObject.description;
             }
         //     else if (_hoveredItem == null)
         //     {
