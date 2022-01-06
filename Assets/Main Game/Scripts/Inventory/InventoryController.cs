@@ -171,40 +171,66 @@ public class InventoryController : MonoBehaviour
         var tileGridPosition = GetTileGridPosition();
         if (!selectedItemGrid.IsOutOfInventoryGrid(tileGridPosition.x, tileGridPosition.y))
         {
-           _hoveredItem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
-            if (_hoveredItem != null && _hoveredItem.itemObject.description != null)
-            {
-                if (!itemDisplayInfo.activeInHierarchy)
-                {
-                    itemDisplayInfo.SetActive(true);
-                    
-                }
-
-                itemDisplayName.text = _hoveredItem.itemObject.name;
-                itemDisplayText.text = _hoveredItem.itemObject.description;
-                itemDisplayNameBackground.GetComponent<RectTransform>().sizeDelta =
-                new Vector2(Mathf.Clamp(itemDisplayName.preferredWidth, 0, maxDisplayWidth)+ 10, (Mathf.Clamp(itemDisplayName.preferredHeight,10, maxDisplayWidth))+10); //TODO: MAGIC NUMBERS
-                
-                itemDisplayTextBackground.GetComponent<RectTransform>().sizeDelta =
-                    new Vector2(Mathf.Clamp(itemDisplayText.preferredWidth, 0, maxDisplayWidth)+ 10, (Mathf.Clamp(itemDisplayText.preferredHeight,10, maxDisplayWidth))+10); //TODO: MAGIC NUMBERS
-            }
-
-            
-            else if (_hoveredItem == null) {
-                itemDisplayInfo.SetActive(false);
-                itemDisplayText.text = "No Description Available";
-                itemDisplayName.text = "No Name Available";
-            }  
+            _hoveredItem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
+            DisplayItemInformation();
         }
-        else if (itemDisplayTextBackground.activeInHierarchy) {
-            itemDisplayInfo.SetActive(false);
-            itemDisplayText.text = "No Description Available";
-            itemDisplayName.text = "No Name Available";
+        else if (itemDisplayTextBackground.activeInHierarchy)
+        {
+            DeactivateItemInformationDisplay();
         }  
         
         
     }
-    
+
+    void DisplayItemInformation()
+    {
+        if (_hoveredItem != null && _hoveredItem.itemObject.description != null)
+        {
+            if (!itemDisplayInfo.activeInHierarchy)
+            {
+                itemDisplayInfo.SetActive(true);
+            }
+
+            DisplayItemName();
+
+            DisplayItemDescription();
+        }
+        else if (_hoveredItem == null)
+        {
+            DeactivateItemInformationDisplay();
+        }
+    }
+
+    void DisplayItemDescription()
+    {
+        itemDisplayText.text = _hoveredItem.itemObject.description;
+        itemDisplayTextBackground.GetComponent<RectTransform>().sizeDelta = new Vector2(
+            Mathf.Clamp(itemDisplayText.preferredWidth, 0, maxDisplayWidth) + 10,
+            (Mathf.Clamp(itemDisplayText.preferredHeight, 10, maxDisplayWidth)) + 10);
+    }
+
+    void DisplayItemName()
+    {
+        if (_hoveredItem.itemObject is ConsumableObject)
+        {
+            itemDisplayName.color = Color.yellow;
+        }
+        else {
+            itemDisplayName.color = Color.white;
+        }
+        itemDisplayName.text = _hoveredItem.itemObject.name;
+        itemDisplayNameBackground.GetComponent<RectTransform>().sizeDelta = new Vector2(
+            Mathf.Clamp(itemDisplayName.preferredWidth, 0, maxDisplayWidth) + 10,
+            (Mathf.Clamp(itemDisplayName.preferredHeight, 10, maxDisplayWidth)) + 10);
+    }
+
+    void DeactivateItemInformationDisplay()
+    {
+        itemDisplayInfo.SetActive(false);
+        itemDisplayText.text = "No Description Available";
+        itemDisplayName.text = "No Name Available";
+    }
+
     void ToggleInventory(){
         canvasInventory.SetActive(!canvasInventory.activeInHierarchy);
     }
