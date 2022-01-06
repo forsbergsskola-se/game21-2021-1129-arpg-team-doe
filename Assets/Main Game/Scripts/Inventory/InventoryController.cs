@@ -12,9 +12,21 @@ public class InventoryController : MonoBehaviour
     [SerializeField] GameObject rightClickMenu;
     [SerializeField] GameObject rightClickMenuSlots;
     [SerializeField] GameObject spawnedObject;
-    [SerializeField] GameObject itemDisplayTextGameObject;
-    [SerializeField] TextMeshProUGUI itemDisplayText;
+    
+    
+    [SerializeField] GameObject itemDisplayInfo;
+    [SerializeField] int maxDisplayWidth = 200;
+    //Item Description
     [SerializeField] GameObject itemDisplayTextBackground;
+    [SerializeField] GameObject itemDisplayInfoText;
+    
+    TextMeshProUGUI itemDisplayText;
+    //Item Name
+    [SerializeField] GameObject itemDisplayNameBackground;
+    [SerializeField] GameObject itemDisplayInfoName;
+    
+    TextMeshProUGUI itemDisplayName;
+    
     [HideInInspector]
     public ItemGrid selectedItemGrid;
     public ItemGrid SelectedItemGrid{
@@ -51,7 +63,8 @@ public class InventoryController : MonoBehaviour
     }
 
     void Start(){
-        itemDisplayText = itemDisplayTextGameObject.GetComponent<TextMeshProUGUI>();
+        itemDisplayText = itemDisplayInfoText.GetComponent<TextMeshProUGUI>();
+        itemDisplayName = itemDisplayInfoName.GetComponent<TextMeshProUGUI>();
         _playerTransform = GameObject.FindWithTag("Player").transform;
         _playerConsumer = _playerTransform.GetComponent<Consumer>();
          _uiStatsArray = FindObjectsOfType<UIStats>();
@@ -161,26 +174,32 @@ public class InventoryController : MonoBehaviour
            _hoveredItem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
             if (_hoveredItem != null && _hoveredItem.itemObject.description != null)
             {
-                if (!itemDisplayTextBackground.activeInHierarchy)
+                if (!itemDisplayInfo.activeInHierarchy)
                 {
-                    itemDisplayTextBackground.SetActive(true);
+                    itemDisplayInfo.SetActive(true);
                     
                 }
+
+                itemDisplayName.text = _hoveredItem.itemObject.name;
+                itemDisplayText.text = _hoveredItem.itemObject.description;
+                itemDisplayNameBackground.GetComponent<RectTransform>().sizeDelta =
+                new Vector2(Mathf.Clamp(itemDisplayName.preferredWidth, 0, maxDisplayWidth)+ 10, (Mathf.Clamp(itemDisplayName.preferredHeight,10, maxDisplayWidth))+10); //TODO: MAGIC NUMBERS
                 
-                itemDisplayText.text = _hoveredItem.itemObject.name + " " + _hoveredItem.itemObject.description;
                 itemDisplayTextBackground.GetComponent<RectTransform>().sizeDelta =
-                new Vector2(Mathf.Clamp(itemDisplayText.preferredWidth, 0, 200)+ 10, (Mathf.Clamp(itemDisplayText.preferredHeight,10, 200))+10); //TODO: MAGIC NUMBERS
+                    new Vector2(Mathf.Clamp(itemDisplayText.preferredWidth, 0, maxDisplayWidth)+ 10, (Mathf.Clamp(itemDisplayText.preferredHeight,10, maxDisplayWidth))+10); //TODO: MAGIC NUMBERS
             }
 
             
             else if (_hoveredItem == null) {
-              itemDisplayTextBackground.SetActive(false);
-                itemDisplayText.text = "No Description Available"; 
+                itemDisplayInfo.SetActive(false);
+                itemDisplayText.text = "No Description Available";
+                itemDisplayName.text = "No Name Available";
             }  
         }
         else if (itemDisplayTextBackground.activeInHierarchy) {
-            itemDisplayTextBackground.SetActive(false);
-            itemDisplayText.text = "No Description Available"; 
+            itemDisplayInfo.SetActive(false);
+            itemDisplayText.text = "No Description Available";
+            itemDisplayName.text = "No Name Available";
         }  
         
         
