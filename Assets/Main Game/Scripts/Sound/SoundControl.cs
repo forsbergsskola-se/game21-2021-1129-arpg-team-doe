@@ -1,13 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundControl : MonoBehaviour{
-    
     FMOD.Studio.EventInstance Music;
     EnemyController[] _enemyMovements;
-
     public float soundIncrement{ get; set; }
     
     void Start(){
@@ -16,6 +11,10 @@ public class SoundControl : MonoBehaviour{
         Music.start();
         Music.release();
         InvokeRepeating(nameof(CombatMusic), 0f, 1f);
+    }
+    
+    public void Progress(){
+        Music.setParameterByName("PlayerProgress", soundIncrement);
     }
 
     void CombatMusic(){
@@ -31,10 +30,6 @@ public class SoundControl : MonoBehaviour{
         //Debug.Log($"Im in combat: {fighting}"); TODO: remove these if tom needs to look at it.
         Music.setParameterByName("DistanceFromEnemy", dist);
         Music.setParameterByName("InCombat", dist < 7 ? 1 : 0);
-    }
-
-    public void Progress(){
-        Music.setParameterByName("PlayerProgress", soundIncrement);
     }
 
     void OnDestroy(){

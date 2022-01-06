@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "New Stat Buff Object", menuName = "Inventory System/Items/Consumable/Stat Buff Object")]
-public class StatBuffObject : ConsumableObject
-{
+public class StatBuffObject : ConsumableObject{
     [Header("Attribute Buffs")]
     [Min(0f)][Tooltip	("Duration in Seconds")] public int buffDuration;
     public float toughnessBuff;

@@ -1,10 +1,6 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using CustomLogs;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public interface IConsumable{
     public void Consume(){
@@ -18,17 +14,14 @@ public class Consumer : MonoBehaviour, IConsumable
     
     [HideInInspector] public ConsumableObject _consumableObject;
     [SerializeField] int maxToxicityLevel = 3;
-
     public Statistics _statistics;
     public Health _health;
-
     int toxicityLevel;
 
     void Awake(){
         _statistics = GetComponent<Statistics>();
         _health = GetComponent<Health>();
     }
-
 
     public void Consume(){
         if (_consumableObject is StatBuffObject){
@@ -43,8 +36,6 @@ public class Consumer : MonoBehaviour, IConsumable
         {
             ConsumeItem((TeleportPotionSO)_consumableObject);
         }
-            
-        
     }
 
     [ContextMenu("ConsumeItem")]

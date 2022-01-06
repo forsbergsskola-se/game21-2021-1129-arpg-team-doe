@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class XPDropEventListener : MonoBehaviour
-{
+public class XPDropEventListener : MonoBehaviour{
     [SerializeField] XPDropEvent _xpDropEvent;
 
     void Awake() => _xpDropEvent.Register(this);

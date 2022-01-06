@@ -46,8 +46,7 @@ public abstract class ItemObject : ScriptableObject{
 
   
 
-   public virtual void PlayPickupSound()
-   { 
+   public virtual void PlayPickupSound(){ 
        pickupSoundInstance = RuntimeManager.CreateInstance("event:/PickUp");
        pickupSoundInstance.start();
        pickupSoundInstance.release();
@@ -74,8 +73,7 @@ public abstract class ItemObject : ScriptableObject{
 }
 
 [System.Serializable]
-public class Item
-{
+public class Item{
     public string Name;
     public int Id;
     public ItemBuff[] buffs;
@@ -91,8 +89,7 @@ public class Item
 }
 
 [System.Serializable]
-public class ItemBuff
-{
+public class ItemBuff{
     public Attributes attribute;
     public int value;
     public int max;

@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class AudioFollower : MonoBehaviour{
     [SerializeField] Vector3 offset;
-    
     Transform player;
 
     void Start(){

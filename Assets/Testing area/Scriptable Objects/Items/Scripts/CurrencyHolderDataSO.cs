@@ -3,8 +3,7 @@ using UnityEngine;
 public class CurrencyHolderDataSO : ScriptableObject{ //Wallet
    [Min(0)][SerializeField] int currency;
    [SerializeField] GameEvent currencyChangeEvent;
-  
-   
+
    public int Currency{
       get => currency;
       private set => currency = value;

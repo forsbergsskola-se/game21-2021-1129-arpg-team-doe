@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class ReceiveXPEventListener : MonoBehaviour
-{
+public class ReceiveXPEventListener : MonoBehaviour{
     [SerializeField] ReceiveXPEvent _receiveXpEvent;
 
     void Awake() => _receiveXpEvent.Register(this);

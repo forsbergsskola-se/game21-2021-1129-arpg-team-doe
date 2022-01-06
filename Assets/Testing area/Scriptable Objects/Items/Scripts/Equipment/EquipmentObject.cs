@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum EquipmentType{
@@ -11,8 +8,7 @@ public enum EquipmentType{
     Feet
 }
 
-public abstract class EquipmentObject : ItemObject
-{
+public abstract class EquipmentObject : ItemObject{
     [SerializeField] public EquipmentType equipmentType;
     
     public GameObject equipmentPrefab;

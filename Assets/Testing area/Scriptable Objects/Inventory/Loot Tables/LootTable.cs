@@ -4,7 +4,6 @@ using UnityEngine;
 
 [CreateAssetMenu]
 public class LootTable : ScriptableObject{
-    
     [Serializable]
     public class Drop{
         public GameObject drop;

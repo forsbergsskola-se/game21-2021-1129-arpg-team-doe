@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class Level : MonoBehaviour
-{
+public class Level : MonoBehaviour{
     [SerializeField] public LevelingGameObject LevelingGameObject;
     [SerializeField] public FMODUnity.EventReference fmodEvent;
 

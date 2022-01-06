@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealthBar : MonoBehaviour
-{
+public class PlayerHealthBar : MonoBehaviour{
     public Slider slider;
     public Health health;
     bool _isSliderShown;
@@ -23,7 +22,7 @@ public class PlayerHealthBar : MonoBehaviour
         slider.value = maxHp;
     }
 
-    public void SetSliderCurrentHealth(int currentHealth){
+    void SetSliderCurrentHealth(int currentHealth){
         slider.value = currentHealth;
     }
 }

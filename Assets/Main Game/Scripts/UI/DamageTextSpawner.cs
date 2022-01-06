@@ -1,11 +1,9 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class DamageTextSpawner : MonoBehaviour, IHealthListener
-{
+public class DamageTextSpawner : MonoBehaviour, IHealthListener{
     [SerializeField] UIDamageNr textPrefab;
     [SerializeField] float spreadRange;
-
     bool shouldSpawn = true;
 
     Vector3 RandomLocation(){

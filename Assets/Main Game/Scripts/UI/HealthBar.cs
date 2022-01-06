@@ -1,14 +1,8 @@
-using System.Security.Cryptography.X509Certificates;
-using CustomLogs;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class HealthBar : MonoBehaviour{
-    
     public Image healthBar;
-
     GameObject _parent;
     Health _health;
     Vector3 _offset = new Vector3(0, 2, 1);

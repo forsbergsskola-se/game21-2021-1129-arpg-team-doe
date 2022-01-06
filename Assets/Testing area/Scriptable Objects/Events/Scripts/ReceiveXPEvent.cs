@@ -1,11 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Receive XP Event",menuName = "Receive XP Event")]
 
-public class ReceiveXPEvent : ScriptableObject
-{
+public class ReceiveXPEvent : ScriptableObject{
     HashSet<ReceiveXPEventListener> _listeners = new HashSet<ReceiveXPEventListener>();
 
     XPDrop _xpDrop;

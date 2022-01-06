@@ -1,10 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Quest",menuName = "Quest")]
-public class QuestScriptableObject : ScriptableObject
-{
+public class QuestScriptableObject : ScriptableObject{
     [Header("Quest Description")]
     [SerializeField] [TextArea (10,10)] public string description;
 
@@ -13,14 +11,6 @@ public class QuestScriptableObject : ScriptableObject
 
     [SerializeField] int xpReward; //TODO: Check up on this
 
-
-
-
-
-
-
     [SerializeField]
     List<QuestObjectivesSO> _questObjectives;
-
-
 }

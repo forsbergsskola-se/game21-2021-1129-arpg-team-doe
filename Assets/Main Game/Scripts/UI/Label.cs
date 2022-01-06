@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Label : MonoBehaviour
-{
+public class Label : MonoBehaviour{
     Text _labelText;
 
     public void SetLabel(string textStr){

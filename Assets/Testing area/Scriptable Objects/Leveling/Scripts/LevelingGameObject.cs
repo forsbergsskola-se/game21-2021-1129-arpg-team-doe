@@ -1,13 +1,7 @@
-using System;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using FMODUnity;
 using UnityEngine;
-using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 [CreateAssetMenu(fileName = "New Leveling System", menuName = "Leveling System/Leveling System")]
-public class LevelingGameObject : ScriptableObject
-{
+public class LevelingGameObject : ScriptableObject{
     [SerializeField] GameEvent _levelUp;
 
     [Min(0)][SerializeField] public int level = 1;

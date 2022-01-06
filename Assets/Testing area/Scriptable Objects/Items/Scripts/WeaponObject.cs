@@ -1,11 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(fileName = "New Weapon Object", menuName = "Inventory System/Items/Weapon")]
 
-public class WeaponObject :ItemObject
-{
+[CreateAssetMenu(fileName = "New Weapon Object", menuName = "Inventory System/Items/Weapon")]
+public class WeaponObject :ItemObject{
     [Header("Weapon Stats")]
     [Min(0)][Tooltip("The equipment's attackspeed")] 
     public int attackSpeed;
@@ -22,9 +18,8 @@ public class WeaponObject :ItemObject
     public int dexterityBuff;
     public int knowledgeBuff;
     public int luckBuff;
-    
 
-   public void Awake(){
+    public void Awake(){
         type = ItemType.Weapon;
     }
 }

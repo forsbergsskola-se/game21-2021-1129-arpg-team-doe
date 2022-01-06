@@ -1,14 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIStats : MonoBehaviour
-{
-    
+public class UIStats : MonoBehaviour{
     [SerializeField] Statistics _playerStatistics;
     [SerializeField] TextMeshProUGUI _attributeText;
     [SerializeField] TextMeshProUGUI _valueText;
@@ -33,7 +27,6 @@ public class UIStats : MonoBehaviour
             return false;
         }
     }
-
 
     //float attribute;
     void Awake(){

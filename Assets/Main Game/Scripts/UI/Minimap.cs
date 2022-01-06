@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Minimap : MonoBehaviour{
     [SerializeField] [Min(5)] float miniMapDistance;
-    
     Transform _player;
     Transform _mainCamera;
     Vector3 newPosition;
