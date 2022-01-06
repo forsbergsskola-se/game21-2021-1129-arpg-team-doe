@@ -16,7 +16,6 @@ public class Fighter : MonoBehaviour, IInteractSound{
     Random _random;
     AnimationController _animationController;
     Rigidbody _rigidbody;
-    //FMOD
     EventInstance _critAttackInstance;
     public FMODUnity.EventReference critReference;
     EventInstance _attackInstance;
@@ -59,7 +58,6 @@ public class Fighter : MonoBehaviour, IInteractSound{
 
     void Update(){
         _timeSinceLastAttack += Time.deltaTime;
-        Debug.Log(_timeSinceLastAttack);
         if (_combatTarget == null && _rigidbody.velocity.magnitude == 0 || !_isPlayer && _rigidbody.velocity.magnitude == 0){
             IsIdle = true;
             idleInstance.getPlaybackState(out var playbackState);
@@ -99,7 +97,7 @@ public class Fighter : MonoBehaviour, IInteractSound{
     void Attack(GameObject target){
         
         LookAtTarget();
-        if (_timeSinceLastAttack > 1.5f){
+        if (_timeSinceLastAttack > 1.5f /_statistics.AttackSpeed){
             this.Log("I am doing damage");
             // TODO: trigger attack animation
             PlayAttackSound();
