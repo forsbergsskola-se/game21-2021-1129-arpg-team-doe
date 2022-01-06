@@ -26,12 +26,10 @@ public class UIStats : MonoBehaviour
     bool hasStarted = false;
 
     public bool NeedToApplySkills{
-        get
-        {
+        get{
             if (usedSkillPoints > 0){
                 return true;
             }
-
             return false;
         }
     }
@@ -40,9 +38,6 @@ public class UIStats : MonoBehaviour
     //float attribute;
     void Awake(){
        _playerStatistics = GameObject.FindWithTag("Player").GetComponent<Statistics>();
-       
-       
-       
     }
 
     void OnEnable(){
@@ -74,23 +69,12 @@ public class UIStats : MonoBehaviour
         _decreaseButton.gameObject.SetActive(false);
     }
 
-    void Update(){
-        //Var original value
-        //when we press increase the minus button enables for x amount of points we put in
-        //when we are out of skillPoints we disable the increase
-        //add apply button to add all skills to stats
-        //when we press apply it updates stats
-        
-    }
-
     public void ChangeSkillPoint(int amount){
         availableSkillPoints += amount;
         _playerLevel.skillPoint += amount;
         usedSkillPoints-= amount;
         UpdateUIStats();
     }
-    
-
 
     //Call After applying skill point in button script
     [ContextMenu("UpdateUIStats")]
@@ -100,7 +84,7 @@ public class UIStats : MonoBehaviour
             _increaseButton.gameObject.SetActive(false);
             
         }
-          if (_playerLevel.skillPoint > 0 || hasStarted == false){
+        if (_playerLevel.skillPoint > 0 || hasStarted == false){
             _increaseButton.gameObject.SetActive(true);
             if (_attributeText.text == nameof(_playerStatistics.Toughness)){
                 _valueText.text = ((int)_playerStatistics.Toughness).ToString();
