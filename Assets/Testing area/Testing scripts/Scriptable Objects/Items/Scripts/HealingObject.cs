@@ -6,10 +6,4 @@ public class HealingObject : ConsumableObject
 {
     public int restoreHealthValue;
     public int toxicityDuration;
-
-
-    public override void Consume(){
-        base.Consume();
-      //  _consumer.ConsumeItem(this);
-    }
 }

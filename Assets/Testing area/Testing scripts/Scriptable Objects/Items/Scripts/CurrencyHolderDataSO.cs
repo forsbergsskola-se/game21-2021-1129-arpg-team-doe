@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "New Currency Holder", menuName = "Inventory System/Currency Holder")]
 public class CurrencyHolderDataSO : ScriptableObject{ //Wallet
@@ -7,7 +5,6 @@ public class CurrencyHolderDataSO : ScriptableObject{ //Wallet
    [SerializeField] GameEvent currencyChangeEvent;
   
    
-
    public int Currency{
       get => currency;
       private set => currency = value;

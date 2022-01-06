@@ -1,11 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using CustomLogs;
 using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
-using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 public enum ItemType{
     Consumable,
@@ -109,6 +104,6 @@ public class ItemBuff
     }
 
     public void GenerateValue(){
-        value = UnityEngine.Random.Range(min, max);
+        value = Random.Range(min, max);
     }
 }

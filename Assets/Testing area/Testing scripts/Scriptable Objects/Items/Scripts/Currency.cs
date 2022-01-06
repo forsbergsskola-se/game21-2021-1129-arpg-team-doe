@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -20,7 +17,5 @@ public class Currency : MonoBehaviour{
     }
     void GenerateValue(){
         amount = Random.Range(currencyData.minAmount, currencyData.maxAmount);
-        //Debug.Log(amount);
-        //return amount;
     }
 }
