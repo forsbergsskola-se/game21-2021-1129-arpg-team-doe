@@ -13,7 +13,6 @@ public class PickUpItem : MonoBehaviour, Iinteractable{
     public void Use(){
         if (!_used){
             var itemObject = gameObject.GetComponent<InventoryItem>().itemObject;
-            //_inventoryController.InsertItem(_inventoryController.CreateRandomItem());
             _inventoryController.InsertItem(_inventoryController.CreateItem(itemObject.Id));
             _used = true;
             itemObject.PlayPickupSound();
