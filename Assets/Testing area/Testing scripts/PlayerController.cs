@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour
     Statistics _statistics;
     Health _health;
     AnimationController _animationController;
-    Animator _animator;
     RaycastHit _hit;
     Fighter _fighter;
     InventoryController _inventoryController;
@@ -24,11 +23,15 @@ public class PlayerController : MonoBehaviour
     float _interactionRange;
     bool _hasPlayedSound;
     bool _playerIsDefeated;
+    
+    const string RUN = "Run";
+    const string ATTACK = "Attack";
+    const string IDLE = "Idle";
+    const string DIE = "Die";
 
     void Awake(){
         _movement = GetComponent<Movement>();
         _statistics = GetComponent<Statistics>();
-        _animator = GetComponentInChildren<Animator>();
         _moveInstance = RuntimeManager.CreateInstance("event:/Move");
         _health = GetComponent<Health>();
         _animationController = GetComponentInChildren<AnimationController>();
@@ -50,7 +53,7 @@ public class PlayerController : MonoBehaviour
             _movement.StopMoving();
             _movement.enabled = false; 
             _fighter.enabled = false;
-            _animationController.ChangeAnimationState("Die");
+            _animationController.ChangeAnimationState(DIE);
             if (!_health.isRegenerating){
                 StartCoroutine(_health.HealthRegeneration());
             }
@@ -108,7 +111,7 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(GoToPosistionThenInteract(hit));
                 Vector3 positionCloseToTarget = hit.point - (hit.point - transform.position).normalized;
                 MoveToInteractable(interactableObject, positionCloseToTarget);
-                _animationController.ChangeAnimationState("Run");
+                _animationController.ChangeAnimationState(RUN);
             }
             return true;
         }
@@ -146,7 +149,7 @@ public class PlayerController : MonoBehaviour
                     if (_movement.pathFound){
                         _fighter.CancelAttack();
                         StartCoroutine(ChangeCursorTemporary(validClickTexture,1f));
-                        _animationController.ChangeAnimationState("Run");
+                        _animationController.ChangeAnimationState(RUN);
                     }
                     else{
                         StartCoroutine(ChangeCursorTemporary(invalidClickTexture,1f));
@@ -157,7 +160,7 @@ public class PlayerController : MonoBehaviour
                 _movement.StopMoving();
                 PlayMoveFeedback(1f);
                 StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
-                _animationController.ChangeAnimationState("Idle");
+                _animationController.ChangeAnimationState(IDLE);
             }
         }
         else if (Input.GetMouseButtonUp(0)){
@@ -168,7 +171,7 @@ public class PlayerController : MonoBehaviour
         
         if (_movement._navMeshAgent.remainingDistance < _movement._navMeshAgent.stoppingDistance){
             _movement.StopMoving();
-            _animationController.ChangeAnimationState("Idle");
+            _animationController.ChangeAnimationState(IDLE);
         }
     }
 
