@@ -15,7 +15,6 @@ public class Statistics : MonoBehaviour{
     // movement is increased by reflex
 
     [SerializeField] int weaponDamage = 10; // for debug
-    [SerializeField] int defaultDamage = 5;
     [SerializeField] internal float lowImpactLevelMultiplier = 0.5f;
     [SerializeField] internal float lowImpactLuckMultiplier = 0.25f;
     [SerializeField] internal float highImpactLevelMultiplier = 1f;
@@ -103,21 +102,6 @@ public class Statistics : MonoBehaviour{
         return (baseValue * (1 + attribute * levelMultiplier));
     }
 
-    public Statistics(float toughness, float strength, float dexterity, float knowledge, float reflex, float luck,
-        float interactRange, float attackRange, float attackSpeed) {
-        this.toughness = toughness;
-        this.strength = strength;
-        this.dexterity = dexterity;
-        this.knowledge = knowledge;
-        this.reflex = reflex;
-        this.luck = luck;
-        this.interactRange = interactRange;
-        this.attackRange = attackRange;
-        this.attackSpeed = attackSpeed;
-        this.critChance = critChance;
-        damage = defaultDamage;
-    }
-
     float CalculateAttackSpeed(){
         return StatManipulation(attackSpeed, dexterity, lowImpactLevelMultiplier);
     }
@@ -158,27 +142,6 @@ public class Statistics : MonoBehaviour{
         AttackDamage += damageBuff;
     }
 
-    //Takes in temp values and then starts a coroutine to add them then after a duration it removes them.
-    // public void AddStatsTemp(int buffDuration,float toughnessBuff, float strengthBuff, 
-    //     float dexterityBuff, float knowledgeBuff, float reflexBuff,
-    //     float luckBuff, float interactRangeBuff, float attackRangeBuff, 
-    //     float attackSpeedBuff,int damageBuff){
-    //     
-    //     StartCoroutine(AddStatsCoroutine(buffDuration,toughnessBuff,strengthBuff,dexterityBuff,knowledgeBuff,reflexBuff,luckBuff,interactRangeBuff,attackRangeBuff,attackSpeedBuff,damageBuff));
-    // }
-
-    // IEnumerator AddStatsCoroutine(int buffDuration,float toughnessBuff, float strengthBuff, 
-    //     float dexterityBuff, float knowledgeBuff, float reflexBuff, 
-    //     float luckBuff, float interactRangeBuff, float attackRangeBuff, 
-    //     float attackSpeedBuff,int damageBuff){
-    //     
-    //     
-    //     AddStats(toughnessBuff,strengthBuff,dexterityBuff,knowledgeBuff,reflexBuff,luckBuff,interactRangeBuff,attackRangeBuff,attackSpeedBuff,damageBuff);
-    //     yield return new WaitForSeconds(buffDuration);
-    //     AddStats(-toughnessBuff,-strengthBuff,-dexterityBuff,-knowledgeBuff,-reflexBuff,-luckBuff,-interactRangeBuff,-attackRangeBuff,-attackSpeedBuff,-damageBuff);
-    //
-    // }
-
     public void AddToughness(int amount){
        Toughness += amount;
     }
@@ -205,7 +168,6 @@ public class Statistics : MonoBehaviour{
         Handles.DrawWireDisc(transform.position, transform.up,AttackRange);
         Handles.color = Color.gray;
         Handles.DrawWireDisc(transform.position,transform.up,interactRange);
-        
     }
 #endif
 }
