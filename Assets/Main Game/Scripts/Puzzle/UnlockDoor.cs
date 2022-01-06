@@ -14,18 +14,21 @@ public class UnlockDoor : MonoBehaviour, Iinteractable,IInteractSound{
     
     [SerializeField]bool _locked = true;
     
+    public FMODUnity.EventReference DoorReference;
+    
     DoorConditions _doorConditions; 
     CursorOnDoor _cursorOnDoor;
     BoxCollider _collider;
     Animator _animator;
     EventInstance _doorInstance;
-    public FMODUnity.EventReference DoorReference;
     
     bool _conditionCompleted;
 
     void Awake(){
-        _doorConditions = FindObjectOfType<DoorConditions>();
-        _cursorOnDoor = FindObjectOfType<CursorOnDoor>();
+        if (FindObjectOfType<DoorConditions>() != null){
+            _doorConditions = FindObjectOfType<DoorConditions>();
+        }
+        _cursorOnDoor = GetComponent<CursorOnDoor>();
         _collider = GetComponent<BoxCollider>();
         _animator = GetComponent<Animator>();
     }
@@ -40,17 +43,15 @@ public class UnlockDoor : MonoBehaviour, Iinteractable,IInteractSound{
             _conditionCompleted = true;
             _cursorOnDoor.openable = true;
         }
-        else{
-            _conditionCompleted = _doorConditions.Completed;
-            LockingMechanism();
-            _cursorOnDoor.openable = _locked;
+        else {
+            if (_doorConditions != null){
+                _conditionCompleted = false;
+                _cursorOnDoor.openable = false;
+                LockingMechanism();
+            }
         }
     }
-
-    void LockingMechanism(){
-        _locked = !_conditionCompleted;
-    }
-
+    
     public void Use(){
         if (_locked){
             PlaySound(1f);
@@ -59,18 +60,22 @@ public class UnlockDoor : MonoBehaviour, Iinteractable,IInteractSound{
             OpenDoor();
         }
     }
-
-    void OpenDoor(){
-        PlaySound(0f);
-        _collider.enabled = false;
-        _animator.enabled = true;
-    }
-
+    
     public void PlaySound(float parameter){
         _doorInstance.getPlaybackState(out var playbackState);
         if (playbackState == PLAYBACK_STATE.STOPPED){
             _doorInstance.setParameterByName("OpenLocked", parameter);
             _doorInstance.start();  
         }
+    }
+
+    void LockingMechanism(){
+        _locked = !_conditionCompleted;
+    }
+
+    void OpenDoor(){
+        PlaySound(0f);
+        _collider.enabled = false;
+        _animator.enabled = true;
     }
 }
