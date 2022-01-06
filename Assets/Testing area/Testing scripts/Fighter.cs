@@ -101,7 +101,6 @@ public class Fighter : MonoBehaviour, IInteractSound{
             this.Log("I am doing damage");
             // TODO: trigger attack animation
             PlayAttackSound();
-            //if(_animationController != null)
             _animationController.ChangeAnimationState(ATTACK);
             _damage = _statistics.AttackDamage;
             //Weapon dmg type vs enemy stat res type
