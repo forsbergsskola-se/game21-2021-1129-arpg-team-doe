@@ -7,24 +7,22 @@ public class DropTest : MonoBehaviour{
     [Min(0)][SerializeField] float spreadRange;
     [Min(0)][SerializeField] int maxRollCount;
     Statistics _playerStatistics;
-
-    int rollCount = 0;
-    
+    int _rollCount;
 
     void Awake(){
         _playerStatistics = GameObject.FindWithTag("Player").GetComponent<Statistics>();
     }
 
     internal void InstantiateItem(){
-
-        if (rollCount < maxRollCount){
-            rollCount++;
+        if (_rollCount < maxRollCount){
+            _rollCount++;
             GameObject itemObject = lootTable.GetDropItem();
             if (itemObject != null){
                 Instantiate(itemObject, transform.position + RandomLocation(), Quaternion.identity);
             }
             if (cash != null){
-                Instantiate(cash, transform.position + RandomLocation(), Quaternion.identity);
+                var droppedCash = Instantiate(cash, transform.position + RandomLocation(), Quaternion.identity);
+                droppedCash.name = cash.name;
             }
 
             if (Random.Range(0f, 1f) < _playerStatistics.LuckChance){
