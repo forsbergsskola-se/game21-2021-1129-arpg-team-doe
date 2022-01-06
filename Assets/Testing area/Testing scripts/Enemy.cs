@@ -8,27 +8,21 @@ public class Enemy : MonoBehaviour, IHealthListener
    CapsuleCollider _capsuleCollider;
    Fighter _fighter;
    EnemyController _enemyMovement;
-   Health _health;
    DropTest _dropTest;
    bool _hasDied;
 
-   void Start(){
+   void Awake(){
       _capsuleCollider = GetComponent<CapsuleCollider>();
       _fighter = GetComponent<Fighter>();
       _enemyMovement = GetComponent<EnemyController>();
-      _health = GetComponent<Health>();
       _dropTest = GetComponent<DropTest>();
    }
    void Die(bool isAlive){
-      if (!isAlive && !_hasDied)
-      {
+      if (!isAlive && !_hasDied){
          _hasDied = true;
-         this.Log("I am being called DEAD");
-         // call death event (animations, sounds etc)
          _capsuleCollider.enabled = false;
          _fighter.enabled = false;
          _enemyMovement.enabled = false;
-         
          _dropTest.InstantiateItem();
          StartCoroutine(CorpseVanish(timeToVanish));
       }
@@ -39,8 +33,7 @@ public class Enemy : MonoBehaviour, IHealthListener
          child.gameObject.SetActive(false);
       }
    }
-   public void HealthChanged(int currentHealth, int maxHealth, int damage, bool isCrit, bool isAlive)
-   {
+   public void HealthChanged(int currentHealth, int maxHealth, int damage, bool isCrit, bool isAlive){
       Die(isAlive);
    }
 }
