@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class HealthBar : MonoBehaviour, IHealthListener{
+public class HealthBar : MonoBehaviour{
     
     public Image healthBar;
 
@@ -22,13 +22,10 @@ public class HealthBar : MonoBehaviour, IHealthListener{
     void Update(){
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Camera.main.transform.rotation, 1f);
         transform.position = _parent.transform.position + _offset;
+        SetSliderCurrentHealth(_health.CurrentHP);
     }
 
     public void SetSliderCurrentHealth(int currentHealth){
         healthBar.fillAmount = ((float)currentHealth/(float)_health.ModifiedMaxHP);
-    }
-
-    public void HealthChanged(int currentHealth, int maxHealth, int damage, bool isCrit, bool isAlive){
-        SetSliderCurrentHealth(currentHealth);
     }
 }
