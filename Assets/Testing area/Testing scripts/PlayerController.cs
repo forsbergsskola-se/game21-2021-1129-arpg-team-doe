@@ -1,13 +1,7 @@
-using System;
 using System.Collections;
-using System.Net;
 using AnimatorChanger;
-using CustomLogs;
-using FMOD;
 using FMODUnity;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using Debug = UnityEngine.Debug;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 public class PlayerController : MonoBehaviour
@@ -17,9 +11,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Texture2D standardCursorTexture;
     [SerializeField] int defeatedThreshold = 40;
 
-    public InventoryObject inventory;
-    PickUpItemFromGround _pickUpItemFromGround;
-    bool playerIsDefeated;
     FMOD.Studio.EventInstance _moveInstance;
     Movement _movement;
     Statistics _statistics;
@@ -32,6 +23,7 @@ public class PlayerController : MonoBehaviour
     string _currentState;
     float _interactionRange;
     bool _hasPlayedSound;
+    bool _playerIsDefeated;
 
     void Awake(){
         _movement = GetComponent<Movement>();
@@ -41,7 +33,6 @@ public class PlayerController : MonoBehaviour
         _health = GetComponent<Health>();
         _animationController = GetComponentInChildren<AnimationController>();
         _fighter = GetComponent<Fighter>();
-        _pickUpItemFromGround = FindObjectOfType<PickUpItemFromGround>();
         _inventoryController = FindObjectOfType<InventoryController>();
     }
 
@@ -50,13 +41,6 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update(){
-        // if (Input.GetKeyDown(KeyCode.Space)){
-        //     inventory.Save();
-        // }
-        // if (Input.GetKeyDown(KeyCode.KeypadEnter)){
-        //     inventory.Load();
-        // }
-        
         if (!GetPlayerIsDefeated()){
             _movement.enabled = true;
             _fighter.enabled = true;
@@ -72,14 +56,7 @@ public class PlayerController : MonoBehaviour
             }
             return;
         }
-        
-        // if (EventSystem.current.IsPointerOverGameObject()){ //Player won't do anything when click on UI
-        //   return;
-        // }
-        // if (_pickUpItemFromGround.pickedUpTarget != null)
-        // {
-        //     return;
-        // }
+
         if (InteractWithPickup()){
             return;
         }
@@ -95,55 +72,19 @@ public class PlayerController : MonoBehaviour
             return;
         }
                      
-        // if click on the ground, move to cursor
         MoveToCursor();
         
     }
 
-  
-
-    // if (playerIsDefeated){
-    //     _movement.enabled = false; 
-    //     _fighter.enabled = false;
-    //     _animationController.ChangeAnimationState("Die");
-    //     if (!_health.isRegenerating){
-    //         StartCoroutine(_health.HealthRegeneration());
-    //     }
-    //         
-    // }
-    // if (!playerIsDefeated){
-    //     _movement.enabled = true;
-    //     _fighter.enabled = true;
-    //     StopCoroutine(_health.HealthRegeneration());
-    // }
-    
     bool GetPlayerIsDefeated(){
         if (_health.CurrentHP <= defeatedThreshold){
-            playerIsDefeated = true;
+            _playerIsDefeated = true;
         }
         if (_health.CurrentHP >= _health.stopRegenerateThreshold){
-            playerIsDefeated = false;
+            _playerIsDefeated = false;
         }
-        return playerIsDefeated;
+        return _playerIsDefeated;
     }
-    
-    
-    
-
-    // void OnTriggerEnter(Collider other){ //Break out into its own script with onApplicationQuit
-    //     //Check if other has GroundItem script
-    //     if (other.GetComponent<GroundItem>() != null){
-    //         var item = other.GetComponent<GroundItem>();
-    //         //Adds item to inventory
-    //         inventory.AddItem(new Item(item.item),1);
-    //         //Destroys the item from the world
-    //         Destroy(other.gameObject);
-    //     }
-    // }
-
-    // void OnApplicationQuit(){
-    //     inventory.Container.Items = new InventorySlot[25];
-    // }
 
     bool InteractWithCombat(){
         RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
@@ -168,8 +109,6 @@ public class PlayerController : MonoBehaviour
                 Vector3 positionCloseToTarget = hit.point - (hit.point - transform.position).normalized;
                 MoveToInteractable(interactableObject, positionCloseToTarget);
                 _animationController.ChangeAnimationState("Run");
-                // _animator.SetBool("isRunning", false);
-                // _animator.SetBool("isAttacking", true);
             }
             return true;
         }
@@ -208,8 +147,6 @@ public class PlayerController : MonoBehaviour
                         _fighter.CancelAttack();
                         StartCoroutine(ChangeCursorTemporary(validClickTexture,1f));
                         _animationController.ChangeAnimationState("Run");
-                        // _animator.SetBool("isRunning", true);
-                        // _animator.SetBool("isAttacking", false);
                     }
                     else{
                         StartCoroutine(ChangeCursorTemporary(invalidClickTexture,1f));

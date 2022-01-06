@@ -1,7 +1,6 @@
 using System.Collections;
 using CustomLogs;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour, IHealthListener
 {

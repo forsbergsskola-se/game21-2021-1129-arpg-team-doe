@@ -4263,7 +4263,6 @@ MonoBehaviour:
   invalidClickTexture: {fileID: 2800000, guid: 53c0409fc6abc4b2aa327c1d0430cb68, type: 3}
   standardCursorTexture: {fileID: 2800000, guid: 036b493ef9cad4882999b895da76e4ef, type: 3}
   defeatedThreshold: 0
-  inventory: {fileID: 11400000, guid: 77e2291076a7dee459893b29befa9b36, type: 2}
 --- !u!114 &5675631719487080362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7251,7 +7250,6 @@ GameObject:
   - component: {fileID: 4372569159284212191}
   - component: {fileID: 4372569159284212187}
   - component: {fileID: 680843089236122546}
-  - component: {fileID: 1900954225}
   m_Layer: 0
   m_Name: followtarget
   m_TagString: Untagged
@@ -7351,20 +7349,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 335373424a1a4864dbf2f2734f8c7223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1900954225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6598838207415108934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3fb1fb82134bb54392a59802028157e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pickedUpTarget: {fileID: 0}
-  _itemGrid: {fileID: 9088444525977602575}
 --- !u!1 &6598838207471439472
 GameObject:
   m_ObjectHideFlags: 0
