@@ -34,7 +34,7 @@ public class InventoryController : MonoBehaviour
     InventoryItem _itemToHighlight;
     Transform _playerTransform;
     Consumer _playerConsumer;
-    UIStats[] UIStatsArray;
+    UIStats[] _uiStatsArray;
     Vector2Int _oldPosition;
     Vector2Int _pickOldPosition;
     EventInstance _inventoryInstance;
@@ -47,7 +47,7 @@ public class InventoryController : MonoBehaviour
     void Start(){
         _playerTransform = GameObject.FindWithTag("Player").transform;
         _playerConsumer = _playerTransform.GetComponent<Consumer>();
-         UIStatsArray = FindObjectsOfType<UIStats>();
+         _uiStatsArray = FindObjectsOfType<UIStats>();
          _inventoryInstance = FMODUnity.RuntimeManager.CreateInstance(inventoryReference);
     }
 
@@ -89,7 +89,6 @@ public class InventoryController : MonoBehaviour
             return;
         }
         selectedItemGrid.PlaceItem(itemToInsert, posOnGrid.Value.x, posOnGrid.Value.y);
-        itemToInsert.itemObject.PlayDropSound();
     }
     
     public InventoryItem CreateItem(int selectedItemID){
@@ -283,7 +282,7 @@ public class InventoryController : MonoBehaviour
     }
 
     bool SkillPointApplyCheck(){
-        foreach (var UIStat in UIStatsArray){
+        foreach (var UIStat in _uiStatsArray){
             if (UIStat.NeedToApplySkills){
                 return true;
             }
