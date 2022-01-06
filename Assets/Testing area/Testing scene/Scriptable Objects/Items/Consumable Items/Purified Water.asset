@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 022ab094917969f4d9bda95980d196b6, type: 3}
   m_Name: Purified Water
   m_EditorClassIdentifier: 
-  Id: 0
+  Id: 6
   itemIcon: {fileID: 21300000, guid: 3bd21342ff245be45a465edd6119520e, type: 3}
   width: 1
   height: 1
@@ -21,11 +21,11 @@ MonoBehaviour:
   price: 25
   dropSound:
     Guid:
-      Data1: -1879748765
-      Data2: 1091132112
-      Data3: 1057859713
-      Data4: -1335320419
-    Path: event:/PotionDrop
+      Data1: -290766362
+      Data2: 1225778793
+      Data3: -929812816
+      Data4: 2137709851
+    Path: event:/BottleDrop
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
   description: This water has been purified with these steps, Boiling for 3-5 minutes,
     Disinfect with household liquid bleach with atleast 5,25% sodium hypochlorite.
