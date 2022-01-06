@@ -15,9 +15,10 @@ public class SoundControl : MonoBehaviour{
         Music = FMODUnity.RuntimeManager.CreateInstance("event:/MusicCrypt");
         Music.start();
         Music.release();
+        InvokeRepeating(nameof(CombatMusic), 0f, 1f);
     }
 
-    void Update(){
+    void CombatMusic(){
         EnemyMovement enemy = _enemyMovements[0];
         foreach (var VARIABLE in _enemyMovements){
             if (enemy.distance > VARIABLE.distance){
@@ -26,8 +27,8 @@ public class SoundControl : MonoBehaviour{
         }
         var dist = enemy.isActiveAndEnabled ? enemy.distance : 20f;
         var fighting = dist < 7;
-        // Debug.Log($"Im the distance: {dist}");
-        // Debug.Log($"Im in combat: {fighting}");
+        //Debug.Log($"Im the distance: {dist}");
+        //Debug.Log($"Im in combat: {fighting}"); TODO: remove these if tom needs to look at it.
         Music.setParameterByName("DistanceFromEnemy", dist);
         Music.setParameterByName("InCombat", dist < 7 ? 1 : 0);
     }
