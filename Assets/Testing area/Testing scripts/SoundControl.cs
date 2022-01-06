@@ -15,9 +15,10 @@ public class SoundControl : MonoBehaviour{
         Music = FMODUnity.RuntimeManager.CreateInstance("event:/MusicCrypt");
         Music.start();
         Music.release();
+        InvokeRepeating(nameof(CombatMusic), 0f, 1f);
     }
 
-    void Update(){
+    void CombatMusic(){
         EnemyMovement enemy = _enemyMovements[0];
         foreach (var VARIABLE in _enemyMovements){
             if (enemy.distance > VARIABLE.distance){
