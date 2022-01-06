@@ -43,7 +43,7 @@ public class InventoryController : MonoBehaviour
     Vector2Int _pickOldPosition;
     EventInstance _inventoryInstance;
     bool _clickOnInventory;
-    Vector3 itemDisplayTextBackgroundOffset;
+    Vector3 _itemDisplayTextBackgroundOffset;
 
     void Awake(){
         _inventoryHighlight = GetComponent<InventoryHighlight>();
@@ -167,7 +167,7 @@ public class InventoryController : MonoBehaviour
                     
                 }
                 
-                itemDisplayText.text = _hoveredItem.itemObject.description;
+                itemDisplayText.text = _hoveredItem.itemObject.name + " " + _hoveredItem.itemObject.description;
                 itemDisplayTextBackground.GetComponent<RectTransform>().sizeDelta =
                 new Vector2(Mathf.Clamp(itemDisplayText.preferredWidth, 0, 200)+ 10, (Mathf.Clamp(itemDisplayText.preferredHeight,10, 200))+10); //TODO: MAGIC NUMBERS
             }
