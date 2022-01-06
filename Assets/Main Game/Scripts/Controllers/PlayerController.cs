@@ -3,8 +3,7 @@ using FMODUnity;
 using UnityEngine;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
-public class PlayerController : MonoBehaviour
-{
+public class PlayerController : MonoBehaviour{
     [SerializeField] Texture2D validClickTexture;
     [SerializeField] Texture2D invalidClickTexture;
     [SerializeField] Texture2D standardCursorTexture;
@@ -24,7 +23,6 @@ public class PlayerController : MonoBehaviour
     bool _playerIsDefeated;
     
     const string RUN = "Run";
-    const string ATTACK = "Attack";
     const string IDLE = "Idle";
     const string DIE = "Die";
 
@@ -75,7 +73,6 @@ public class PlayerController : MonoBehaviour
         }
                      
         MoveToCursor();
-        
     }
 
     bool GetPlayerIsDefeated(){
@@ -107,7 +104,7 @@ public class PlayerController : MonoBehaviour
             GameObject interactableObject = hit.transform.GetComponent<InteractableObject>()?.gameObject; //TODO: Why not getcomponent<IInteractable> ?
             if (interactableObject == null) continue;
             if (Input.GetMouseButton(0)){
-                StartCoroutine(GoToPosistionThenInteract(hit));
+                StartCoroutine(GoToPositionThenInteract(hit));
                 Vector3 positionCloseToTarget = hit.point - (hit.point - transform.position).normalized;
                 MoveToInteractable(interactableObject, positionCloseToTarget);
                 _animationController.ChangeAnimationState(RUN);
@@ -205,7 +202,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator GoToPosistionThenInteract(RaycastHit hit){
+    IEnumerator GoToPositionThenInteract(RaycastHit hit){
         _movement.Mover(hit.point, 1f);
         while (GetIsInRange(hit.transform, _interactionRange) == false){
             yield return null;

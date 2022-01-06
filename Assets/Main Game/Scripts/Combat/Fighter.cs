@@ -43,9 +43,6 @@ public class Fighter : MonoBehaviour, IInteractSound{
     void Start(){
         if (gameObject.CompareTag("Player")) {
             _isPlayer = true;
-        }
-
-        if (gameObject.CompareTag("Player")){
             _critAttackInstance = FMODUnity.RuntimeManager.CreateInstance(critReference);
         }
         _attackRange = _statistics.AttackRange;

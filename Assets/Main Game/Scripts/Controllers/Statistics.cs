@@ -1,11 +1,8 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 using UnityEngine;
-
 
 public class Statistics : MonoBehaviour{
 
@@ -31,7 +28,6 @@ public class Statistics : MonoBehaviour{
         get => toughness;
          set => toughness = value;
     }
-
 
     public float Strength{
         get => strength; 

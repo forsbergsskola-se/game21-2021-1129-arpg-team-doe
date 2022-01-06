@@ -1,5 +1,4 @@
 using System;
-using FMOD.Studio;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -11,7 +10,7 @@ public class TargetDetection : MonoBehaviour
     [SerializeField] float visionRange = 20.0f;
     [SerializeField] [Range(0,360)] float viewAngle;
 
-    float distanceToTarget;
+    float _distanceToTarget;
 
     void Start(){
         viewAngle = Mathf.Cos(viewAngle * MathF.PI / 180 / 2);
@@ -31,13 +30,13 @@ public class TargetDetection : MonoBehaviour
     }
 
     Vector3 DistanceAndDirectionCheck(Vector3 position, Transform target){
-        distanceToTarget = DistanceToTarget(position, target);
+        _distanceToTarget = DistanceToTarget(position, target);
         Vector3 targetDirection = target.position - transform.position;
         return targetDirection;
     }
 
     bool AreaDetection(Transform target, Vector3 targetDirection){
-        if (distanceToTarget < areaDetectionRange){
+        if (_distanceToTarget < areaDetectionRange){
             //If target is within detection area, shoot out a ray to see if target is visable
             if (RaycastCheck(target, targetDirection, Color.green)) return true;
         }
@@ -48,7 +47,7 @@ public class TargetDetection : MonoBehaviour
     bool FrontalDetection(Transform target, Vector3 targetDirection){
         //Calculates the view angle and checks if unit is looking at target
         var dot = Vector3.Dot(targetDirection.normalized, transform.forward);
-        if (distanceToTarget < visionRange && dot > viewAngle){
+        if (_distanceToTarget < visionRange && dot > viewAngle){
             if (RaycastCheck(target, targetDirection, Color.red)) return true;
         }
 

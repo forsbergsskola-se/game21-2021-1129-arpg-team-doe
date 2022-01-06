@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public class AnimationController : MonoBehaviour{
     Animator _animator;
     string _currentState;

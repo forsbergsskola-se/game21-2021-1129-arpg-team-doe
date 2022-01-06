@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraFollow : MonoBehaviour
-{
+public class CameraFollow : MonoBehaviour{
     const float closeToRightScreenEdge = 0.95f;
     const float closeToLeftScreenEdge = 0.05f;
     const float rightScreenEdge = 1f;
@@ -18,7 +15,6 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] [Range(30,90)] float cameraAngleX;
 
     Transform target;
-
     Vector3 offset;
     Vector3 rotationAxis = new Vector3(0, 1, 0);
     Vector3 snapRotationAxis = new Vector3(0, 1, 0);
@@ -26,8 +22,7 @@ public class CameraFollow : MonoBehaviour
 
     float startZoom;
     float speed;
-
-    int zoomLevel = 0;
+    int zoomLevel;
 
     void Start(){
         target = FindObjectOfType<PlayerController>().transform;
@@ -48,7 +43,6 @@ public class CameraFollow : MonoBehaviour
     }
 
     void CameraZoom(){
-
         if (Input.GetKeyDown(KeyCode.Z)){
             var currentZoomLevel = zoomLevel % zoomLevels;
             //Change to minZoom
