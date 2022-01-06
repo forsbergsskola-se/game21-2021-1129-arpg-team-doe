@@ -1,8 +1,6 @@
-using System;
 using UnityEngine;
 
-public class PatrolPath : MonoBehaviour
-{
+public class PatrolPath : MonoBehaviour{
     const float WaypointGizmosRadius = 0.3f;
     void OnDrawGizmos(){
         for (int i = 0; i < transform.childCount; i++){

@@ -5,7 +5,6 @@ using UnityEditor;
 using UnityEngine;
 
 public class Statistics : MonoBehaviour{
-
     [SerializeField]
     [Min(0f)]
     float toughness, strength, dexterity, knowledge, reflex, luck, interactRange, attackRange, attackSpeed, critChance;

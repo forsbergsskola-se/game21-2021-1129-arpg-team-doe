@@ -4,12 +4,10 @@ using UnityEditor;
 #endif
 using UnityEngine;
 
-public class TargetDetection : MonoBehaviour
-{
+public class TargetDetection : MonoBehaviour{
     [SerializeField] float areaDetectionRange = 5.0f;
     [SerializeField] float visionRange = 20.0f;
     [SerializeField] [Range(0,360)] float viewAngle;
-
     float _distanceToTarget;
 
     void Start(){

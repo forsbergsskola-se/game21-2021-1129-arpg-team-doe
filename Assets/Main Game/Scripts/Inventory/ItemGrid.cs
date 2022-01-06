@@ -1,11 +1,8 @@
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
-public class ItemGrid : MonoBehaviour
-{
+public class ItemGrid : MonoBehaviour{
     [SerializeField] int gridSizeWidth = 10;
     [SerializeField] int gridSizeHeight = 10;
-
     public const float tileSizeWidth = 32;
     public const float tileSizeHeight = 32;
     Vector2 _positionOnTheGrid;
@@ -23,8 +20,6 @@ public class ItemGrid : MonoBehaviour
         Vector2 size = new Vector2(width * tileSizeWidth, height * tileSizeHeight);
         _rectTransform.sizeDelta = size;
     }
-
-    
 
     public InventoryItem PickUpItem(int x, int y){
         if (IsOutOfInventoryGrid(x, y)){
@@ -44,21 +39,6 @@ public class ItemGrid : MonoBehaviour
     public bool IsOutOfInventoryGrid(int x, int y){
         Vector2 inventorySize = _rectTransform.sizeDelta;
         return x < 0 || x >= inventorySize.x / tileSizeWidth || y < 0 || y >= inventorySize.y / tileSizeHeight;
-    }
-
-    void CleanGridReference(InventoryItem item){
-        for (int ix = 0; ix < item.WIDTH; ix++){
-            for (int iy = 0; iy < item.HEIGHT; iy++){
-                _inventoryItemSlot[item.onGridPositionX + ix, item.onGridPositionY + iy] = null;
-            }
-        }
-    }
-    
-    internal InventoryItem GetItem(int x, int y){
-        if (IsOutOfInventoryGrid(x, y)){
-            return null;
-        }
-        return _inventoryItemSlot[x, y];
     }
 
     public Vector2Int GetTileGridPosition(Vector2 mousePosition){
@@ -116,6 +96,21 @@ public class ItemGrid : MonoBehaviour
         position.x = posX * tileSizeWidth + tileSizeWidth * inventoryItem.WIDTH/ 2;
         position.y = -(posY * tileSizeHeight + tileSizeHeight * inventoryItem.HEIGHT / 2);
         return position;
+    }
+    
+    void CleanGridReference(InventoryItem item){
+        for (int ix = 0; ix < item.WIDTH; ix++){
+            for (int iy = 0; iy < item.HEIGHT; iy++){
+                _inventoryItemSlot[item.onGridPositionX + ix, item.onGridPositionY + iy] = null;
+            }
+        }
+    }
+    
+    internal InventoryItem GetItem(int x, int y){
+        if (IsOutOfInventoryGrid(x, y)){
+            return null;
+        }
+        return _inventoryItemSlot[x, y];
     }
 
     bool OverlapCheck(int posX, int posY, int width, int height, ref InventoryItem overlapItem){

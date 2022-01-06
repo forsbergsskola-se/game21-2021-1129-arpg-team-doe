@@ -1,9 +1,7 @@
 using UnityEngine;
 
 public class PickUpItem : MonoBehaviour, Iinteractable{
-
     InventoryController _inventoryController;
-
     bool _used;
 
     void Start(){

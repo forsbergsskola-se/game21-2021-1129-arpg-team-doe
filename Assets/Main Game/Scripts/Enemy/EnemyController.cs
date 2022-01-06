@@ -4,8 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using FMOD.Studio;
 
-public class EnemyController : MonoBehaviour
-{
+public class EnemyController : MonoBehaviour{
    [SerializeField] GameObject healthBar;
    [SerializeField] float maxFollowRange = 30f;
    [SerializeField] float closeEnoughToSavedPosition = 3f;
@@ -15,14 +14,13 @@ public class EnemyController : MonoBehaviour
    [SerializeField] float patrolSpeedFraction = 0.3f;
    [SerializeField] float dwellingTime = 6f;
    
+   public FMODUnity.EventReference alertReference;
+   EventInstance _alertInstance;
    TargetDetection _targetDetection;
    Movement _movement;
    Fighter _fighter;
    Health _health;
    AnimationController _animationController;
-   EventInstance _alertInstance;
-   public FMODUnity.EventReference alertReference;
-   
    GameObject _player;
    Transform _desiredTarget;
    Transform _target;
@@ -31,15 +29,12 @@ public class EnemyController : MonoBehaviour
    int _currentWaypointIndex;
    bool _activeSavedPosition;
    bool _needsToWalkBack;
-
    bool _isAttacking;
    bool _playerIsDetected;
    string _currentState;
    bool _alerted = true;
-
    const string RUN = "Run";
    const string IDLE = "Idle";
-   
    public float distance { get; private set; }
 
    void Start(){
@@ -51,14 +46,13 @@ public class EnemyController : MonoBehaviour
       _player = GameObject.FindWithTag("Player");
       _desiredTarget = _player.transform;
       _savedPosition = transform.position;
-
       _alertInstance = FMODUnity.RuntimeManager.CreateInstance(alertReference);
 
    }
 
-   void Update(){ // very long update, might want to refactor
+   void Update(){
       distance = _targetDetection.DistanceToTarget(transform.position, _desiredTarget);
-      if(!_health.IsAlive) return;
+      if(!_health.IsAlive) {return;}
       //Sets target if detected and is not walking back
       _playerIsDetected = _targetDetection.TargetIsDetected(transform.position, _desiredTarget);
       if (_targetDetection.DistanceToTarget(_savedPosition, transform) < closeEnoughToSavedPosition){
@@ -91,10 +85,7 @@ public class EnemyController : MonoBehaviour
          WalkBackAndSetIdle();
          return;
       }
-      // if (_target.GetComponent<PlayerController>().playerIsDefeated){
-      //    WalkBackAndSetIdle();
-      //    return;
-      // }
+     
       if (!_playerIsDetected && !_alerted){
          _alerted = true;
       }
@@ -159,7 +150,8 @@ public class EnemyController : MonoBehaviour
       _savedPosition = transform.position;
       _activeSavedPosition = true;
    }
-   public void PlayAlertSound(){
+
+   void PlayAlertSound(){
       _alertInstance.getPlaybackState(out var playbackState);
       if (playbackState == PLAYBACK_STATE.STOPPED){
          _alertInstance.start();  

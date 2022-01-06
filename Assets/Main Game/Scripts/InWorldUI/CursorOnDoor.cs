@@ -1,14 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CursorOnDoor : MonoBehaviour{
     [SerializeField] Texture2D lockedCursor;
     [SerializeField] Texture2D unLockedCursor;
     [SerializeField] Texture2D cursor;
-    
     internal bool openable;
 
     void Start(){

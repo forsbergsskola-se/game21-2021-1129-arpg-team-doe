@@ -6,7 +6,6 @@ public class InventoryItem : MonoBehaviour{
    public int onGridPositionX;
    public int onGridPositionY;
    public bool rotated;
-   
 
    //for rotating tiles
    public int HEIGHT{

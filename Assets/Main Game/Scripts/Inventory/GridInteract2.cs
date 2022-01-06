@@ -1,10 +1,8 @@
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(ItemGrid))]
-public class GridInteract2 : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
-{
+public class GridInteract2 : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler{
     InventoryController _inventoryController;
     ItemGrid _itemGrid;
 

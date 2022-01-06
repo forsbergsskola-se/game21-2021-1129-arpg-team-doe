@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Movement : MonoBehaviour
-{
+public class Movement : MonoBehaviour{
     [SerializeField] float maxSpeed = 8f;
-    internal NavMeshAgent _navMeshAgent;
     NavMeshPath _path;
+    internal NavMeshAgent _navMeshAgent;
     internal bool pathFound;
+    
     void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();

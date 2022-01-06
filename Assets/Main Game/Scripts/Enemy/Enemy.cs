@@ -1,8 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IHealthListener
-{
+public class Enemy : MonoBehaviour, IHealthListener{
    [SerializeField] float timeToVanish = 5f;
    CapsuleCollider _capsuleCollider;
    Fighter _fighter;
@@ -10,8 +9,7 @@ public class Enemy : MonoBehaviour, IHealthListener
    AnimationController _animationController;
    DropTest _dropTest;
    bool _hasDied;
-   
-   const string DIE = "Die"; //TODO:Change when die animation added
+   const string DIE = "Die";
 
    void Awake(){
       _capsuleCollider = GetComponent<CapsuleCollider>();
@@ -20,6 +18,7 @@ public class Enemy : MonoBehaviour, IHealthListener
       _dropTest = GetComponent<DropTest>();
       _animationController = GetComponentInChildren<AnimationController>();
    }
+   
    void Die(bool isAlive){
       if (!isAlive && !_hasDied){
          _hasDied = true;
@@ -31,12 +30,14 @@ public class Enemy : MonoBehaviour, IHealthListener
          StartCoroutine(CorpseVanish(timeToVanish));
       }
    }
+   
    IEnumerator CorpseVanish(float time){
       yield return new WaitForSeconds(time);
       foreach (Transform child in transform){
          child.gameObject.SetActive(false);
       }
    }
+   
    public void HealthChanged(int currentHealth, int maxHealth, int damage, bool isCrit, bool isAlive){
       Die(isAlive);
    }
