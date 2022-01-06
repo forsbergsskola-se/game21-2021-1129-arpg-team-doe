@@ -1,22 +1,18 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace AnimatorChanger{
-public class AnimationController : MonoBehaviour
-{
-    string _currentState;
-    Animator _animator;
+    public class AnimationController : MonoBehaviour{
+        string _currentState;
+        Animator _animator;
 
-    void Start(){
+        void Start(){
+            _animator = GetComponentInChildren<Animator>();
+        }
 
-        _animator = GetComponentInChildren<Animator>();
+        public void ChangeAnimationState(string newState){
+            if (_currentState == newState) return;
+            _animator.Play(newState);
+            _currentState = newState;
+        }
     }
-
-    public void ChangeAnimationState(string newState){
-        if (_currentState == newState) return;
-        _animator.Play(newState);
-        _currentState = newState;
-    }
-}
-
 }
