@@ -73,14 +73,18 @@ public class PlayerController : MonoBehaviour
             return;
         }
         
-        //if (EventSystem.current.IsPointerOverGameObject()){ //Player won't do anything when click on UI
-        //  return;
-        //}
+        // if (EventSystem.current.IsPointerOverGameObject()){ //Player won't do anything when click on UI
+        //   return;
+        // }
         // if (_pickUpItemFromGround.pickedUpTarget != null)
         // {
         //     return;
         // }
         if (InteractWithPickup()){
+            return;
+        }
+
+        if (_inventoryController.selectedItem != null){
             return;
         }
         
