@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using CustomLogs;
 using FMOD.Studio;
 using FMODUnity;
@@ -38,25 +37,29 @@ public class Health : MonoBehaviour, IDamageReceiver{
     public int CurrentHP{ get; private set; }
     public int ModifiedMaxHP => CalculateMaxHP();
 
-    void Start(){
+    void Awake(){
         _stats = GetComponent<Statistics>();
+    }
+
+    void Start(){
+        
         random = new Random();
         CurrentHP = ModifiedMaxHP;
         _takeDamage = RuntimeManager.CreateInstance(TakeDamageReference);
 
-        if (_xpDrop != null) { //!= or == ?
+        if (_xpDrop != null) {
             _xpDrop = GetComponent<XPDrop>();
         }
     }
 
 
-    public void UpdateHealth(int healthChange){ //What about healing
+    public void UpdateHealth(int healthChange){ 
         CurrentHP += healthChange;
         CurrentHP = Mathf.Clamp(CurrentHP, 0, ModifiedMaxHP);
         this.LogHealth(CurrentHP);
     }
     
-    public IEnumerator HealthRegeneration(){ // health regeneration seems weird
+    public IEnumerator HealthRegeneration(){
         isRegenerating = true;
         while(CurrentHP <= stopRegenerateThreshold){
             UpdateHealth(healthRegen);
@@ -64,7 +67,6 @@ public class Health : MonoBehaviour, IDamageReceiver{
                  isRegenerating = false;
                  break;
             }
-            
             yield return new WaitForSeconds(1f);
         }
         isRegenerating = false;
@@ -80,7 +82,6 @@ public class Health : MonoBehaviour, IDamageReceiver{
         if (gameObject.tag == "Player"){
             PlaySound();
         }
-        //this.LogTakeDamage(damage,CurrentHP);
         if (!IsAlive){
             OnDeath(attackerIsPlayer);
         }
@@ -118,17 +119,14 @@ public class Health : MonoBehaviour, IDamageReceiver{
                 break;
             }
         }
-        //Debug.Log(transform.name + " receives " + dmg + " Damage");
         return dmg;
     }
 
     //This calls the event that you put in if you put it in, if there's no event, nothing happens.
     void OnDeath(bool attackerIsPlayer){
-        //Debug.Log(isPlayer);
         //Check if event is not null and is not player, and attacker is player, call event. OR if event is not null and is player, call event.
         if (_xpDropEvent != null && this.gameObject.tag != "Player" && attackerIsPlayer || _xpDropEvent != null && this.gameObject.tag == "Player"){
             _xpDropEvent.Invoke(_xpDrop.xpAmount);
-            
         }
     }
 
