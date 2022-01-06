@@ -1,14 +1,8 @@
-using System;
 using UnityEngine;
-using UnityEngine.AI;
 
-public interface IDestructible{
-    void Destruction(bool isAlive);
-}
-public class Destruct : MonoBehaviour,IDestructible, IHealthListener{
 
-    //FMODUnity.StudioEventEmitter _destructionEventEmitter;
-
+public class Destruct : MonoBehaviour, IHealthListener{
+    
     [SerializeField] GameObject _prefab;
     DropTest _dropTest;
 
