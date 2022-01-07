@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Canned Dog Food
   m_EditorClassIdentifier: 
   Id: 0
-  itemIcon: {fileID: 21300000, guid: 127baf0974848564689b57e04d96e152, type: 3}
+  itemIcon: {fileID: 21300000, guid: 9f3ce5be049d66343b459e16f8e7df67, type: 3}
   width: 1
   height: 1
   type: 0

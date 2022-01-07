@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 19
   itemIcon: {fileID: 21300000, guid: 5c751cb1be14f4008bce40de446899df, type: 3}
-  width: 1
-  height: 1
+  width: 2
+  height: 2
   type: 0
   name: Big Med Kit
   price: 50
