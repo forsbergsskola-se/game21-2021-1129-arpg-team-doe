@@ -27,18 +27,22 @@ public class Enemy : MonoBehaviour, IHealthListener{
    
    void Die(bool isAlive){
       if (!isAlive && !_hasDied){
+         _deathInstance.start();
+         _deathInstance.release();
          _hasDied = true;
          _capsuleCollider.enabled = false;
          _fighter.enabled = false;
          _enemyMovement.enabled = false;
-         _animationController.ChangeAnimationState(DIE);
          _dropTest.InstantiateItem();
-         _deathInstance.start();
-         _deathInstance.release();
+         StartCoroutine(AnimatorDelay());
          StartCoroutine(CorpseVanish(timeToVanish));
       }
    }
-   
+
+   IEnumerator AnimatorDelay(){
+      yield return new WaitForSeconds(0.5f);
+      _animationController.ChangeAnimationState(DIE);
+   }
    IEnumerator CorpseVanish(float time){
       yield return new WaitForSeconds(time);
       foreach (Transform child in transform){
