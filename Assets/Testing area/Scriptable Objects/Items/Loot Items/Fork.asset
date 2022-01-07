@@ -15,7 +15,7 @@ MonoBehaviour:
   Id: 25
   itemIcon: {fileID: 21300000, guid: d8450eba74568db4c8919b604f9dd7ac, type: 3}
   width: 1
-  height: 1
+  height: 2
   type: 4
   name: Fork
   price: 1
