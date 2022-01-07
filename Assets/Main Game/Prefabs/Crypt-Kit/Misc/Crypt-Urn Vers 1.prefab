@@ -255,4 +255,4 @@ MonoBehaviour:
   lootTable: {fileID: 11400000, guid: 539df83335d0cb74ea85df007b41e038, type: 2}
   cash: {fileID: 6458768576707232289, guid: 95c88a0e57207324e9fc7d8ae298da71, type: 3}
   spreadRange: 1
-  maxRollCount: 5
+  maxRollCount: 2
