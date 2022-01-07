@@ -32,7 +32,7 @@ public class ItemGrid : MonoBehaviour{
             return null;
         }
 
-        itemToReturn.itemObject.PlayDropSound();
+        itemToReturn.itemObject.PlayPickupSound();
         CleanGridReference(itemToReturn);
         return itemToReturn;
     }
