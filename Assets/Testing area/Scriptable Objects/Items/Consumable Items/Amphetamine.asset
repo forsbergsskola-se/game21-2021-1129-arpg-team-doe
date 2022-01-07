@@ -27,7 +27,10 @@ MonoBehaviour:
       Data4: -1335320419
     Path: event:/PotionDrop
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
-  description: Wait, what is sleep? +5 DEX, 120 sec
+  description: 'Wait, what is sleep? +5 DEX, 120 sec
+
+
+    Right-Click for Options'
   buffs: []
   toxicityAmount: 1
   buffDuration: 120
