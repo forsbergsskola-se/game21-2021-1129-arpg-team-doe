@@ -125,11 +125,11 @@ MonoBehaviour:
   isRegenerating: 0
   TakeDamageReference:
     Guid:
-      Data1: 669435313
-      Data2: 1205610412
-      Data3: -2039444083
-      Data4: -1904916957
-    Path: event:/UrnDestroy
+      Data1: 13736198
+      Data2: 1301027633
+      Data3: 470637967
+      Data4: -1643498720
+    Path: event:/EnemyHit
 --- !u!114 &2013919976991523665
 MonoBehaviour:
   m_ObjectHideFlags: 0

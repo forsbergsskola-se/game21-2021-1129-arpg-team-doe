@@ -349,6 +349,8 @@ public class InventoryController : MonoBehaviour
         if (selectedItem != null){
             _rectTransform = selectedItem.GetComponent<RectTransform>();
         }
+        
+        
     }
 
     void ItemIconDrag(){

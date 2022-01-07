@@ -26,14 +26,15 @@ public class ItemGrid : MonoBehaviour{
             return null;
         }
         
-        InventoryItem toReturn = _inventoryItemSlot[x, y];
+        InventoryItem itemToReturn = _inventoryItemSlot[x, y];
 
-        if (toReturn == null){
+        if (itemToReturn == null){
             return null;
         }
 
-        CleanGridReference(toReturn);
-        return toReturn;
+        itemToReturn.itemObject.PlayDropSound();
+        CleanGridReference(itemToReturn);
+        return itemToReturn;
     }
 
     public bool IsOutOfInventoryGrid(int x, int y){
@@ -88,7 +89,7 @@ public class ItemGrid : MonoBehaviour{
         Vector2 position = CalculatePositionOnGrid(inventoryItem, posX, posY);
 
         rectTransform.localPosition = position;
-        inventoryItem.itemObject.PlayPickupSound();
+        inventoryItem.itemObject.PlayDropSound();
     }
 
     public Vector2 CalculatePositionOnGrid(InventoryItem inventoryItem, int posX, int posY){
