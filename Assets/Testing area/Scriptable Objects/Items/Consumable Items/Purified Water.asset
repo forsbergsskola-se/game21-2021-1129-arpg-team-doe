@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Purified Water
   m_EditorClassIdentifier: 
   Id: 6
-  itemIcon: {fileID: 21300000, guid: 3bd21342ff245be45a465edd6119520e, type: 3}
+  itemIcon: {fileID: 21300000, guid: 59e9f8272dcdfc0479acd771cf91912b, type: 3}
   width: 1
-  height: 1
+  height: 2
   type: 0
   name: Purified Water
   price: 25
