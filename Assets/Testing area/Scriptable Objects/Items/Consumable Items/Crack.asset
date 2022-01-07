@@ -27,8 +27,11 @@ MonoBehaviour:
       Data4: 2126485261
     Path: event:/CrackpipeDrop
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
-  description: Does not make you more eager to steal stuff. Probably. +5 REF, 120
+  description: 'Does not make you more eager to steal stuff. Probably. +5 REF, 120
     sec
+
+
+    Right-Click for Options'
   buffs: []
   toxicityAmount: 1
   buffDuration: 120
