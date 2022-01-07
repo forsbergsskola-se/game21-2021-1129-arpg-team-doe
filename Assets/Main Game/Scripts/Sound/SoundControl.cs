@@ -1,8 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 public class SoundControl : MonoBehaviour{
     FMOD.Studio.EventInstance Music;
     EnemyController[] _enemyMovements;
+
+    bool _fighting;
     public float soundIncrement{ get; set; }
     
     void Start(){
@@ -25,11 +28,18 @@ public class SoundControl : MonoBehaviour{
             }
         }
         var dist = enemy.isActiveAndEnabled ? enemy.distance : 20f;
-        var fighting = dist < 7;
+        _fighting = dist < 7;
         //Debug.Log($"Im the distance: {dist}");
-        //Debug.Log($"Im in combat: {fighting}"); TODO: remove these if tom needs to look at it.
+        //Debug.Log($"Im in combat: {_fighting}"); TODO: remove these if tom needs to look at it.
         Music.setParameterByName("DistanceFromEnemy", dist);
-        Music.setParameterByName("InCombat", dist < 7 ? 1 : 0);
+        Music.setParameterByName("InCombat", _fighting ? 1 : 0);
+        StartCoroutine(DelayCombatExit());
+    }
+
+    IEnumerator DelayCombatExit(){
+        if (_fighting){
+            yield return new WaitForSeconds(2);
+        }
     }
 
     void OnDestroy(){
