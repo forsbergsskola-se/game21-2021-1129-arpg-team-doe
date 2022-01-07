@@ -1,4 +1,5 @@
 using System.Collections;
+using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -117,7 +118,7 @@ public class PlayerController : MonoBehaviour{
                 Vector3 positionCloseToTarget = hit.point - (hit.point - transform.position).normalized;
                 MoveToInteractable(interactableObject, positionCloseToTarget);
                 _animationController.ChangeAnimationState(RUN);
-                _footstepInstance.start();
+                PlaySound();
             }
             return true;
         }
@@ -162,7 +163,7 @@ public class PlayerController : MonoBehaviour{
                         _fighter.CancelAttack();
                         StartCoroutine(ChangeCursorTemporary(validClickTexture,1f));
                         _animationController.ChangeAnimationState(RUN);
-                        _footstepInstance.start();
+                        PlaySound();
                     }
                     else{
                         StartCoroutine(ChangeCursorTemporary(invalidClickTexture,1f));
@@ -213,6 +214,12 @@ public class PlayerController : MonoBehaviour{
             _moveInstance.setParameterByName("MoveFeedback", parameter);
             _moveInstance.start();
             _hasPlayedSound = true;
+        }
+    }
+    public void PlaySound(){
+        _footstepInstance.getPlaybackState(out var playbackState);
+        if (playbackState == PLAYBACK_STATE.STOPPED){
+            _footstepInstance.start();  
         }
     }
 
