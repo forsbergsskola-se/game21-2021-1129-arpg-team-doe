@@ -7,14 +7,15 @@ public class UIStatScreen : MonoBehaviour{
     [SerializeField] Button applyButton;
     [SerializeField] GameObject SkillPointTextObject;
     [SerializeField] LevelingGameObject _playerLevel;
+    [SerializeField] UIStats _uiStats;
 
     int availableSkillPoints;
 
-    string SkillPointText;
+    TextMeshProUGUI SkillPointText;
 
     void Awake()
     {
-        SkillPointText = SkillPointTextObject.GetComponent<TextMeshProUGUI>().text;
+        SkillPointText = SkillPointTextObject.GetComponent<TextMeshProUGUI>();
     }
 
     void Start()
@@ -46,6 +47,6 @@ public class UIStatScreen : MonoBehaviour{
 
     public void SetSkillPointText()
     {
-        SkillPointText = ("Skill Points: " + availableSkillPoints.ToString()); //Skill points;
+        SkillPointText.text = ("Skill Points: " + availableSkillPoints.ToString()); 
     }
 }
