@@ -1,6 +1,7 @@
 using System.Collections;
 using FMODUnity;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 public class PlayerController : MonoBehaviour{
@@ -56,6 +57,10 @@ public class PlayerController : MonoBehaviour{
                 StartCoroutine(_health.HealthRegeneration());
             }
             return;
+        }
+        
+        if (EventSystem.current.IsPointerOverGameObject()){
+          return;
         }
 
         if (InteractWithPickup()){
