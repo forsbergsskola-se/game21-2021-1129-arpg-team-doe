@@ -13,7 +13,19 @@ MonoBehaviour:
   m_Name: Urn Loot Table
   m_EditorClassIdentifier: 
   table:
-  - drop: {fileID: 7092348782955867987, guid: 2c1c2674701834f40bb4953dfd7d3e7b, type: 3}
-    dropWeight: -1
-  - drop: {fileID: 3191504459453181586, guid: 93d5615d2cf77414090060a3775502c7, type: 3}
-    dropWeight: 1000
+  - drop: {fileID: 5700182911611578800, guid: beab71b0f25a1e34db4329e37bbbf76f, type: 3}
+    dropWeight: 1200
+  - drop: {fileID: 5700182911611578800, guid: 0fdf6cdfa20940c4a802e9219e6ce11a, type: 3}
+    dropWeight: 1200
+  - drop: {fileID: 5700182911611578800, guid: a37e5162a70dc524fb9afda20125e320, type: 3}
+    dropWeight: 1200
+  - drop: {fileID: 5700182911611578800, guid: 8c4caafea24901c4abf8766508242d26, type: 3}
+    dropWeight: 1200
+  - drop: {fileID: 5700182911611578800, guid: e600699858ba49644996f0f871ef82f3, type: 3}
+    dropWeight: 1200
+  - drop: {fileID: 5700182911611578800, guid: f7ace25c9200af44c8ed8e3096ac5108, type: 3}
+    dropWeight: 65
+  - drop: {fileID: 5700182911611578800, guid: 7ac3a13fae5b58b47b8c0a8a6b7170cd, type: 3}
+    dropWeight: 400
+  - drop: {fileID: 5700182911611578800, guid: 38b626b2874bb9a46a905087e19f3573, type: 3}
+    dropWeight: 35

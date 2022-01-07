@@ -4,6 +4,7 @@ using UnityEngine;
 public class SoundControl : MonoBehaviour{
     FMOD.Studio.EventInstance _music;
     EnemyController[] _enemyMovements;
+    EnemyController enemy;
 
     bool _fighting;
     public float SoundIncrement{ get; set; }
@@ -13,6 +14,7 @@ public class SoundControl : MonoBehaviour{
         _music = FMODUnity.RuntimeManager.CreateInstance("event:/MusicCrypt");
         _music.start();
         _music.release();
+        enemy = _enemyMovements[0];
         InvokeRepeating(nameof(CombatMusic), 0f, 1f);
     }
     
@@ -21,7 +23,6 @@ public class SoundControl : MonoBehaviour{
     }
 
     void CombatMusic(){
-        EnemyController enemy = _enemyMovements[0];
         foreach (var VARIABLE in _enemyMovements){
             if (enemy.distance > VARIABLE.distance){
                 enemy = VARIABLE;
