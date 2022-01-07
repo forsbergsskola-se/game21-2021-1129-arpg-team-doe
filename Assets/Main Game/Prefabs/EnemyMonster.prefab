@@ -559,10 +559,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.9661858
+  m_Radius: 0.82
+  m_Height: 2.49
   m_Direction: 1
-  m_Center: {x: 0, y: 0.86123335, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!195 &8972526659047141893
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -802,6 +802,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToVanish: 5
+  deathSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &2123096904
 MonoBehaviour:
   m_ObjectHideFlags: 0
