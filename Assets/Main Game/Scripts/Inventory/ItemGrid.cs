@@ -53,7 +53,7 @@ public class ItemGrid : MonoBehaviour{
     }
 
     public bool PlaceItem(InventoryItem inventoryItem, int posX, int posY, ref InventoryItem _overlapItem){
-        
+        Debug.Log(inventoryItem);
         if (BoundaryCheck(posX,posY,inventoryItem.WIDTH,inventoryItem.HEIGHT) == false){
             return false;
         }
