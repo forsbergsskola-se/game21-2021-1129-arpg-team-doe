@@ -169,11 +169,19 @@ MonoBehaviour:
   isRegenerating: 0
   TakeDamageReference:
     Guid:
+<<<<<<< Updated upstream
       Data1: -1021483213
       Data2: 1141013879
       Data3: 534693036
       Data4: 95020224
     Path: event:/WoodenCrateDestroy
+=======
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+>>>>>>> Stashed changes
 --- !u!114 &2995505372112475414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,4 +262,4 @@ MonoBehaviour:
   lootTable: {fileID: 11400000, guid: 9844181e870ab724fa997d6ae888cb2b, type: 2}
   cash: {fileID: 6458768576707232289, guid: 5bb6ad687c3f0034e86023865012b2b3, type: 3}
   spreadRange: 2
-  maxRollCount: 3
+  maxRollCount: 5

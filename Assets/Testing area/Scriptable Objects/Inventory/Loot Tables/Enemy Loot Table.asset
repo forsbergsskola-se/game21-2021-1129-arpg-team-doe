@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 012aff261baa20b44b4b149247ba55da, type: 3}
+  m_Name: Enemy Loot Table
+  m_EditorClassIdentifier: 
+  table:
+  - drop: {fileID: 5700182911611578800, guid: c0ca58b79f1bb76409e90cbc2dfca610, type: 3}
+    dropWeight: 2800
+  - drop: {fileID: 5700182911611578800, guid: 8ffb010a8787d1b40850b508634e975d, type: 3}
+    dropWeight: 1200
+  - drop: {fileID: 5700182911611578800, guid: 24cadade76374394a810392c3ed26358, type: 3}
+    dropWeight: 1200
+  - drop: {fileID: 5700182911611578800, guid: caf267c671e576e44a96da2c437264ed, type: 3}
+    dropWeight: 1200
+  - drop: {fileID: 5700182911611578800, guid: 38b626b2874bb9a46a905087e19f3573, type: 3}
+    dropWeight: 35
+  - drop: {fileID: 5700182911611578800, guid: 170fa39fd6f0f754084b52304b964d1b, type: 3}
+    dropWeight: 1200
+  - drop: {fileID: 5700182911611578800, guid: b89009aa022b2b74f9103c332bb9f4a6, type: 3}
+    dropWeight: 35
+  - drop: {fileID: 5700182911611578800, guid: beab71b0f25a1e34db4329e37bbbf76f, type: 3}
+    dropWeight: 1200
+  - drop: {fileID: 5700182911611578800, guid: 0fdf6cdfa20940c4a802e9219e6ce11a, type: 3}
+    dropWeight: 1200
+  - drop: {fileID: 5700182911611578800, guid: 90ccd2759e9c92a42a0a10c84658318c, type: 3}
+    dropWeight: 1200
+  - drop: {fileID: 5700182911611578800, guid: 8029fa82360722e4a9817d1ed4187927, type: 3}
+    dropWeight: 1200
+  - drop: {fileID: 5700182911611578800, guid: 88da57fbe37d9d349943bbf6122aa2d0, type: 3}
+    dropWeight: 1200
+  - drop: {fileID: 5700182911611578800, guid: 7ac3a13fae5b58b47b8c0a8a6b7170cd, type: 3}
+    dropWeight: 400
+  - drop: {fileID: 5700182911611578800, guid: f7ace25c9200af44c8ed8e3096ac5108, type: 3}
+    dropWeight: 400
