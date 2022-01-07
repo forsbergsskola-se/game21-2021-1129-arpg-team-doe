@@ -715,6 +715,10 @@ MonoBehaviour:
   parameter: 0
   stopRegenerateThreshold: 0
   healthRegen: 10
+  maxHP: 40
+  _xpDrop: {fileID: 1511514187}
+  _xpDropEvent: {fileID: 11400000, guid: 44b23296178544384ad6b8052486b374, type: 2}
+  isRegenerating: 0
   TakeDamageReference:
     Guid:
       Data1: -1548147627
@@ -722,10 +726,6 @@ MonoBehaviour:
       Data3: -1037099638
       Data4: 1873771730
     Path: event:/PlayerTakingDMG
-  maxHP: 40
-  _xpDrop: {fileID: 1511514187}
-  _xpDropEvent: {fileID: 11400000, guid: 44b23296178544384ad6b8052486b374, type: 2}
-  isRegenerating: 0
 --- !u!114 &9190938594607513063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -752,6 +752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   critDamageMultiplier: 1.5
+  attackIntervalMultiplier: 1.5
   wepDamageType: {fileID: 0}
   critReference:
     Guid:
@@ -826,7 +827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _xpDropEvent: {fileID: 11400000, guid: 44b23296178544384ad6b8052486b374, type: 2}
-  xpAmount: 20
+  xpAmount: 50
 --- !u!114 &1511514222
 MonoBehaviour:
   m_ObjectHideFlags: 0
