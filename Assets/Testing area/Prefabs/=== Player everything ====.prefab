@@ -5338,6 +5338,7 @@ MonoBehaviour:
   weaponDamage: 10
   lowImpactLevelMultiplier: 0.005
   lowImpactLuckMultiplier: 0.005
+  toughnessDamageReductionMultiplier: 0.25
   highImpactLevelMultiplier: 0.01
   vulnerabilities:
   - {fileID: 11400000, guid: 3e87e5d953dae5a469e386c015c103e1, type: 2}
