@@ -9,7 +9,7 @@ public class SoundIncrement : MonoBehaviour{
 
     public void OnTriggerEnter(Collider other){
         if (other.CompareTag("Player")){
-            _soundControl.soundIncrement++;
+            _soundControl.SoundIncrement++;
             _soundControl.Progress(); 
             Destroy(gameObject);
         }

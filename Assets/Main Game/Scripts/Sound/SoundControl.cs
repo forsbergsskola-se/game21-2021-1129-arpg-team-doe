@@ -2,22 +2,22 @@ using System.Collections;
 using UnityEngine;
 
 public class SoundControl : MonoBehaviour{
-    FMOD.Studio.EventInstance Music;
+    FMOD.Studio.EventInstance _music;
     EnemyController[] _enemyMovements;
 
     bool _fighting;
-    public float soundIncrement{ get; set; }
+    public float SoundIncrement{ get; set; }
     
     void Start(){
         _enemyMovements = FindObjectsOfType<EnemyController>();
-        Music = FMODUnity.RuntimeManager.CreateInstance("event:/MusicCrypt");
-        Music.start();
-        Music.release();
+        _music = FMODUnity.RuntimeManager.CreateInstance("event:/MusicCrypt");
+        _music.start();
+        _music.release();
         InvokeRepeating(nameof(CombatMusic), 0f, 1f);
     }
     
     public void Progress(){
-        Music.setParameterByName("PlayerProgress", soundIncrement);
+        _music.setParameterByName("PlayerProgress", SoundIncrement);
     }
 
     void CombatMusic(){
@@ -31,8 +31,8 @@ public class SoundControl : MonoBehaviour{
         _fighting = dist < 7;
         //Debug.Log($"Im the distance: {dist}");
         //Debug.Log($"Im in combat: {_fighting}"); TODO: remove these if tom needs to look at it.
-        Music.setParameterByName("DistanceFromEnemy", dist);
-        Music.setParameterByName("InCombat", _fighting ? 1 : 0);
+        _music.setParameterByName("DistanceFromEnemy", dist);
+        _music.setParameterByName("InCombat", _fighting ? 1 : 0);
         StartCoroutine(DelayCombatExit());
     }
 
@@ -43,6 +43,6 @@ public class SoundControl : MonoBehaviour{
     }
 
     void OnDestroy(){
-        Music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        _music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 }

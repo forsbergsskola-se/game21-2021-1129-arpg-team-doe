@@ -1,8 +1,13 @@
 using System.Collections;
+using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, IHealthListener{
    [SerializeField] float timeToVanish = 5f;
+   [SerializeField] EventReference deathSound;
+
+   EventInstance _deathInstance;
    CapsuleCollider _capsuleCollider;
    Fighter _fighter;
    EnemyController _enemyMovement;
@@ -17,6 +22,7 @@ public class Enemy : MonoBehaviour, IHealthListener{
       _enemyMovement = GetComponent<EnemyController>();
       _dropTest = GetComponent<DropTest>();
       _animationController = GetComponentInChildren<AnimationController>();
+      _deathInstance = RuntimeManager.CreateInstance(deathSound);
    }
    
    void Die(bool isAlive){
@@ -27,6 +33,8 @@ public class Enemy : MonoBehaviour, IHealthListener{
          _enemyMovement.enabled = false;
          _animationController.ChangeAnimationState(DIE);
          _dropTest.InstantiateItem();
+         _deathInstance.start();
+         _deathInstance.release();
          StartCoroutine(CorpseVanish(timeToVanish));
       }
    }
