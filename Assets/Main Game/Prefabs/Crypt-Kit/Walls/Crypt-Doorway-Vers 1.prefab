@@ -20,8 +20,8 @@ GameObject:
   m_Name: Crypt-Doorway-Vers 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6272300592998699402
 Transform:
@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 7672806830668588250}
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 183.49994, y: 149.99997, z: 162.85997}
+  m_LocalScale: {x: 188.81, y: 250.6, z: 162.85997}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5816849601553259868}
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b81ba6352fb564c4cbcf97267f3a0993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _locked: 0
+  _locked: 1
   DoorReference:
     Guid:
       Data1: -371116407
