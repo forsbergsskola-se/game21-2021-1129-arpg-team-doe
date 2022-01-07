@@ -27,8 +27,11 @@ MonoBehaviour:
       Data4: -1335320419
     Path: event:/PotionDrop
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
-  description: If you have any rashes or a scratch somewhere, use this. Restores
+  description: 'If you have any rashes or a scratch somewhere, use this. Restores
     50 Health.
+
+
+    Right-Click for Options'
   buffs: []
   toxicityAmount: 0
   restoreHealthValue: 50
