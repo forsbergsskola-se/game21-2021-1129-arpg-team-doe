@@ -27,9 +27,12 @@ MonoBehaviour:
       Data4: 2137709851
     Path: event:/BottleDrop
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
-  description: This water has been purified with these steps, Boiling for 3-5 minutes,
+  description: 'This water has been purified with these steps, Boiling for 3-5 minutes,
     Disinfect with household liquid bleach with atleast 5,25% sodium hypochlorite.
-    Restores 15 health.k
+    Restores 15 health.
+
+
+    Right-Click for Options'
   buffs: []
   toxicityAmount: 0
   restoreHealthValue: 15

@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0cbb0b3281e70d47ad7bf034c1451de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toughness: 100
+  toughness: 0
   strength: 0
   dexterity: 0
   knowledge: 0
@@ -169,6 +169,7 @@ MonoBehaviour:
   weaponDamage: 0
   lowImpactLevelMultiplier: 0
   lowImpactLuckMultiplier: 0
+  toughnessDamageReductionMultiplier: 0.25
   highImpactLevelMultiplier: 0
   vulnerabilities: []
   vulnerabilityDamageModifier: 0

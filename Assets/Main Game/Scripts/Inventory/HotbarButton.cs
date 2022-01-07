@@ -91,6 +91,7 @@ public class HotbarButton : MonoBehaviour
         }
         button.image.sprite = itemObject.itemIcon;
         _id = itemObject.Id;
+        _inventoryController.selectedItem = _inventoryItem;
         _inventoryController.PlaceItem(_inventoryController.pickUpPosition);
     }
 
@@ -98,6 +99,7 @@ public class HotbarButton : MonoBehaviour
         OnButtonClicked?.Invoke(_keyNumber);
         if (_inventoryItem == null){
             Debug.Log("Hotbar button need to be assigned first");
+            ClearButton();
             return;
         }
         _inventoryController.selectedItem = _inventoryItem;

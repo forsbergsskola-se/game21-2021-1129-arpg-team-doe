@@ -27,8 +27,11 @@ MonoBehaviour:
       Data4: -96976860
     Path: event:/TinCanDrop
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
-  description: When you are out of food and no options left... This might be your
+  description: 'When you are out of food and no options left... This might be your
     only choice.
+
+
+    Right-Click for Options'
   buffs: []
   toxicityAmount: 0
   restoreHealthValue: -5

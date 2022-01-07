@@ -15,7 +15,7 @@ MonoBehaviour:
   Id: 20
   itemIcon: {fileID: 21300000, guid: 4a284d519166847f6b04099b14b3aea6, type: 3}
   width: 2
-  height: 2
+  height: 1
   type: 0
   name: Med Kit
   price: 30
@@ -27,8 +27,11 @@ MonoBehaviour:
       Data4: -1335320419
     Path: event:/PotionDrop
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
-  description: If you have any rashes or a scratch somewhere, use this. Restores
+  description: 'If you have any rashes or a scratch somewhere, use this. Restores
     50 Health.
+
+
+    Right-Click for Options'
   buffs: []
   toxicityAmount: 0
   restoreHealthValue: 50
