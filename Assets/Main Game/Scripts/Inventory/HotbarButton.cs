@@ -99,6 +99,7 @@ public class HotbarButton : MonoBehaviour
         OnButtonClicked?.Invoke(_keyNumber);
         if (_inventoryItem == null){
             Debug.Log("Hotbar button need to be assigned first");
+            ClearButton();
             return;
         }
         _inventoryController.selectedItem = _inventoryItem;
