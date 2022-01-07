@@ -1,3 +1,4 @@
+using System.Collections;
 using FMOD.Studio;
 using TMPro;
 using UnityEngine;
@@ -11,8 +12,7 @@ public class InventoryController : MonoBehaviour
     [SerializeField] GameObject rightClickMenu;
     [SerializeField] GameObject rightClickMenuSlots;
     [SerializeField] GameObject spawnedObject;
-    
-    
+
     [SerializeField] GameObject itemDisplayInfo;
     [SerializeField] int maxDisplayWidth = 200;
     //Item Description
@@ -39,6 +39,7 @@ public class InventoryController : MonoBehaviour
     public GameObject canvasInventory;
     [HideInInspector]public InventoryItem selectedItem;
     public Vector2Int pickUpPosition;
+    public Vector2Int pickUpRightPosition;
     public FMODUnity.EventReference inventoryReference;
     public InventoryItem lastRightClickedItem;
     GameObject DroppedObject{ get; set; }
@@ -165,8 +166,14 @@ public class InventoryController : MonoBehaviour
         }
     }
     
+    public void PlaceItemButton(Vector2Int tileGridPosition){
+        bool complete = selectedItemGrid.PlaceItemButton(lastRightClickedItem, tileGridPosition.x, tileGridPosition.y);
+        if (complete){
+            lastRightClickedItem = null;
+        }
+    }
+    
     void MouseOver(){
-        
         var tileGridPosition = GetTileGridPosition();
         if (!selectedItemGrid.IsOutOfInventoryGrid(tileGridPosition.x, tileGridPosition.y))
         {
@@ -176,9 +183,7 @@ public class InventoryController : MonoBehaviour
         else if (itemDisplayTextBackground.activeInHierarchy)
         {
             DeactivateItemInformationDisplay();
-        }  
-        
-        
+        }
     }
 
     void DisplayItemInformation()
@@ -314,19 +319,22 @@ public class InventoryController : MonoBehaviour
 
     void RightMouseButtonPress(){
         var tileGridPosition = GetTileGridPosition();
+        pickUpRightPosition = tileGridPosition;
+
         _hoveredItem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
         lastRightClickedItem = _hoveredItem;
-        if (_hoveredItem != null)
-        { 
-            rightClickMenu.SetActive(true);
-            rightClickMenuSlots.SetActive(false);
-            rightClickMenuHolder.transform.position = lastRightClickedItem.transform.position;
+        if (_hoveredItem != null){
+            StartCoroutine(ShowRightClickMenu());
         }
-        else{
-            rightClickMenu.SetActive(false); 
-            rightClickMenuSlots.SetActive(false);
-            
-        }
+    }
+
+    IEnumerator ShowRightClickMenu(){
+        rightClickMenu.SetActive(true);
+        rightClickMenuSlots.SetActive(false);
+        rightClickMenuHolder.transform.position = lastRightClickedItem.transform.position;
+        yield return new WaitForSeconds(5f);
+        rightClickMenu.SetActive(false); 
+        rightClickMenuSlots.SetActive(false);
     }
 
     Vector2Int GetTileGridPosition(){
@@ -349,8 +357,6 @@ public class InventoryController : MonoBehaviour
         if (selectedItem != null){
             _rectTransform = selectedItem.GetComponent<RectTransform>();
         }
-        
-        
     }
 
     void ItemIconDrag(){

@@ -71,9 +71,13 @@ public class ItemGrid : MonoBehaviour{
 
         return true;
     }
+    
+    public bool PlaceItemButton(InventoryItem inventoryItem, int posX, int posY){
+        PlaceItem(inventoryItem, posX, posY);
+        return true;
+    }
 
     public void PlaceItem(InventoryItem inventoryItem, int posX, int posY){
-        
         RectTransform rectTransform = inventoryItem.GetComponent<RectTransform>();
         rectTransform.SetParent(_rectTransform);
 
