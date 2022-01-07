@@ -125,11 +125,11 @@ MonoBehaviour:
   isRegenerating: 0
   TakeDamageReference:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 669435313
+      Data2: 1205610412
+      Data3: -2039444083
+      Data4: -1904916957
+    Path: event:/UrnDestroy
 --- !u!114 &2013919976991523665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,6 +253,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lootTable: {fileID: 11400000, guid: 539df83335d0cb74ea85df007b41e038, type: 2}
-  cash: {fileID: 6458768576707232289, guid: 5bb6ad687c3f0034e86023865012b2b3, type: 3}
+  cash: {fileID: 6458768576707232289, guid: 95c88a0e57207324e9fc7d8ae298da71, type: 3}
   spreadRange: 1
   maxRollCount: 2

@@ -127,7 +127,6 @@ MonoBehaviour:
   attackSpeed: 0
   critChance: 0
   weaponDamage: 0
-  defaultDamage: 0
   lowImpactLevelMultiplier: 0
   lowImpactLuckMultiplier: 0
   highImpactLevelMultiplier: 0
@@ -164,17 +163,17 @@ MonoBehaviour:
   parameter: 0
   stopRegenerateThreshold: 0
   healthRegen: 10
-  TakeDamageReference:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
   maxHP: 20
   _xpDrop: {fileID: 0}
   _xpDropEvent: {fileID: 0}
   isRegenerating: 0
+  TakeDamageReference:
+    Guid:
+      Data1: -1021483213
+      Data2: 1141013879
+      Data3: 534693036
+      Data4: 95020224
+    Path: event:/WoodenCrateDestroy
 --- !u!114 &2995505372112475414
 MonoBehaviour:
   m_ObjectHideFlags: 0
