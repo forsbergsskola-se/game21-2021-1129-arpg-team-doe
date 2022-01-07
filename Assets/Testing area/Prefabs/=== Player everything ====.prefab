@@ -8577,6 +8577,8 @@ MonoBehaviour:
       Data4: 2082565317
     Path: event:/OpenInventory
   lastRightClickedItem: {fileID: 0}
+  _hoveredItem: {fileID: 0}
+  pickUpRightPosition: {x: 0, y: 0}
 --- !u!114 &4372569159284212187
 MonoBehaviour:
   m_ObjectHideFlags: 0
