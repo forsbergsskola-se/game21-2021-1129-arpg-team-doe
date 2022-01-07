@@ -102,6 +102,7 @@ public class PlayerController : MonoBehaviour{
             if (enemy == null) continue;
             if (Input.GetMouseButton(0)){
                 _fighter.GetAttackTarget(enemy);
+                _footstepInstance.stop(STOP_MODE.ALLOWFADEOUT);
             }
             return true;
         }
@@ -111,7 +112,7 @@ public class PlayerController : MonoBehaviour{
     bool InteractWithInteractable(){
         RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
         foreach (RaycastHit hit in hits){
-            GameObject interactableObject = hit.transform.GetComponent<InteractableObject>()?.gameObject; //TODO: Why not getcomponent<IInteractable> ?
+            GameObject interactableObject = hit.transform.GetComponent<InteractableObject>()?.gameObject;
             if (interactableObject == null) continue;
             if (Input.GetMouseButton(0)){
                 StartCoroutine(GoToPositionThenInteract(hit));
@@ -210,7 +211,7 @@ public class PlayerController : MonoBehaviour{
 
     void PlayMoveFeedback(float parameter){
         if (_hasPlayedSound == false){
-            _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
+            _moveInstance = RuntimeManager.CreateInstance("event:/Move");
             _moveInstance.setParameterByName("MoveFeedback", parameter);
             _moveInstance.start();
             _hasPlayedSound = true;
