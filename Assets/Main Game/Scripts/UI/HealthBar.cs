@@ -14,7 +14,7 @@ public class HealthBar : MonoBehaviour{
     }
 
     void Update(){
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Camera.main.transform.rotation, 1f);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Camera.main.transform.rotation, 10f);
         transform.position = _parent.transform.position + _offset;
         SetSliderCurrentHealth(_health.CurrentHP);
     }
