@@ -804,11 +804,11 @@ MonoBehaviour:
   timeToVanish: 5
   deathSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1430334087
+      Data2: 1254849518
+      Data3: -1493764467
+      Data4: 268647724
+    Path: event:/Enemydeath
 --- !u!114 &2123096904
 MonoBehaviour:
   m_ObjectHideFlags: 0

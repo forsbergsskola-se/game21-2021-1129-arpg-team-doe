@@ -116,27 +116,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7339576714a584429c762c90bef9491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fmodEvent:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
   parameter: 0
   stopRegenerateThreshold: 0
   healthRegen: 10
-  TakeDamageReference:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
   maxHP: 10
   _xpDrop: {fileID: 0}
   _xpDropEvent: {fileID: 0}
   isRegenerating: 0
+  TakeDamageReference:
+    Guid:
+      Data1: 669435313
+      Data2: 1205610412
+      Data3: -2039444083
+      Data4: -1904916957
+    Path: event:/UrnDestroy
 --- !u!114 &2013919976991523665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +167,6 @@ MonoBehaviour:
   attackSpeed: 0
   critChance: 0
   weaponDamage: 0
-  defaultDamage: 0
   lowImpactLevelMultiplier: 0
   lowImpactLuckMultiplier: 0
   highImpactLevelMultiplier: 0
