@@ -91,7 +91,7 @@ public class HotbarButton : MonoBehaviour
         }
         button.image.sprite = itemObject.itemIcon;
         _id = itemObject.Id;
-        _inventoryController.PlaceItemButton(_inventoryController.pickUpRightPosition);
+        _inventoryController.PlaceItemBackWhenButtonAssigned(_inventoryController.pickUpRightClickPosition);
     }
 
     void HandleClick(){

@@ -39,7 +39,7 @@ public class InventoryController : MonoBehaviour
     public GameObject canvasInventory;
     [HideInInspector]public InventoryItem selectedItem;
     public Vector2Int pickUpPosition;
-    public Vector2Int pickUpRightPosition;
+    public Vector2Int pickUpRightClickPosition;
     public FMODUnity.EventReference inventoryReference;
     public InventoryItem lastRightClickedItem;
     GameObject DroppedObject{ get; set; }
@@ -166,8 +166,9 @@ public class InventoryController : MonoBehaviour
         }
     }
     
-    public void PlaceItemButton(Vector2Int tileGridPosition){
-        bool complete = selectedItemGrid.PlaceItemButton(lastRightClickedItem, tileGridPosition.x, tileGridPosition.y);
+    public void PlaceItemBackWhenButtonAssigned(Vector2Int tileGridPosition){
+        bool complete = selectedItemGrid.PlaceItemBackWhenButtonAssigned(lastRightClickedItem, 
+            tileGridPosition.x, tileGridPosition.y);
         if (complete){
             lastRightClickedItem = null;
         }
@@ -319,10 +320,10 @@ public class InventoryController : MonoBehaviour
 
     void RightMouseButtonPress(){
         var tileGridPosition = GetTileGridPosition();
-        pickUpRightPosition = tileGridPosition;
-
         _hoveredItem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
         lastRightClickedItem = _hoveredItem;
+        pickUpRightClickPosition.x = lastRightClickedItem.onGridPositionX;
+        pickUpRightClickPosition.y = lastRightClickedItem.onGridPositionY;
         if (_hoveredItem != null){
             StartCoroutine(ShowRightClickMenu());
         }

@@ -53,16 +53,13 @@ public class ItemGrid : MonoBehaviour{
     }
 
     public bool PlaceItem(InventoryItem inventoryItem, int posX, int posY, ref InventoryItem _overlapItem){
-        Debug.Log(inventoryItem);
         if (BoundaryCheck(posX,posY,inventoryItem.WIDTH,inventoryItem.HEIGHT) == false){
             return false;
         }
-
         if (OverlapCheck(posX,posY, inventoryItem.WIDTH, inventoryItem.HEIGHT, ref _overlapItem) == false){
             _overlapItem = null;
             return false;
         }
-
         if (_overlapItem != null){
             CleanGridReference(_overlapItem);
         }
@@ -72,7 +69,7 @@ public class ItemGrid : MonoBehaviour{
         return true;
     }
     
-    public bool PlaceItemButton(InventoryItem inventoryItem, int posX, int posY){
+    public bool PlaceItemBackWhenButtonAssigned(InventoryItem inventoryItem, int posX, int posY){
         PlaceItem(inventoryItem, posX, posY);
         return true;
     }
