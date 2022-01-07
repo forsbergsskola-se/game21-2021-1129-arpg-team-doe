@@ -3,7 +3,6 @@ using FMOD.Studio;
 
 public interface IInteractSound{
     void PlaySound(float parameter){
-        PLAYBACK_STATE playback_state;
     }
 }
 
