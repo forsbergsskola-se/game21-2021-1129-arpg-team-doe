@@ -5498,6 +5498,13 @@ MonoBehaviour:
   invalidClickTexture: {fileID: 2800000, guid: 53c0409fc6abc4b2aa327c1d0430cb68, type: 3}
   standardCursorTexture: {fileID: 2800000, guid: 036b493ef9cad4882999b895da76e4ef, type: 3}
   defeatedThreshold: 0
+  footstepSound:
+    Guid:
+      Data1: -10780775
+      Data2: 1145515645
+      Data3: -1942636363
+      Data4: -1882513318
+    Path: event:/Footsteps
 --- !u!114 &5675631719487080362
 MonoBehaviour:
   m_ObjectHideFlags: 0
