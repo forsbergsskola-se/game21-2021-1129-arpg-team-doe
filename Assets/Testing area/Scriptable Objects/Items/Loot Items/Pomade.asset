@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pomade
   m_EditorClassIdentifier: 
   Id: 26
-  itemIcon: {fileID: 21300000, guid: 02b81bccd2a0bf44095a6014522b3128, type: 3}
+  itemIcon: {fileID: 21300000, guid: 575a44ee452913549a5c558c38c1f548, type: 3}
   width: 1
   height: 1
   type: 4
