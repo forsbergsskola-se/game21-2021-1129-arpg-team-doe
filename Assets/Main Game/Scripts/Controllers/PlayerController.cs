@@ -142,6 +142,7 @@ public class PlayerController : MonoBehaviour{
         InventoryItem inventoryItem = pickUpGameObject.GetComponent<InventoryItem>();
         Destroy(pickUpGameObject);
         _inventoryController.selectedItem = _inventoryController.CreateItem(inventoryItem.itemObject.Id);
+        _inventoryController.selectedItem.itemObject.PlayPickupSound();
     }
 
     void MoveToCursor(){
