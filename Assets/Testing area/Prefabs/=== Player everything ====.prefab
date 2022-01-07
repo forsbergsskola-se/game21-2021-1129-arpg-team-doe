@@ -7311,8 +7311,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   applyButton: {fileID: 502113752324850772}
-  SkillPointTextObject: {fileID: 0}
-  _playerLevel: {fileID: 0}
 --- !u!1 &6598838207175824988
 GameObject:
   m_ObjectHideFlags: 0
