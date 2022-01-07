@@ -9,16 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 179a9598111edaf4496551596ffe7d50, type: 3}
-  m_Name: Used Sock
+  m_Script: {fileID: 11500000, guid: d09408c5fcef1c04198aa03e7cf84e8a, type: 3}
+  m_Name: Diamond Sword
   m_EditorClassIdentifier: 
-  Id: 24
-  itemIcon: {fileID: 21300000, guid: b37ec804b5a92fd45a10eddd8f58ca03, type: 3}
+  Id: 28
+  itemIcon: {fileID: 21300000, guid: 4f3b869b38ba1c446a692e287d72cf6c, type: 3}
   width: 1
   height: 1
-  type: 4
-  name: Used Sock
-  price: 1
+  type: 2
+  name: Diamond Sword
+  price: 1000
   dropSound:
     Guid:
       Data1: 90928835
@@ -27,6 +27,14 @@ MonoBehaviour:
       Data4: -981507709
     Path: event:/InventoryDrop
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
-  description: I would not use this sock, especially if it belonged to a man. It
-    has a funny smell to it.
+  description: 'Nice blade! Could probably be used until the end! '
   buffs: []
+  attackSpeed: 25
+  damage: 50
+  attackSpeedBuff: 0
+  damageType: {fileID: 11400000, guid: 7cbed089f1a083949aea852b76d322f1, type: 2}
+  toughnessBuff: 10
+  strengthBuff: 10
+  dexterityBuff: 10
+  knowledgeBuff: 10
+  luckBuff: 10

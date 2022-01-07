@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 179a9598111edaf4496551596ffe7d50, type: 3}
-  m_Name: Used Sock
+  m_Name: Fork
   m_EditorClassIdentifier: 
-  Id: 24
-  itemIcon: {fileID: 21300000, guid: b37ec804b5a92fd45a10eddd8f58ca03, type: 3}
+  Id: 25
+  itemIcon: {fileID: 21300000, guid: 68f1dc20ccc78455999db0fa6ba64dbc, type: 3}
   width: 1
   height: 1
   type: 4
-  name: Used Sock
+  name: Fork
   price: 1
   dropSound:
     Guid:
@@ -27,6 +27,6 @@ MonoBehaviour:
       Data4: -981507709
     Path: event:/InventoryDrop
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
-  description: I would not use this sock, especially if it belonged to a man. It
-    has a funny smell to it.
+  description: Just a normal fork, I would not eat with this one though, never know
+    where this has been.
   buffs: []
