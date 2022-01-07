@@ -253,6 +253,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lootTable: {fileID: 11400000, guid: 539df83335d0cb74ea85df007b41e038, type: 2}
-  cash: {fileID: 6458768576707232289, guid: 95c88a0e57207324e9fc7d8ae298da71, type: 3}
+  cash: {fileID: 6458768576707232289, guid: 5bb6ad687c3f0034e86023865012b2b3, type: 3}
   spreadRange: 1
-  maxRollCount: 2
+  maxRollCount: 5
