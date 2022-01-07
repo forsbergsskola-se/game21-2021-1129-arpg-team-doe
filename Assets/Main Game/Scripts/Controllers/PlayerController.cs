@@ -9,8 +9,10 @@ public class PlayerController : MonoBehaviour{
     [SerializeField] Texture2D invalidClickTexture;
     [SerializeField] Texture2D standardCursorTexture;
     [SerializeField] int defeatedThreshold = 40;
+    [SerializeField] EventReference footstepSound;
 
     FMOD.Studio.EventInstance _moveInstance;
+    FMOD.Studio.EventInstance _footstepInstance;
     Movement _movement;
     Statistics _statistics;
     Health _health;
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour{
         _animationController = GetComponentInChildren<AnimationController>();
         _fighter = GetComponent<Fighter>();
         _inventoryController = FindObjectOfType<InventoryController>();
+        _footstepInstance = RuntimeManager.CreateInstance(footstepSound);
     }
 
     void Start(){
@@ -114,6 +117,7 @@ public class PlayerController : MonoBehaviour{
                 Vector3 positionCloseToTarget = hit.point - (hit.point - transform.position).normalized;
                 MoveToInteractable(interactableObject, positionCloseToTarget);
                 _animationController.ChangeAnimationState(RUN);
+                _footstepInstance.start();
             }
             return true;
         }
@@ -158,6 +162,7 @@ public class PlayerController : MonoBehaviour{
                         _fighter.CancelAttack();
                         StartCoroutine(ChangeCursorTemporary(validClickTexture,1f));
                         _animationController.ChangeAnimationState(RUN);
+                        _footstepInstance.start();
                     }
                     else{
                         StartCoroutine(ChangeCursorTemporary(invalidClickTexture,1f));
@@ -169,6 +174,7 @@ public class PlayerController : MonoBehaviour{
                 PlayMoveFeedback(1f);
                 StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
                 _animationController.ChangeAnimationState(IDLE);
+                _footstepInstance.stop(STOP_MODE.ALLOWFADEOUT);
             }
         }
         else if (Input.GetMouseButtonUp(0)){
@@ -180,6 +186,7 @@ public class PlayerController : MonoBehaviour{
         if (_movement._navMeshAgent.remainingDistance < _movement._navMeshAgent.stoppingDistance){
             _movement.StopMoving();
             _animationController.ChangeAnimationState(IDLE);
+            _footstepInstance.stop(STOP_MODE.ALLOWFADEOUT);
         }
     }
 
