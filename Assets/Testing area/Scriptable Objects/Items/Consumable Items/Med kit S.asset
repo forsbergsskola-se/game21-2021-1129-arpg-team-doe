@@ -15,7 +15,7 @@ MonoBehaviour:
   Id: 20
   itemIcon: {fileID: 21300000, guid: 4a284d519166847f6b04099b14b3aea6, type: 3}
   width: 2
-  height: 2
+  height: 1
   type: 0
   name: Med Kit
   price: 30
