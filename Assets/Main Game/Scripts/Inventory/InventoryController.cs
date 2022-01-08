@@ -347,7 +347,8 @@ public class InventoryController : MonoBehaviour
     IEnumerator ShowRightClickMenu(){
         rightClickMenu.SetActive(true);
         rightClickMenuSlots.SetActive(false);
-        rightClickMenuHolder.transform.position = lastRightClickedItem.transform.position;
+        Vector3 offset = new Vector3(0, -40, 0);
+        rightClickMenuHolder.transform.position = lastRightClickedItem.transform.position + offset;
         yield return new WaitForSeconds(5f);
         rightClickMenu.SetActive(false); 
         rightClickMenuSlots.SetActive(false);
