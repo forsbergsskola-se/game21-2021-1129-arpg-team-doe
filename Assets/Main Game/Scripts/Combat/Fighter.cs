@@ -64,8 +64,8 @@ public class Fighter : MonoBehaviour, IInteractSound{
         if (_combatTarget == null){
             return;
         }
-
-        if (!_movement.pathFound){
+        
+        if (!_movement.pathFound && _combatTarget.GetComponentInChildren<Enemy>()){ //TODO: why enemy 5&7 can't find path
             return;
         }
         
