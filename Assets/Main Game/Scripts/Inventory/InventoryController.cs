@@ -12,7 +12,8 @@ public class InventoryController : MonoBehaviour
     [SerializeField] GameObject rightClickMenu;
     [SerializeField] GameObject rightClickMenuSlots;
     [SerializeField] GameObject spawnedObject;
-
+    [SerializeField] InventoryObject playerInventory;
+    
     [SerializeField] GameObject itemDisplayInfo;
     [SerializeField] int maxDisplayWidth = 200;
     //Item Description
@@ -37,11 +38,12 @@ public class InventoryController : MonoBehaviour
     }
 
     public GameObject canvasInventory;
-    [HideInInspector]public InventoryItem selectedItem;
-    public Vector2Int pickUpPosition;
-    public Vector2Int pickUpRightClickPosition;
+    [HideInInspector] public InventoryItem selectedItem;
+    [HideInInspector] public Vector2Int pickUpPosition;
+    [HideInInspector] public Vector2Int pickUpRightClickPosition;
+    [HideInInspector] public InventoryItem lastRightClickedItem;
     public FMODUnity.EventReference inventoryReference;
-    public InventoryItem lastRightClickedItem;
+
     GameObject DroppedObject{ get; set; }
     InventoryItem _overlapItem;
     InventoryItem _hoveredItem;
@@ -56,6 +58,8 @@ public class InventoryController : MonoBehaviour
     EventInstance _inventoryInstance;
     bool _clickOnInventory;
     Vector3 _itemDisplayTextBackgroundOffset;
+    HotbarButton _hotbarButton;
+    int _itemAmount;
 
     void Awake(){
         _inventoryHighlight = GetComponent<InventoryHighlight>();
@@ -67,8 +71,9 @@ public class InventoryController : MonoBehaviour
         itemDisplayName = itemDisplayInfoName.GetComponent<TextMeshProUGUI>();
         _playerTransform = GameObject.FindWithTag("Player").transform;
         _playerConsumer = _playerTransform.GetComponent<Consumer>();
-         _uiStatsArray = FindObjectsOfType<UIStats>();
-         _inventoryInstance = FMODUnity.RuntimeManager.CreateInstance(inventoryReference);
+        _uiStatsArray = FindObjectsOfType<UIStats>();
+        _inventoryInstance = FMODUnity.RuntimeManager.CreateInstance(inventoryReference);
+        _hotbarButton = FindObjectOfType<HotbarButton>();
     }
 
     void Update(){
@@ -281,6 +286,11 @@ public class InventoryController : MonoBehaviour
     }
 
     void RemoveItemFromInventory(){
+        playerInventory.RemoveItem(selectedItem.itemObject);
+        _itemAmount = playerInventory.GetItemAmount(selectedItem.itemObject);
+        if (_itemAmount == -1){
+            _hotbarButton.CheckToClearButton();
+        }
         Destroy(selectedItem.gameObject);
         selectedItem = null;
     }
@@ -357,6 +367,7 @@ public class InventoryController : MonoBehaviour
         selectedItem = selectedItemGrid.PickUpItem(tileGridPosition.x, tileGridPosition.y);
         if (selectedItem != null){
             _rectTransform = selectedItem.GetComponent<RectTransform>();
+            playerInventory.RemoveItem(selectedItem.itemObject);
         }
     }
 

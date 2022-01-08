@@ -3,12 +3,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HotbarButton : MonoBehaviour
-{
+public class HotbarButton : MonoBehaviour{
     [HideInInspector]
     [SerializeField] Button button;
     [HideInInspector]
     [SerializeField] TMP_Text text;
+
+    [SerializeField] InventoryObject playerInventory;
     public event Action<int> OnButtonClicked;
     int _keyNumber;
     int _id;
@@ -39,12 +40,32 @@ public class HotbarButton : MonoBehaviour
     }
 
     void Update(){
-        if (Input.GetKeyDown((_keyCode))){
+        if (Input.GetKeyDown(_keyCode)){
             if (Input.GetKey(KeyCode.LeftAlt) && _inventoryController.selectedItem != null){
                 AssignButton();
             }
             else if(!Input.GetKey(KeyCode.LeftAlt)){
                 HandleClick();
+            }
+        }
+    }
+
+    public void CheckToClearButton(){
+        foreach (var hotBarButton in _hotbarButtons){
+            if (hotBarButton == null){
+                continue;
+            }
+
+            if (hotBarButton._inventoryItem.itemObject == null){
+                continue;
+            }
+
+            if (!playerInventory.ItemExistInContainer(hotBarButton._inventoryItem.itemObject)){
+                hotBarButton._inventoryItem.itemObject = null;
+                hotBarButton.button.image.sprite = _defaultSprite;
+                hotBarButton._id = -1;
+            
+                return;
             }
         }
     }
@@ -109,6 +130,7 @@ public class HotbarButton : MonoBehaviour
 
     void ClearButton(){ 
         _inventoryItem = null;
+        _inventoryItem.itemObject = null;
         button.image.sprite = _defaultSprite;
         _id = -1;
     }
