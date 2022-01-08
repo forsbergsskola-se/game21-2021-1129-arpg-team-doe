@@ -1,7 +1,4 @@
-using System.IO;
-using System.Runtime.Serialization;
 using UnityEngine;
-using System.Runtime.Serialization.Formatters.Binary;
 
 [CreateAssetMenu(fileName = "New Inventory",menuName = "Inventory System/Inventory")]
 public class InventoryObject : ScriptableObject
@@ -56,7 +53,7 @@ public class InventoryObject : ScriptableObject
         }
         return false;
     }
-   
+
     [ContextMenu("Clear")]
     public void Clear(){
         Container = new InventoryContainer();

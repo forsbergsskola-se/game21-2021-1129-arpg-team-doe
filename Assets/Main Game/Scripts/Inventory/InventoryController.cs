@@ -63,7 +63,6 @@ public class InventoryController : MonoBehaviour
 
     void Awake(){
         _inventoryHighlight = GetComponent<InventoryHighlight>();
-        
     }
 
     void Start(){
@@ -74,6 +73,7 @@ public class InventoryController : MonoBehaviour
         _uiStatsArray = FindObjectsOfType<UIStats>();
         _inventoryInstance = FMODUnity.RuntimeManager.CreateInstance(inventoryReference);
         _hotbarButton = FindObjectOfType<HotbarButton>();
+        playerInventory.Clear();
     }
 
     void Update(){
