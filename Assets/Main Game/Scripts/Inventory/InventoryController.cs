@@ -178,11 +178,9 @@ public class InventoryController : MonoBehaviour
     
     public void PlaceItemBackWhenButtonAssigned(Vector2Int tileGridPosition){
         bool complete = selectedItemGrid.PlaceItemBackWhenButtonAssigned(lastRightClickedItem, 
-            tileGridPosition.x, tileGridPosition.y, ref _overlapItem);
+            tileGridPosition.x, tileGridPosition.y);
         if (complete){
             lastRightClickedItem = null;
-            _hoveredItem = null;
-            selectedItem = null;
         }
     }
     
@@ -336,7 +334,8 @@ public class InventoryController : MonoBehaviour
         var tileGridPosition = GetTileGridPosition();
         var highlightTileGridPosition = GetHighlightTileGridPosition();
         if (selectedItem != null){
-            PlaceItem(tileGridPosition == _pickOldPosition ? pickUpPosition : highlightTileGridPosition);
+            //PlaceItem(tileGridPosition == _pickOldPosition ? pickUpPosition : highlightTileGridPosition);
+            PlaceItem(highlightTileGridPosition);
         }
     }
 
