@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 02772da4de80fcf44932d735264833c7
+guid: 0a013a2277829384caccdc3d1de12564
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Urn
-    second: {fileID: 2100000, guid: 0f39e19289bb8584f920cacd5606d65c, type: 2}
+      name: coffin
+    second: {fileID: 2100000, guid: 160d6402520405947a8c5e966be84d1b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -40,7 +40,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 100
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -93,7 +93,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 100
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
