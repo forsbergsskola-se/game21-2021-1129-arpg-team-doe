@@ -42,6 +42,7 @@ public class InventoryController : MonoBehaviour
     [HideInInspector] public Vector2Int pickUpPosition;
     [HideInInspector] public Vector2Int pickUpRightClickPosition;
     [HideInInspector] public InventoryItem lastRightClickedItem;
+    [HideInInspector] public bool mouseOnUI;
     public FMODUnity.EventReference inventoryReference;
 
     GameObject DroppedObject{ get; set; }

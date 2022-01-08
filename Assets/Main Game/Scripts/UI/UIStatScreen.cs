@@ -1,9 +1,9 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class UIStatScreen : MonoBehaviour{
+public class UIStatScreen : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler{
     [SerializeField] Button applyButton;
     [SerializeField] GameObject SkillPointTextObject;
     [SerializeField] LevelingGameObject _playerLevel;
@@ -12,10 +12,12 @@ public class UIStatScreen : MonoBehaviour{
     int availableSkillPoints;
 
     TextMeshProUGUI SkillPointText;
+    InventoryController _inventoryController;
 
     void Awake()
     {
         SkillPointText = SkillPointTextObject.GetComponent<TextMeshProUGUI>();
+        _inventoryController = FindObjectOfType<InventoryController>();
     }
 
     void Start()
@@ -48,5 +50,13 @@ public class UIStatScreen : MonoBehaviour{
     public void SetSkillPointText()
     {
         SkillPointText.text = ("Skill Points: " + availableSkillPoints.ToString()); 
+    }
+    
+    public void OnPointerEnter(PointerEventData eventData){
+        _inventoryController.mouseOnUI = true;
+    }
+    
+    public void OnPointerExit(PointerEventData eventData){
+        _inventoryController.mouseOnUI = false;
     }
 }

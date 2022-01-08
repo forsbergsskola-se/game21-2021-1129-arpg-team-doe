@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(ItemGrid))]
-public class GridInteract : MonoBehaviour //, IPointerEnterHandler, IPointerExitHandler
+public class GridInteract : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     InventoryController _inventoryController;
     ItemGrid _itemGrid;
@@ -12,6 +12,14 @@ public class GridInteract : MonoBehaviour //, IPointerEnterHandler, IPointerExit
         _inventoryController = FindObjectOfType<InventoryController>();
         _itemGrid = GetComponent<ItemGrid>();
         _inventoryController.SelectedItemGrid = _itemGrid;
+    }
+    
+    public void OnPointerEnter(PointerEventData eventData){
+        _inventoryController.mouseOnUI = true;
+    }
+    
+    public void OnPointerExit(PointerEventData eventData){
+        _inventoryController.mouseOnUI = false;
     }
 
     // This is for multiple inventory
