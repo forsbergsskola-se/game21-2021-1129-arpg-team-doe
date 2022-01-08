@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour{
             return;
         }
 
-        if (Input.GetMouseButton(0) && _inventoryController.mouseOnUI){
+        if (Input.GetMouseButton(0) && _inventoryController.clickOnUI){
             return;
         }
 

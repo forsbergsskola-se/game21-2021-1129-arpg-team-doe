@@ -15,11 +15,11 @@ public class GridInteract : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     }
     
     public void OnPointerEnter(PointerEventData eventData){
-        _inventoryController.mouseOnUI = true;
+        _inventoryController.clickOnUI = true;
     }
     
     public void OnPointerExit(PointerEventData eventData){
-        _inventoryController.mouseOnUI = false;
+        _inventoryController.clickOnUI = false;
     }
 
     // This is for multiple inventory

@@ -1,4 +1,3 @@
-using System.Collections;
 using FMOD.Studio;
 using TMPro;
 using UnityEngine;
@@ -42,7 +41,7 @@ public class InventoryController : MonoBehaviour
     [HideInInspector] public Vector2Int pickUpPosition;
     [HideInInspector] public Vector2Int pickUpRightClickPosition;
     [HideInInspector] public InventoryItem lastRightClickedItem;
-    [HideInInspector] public bool mouseOnUI;
+    [HideInInspector] public bool clickOnUI;
     public FMODUnity.EventReference inventoryReference;
 
     GameObject DroppedObject{ get; set; }
@@ -57,7 +56,6 @@ public class InventoryController : MonoBehaviour
     Vector2Int _oldPosition;
     Vector2Int _pickOldPosition;
     EventInstance _inventoryInstance;
-    bool _clickOnInventory;
     Vector3 _itemDisplayTextBackgroundOffset;
     HotbarButton _hotbarButton;
     int _itemAmount;
