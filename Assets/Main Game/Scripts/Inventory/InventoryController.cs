@@ -343,22 +343,31 @@ public class InventoryController : MonoBehaviour
         var tileGridPosition = GetTileGridPosition();
         _hoveredItem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
         lastRightClickedItem = _hoveredItem;
-        pickUpRightClickPosition.x = lastRightClickedItem.onGridPositionX;
-        pickUpRightClickPosition.y = lastRightClickedItem.onGridPositionY;
+        if (lastRightClickedItem != null){
+            pickUpRightClickPosition.x = lastRightClickedItem.onGridPositionX;
+            pickUpRightClickPosition.y = lastRightClickedItem.onGridPositionY;
+        }
         if (_hoveredItem != null){
-            StartCoroutine(ShowRightClickMenu());
+            //StartCoroutine(ShowRightClickMenu());
+            rightClickMenu.SetActive(true);
+            rightClickMenuSlots.SetActive(false);
+            rightClickMenuHolder.transform.position = lastRightClickedItem.transform.position;
+        }
+        else{
+            rightClickMenu.SetActive(false);
+            rightClickMenuSlots.SetActive(false);
         }
     }
 
-    IEnumerator ShowRightClickMenu(){
-        rightClickMenu.SetActive(true);
-        rightClickMenuSlots.SetActive(false);
-        Vector3 offset = new Vector3(0, -40, 0);
-        rightClickMenuHolder.transform.position = lastRightClickedItem.transform.position + offset;
-        yield return new WaitForSeconds(5f);
-        rightClickMenu.SetActive(false); 
-        rightClickMenuSlots.SetActive(false);
-    }
+    // IEnumerator ShowRightClickMenu(){
+    //     rightClickMenu.SetActive(true);
+    //     rightClickMenuSlots.SetActive(false);
+    //     Vector3 offset = new Vector3(0, -40, 0);
+    //     rightClickMenuHolder.transform.position = lastRightClickedItem.transform.position + offset;
+    //     yield return new WaitForSeconds(5f);
+    //     rightClickMenu.SetActive(false); 
+    //     rightClickMenuSlots.SetActive(false);
+    // }
 
     Vector2Int GetTileGridPosition(){
         Vector2 position = Input.mousePosition;
