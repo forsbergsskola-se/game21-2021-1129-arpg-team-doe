@@ -295,6 +295,11 @@ public class InventoryController : MonoBehaviour
         selectedItem = null;
     }
     void RemoveItemFromInventoryRight(){
+        playerInventory.RemoveItem(lastRightClickedItem.itemObject);
+        _itemAmount = playerInventory.GetItemAmount(lastRightClickedItem.itemObject);
+        if (_itemAmount == -1){
+            _hotbarButton.CheckToClearButton();
+        }
         Destroy(lastRightClickedItem.gameObject);
         lastRightClickedItem = null;
     }
