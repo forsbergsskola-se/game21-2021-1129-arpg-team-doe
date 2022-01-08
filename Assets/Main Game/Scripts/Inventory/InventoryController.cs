@@ -334,7 +334,8 @@ public class InventoryController : MonoBehaviour
         var tileGridPosition = GetTileGridPosition();
         var highlightTileGridPosition = GetHighlightTileGridPosition();
         if (selectedItem != null){
-            PlaceItem(tileGridPosition == _pickOldPosition ? pickUpPosition : highlightTileGridPosition);
+            //PlaceItem(tileGridPosition == _pickOldPosition ? pickUpPosition : highlightTileGridPosition);
+            PlaceItem(highlightTileGridPosition);
         }
     }
 
