@@ -204,9 +204,7 @@ public class InventoryController : MonoBehaviour
             {
                 itemDisplayInfo.SetActive(true);
             }
-
             DisplayItemName();
-
             DisplayItemDescription();
         }
         else if (_hoveredItem == null)
@@ -343,27 +341,17 @@ public class InventoryController : MonoBehaviour
             pickUpRightClickPosition.y = lastRightClickedItem.onGridPositionY;
         }
         if (_hoveredItem != null){
-            //StartCoroutine(ShowRightClickMenu());
             rightClickMenu.SetActive(true);
             rightClickMenuSlots.SetActive(false);
-            rightClickMenuHolder.transform.position = lastRightClickedItem.transform.position;
+            Vector3 offset = new Vector3(0, 40, 0);
+            rightClickMenuHolder.transform.position = lastRightClickedItem.transform.position + offset;
         }
         else{
             rightClickMenu.SetActive(false);
             rightClickMenuSlots.SetActive(false);
         }
     }
-
-    // IEnumerator ShowRightClickMenu(){
-    //     rightClickMenu.SetActive(true);
-    //     rightClickMenuSlots.SetActive(false);
-    //     Vector3 offset = new Vector3(0, -40, 0);
-    //     rightClickMenuHolder.transform.position = lastRightClickedItem.transform.position + offset;
-    //     yield return new WaitForSeconds(5f);
-    //     rightClickMenu.SetActive(false); 
-    //     rightClickMenuSlots.SetActive(false);
-    // }
-
+    
     Vector2Int GetTileGridPosition(){
         Vector2 position = Input.mousePosition;
         return selectedItemGrid.GetTileGridPosition(position);
