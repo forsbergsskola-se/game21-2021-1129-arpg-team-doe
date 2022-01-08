@@ -8,8 +8,7 @@ public class HotbarButton : MonoBehaviour{
     [SerializeField] Button button;
     [HideInInspector]
     [SerializeField] TMP_Text text;
-
-    //[SerializeField] InventoryObject playerInventory;
+    
     public event Action<int> OnButtonClicked;
     int _keyNumber;
     int _id;
@@ -49,25 +48,6 @@ public class HotbarButton : MonoBehaviour{
             }
         }
     }
-
-    // public void CheckToClearButton(){
-    //     foreach (var hotBarButton in _hotbarButtons){
-    //         if (hotBarButton == null){
-    //             continue;
-    //         }
-    //
-    //         if (hotBarButton._inventoryItem == null){
-    //             continue;
-    //         }
-    //
-    //         if (!playerInventory.ItemExistInContainer(hotBarButton._inventoryItem.itemObject)){
-    //             hotBarButton._inventoryItem.itemObject = null;
-    //             hotBarButton.button.image.sprite = _defaultSprite;
-    //             hotBarButton._id = -1;
-    //             return;
-    //         }
-    //     }
-    // }
 
     void AssignButton(){
         var itemObject = _inventoryController.selectedItem.itemObject;

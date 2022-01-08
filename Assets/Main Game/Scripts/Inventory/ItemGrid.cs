@@ -10,8 +10,6 @@ public class ItemGrid : MonoBehaviour{
     InventoryItem[,] _inventoryItemSlot;
     RectTransform _rectTransform;
 
-    //public InventoryObject playerInventory;
-
     void Start(){
         _rectTransform = GetComponent<RectTransform>();
         Init(gridSizeWidth, gridSizeHeight);
@@ -93,8 +91,6 @@ public class ItemGrid : MonoBehaviour{
 
         rectTransform.localPosition = position;
         inventoryItem.itemObject.PlayDropSound();
-
-        //playerInventory.AddItem(inventoryItem.itemObject, 1);
     }
 
     public Vector2 CalculatePositionOnGrid(InventoryItem inventoryItem, int posX, int posY){
