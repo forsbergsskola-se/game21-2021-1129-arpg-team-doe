@@ -14,10 +14,10 @@ public class HotbarButton : MonoBehaviour{
     int _keyNumber;
     int _id;
     KeyCode _keyCode;
-    InventoryItem _inventoryItem;
+    [HideInInspector] public InventoryItem _inventoryItem;
     InventoryController _inventoryController;
     Sprite _defaultSprite;
-    HotbarButton[] _hotbarButtons;
+    [HideInInspector] public HotbarButton[] _hotbarButtons;
     void OnValidate(){
         _keyNumber = transform.GetSiblingIndex() + 1;
         _keyCode = KeyCode.Alpha0 + _keyNumber;
@@ -127,7 +127,7 @@ public class HotbarButton : MonoBehaviour{
         ClearButton();
     }
 
-    void ClearButton(){ 
+    public void ClearButton(){ 
         _inventoryItem = null;
         button.image.sprite = _defaultSprite;
         _id = -1;

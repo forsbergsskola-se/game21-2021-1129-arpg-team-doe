@@ -129,6 +129,12 @@ public class InventoryController : MonoBehaviour
     {
         if (lastRightClickedItem.itemObject is ConsumableObject)
         {
+            foreach (var hotbarButton in _hotbarButton._hotbarButtons)
+            {
+                if (lastRightClickedItem == hotbarButton._inventoryItem) {
+                    hotbarButton.ClearButton();
+                }
+            }
             _playerConsumer._consumableObject = (ConsumableObject) lastRightClickedItem.itemObject;
             _playerConsumer.Consume();
             _playerConsumer._consumableObject = null;

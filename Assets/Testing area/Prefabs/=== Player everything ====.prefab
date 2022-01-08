@@ -507,6 +507,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 0}
   text: {fileID: 1807501440}
+  _inventoryItem: {fileID: 0}
+  _hotbarButtons: []
 --- !u!114 &347324020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -931,6 +933,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 0}
   text: {fileID: 706121829}
+  _inventoryItem: {fileID: 0}
+  _hotbarButtons: []
 --- !u!114 &601881471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1085,6 +1089,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 0}
   text: {fileID: 278443811}
+  _inventoryItem: {fileID: 0}
+  _hotbarButtons: []
 --- !u!114 &601936859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2478,6 +2484,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 0}
   text: {fileID: 513196511}
+  _inventoryItem: {fileID: 0}
+  _hotbarButtons: []
 --- !u!1 &1807501438
 GameObject:
   m_ObjectHideFlags: 0
