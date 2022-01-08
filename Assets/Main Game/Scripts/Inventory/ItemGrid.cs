@@ -71,7 +71,10 @@ public class ItemGrid : MonoBehaviour{
         return true;
     }
     
-    public bool PlaceItemBackWhenButtonAssigned(InventoryItem inventoryItem, int posX, int posY){
+    public bool PlaceItemBackWhenButtonAssigned(InventoryItem inventoryItem, int posX, int posY, ref InventoryItem _overlapItem){
+        if (_overlapItem != null){
+            CleanGridReference(_overlapItem);
+        }
         PlaceItem(inventoryItem, posX, posY);
         return true;
     }
