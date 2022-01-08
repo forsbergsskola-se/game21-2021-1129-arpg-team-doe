@@ -2,7 +2,6 @@ using System.Collections;
 using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 public class PlayerController : MonoBehaviour{
@@ -62,9 +61,9 @@ public class PlayerController : MonoBehaviour{
             }
             return;
         }
-        
-        if (EventSystem.current.IsPointerOverGameObject()){
-          return;
+
+        if (Input.GetMouseButton(0) && _inventoryController.clickOnUI){
+            return;
         }
 
         if (InteractWithPickup()){

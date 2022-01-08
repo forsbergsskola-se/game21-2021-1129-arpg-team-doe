@@ -7143,6 +7143,7 @@ MonoBehaviour:
   pickUpPosition: {x: 0, y: 0}
   pickUpRightClickPosition: {x: 0, y: 0}
   lastRightClickedItem: {fileID: 0}
+  clickOnUI: 0
   inventoryReference:
     Guid:
       Data1: 1223393582

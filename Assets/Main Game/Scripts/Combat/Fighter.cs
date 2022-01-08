@@ -64,6 +64,10 @@ public class Fighter : MonoBehaviour, IInteractSound{
         if (_combatTarget == null){
             return;
         }
+
+        if (!_movement.pathFound){
+            return;
+        }
         
         _idleInstance.stop(STOP_MODE.IMMEDIATE);
         if (!_combatTarget.GetComponent<Health>().IsAlive || IsClickOnItself()){
