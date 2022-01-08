@@ -12,7 +12,7 @@ public class InventoryController : MonoBehaviour
     [SerializeField] GameObject rightClickMenu;
     [SerializeField] GameObject rightClickMenuSlots;
     [SerializeField] GameObject spawnedObject;
-    [SerializeField] InventoryObject playerInventory;
+    //public InventoryObject playerInventory;
     
     [SerializeField] GameObject itemDisplayInfo;
     [SerializeField] int maxDisplayWidth = 200;
@@ -73,7 +73,7 @@ public class InventoryController : MonoBehaviour
         _uiStatsArray = FindObjectsOfType<UIStats>();
         _inventoryInstance = FMODUnity.RuntimeManager.CreateInstance(inventoryReference);
         _hotbarButton = FindObjectOfType<HotbarButton>();
-        playerInventory.Clear();
+        //playerInventory.Clear();
     }
 
     void Update(){
@@ -286,20 +286,20 @@ public class InventoryController : MonoBehaviour
     }
 
     void RemoveItemFromInventory(){
-        playerInventory.RemoveItem(selectedItem.itemObject);
-        _itemAmount = playerInventory.GetItemAmount(selectedItem.itemObject);
-        if (_itemAmount == -1){
-            _hotbarButton.CheckToClearButton();
-        }
+        //playerInventory.RemoveItem(selectedItem.itemObject);
+        // _itemAmount = playerInventory.GetItemAmount(selectedItem.itemObject);
+        // if (_itemAmount == -1){
+        //     _hotbarButton.CheckToClearButton();
+        // }
         Destroy(selectedItem.gameObject);
         selectedItem = null;
     }
     void RemoveItemFromInventoryRight(){
-        playerInventory.RemoveItem(lastRightClickedItem.itemObject);
-        _itemAmount = playerInventory.GetItemAmount(lastRightClickedItem.itemObject);
-        if (_itemAmount == -1){
-            _hotbarButton.CheckToClearButton();
-        }
+        // playerInventory.RemoveItem(lastRightClickedItem.itemObject);
+        // _itemAmount = playerInventory.GetItemAmount(lastRightClickedItem.itemObject);
+        // if (_itemAmount == -1){
+        //     _hotbarButton.CheckToClearButton();
+        // }
         Destroy(lastRightClickedItem.gameObject);
         lastRightClickedItem = null;
     }
@@ -373,7 +373,7 @@ public class InventoryController : MonoBehaviour
         selectedItem = selectedItemGrid.PickUpItem(tileGridPosition.x, tileGridPosition.y);
         if (selectedItem != null){
             _rectTransform = selectedItem.GetComponent<RectTransform>();
-            playerInventory.RemoveItem(selectedItem.itemObject);
+            //playerInventory.RemoveItem(selectedItem.itemObject);
         }
     }
 

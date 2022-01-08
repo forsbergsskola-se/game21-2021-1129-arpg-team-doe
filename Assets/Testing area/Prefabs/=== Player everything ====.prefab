@@ -507,7 +507,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 0}
   text: {fileID: 1807501440}
-  playerInventory: {fileID: 11400000, guid: 1aa267249edcb0745a8ece3a2a5fab92, type: 2}
 --- !u!114 &347324020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -932,7 +931,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 0}
   text: {fileID: 706121829}
-  playerInventory: {fileID: 11400000, guid: 1aa267249edcb0745a8ece3a2a5fab92, type: 2}
 --- !u!114 &601881471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1087,7 +1085,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 0}
   text: {fileID: 278443811}
-  playerInventory: {fileID: 11400000, guid: 1aa267249edcb0745a8ece3a2a5fab92, type: 2}
 --- !u!114 &601936859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1736,7 +1733,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSizeWidth: 5
   gridSizeHeight: 1
-  playerInventory: {fileID: 0}
 --- !u!114 &1327765102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2482,7 +2478,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 0}
   text: {fileID: 513196511}
-  playerInventory: {fileID: 11400000, guid: 1aa267249edcb0745a8ece3a2a5fab92, type: 2}
 --- !u!1 &1807501438
 GameObject:
   m_ObjectHideFlags: 0
@@ -8565,7 +8560,6 @@ MonoBehaviour:
   rightClickMenu: {fileID: 2103435432248077803}
   rightClickMenuSlots: {fileID: 2103435433030798227}
   spawnedObject: {fileID: 5700182911611578800, guid: 7e01cb6c294b05748931e87121065ba6, type: 3}
-  playerInventory: {fileID: 11400000, guid: 1aa267249edcb0745a8ece3a2a5fab92, type: 2}
   itemDisplayInfo: {fileID: 115078384}
   maxDisplayWidth: 200
   itemDisplayTextBackground: {fileID: 867577145}
@@ -12779,7 +12773,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSizeWidth: 5
   gridSizeHeight: 10
-  playerInventory: {fileID: 11400000, guid: 1aa267249edcb0745a8ece3a2a5fab92, type: 2}
 --- !u!114 &9088444525977602572
 MonoBehaviour:
   m_ObjectHideFlags: 0
