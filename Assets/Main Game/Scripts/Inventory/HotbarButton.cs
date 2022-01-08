@@ -56,7 +56,7 @@ public class HotbarButton : MonoBehaviour{
                 continue;
             }
 
-            if (hotBarButton._inventoryItem.itemObject == null){
+            if (hotBarButton._inventoryItem == null){
                 continue;
             }
 
@@ -64,7 +64,6 @@ public class HotbarButton : MonoBehaviour{
                 hotBarButton._inventoryItem.itemObject = null;
                 hotBarButton.button.image.sprite = _defaultSprite;
                 hotBarButton._id = -1;
-            
                 return;
             }
         }
@@ -124,13 +123,12 @@ public class HotbarButton : MonoBehaviour{
         }
         _inventoryController.selectedItem = _inventoryItem;
         Debug.Log($"Item {_id} is used.");
-        _inventoryController.UseItem(); // Here can be replaced to a consume function
+        _inventoryController.UseItem();
         ClearButton();
     }
 
     void ClearButton(){ 
         _inventoryItem = null;
-        _inventoryItem.itemObject = null;
         button.image.sprite = _defaultSprite;
         _id = -1;
     }
