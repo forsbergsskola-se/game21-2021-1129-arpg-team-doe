@@ -83,7 +83,7 @@ public class Consumer : MonoBehaviour, IConsumable
         consumedItem.PlayConsumeSound();
         _statistics.AddStats(consumedItem.toughnessBuff,consumedItem.strengthBuff,consumedItem.dexterityBuff,consumedItem.knowledgeBuff,consumedItem.reflexBuff,consumedItem.luckBuff,consumedItem.interactRangeBuff,consumedItem.attackRangeBuff,consumedItem.attackSpeedBuff,consumedItem.damageBuff);
         toxicityLevel += consumedItem.toxicityAmount;
-        yield return new WaitForSeconds(consumedItem.buffDuration);
+        yield return new WaitForSeconds(consumedItem.buffDuration * _statistics.ConsumableDuration);
         _statistics.AddStats(-consumedItem.toughnessBuff,-consumedItem.strengthBuff,-consumedItem.dexterityBuff,-consumedItem.knowledgeBuff,-consumedItem.reflexBuff,-consumedItem.luckBuff,-consumedItem.interactRangeBuff,-consumedItem.attackRangeBuff,-consumedItem.attackSpeedBuff,-consumedItem.damageBuff);
         toxicityLevel -= consumedItem.toxicityAmount;
         this.Log(toxicityLevel);

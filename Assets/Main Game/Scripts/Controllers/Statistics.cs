@@ -7,7 +7,7 @@ using UnityEngine;
 public class Statistics : MonoBehaviour{
     [SerializeField]
     [Min(0f)]
-    float toughness, strength, dexterity, knowledge, reflex, luck, interactRange, attackRange, attackSpeed, critChance;
+    float toughness, strength, dexterity, knowledge, reflex, luck, interactRange, attackRange, attackSpeed, critChance, consumableDuration, experienceIncrease;
     // movement is increased by reflex
 
     [SerializeField] int weaponDamage = 10; // for debug
@@ -70,7 +70,7 @@ public class Statistics : MonoBehaviour{
             return CalculateAttackSpeed();
             // 1 dexterity -> 0.5 percent change, called in Fighter
         }
-        set{
+        private set{
             attackSpeed = value;
         }
     }
@@ -80,11 +80,13 @@ public class Statistics : MonoBehaviour{
             return CalculateWeaponDamage();
             // called in Fighter
         }
-        set{
+        private set{
             damage = value;
         }
     }
-
+    
+    public float ExperienceIncrease => CalculateKnowledgeChance(experienceIncrease); //TODO:needs to impact % of xp gain, but where do we call it?
+    public float ConsumableDuration => CalculateKnowledgeChance(consumableDuration); // called in Consumer
     public float CritChance => CalculateCritChance(); // called in Fighter
     public float DodgeChance => CalculateDodgeChance();  // called in TakeDamage
     
@@ -117,6 +119,10 @@ public class Statistics : MonoBehaviour{
     
     float CalculateLuckChance(){
         return Luck * lowImpactLuckMultiplier;
+    }
+
+    float CalculateKnowledgeChance(float input){
+        return StatManipulation(input, knowledge, lowImpactLevelMultiplier);
     }
 
     // used for debug
