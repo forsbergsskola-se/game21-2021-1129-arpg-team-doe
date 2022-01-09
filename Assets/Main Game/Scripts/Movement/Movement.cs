@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour{
     NavMeshPath _path;
     AnimationController _animationController;
     Statistics _statistics;
+    Fighter _fighter;
     internal NavMeshAgent _navMeshAgent;
     internal bool pathFound;
     const string IDLE = "Idle";
@@ -19,6 +20,7 @@ public class Movement : MonoBehaviour{
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _path = new NavMeshPath();
         _animationController = GetComponentInChildren<AnimationController>();
+        _fighter = GetComponent<Fighter>();
         _movementInstance = FMODUnity.RuntimeManager.CreateInstance(movementSound);
     }
 
@@ -41,7 +43,9 @@ public class Movement : MonoBehaviour{
 
     public void StopMoving(){
         _navMeshAgent.isStopped = true;
-        _animationController.ChangeAnimationState(IDLE);
+        if (!_fighter.isAttacking){
+            _animationController.ChangeAnimationState(IDLE);
+        }
     }
 
     void PlayMovementSound(){
