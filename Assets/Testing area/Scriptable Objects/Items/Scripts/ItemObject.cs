@@ -29,16 +29,16 @@ public abstract class ItemObject : ScriptableObject{
     public ItemType type;
     public string name;
     [Min(0f)] public int price;
-    [SerializeField] FMODUnity.EventReference dropSound;
+    [SerializeField] EventReference dropSound;
     [SerializeField] GameEvent _pickupEvent;
     [TextArea (10,10)] public string description;
     public ItemBuff[] buffs;
 
     bool hasFoundPickupSound;
-    bool hasFoundDropSound;
 
     EventInstance pickupSoundInstance;
     EventInstance dropSoundInstance;
+    
     public Item CreateItem(){
         Item newItem = new Item(this);
         return newItem;
@@ -53,12 +53,10 @@ public abstract class ItemObject : ScriptableObject{
    }
 
     public virtual void PlayDropSound(){
-        hasFoundDropSound = !dropSound.IsNull;
-        if (!hasFoundDropSound)
-        {
-            dropSound = EventReference.Find("event:/InventoryDrop");
+        dropSoundInstance = RuntimeManager.CreateInstance("event:/InventoryDrop");
+        if (!dropSound.IsNull){
+            dropSoundInstance = RuntimeManager.CreateInstance(dropSound);
         }
-        dropSoundInstance = RuntimeManager.CreateInstance(dropSound);
         dropSoundInstance.start();
         dropSoundInstance.release();
     }
