@@ -86,7 +86,7 @@ public class Statistics : MonoBehaviour{
     }
     
     public float ExperienceIncrease => CalculateKnowledgeChance(experienceIncrease); //TODO:needs to impact % of xp gain, but where do we call it?
-    public float ConsumableDuration => CalculateKnowledgeChance(consumableDuration); // called in Consumer
+    public float ConsumableEffectIncrease => CalculateKnowledgeChance(consumableDuration); // called in Consumer
     public float CritChance => CalculateCritChance(); // called in Fighter
     public float DodgeChance => CalculateDodgeChance();  // called in TakeDamage
     
