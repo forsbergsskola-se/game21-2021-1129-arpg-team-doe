@@ -152,7 +152,7 @@ public class InventoryController : MonoBehaviour
             lastRightClickedItem.itemObject.UseItem();
         }
     }
-    public void UseItem() //Called by button
+    public bool UseItem() //Called by button
     {
         if (selectedItem.itemObject is ConsumableObject)
         {
@@ -160,6 +160,7 @@ public class InventoryController : MonoBehaviour
             _playerConsumer.Consume();
             _playerConsumer._consumableObject = null;
             RemoveItemFromInventory();
+            return true;
         }
         // else if (selectedItem.itemObject is KeySO)
         // {
@@ -169,11 +170,14 @@ public class InventoryController : MonoBehaviour
         {
             _inventoryItemList.Remove(selectedItem.itemObject);
             selectedItem.itemObject.UseItem();
+            //selectedItem = null;
+            return true;
         }
+        return false;
     }
    
     public void PlaceItem(Vector2Int tileGridPosition){
-        if (selectedItemGrid.IsOutOfInventoryGrid(tileGridPosition.x, tileGridPosition.y)){
+        if (selectedItemGrid.IsOutOfInventoryGrid(tileGridPosition.x, tileGridPosition.y) && !UseItem()){
             DropItemToGround();
             return;
         }
@@ -263,6 +267,9 @@ public class InventoryController : MonoBehaviour
     }
 
     void ToggleInventory(){
+        if (canvasInventory.activeInHierarchy && selectedItem != null){
+            PlaceItem(pickUpPosition);
+        }
         canvasInventory.SetActive(!canvasInventory.activeInHierarchy);
     }
 
@@ -345,7 +352,7 @@ public class InventoryController : MonoBehaviour
     }
     
     void LeftMouseButtonRelease(){
-        var tileGridPosition = GetTileGridPosition();
+        //var tileGridPosition = GetTileGridPosition();
         var highlightTileGridPosition = GetHighlightTileGridPosition();
         if (selectedItem != null){
             //PlaceItem(tileGridPosition == _pickOldPosition ? pickUpPosition : highlightTileGridPosition);

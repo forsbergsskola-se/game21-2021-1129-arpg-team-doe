@@ -5087,6 +5087,8 @@ MonoBehaviour:
   attackRange: 3.15
   attackSpeed: 1
   critChance: 0
+  consumableDuration: 0
+  experienceIncrease: 0
   weaponDamage: 10
   lowImpactLevelMultiplier: 0.005
   lowImpactLuckMultiplier: 0.005
