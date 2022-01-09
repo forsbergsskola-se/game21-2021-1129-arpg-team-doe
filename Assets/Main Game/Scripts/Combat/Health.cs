@@ -94,6 +94,8 @@ public class Health : MonoBehaviour, IDamageReceiver{
             dmg = 0;
         }
 
+        dmg = Mathf.RoundToInt(dmg - _stats.ToughnessDamageReduction);
+
         foreach (var damageType in _stats.vulnerabilities)
         {
             if (receivedDmgType == damageType)

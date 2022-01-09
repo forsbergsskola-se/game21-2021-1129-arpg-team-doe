@@ -13,6 +13,7 @@ public class Statistics : MonoBehaviour{
     [SerializeField] int weaponDamage = 10; // for debug
     [SerializeField] internal float lowImpactLevelMultiplier = 0.5f;
     [SerializeField] internal float lowImpactLuckMultiplier = 0.25f;
+    [SerializeField] internal float toughnessDamageReductionMultiplier = 0.25f;
     [SerializeField] internal float highImpactLevelMultiplier = 1f;
     [SerializeField] internal List<DamageType> vulnerabilities;
     [Tooltip("The higher the value, the more damage is taken")][Range(1f,3f)][SerializeField] 
@@ -89,6 +90,8 @@ public class Statistics : MonoBehaviour{
     
     public float LuckChance => CalculateLuckChance(); //called in LootTable
 
+    public float ToughnessDamageReduction => CalculateToughnessDamageReduction();
+
     public float StatManipulation(int baseValue, float attribute, float levelMultiplier){
         return (baseValue * (1 + attribute * levelMultiplier));
     }
@@ -105,6 +108,11 @@ public class Statistics : MonoBehaviour{
     }
     float CalculateDodgeChance(){
         return reflex * highImpactLevelMultiplier;
+    }
+
+    float CalculateToughnessDamageReduction()
+    {
+        return Toughness * toughnessDamageReductionMultiplier;
     }
     
     float CalculateLuckChance(){

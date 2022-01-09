@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 19
   itemIcon: {fileID: 21300000, guid: 5c751cb1be14f4008bce40de446899df, type: 3}
-  width: 1
-  height: 1
+  width: 2
+  height: 2
   type: 0
   name: Big Med Kit
   price: 50
@@ -27,7 +27,8 @@ MonoBehaviour:
       Data4: -1335320419
     Path: event:/PotionDrop
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
-  description: 'When it really hurts, take this. Restores 100 health. '
+  description: "When it really hurts, take this. Restores 100 health. \n\nRight-Click
+    for Options"
   buffs: []
   toxicityAmount: 1
   restoreHealthValue: 100

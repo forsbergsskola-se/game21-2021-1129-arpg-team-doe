@@ -65,6 +65,10 @@ public class Fighter : MonoBehaviour, IInteractSound{
             return;
         }
         
+        if (!_movement.pathFound && _combatTarget.GetComponentInChildren<Enemy>()){ //TODO: why enemy 5&7 can't find path
+            return;
+        }
+        
         _idleInstance.stop(STOP_MODE.IMMEDIATE);
         if (!_combatTarget.GetComponent<Health>().IsAlive || IsClickOnItself()){
             _combatTarget = null;

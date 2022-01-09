@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9aa9d84f5e818d4b9ff5048760e0971, type: 3}
   m_Name: Nootropic
   m_EditorClassIdentifier: 
-  Id: 4
+  Id: 11
   itemIcon: {fileID: 21300000, guid: 3bd21342ff245be45a465edd6119520e, type: 3}
   width: 1
   height: 1
@@ -27,7 +27,11 @@ MonoBehaviour:
       Data4: -1335320419
     Path: event:/PotionDrop
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
-  description: Is it really a drug if it only makes you smarter? +5 KNO, 120 sec
+  description: 'Is it really a drug if it only makes you smarter? +5 KNO, 120 sec
+
+
+    Right-Click
+    for Options'
   buffs: []
   toxicityAmount: 1
   buffDuration: 120

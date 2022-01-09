@@ -19,12 +19,13 @@ GameObject:
   - component: {fileID: 2013919976991523667}
   - component: {fileID: 2013919976991523677}
   - component: {fileID: 5298576387038339844}
+  - component: {fileID: 4088213991974719372}
   m_Layer: 0
   m_Name: Crypt-Urn Vers 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6272300592998699402
 Transform:
@@ -69,7 +70,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4614829804764143272, guid: 02772da4de80fcf44932d735264833c7, type: 3}
+  - {fileID: 2100000, guid: 0f39e19289bb8584f920cacd5606d65c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -156,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0cbb0b3281e70d47ad7bf034c1451de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toughness: 100
+  toughness: 0
   strength: 0
   dexterity: 0
   knowledge: 0
@@ -169,6 +170,7 @@ MonoBehaviour:
   weaponDamage: 0
   lowImpactLevelMultiplier: 0
   lowImpactLuckMultiplier: 0
+  toughnessDamageReductionMultiplier: 0.25
   highImpactLevelMultiplier: 0
   vulnerabilities: []
   vulnerabilityDamageModifier: 0
@@ -256,3 +258,19 @@ MonoBehaviour:
   cash: {fileID: 6458768576707232289, guid: 5bb6ad687c3f0034e86023865012b2b3, type: 3}
   spreadRange: 1
   maxRollCount: 5
+--- !u!54 &4088213991974719372
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672806830668588250}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 9.85
+  m_AngularDrag: 9.81
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

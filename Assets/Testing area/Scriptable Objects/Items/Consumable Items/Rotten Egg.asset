@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rotten Egg
   m_EditorClassIdentifier: 
   Id: 7
-  itemIcon: {fileID: 21300000, guid: 127baf0974848564689b57e04d96e152, type: 3}
+  itemIcon: {fileID: 21300000, guid: ab67598615b07a644b2aaf27c9fc5fe5, type: 3}
   width: 1
   height: 1
   type: 0
@@ -27,8 +27,11 @@ MonoBehaviour:
       Data4: -398094468
     Path: event:/RottenEggDropp
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
-  description: Would you dare try this rotten egg? Don't think so, throw it away...
+  description: 'Would you dare try this rotten egg? Don''t think so, throw it away...
     Or at someone.
+
+
+    Right-Click for Options'
   buffs: []
   toxicityAmount: 0
   restoreHealthValue: -10

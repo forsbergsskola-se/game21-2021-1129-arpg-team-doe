@@ -15,7 +15,7 @@ MonoBehaviour:
   Id: 8
   itemIcon: {fileID: 21300000, guid: 61686ec9f98260448ae7f841a6c9707d, type: 3}
   width: 1
-  height: 1
+  height: 2
   type: 0
   name: Vodka
   price: 23
@@ -27,8 +27,11 @@ MonoBehaviour:
       Data4: 2137709851
     Path: event:/BottleDrop
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
-  description: Common breakfast in russia, you are more likely to take a few extra
+  description: 'Common breakfast in russia, you are more likely to take a few extra
     blows before you drop. +5 TOU, 120 sec
+
+
+    Right-Click for Options'
   buffs: []
   toxicityAmount: 1
   buffDuration: 120

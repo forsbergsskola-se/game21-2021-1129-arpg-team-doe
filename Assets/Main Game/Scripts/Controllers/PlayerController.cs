@@ -1,7 +1,7 @@
 using System.Collections;
+using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 public class PlayerController : MonoBehaviour{
@@ -9,8 +9,10 @@ public class PlayerController : MonoBehaviour{
     [SerializeField] Texture2D invalidClickTexture;
     [SerializeField] Texture2D standardCursorTexture;
     [SerializeField] int defeatedThreshold = 40;
+    [SerializeField] EventReference footstepSound;
 
     FMOD.Studio.EventInstance _moveInstance;
+    FMOD.Studio.EventInstance _footstepInstance;
     Movement _movement;
     Statistics _statistics;
     Health _health;
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour{
         _animationController = GetComponentInChildren<AnimationController>();
         _fighter = GetComponent<Fighter>();
         _inventoryController = FindObjectOfType<InventoryController>();
+        _footstepInstance = RuntimeManager.CreateInstance(footstepSound);
     }
 
     void Start(){
@@ -58,9 +61,9 @@ public class PlayerController : MonoBehaviour{
             }
             return;
         }
-        
-        if (EventSystem.current.IsPointerOverGameObject()){
-          return;
+
+        if (Input.GetMouseButton(0) && _inventoryController.clickOnUI){
+            return;
         }
 
         if (InteractWithPickup()){
@@ -98,6 +101,7 @@ public class PlayerController : MonoBehaviour{
             if (enemy == null) continue;
             if (Input.GetMouseButton(0)){
                 _fighter.GetAttackTarget(enemy);
+                _footstepInstance.stop(STOP_MODE.ALLOWFADEOUT);
             }
             return true;
         }
@@ -107,13 +111,14 @@ public class PlayerController : MonoBehaviour{
     bool InteractWithInteractable(){
         RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
         foreach (RaycastHit hit in hits){
-            GameObject interactableObject = hit.transform.GetComponent<InteractableObject>()?.gameObject; //TODO: Why not getcomponent<IInteractable> ?
+            GameObject interactableObject = hit.transform.GetComponent<InteractableObject>()?.gameObject;
             if (interactableObject == null) continue;
             if (Input.GetMouseButton(0)){
                 StartCoroutine(GoToPositionThenInteract(hit));
                 Vector3 positionCloseToTarget = hit.point - (hit.point - transform.position).normalized;
                 MoveToInteractable(interactableObject, positionCloseToTarget);
                 _animationController.ChangeAnimationState(RUN);
+                PlaySound();
             }
             return true;
         }
@@ -158,6 +163,7 @@ public class PlayerController : MonoBehaviour{
                         _fighter.CancelAttack();
                         StartCoroutine(ChangeCursorTemporary(validClickTexture,1f));
                         _animationController.ChangeAnimationState(RUN);
+                        PlaySound();
                     }
                     else{
                         StartCoroutine(ChangeCursorTemporary(invalidClickTexture,1f));
@@ -169,6 +175,7 @@ public class PlayerController : MonoBehaviour{
                 PlayMoveFeedback(1f);
                 StartCoroutine(ChangeCursorTemporary(invalidClickTexture, 1f));
                 _animationController.ChangeAnimationState(IDLE);
+                _footstepInstance.stop(STOP_MODE.ALLOWFADEOUT);
             }
         }
         else if (Input.GetMouseButtonUp(0)){
@@ -180,6 +187,7 @@ public class PlayerController : MonoBehaviour{
         if (_movement._navMeshAgent.remainingDistance < _movement._navMeshAgent.stoppingDistance){
             _movement.StopMoving();
             _animationController.ChangeAnimationState(IDLE);
+            _footstepInstance.stop(STOP_MODE.ALLOWFADEOUT);
         }
     }
 
@@ -202,10 +210,16 @@ public class PlayerController : MonoBehaviour{
 
     void PlayMoveFeedback(float parameter){
         if (_hasPlayedSound == false){
-            _moveInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Move");
+            _moveInstance = RuntimeManager.CreateInstance("event:/Move");
             _moveInstance.setParameterByName("MoveFeedback", parameter);
             _moveInstance.start();
             _hasPlayedSound = true;
+        }
+    }
+    public void PlaySound(){
+        _footstepInstance.getPlaybackState(out var playbackState);
+        if (playbackState == PLAYBACK_STATE.STOPPED){
+            _footstepInstance.start();  
         }
     }
 

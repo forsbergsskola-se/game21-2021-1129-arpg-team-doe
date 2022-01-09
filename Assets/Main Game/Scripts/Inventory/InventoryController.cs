@@ -11,7 +11,7 @@ public class InventoryController : MonoBehaviour
     [SerializeField] GameObject rightClickMenu;
     [SerializeField] GameObject rightClickMenuSlots;
     [SerializeField] GameObject spawnedObject;
-    
+    //public InventoryObject playerInventory;
     
     [SerializeField] GameObject itemDisplayInfo;
     [SerializeField] int maxDisplayWidth = 200;
@@ -37,10 +37,13 @@ public class InventoryController : MonoBehaviour
     }
 
     public GameObject canvasInventory;
-    [HideInInspector]public InventoryItem selectedItem;
-    public Vector2Int pickUpPosition;
+    [HideInInspector] public InventoryItem selectedItem;
+    [HideInInspector] public Vector2Int pickUpPosition;
+    [HideInInspector] public Vector2Int pickUpRightClickPosition;
+    [HideInInspector] public InventoryItem lastRightClickedItem;
+    [HideInInspector] public bool clickOnUI;
     public FMODUnity.EventReference inventoryReference;
-    public InventoryItem lastRightClickedItem;
+
     GameObject DroppedObject{ get; set; }
     InventoryItem _overlapItem;
     InventoryItem _hoveredItem;
@@ -51,14 +54,14 @@ public class InventoryController : MonoBehaviour
     Consumer _playerConsumer;
     UIStats[] _uiStatsArray;
     Vector2Int _oldPosition;
-    Vector2Int _pickOldPosition;
+    //Vector2Int _pickOldPosition;
     EventInstance _inventoryInstance;
-    bool _clickOnInventory;
     Vector3 _itemDisplayTextBackgroundOffset;
+    HotbarButton _hotbarButton;
+    int _itemAmount;
 
     void Awake(){
         _inventoryHighlight = GetComponent<InventoryHighlight>();
-        
     }
 
     void Start(){
@@ -66,8 +69,9 @@ public class InventoryController : MonoBehaviour
         itemDisplayName = itemDisplayInfoName.GetComponent<TextMeshProUGUI>();
         _playerTransform = GameObject.FindWithTag("Player").transform;
         _playerConsumer = _playerTransform.GetComponent<Consumer>();
-         _uiStatsArray = FindObjectsOfType<UIStats>();
-         _inventoryInstance = FMODUnity.RuntimeManager.CreateInstance(inventoryReference);
+        _uiStatsArray = FindObjectsOfType<UIStats>();
+        _inventoryInstance = FMODUnity.RuntimeManager.CreateInstance(inventoryReference);
+        _hotbarButton = FindObjectOfType<HotbarButton>();
     }
 
     void Update(){
@@ -123,6 +127,12 @@ public class InventoryController : MonoBehaviour
     {
         if (lastRightClickedItem.itemObject is ConsumableObject)
         {
+            foreach (var hotbarButton in _hotbarButton._hotbarButtons)
+            {
+                if (lastRightClickedItem == hotbarButton._inventoryItem) {
+                    hotbarButton.ClearButton();
+                }
+            }
             _playerConsumer._consumableObject = (ConsumableObject) lastRightClickedItem.itemObject;
             _playerConsumer.Consume();
             _playerConsumer._consumableObject = null;
@@ -165,8 +175,15 @@ public class InventoryController : MonoBehaviour
         }
     }
     
+    public void PlaceItemBackWhenButtonAssigned(Vector2Int tileGridPosition){
+        bool complete = selectedItemGrid.PlaceItemBackWhenButtonAssigned(lastRightClickedItem, 
+            tileGridPosition.x, tileGridPosition.y);
+        if (complete){
+            lastRightClickedItem = null;
+        }
+    }
+    
     void MouseOver(){
-        
         var tileGridPosition = GetTileGridPosition();
         if (!selectedItemGrid.IsOutOfInventoryGrid(tileGridPosition.x, tileGridPosition.y))
         {
@@ -176,9 +193,7 @@ public class InventoryController : MonoBehaviour
         else if (itemDisplayTextBackground.activeInHierarchy)
         {
             DeactivateItemInformationDisplay();
-        }  
-        
-        
+        }
     }
 
     void DisplayItemInformation()
@@ -189,9 +204,7 @@ public class InventoryController : MonoBehaviour
             {
                 itemDisplayInfo.SetActive(true);
             }
-
             DisplayItemName();
-
             DisplayItemDescription();
         }
         else if (_hoveredItem == null)
@@ -275,6 +288,12 @@ public class InventoryController : MonoBehaviour
     }
 
     void RemoveItemFromInventory(){
+        foreach (var hotbarButton in _hotbarButton._hotbarButtons)
+        {
+            if (selectedItem == hotbarButton._inventoryItem) {
+                hotbarButton.ClearButton();
+            }
+        }
         Destroy(selectedItem.gameObject);
         selectedItem = null;
     }
@@ -294,7 +313,7 @@ public class InventoryController : MonoBehaviour
 
     void LeftMouseButtonPress(){
         var tileGridPosition = GetTileGridPosition();
-        _pickOldPosition = tileGridPosition;
+        //_pickOldPosition = tileGridPosition;
         if (selectedItem == null){
             PickUpItem(tileGridPosition);
             if (selectedItem != null){
@@ -308,7 +327,8 @@ public class InventoryController : MonoBehaviour
         var tileGridPosition = GetTileGridPosition();
         var highlightTileGridPosition = GetHighlightTileGridPosition();
         if (selectedItem != null){
-            PlaceItem(tileGridPosition == _pickOldPosition ? pickUpPosition : highlightTileGridPosition);
+            //PlaceItem(tileGridPosition == _pickOldPosition ? pickUpPosition : highlightTileGridPosition);
+            PlaceItem(highlightTileGridPosition);
         }
     }
 
@@ -316,19 +336,22 @@ public class InventoryController : MonoBehaviour
         var tileGridPosition = GetTileGridPosition();
         _hoveredItem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
         lastRightClickedItem = _hoveredItem;
-        if (_hoveredItem != null)
-        { 
+        if (lastRightClickedItem != null){
+            pickUpRightClickPosition.x = lastRightClickedItem.onGridPositionX;
+            pickUpRightClickPosition.y = lastRightClickedItem.onGridPositionY;
+        }
+        if (_hoveredItem != null){
             rightClickMenu.SetActive(true);
             rightClickMenuSlots.SetActive(false);
-            rightClickMenuHolder.transform.position = lastRightClickedItem.transform.position;
+            Vector3 offset = new Vector3(0, 40, 0);
+            rightClickMenuHolder.transform.position = lastRightClickedItem.transform.position + offset;
         }
         else{
-            rightClickMenu.SetActive(false); 
+            rightClickMenu.SetActive(false);
             rightClickMenuSlots.SetActive(false);
-            
         }
     }
-
+    
     Vector2Int GetTileGridPosition(){
         Vector2 position = Input.mousePosition;
         return selectedItemGrid.GetTileGridPosition(position);
@@ -349,8 +372,6 @@ public class InventoryController : MonoBehaviour
         if (selectedItem != null){
             _rectTransform = selectedItem.GetComponent<RectTransform>();
         }
-        
-        
     }
 
     void ItemIconDrag(){

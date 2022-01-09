@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Player XP
   m_EditorClassIdentifier: 
   _levelUp: {fileID: 11400000, guid: acac836e5fe18f1449f57d3a2734a6e5, type: 2}
-  level: 2
+  level: 1
   currentXP: 0
-  requiredXPInt: 13
-  xpScale: 1.3
-  skillPoint: 4
-  skillPointsPerLevel: 6
+  requiredXPInt: 150
+  xpScale: 1.2
+  skillPoint: 0
+  skillPointsPerLevel: 5
   GetXPEvent: {fileID: 11400000, guid: 623451f3003fdfe4c8daa71bc1038cea, type: 2}
   fmodEvent:
     Guid:
