@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4614829804764143272, guid: 02772da4de80fcf44932d735264833c7, type: 3}
+  - {fileID: 2100000, guid: 0f39e19289bb8584f920cacd5606d65c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,16 +115,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7339576714a584429c762c90bef9491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fmodEvent:
+  parameter: 0
+  stopRegenerateThreshold: 0
+  healthRegen: 10
+  maxHP: 10
+  _xpDrop: {fileID: 0}
+  _xpDropEvent: {fileID: 0}
+  isRegenerating: 0
+  TakeDamageReference:
     Guid:
       Data1: 0
       Data2: 0
       Data3: 0
       Data4: 0
     Path: 
-  parameter: 0
-  maxHP: 10
-  _deathEvent: {fileID: 0}
 --- !u!114 &2013919976991523665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,10 +166,14 @@ MonoBehaviour:
   attackSpeed: 0
   critChance: 0
   weaponDamage: 0
-  defaultDamage: 0
   lowImpactLevelMultiplier: 0
+  lowImpactLuckMultiplier: 0.25
+  toughnessDamageReductionMultiplier: 0.25
   highImpactLevelMultiplier: 0
   vulnerabilities: []
+  vulnerabilityDamageModifier: 2
+  resistances: []
+  resistanceDamageModifier: 0.5
 --- !u!195 &2013919976991523666
 NavMeshAgent:
   m_ObjectHideFlags: 0
