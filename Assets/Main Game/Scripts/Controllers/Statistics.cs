@@ -7,19 +7,23 @@ using UnityEngine;
 public class Statistics : MonoBehaviour{
     [SerializeField]
     [Min(0f)]
-    float toughness, strength, dexterity, knowledge, reflex, luck, interactRange, attackRange, attackSpeed, critChance, consumableDuration, experienceIncrease;
+    float toughness, strength, dexterity, knowledge, reflex, luck, interactRange, attackRange, attackSpeed, moveSpeed, critChance, consumableEffectIncrease, experienceIncrease;
     // movement is increased by reflex
 
     [SerializeField] int weaponDamage = 10; // for debug
-    [SerializeField] internal float lowImpactLevelMultiplier = 0.5f;
-    [SerializeField] internal float lowImpactLuckMultiplier = 0.25f;
-    [SerializeField] internal float toughnessDamageReductionMultiplier = 0.25f;
-    [SerializeField] internal float highImpactLevelMultiplier = 1f;
     [SerializeField] internal List<DamageType> vulnerabilities;
     [Tooltip("The higher the value, the more damage is taken")][Range(1f,3f)][SerializeField] 
     internal float vulnerabilityDamageModifier = 2f;
     [SerializeField] internal List<DamageType> resistances;
-    [Tooltip("The higher the value, the more damage is taken")][Range(-1f,1f)][SerializeField] 
+
+    [Tooltip("The higher the value, the more damage is taken")] [Range(-1f, 1f)] [SerializeField]
+
+    internal float movementSpeedMultiplier = 0.03f;
+    internal float dodgeImpactLevelMultiplier = 0.005f;
+    internal float lowImpactLevelMultiplier = 0.05f;
+    internal float lowImpactLuckMultiplier = 0.01f;
+    internal float toughnessDamageReductionMultiplier = 0.1f;
+    internal float highImpactLevelMultiplier = 0.1f;
     internal float resistanceDamageModifier = 0.5f;
     int damage;
     bool isRanged;
@@ -84,11 +88,12 @@ public class Statistics : MonoBehaviour{
             damage = value;
         }
     }
-    
+
+    public float MoveSpeedIncrease => CalculateMoveSpeed();
     public float ExperienceIncrease => CalculateKnowledgeChance(experienceIncrease); //TODO:needs to impact % of xp gain, but where do we call it?
-    public float ConsumableEffectIncrease => CalculateKnowledgeChance(consumableDuration); // called in Consumer
+    public float ConsumableEffectIncrease => CalculateKnowledgeChance(consumableEffectIncrease); // called in Consumer
     public float CritChance => CalculateCritChance(); // called in Fighter
-    public float DodgeChance => CalculateDodgeChance();  // called in TakeDamage
+    public float DodgeChance => CalculateDodgeChance();  // called in Health
     
     public float LuckChance => CalculateLuckChance(); //called in LootTable
 
@@ -105,11 +110,15 @@ public class Statistics : MonoBehaviour{
     float CalculateAttackSpeed(){
         return StatManipulation(attackSpeed, dexterity, lowImpactLevelMultiplier);
     }
+
+    float CalculateMoveSpeed(){
+        return dexterity * movementSpeedMultiplier;
+    }
     float CalculateCritChance(){
-        return Luck * lowImpactLevelMultiplier;
+        return Luck * lowImpactLuckMultiplier;
     }
     float CalculateDodgeChance(){
-        return reflex * highImpactLevelMultiplier;
+        return reflex * dodgeImpactLevelMultiplier;
     }
 
     float CalculateToughnessDamageReduction()
@@ -139,16 +148,16 @@ public class Statistics : MonoBehaviour{
 
     public void AddStats(float toughnessBuff, float strengthBuff, float dexterityBuff, float knowledgeBuff, float reflexBuff, float luckBuff,
         float interactRangeBuff, float attackRangeBuff, float attackSpeedBuff,int damageBuff){
-        Toughness += toughnessBuff;
-        Strength += strengthBuff;
-        Dexterity += dexterityBuff;
-        Knowledge += knowledgeBuff;
-        Reflex += reflexBuff;
-        Luck += luckBuff;
-        InteractRange += interactRangeBuff;
-        AttackRange += attackRangeBuff;
-        AttackSpeed += attackSpeedBuff;
-        AttackDamage += damageBuff;
+        Toughness += toughnessBuff * consumableEffectIncrease;
+        Strength += strengthBuff * consumableEffectIncrease;
+        Dexterity += dexterityBuff * consumableEffectIncrease;
+        Knowledge += knowledgeBuff * consumableEffectIncrease;
+        Reflex += reflexBuff * consumableEffectIncrease;
+        Luck += luckBuff * consumableEffectIncrease;
+        InteractRange += interactRangeBuff * consumableEffectIncrease;
+        AttackRange += attackRangeBuff * consumableEffectIncrease;
+        AttackSpeed += attackSpeedBuff * consumableEffectIncrease;
+        AttackDamage += (int)(damageBuff * consumableEffectIncrease);
     }
 
     public void AddToughness(int amount){

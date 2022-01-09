@@ -81,7 +81,7 @@ public class Health : MonoBehaviour, IDamageReceiver{
     }
     
     int CalculateMaxHP(){
-        return (int) _stats.StatManipulation(maxHP, _stats.Toughness, _stats.highImpactLevelMultiplier);
+        return (int) _stats.StatManipulation(maxHP, _stats.Toughness, _stats.lowImpactLevelMultiplier);
     }
 
     bool DodgeSuccessful(){

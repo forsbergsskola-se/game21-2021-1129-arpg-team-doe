@@ -3,18 +3,19 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class Movement : MonoBehaviour{
-    [SerializeField] float maxSpeed = 8f;
+    [SerializeField] float movementSpeed = 8f;
     [SerializeField] FMODUnity.EventReference movementSound;
 
     EventInstance _movementInstance;
     NavMeshPath _path;
     AnimationController _animationController;
+    Statistics _statistics;
     internal NavMeshAgent _navMeshAgent;
     internal bool pathFound;
     const string IDLE = "Idle";
     
-    void Start()
-    {
+    void Awake(){
+        _statistics = GetComponent<Statistics>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _path = new NavMeshPath();
         _animationController = GetComponentInChildren<AnimationController>();
@@ -29,7 +30,7 @@ public class Movement : MonoBehaviour{
         if (pathFound){
             _navMeshAgent.isStopped = false;
             _navMeshAgent.destination = target;
-            _navMeshAgent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
+            _navMeshAgent.speed = _statistics.MoveSpeedIncrease + movementSpeed * Mathf.Clamp01(speedFraction);
            PlayMovementSound();
         }
         else{

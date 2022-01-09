@@ -49,8 +49,8 @@ public class Fighter : MonoBehaviour, IInteractSound{
     }
 
     void Update(){
-        _objectSpeed = _rigidbody.velocity.magnitude;
-        _timeSinceLastAttack += Time.deltaTime; //objectspeed is always 0??
+        _objectSpeed = _rigidbody.velocity.magnitude;//objectspeed is always 0??
+        _timeSinceLastAttack += Time.deltaTime; 
         if (_combatTarget == null && _objectSpeed < 0.1 || !_isPlayer && _objectSpeed < 0.001){
             IsIdle = true;
             //_movement.StopMovementSound();
