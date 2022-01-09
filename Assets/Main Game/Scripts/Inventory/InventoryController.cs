@@ -263,6 +263,9 @@ public class InventoryController : MonoBehaviour
     }
 
     void ToggleInventory(){
+        if (canvasInventory.activeInHierarchy && selectedItem != null){
+            PlaceItem(pickUpPosition);
+        }
         canvasInventory.SetActive(!canvasInventory.activeInHierarchy);
     }
 
