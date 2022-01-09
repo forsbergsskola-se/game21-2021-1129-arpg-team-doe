@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Zone
   - RightClickMenu
+  - Wall
   layers:
   - Default
   - TransparentFX

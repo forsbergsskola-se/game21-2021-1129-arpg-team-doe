@@ -33,7 +33,7 @@ public class Movement : MonoBehaviour{
             _navMeshAgent.isStopped = false;
             _navMeshAgent.destination = target;
             _navMeshAgent.speed = _statistics.MoveSpeedIncrease + movementSpeed * Mathf.Clamp01(speedFraction);
-           PlayMovementSound();
+            PlayMovementSound();
         }
         else{
             StopMoving();
