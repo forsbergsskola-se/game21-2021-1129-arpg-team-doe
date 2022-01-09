@@ -5086,21 +5086,18 @@ MonoBehaviour:
   interactRange: 9.73
   attackRange: 3.15
   attackSpeed: 1
+  moveSpeed: 0
   critChance: 0
-  consumableDuration: 0
+  consumableEffectIncrease: 0
   experienceIncrease: 0
   weaponDamage: 10
-  lowImpactLevelMultiplier: 0.005
-  lowImpactLuckMultiplier: 0.005
-  toughnessDamageReductionMultiplier: 0.25
-  highImpactLevelMultiplier: 0.01
   vulnerabilities:
   - {fileID: 11400000, guid: 3e87e5d953dae5a469e386c015c103e1, type: 2}
   - {fileID: 11400000, guid: 08778ce313064eb42bf34ef5e34d7eb5, type: 2}
   vulnerabilityDamageModifier: 2.2
   resistances:
   - {fileID: 0}
-  resistanceDamageModifier: 1
+  movementSpeedMultiplier: 0.03
 --- !u!114 &5675631719487080363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5136,7 +5133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ee2f15259042c24d83e3cde42986425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 8
+  movementSpeed: 8
   movementSound:
     Guid:
       Data1: 0

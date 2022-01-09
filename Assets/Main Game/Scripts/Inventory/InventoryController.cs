@@ -142,17 +142,13 @@ public class InventoryController : MonoBehaviour
             _playerConsumer._consumableObject = null;
             RemoveItemFromInventoryRight();
         }
-        // else if (lastRightClickedItem.itemObject is KeySO)
-        // {
-        //     lastRightClickedItem.GetComponent<MasterKey>().UseItem();
-        // }
         else
         {
             _inventoryItemList.Remove(lastRightClickedItem.itemObject);
             lastRightClickedItem.itemObject.UseItem();
         }
     }
-    public bool UseItem() //Called by button
+    public void UseItem() 
     {
         if (selectedItem.itemObject is ConsumableObject)
         {
@@ -160,24 +156,17 @@ public class InventoryController : MonoBehaviour
             _playerConsumer.Consume();
             _playerConsumer._consumableObject = null;
             RemoveItemFromInventory();
-            return true;
         }
-        // else if (selectedItem.itemObject is KeySO)
-        // {
-        //     selectedItem.GetComponent<MasterKey>().UseItem();
-        // }
         else
         {
             _inventoryItemList.Remove(selectedItem.itemObject);
             selectedItem.itemObject.UseItem();
             //selectedItem = null;
-            return true;
         }
-        return false;
     }
    
     public void PlaceItem(Vector2Int tileGridPosition){
-        if (selectedItemGrid.IsOutOfInventoryGrid(tileGridPosition.x, tileGridPosition.y) && !UseItem()){
+        if (selectedItemGrid.IsOutOfInventoryGrid(tileGridPosition.x, tileGridPosition.y) && lastRightClickedItem == null){
             DropItemToGround();
             return;
         }
