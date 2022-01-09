@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6272300592998699402}
   m_Layer: 0
   m_Name: Crypt-Pillar-Broken
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 1947927723046692588}
   m_Layer: 0
   m_Name: Crypt-Pillar 2x4x2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 2147483647
@@ -1481,7 +1481,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 6365
+  m_VersionIndex: 6368
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1499,7 +1499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    rid: 7148596483975806977
+    rid: 2099435210850173855
   m_Size: {x: 1, y: 1, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -1511,7 +1511,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 7148596483975806977
+    - rid: 2099435210850173855
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!23 &4420437751038157358
 MeshRenderer:
@@ -1643,6 +1643,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6d27e4b9f641c4984a355980f76fb7d0, type: 3}
       propertyPath: m_Name
       value: Broken_pillar2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6d27e4b9f641c4984a355980f76fb7d0, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d27e4b9f641c4984a355980f76fb7d0, type: 3}
