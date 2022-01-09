@@ -1,4 +1,3 @@
-using System;
 using FMOD.Studio;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,13 +8,16 @@ public class Movement : MonoBehaviour{
 
     EventInstance _movementInstance;
     NavMeshPath _path;
+    AnimationController _animationController;
     internal NavMeshAgent _navMeshAgent;
     internal bool pathFound;
+    const string IDLE = "Idle";
     
     void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _path = new NavMeshPath();
+        _animationController = GetComponentInChildren<AnimationController>();
         _movementInstance = FMODUnity.RuntimeManager.CreateInstance(movementSound);
     }
 
@@ -38,6 +40,7 @@ public class Movement : MonoBehaviour{
 
     public void StopMoving(){
         _navMeshAgent.isStopped = true;
+        _animationController.ChangeAnimationState(IDLE);
     }
 
     void PlayMovementSound(){
