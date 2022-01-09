@@ -615,6 +615,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 8
+  movementSound:
+    Guid:
+      Data1: -1277622305
+      Data2: 1097570538
+      Data3: 1872060564
+      Data4: -344489626
+    Path: event:/WormMovement
 --- !u!114 &2357426410238338414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -869,7 +876,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1478629963217002677
 Transform:
   m_ObjectHideFlags: 0

@@ -75,6 +75,10 @@ public class EnemyController : MonoBehaviour{
          PlayAlertSound();
          _alerted = false;
       }
+
+      if (!_needsToWalkBack && !_playerIsDetected){
+         _movement.StopMovementSound();
+      }
    }
 
    void InteractCombat(Transform target){

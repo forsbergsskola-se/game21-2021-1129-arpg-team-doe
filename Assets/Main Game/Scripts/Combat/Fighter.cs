@@ -10,11 +10,9 @@ public class Fighter : MonoBehaviour, IInteractSound{
     public bool IsIdle{ get; private set; }
     public FMODUnity.EventReference critReference;
     public FMODUnity.EventReference attackReference;
-    public FMODUnity.EventReference idleReference;
     EventInstance _critAttackInstance;
     EventInstance _attackInstance;
-    EventInstance _idleInstance;
-    
+
     Statistics _statistics;
     Health _combatTarget;
     Movement _movement;
@@ -27,6 +25,7 @@ public class Fighter : MonoBehaviour, IInteractSound{
     float _attackRange;
     float _distance;
     float _timeSinceLastAttack;
+    float _objectSpeed;
 
     const string RUN = "Run";
     const string ATTACK = "Attack";
@@ -47,18 +46,14 @@ public class Fighter : MonoBehaviour, IInteractSound{
         }
         _attackRange = _statistics.AttackRange;
         _attackInstance = FMODUnity.RuntimeManager.CreateInstance(attackReference);
-        _idleInstance = FMODUnity.RuntimeManager.CreateInstance(idleReference);
     }
 
     void Update(){
-        _timeSinceLastAttack += Time.deltaTime;
-        if (_combatTarget == null && _rigidbody.velocity.magnitude == 0 || !_isPlayer && _rigidbody.velocity.magnitude == 0){
+        _objectSpeed = _rigidbody.velocity.magnitude;
+        _timeSinceLastAttack += Time.deltaTime; //objectspeed is always 0??
+        if (_combatTarget == null && _objectSpeed < 0.1 || !_isPlayer && _objectSpeed < 0.001){
             IsIdle = true;
-            _idleInstance.getPlaybackState(out var playbackState);
-            if (playbackState != PLAYBACK_STATE.STOPPED){
-                return;
-            }
-            _idleInstance.start();
+            //_movement.StopMovementSound();
         }
         
         if (_combatTarget == null){
@@ -69,7 +64,6 @@ public class Fighter : MonoBehaviour, IInteractSound{
             return;
         }
         
-        _idleInstance.stop(STOP_MODE.IMMEDIATE);
         if (!_combatTarget.GetComponent<Health>().IsAlive || IsClickOnItself()){
             _combatTarget = null;
             _animationController.ChangeAnimationState(IDLE);
@@ -85,6 +79,7 @@ public class Fighter : MonoBehaviour, IInteractSound{
         else{
             _movement.StopMoving();
             Attack(_combatTarget.gameObject);
+            _movement.StopMovementSound();
         }
     }
 
