@@ -5097,7 +5097,7 @@ MonoBehaviour:
   vulnerabilityDamageModifier: 2.2
   resistances:
   - {fileID: 0}
-  movementSpeedMultiplier: 0.03
+  damageLevelMultiplier: 0.01
 --- !u!114 &5675631719487080363
 MonoBehaviour:
   m_ObjectHideFlags: 0
