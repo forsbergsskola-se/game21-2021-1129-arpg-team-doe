@@ -7137,6 +7137,7 @@ MonoBehaviour:
   itemDisplayInfoText: {fileID: 1039488385}
   itemDisplayNameBackground: {fileID: 194800692}
   itemDisplayInfoName: {fileID: 372687052}
+  _inventoryItemList: []
   selectedItemGrid: {fileID: 0}
   canvasInventory: {fileID: 9088444525093977231}
   selectedItem: {fileID: 0}

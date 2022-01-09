@@ -9,7 +9,10 @@ public interface IInteractSound{
 public class UnlockDoor : MonoBehaviour, Iinteractable,IInteractSound{
     
     [SerializeField]bool _locked = true;
-    
+    InventoryController _inventoryController;
+    [Tooltip("If none, Masterkey is default")][SerializeField] ItemObject key;
+    ItemObject masterKey;
+
     public FMODUnity.EventReference DoorReference;
     
     DoorConditions _doorConditions; 
@@ -27,6 +30,11 @@ public class UnlockDoor : MonoBehaviour, Iinteractable,IInteractSound{
         _cursorOnDoor = GetComponent<CursorOnDoor>();
         _collider = GetComponent<BoxCollider>();
         _animator = GetComponent<Animator>();
+        _inventoryController = FindObjectOfType<InventoryController>();
+        if (key == null)
+        {
+            key = masterKey;
+        }
     }
 
     void Start(){
@@ -34,7 +42,7 @@ public class UnlockDoor : MonoBehaviour, Iinteractable,IInteractSound{
         _doorInstance = FMODUnity.RuntimeManager.CreateInstance(DoorReference);
     }
 
-    void Update(){
+    void Update(){ //TODO: Expensive?
         if (!_locked){
             _conditionCompleted = true;
             _cursorOnDoor.openable = true;
@@ -47,12 +55,17 @@ public class UnlockDoor : MonoBehaviour, Iinteractable,IInteractSound{
             }
         }
     }
+
+    public void UnlockDoorWithKey()
+    {
+        _locked = false;
+    }
     
     public void Use(){
-        if (_locked){
+        if (_locked && !_inventoryController._inventoryItemList.Contains(key)){
             PlaySound(1f);
         }
-        else if (!_locked){
+        else if (!_locked || _inventoryController._inventoryItemList.Contains(key) ){
             OpenDoor();
         }
     }

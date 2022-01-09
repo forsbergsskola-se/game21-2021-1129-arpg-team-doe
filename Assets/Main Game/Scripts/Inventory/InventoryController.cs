@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using FMOD.Studio;
 using TMPro;
 using UnityEngine;
@@ -23,7 +24,9 @@ public class InventoryController : MonoBehaviour
     //Item Name
     [SerializeField] GameObject itemDisplayNameBackground;
     [SerializeField] GameObject itemDisplayInfoName;
-    
+
+    public List<ItemObject> _inventoryItemList;
+
     TextMeshProUGUI itemDisplayName;
     
     [HideInInspector]
@@ -120,6 +123,7 @@ public class InventoryController : MonoBehaviour
         _rectTransform.SetParent(canvasTransform);
         _rectTransform.SetAsLastSibling();
         inventoryItem.Set(itemsInDatabase.GetItem[selectedItemID]);
+        _inventoryItemList.Add(inventoryItem.itemObject);
         return inventoryItem;
     }
     
@@ -138,8 +142,13 @@ public class InventoryController : MonoBehaviour
             _playerConsumer._consumableObject = null;
             RemoveItemFromInventoryRight();
         }
+        // else if (lastRightClickedItem.itemObject is KeySO)
+        // {
+        //     lastRightClickedItem.GetComponent<MasterKey>().UseItem();
+        // }
         else
         {
+            _inventoryItemList.Remove(lastRightClickedItem.itemObject);
             lastRightClickedItem.itemObject.UseItem();
         }
     }
@@ -152,8 +161,13 @@ public class InventoryController : MonoBehaviour
             _playerConsumer._consumableObject = null;
             RemoveItemFromInventory();
         }
+        // else if (selectedItem.itemObject is KeySO)
+        // {
+        //     selectedItem.GetComponent<MasterKey>().UseItem();
+        // }
         else
         {
+            _inventoryItemList.Remove(selectedItem.itemObject);
             selectedItem.itemObject.UseItem();
         }
     }
@@ -227,6 +241,11 @@ public class InventoryController : MonoBehaviour
         {
             itemDisplayName.color = Color.yellow;
         }
+
+        else if (_hoveredItem.itemObject is KeySO)
+        {
+            itemDisplayName.color = Color.magenta;
+        }
         else {
             itemDisplayName.color = Color.white;
         }
@@ -294,10 +313,12 @@ public class InventoryController : MonoBehaviour
                 hotbarButton.ClearButton();
             }
         }
+        _inventoryItemList.Remove(selectedItem.itemObject);
         Destroy(selectedItem.gameObject);
         selectedItem = null;
     }
     void RemoveItemFromInventoryRight(){
+        _inventoryItemList.Remove(lastRightClickedItem.itemObject);
         Destroy(lastRightClickedItem.gameObject);
         lastRightClickedItem = null;
     }
