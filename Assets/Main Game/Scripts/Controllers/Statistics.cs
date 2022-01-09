@@ -18,6 +18,7 @@ public class Statistics : MonoBehaviour{
 
     [Tooltip("The higher the value, the more damage is taken")] [Range(-1f, 1f)] [SerializeField]
 
+    internal float damageLevelMultiplier = 0.001f;
     internal float movementSpeedMultiplier = 0.03f;
     internal float dodgeImpactLevelMultiplier = 0.005f;
     internal float lowImpactLevelMultiplier = 0.05f;
@@ -138,10 +139,10 @@ public class Statistics : MonoBehaviour{
     int CalculateWeaponDamage(){
         float damageMultiplier;
         if (isRanged){
-            damageMultiplier = dexterity * highImpactLevelMultiplier + 1;
+            damageMultiplier = dexterity * damageLevelMultiplier + 1;
         }
         else{
-            damageMultiplier = strength * highImpactLevelMultiplier + 1;
+            damageMultiplier = strength * damageLevelMultiplier + 1;
         }
         return damage = (int) (weaponDamage * damageMultiplier);
     }
