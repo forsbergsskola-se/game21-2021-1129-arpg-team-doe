@@ -18,7 +18,7 @@ public class Statistics : MonoBehaviour{
 
     [Tooltip("The higher the value, the more damage is taken")] [Range(-1f, 1f)] [SerializeField]
 
-    internal float damageLevelMultiplier = 0.001f;
+    internal float damageLevelMultiplier = 0.01f;
     internal float movementSpeedMultiplier = 0.03f;
     internal float dodgeImpactLevelMultiplier = 0.005f;
     internal float lowImpactLevelMultiplier = 0.05f;
