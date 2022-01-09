@@ -10,6 +10,7 @@ public class Fighter : MonoBehaviour, IInteractSound{
     public bool IsIdle{ get; private set; }
     public FMODUnity.EventReference critReference;
     public FMODUnity.EventReference attackReference;
+    internal bool isAttacking;
     EventInstance _critAttackInstance;
     EventInstance _attackInstance;
 
@@ -57,26 +58,31 @@ public class Fighter : MonoBehaviour, IInteractSound{
         }
         
         if (_combatTarget == null){
+            isAttacking = false;
             return;
         }
         
         if (!_movement.pathFound && _combatTarget.GetComponentInChildren<Enemy>()){ //TODO: why enemy 5&7 can't find path
+            isAttacking = false;
             return;
         }
         
         if (!_combatTarget.GetComponent<Health>().IsAlive || IsClickOnItself()){
             _combatTarget = null;
+            isAttacking = false;
             _animationController.ChangeAnimationState(IDLE);
             return;
         }
         
         if (!IsInAttackRange()){
+            isAttacking = false;
             _movement.Mover(_combatTarget.transform.position, 1f);
             if (_animationController != null)
                 _animationController.ChangeAnimationState(RUN);
         }
         
         else{
+            isAttacking = true;
             _movement.StopMoving();
             Attack(_combatTarget.gameObject);
             _movement.StopMovementSound();
