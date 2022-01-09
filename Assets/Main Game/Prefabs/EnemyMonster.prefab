@@ -614,6 +614,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 8
+  movementSound:
+    Guid:
+      Data1: -10780775
+      Data2: 1145515645
+      Data3: -1942636363
+      Data4: -1882513318
+    Path: event:/Footsteps
 --- !u!114 &2357426410238338414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,6 +687,7 @@ MonoBehaviour:
   weaponDamage: 10
   lowImpactLevelMultiplier: 0
   lowImpactLuckMultiplier: 0
+  toughnessDamageReductionMultiplier: 0.25
   highImpactLevelMultiplier: 0
   vulnerabilities:
   - {fileID: 11400000, guid: dbbc8d142b7dca24f8b0eda4cd410de2, type: 2}

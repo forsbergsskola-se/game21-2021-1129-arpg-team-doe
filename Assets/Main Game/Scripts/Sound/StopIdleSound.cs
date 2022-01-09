@@ -3,7 +3,7 @@ using FMODUnity;
 using UnityEngine;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
-public class StopMusic : MonoBehaviour
+public class StopIdleSound : MonoBehaviour
 {
    StudioEventEmitter _eventEmitter;
    EventInstance _idleInstance;

@@ -5065,13 +5065,6 @@ MonoBehaviour:
       Data3: -1379749704
       Data4: 102819547
     Path: event:/FastWeaponSwing
-  idleReference:
-    Guid:
-      Data1: 1251498497
-      Data2: 1153929333
-      Data3: 372511910
-      Data4: 113470447
-    Path: event:/PlayerIdle
 --- !u!114 &5675631719487080352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5144,6 +5137,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 8
+  movementSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &5837679689093723571
 MonoBehaviour:
   m_ObjectHideFlags: 0
