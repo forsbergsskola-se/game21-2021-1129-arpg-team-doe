@@ -21,11 +21,11 @@ MonoBehaviour:
   price: 0
   dropSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1354353610
+      Data2: 1229846214
+      Data3: 1372496795
+      Data4: 2126485261
+    Path: event:/CrackpipeDrop
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
   description: This item does not have a description
   buffs: []

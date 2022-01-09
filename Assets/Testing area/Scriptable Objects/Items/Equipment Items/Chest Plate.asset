@@ -26,7 +26,7 @@ MonoBehaviour:
       Data3: -200824160
       Data4: -981507709
     Path: event:/InventoryDrop
-  _pickupEvent: {fileID: 0}
+  _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
   description: 
   buffs: []
   equipmentType: 1

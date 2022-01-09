@@ -21,11 +21,11 @@ MonoBehaviour:
   price: 1
   dropSound:
     Guid:
-      Data1: 90928835
-      Data2: 1225203162
-      Data3: -200824160
-      Data4: -981507709
-    Path: event:/InventoryDrop
+      Data1: -355171329
+      Data2: 1312208184
+      Data3: -468654973
+      Data4: 310783608
+    Path: event:/ClothDrop
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
   description: Try to use this on the mutated monsters, it might help them.
   buffs: []

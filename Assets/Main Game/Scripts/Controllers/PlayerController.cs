@@ -155,6 +155,7 @@ public class PlayerController : MonoBehaviour{
             Ray ray = GetMouseRay();
             bool hasHit = Physics.Raycast(ray, out _hit);
             if (hasHit){
+                Debug.Log(_hit.transform.tag);
                 if (_hit.transform.CompareTag("Ground")){
                     PlayMoveFeedback(0f);
                     //_moveInstance.release();
@@ -168,6 +169,9 @@ public class PlayerController : MonoBehaviour{
                     else{
                         StartCoroutine(ChangeCursorTemporary(invalidClickTexture,1f));
                     }
+                }
+                else if (_hit.transform.CompareTag("Wall")){
+                    StartCoroutine(ChangeCursorTemporary(invalidClickTexture,1f));
                 }
             }
             else{

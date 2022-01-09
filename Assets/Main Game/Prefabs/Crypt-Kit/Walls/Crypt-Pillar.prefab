@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6272300592998699402}
   m_Layer: 0
   m_Name: Crypt-Pillar
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -87,10 +87,32 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewPillar
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c293d2b26abe4dcba684197337ba558, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c293d2b26abe4dcba684197337ba558, type: 3}
+--- !u!1 &9084660321490586895 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c293d2b26abe4dcba684197337ba558, type: 3}
+  m_PrefabInstance: {fileID: 8273776345147076702}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8455757625877338037 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9c293d2b26abe4dcba684197337ba558, type: 3}
   m_PrefabInstance: {fileID: 8273776345147076702}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &4116990170101750715
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9084660321490586895}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.028760307, y: 0.0287603, z: 0.09213828}
+  m_Center: {x: -9.313226e-10, y: -0.0000000018626448, z: 0.035838347}
