@@ -5,13 +5,14 @@ public class CameraFollow : MonoBehaviour{
     const float closeToLeftScreenEdge = 0.05f;
     const float rightScreenEdge = 1f;
     const float leftScreenEdge = 0f;
-    const int zoomLevels = 3;
+    const int zoomLevels = 4;
 
     [SerializeField] float smoothTime = 0.3f;
     [SerializeField] float rotationSpeedMultiplier = 500f;
     [SerializeField] float snapRotationSpeedMultiplier = 30f;
     [SerializeField] float minZoom = 3f;
     [SerializeField] float maxZoom = 15f;
+    [SerializeField] float medZoom = 8f;
     [SerializeField] [Range(30,90)] float cameraAngleX;
 
     Transform target;
@@ -21,6 +22,7 @@ public class CameraFollow : MonoBehaviour{
     Vector3 _velocity = Vector3.zero;
 
     float startZoom;
+    
     float speed;
     int zoomLevel;
 
@@ -51,6 +53,10 @@ public class CameraFollow : MonoBehaviour{
             }
             //Change to maxZoom
             else if (currentZoomLevel == 1){
+                offset.y = medZoom;
+            }
+            else if (currentZoomLevel == 2)
+            {
                 offset.y = maxZoom;
             }
             //Change to startZoom
