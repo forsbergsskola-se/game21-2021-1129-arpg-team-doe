@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,12 +11,20 @@ public class Currency : MonoBehaviour{
     }
 
     void OnTriggerEnter(Collider other){
-        if (other.gameObject.CompareTag("Player")){
-            other.gameObject.GetComponent<CurrencyHolder>()._currencyHolderDataSo.AddCurrency(amount);
-            Destroy(gameObject);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(PickUpTimer(other));
+            
         }
     }
     void GenerateValue(){
         amount = Random.Range(currencyData.minAmount, currencyData.maxAmount);
+    }
+
+    IEnumerator PickUpTimer(Collider other)
+    {
+        yield return new WaitForSeconds(1);
+        other.gameObject.GetComponent<CurrencyHolder>()._currencyHolderDataSo.AddCurrency(amount);
+        Destroy(gameObject);
     }
 }
