@@ -6665,6 +6665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   applyButton: {fileID: 502113752324850772}
   SkillPointTextObject: {fileID: 1396873136}
+  LevelTextObject: {fileID: 0}
   _playerLevel: {fileID: 11400000, guid: bac969c35aac6924fb6519533e2f15c4, type: 2}
   _uiStats: {fileID: 0}
 --- !u!1 &6598838207175824988
