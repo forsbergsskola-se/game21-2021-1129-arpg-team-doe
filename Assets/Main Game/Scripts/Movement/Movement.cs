@@ -44,6 +44,7 @@ public class Movement : MonoBehaviour{
 
     public void StopMoving(){
         _navMeshAgent.isStopped = true;
+        StopMovementSound();
         if (!_fighter.isAttacking){
             _animationController.ChangeAnimationState(IDLE);
         }
