@@ -7,6 +7,7 @@ public class CameraFollow : MonoBehaviour{
     const float rightScreenEdge = 1f;
     const float leftScreenEdge = 0f;
     const int zoomLevels = 4;
+    const int cameraAngles = 3;
 
     [SerializeField] float smoothTime = 0.3f;
     [SerializeField] float rotationSpeedMultiplier = 500f;
@@ -24,9 +25,10 @@ public class CameraFollow : MonoBehaviour{
     Vector3 _velocity = Vector3.zero;
 
     float startZoom;
-    
+
     float speed;
     int zoomLevel;
+    int cameraAngle;
 
     void Awake(){
         _inventoryController = FindObjectOfType<InventoryController>();
@@ -52,6 +54,7 @@ public class CameraFollow : MonoBehaviour{
         SnapCameraRotation();
         MouseCameraRotation();
         transform.eulerAngles = new Vector3(cameraAngleX, transform.rotation.eulerAngles.y,0f);
+        CameraAngle();
     }
 
     void CameraZoom(){
@@ -99,6 +102,26 @@ public class CameraFollow : MonoBehaviour{
         if (currentMousePosition.x < closeToLeftScreenEdge && currentMousePosition.x > leftScreenEdge){
             rotationAxis.y =   currentMousePosition.x - closeToLeftScreenEdge;
             transform.Rotate(mouseRotation);
+        }
+    }
+
+    void CameraAngle(){
+        if (Input.GetKeyDown(KeyCode.C)){
+            var currentCameraAngle = cameraAngle % cameraAngles;
+            //Change to lowest cameraAngle
+            if (currentCameraAngle == 0){
+                cameraAngleX = 30;
+            }
+            //Change to medium cameraAngle
+            else if (currentCameraAngle == 1){
+                cameraAngleX = 60;
+            }
+            //Change to highest cameraAngle
+            else if (currentCameraAngle == 2)
+            {
+                cameraAngleX = 80;
+            }
+            cameraAngle++;
         }
     }
 }
