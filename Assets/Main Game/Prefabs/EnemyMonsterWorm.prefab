@@ -1048,6 +1048,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3638499644474111522, guid: dccd7c3ad52f0dc469dba0a8f4332117, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 506c2fd89d122624680559bb19c2b8e9, type: 2}
     - target: {fileID: 919132149155446097, guid: dccd7c3ad52f0dc469dba0a8f4332117, type: 3}
       propertyPath: m_Name
       value: Worm_enemy_anim_walk
