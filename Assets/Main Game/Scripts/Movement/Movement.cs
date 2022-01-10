@@ -49,9 +49,11 @@ public class Movement : MonoBehaviour{
     }
 
     void PlayMovementSound(){
+        _movementInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject, GetComponent<Rigidbody>()));
         _movementInstance.getPlaybackState(out var playbackState);
             if (playbackState == PLAYBACK_STATE.STOPPED){
-                _movementInstance.start();  
+                _movementInstance.start();
+                _movementInstance.release();
             }
     }
 

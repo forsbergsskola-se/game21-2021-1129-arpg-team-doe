@@ -65,22 +65,24 @@ public class PlayerController : MonoBehaviour{
         if (Input.GetMouseButton(0) && _inventoryController.clickOnUI){
             return;
         }
-
-        if (InteractWithPickup()){
-            return;
-        }
-
+        
         if (_inventoryController.selectedItem != null){
             return;
         }
-        
-        if (InteractWithCombat()){
-            return;
+
+        if (Input.GetMouseButton(0)){
+            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+            if (InteractWithPickup(hits)){
+                return;
+            }
+            if (InteractWithCombat(hits)){
+                return;
+            }
+            if (InteractWithInteractable(hits)){
+                return;
+            }
         }
-        if (InteractWithInteractable()){
-            return;
-        }
-                     
+
         MoveToCursor();
     }
 
@@ -94,22 +96,20 @@ public class PlayerController : MonoBehaviour{
         return _playerIsDefeated;
     }
 
-    bool InteractWithCombat(){
-        RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+    bool InteractWithCombat(RaycastHit[] hits){
         foreach (RaycastHit hit in hits){
             GameObject enemy = hit.transform.GetComponent<Health>()?.gameObject;
             if (enemy == null) continue;
-            if (Input.GetMouseButton(0)){
-                _fighter.GetAttackTarget(enemy);
-                _footstepInstance.stop(STOP_MODE.ALLOWFADEOUT);
-            }
+            
+            _fighter.GetAttackTarget(enemy);
+            _footstepInstance.stop(STOP_MODE.ALLOWFADEOUT);
+            
             return true;
         }
         return false;
     }
 
-    bool InteractWithInteractable(){
-        RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+    bool InteractWithInteractable(RaycastHit[] hits){
         foreach (RaycastHit hit in hits){
             GameObject interactableObject = hit.transform.GetComponent<InteractableObject>()?.gameObject;
             if (interactableObject == null) continue;
@@ -125,14 +125,13 @@ public class PlayerController : MonoBehaviour{
         return false;
     }
     
-    bool InteractWithPickup(){
-        RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+    bool InteractWithPickup(RaycastHit[] hits){
         foreach (RaycastHit hit in hits){
             GameObject pickUpGameObject = hit.transform.GetComponent<PickUpItem>()?.gameObject;
             if (pickUpGameObject == null) continue;
             if (Input.GetMouseButtonDown(0)){
                 if (Input.GetKey(KeyCode.LeftControl)){
-                    InteractWithInteractable();
+                    InteractWithInteractable(hits);
                 }
                 else{
                     DragObject(pickUpGameObject);
@@ -155,7 +154,7 @@ public class PlayerController : MonoBehaviour{
             Ray ray = GetMouseRay();
             bool hasHit = Physics.Raycast(ray, out _hit);
             if (hasHit){
-                Debug.Log(_hit.transform.tag);
+                //Debug.Log(_hit.transform.tag);
                 if (_hit.transform.CompareTag("Ground")){
                     PlayMoveFeedback(0f);
                     //_moveInstance.release();

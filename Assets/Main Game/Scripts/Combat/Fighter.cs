@@ -54,7 +54,6 @@ public class Fighter : MonoBehaviour, IInteractSound{
         _timeSinceLastAttack += Time.deltaTime; 
         if (_combatTarget == null && _objectSpeed < 0.1 || !_isPlayer && _objectSpeed < 0.001){
             IsIdle = true;
-            //_movement.StopMovementSound();
         }
         
         if (_combatTarget == null){
