@@ -26,6 +26,8 @@ public class Health : MonoBehaviour, IDamageReceiver{
     EventInstance _takeDamage;
     Statistics _stats;
     Random random;
+    AnimationController _animationController;
+    const string IDLE = "Idle";
 
     public bool IsAlive => CurrentHP > 0 && !isRegenerating;
     public int CurrentHP{ get; private set; }
@@ -33,6 +35,7 @@ public class Health : MonoBehaviour, IDamageReceiver{
 
     void Awake(){
         _stats = GetComponent<Statistics>();
+        _animationController = GetComponentInChildren<AnimationController>();
     }
 
     void Start(){
@@ -60,6 +63,9 @@ public class Health : MonoBehaviour, IDamageReceiver{
             yield return new WaitForSeconds(1f);
         }
         isRegenerating = false;
+        if (transform.CompareTag("Player")){
+            _animationController.ChangeAnimationState(IDLE);
+        }
     }
 
     public void ReceiveDamage(int receivedDamage, bool isCrit, bool attackerIsPlayer, DamageType receivedDmgType){ //Toughness should affect this

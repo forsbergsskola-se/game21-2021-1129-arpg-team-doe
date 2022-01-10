@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour{
     Fighter _fighter;
     InventoryController _inventoryController;
     RaycastHit _hit;
+    Animator _animator;
 
     string _currentState;
     float _interactionRange;
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour{
         _animationController = GetComponentInChildren<AnimationController>();
         _fighter = GetComponent<Fighter>();
         _inventoryController = FindObjectOfType<InventoryController>();
+        _animator = GetComponentInChildren<Animator>();
         _footstepInstance = RuntimeManager.CreateInstance(footstepSound);
     }
 
@@ -56,6 +58,7 @@ public class PlayerController : MonoBehaviour{
             _movement.enabled = false; 
             _fighter.enabled = false;
             _animationController.ChangeAnimationState(DIE);
+
             if (!_health.isRegenerating){
                 StartCoroutine(_health.HealthRegeneration());
             }
