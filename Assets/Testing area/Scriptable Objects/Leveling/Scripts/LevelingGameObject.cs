@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Leveling System", menuName = "Leveling System/Leveling System")]
@@ -20,6 +21,15 @@ public class LevelingGameObject : ScriptableObject{
     [SerializeField] public FMODUnity.EventReference fmodEvent;
     void OnEnable(){
         requiredXPFloat = requiredXPInt;
+    }
+
+    void OnDisable()
+    {
+        level = 1;
+        currentXP = 0;
+        requiredXPInt = 100;
+        requiredXPFloat = 100f;
+        skillPoint = 0;
     }
 
     public void ReceiveXP(int XP){

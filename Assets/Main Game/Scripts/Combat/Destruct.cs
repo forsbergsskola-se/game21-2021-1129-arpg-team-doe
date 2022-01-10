@@ -2,19 +2,23 @@ using UnityEngine;
 
 public class Destruct : MonoBehaviour, IHealthListener{
     [SerializeField] GameObject _prefab;
-    DropTest _dropTest;
+    DropTest[] _dropTest;
     AnimationController _animationController;
     const string IDLE = "Idle";
 
     void Awake(){
-        _dropTest = GetComponent<DropTest>();
+        _dropTest = GetComponents<DropTest>();
         _animationController = GameObject.FindWithTag("Player").GetComponent<AnimationController>();
     }
 
     void Destruction(bool isAlive){
         if (!isAlive){
             _animationController.ChangeAnimationState(IDLE);
-            _dropTest.InstantiateItem();
+            foreach (var dropTest in _dropTest)
+            {
+                dropTest.InstantiateItem();
+            }
+            
             DeactivateComponents();
         }
     }
