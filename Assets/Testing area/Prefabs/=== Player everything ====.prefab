@@ -7110,6 +7110,7 @@ MonoBehaviour:
   snapRotationSpeedMultiplier: 30
   minZoom: 8
   maxZoom: 10
+  medZoom: 8
   cameraAngleX: 75
 --- !u!114 &4372569159284212191
 MonoBehaviour:

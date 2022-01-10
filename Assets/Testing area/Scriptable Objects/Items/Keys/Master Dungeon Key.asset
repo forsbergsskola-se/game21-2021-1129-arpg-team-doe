@@ -15,17 +15,17 @@ MonoBehaviour:
   Id: 30
   itemIcon: {fileID: 21300000, guid: 0214f99e63ef5c84093e77245a825d2e, type: 3}
   width: 1
-  height: 2
+  height: 1
   type: 4
   name: Master Dungeon Key
   price: 0
   dropSound:
     Guid:
-      Data1: -1354353610
-      Data2: 1229846214
-      Data3: 1372496795
-      Data4: 2126485261
-    Path: event:/CrackpipeDrop
+      Data1: 90928835
+      Data2: 1225203162
+      Data3: -200824160
+      Data4: -981507709
+    Path: event:/InventoryDrop
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
-  description: This item does not have a description
+  description: This could probably open some of the locked doors I encountered!
   buffs: []
