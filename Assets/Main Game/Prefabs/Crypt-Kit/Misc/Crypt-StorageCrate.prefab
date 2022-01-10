@@ -70,7 +70,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 4b4ce3f784f60a54fa33974f6adfe285, type: 3}
+  - {fileID: 2100000, guid: b3d7cea684418634396971559fdceb3f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -126,16 +126,15 @@ MonoBehaviour:
   interactRange: 0
   attackRange: 0
   attackSpeed: 0
+  moveSpeed: 0
   critChance: 0
+  consumableEffectIncrease: 0
+  experienceIncrease: 0
   weaponDamage: 0
-  lowImpactLevelMultiplier: 0
-  lowImpactLuckMultiplier: 0
-  toughnessDamageReductionMultiplier: 0.25
-  highImpactLevelMultiplier: 0
   vulnerabilities: []
   vulnerabilityDamageModifier: 0
   resistances: []
-  resistanceDamageModifier: 0
+  damageLevelMultiplier: 0.01
 --- !u!114 &2995505372112475368
 MonoBehaviour:
   m_ObjectHideFlags: 0
