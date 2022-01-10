@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 179a9598111edaf4496551596ffe7d50, type: 3}
   m_Name: Wedding Ring
   m_EditorClassIdentifier: 
-  Id: 0
+  Id: 9
   itemIcon: {fileID: 21300000, guid: b37ec804b5a92fd45a10eddd8f58ca03, type: 3}
   width: 1
   height: 1
@@ -21,11 +21,11 @@ MonoBehaviour:
   price: 100
   dropSound:
     Guid:
-      Data1: 932151635
-      Data2: 1318326047
-      Data3: -1646563165
-      Data4: -700181130
-    Path: event:/PickUp
+      Data1: 1612298627
+      Data2: 1171783708
+      Data3: -414396490
+      Data4: 408255267
+    Path: event:/WeddingRingDrop
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
   description: Proof that money is the root of all love.
   buffs: []
