@@ -16,7 +16,7 @@ MonoBehaviour:
   - drop: {fileID: 5700182911611578800, guid: c0ca58b79f1bb76409e90cbc2dfca610, type: 3}
     dropWeight: 5500
   - drop: {fileID: 5700182911611578800, guid: 8ffb010a8787d1b40850b508634e975d, type: 3}
-    dropWeight: 2800
+    dropWeight: 1200
   - drop: {fileID: 5700182911611578800, guid: 24cadade76374394a810392c3ed26358, type: 3}
     dropWeight: 1200
   - drop: {fileID: 5700182911611578800, guid: caf267c671e576e44a96da2c437264ed, type: 3}
@@ -43,3 +43,5 @@ MonoBehaviour:
     dropWeight: 65
   - drop: {fileID: 5700182911611578800, guid: 6f39a3a844fe8f046950d7216e1be715, type: 3}
     dropWeight: 1200
+  - drop: {fileID: 3191504459453181586, guid: 93d5615d2cf77414090060a3775502c7, type: 3}
+    dropWeight: 5000

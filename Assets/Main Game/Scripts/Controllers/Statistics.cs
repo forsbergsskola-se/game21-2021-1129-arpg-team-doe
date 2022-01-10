@@ -75,7 +75,7 @@ public class Statistics : MonoBehaviour{
             return CalculateAttackSpeed();
             // 1 dexterity -> 0.5 percent change, called in Fighter
         }
-        private set{
+         set{
             attackSpeed = value;
         }
     }
@@ -105,7 +105,7 @@ public class Statistics : MonoBehaviour{
     }
 
     public float StatManipulation(float baseValue, float attribute, float levelMultiplier){
-        return (baseValue * (1 + attribute * levelMultiplier));
+        return (baseValue * (1 + (attribute * levelMultiplier)));
     }
 
     float CalculateAttackSpeed(){
@@ -149,16 +149,16 @@ public class Statistics : MonoBehaviour{
 
     public void AddStats(float toughnessBuff, float strengthBuff, float dexterityBuff, float knowledgeBuff, float reflexBuff, float luckBuff,
         float interactRangeBuff, float attackRangeBuff, float attackSpeedBuff,int damageBuff){
-        Toughness += toughnessBuff * consumableEffectIncrease;
-        Strength += strengthBuff * consumableEffectIncrease;
-        Dexterity += dexterityBuff * consumableEffectIncrease;
-        Knowledge += knowledgeBuff * consumableEffectIncrease;
-        Reflex += reflexBuff * consumableEffectIncrease;
-        Luck += luckBuff * consumableEffectIncrease;
-        InteractRange += interactRangeBuff * consumableEffectIncrease;
-        AttackRange += attackRangeBuff * consumableEffectIncrease;
-        AttackSpeed += attackSpeedBuff * consumableEffectIncrease;
-        AttackDamage += (int)(damageBuff * consumableEffectIncrease);
+        Toughness += toughnessBuff;
+        Strength += strengthBuff;
+        Dexterity += dexterityBuff;
+        Knowledge += knowledgeBuff;
+        Reflex += reflexBuff;
+        Luck += luckBuff ;
+        InteractRange += interactRangeBuff;
+        AttackRange += attackRangeBuff;
+        AttackSpeed += attackSpeedBuff;
+        AttackDamage += (int)(damageBuff);
     }
 
     public void AddToughness(int amount){
