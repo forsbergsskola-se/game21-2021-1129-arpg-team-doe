@@ -614,7 +614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ee2f15259042c24d83e3cde42986425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 8
+  movementSpeed: 6
   movementSound:
     Guid:
       Data1: -1277622305
@@ -676,7 +676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toughness: 0
-  strength: 10.14
+  strength: 20
   dexterity: 0
   knowledge: 0
   reflex: 0
@@ -684,18 +684,17 @@ MonoBehaviour:
   interactRange: 0
   attackRange: 3
   attackSpeed: 1
+  moveSpeed: 0
   critChance: 0
-  weaponDamage: 10
-  lowImpactLevelMultiplier: 0
-  lowImpactLuckMultiplier: 0
-  toughnessDamageReductionMultiplier: 0.25
-  highImpactLevelMultiplier: 0
+  consumableEffectIncrease: 0
+  experienceIncrease: 0
+  weaponDamage: 25
   vulnerabilities:
   - {fileID: 11400000, guid: dbbc8d142b7dca24f8b0eda4cd410de2, type: 2}
   vulnerabilityDamageModifier: 3
   resistances:
   - {fileID: 11400000, guid: dbbc8d142b7dca24f8b0eda4cd410de2, type: 2}
-  resistanceDamageModifier: 0.5
+  damageLevelMultiplier: 0.01
 --- !u!114 &5183213902803492238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -724,7 +723,7 @@ MonoBehaviour:
   parameter: 0
   stopRegenerateThreshold: 0
   healthRegen: 10
-  maxHP: 40
+  maxHP: 60
   _xpDrop: {fileID: 1511514187}
   _xpDropEvent: {fileID: 11400000, guid: 44b23296178544384ad6b8052486b374, type: 2}
   isRegenerating: 0
@@ -777,13 +776,6 @@ MonoBehaviour:
       Data3: -1379749704
       Data4: 102819547
     Path: event:/FastWeaponSwing
-  idleReference:
-    Guid:
-      Data1: 1102551081
-      Data2: 1181041241
-      Data3: -642572407
-      Data4: -438745020
-    Path: event:/ZombieIdle
 --- !u!114 &6345615741836710522
 MonoBehaviour:
   m_ObjectHideFlags: 0
