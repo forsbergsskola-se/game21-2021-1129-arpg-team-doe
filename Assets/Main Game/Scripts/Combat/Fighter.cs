@@ -61,12 +61,12 @@ public class Fighter : MonoBehaviour, IInteractSound{
             return;
         }
         
-        if (!_movement.pathFound && _combatTarget.GetComponentInChildren<Enemy>()){ //TODO: why enemy 5&7 can't find path
+        if (!_movement.pathFound && _combatTarget.GetComponentInChildren<Enemy>()){
             isAttacking = false;
             return;
         }
         
-        if (!_combatTarget.GetComponent<Health>().IsAlive || IsClickOnItself()){
+        if (!_combatTarget.IsAlive || IsClickOnItself()){
             _movement.StopMovementSound();
             _combatTarget = null;
             isAttacking = false;
@@ -77,8 +77,7 @@ public class Fighter : MonoBehaviour, IInteractSound{
         if (!IsInAttackRange()){
             isAttacking = false;
             _movement.Mover(_combatTarget.transform.position, 1f);
-            if (_animationController != null)
-                _animationController.ChangeAnimationState(RUN);
+            _animationController.ChangeAnimationState(RUN);
         }
         
         else{
@@ -98,7 +97,7 @@ public class Fighter : MonoBehaviour, IInteractSound{
     }
 
     void Attack(GameObject target){
-        LookAtTarget();
+        transform.LookAt(_combatTarget.transform);
         if (_timeSinceLastAttack > attackIntervalMultiplier /_statistics.AttackSpeed){
             PlayAttackSound();
             _animationController.ChangeAnimationState(ATTACK);
@@ -109,19 +108,11 @@ public class Fighter : MonoBehaviour, IInteractSound{
                 _damage = Mathf.RoundToInt(_statistics.AttackDamage * critDamageMultiplier);
                 isCrit = true;
                 PlayCritSound();
-                _timeSinceLastAttack = 0f;
             }
             target.GetComponent<IDamageReceiver>()?.ReceiveDamage(_damage, isCrit, _isPlayer, wepDamageType/*weapon.damageType */);
             //TODO: We need an actual weapon to get the damage type of that weapon
             _timeSinceLastAttack = 0f;
         }
-    }
-
-    void LookAtTarget(){
-        Transform lookAtTransform = _combatTarget.transform;
-        Vector3 lookAtPosition = lookAtTransform.transform.position;
-        lookAtTransform.position = new Vector3(lookAtPosition.x, transform.position.y, lookAtPosition.z);
-        transform.LookAt(lookAtTransform);
     }
 
     bool IsInAttackRange(){
