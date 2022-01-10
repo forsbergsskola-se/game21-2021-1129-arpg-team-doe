@@ -146,18 +146,13 @@ public class Statistics : MonoBehaviour{
         return damage = (int) (weaponDamage * damageMultiplier);
     }
 
-    public void AddStats(float toughnessBuff, float strengthBuff, float dexterityBuff, float knowledgeBuff, float reflexBuff, float luckBuff,
-        float interactRangeBuff, float attackRangeBuff, float attackSpeedBuff,int damageBuff){
+    public void AddStats(float toughnessBuff, float strengthBuff, float dexterityBuff, float knowledgeBuff, float reflexBuff, float luckBuff){
         Toughness += toughnessBuff;
         Strength += strengthBuff;
         Dexterity += dexterityBuff;
         Knowledge += knowledgeBuff;
         Reflex += reflexBuff;
         Luck += luckBuff ;
-        InteractRange += interactRangeBuff;
-        AttackRange += attackRangeBuff;
-        AttackSpeed += attackSpeedBuff;
-        AttackDamage += (int)(damageBuff);
     }
 
     public void AddToughness(int amount){

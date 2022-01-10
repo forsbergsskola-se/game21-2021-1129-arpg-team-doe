@@ -9,8 +9,4 @@ public class StatBuffObject : ConsumableObject{
     public float knowledgeBuff;
     public float reflexBuff;
     public float luckBuff;
-    public float interactRangeBuff;
-    public float attackRangeBuff;
-    [Tooltip	("Amount of attacks per second Buff")] public float attackSpeedBuff;
-    public int damageBuff;
 }
