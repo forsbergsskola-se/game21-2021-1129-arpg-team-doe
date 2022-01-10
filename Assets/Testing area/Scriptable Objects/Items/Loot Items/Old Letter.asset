@@ -21,11 +21,11 @@ MonoBehaviour:
   price: 1
   dropSound:
     Guid:
-      Data1: -2075519847
-      Data2: 1124849050
-      Data3: 105413040
-      Data4: 600476691
-    Path: event:/LetterDrop
+      Data1: 1673065643
+      Data2: 1118992664
+      Data3: 598666165
+      Data4: 1444329127
+    Path: event:/OldLetterDrop
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
   description: An old letter, it's hard to see what's scribbled on it though.
   buffs: []
