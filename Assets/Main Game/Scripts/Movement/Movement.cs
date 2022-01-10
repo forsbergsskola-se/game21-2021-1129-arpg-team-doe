@@ -2,7 +2,7 @@ using FMOD.Studio;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Movement : MonoBehaviour, IHealthListener{
+public class Movement : MonoBehaviour{
     [SerializeField] float movementSpeed = 8f;
     [SerializeField] FMODUnity.EventReference movementSound;
 
@@ -14,7 +14,6 @@ public class Movement : MonoBehaviour, IHealthListener{
     internal NavMeshAgent _navMeshAgent;
     internal bool pathFound;
     const string IDLE = "Idle";
-    bool _isAlive;
     
     void Awake(){
         _statistics = GetComponent<Statistics>();
@@ -45,13 +44,14 @@ public class Movement : MonoBehaviour, IHealthListener{
 
     public void StopMoving(){
         _navMeshAgent.isStopped = true;
-        if (!_fighter.isAttacking && _isAlive){
+        StopMovementSound();
+        if (!_fighter.isAttacking){
             _animationController.ChangeAnimationState(IDLE);
         }
     }
 
     void PlayMovementSound(){
-       // _movementInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject, GetComponent<Rigidbody>()));
+        _movementInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject, GetComponent<Rigidbody>()));
         _movementInstance.getPlaybackState(out var playbackState);
             if (playbackState == PLAYBACK_STATE.STOPPED){
                 _movementInstance.start();
@@ -60,9 +60,5 @@ public class Movement : MonoBehaviour, IHealthListener{
 
     public void StopMovementSound(){
         _movementInstance.stop(STOP_MODE.IMMEDIATE);
-    }
-
-    public void HealthChanged(int currentHealth, int maxHealth, int damage, bool isCrit, bool isAlive){
-        _isAlive = isAlive;
     }
 }

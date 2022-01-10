@@ -6,24 +6,28 @@ using UnityEngine.EventSystems;
 public class UIStatScreen : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler{
     [SerializeField] Button applyButton;
     [SerializeField] GameObject SkillPointTextObject;
+    [SerializeField] GameObject LevelTextObject;
     [SerializeField] LevelingGameObject _playerLevel;
     [SerializeField] UIStats _uiStats;
 
     int availableSkillPoints;
 
     TextMeshProUGUI SkillPointText;
+    TextMeshProUGUI LevelText;
     InventoryController _inventoryController;
 
     void Awake()
     {
         SkillPointText = SkillPointTextObject.GetComponent<TextMeshProUGUI>();
         _inventoryController = FindObjectOfType<InventoryController>();
+        LevelText = LevelTextObject.GetComponent<TextMeshProUGUI>();
     }
 
     void Start()
     {
         SetAvailableSkillPoints();
         SetSkillPointText();
+        SetLevelText();
     }
 
     void Update()
@@ -35,6 +39,11 @@ public class UIStatScreen : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             SetAvailableSkillPoints();
             SetSkillPointText();
         }
+    }
+
+    public void SetLevelText()
+    {
+        LevelText.text = "Level: " + _playerLevel.level.ToString();
     }
 
     [ContextMenu("OnDisable")]
