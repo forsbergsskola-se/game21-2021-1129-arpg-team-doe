@@ -642,11 +642,11 @@ MonoBehaviour:
   dwellingTime: 4
   alertReference:
     Guid:
-      Data1: 1464525013
-      Data2: 1092484123
-      Data3: -1553806203
-      Data4: 1802021503
-    Path: event:/ZombieAlert
+      Data1: -1277622305
+      Data2: 1097570538
+      Data3: 1872060564
+      Data4: -344489626
+    Path: event:/WormMovement
 --- !u!114 &6894303664310673330
 MonoBehaviour:
   m_ObjectHideFlags: 0
