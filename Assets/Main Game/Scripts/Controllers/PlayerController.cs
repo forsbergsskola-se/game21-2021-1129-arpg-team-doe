@@ -59,33 +59,22 @@ public class PlayerController : MonoBehaviour{
             _movement.enabled = false; 
             _fighter.enabled = false;
             _animationController.ChangeAnimationState(DIE);
-
             if (!_health.isRegenerating){
                 StartCoroutine(_health.HealthRegeneration());
             }
             return;
         }
 
-        if (Input.GetMouseButton(0) && _inventoryController.clickOnUI){
-            return;
-        }
-        
-        if (_inventoryController.selectedItem != null){
-            return;
-        }
-        
-        RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+        if (Input.GetMouseButton(0) && _inventoryController.clickOnUI){return;}
+        if (_inventoryController.selectedItem != null){return;}
 
-        if (InteractWithPickup(hits)){
-            return;
+        if (Input.GetMouseButton(0)){
+            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+            if (InteractWithPickup(hits)){return;}
+            if (InteractWithCombat(hits)){return;}
+            if (InteractWithInteractable(hits)){return;} 
         }
-        if (InteractWithCombat(hits)){
-            return;
-        }
-        if (InteractWithInteractable(hits)){
-            return;
-        }
-                     
+
         MoveToCursor();
     }
 
@@ -102,11 +91,9 @@ public class PlayerController : MonoBehaviour{
     bool InteractWithCombat(RaycastHit[] hits){
         foreach (RaycastHit hit in hits){
             GameObject enemy = hit.transform.GetComponent<Health>()?.gameObject;
-            if (enemy == null) continue;
-            if (Input.GetMouseButton(0)){
-                _fighter.GetAttackTarget(enemy);
-                _footstepInstance.stop(STOP_MODE.ALLOWFADEOUT);
-            }
+            if (enemy == null) {continue;}
+            _fighter.GetAttackTarget(enemy);
+            _footstepInstance.stop(STOP_MODE.ALLOWFADEOUT);
             return true;
         }
         return false;
@@ -115,14 +102,12 @@ public class PlayerController : MonoBehaviour{
     bool InteractWithInteractable(RaycastHit[] hits){
         foreach (RaycastHit hit in hits){
             GameObject interactableObject = hit.transform.GetComponent<InteractableObject>()?.gameObject;
-            if (interactableObject == null) continue;
-            if (Input.GetMouseButton(0)){
-                StartCoroutine(GoToPositionThenInteract(hit));
-                Vector3 positionCloseToTarget = hit.point - (hit.point - transform.position).normalized;
-                MoveToInteractable(interactableObject, positionCloseToTarget);
-                _animationController.ChangeAnimationState(RUN);
-                PlaySound();
-            }
+            if (interactableObject == null) {continue;}
+            StartCoroutine(GoToPositionThenInteract(hit));
+            Vector3 positionCloseToTarget = hit.point - (hit.point - transform.position).normalized;
+            MoveToInteractable(interactableObject, positionCloseToTarget);
+            _animationController.ChangeAnimationState(RUN);
+            PlaySound();
             return true;
         }
         return false;
@@ -131,14 +116,12 @@ public class PlayerController : MonoBehaviour{
     bool InteractWithPickup(RaycastHit[] hits){
         foreach (RaycastHit hit in hits){
             GameObject pickUpGameObject = hit.transform.GetComponent<PickUpItem>()?.gameObject;
-            if (pickUpGameObject == null) continue;
-            if (Input.GetMouseButtonDown(0)){
-                if (Input.GetKey(KeyCode.LeftControl)){
-                    InteractWithInteractable(hits);
-                }
-                else{
-                    DragObject(pickUpGameObject);
-                }
+            if (pickUpGameObject == null) {continue;}
+            if (Input.GetKey(KeyCode.LeftControl)){
+                InteractWithInteractable(hits);
+            }
+            else{
+                DragObject(pickUpGameObject);
             }
             return true;
         }
@@ -232,7 +215,7 @@ public class PlayerController : MonoBehaviour{
         while (GetIsInRange(hit.transform, _interactionRange) == false){
             yield return null;
         }
-       // hit.transform.GetComponent<Iinteractable>()?.Use();
+        // hit.transform.GetComponent<Iinteractable>()?.Use();
         foreach (var interactables in hit.transform.GetComponents<Iinteractable>())
         {
             interactables?.Use();
