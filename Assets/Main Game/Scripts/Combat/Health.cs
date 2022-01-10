@@ -76,7 +76,6 @@ public class Health : MonoBehaviour, IDamageReceiver{
             healthListener.HealthChanged(CurrentHP, ModifiedMaxHP, damage, isCrit, IsAlive);
         }
         PlaySound();
-        this.LogHealth(CurrentHP);
     }
     
     int CalculateMaxHP(){
