@@ -50,10 +50,7 @@ public class Consumer : MonoBehaviour, IConsumable
         if (toxicityLevel < maxToxicityLevel){
             StartCoroutine(AddHealthCoroutine(consumedItem));
         }
-        else{
-            Debug.Log("Toxicity level too high!" + toxicityLevel + "/" + maxToxicityLevel);
-        }
-    }
+     }
 
     void ConsumeItem(StatBuffObject consumedItem){
         if (_consumableObject == null){
@@ -61,10 +58,6 @@ public class Consumer : MonoBehaviour, IConsumable
         }
         if (toxicityLevel < maxToxicityLevel){
             StartCoroutine(AddStatsCoroutine(consumedItem));
-        }
-        
-        else{
-            Debug.Log("Toxicity level too high!" + toxicityLevel + "/" + maxToxicityLevel);
         }
     }
     
@@ -75,18 +68,13 @@ public class Consumer : MonoBehaviour, IConsumable
         if (toxicityLevel < maxToxicityLevel){
             StartCoroutine(TeleportToTargetCoroutine(consumedItem));
         }
-        
-        else{
-            Debug.Log("Toxicity level too high!" + toxicityLevel + "/" + maxToxicityLevel);
-        }
-    }
+     }
 
     IEnumerator AddStatsCoroutine(StatBuffObject consumedItem){
        
         consumedItem.PlayConsumeSound();
         _statistics.AddStats(consumedItem.toughnessBuff,consumedItem.strengthBuff,consumedItem.dexterityBuff,consumedItem.knowledgeBuff,consumedItem.reflexBuff,consumedItem.luckBuff,consumedItem.interactRangeBuff,consumedItem.attackRangeBuff,consumedItem.attackSpeedBuff,consumedItem.damageBuff);
-       Debug.Log(consumedItem + "Consumed Stat Buff" + consumedItem.attackSpeedBuff);
-       UpdateUI();
+        UpdateUI();
         toxicityLevel += consumedItem.toxicityAmount;
         yield return new WaitForSeconds(consumedItem.buffDuration);
         _statistics.AddStats(-consumedItem.toughnessBuff,-consumedItem.strengthBuff,-consumedItem.dexterityBuff,-consumedItem.knowledgeBuff,-consumedItem.reflexBuff,-consumedItem.luckBuff,-consumedItem.interactRangeBuff,-consumedItem.attackRangeBuff,-consumedItem.attackSpeedBuff,-consumedItem.damageBuff);
