@@ -79,13 +79,15 @@ public class Consumer : MonoBehaviour, IConsumable
     }
 
     IEnumerator AddStatsCoroutine(StatBuffObject consumedItem){
-        this.Log("Consumed Stat Buff");
+       
         consumedItem.PlayConsumeSound();
         _statistics.AddStats(consumedItem.toughnessBuff,consumedItem.strengthBuff,consumedItem.dexterityBuff,consumedItem.knowledgeBuff,consumedItem.reflexBuff,consumedItem.luckBuff,consumedItem.interactRangeBuff,consumedItem.attackRangeBuff,consumedItem.attackSpeedBuff,consumedItem.damageBuff);
+       Debug.Log(consumedItem + "Consumed Stat Buff" + consumedItem.attackSpeedBuff);
         toxicityLevel += consumedItem.toxicityAmount;
         yield return new WaitForSeconds(consumedItem.buffDuration);
         _statistics.AddStats(-consumedItem.toughnessBuff,-consumedItem.strengthBuff,-consumedItem.dexterityBuff,-consumedItem.knowledgeBuff,-consumedItem.reflexBuff,-consumedItem.luckBuff,-consumedItem.interactRangeBuff,-consumedItem.attackRangeBuff,-consumedItem.attackSpeedBuff,-consumedItem.damageBuff);
         toxicityLevel -= consumedItem.toxicityAmount;
+        _consumableObject = null;
         this.Log(toxicityLevel);
     }
     
@@ -96,6 +98,7 @@ public class Consumer : MonoBehaviour, IConsumable
         toxicityLevel += consumedItem.toxicityAmount;
         yield return new WaitForSeconds(consumedItem.toxicityDuration);
         toxicityLevel -= consumedItem.toxicityAmount;
+        _consumableObject = null;
         this.Log(toxicityLevel);
     }
     
@@ -107,6 +110,7 @@ public class Consumer : MonoBehaviour, IConsumable
         toxicityLevel += consumedItem.toxicityAmount;
         yield return new WaitForSeconds(consumedItem.toxicityDuration);
         toxicityLevel -= consumedItem.toxicityAmount;
+        _consumableObject = null;
         this.Log(toxicityLevel);
     }
 }
