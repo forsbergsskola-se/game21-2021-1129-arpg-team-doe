@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour{
         _inventoryController = FindObjectOfType<InventoryController>();
         _animator = GetComponentInChildren<Animator>();
         _footstepInstance = RuntimeManager.CreateInstance(footstepSound);
+        DontDestroyOnLoad(this.gameObject);
     }
 
     void Start(){
@@ -231,7 +232,11 @@ public class PlayerController : MonoBehaviour{
         while (GetIsInRange(hit.transform, _interactionRange) == false){
             yield return null;
         }
-        hit.transform.GetComponent<Iinteractable>()?.Use();
+       // hit.transform.GetComponent<Iinteractable>()?.Use();
+        foreach (var interactables in hit.transform.GetComponents<Iinteractable>())
+        {
+            interactables?.Use();
+        }
     }
 
     IEnumerator ChangeCursorTemporary(Texture2D texture2D,float variable){
