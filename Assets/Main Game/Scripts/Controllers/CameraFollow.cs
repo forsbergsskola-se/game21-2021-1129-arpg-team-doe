@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour{
@@ -14,6 +15,7 @@ public class CameraFollow : MonoBehaviour{
     [SerializeField] float maxZoom = 15f;
     [SerializeField] [Range(30,90)] float cameraAngleX;
 
+    InventoryController _inventoryController;
     Transform target;
     Vector3 offset;
     Vector3 rotationAxis = new Vector3(0, 1, 0);
@@ -23,6 +25,10 @@ public class CameraFollow : MonoBehaviour{
     float startZoom;
     float speed;
     int zoomLevel;
+
+    void Awake(){
+        _inventoryController = FindObjectOfType<InventoryController>();
+    }
 
     void Start(){
         target = FindObjectOfType<PlayerController>().transform;
@@ -37,6 +43,10 @@ public class CameraFollow : MonoBehaviour{
         Vector3 targetPosition = target.position + adjustedOffset;
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _velocity, smoothTime);
         CameraZoom();
+
+        if (_inventoryController.clickOnUI){
+            return;
+        }
         SnapCameraRotation();
         MouseCameraRotation();
         transform.eulerAngles = new Vector3(cameraAngleX, transform.rotation.eulerAngles.y,0f);
