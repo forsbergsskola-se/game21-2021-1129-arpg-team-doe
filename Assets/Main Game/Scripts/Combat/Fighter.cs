@@ -67,6 +67,7 @@ public class Fighter : MonoBehaviour, IInteractSound{
         }
         
         if (!_combatTarget.GetComponent<Health>().IsAlive || IsClickOnItself()){
+            _movement.StopMovementSound();
             _combatTarget = null;
             isAttacking = false;
             _animationController.ChangeAnimationState(IDLE);
@@ -132,13 +133,13 @@ public class Fighter : MonoBehaviour, IInteractSound{
     void PlayCritSound(){
         _critAttackInstance.getPlaybackState(out var playbackState);
         if (playbackState == PLAYBACK_STATE.STOPPED){
-            _critAttackInstance.start();  
+            _critAttackInstance.start();
         }
     }
     void PlayAttackSound(){
         _attackInstance.getPlaybackState(out var playbackState);
         if (playbackState == PLAYBACK_STATE.STOPPED){
-            _attackInstance.start();  
+            _attackInstance.start();
         }
     }
 }
