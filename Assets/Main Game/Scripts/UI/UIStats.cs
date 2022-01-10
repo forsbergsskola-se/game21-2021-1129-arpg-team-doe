@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +12,7 @@ public class UIStats : MonoBehaviour{
     [SerializeField] Button _increaseButton;
     [SerializeField] Button _decreaseButton;
     int availableSkillPoints;
+    
     int usedSkillPoints;
     float currentToughness;
     float currentStrength;
@@ -45,6 +48,16 @@ public class UIStats : MonoBehaviour{
         UpdateUIStats();
     }
 
+    // void Update()
+    // {
+    //     if (_playerStatistics.Toughness != currentToughness || _playerStatistics.Strength != currentStrength ||
+    //         _playerStatistics.Dexterity != currentDexterity)
+    //     {
+    //         Debug.Log("Updating UIStats in update");
+    //         UpdateAllUIText();
+    //     }
+    // }
+
     public void AttributeAssingment(){
         availableSkillPoints = _playerLevel.skillPoint;
         currentToughness = _playerStatistics.Toughness;
@@ -67,6 +80,41 @@ public class UIStats : MonoBehaviour{
         _playerLevel.skillPoint += amount;
         usedSkillPoints-= amount;
         UpdateUIStats();
+    }
+
+    public void UpdateAllUIText()
+    {
+        if (_attributeText.text == nameof(_playerStatistics.Toughness))
+        {
+            _valueText.text = ((int)_playerStatistics.Toughness).ToString();
+        }
+        
+        
+        if (_attributeText.text == nameof(_playerStatistics.Strength))
+        {
+            _valueText.text = ((int)_playerStatistics.Strength).ToString();
+        }
+
+        if (_attributeText.text == nameof(_playerStatistics.Dexterity))
+        {
+           _valueText.text = ((int)_playerStatistics.Dexterity).ToString(); 
+        }
+
+        if (_attributeText.text == nameof(_playerStatistics.Knowledge))
+        {
+           _valueText.text = ((int)_playerStatistics.Knowledge).ToString(); 
+        }
+
+        if (_attributeText.text == nameof(_playerStatistics.Reflex))
+        {
+            _valueText.text =((int)_playerStatistics.Reflex).ToString();
+        }
+
+        if (_attributeText.text == nameof(_playerStatistics.Luck))
+        {
+           _valueText.text = ((int)_playerStatistics.Luck).ToString(); 
+        }
+        
     }
 
     //Call After applying skill point in button script

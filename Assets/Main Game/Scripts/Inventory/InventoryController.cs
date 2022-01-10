@@ -139,6 +139,7 @@ public class InventoryController : MonoBehaviour
             }
             _playerConsumer._consumableObject = (ConsumableObject) lastRightClickedItem.itemObject;
             _playerConsumer.Consume();
+
             //_playerConsumer._consumableObject = null;
             RemoveItemFromInventoryRight();
         }
@@ -154,7 +155,7 @@ public class InventoryController : MonoBehaviour
         {
             _playerConsumer._consumableObject = (ConsumableObject) selectedItem.itemObject;
             _playerConsumer.Consume();
-           // _playerConsumer._consumableObject = null;
+            // _playerConsumer._consumableObject = null;
             RemoveItemFromInventory();
         }
         else
