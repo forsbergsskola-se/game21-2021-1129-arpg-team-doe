@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    rid: 2099435188663355217
+    rid: 3973575895623139329
   m_Size: {x: 3.05, y: 0.05, z: 1.05}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -302,7 +302,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 2099435188663355217
+    - rid: 3973575895623139329
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!23 &6944474617677368070
 MeshRenderer:
@@ -964,7 +964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    rid: 2099435188663355221
+    rid: 3973575895623140278
   m_Size: {x: 1, y: 1, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -976,7 +976,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 2099435188663355221
+    - rid: 3973575895623140278
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!23 &4420437751038157358
 MeshRenderer:
@@ -1093,6 +1093,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 0fa03b34ea0eeda4eaef0eaba31665f3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c6f4727945b6c1d42a025a31872e7e16, type: 2}
     - target: {fileID: 919132149155446097, guid: 0fa03b34ea0eeda4eaef0eaba31665f3, type: 3}
       propertyPath: m_Name
       value: coffin_export
