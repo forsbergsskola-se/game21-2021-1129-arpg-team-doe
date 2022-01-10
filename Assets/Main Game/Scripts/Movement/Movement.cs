@@ -2,7 +2,7 @@ using FMOD.Studio;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Movement : MonoBehaviour{
+public class Movement : MonoBehaviour, IHealthListener{
     [SerializeField] float movementSpeed = 8f;
     [SerializeField] FMODUnity.EventReference movementSound;
 
@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour{
     internal NavMeshAgent _navMeshAgent;
     internal bool pathFound;
     const string IDLE = "Idle";
+    bool _isAlive;
     
     void Awake(){
         _statistics = GetComponent<Statistics>();
@@ -44,7 +45,7 @@ public class Movement : MonoBehaviour{
 
     public void StopMoving(){
         _navMeshAgent.isStopped = true;
-        if (!_fighter.isAttacking){
+        if (!_fighter.isAttacking && _isAlive){
             _animationController.ChangeAnimationState(IDLE);
         }
     }
@@ -59,5 +60,9 @@ public class Movement : MonoBehaviour{
 
     public void StopMovementSound(){
         _movementInstance.stop(STOP_MODE.IMMEDIATE);
+    }
+
+    public void HealthChanged(int currentHealth, int maxHealth, int damage, bool isCrit, bool isAlive){
+        _isAlive = isAlive;
     }
 }
