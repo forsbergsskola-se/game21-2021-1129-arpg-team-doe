@@ -3,7 +3,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Currency : MonoBehaviour{
-    [SerializeField] CurrencyData currencyData;
+     [SerializeField] internal CurrencyData currencyData;
     internal int amount;
 
     void Start(){

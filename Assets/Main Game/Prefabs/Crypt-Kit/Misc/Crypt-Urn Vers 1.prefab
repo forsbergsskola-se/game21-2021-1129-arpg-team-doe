@@ -166,16 +166,15 @@ MonoBehaviour:
   interactRange: 0
   attackRange: 0
   attackSpeed: 0
+  moveSpeed: 0
   critChance: 0
+  consumableEffectIncrease: 0
+  experienceIncrease: 0
   weaponDamage: 0
-  lowImpactLevelMultiplier: 0
-  lowImpactLuckMultiplier: 0
-  toughnessDamageReductionMultiplier: 0.25
-  highImpactLevelMultiplier: 0
   vulnerabilities: []
   vulnerabilityDamageModifier: 0
   resistances: []
-  resistanceDamageModifier: 0
+  damageLevelMultiplier: 0.01
 --- !u!195 &2013919976991523666
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -255,7 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lootTable: {fileID: 11400000, guid: 539df83335d0cb74ea85df007b41e038, type: 2}
-  cash: {fileID: 6458768576707232289, guid: 5bb6ad687c3f0034e86023865012b2b3, type: 3}
+  cash: {fileID: 2283073926667823694, guid: 3ccd2d835d527ac4d8eb3892a0d96046, type: 3}
   spreadRange: 1
   maxRollCount: 1
 --- !u!54 &4088213991974719372

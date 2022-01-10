@@ -46,11 +46,14 @@ public class ToggleLabel : MonoBehaviour{
         _label = Instantiate(labelCanvas, position, Quaternion.identity);
         _label.transform.SetParent(gameObject.transform);
         _label.SetActive(true);
-        _shownName = GetComponent<InventoryItem>()?.itemObject.name;
-        if (GetComponent<Currency>() != null){
-            _label.GetComponent<Label>().SetLabel(GetComponent<Currency>().amount + " " + name);
+        
+        if (GetComponent<Currency>() != null)
+        {
+            _shownName = GetComponent<Currency>()?.currencyData.name;
+            _label.GetComponent<Label>().SetLabel(GetComponent<Currency>().amount + " " +_shownName);
         }
         else{
+            _shownName = GetComponent<InventoryItem>()?.itemObject.name;
             _label.GetComponent<Label>().SetLabel(_shownName);
         }
     }
