@@ -35,6 +35,10 @@ MonoBehaviour:
     dropWeight: 2800
   - drop: {fileID: 5700182911611578800, guid: 8ffb010a8787d1b40850b508634e975d, type: 3}
     dropWeight: 1200
+  - drop: {fileID: 5700182911611578800, guid: 8c4caafea24901c4abf8766508242d26, type: 3}
+    dropWeight: 1200
+  - drop: {fileID: 3191504459453181586, guid: 93d5615d2cf77414090060a3775502c7, type: 3}
+    dropWeight: 5000
   - drop: {fileID: 5700182911611578800, guid: 7d5bbaea87c661e409cc4438a9b35639, type: 3}
     dropWeight: 2800
   - drop: {fileID: 5700182911611578800, guid: e600699858ba49644996f0f871ef82f3, type: 3}
@@ -46,6 +50,4 @@ MonoBehaviour:
   - drop: {fileID: 5700182911611578800, guid: b89009aa022b2b74f9103c332bb9f4a6, type: 3}
     dropWeight: 35
   - drop: {fileID: 5700182911611578800, guid: 0fdf6cdfa20940c4a802e9219e6ce11a, type: 3}
-    dropWeight: 1200
-  - drop: {fileID: 5700182911611578800, guid: 8c4caafea24901c4abf8766508242d26, type: 3}
     dropWeight: 1200

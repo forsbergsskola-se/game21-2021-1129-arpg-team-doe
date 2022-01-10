@@ -43,3 +43,5 @@ MonoBehaviour:
     dropWeight: 65
   - drop: {fileID: 5700182911611578800, guid: 6f39a3a844fe8f046950d7216e1be715, type: 3}
     dropWeight: 1200
+  - drop: {fileID: 3191504459453181586, guid: 93d5615d2cf77414090060a3775502c7, type: 3}
+    dropWeight: 5000
