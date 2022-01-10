@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   table:
   - drop: {fileID: 5700182911611578800, guid: beab71b0f25a1e34db4329e37bbbf76f, type: 3}
-    dropWeight: 1200
+    dropWeight: 600
   - drop: {fileID: 5700182911611578800, guid: 0fdf6cdfa20940c4a802e9219e6ce11a, type: 3}
-    dropWeight: 1200
+    dropWeight: 600
   - drop: {fileID: 5700182911611578800, guid: f7ace25c9200af44c8ed8e3096ac5108, type: 3}
     dropWeight: 100
   - drop: {fileID: 5700182911611578800, guid: 7ac3a13fae5b58b47b8c0a8a6b7170cd, type: 3}
