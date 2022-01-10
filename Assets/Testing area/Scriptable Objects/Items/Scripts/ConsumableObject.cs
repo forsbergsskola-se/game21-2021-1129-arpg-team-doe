@@ -4,12 +4,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class ConsumableObject : ItemObject, IConsumable{
-    [SerializeField] FMODUnity.EventReference consumeSound;
+    [SerializeField] EventReference consumeSound;
     
-    EventInstance consumeSoundInstance;
-    
-    bool hasFoundConsumeSound;
-    
+    EventInstance _consumeSoundInstance;
+
     public int toxicityAmount;
     
     
@@ -30,13 +28,11 @@ public abstract class ConsumableObject : ItemObject, IConsumable{
    
    
    public virtual void PlayConsumeSound(){
-       hasFoundConsumeSound = !consumeSound.IsNull;
-       if (!hasFoundConsumeSound)
-       {
-           consumeSound = EventReference.Find("event:/HpPotion");
+       _consumeSoundInstance = RuntimeManager.CreateInstance("event:/HpPotion");
+       if (!consumeSound.IsNull){
+           _consumeSoundInstance = RuntimeManager.CreateInstance(consumeSound);
        }
-       consumeSoundInstance = RuntimeManager.CreateInstance(consumeSound);
-       consumeSoundInstance.start();
-       consumeSoundInstance.release();
+       _consumeSoundInstance.start();
+       _consumeSoundInstance.release();
    }
 }
