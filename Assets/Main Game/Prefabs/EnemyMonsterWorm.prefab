@@ -728,11 +728,11 @@ MonoBehaviour:
   isRegenerating: 0
   TakeDamageReference:
     Guid:
-      Data1: -1548147627
-      Data2: 1151887429
-      Data3: -1037099638
-      Data4: 1873771730
-    Path: event:/PlayerTakingDMG
+      Data1: 13736198
+      Data2: 1301027633
+      Data3: 470637967
+      Data4: -1643498720
+    Path: event:/EnemyHit
 --- !u!114 &9190938594607513063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -770,11 +770,11 @@ MonoBehaviour:
     Path: event:/CritHit
   attackReference:
     Guid:
-      Data1: -1054985321
-      Data2: 1270899441
-      Data3: -1379749704
-      Data4: 102819547
-    Path: event:/FastWeaponSwing
+      Data1: -1176085333
+      Data2: 1089716696
+      Data3: -1352240480
+      Data4: 1599200041
+    Path: event:/WormAttack
 --- !u!114 &6345615741836710522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -804,11 +804,11 @@ MonoBehaviour:
   timeToVanish: 5
   deathSound:
     Guid:
-      Data1: -1430334087
-      Data2: 1254849518
-      Data3: -1493764467
-      Data4: 268647724
-    Path: event:/Enemydeath
+      Data1: -1104551599
+      Data2: 1321646046
+      Data3: -957202779
+      Data4: 2140072419
+    Path: event:/WormDeath
 --- !u!114 &2123096904
 MonoBehaviour:
   m_ObjectHideFlags: 0
