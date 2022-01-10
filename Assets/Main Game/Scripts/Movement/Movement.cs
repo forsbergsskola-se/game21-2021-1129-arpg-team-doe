@@ -53,7 +53,6 @@ public class Movement : MonoBehaviour{
         _movementInstance.getPlaybackState(out var playbackState);
             if (playbackState == PLAYBACK_STATE.STOPPED){
                 _movementInstance.start();
-                _movementInstance.release();
             }
     }
 
