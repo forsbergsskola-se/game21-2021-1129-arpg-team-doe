@@ -1481,7 +1481,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 6368
+  m_VersionIndex: 6404
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1499,7 +1499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    rid: 2099435210850173855
+    rid: 3973575895623139706
   m_Size: {x: 1, y: 1, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -1511,7 +1511,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 2099435210850173855
+    - rid: 3973575895623139706
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!23 &4420437751038157358
 MeshRenderer:
@@ -1640,6 +1640,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6d27e4b9f641c4984a355980f76fb7d0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 10d14109f9119ad4b8c2d6a3863f51e0, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 6d27e4b9f641c4984a355980f76fb7d0, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 10d14109f9119ad4b8c2d6a3863f51e0, type: 2}
     - target: {fileID: 919132149155446097, guid: 6d27e4b9f641c4984a355980f76fb7d0, type: 3}
       propertyPath: m_Name
       value: Broken_pillar2
