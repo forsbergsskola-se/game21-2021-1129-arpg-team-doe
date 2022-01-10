@@ -3,9 +3,9 @@ using Random = System.Random;
 using FMOD.Studio;
 
 public class Fighter : MonoBehaviour, IInteractSound{
-    [SerializeField] float critDamageMultiplier = 1.5f; // for debug
+    [SerializeField] float critDamageMultiplier = 1.5f;
     [SerializeField] float attackIntervalMultiplier = 1.5f;
-    [SerializeField] DamageType wepDamageType; //TODO: Use actual weapon damage type here, just for debug for now
+    [SerializeField] DamageType wepDamageType;
     
     public bool IsIdle{ get; private set; }
     public FMODUnity.EventReference critReference;

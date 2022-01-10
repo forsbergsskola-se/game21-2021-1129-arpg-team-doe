@@ -10,7 +10,7 @@ public class Statistics : MonoBehaviour{
     float toughness, strength, dexterity, knowledge, reflex, luck, interactRange, attackRange, attackSpeed, moveSpeed, critChance, consumableEffectIncrease, experienceIncrease;
     // movement is increased by reflex
 
-    [SerializeField] int weaponDamage = 10; // for debug
+    [SerializeField] int weaponDamage = 10; 
     [SerializeField] internal List<DamageType> vulnerabilities;
     [Tooltip("The higher the value, the more damage is taken")][Range(1f,3f)][SerializeField] 
     internal float vulnerabilityDamageModifier = 2f;
@@ -134,8 +134,7 @@ public class Statistics : MonoBehaviour{
     float CalculateKnowledgeChance(float input){
         return StatManipulation(input, knowledge, lowImpactLevelMultiplier);
     }
-
-    // used for debug
+    
     int CalculateWeaponDamage(){
         float damageMultiplier;
         if (isRanged){

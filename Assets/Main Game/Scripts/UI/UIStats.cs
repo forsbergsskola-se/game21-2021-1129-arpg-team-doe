@@ -48,16 +48,6 @@ public class UIStats : MonoBehaviour{
         UpdateUIStats();
     }
 
-    // void Update()
-    // {
-    //     if (_playerStatistics.Toughness != currentToughness || _playerStatistics.Strength != currentStrength ||
-    //         _playerStatistics.Dexterity != currentDexterity)
-    //     {
-    //         Debug.Log("Updating UIStats in update");
-    //         UpdateAllUIText();
-    //     }
-    // }
-
     public void AttributeAssingment(){
         availableSkillPoints = _playerLevel.skillPoint;
         currentToughness = _playerStatistics.Toughness;
