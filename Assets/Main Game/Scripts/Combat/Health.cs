@@ -47,7 +47,6 @@ public class Health : MonoBehaviour, IDamageReceiver{
     public void UpdateHealth(int healthChange){ 
         CurrentHP += healthChange;
         CurrentHP = Mathf.Clamp(CurrentHP, 0, ModifiedMaxHP);
-        this.LogHealth(CurrentHP);
     }
     
     public IEnumerator HealthRegeneration(){
