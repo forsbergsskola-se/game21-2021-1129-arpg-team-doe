@@ -43,7 +43,6 @@ public class UIStats : MonoBehaviour{
     }
 
     void Start(){
-        
         AttributeAssingment();
         UpdateUIStats();
     }
