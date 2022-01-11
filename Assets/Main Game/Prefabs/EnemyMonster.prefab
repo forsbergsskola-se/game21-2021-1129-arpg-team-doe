@@ -761,6 +761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   critDamageMultiplier: 1.5
   attackIntervalMultiplier: 1.5
+  destructAttackSpeedMultiplier: 3
   wepDamageType: {fileID: 0}
   critReference:
     Guid:
@@ -1152,6 +1153,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -4043312103559279134, guid: 851e9e3b51572454092f264fe6d6abef, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4043312103559279134, guid: 851e9e3b51572454092f264fe6d6abef, type: 3}
+      propertyPath: m_SkinnedMotionVectors
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4043312103559279134, guid: 851e9e3b51572454092f264fe6d6abef, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6323900112d8520449d3115c6b9a3d66, type: 2}
     - target: {fileID: -3842908045289527126, guid: 851e9e3b51572454092f264fe6d6abef, type: 3}
       propertyPath: m_Layer
       value: 3
