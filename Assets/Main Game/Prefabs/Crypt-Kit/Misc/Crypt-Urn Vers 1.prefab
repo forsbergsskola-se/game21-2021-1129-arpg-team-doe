@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 2013919976991523677}
   - component: {fileID: 5298576387038339844}
   - component: {fileID: 4088213991974719372}
+  - component: {fileID: 3130822269320913015}
   m_Layer: 0
   m_Name: Crypt-Urn Vers 1
   m_TagString: Untagged
@@ -273,3 +274,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3130822269320913015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672806830668588250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9113688ad019b054f954e9a751333c12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObsToPlace: 10
+  obstacles:
+  - {fileID: 7672806830668588250, guid: 16880186373f0c142bf48da1711a4006, type: 3}
+  - {fileID: 7672806830668588250, guid: b5d4858f0f736ee47a4bb620c076a904, type: 3}
+  - {fileID: 7672806830668588250, guid: b593158c33a1ae04aa5744b0c5175846, type: 3}
+  obstacleCheckRadius: 3
+  maxSpawnAttemptsPerObstacle: 10

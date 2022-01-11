@@ -5191,6 +5191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   critDamageMultiplier: 1.5
   attackIntervalMultiplier: 3
+  destructAttackSpeedMultiplier: 3
   wepDamageType: {fileID: 11400000, guid: dbbc8d142b7dca24f8b0eda4cd410de2, type: 2}
   critReference:
     Guid:
