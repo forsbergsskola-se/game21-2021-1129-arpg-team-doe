@@ -222,7 +222,7 @@ MonoBehaviour:
       Data4: -113105377
     Path: event:/MusicScene2
   Event: 
-  PlayEvent: 11
+  PlayEvent: 1
   StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
