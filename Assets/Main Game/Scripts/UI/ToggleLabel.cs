@@ -48,8 +48,7 @@ public class ToggleLabel : MonoBehaviour{
         _label.transform.SetParent(gameObject.transform);
         _label.SetActive(true);
         
-        if (GetComponent<Currency>() != null)
-        {
+        if (GetComponent<Currency>() != null){
             _shownName = GetComponent<Currency>()?.currencyData.name;
             _label.GetComponent<Label>().SetLabel(GetComponent<Currency>().amount + " " +_shownName, Color.yellow);
         }
