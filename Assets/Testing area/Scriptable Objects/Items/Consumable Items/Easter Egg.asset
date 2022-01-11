@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Easter Egg
   m_EditorClassIdentifier: 
   Id: 2
-  itemIcon: {fileID: 21300000, guid: b37ec804b5a92fd45a10eddd8f58ca03, type: 3}
+  itemIcon: {fileID: 21300000, guid: 33dc1072c74e64a4eac2f3002d07f281, type: 3}
   width: 1
-  height: 2
+  height: 1
   type: 0
   name: Easter Egg
   isEasterEgg: 1
@@ -38,6 +38,6 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
-  toxicityAmount: 1
+  toxicityAmount: 0
   restoreHealthValue: 500
-  toxicityDuration: 10
+  toxicityDuration: 0

@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Wristwatch
   m_EditorClassIdentifier: 
   Id: 27
-  itemIcon: {fileID: 21300000, guid: 5c751cb1be14f4008bce40de446899df, type: 3}
+  itemIcon: {fileID: 21300000, guid: 00609f8b8c1574a108ead71f6fcac3e4, type: 3}
   width: 1
   height: 1
   type: 4
   name: Wristwatch
+  isEasterEgg: 0
   price: 100
   dropSound:
     Guid:
@@ -27,5 +28,5 @@ MonoBehaviour:
       Data4: -981507709
     Path: event:/InventoryDrop
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
-  description: Brolex? Nope, just a cheap broken wristwatch.
+  description: Brolex? These were worth a lot back in the days.
   buffs: []

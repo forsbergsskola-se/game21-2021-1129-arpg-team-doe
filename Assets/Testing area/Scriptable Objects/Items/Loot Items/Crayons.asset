@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Crayons
   m_EditorClassIdentifier: 
   Id: 29
-  itemIcon: {fileID: 21300000, guid: 43a079e6a350d1e4dad7adb43d37d9fa, type: 3}
+  itemIcon: {fileID: 21300000, guid: cd4eb411e2ec24ba59479b09e5b2db02, type: 3}
   width: 1
   height: 1
   type: 4
   name: Crayons
+  isEasterEgg: 0
   price: 1
   dropSound:
     Guid:
