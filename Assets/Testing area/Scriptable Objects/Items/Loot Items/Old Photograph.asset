@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 179a9598111edaf4496551596ffe7d50, type: 3}
-  m_Name: Wedding Ring
+  m_Name: Old Photograph
   m_EditorClassIdentifier: 
-  Id: 9
-  itemIcon: {fileID: 21300000, guid: ffed630e3a49240e187ad153ab1fedb4, type: 3}
-  width: 1
-  height: 1
+  Id: 0
+  itemIcon: {fileID: 21300000, guid: 78b294cd845d24379b3042f670a8d588, type: 3}
+  width: 2
+  height: 2
   type: 4
-  name: Wedding Ring
-  price: 100
+  name: Old Photograph
+  price: 5
   dropSound:
     Guid:
-      Data1: 1612298627
-      Data2: 1171783708
-      Data3: -414396490
-      Data4: 408255267
-    Path: event:/WeddingRingDrop
+      Data1: 90928835
+      Data2: 1225203162
+      Data3: -200824160
+      Data4: -981507709
+    Path: event:/InventoryDrop
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
-  description: Proof that money is the root of all love.
+  description: 'Pretty ugly. I''d Like my nickels back if I had to buy it. '
   buffs: []

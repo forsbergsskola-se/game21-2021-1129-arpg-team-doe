@@ -17,17 +17,6 @@ public class HotbarButton : MonoBehaviour{
     InventoryController _inventoryController;
     Sprite _defaultSprite;
     [HideInInspector] public HotbarButton[] _hotbarButtons;
-    
-    void OnValidate(){
-        _keyNumber = transform.GetSiblingIndex() + 1;
-        _keyCode = KeyCode.Alpha0 + _keyNumber;
-
-        if (text == null){
-            text = GetComponentInChildren<TMP_Text>();
-        }
-        text.SetText(_keyNumber.ToString());
-        gameObject.name = "HotBar Button" + _keyNumber;
-    }
 
     void Awake(){
         GetComponent<Button>().onClick.AddListener(HandleClick);
