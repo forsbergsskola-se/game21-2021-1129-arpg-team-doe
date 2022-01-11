@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Cotton Scrap
   m_EditorClassIdentifier: 
   Id: 14
-  itemIcon: {fileID: 21300000, guid: 90c6130083ae95d46930527d3502987d, type: 3}
+  itemIcon: {fileID: 21300000, guid: 3f1fdfcaf836f445dbc301748d69defb, type: 3}
   width: 1
   height: 1
   type: 4
   name: Cotton Scrap
+  isEasterEgg: 0
   price: 5
   dropSound:
     Guid:
