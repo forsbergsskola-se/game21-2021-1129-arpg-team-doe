@@ -238,7 +238,7 @@ public class InventoryController : MonoBehaviour
         }
         else if (_hoveredItem.itemObject is ConsumableObject)
         {
-            itemDisplayName.color = Colors.lightGreen;
+            itemDisplayName.color = Colors.darkOrange;
         }
         else {
             itemDisplayName.color = Color.white;
@@ -247,7 +247,7 @@ public class InventoryController : MonoBehaviour
         itemDisplayName.text = _hoveredItem.itemObject.name;
         itemDisplayNameBackground.GetComponent<RectTransform>().sizeDelta = new Vector2(
             Mathf.Clamp(itemDisplayName.preferredWidth, 0, maxDisplayWidth) + 10,
-            (Mathf.Clamp(itemDisplayName.preferredHeight, 10, maxDisplayWidth)) + 10);
+            Mathf.Clamp(itemDisplayName.preferredHeight, 10, maxDisplayWidth) + 10);
     }
 
     void DeactivateItemInformationDisplay()

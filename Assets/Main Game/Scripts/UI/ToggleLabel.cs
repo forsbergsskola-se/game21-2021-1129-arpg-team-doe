@@ -57,13 +57,13 @@ public class ToggleLabel : MonoBehaviour{
             var item = GetComponent<InventoryItem>()?.itemObject;
             _shownName = item.name;
             if (item.isEasterEgg){
-                _label.GetComponent<Label>().SetLabel(_shownName, Color.magenta);
+                _label.GetComponent<Label>().SetLabel(_shownName, Colors.purple);
             }
             else if (item is ConsumableObject){
-                _label.GetComponent<Label>().SetLabel(_shownName, Colors.lightGreen);
+                _label.GetComponent<Label>().SetLabel(_shownName, Colors.darkOrange);
             }
             else{
-                _label.GetComponent<Label>().SetLabel(_shownName, Color.white);
+                _label.GetComponent<Label>().SetLabel(_shownName, Colors.gray);
             }
         }
     }
