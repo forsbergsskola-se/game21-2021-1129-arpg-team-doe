@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Empty Rum Bottle
   m_EditorClassIdentifier: 
   Id: 15
-  itemIcon: {fileID: 21300000, guid: d8a7ba45391846942b10e108ad0bfb44, type: 3}
+  itemIcon: {fileID: 21300000, guid: d58967f69bd9429478aa12fd65d29976, type: 3}
   width: 1
   height: 2
   type: 4
