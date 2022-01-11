@@ -81,22 +81,22 @@ public class Consumer : MonoBehaviour, IConsumable
         toxicityLevel -= consumedItem.toxicityAmount;
         _consumableObject = null;
         UpdateUI();
-        this.Log(toxicityLevel);
+        //this.Log(toxicityLevel);
     }
     
     IEnumerator AddHealthCoroutine(HealingObject consumedItem){
-        this.Log("Consumed Health Potion for" + consumedItem.restoreHealthValue);
+        //this.Log("Consumed Health Potion for" + consumedItem.restoreHealthValue);
         consumedItem.PlayConsumeSound();
         _health.UpdateHealth(consumedItem.restoreHealthValue);
         toxicityLevel += consumedItem.toxicityAmount;
         yield return new WaitForSeconds(consumedItem.toxicityDuration);
         toxicityLevel -= consumedItem.toxicityAmount;
         _consumableObject = null;
-        this.Log(toxicityLevel);
+        //this.Log(toxicityLevel);
     }
     
     IEnumerator TeleportToTargetCoroutine(TeleportPotionSO consumedItem){
-        this.Log("Starts Teleporting");
+        //this.Log("Starts Teleporting");
         consumedItem.PlayConsumeSound();
         yield return new WaitForSeconds(consumedItem.durationUntilTeleport);
         gameObject.transform.position = consumedItem.targetTeleportLocation;
@@ -104,7 +104,7 @@ public class Consumer : MonoBehaviour, IConsumable
         yield return new WaitForSeconds(consumedItem.toxicityDuration);
         toxicityLevel -= consumedItem.toxicityAmount;
         _consumableObject = null;
-        this.Log(toxicityLevel);
+        //this.Log(toxicityLevel);
     }
 
     void UpdateUI()

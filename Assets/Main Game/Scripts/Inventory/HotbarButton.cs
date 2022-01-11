@@ -37,6 +37,7 @@ public class HotbarButton : MonoBehaviour{
         }
         text.SetText(_keyNumber.ToString());
         gameObject.name = "HotBar Button" + _keyNumber;
+        _inventoryItem = null;
     }
 
     void Update(){
