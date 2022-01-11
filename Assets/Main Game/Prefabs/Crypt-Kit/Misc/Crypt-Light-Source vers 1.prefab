@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    rid: 6457305676566495618
+    rid: 3815637659266582449
   m_Size: {x: 0.05, y: 0.4, z: 0.05}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -430,7 +430,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 6457305676566495618
+    - rid: 3815637659266582449
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!23 &4420437751038157358
 MeshRenderer:
@@ -936,7 +936,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    rid: 6457305676596379696
+    rid: 3815637659266582165
   m_Size: {x: -0.07614977, y: 0.0880484, z: -0.070461035}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -948,7 +948,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 6457305676596379696
+    - rid: 3815637659266582165
       type: {class: Cone, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
       data:
         m_NumberOfSides: 6
@@ -1232,6 +1232,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TorchAudioLoop
       objectReference: {fileID: 0}
+    - target: {fileID: 1856306144545947802, guid: 1ed350ad449d65442a1d0acef371c45e, type: 3}
+      propertyPath: PlayEvent
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1856306144545947802, guid: 1ed350ad449d65442a1d0acef371c45e, type: 3}
+      propertyPath: StopEvent
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1856306144545947803, guid: 1ed350ad449d65442a1d0acef371c45e, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1278,3 +1286,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ed350ad449d65442a1d0acef371c45e, type: 3}
+--- !u!1 &7907980954066687468 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1856306144545947781, guid: 1ed350ad449d65442a1d0acef371c45e, type: 3}
+  m_PrefabInstance: {fileID: 8393625990642423145}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &6162994538830319818
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7907980954066687468}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
