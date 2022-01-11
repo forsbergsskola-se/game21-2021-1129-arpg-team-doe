@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 2013919976991523664}
   - component: {fileID: 2013919976991523666}
   - component: {fileID: 2013919976991523667}
-  - component: {fileID: 2013919976991523677}
   - component: {fileID: 5298576387038339844}
   - component: {fileID: 4088213991974719372}
   - component: {fileID: 3130822269320913015}
@@ -213,36 +212,6 @@ CapsuleCollider:
   m_Height: 0.789031
   m_Direction: 1
   m_Center: {x: 0.0026741028, y: 0.32203054, z: 0.0002451241}
---- !u!114 &2013919976991523677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7672806830668588250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 669435313
-      Data2: 1205610412
-      Data3: -2039444083
-      Data4: -1904916957
-    Path: event:/UrnDestroy
-  Event: 
-  PlayEvent: 2
-  StopEvent: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!114 &5298576387038339844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,6 +318,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Urn_assets_animation_scaled
       objectReference: {fileID: 0}
+    - target: {fileID: 5512245523321869101, guid: a04325d0c8f8ea1419607814b0492c48, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a04325d0c8f8ea1419607814b0492c48, type: 3}
 --- !u!1 &5512245524397934835 stripped
@@ -361,3 +334,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5130935563148724631, guid: a04325d0c8f8ea1419607814b0492c48, type: 3}
   m_PrefabInstance: {fileID: 1076861918}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3037296780166383397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512245524397934835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 669435313
+      Data2: 1205610412
+      Data3: -2039444083
+      Data4: -1904916957
+    Path: event:/UrnDestroy
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
