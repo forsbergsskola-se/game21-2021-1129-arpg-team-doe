@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using FMOD.Studio;
+using MoreColors;
 using TMPro;
 using UnityEngine;
 
@@ -227,22 +228,22 @@ public class InventoryController : MonoBehaviour
         itemDisplayTextBackground.GetComponent<RectTransform>().sizeDelta = new Vector2(
             Mathf.Clamp(itemDisplayText.preferredWidth, 0, maxDisplayWidth) + 10,
             (Mathf.Clamp(itemDisplayText.preferredHeight, 10, maxDisplayWidth)) + 10);
+   
     }
 
     void DisplayItemName()
     {
-        if (_hoveredItem.itemObject is ConsumableObject)
-        {
-            itemDisplayName.color = Color.yellow;
-        }
-
-        else if (_hoveredItem.itemObject is KeySO)
-        {
+        if (_hoveredItem.itemObject.isEasterEgg){
             itemDisplayName.color = Color.magenta;
+        }
+        else if (_hoveredItem.itemObject is ConsumableObject)
+        {
+            itemDisplayName.color = Colors.lightGreen;
         }
         else {
             itemDisplayName.color = Color.white;
         }
+        
         itemDisplayName.text = _hoveredItem.itemObject.name;
         itemDisplayNameBackground.GetComponent<RectTransform>().sizeDelta = new Vector2(
             Mathf.Clamp(itemDisplayName.preferredWidth, 0, maxDisplayWidth) + 10,

@@ -28,6 +28,7 @@ public abstract class ItemObject : ScriptableObject{
     public int height = 1;
     public ItemType type;
     public string name;
+    [SerializeField] internal bool isEasterEgg;
     [Min(0f)] public int price;
     [SerializeField] EventReference dropSound;
     [SerializeField] GameEvent _pickupEvent;

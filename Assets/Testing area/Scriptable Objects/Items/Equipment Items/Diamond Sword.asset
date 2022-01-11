@@ -18,6 +18,7 @@ MonoBehaviour:
   height: 1
   type: 2
   name: Diamond Sword
+  isEasterEgg: 1
   price: 1000
   dropSound:
     Guid:
