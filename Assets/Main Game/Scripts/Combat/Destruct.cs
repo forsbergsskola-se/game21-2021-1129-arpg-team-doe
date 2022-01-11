@@ -22,8 +22,10 @@ public class Destruct : MonoBehaviour, IHealthListener{
     }
 
     void DeactivateComponents(){
-        Instantiate(_prefab,transform.position,Quaternion.identity);
-        Destroy(gameObject);
+        _prefab.SetActive(true);
+        this.GetComponent<MeshRenderer>().enabled = false;
+        // Instantiate(_prefab,transform.position,Quaternion.identity);
+        // Destroy(gameObject);
     }
 
     public void HealthChanged(int currentHealth, int maxHealth, int damage, bool isCrit, bool isAlive){
