@@ -125,6 +125,7 @@ public class Fighter : MonoBehaviour, IInteractSound{
             _damage = Mathf.RoundToInt(_statistics.AttackDamage * critDamageMultiplier);
             isCrit = true;
             PlayCritSound();
+            _timeSinceLastAttack = 0f; // Dont remove
         }
         target.GetComponent<IDamageReceiver>()?.ReceiveDamage(_damage, isCrit, _isPlayer, wepDamageType/*weapon.damageType */);
         //TODO: We need an actual weapon to get the damage type of that weapon
