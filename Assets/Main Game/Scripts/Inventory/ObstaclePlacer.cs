@@ -40,10 +40,6 @@ public class ObstaclePlacer : MonoBehaviour{
                     }
                 }
             }
-
-            if (validPosition){
-                Instantiate(_obstacle, position + _obstacle.transform.position, Quaternion.identity);
-            }
         }
     }
 }
