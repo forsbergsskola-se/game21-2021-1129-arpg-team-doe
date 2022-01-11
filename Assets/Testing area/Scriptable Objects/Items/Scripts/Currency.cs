@@ -25,6 +25,7 @@ public class Currency : MonoBehaviour{
     {
         yield return new WaitForSeconds(1);
         other.gameObject.GetComponent<CurrencyHolder>()._currencyHolderDataSo.AddCurrency(amount);
+        this.currencyData.PlayDropSound(); //Actually Pickup sound in disguize
         Destroy(gameObject);
     }
 }
