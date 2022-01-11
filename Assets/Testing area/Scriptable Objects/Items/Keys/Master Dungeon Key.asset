@@ -22,11 +22,11 @@ MonoBehaviour:
   price: 0
   dropSound:
     Guid:
-      Data1: 2018069268
-      Data2: 1081668411
-      Data3: 1708616576
-      Data4: -1591791680
-    Path: event:/MasterKeyDrop
+      Data1: 1612298627
+      Data2: 1171783708
+      Data3: -414396490
+      Data4: 408255267
+    Path: event:/WeddingRingDrop
   _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
   description: This could probably open some of the locked doors I encountered!
   buffs: []
