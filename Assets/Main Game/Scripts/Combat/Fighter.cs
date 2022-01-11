@@ -42,7 +42,7 @@ public class Fighter : MonoBehaviour, IInteractSound{
     }
 
     void Start(){
-        if (gameObject.CompareTag("Player")) {
+        if (gameObject.CompareTag("Player")){
             _isPlayer = true;
             _critAttackInstance = FMODUnity.RuntimeManager.CreateInstance(critReference);
         }
@@ -99,28 +99,19 @@ public class Fighter : MonoBehaviour, IInteractSound{
 
     void Attack(GameObject target){
         transform.LookAt(_combatTarget.transform);
-        if (target.GetComponent<Destruct>() != null)
-        {
-            if (_timeSinceLastAttack * destructAttackSpeedMultiplier > attackIntervalMultiplier / _statistics.AttackSpeed)
-            {
+        if (target.GetComponent<Destruct>() != null){
+            if (_timeSinceLastAttack * destructAttackSpeedMultiplier > attackIntervalMultiplier / _statistics.AttackSpeed){
                 DealDamage(target);
             }
-            
         }
-        else
-        {
-            if (_timeSinceLastAttack > attackIntervalMultiplier / _statistics.AttackSpeed)
-            {
+        else{
+            if (_timeSinceLastAttack > attackIntervalMultiplier / _statistics.AttackSpeed){
                DealDamage(target); 
             }
         }
-        
-            
-        
     }
 
-    void DealDamage(GameObject target)
-    {
+    void DealDamage(GameObject target){
         PlayAttackSound();
         _animationController.ChangeAnimationState(ATTACK);
         _damage = _statistics.AttackDamage;
