@@ -9,9 +9,10 @@ public class TargetDetection : MonoBehaviour{
     [SerializeField] float visionRange = 20.0f;
     [SerializeField] [Range(0,360)] float viewAngle;
     float _distanceToTarget;
+    float _viewAngleInRadius;
 
     void Start(){
-        viewAngle = Mathf.Cos(viewAngle * MathF.PI / 180 / 2);
+        _viewAngleInRadius = Mathf.Cos(viewAngle * MathF.PI / 180 / 2);
     }
     
     public float DistanceToTarget(Vector3 position, Transform target){
@@ -21,9 +22,8 @@ public class TargetDetection : MonoBehaviour{
     public bool TargetIsDetected(Vector3 position, Transform target){
         var targetDirection = DistanceAndDirectionCheck(position, target);
         
-        if (AreaDetection(target, targetDirection)) return true;
-        
-        if (FrontalDetection(target, targetDirection)) return true;
+        if (AreaDetection(target, targetDirection)){ return true;}
+        if (FrontalDetection(target, targetDirection)){ return true;}
         return false;
     }
 
@@ -36,28 +36,24 @@ public class TargetDetection : MonoBehaviour{
     bool AreaDetection(Transform target, Vector3 targetDirection){
         if (_distanceToTarget < areaDetectionRange){
             //If target is within detection area, shoot out a ray to see if target is visable
-            if (RaycastCheck(target, targetDirection, Color.green)) return true;
+            if (RaycastCheck(target, targetDirection, Color.green)){ return true;}
         }
-
         return false;
     }
 
     bool FrontalDetection(Transform target, Vector3 targetDirection){
         //Calculates the view angle and checks if unit is looking at target
         var dot = Vector3.Dot(targetDirection.normalized, transform.forward);
-        if (_distanceToTarget < visionRange && dot > viewAngle){
-            if (RaycastCheck(target, targetDirection, Color.red)) return true;
+        if (_distanceToTarget < visionRange && dot > _viewAngleInRadius){
+            if (RaycastCheck(target, targetDirection, Color.red)){ return true;}
         }
-
         return false;
     }
 
     bool RaycastCheck(Transform target, Vector3 targetDirection, Color color){
         RaycastHit hit;
         if (Physics.Raycast(transform.position, targetDirection, out hit)){
-            if (hit.transform == target.transform){
-                return true;
-            }
+            if (hit.transform == target.transform){ return true;}
             return false;
         }
         return false;
