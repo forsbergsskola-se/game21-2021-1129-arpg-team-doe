@@ -1481,7 +1481,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 6404
+  m_VersionIndex: 6407
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1656,6 +1656,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6d27e4b9f641c4984a355980f76fb7d0, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6d27e4b9f641c4984a355980f76fb7d0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d27e4b9f641c4984a355980f76fb7d0, type: 3}
 --- !u!1 &6883175120758286173 stripped
@@ -1681,3 +1689,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.021866074, y: 0.021866068, z: 0.16919357}
   m_Center: {x: -4.6566123e-10, y: 0, z: 0.07459678}
+--- !u!208 &8938875186956487894
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6883175120758286173}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.011000001, y: 0.011000001, z: 0.085}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0.075}
+  m_TimeToStationary: 0.5
