@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -17,8 +19,9 @@ public class Statistics : MonoBehaviour{
     [SerializeField] internal List<DamageType> resistances;
 
     [Tooltip("The higher the value, the more damage is taken")] [Range(-1f, 1f)] [SerializeField]
-
     internal float damageLevelMultiplier = 0.01f;
+
+    internal float attackSpeedMultiplier = 0.01f;
     internal float movementSpeedMultiplier = 0.03f;
     internal float dodgeImpactLevelMultiplier = 0.005f;
     internal float lowImpactLevelMultiplier = 0.05f;
@@ -28,6 +31,14 @@ public class Statistics : MonoBehaviour{
     internal float resistanceDamageModifier = 0.5f;
     int damage;
     bool isRanged;
+
+    // void Start(){
+    //     CalculateAttackSpeed(startingAttackSpeed);
+    // }
+    void Update(){
+        if(this.gameObject.CompareTag("Player"))
+            Debug.Log(AttackSpeed);
+    }
 
     public float Toughness{
         get => toughness;
@@ -70,17 +81,10 @@ public class Statistics : MonoBehaviour{
         set { attackRange = value; }
     }
 
-    public float AttackSpeed{
-        get{
-            return CalculateAttackSpeed();
-            // 1 dexterity -> 0.5 percent change, called in Fighter
-        }
-         set{
-            attackSpeed = value;
-        }
-    }
+    public float AttackSpeed => CalculateAttackSpeed();
+            
 
-    public int AttackDamage{
+        public int AttackDamage{
         get{
             return CalculateWeaponDamage();
             // called in Fighter
@@ -109,7 +113,7 @@ public class Statistics : MonoBehaviour{
     }
 
     float CalculateAttackSpeed(){
-        return StatManipulation(attackSpeed, dexterity, lowImpactLevelMultiplier);
+        return StatManipulation(attackSpeed, dexterity, attackSpeedMultiplier);
     }
 
     float CalculateMoveSpeed(){
