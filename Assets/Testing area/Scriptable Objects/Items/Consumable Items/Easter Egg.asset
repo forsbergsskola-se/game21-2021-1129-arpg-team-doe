@@ -18,6 +18,7 @@ MonoBehaviour:
   height: 2
   type: 0
   name: Easter Egg
+  isEasterEgg: 1
   price: 150
   dropSound:
     Guid:
