@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 7826209669006706984}
   - component: {fileID: -3537805359387375960}
   - component: {fileID: -781006385980267310}
+  - component: {fileID: 5134141450504903011}
   m_Layer: 0
   m_Name: Golden Cash Urn
   m_TagString: Untagged
@@ -307,3 +308,22 @@ MonoBehaviour:
   cash: {fileID: 6458768576707232289, guid: 5bb6ad687c3f0034e86023865012b2b3, type: 3}
   spreadRange: 1
   maxRollCount: 5
+--- !u!114 &5134141450504903011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4493257503886353022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9113688ad019b054f954e9a751333c12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObsToPlace: 10
+  obstacles:
+  - {fileID: 7672806830668588250, guid: 16880186373f0c142bf48da1711a4006, type: 3}
+  - {fileID: 7672806830668588250, guid: b5d4858f0f736ee47a4bb620c076a904, type: 3}
+  - {fileID: 7672806830668588250, guid: b593158c33a1ae04aa5744b0c5175846, type: 3}
+  obstacleCheckRadius: 3
+  maxSpawnAttemptsPerObstacle: 10
