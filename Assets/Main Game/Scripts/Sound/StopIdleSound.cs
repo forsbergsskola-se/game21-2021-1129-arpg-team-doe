@@ -10,7 +10,6 @@ public class StopIdleSound : MonoBehaviour
    public Fighter _fighter; //sorry but this works and idk why and im sad and tired.
 
    void Start(){
-      
       _eventEmitter = GetComponentInChildren<StudioEventEmitter>();
       _idleInstance = _eventEmitter.EventInstance;
    }

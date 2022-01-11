@@ -73,37 +73,29 @@ public class UIStats : MonoBehaviour{
 
     public void UpdateAllUIText()
     {
-        if (_attributeText.text == nameof(_playerStatistics.Toughness))
-        {
+        if (_attributeText.text == nameof(_playerStatistics.Toughness)){
             _valueText.text = ((int)_playerStatistics.Toughness).ToString();
         }
         
-        
-        if (_attributeText.text == nameof(_playerStatistics.Strength))
-        {
+        if (_attributeText.text == nameof(_playerStatistics.Strength)){
             _valueText.text = ((int)_playerStatistics.Strength).ToString();
         }
 
-        if (_attributeText.text == nameof(_playerStatistics.Dexterity))
-        {
+        if (_attributeText.text == nameof(_playerStatistics.Dexterity)){
            _valueText.text = ((int)_playerStatistics.Dexterity).ToString(); 
         }
 
-        if (_attributeText.text == nameof(_playerStatistics.Knowledge))
-        {
+        if (_attributeText.text == nameof(_playerStatistics.Knowledge)){
            _valueText.text = ((int)_playerStatistics.Knowledge).ToString(); 
         }
 
-        if (_attributeText.text == nameof(_playerStatistics.Reflex))
-        {
+        if (_attributeText.text == nameof(_playerStatistics.Reflex)){
             _valueText.text =((int)_playerStatistics.Reflex).ToString();
         }
 
-        if (_attributeText.text == nameof(_playerStatistics.Luck))
-        {
+        if (_attributeText.text == nameof(_playerStatistics.Luck)){
            _valueText.text = ((int)_playerStatistics.Luck).ToString(); 
         }
-        
     }
 
     //Call After applying skill point in button script
@@ -112,7 +104,6 @@ public class UIStats : MonoBehaviour{
 
         if (_playerLevel.skillPoint <= 0){
             _increaseButton.gameObject.SetActive(false);
-            
         }
         if (_playerLevel.skillPoint > 0 || hasStarted == false){
             _increaseButton.gameObject.SetActive(true);

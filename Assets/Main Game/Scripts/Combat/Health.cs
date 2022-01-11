@@ -100,18 +100,14 @@ public class Health : MonoBehaviour, IDamageReceiver{
 
         dmg = Mathf.RoundToInt(dmg - _stats.ToughnessDamageReduction);
 
-        foreach (var damageType in _stats.vulnerabilities)
-        {
-            if (receivedDmgType == damageType)
-            {
+        foreach (var damageType in _stats.vulnerabilities){
+            if (receivedDmgType == damageType){
               dmg = Mathf.RoundToInt(dmg * _stats.vulnerabilityDamageModifier);
                 break;
             }
         }
-        foreach (var damageType in _stats.resistances)
-        {
-            if (receivedDmgType == damageType)
-            {
+        foreach (var damageType in _stats.resistances){
+            if (receivedDmgType == damageType){
                 dmg = Mathf.RoundToInt(dmg * _stats.resistanceDamageModifier);
                 break;
             }
