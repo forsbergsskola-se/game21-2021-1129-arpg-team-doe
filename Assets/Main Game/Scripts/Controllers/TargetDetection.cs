@@ -63,7 +63,35 @@ public class TargetDetection : MonoBehaviour{
     #if UNITY_EDITOR
     void OnDrawGizmosSelected(){
         Handles.color = Color.yellow;
-        Handles.DrawWireDisc(transform.position,transform.up, areaDetectionRange);
+        var position = transform.position;
+        Handles.DrawWireDisc(position,transform.up, areaDetectionRange);
+
+        Gizmos.color = Color.cyan;
+        DrawFrontalDetection(position, transform.forward, viewAngle, visionRange);
+    }
+
+    void DrawFrontalDetection(Vector3 position, Vector3 dir, float viewsAngle, float visionsRange, float segments = 20){
+        var srcAngles = GetAnglesFromDir(position, dir);
+        var initialPos = position;
+        var posA = initialPos;
+        var stepAngles = viewsAngle / segments;
+        var angle = srcAngles - viewsAngle / 2;
+        for (var i = 0; i <= segments; i++){
+            var rad = Mathf.Deg2Rad * angle;
+            var posB = initialPos;
+            posB += new Vector3(visionsRange * Mathf.Cos(rad), 0, visionsRange * Mathf.Sin(rad));
+            Gizmos.DrawLine(posA, posB);
+            angle += stepAngles;
+            posA = posB;
+        }
+        
+        Gizmos.DrawLine(posA, initialPos);
+    }
+
+    float GetAnglesFromDir(Vector3 position, Vector3 dir){
+        var forwardLimitPos = position + dir;
+        var srcAngles = Mathf.Rad2Deg * Mathf.Atan2(forwardLimitPos.z - position.z, forwardLimitPos.x - position.x);
+        return srcAngles;
     }
     #endif
 }
