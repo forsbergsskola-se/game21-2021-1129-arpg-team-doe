@@ -83,12 +83,6 @@ public class Fighter : MonoBehaviour, IInteractSound{
             _animationController.ChangeAnimationState(RUN);
         }
 
-        if (!_targetDetection.TargetIsDetected(transform.position, _combatTarget.transform)){
-            isAttacking = false;
-            _movement.Mover(_combatTarget.transform.position, 1f);
-            _animationController.ChangeAnimationState(RUN);
-        }
-        
         else{
             isAttacking = true;
             _movement.StopMoving();
@@ -106,29 +100,22 @@ public class Fighter : MonoBehaviour, IInteractSound{
     }
 
     void Attack(GameObject target){
-        transform.LookAt(_combatTarget.transform);
-        if (target.GetComponent<Destruct>() != null)
-        {
-            if (_timeSinceLastAttack * destructAttackSpeedMultiplier > attackIntervalMultiplier / _statistics.AttackSpeed)
-            {
-                DealDamage(target);
+        transform.LookAt(target.transform);
+        if (_targetDetection.TargetIsDetected(transform.position, target.transform)){
+            if (target.GetComponent<Destruct>() != null){
+                if (_timeSinceLastAttack * destructAttackSpeedMultiplier > attackIntervalMultiplier / _statistics.AttackSpeed){
+                    DealDamage(target);
+                }
             }
-            
-        }
-        else
-        {
-            if (_timeSinceLastAttack > attackIntervalMultiplier / _statistics.AttackSpeed)
-            {
-               DealDamage(target); 
+            else{
+                if (_timeSinceLastAttack > attackIntervalMultiplier / _statistics.AttackSpeed){
+                    DealDamage(target); 
+                }
             }
         }
-        
-            
-        
     }
 
-    void DealDamage(GameObject target)
-    {
+    void DealDamage(GameObject target){
         PlayAttackSound();
         _animationController.ChangeAnimationState(ATTACK);
         _damage = _statistics.AttackDamage;
