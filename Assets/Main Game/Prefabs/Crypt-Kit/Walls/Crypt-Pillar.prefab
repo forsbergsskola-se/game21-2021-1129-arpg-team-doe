@@ -95,6 +95,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c293d2b26abe4dcba684197337ba558, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c293d2b26abe4dcba684197337ba558, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c293d2b26abe4dcba684197337ba558, type: 3}
 --- !u!1 &9084660321490586895 stripped
@@ -120,3 +128,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.028760307, y: 0.0287603, z: 0.09213828}
   m_Center: {x: -9.313226e-10, y: -0.0000000018626448, z: 0.035838347}
+--- !u!208 &3760977847833410470
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9084660321490586895}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.014, y: 0.014, z: 0.046000004}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0.036000002}
+  m_TimeToStationary: 0.5
