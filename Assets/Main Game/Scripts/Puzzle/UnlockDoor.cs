@@ -31,13 +31,14 @@ public class UnlockDoor : MonoBehaviour, Iinteractable,IInteractSound{
         _collider = GetComponent<BoxCollider>();
         _animator = GetComponent<Animator>();
         _inventoryController = FindObjectOfType<InventoryController>();
+        
+    }
+
+    void Start(){
         if (key == null)
         {
             key = masterKey;
         }
-    }
-
-    void Start(){
         _animator.enabled = false;
         _doorInstance = FMODUnity.RuntimeManager.CreateInstance(DoorReference);
     }
@@ -62,12 +63,14 @@ public class UnlockDoor : MonoBehaviour, Iinteractable,IInteractSound{
     }
     
     public void Use(){
-        if (_locked && !_inventoryController._inventoryItemList.Contains(key)){
-            PlaySound(1f);
-        }
-        else if (!_locked || _inventoryController._inventoryItemList.Contains(key) ){
+        
+        if (!_locked || _inventoryController._inventoryItemList.Contains(key) ){
             OpenDoor();
         }
+        else if (_locked && !_inventoryController._inventoryItemList.Contains(key)){ 
+            PlaySound(1f);
+        }
+        
     }
     
     public void PlaySound(float parameter){

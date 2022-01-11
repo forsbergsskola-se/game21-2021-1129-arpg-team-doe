@@ -6,4 +6,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Key", menuName = "Inventory System/Items/Key")]
 public class KeySO : ItemObject
 {
+    
 }
