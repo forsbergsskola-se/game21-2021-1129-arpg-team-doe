@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Old Letter
   m_EditorClassIdentifier: 
   Id: 23
-  itemIcon: {fileID: 21300000, guid: 8ea434dc6b4035a4798e4a823d4632be, type: 3}
+  itemIcon: {fileID: 21300000, guid: 6e5ef6476028b40ccab28d1feae26248, type: 3}
   width: 1
   height: 1
   type: 4
