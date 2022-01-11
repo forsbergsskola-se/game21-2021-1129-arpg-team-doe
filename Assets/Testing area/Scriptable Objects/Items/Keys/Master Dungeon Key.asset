@@ -18,6 +18,7 @@ MonoBehaviour:
   height: 1
   type: 4
   name: Master Dungeon Key
+  isEasterEgg: 1
   price: 0
   dropSound:
     Guid:

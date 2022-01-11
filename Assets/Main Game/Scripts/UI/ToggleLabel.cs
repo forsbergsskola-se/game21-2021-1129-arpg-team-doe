@@ -1,4 +1,5 @@
 using System;
+using MoreColors;
 using UnityEngine;
 
 [RequireComponent(typeof(Label))]
@@ -50,11 +51,20 @@ public class ToggleLabel : MonoBehaviour{
         if (GetComponent<Currency>() != null)
         {
             _shownName = GetComponent<Currency>()?.currencyData.name;
-            _label.GetComponent<Label>().SetLabel(GetComponent<Currency>().amount + " " +_shownName);
+            _label.GetComponent<Label>().SetLabel(GetComponent<Currency>().amount + " " +_shownName, Color.yellow);
         }
         else{
-            _shownName = GetComponent<InventoryItem>()?.itemObject.name;
-            _label.GetComponent<Label>().SetLabel(_shownName);
+            var item = GetComponent<InventoryItem>()?.itemObject;
+            _shownName = item.name;
+            if (item.isEasterEgg){
+                _label.GetComponent<Label>().SetLabel(_shownName, Color.magenta);
+            }
+            else if (item is ConsumableObject){
+                _label.GetComponent<Label>().SetLabel(_shownName, Colors.lightGreen);
+            }
+            else{
+                _label.GetComponent<Label>().SetLabel(_shownName, Color.white);
+            }
         }
     }
     
