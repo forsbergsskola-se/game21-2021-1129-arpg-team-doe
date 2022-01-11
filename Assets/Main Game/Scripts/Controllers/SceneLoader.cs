@@ -19,7 +19,7 @@ void Start()
 }
 
 public void Use(){
-        LoadScene();
+        Invoke(nameof(LoadScene), 1f);
     }
 
     public void LoadScene()
@@ -37,4 +37,6 @@ public void Use(){
         yield return new WaitForSeconds(1);
         bus.setVolume(volume);
     }
+    
+    
 }
