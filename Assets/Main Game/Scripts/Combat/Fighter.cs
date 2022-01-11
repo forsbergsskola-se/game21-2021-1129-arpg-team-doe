@@ -5,6 +5,7 @@ using FMOD.Studio;
 public class Fighter : MonoBehaviour, IInteractSound{
     [SerializeField] float critDamageMultiplier = 1.5f;
     [SerializeField] float attackIntervalMultiplier = 1.5f;
+    [Tooltip("This Affects how fast you can attack destructable objects.")][SerializeField] int destructAttackSpeedMultiplier = 3;
     [SerializeField] DamageType wepDamageType;
     
     public bool IsIdle{ get; private set; }
@@ -98,21 +99,41 @@ public class Fighter : MonoBehaviour, IInteractSound{
 
     void Attack(GameObject target){
         transform.LookAt(_combatTarget.transform);
-        if (_timeSinceLastAttack > attackIntervalMultiplier /_statistics.AttackSpeed){
-            PlayAttackSound();
-            _animationController.ChangeAnimationState(ATTACK);
-            _damage = _statistics.AttackDamage;
-            //Weapon dmg type vs enemy stat res type
-            bool isCrit = false;
-            if (_random.NextDouble() < _statistics.CritChance){
-                _damage = Mathf.RoundToInt(_statistics.AttackDamage * critDamageMultiplier);
-                isCrit = true;
-                PlayCritSound();
+        if (target.GetComponent<Destruct>() != null)
+        {
+            if (_timeSinceLastAttack * destructAttackSpeedMultiplier > attackIntervalMultiplier / _statistics.AttackSpeed)
+            {
+                DealDamage(target);
             }
-            target.GetComponent<IDamageReceiver>()?.ReceiveDamage(_damage, isCrit, _isPlayer, wepDamageType/*weapon.damageType */);
-            //TODO: We need an actual weapon to get the damage type of that weapon
-            _timeSinceLastAttack = 0f;
+            
         }
+        else
+        {
+            if (_timeSinceLastAttack > attackIntervalMultiplier / _statistics.AttackSpeed)
+            {
+               DealDamage(target); 
+            }
+        }
+        
+            
+        
+    }
+
+    void DealDamage(GameObject target)
+    {
+        PlayAttackSound();
+        _animationController.ChangeAnimationState(ATTACK);
+        _damage = _statistics.AttackDamage;
+        //Weapon dmg type vs enemy stat res type
+        bool isCrit = false;
+        if (_random.NextDouble() < _statistics.CritChance){
+            _damage = Mathf.RoundToInt(_statistics.AttackDamage * critDamageMultiplier);
+            isCrit = true;
+            PlayCritSound();
+        }
+        target.GetComponent<IDamageReceiver>()?.ReceiveDamage(_damage, isCrit, _isPlayer, wepDamageType/*weapon.damageType */);
+        //TODO: We need an actual weapon to get the damage type of that weapon
+        _timeSinceLastAttack = 0f;
     }
 
     bool IsInAttackRange(){
