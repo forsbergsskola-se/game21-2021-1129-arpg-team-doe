@@ -250,8 +250,7 @@ public class InventoryController : MonoBehaviour
             Mathf.Clamp(itemDisplayName.preferredHeight, 10, maxDisplayWidth) + 10);
     }
 
-    void DeactivateItemInformationDisplay()
-    {
+    void DeactivateItemInformationDisplay(){
         itemDisplayInfo.SetActive(false);
         itemDisplayText.text = "No Description Available";
         itemDisplayName.text = "No Name Available";
