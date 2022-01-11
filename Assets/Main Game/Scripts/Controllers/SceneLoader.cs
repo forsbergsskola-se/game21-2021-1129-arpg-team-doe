@@ -14,14 +14,12 @@ public class SceneLoader : MonoBehaviour,Iinteractable
     [SerializeField] Texture2D defaultCursor;
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.transform.tag == "Player")
-        {
+        if (collider.transform.tag == "Player"){
             Invoke(nameof(LoadScene), 0.3f);
         }
     }
 
-    void LoadScene()
-    { 
+    void LoadScene(){ 
         Cursor.SetCursor(defaultCursor, Vector2.zero , CursorMode.ForceSoftware);
         SceneManager.LoadScene("Scene2");
     }

@@ -5,10 +5,8 @@ using UnityEngine;
 
 public class ApplicationQuit : MonoBehaviour
 {
-    void Update()
-    {
-        if (Input.GetKey("escape"))
-        {
+    void Update(){
+        if (Input.GetKey("escape")){
             Application.Quit();
         }
     }

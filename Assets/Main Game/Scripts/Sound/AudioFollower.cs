@@ -13,5 +13,4 @@ public class AudioFollower : MonoBehaviour{
         transform1.position = player.position + offset;
         transform.position = transform1.position;
     }
-
 }

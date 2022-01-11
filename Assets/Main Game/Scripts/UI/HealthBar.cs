@@ -10,7 +10,6 @@ public class HealthBar : MonoBehaviour{
     public void Awake() {
         _health = GetComponentInParent<Health>();
         _parent = GetComponentInParent<ToggleHealthBar>()?.gameObject;
-        
     }
 
     void Update(){

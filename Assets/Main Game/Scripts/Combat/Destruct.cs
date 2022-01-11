@@ -14,16 +14,14 @@ public class Destruct : MonoBehaviour, IHealthListener{
     void Destruction(bool isAlive){
         if (!isAlive){
             _animationController.ChangeAnimationState(IDLE);
-            foreach (var dropTest in _dropTest)
-            {
+            foreach (var dropTest in _dropTest){
                 dropTest.InstantiateItem();
             }
-            
             DeactivateComponents();
         }
     }
 
-    void DeactivateComponents() {
+    void DeactivateComponents(){
         Instantiate(_prefab,transform.position,Quaternion.identity);
         Destroy(gameObject);
     }

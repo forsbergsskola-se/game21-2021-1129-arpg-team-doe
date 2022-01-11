@@ -14,15 +14,12 @@ public class VanishingLady : MonoBehaviour
    EventInstance soundWhileTurningInstance;
    EventInstance soundWhenVanishingInstance;
 
-    void Start()
-    {
+    void Start(){
         _animationController = GetComponent<AnimationController>();
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
-        {
+    void OnTriggerEnter(Collider other){
+        if (other.tag == "Player"){
             StartCoroutine(TurnThenVanish());
         }
     }
