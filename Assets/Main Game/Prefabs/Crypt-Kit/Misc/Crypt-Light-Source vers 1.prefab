@@ -89,7 +89,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0.046875, y: 42.4, z: 13.6, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    rid: 3815637659266582449
+    rid: 6272328171612799167
   m_Size: {x: 0.05, y: 0.4, z: 0.05}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -430,7 +430,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 3815637659266582449
+    - rid: 6272328171612799167
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!23 &4420437751038157358
 MeshRenderer:
@@ -936,7 +936,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    rid: 3815637659266582165
+    rid: 6272328171612799341
   m_Size: {x: -0.07614977, y: 0.0880484, z: -0.070461035}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -948,7 +948,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 3815637659266582165
+    - rid: 6272328171612799341
       type: {class: Cone, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
       data:
         m_NumberOfSides: 6
@@ -1090,7 +1090,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ee9ff12f8b008a044853b957baf624c1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ee9ff12f8b008a044853b957baf624c1, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1115,7 +1115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6090464080088043929, guid: 73a159c1e73c1fb419a26cd6c1c0c362, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6090464080088043929, guid: 73a159c1e73c1fb419a26cd6c1c0c362, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1169,6 +1169,10 @@ PrefabInstance:
       propertyPath: LightsModule.light
       value: 
       objectReference: {fileID: 8363536879011398472}
+    - target: {fileID: 6090464080088043935, guid: 73a159c1e73c1fb419a26cd6c1c0c362, type: 3}
+      propertyPath: LightsModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73a159c1e73c1fb419a26cd6c1c0c362, type: 3}
 --- !u!1001 &7468602520222584659

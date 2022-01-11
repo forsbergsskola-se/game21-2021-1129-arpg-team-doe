@@ -41,7 +41,6 @@ public class PlayerController : MonoBehaviour{
         _inventoryController = FindObjectOfType<InventoryController>();
         _animator = GetComponentInChildren<Animator>();
         _footstepInstance = RuntimeManager.CreateInstance(footstepSound);
-        DontDestroyOnLoad(this.gameObject);
     }
 
     void Start(){
