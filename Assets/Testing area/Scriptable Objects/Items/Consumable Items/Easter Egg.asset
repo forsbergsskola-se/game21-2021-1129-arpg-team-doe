@@ -38,5 +38,5 @@ MonoBehaviour:
       Data4: 0
     Path: 
   toxicityAmount: 1
-  restoreHealthValue: 30
+  restoreHealthValue: 500
   toxicityDuration: 10
