@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Nootropic
   m_EditorClassIdentifier: 
   Id: 11
-  itemIcon: {fileID: 21300000, guid: 3bd21342ff245be45a465edd6119520e, type: 3}
+  itemIcon: {fileID: 21300000, guid: d5523f8f37297444ca976327c43c6505, type: 3}
   width: 1
-  height: 1
+  height: 2
   type: 0
   name: Nootropic
   price: 20
@@ -33,6 +33,13 @@ MonoBehaviour:
     Right-Click
     for Options'
   buffs: []
+  consumeSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   toxicityAmount: 1
   buffDuration: 120
   toughnessBuff: 0
@@ -41,7 +48,3 @@ MonoBehaviour:
   knowledgeBuff: 5
   reflexBuff: 0
   luckBuff: 0
-  interactRangeBuff: 0
-  attackRangeBuff: 0
-  attackSpeedBuff: 0
-  damageBuff: 0
