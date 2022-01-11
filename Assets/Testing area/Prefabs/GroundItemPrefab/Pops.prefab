@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6768966319825928240}
   - component: {fileID: 3984911422091286215}
   - component: {fileID: 5700182912353610928}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pops
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,9 +199,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7225560548224615303, guid: a797ffcae6d3bc64c935e00e0239d540, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7672806830668588250, guid: a797ffcae6d3bc64c935e00e0239d540, type: 3}
       propertyPath: m_Name
       value: Loot-Bag
+      objectReference: {fileID: 0}
+    - target: {fileID: 7672806830668588250, guid: a797ffcae6d3bc64c935e00e0239d540, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a797ffcae6d3bc64c935e00e0239d540, type: 3}
