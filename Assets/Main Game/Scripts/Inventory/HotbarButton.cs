@@ -48,7 +48,6 @@ public class HotbarButton : MonoBehaviour{
                 HandleClick();
             }
         }
-        Debug.Log(_keyCode);
     }
 
     void AssignButton(){
