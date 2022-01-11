@@ -30,19 +30,14 @@ public class UIStatScreen : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         SetLevelText();
     }
 
-    void Update()
-    {
-
-        if (availableSkillPoints != _playerLevel.skillPoint)
-        {
-
+    void Update(){
+        if (availableSkillPoints != _playerLevel.skillPoint){
             SetAvailableSkillPoints();
             SetSkillPointText();
         }
     }
 
-    public void SetLevelText()
-    {
+    public void SetLevelText(){
         LevelText.text = "Level: " + _playerLevel.level.ToString();
     }
 
@@ -51,13 +46,11 @@ public class UIStatScreen : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         applyButton.onClick.Invoke();
     }
 
-    public void SetAvailableSkillPoints()
-    {
+    public void SetAvailableSkillPoints(){
         availableSkillPoints = _playerLevel.skillPoint;
     }
 
-    public void SetSkillPointText()
-    {
+    public void SetSkillPointText(){
         SkillPointText.text = ("Skill Points: " + availableSkillPoints.ToString()); 
     }
     

@@ -7,8 +7,7 @@ using UnityEngine.UI;
 public class HelpMenu : MonoBehaviour{
     [SerializeField]GameObject helpTextGameObject;
     
-    void Update()
-    {
+    void Update(){
         if (Input.GetKeyDown(KeyCode.H)){
             ToggleHelpMenu();
         }
