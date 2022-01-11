@@ -1,9 +1,10 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class HotbarButton : MonoBehaviour{
+public class HotbarButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler{
     [HideInInspector]
     [SerializeField] Button button;
     [HideInInspector]
@@ -111,5 +112,13 @@ public class HotbarButton : MonoBehaviour{
         _inventoryItem = null;
         button.image.sprite = _defaultSprite;
         _id = -1;
+    }
+    
+    public void OnPointerEnter(PointerEventData eventData){
+        _inventoryController.clickOnUI = true;
+    }
+    
+    public void OnPointerExit(PointerEventData eventData){
+        _inventoryController.clickOnUI = false;
     }
 }
