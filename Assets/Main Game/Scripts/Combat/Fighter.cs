@@ -21,6 +21,7 @@ public class Fighter : MonoBehaviour, IInteractSound{
     Random _random;
     AnimationController _animationController;
     Rigidbody _rigidbody;
+    TargetDetection _targetDetection;
     
     int _damage;
     bool _isPlayer;
@@ -39,6 +40,7 @@ public class Fighter : MonoBehaviour, IInteractSound{
         _random = new Random();
         _movement = GetComponent<Movement>();
         _animationController = GetComponentInChildren<AnimationController>();
+        _targetDetection = GetComponent<TargetDetection>();
     }
 
     void Start(){
@@ -76,6 +78,12 @@ public class Fighter : MonoBehaviour, IInteractSound{
         }
         
         if (!IsInAttackRange()){
+            isAttacking = false;
+            _movement.Mover(_combatTarget.transform.position, 1f);
+            _animationController.ChangeAnimationState(RUN);
+        }
+
+        if (!_targetDetection.TargetIsDetected(transform.position, _combatTarget.transform)){
             isAttacking = false;
             _movement.Mover(_combatTarget.transform.position, 1f);
             _animationController.ChangeAnimationState(RUN);
