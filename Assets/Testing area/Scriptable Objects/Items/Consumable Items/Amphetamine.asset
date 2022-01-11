@@ -18,6 +18,7 @@ MonoBehaviour:
   height: 1
   type: 0
   name: Amphetamine
+  isEasterEgg: 0
   price: 35
   dropSound:
     Guid:
@@ -32,7 +33,14 @@ MonoBehaviour:
 
     Right-Click for Options'
   buffs: []
-  toxicityAmount: 1
+  consumeSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  toxicityAmount: 0
   buffDuration: 120
   toughnessBuff: 0
   strengthBuff: 0
@@ -40,7 +48,3 @@ MonoBehaviour:
   knowledgeBuff: 0
   reflexBuff: 0
   luckBuff: 0
-  interactRangeBuff: 0
-  attackRangeBuff: 0
-  attackSpeedBuff: 0
-  damageBuff: 0
