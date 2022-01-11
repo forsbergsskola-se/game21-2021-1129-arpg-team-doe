@@ -31,14 +31,7 @@ public class Statistics : MonoBehaviour{
     internal float resistanceDamageModifier = 0.5f;
     int damage;
     bool isRanged;
-
-    // void Start(){
-    //     CalculateAttackSpeed(startingAttackSpeed);
-    // }
-    void Update(){
-        if(this.gameObject.CompareTag("Player"))
-            Debug.Log(AttackSpeed);
-    }
+    
 
     public float Toughness{
         get => toughness;
