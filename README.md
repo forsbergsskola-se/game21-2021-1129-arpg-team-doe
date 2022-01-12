@@ -1,6 +1,6 @@
 # Den of Evil
 
-{video}
+{https://www.youtube.com/watch?v=FzUHSZibg-E&ab_channel=ArvidLundin}
 
 {You wanted to leave the city as fast as you could, and leave everything behind. All the things you have been through, all the death around you… the monsters. All your friends and companions are dead.. you are all alone now in this world. Or so he/she thought...
 You decide to pack everything you can and be on your way.
