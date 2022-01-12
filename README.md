@@ -25,7 +25,7 @@ Team members and roles:
 * Filip Suthawan, Artist [LinkedIn](https://linkedin.com/in/filip-suthawan-07868a182)
 * Ava Blixt, Artist [LinkedIn](https://www.linkedin.com/in/ava-blixt-6830aa195/)
 * Mathilda Christiansson, Artist [LinkedIn](https://www.linkedin.com/in/mathilda-christiansson-107048220/)
-* Tom Olovsson, Sound Designer [LinkedIn](https://www.linkedin.com/in/tom-olovsson-62a5b799/)
+* Tom Olovsson, Sound Designer [LinkedIn](https://www.linkedin.com/in/tom-olovsson-62a5b799/), [Studio Instagram](https://www.instagram.com/alderbaystudios/)
 * Arvid Lundin, Sound Designer [LinkedIn](https://www.linkedin.com/in/arvid-lundin-a5b18622b/), [Studio Instagram](https://www.instagram.com/alderbaystudios/)
 * Joakim Blomstrand , Designer
 ## Design Documents
