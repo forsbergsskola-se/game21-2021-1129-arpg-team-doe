@@ -37,8 +37,7 @@ public class ToggleLabel : MonoBehaviour{
 
     void RotateLabel(){
         if (Camera.main is not null){
-            Vector3 labelFaceDirection = _label.transform.position - Camera.main.transform.position;
-            _label.transform.rotation = Quaternion.LookRotation(labelFaceDirection);
+            _label.transform.rotation = Camera.main.transform.rotation;
         }
     }
 
