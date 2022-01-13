@@ -16,8 +16,14 @@ public class UIDamageNr : MonoBehaviour, IDamageNumbers, IHealthListener{
     bool activeTimer;
     bool takingDamage;
 
+    void Start(){
+        transform.rotation = Camera.main.transform.rotation;
+    }
+
     void Update(){
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Camera.main.transform.rotation, 10f);
+        if (transform.rotation != Camera.main.transform.rotation){
+            transform.rotation = Camera.main.transform.rotation;
+        }
     }
 
     public void DisplayDmg(int damage, bool isCrit){
