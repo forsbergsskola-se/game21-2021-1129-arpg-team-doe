@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c22ee1d0c203304f8cbb7f9e1a85ac1, type: 3}
+  m_Name: Boots of Speed
+  m_EditorClassIdentifier: 
+  Id: 0
+  itemIcon: {fileID: 0}
+  width: 1
+  height: 1
+  type: 1
+  name: 
+  price: 0
+  dropSound:
+    Guid:
+      Data1: 90928835
+      Data2: 1225203162
+      Data3: -200824160
+      Data4: -981507709
+    Path: event:/InventoryDrop
+  _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
+  description: 
+  buffs: []
+  equipmentType: 4
+  equipmentPrefab: {fileID: 0}
+  toughnessBuff: 0
+  strengthBuff: 0
+  dexterityBuff: 0
+  knowledgeBuff: 0
+  luckBuff: 0

@@ -544,5 +544,26 @@ FodyWeavers.xsd
 # Additional files built by Visual Studio
 # End of https://www.toptal.com/developers/gitignore/api/unity,visualstudio,visualstudiocode,rider
 
+# macOS
+*.DS_Store
+
+
+# FMOD
+
+# Never ignore DLLs in the FMOD subfolder.
+!/[Aa]ssets/Plugins/FMOD/**/lib/*
+
+# Don't ignore images and gizmos used by FMOD in the Unity Editor.
+!/[Aa]ssets/Gizmos/FMOD/*
+!/[Aa]ssets/Editor Default Resources/FMOD/*
+                    
+# Ignore the Cache folder since it is updated locally.
+/[Aa]ssets/Plugins/FMOD/Cache
+/[Aa]ssets/Plugins/FMOD/platforms
+
+# If the source bank files are kept outside of the StreamingAssets folder then these can be ignored.
+# Log files can be ignored.
+fmod_editor.log
+
 
 !/Packages/*
