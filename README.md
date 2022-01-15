@@ -29,7 +29,7 @@ Team members and roles:
 * Mathilda Christiansson, Artist [LinkedIn](https://www.linkedin.com/in/mathilda-christiansson-107048220/)
 * Tom Olovsson, Sound Designer [LinkedIn](https://www.linkedin.com/in/tom-olovsson-62a5b799/), [Studio Instagram](https://www.instagram.com/alderbaystudios/)
 * Arvid Lundin, Sound Designer [LinkedIn](https://www.linkedin.com/in/arvid-lundin-a5b18622b/), [Studio Instagram](https://www.instagram.com/alderbaystudios/)
-* Joakim Blomstrand , Designer
+* Joakim Blomstrand , Designer [LinkedIn](https://www.linkedin.com/in/joakim-blomstrand-218417227/)
 ## Design Documents
 
 [GDD](https://docs.google.com/document/d/103UANcyFQGBr5ccG3n7Q8oSQjugDNR5p6Y5rvAKcghM/edit#heading=h.ctqszdyarbr8)
