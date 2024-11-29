@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 179a9598111edaf4496551596ffe7d50, type: 3}
+  m_Name: Old Photograph
+  m_EditorClassIdentifier: 
+  Id: 0
+  itemIcon: {fileID: 21300000, guid: 78b294cd845d24379b3042f670a8d588, type: 3}
+  width: 2
+  height: 2
+  type: 4
+  name: Old Photograph
+  price: 5
+  dropSound:
+    Guid:
+      Data1: 90928835
+      Data2: 1225203162
+      Data3: -200824160
+      Data4: -981507709
+    Path: event:/InventoryDrop
+  _pickupEvent: {fileID: 11400000, guid: 32d35f4d1290e7b4eb5e97d5de996e3c, type: 2}
+  description: 'Pretty ugly. I''d Like my nickels back if I had to buy it. '
+  buffs: []

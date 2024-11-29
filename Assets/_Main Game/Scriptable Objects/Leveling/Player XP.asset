@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c363e0a24b81fe24b865728d412eae14, type: 3}
+  m_Name: Player XP
+  m_EditorClassIdentifier: 
+  _levelUp: {fileID: 11400000, guid: acac836e5fe18f1449f57d3a2734a6e5, type: 2}
+  level: 1
+  currentXP: 0
+  requiredXPInt: 100
+  xpScale: 1.2
+  skillPoint: 0
+  skillPointsPerLevel: 5
+  GetXPEvent: {fileID: 11400000, guid: 623451f3003fdfe4c8daa71bc1038cea, type: 2}
+  fmodEvent:
+    Guid:
+      Data1: -542430724
+      Data2: 1268527413
+      Data3: 1053398163
+      Data4: 2091630610
+    Path: event:/LvlUP
